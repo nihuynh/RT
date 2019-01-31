@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/30 21:38:06 by nihuynh           #+#    #+#              #
-#    Updated: 2019/01/31 18:27:21 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/01/31 18:29:58 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ CLEAR_LINE='\r\033[K'
 # **************************************************************************** #
 CORE_DIR="$HOME/Master/TestRT/RT"
 LIB_DIR="$HOME/Master/TestRT/lib"
-CURRENT_DIR="$(pwd)"
 RT_GIT="${CORE_DIR} https://github.com/nihuynh/RT.git"
 LIB_GIT=(
 	"${LIB_DIR}/libft https://github.com/nihuynh/Libft.git libft"

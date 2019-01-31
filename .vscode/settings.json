@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "libft.h": "c",
+        "libui.h": "c",
+        "librt.h": "c",
+        "limits": "c",
+        "type_traits": "c",
+        "stdlib.h": "c",
+        "unistd.h": "c",
+        "math.h": "c"
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+}
