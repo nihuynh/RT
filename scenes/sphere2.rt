@@ -1,0 +1,77 @@
+camera
+{
+	origin(0 0 0)
+	normal(0 0 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(0 0 0)
+		intensity(50)
+	}
+	object(sphere)
+	{
+		color(160 0 0)
+		origin(0 -20 -30)
+		radius(5)
+		diffuse(90)
+	}
+	object(sphere)
+	{
+		color(0 0 160)
+		origin(-20 -20 -30)
+		radius(5)
+		diffuse(90)
+	}
+		object(sphere)
+	{
+		color(0 160 0)
+		origin(-20 0 -30)
+		radius(5)
+		diffuse(90)
+	}
+	object(sphere)
+	{
+		color(160 0 0)
+		origin(-20 20 -30)
+		radius(5)
+		diffuse(90)
+	}
+	object(sphere)
+	{
+		color(0 0 160)
+		origin(0 20 -30)
+		radius(5)
+		diffuse(90)
+	}
+	object(sphere)
+	{
+		color(0 160 0)
+		origin(20 20 -30)
+		radius(5)
+		diffuse(90)
+	}
+	object(sphere)
+	{
+		color(160 0 0)
+		origin(20 0 -30)
+		radius(5)
+		diffuse(90)
+	}
+	object(sphere)
+	{
+		color(255 255 255)
+		origin(0 0 -30)
+		radius(5)
+		diffuse(90)
+	}
+	object(sphere)
+	{
+		color(0 255 255)
+		origin(20 -20 -30)
+		radius(5)
+		diffuse(90)
+	}
+}

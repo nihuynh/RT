@@ -1,0 +1,21 @@
+camera
+{
+	origin(0 0 0)
+	normal(0 0 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(60 20 0)
+		intensity(100)
+	}
+	object(sphere)
+	{
+		color(255 0 0)
+		origin(0 0 -100)
+		radius(50)
+		diffuse(90)
+	}
+}

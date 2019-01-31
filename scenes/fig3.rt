@@ -1,0 +1,29 @@
+camera
+{
+	origin(0 0 0)
+	normal(0 0 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(80 30 -100)
+		intensity(1000)
+	}
+	object(plane)
+	{
+		color(0 0 255)
+		origin(0 -50 0)
+		normal(0 1 0)
+		diffuse(100)
+	}
+	object(cone)
+	{
+		color(200 200 0)
+		origin(0 0 -200)
+		normal(0 1 0)
+		theta(40)
+		diffuse(100)
+	}
+}

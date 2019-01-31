@@ -1,0 +1,322 @@
+camera
+{
+	origin(0 0 0)
+	normal(0 0 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(0 0 0)
+		intensity(50)
+	}
+	object(plane)
+	{
+		color(200 200 200)
+		origin(0 0 -100)
+		normal(0 0 1)
+		diffuse(0)
+	}
+	object(sphere)
+	{
+		color(222 182 163)
+		origin(-9 -15 -51)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(222 182 163)
+		origin(9 -15 -51)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -10 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -8 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -6 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -4 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -2 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 0 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 2 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 4 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 6 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 8 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 10 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 12 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 14 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 16 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 18 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 20 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 22 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 24 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 26 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 28 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(255 173 171)
+		origin(0 30 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -9 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -7 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -5 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -3 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 -1 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 1 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 3 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 5 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 7 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 9 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 11 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 13 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 15 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 17 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 19 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 21 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 23 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 25 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 27 -55)
+		radius(12)
+		diffuse(100)
+	}
+	object(sphere)
+	{
+		color(242 194 175)
+		origin(0 29 -55)
+		radius(12)
+		diffuse(100)
+	}
+}

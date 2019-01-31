@@ -1,0 +1,136 @@
+camera
+{
+	origin(0 0 0)
+	normal(0 0 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(30 0 0)
+		intensity(50)
+	}
+	object(light)
+	{
+		color(255 255 255)
+		origin(-30 0 0)
+		intensity(50)
+	}
+	object(plane)
+	{
+		color(50 50 50)
+		origin(0 -10 0)
+		normal(0 1 0)
+		diffuse(0)
+	}
+	object(plane)
+	{
+		color(50 50 50)
+		origin(0 10 0)
+		normal(0 1 0)
+		diffuse(0)
+	}
+	object(plane)
+	{
+		color(60 60 200)
+		origin(0 0 -50)
+		normal(0 0 1)
+		diffuse(0)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 -10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 -10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 -10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 -10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 10 -20)
+		radius(4)
+		diffuse(60)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(250 0 0)
+		origin(0 -8 -20)
+		radius(2)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-15 0 -20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-15 0 -40)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(15 0 -20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(15 0 -40)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+}
