@@ -26,21 +26,21 @@ content
 		color_specular(0.9 0.8 0.7)
 		self_light(0 0 0)
 		spec_idx(0.5)
-		spec_power(0.9)
+		spec_power(1500)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
-    {
+	{
 	object(sphere)
 	{
 		origin(0 0 -100)
 		radius(30)
 		color_ambient(255 0 0)
 		color_diffuse(0.714 0.4284 0.18144)
-		color_specular(0.9 0.8 0.7)
+		color_specular(255 230 200)
 		self_light(0 0 0)
 		spec_idx(0.5)
-		spec_power(0.9)
+		spec_power(56)
 		absorb_idx(0.0)
-		deflect_idx(0.75)
+		deflect_idx(0.0)
 	}
 }
