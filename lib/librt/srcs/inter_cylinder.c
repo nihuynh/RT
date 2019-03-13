@@ -20,7 +20,7 @@ static inline float		inter(t_ray *ray, t_cylinder *cyl)
 	float	det;
 	t_vec3	rene;
 
-	vec3_sub(&rene, (t_vec3*)&ray->origin, (t_vec3*)&cyl->origin);
+	vec3_sub(&rene, &ray->origin, &cyl->origin);
 	AAAA = vec3_dot(&ray->n, &cyl->n);
 	CCCC = vec3_dot(&rene, &cyl->n);
 	BBBB = 2 * (vec3_dot(&ray->n, &rene) - AAAA * CCCC);

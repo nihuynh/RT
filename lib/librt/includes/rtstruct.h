@@ -22,12 +22,7 @@ typedef struct	s_vec3
 	float		z;
 }				t_vec3;
 
-typedef struct	s_pt3
-{
-	float		x;
-	float		y;
-	float		z;
-}				t_pt3;
+typedef t_vec3	t_pt3;
 
 typedef struct	s_ray
 {

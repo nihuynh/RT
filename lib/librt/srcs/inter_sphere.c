@@ -20,7 +20,7 @@ static inline float	inter(t_ray *ray, t_sphere *sphere)
 	float	det;
 	t_vec3	rene;
 
-	vec3_sub(&rene, (t_vec3*)&ray->origin, (t_vec3*)&sphere->origin);
+	vec3_sub(&rene, &ray->origin, &sphere->origin);
 	AAAA = vec3_mag(&ray->n);
 	BBBB = 2.0 * vec3_dot(&ray->n, &rene);
 	CCCC = vec3_dot(&rene, &rene) - sphere->radius * sphere->radius;
