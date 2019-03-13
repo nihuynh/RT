@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_screenshot.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 10:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/05 14:56:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/13 15:04:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static inline char
 
 	t = time(&t);
 	tm = *localtime(&t);
-	strftime(titi, sizeof(titi), "%F_%T", &tm);
+	strftime(titi, sizeof(titi), "%F_%T.bmp", &tm);
 	printf("%s\n", arg);
 	toby = ft_strsplit(arg, '/');
 	i = 0;
