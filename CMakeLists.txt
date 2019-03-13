@@ -3,23 +3,9 @@ project(RT C)
 
 set(CMAKE_C_STANDARD 11)
 
-set(CMAKE_VERBOSE_MAKEFILE TRUE)
+#set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
-set(SRC
-        srcs/camera.c
-        srcs/error.c
-        srcs/key_mapping.c
-        srcs/light.c
-        srcs/main.c
-        srcs/parse_toolbox.c
-        srcs/parser.c
-        srcs/read.c
-        srcs/render.c
-        srcs/setter.c
-        )
-#        archives/archives.c
-
-add_executable(RT ${SRC})
+add_executable(RT "")
 
 set(DEBUG_FLAGS -g3 -Og)
 set(RELEASE_FLAGS -O2 -march=native -flto)
@@ -30,36 +16,29 @@ target_compile_options(RT PRIVATE "$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
 target_compile_options(RT PRIVATE "$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")
 target_compile_options(RT PRIVATE "$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
 
+add_subdirectory(lib/libft)
+add_subdirectory(lib/libui)
+add_subdirectory(lib/librt)
+
+target_link_libraries(RT ft)
+target_link_libraries(RT ui)
+target_link_libraries(RT rt)
+
 target_include_directories(RT PRIVATE includes)
 
-set(LIB_DIR ../lib)
+# Output the executable at the root
+set_target_properties(RT
+        PROPERTIES
+            RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
 
-target_include_directories(RT PRIVATE ${LIB_DIR}/librt/includes)
-target_link_directories(RT PRIVATE ${LIB_DIR}/librt/)
-target_link_libraries(RT librt.a)
-
-target_include_directories(RT PRIVATE ${LIB_DIR}/libft/includes)
-target_link_directories(RT PRIVATE ${LIB_DIR}/libui/)
-target_link_libraries(RT libui.a)
-
-target_include_directories(RT PRIVATE ${LIB_DIR}/libui/includes)
-target_link_directories(RT PRIVATE ${LIB_DIR}/libft/)
-target_link_libraries(RT libft.a)
-
-set_target_properties(RT PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
-
-# Add SDL2 path to list of searched paths for packages
-#set(CMAKE_PREFIX_PATH "D:/Dev/Lib/SDL2-2.0.8")
-
-find_package(SDL2 REQUIRED)
-
-# Stay compatible with old style find_package results
-if (NOT TARGET SDL2::SDL2)
-    message("SDL2 found with old style cmake config")
-    target_link_libraries(RT ${SDL2_LIBRARIES})
-    target_include_directories(RT PRIVATE ${SDL2_INCLUDE_DIRS})
-else()
-    message("SDL2 found with modern style cmake config")
-    target_link_libraries(fractol SDL2::SDL2)
-endif()
+target_sources(RT PRIVATE
+        srcs/camera.c
+        srcs/error.c
+        srcs/key_mapping.c
+        srcs/light.c
+        srcs/main.c
+        srcs/parse_toolbox.c
+        srcs/parser.c
+        srcs/read.c
+        srcs/render.c
+        srcs/setter.c)
