@@ -1,0 +1,41 @@
+camera
+{
+	origin(0 0 50)
+	normal(0 0 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(0 50 0)
+		intensity(100)
+	}
+	object(cylinder)
+	{
+		origin(0 0 -80)
+		normal(-1 0 0)
+		radius(10)
+		color_ambient(0 200 0)
+		color_diffuse(0.714 0.4284 0.18144)
+		color_specular(0.9 0.8 0.7)
+		self_light(0 0 0)
+		spec_idx(0.5)
+		spec_power(0.9)
+		absorb_idx(0.0)
+		deflect_idx(0.75)
+	}
+	object(sphere)
+	{
+		origin(0 0 0)
+		radius(100)
+		color_ambient(255 0 0)
+		color_diffuse(0.714 0.4284 0.18144)
+		color_specular(0.9 0.8 0.7)
+		self_light(0 0 0)
+		spec_idx(0.5)
+		spec_power(0.9)
+		absorb_idx(0.0)
+		deflect_idx(0.75)
+	}
+}

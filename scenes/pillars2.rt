@@ -1,0 +1,407 @@
+camera
+{
+	origin(-50 0 -10)
+	normal(0 -10 -10)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(-60 0 -10)
+		intensity(50)
+	}
+	object(light)
+	{
+		color(255 255 255)
+		origin(60 0 -10)
+		intensity(50)
+	}
+	object(plane)
+	{
+		color(100 100 100)
+		origin(0 -10 0)
+		normal(0 1 0)
+		diffuse(0)
+	}
+	object(plane)
+	{
+		color(100 100 100)
+		origin(0 10 0)
+		normal(0 1 0)
+		diffuse(0)
+	}
+	object(plane)
+	{
+		color(60 60 200)
+		origin(0 0 -50)
+		normal(0 0 1)
+		diffuse(0)
+	}
+	object(plane)
+	{
+		color(60 60 200)
+		origin(0 0 30)
+		normal(0 0 1)
+		diffuse(0)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 -10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 -10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 -10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 -10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 10 -20)
+		radius(4)
+		diffuse(60)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere) //sphere rouge
+	{
+		color(250 0 0)
+		origin(0 -8 -10)
+		radius(2)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-15 0 -20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-15 0 -40)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(15 0 -20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(15 0 -40)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 -10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 -10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 -10 -20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 -10 -40)
+		radius(4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-45 0 -20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-45 0 -40)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(45 0 -20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(45 0 -40)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 -10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 -10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 -10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 -10 0)
+		radius(4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-45 0 0)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-15 0 0)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(15 0 0)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(45 0 0)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-15 -10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 -10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(15 10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(-45 -10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(sphere)
+	{
+		color(130 130 130)
+		origin(45 -10 20)
+		radius(4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-45 0 20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(-15 0 20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(15 0 20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+	object(cylinder)
+	{
+		color(130 130 130)
+		origin(45 0 20)
+		normal(0 1 0)
+		radius(2.4)
+		diffuse(80)
+	}
+}

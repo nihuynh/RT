@@ -1,0 +1,43 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${workspaceFolder}/includes",
+                    "/usr/local/include/SDL2",
+                    "/Users/sklepper/.brew/include/SDL2",
+                    "/Users/nihuynh/.brew/include/SDL2",
+                    "${workspaceFolder}/../libft/includes",
+                    "/usr/local/Cellar/sdl2/2.0.9/include/sdl2",
+                    "/usr/local/include",
+                    "${workspaceFolder}/../librt/includes",
+                    "${workspaceFolder}/../../RTV1/includes"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${workspaceFolder}/includes",
+                "/usr/local/include/SDL2",
+                "${workspaceFolder}/../libft/includes",
+                "${workspaceFolder}/../librt/includes",
+                "${workspaceFolder}/../libui/includes",
+                "${workspaceFolder}/../lib/libft/includes",
+                "/usr/local/Cellar/sdl2/2.0.9/include/sdl2",
+                "/usr/local/include",
+                "${workspaceFolder}/../lib/librt/includes",
+                "${workspaceFolder}/../lib/libui/includes",
+                "/Users/nihuynh/.brew/Cellar/sdl2/2.0.8/include/SDL2",
+                "/Users/nihuynh/Master/lib/libft/includes",
+                "/Users/sklepper/.brew/Cellar/sdl2/2.0.9/include/SDL2"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
