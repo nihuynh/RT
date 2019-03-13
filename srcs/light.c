@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/07 17:38:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/13 16:48:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "librt.h"
 #include "libui.h"
 #include "libft.h"
+#include <math.h>
 
 SIFLOAT	facing_ratio(t_inter *inter_light)
 {
@@ -28,19 +29,15 @@ SIFLOAT	facing_ratio(t_inter *inter_light)
 SIVOID	shine(t_inter *inter, t_inter *inter_light)
 {
 	float	ratio;
-	float	spec;
 	t_color	shine_color;
 
-	ratio = vec3_dot(&inter->deflected.n, &inter_light->ray.n);
+	ratio = ft_maxf(0.f, vec3_dot(&inter->deflected.n, &inter_light->ray.n));
+	ratio = powf(ratio, inter->obj->material.spec_power)
+		* inter->obj->material.spec_idx;
 	shine_color = inter_light->color;
-	if (ratio >= inter->obj->material.spec_power)
-	{
-		spec = (1 - inter->obj->material.spec_power);
-		ratio = ((ratio - inter->obj->material.spec_power) / spec) - spec;
-		ratio = ft_clampf(ratio, 0, 1);
-		color_scalar(&shine_color, ratio);
-		color_max(&inter->color, &shine_color);
-	}
+	color_scalar(&shine_color, ratio);
+	color_mult(&shine_color, &inter->obj->material.color_specular);
+	color_add(&inter->color, &shine_color);
 }
 
 SIVOID	shadow(t_data *data, t_inter *inter, t_light *light, t_color *color)
