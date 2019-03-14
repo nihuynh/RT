@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 22:01:52 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/19 22:02:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void				vec3_matrix_camera(t_matrix *matrix, t_cam *cam)
 	vec3_find(&(t_pt3){0, 0, 0}, &(t_pt3){0, 0, -1}, &toby[0]);
 	vec3_normalize(&toby[0]);
 	vec3_print(&toby[0]);
-	vec3_find(&cam->pos, (t_pt3*)&cam->dir, &toby[1]);
+	vec3_find(&cam->pos, &cam->dir, &toby[1]);
 	vec3_normalize(&toby[1]);
 	vec3_print(&toby[1]);
 	datcos = vec3_dot(&toby[0], &toby[1]);

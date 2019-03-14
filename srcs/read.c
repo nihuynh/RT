@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 09:45:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int
 		parsing_error(line_idx, ERR_PARSE_CONTENT, data, greed);
 	parse_origin(&data->cam.pos, greed[line_idx + 2], 3);
 	parse_normal(&data->cam.dir, greed[line_idx + 3], 4);
-	vec3_find(&data->cam.pos, (t_pt3*)&data->cam.dir, &data->cam.dir);
+	vec3_find(&data->cam.pos, &data->cam.dir, &data->cam.dir);
 	vec3_normalize(&data->cam.dir);
 	return (line_idx + 5);
 }
