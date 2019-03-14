@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/07 16:34:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 14:31:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,14 @@ void		vec3_print(t_vec3 *data);
 void		vec3_scalar(t_vec3 *v1, float k);
 void		vec3_sub(t_vec3 *res, t_vec3 *v1, t_vec3 *v2);
 void		vec3_deflect(t_inter *inter, t_ray *res);
-void		vec3_refract(t_inter *inter, t_vec3 *res);
+void		vec3_refract(t_inter *inter, t_vec3 *vf, float ior);
 void		vec3_matrix_camera(t_matrix *matrix, t_cam *cam);
 void		vec3_matrix_mult(t_matrix *matrix, t_matrix *add);
 void		vec3_matrix_apply(t_vec3 *vec, t_matrix *mat_x, t_matrix *mat_y);
 void		ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n);
 void		print_matrix(t_matrix *mat_x, t_matrix *mat_y);
 void		mat3_rot(t_matrix *mat_x, t_matrix *mat_y, t_vec3 *vi, t_cam *cam);
+void		fresnel(t_inter *inter, float ior);
+
 
 #endif

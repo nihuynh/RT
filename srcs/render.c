@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/12 17:39:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 15:22:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,27 @@ void
 
 int	recursive_cast(t_data *data, t_ray *rene, int depth);
 
+#include <stdio.h>
+
 static inline void
 	deflect_cast(t_data *data, t_inter *inter, int depth)
 {
 	t_color	primary;
 	t_ray	absorbed;
 
-	if (!(NO_DEFLECT) && inter->obj->material.deflect_idx > 0)
+	if (inter->obj->material.absorb_idx == 0)
 	{
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
-	if (!(NO_ABSORB) && inter->obj->material.absorb_idx > 0)
+	else
 	{
+		fresnel(inter, 1.5);
+		// printf("%f\n", inter->kr);
+		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
+		color_scalar(&primary, inter->kr);
+		color_add(&inter->color, &primary);
 		inter_setrefract(inter, &absorbed);
 		itocolor(&primary, recursive_cast(data, &absorbed, depth + 1));
 		color_scalar(&primary, inter->obj->material.absorb_idx);

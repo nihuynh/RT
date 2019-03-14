@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/12 17:04:20 by tdarchiv         ###   ########.fr        #
+#    Updated: 2019/03/14 14:31:56 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:=	librt.a
 VEC			:=	vec3_add.c vec3_cross.c vec3_mag.c vec3_scalar.c vec3_cos.c \
 				vec3_dot.c vec3_normalize.c vec3_sub.c vec3_new.c vec3_print.c \
 				vec3_cpy.c vec3_find.c ray_new.c vec3_deflect.c print_matrix.c \
-				vec3_matrix_mult.c vec3_matrix_apply.c vec3_refract.c
+				vec3_matrix_mult.c vec3_matrix_apply.c vec3_refract.c fresnel.c
 INTER		:=	inter_cylinder.c inter_plane.c inter_sphere.c inter_cone.c \
 				inter_set.c inter_find.c inter_setlight.c inter_setdeflect.c \
 				inter_setrefract.c

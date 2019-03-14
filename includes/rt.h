@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/13 16:06:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 15:21:14 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define NO_SHINE		0
 # define NO_SHADOW		0
 # define NO_DEFLECT		0
-# define NO_ABSORB		1
-# define DEPTH_MAX		1
+# define NO_ABSORB		0
+# define DEPTH_MAX		2
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
