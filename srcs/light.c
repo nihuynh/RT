@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/13 16:48:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 09:42:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "libft.h"
 #include <math.h>
 
-SIFLOAT	facing_ratio(t_inter *inter_light)
+static inline float
+	facing_ratio(t_inter *inter_light)
 {
 	float	res;
 
@@ -26,7 +27,8 @@ SIFLOAT	facing_ratio(t_inter *inter_light)
 	return (res >= 0) ? res : 0;
 }
 
-SIVOID	shine(t_inter *inter, t_inter *inter_light)
+static inline void
+	shine(t_inter *inter, t_inter *inter_light)
 {
 	float	ratio;
 	t_color	shine_color;
@@ -40,7 +42,8 @@ SIVOID	shine(t_inter *inter, t_inter *inter_light)
 	color_add(&inter->color, &shine_color);
 }
 
-SIVOID	shadow(t_data *data, t_inter *inter, t_light *light, t_color *color)
+static inline void
+	shadow(t_data *data, t_inter *inter, t_light *light, t_color *color)
 {
 	t_inter	inter_light;
 	t_color	tmp;
@@ -63,7 +66,8 @@ SIVOID	shadow(t_data *data, t_inter *inter, t_light *light, t_color *color)
 	}
 }
 
-void	cast_shadow(t_data *data, t_inter *inter)
+void
+	cast_shadow(t_data *data, t_inter *inter)
 {
 	t_list	*lst;
 	t_light	*light;

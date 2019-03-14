@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/07 16:23:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:43:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 ** @return char*	A pointer to the beginning of the value for the parameter
 */
 
-static inline char	*check_key(char *str, int line, const char *key, char *err)
+static inline char
+	*check_key(char *str, int line, const char *key, char *err)
 {
 	if (!(str = ft_strstr(str, key)))
 		ft_error_wmsg(ERR_P_KEY, line, str);
@@ -44,7 +45,8 @@ static inline char	*check_key(char *str, int line, const char *key, char *err)
 ** @param line	Current line of the parsing
 */
 
-void				parse_color(t_color *color, char *str, int line, char *key)
+void
+	parse_color(t_color *color, char *str, int line, char *key)
 {
 	uint8_t toby[3];
 	int		idx;
@@ -80,7 +82,8 @@ void				parse_color(t_color *color, char *str, int line, char *key)
 ** @param line		Current line of the parsing
 */
 
-void				parse_origin(t_pt3 *origin, char *str, int line)
+void
+	parse_origin(t_pt3 *origin, char *str, int line)
 {
 	float	toby[3];
 	int		idx;
@@ -116,7 +119,8 @@ void				parse_origin(t_pt3 *origin, char *str, int line)
 ** @param line		Current line of the parsing
 */
 
-void				parse_normal(t_vec3 *normal, char *str, int line)
+void
+	parse_normal(t_vec3 *normal, char *str, int line)
 {
 	float	toby[3];
 	int		idx;
@@ -152,7 +156,8 @@ void				parse_normal(t_vec3 *normal, char *str, int line)
 ** @param line	Current line of the parsing
 */
 
-void				parse_fval(float *val, char *str, int line, const char *key)
+void
+	parse_fval(float *val, char *str, int line, const char *key)
 {
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);

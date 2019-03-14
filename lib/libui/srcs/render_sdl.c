@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 21:35:33 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/19 19:37:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:51:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <time.h>
 #include "ftio.h"
 
-SIVOID	putcolor(t_sdl *sdl, int color, int x, int y)
+static inline void
+	putcolor(t_sdl *sdl, int color, int x, int y)
 {
 	t_color	tmp;
 
@@ -25,7 +26,8 @@ SIVOID	putcolor(t_sdl *sdl, int color, int x, int y)
 	SDL_RenderDrawPoint(sdl->renderer, x, y);
 }
 
-void	render_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
+void
+	render_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
 {
 	clock_t	timer;
 	t_pxl	idx;

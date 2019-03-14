@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/19 21:01:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:51:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "libui.h"
 #include "libft.h"
 
-SIVOID	putcolor(t_sdl *sdl, int color, int x, int y)
+static inline void
+	putcolor(t_sdl *sdl, int color, int x, int y)
 {
 	t_color	tmp;
 
@@ -26,7 +27,8 @@ SIVOID	putcolor(t_sdl *sdl, int color, int x, int y)
 	SDL_RenderDrawPoint(sdl->renderer, x, y);
 }
 
-SIVOID	apply_color(t_sdl *sdl)
+static inline void
+	apply_color(t_sdl *sdl)
 {
 	t_pxl	idx;
 	int		ofs;
@@ -53,7 +55,8 @@ SIVOID	apply_color(t_sdl *sdl)
 	SDL_RenderPresent(sdl->renderer);
 }
 
-SIVOID	*process_data(void *arg)
+static inline void
+	*process_data(void *arg)
 {
 	t_data_thr	*slice;
 	t_sdl		*sdl;
@@ -73,7 +76,8 @@ SIVOID	*process_data(void *arg)
 	pthread_exit(NULL);
 }
 
-void	render_mthr_sdl(t_sdl *sdl)
+void
+	render_mthr_sdl(t_sdl *sdl)
 {
 	clock_t		timer;
 	int			cthr;

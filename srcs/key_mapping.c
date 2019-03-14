@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/05 14:47:09 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 09:40:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <SDL.h>
 #include <stdio.h>
 
-/**
+/*
 ** @brief Key mapping
 **
 ** @param quit	Set to 1 to quit the programm
@@ -23,7 +23,8 @@
 ** @param arg	Data
 */
 
-int		camera(t_data *data, SDL_Keycode key)
+static inline int
+	camera(t_data *data, SDL_Keycode key)
 {
 	int	res;
 
@@ -51,7 +52,8 @@ int		camera(t_data *data, SDL_Keycode key)
 	return (res);
 }
 
-void	key_mapping(int *quit, SDL_Keycode key, void *arg)
+void
+	key_mapping(int *quit, SDL_Keycode key, void *arg)
 {
 	t_data *data;
 
@@ -66,7 +68,8 @@ void	key_mapping(int *quit, SDL_Keycode key, void *arg)
 		ft_printf("the key press is : %d\n", (int)key);
 }
 
-void	mouse_mapping(SDL_Event *event, void *arg)
+void
+	mouse_mapping(SDL_Event *event, void *arg)
 {
 	t_data *data;
 

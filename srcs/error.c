@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2018/12/20 00:31:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:42:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 #include "libft.h"
 #include "libui.h"
 
-void	ft_error_wmsg(char *str, int line, char *endl)
+void
+	ft_error_wmsg(char *str, int line, char *endl)
 {
 	ft_printf("%s%d\n Parser endl : %s", str, line, endl);
 	ft_error(__func__, __LINE__);
 }
 
-SIVOID	del_obj(void *content, size_t content_size)
+static inline void
+	del_obj(void *content, size_t content_size)
 {
 	t_obj *obj;
 
@@ -32,7 +34,8 @@ SIVOID	del_obj(void *content, size_t content_size)
 	free(obj);
 }
 
-void	exit_safe(t_data *data)
+void
+	exit_safe(t_data *data)
 {
 	if (data->lst_obj)
 		ft_lstdel(&data->lst_obj, &del_obj);
@@ -44,7 +47,8 @@ void	exit_safe(t_data *data)
 	exit(0);
 }
 
-void	parsing_error(int line, char *error, t_data *data, char **greed)
+void
+	parsing_error(int line, char *error, t_data *data, char **greed)
 {
 	line++;
 	ft_error_wmsg(error, line, greed[line]);

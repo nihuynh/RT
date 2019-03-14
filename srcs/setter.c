@@ -6,14 +6,15 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/07 16:27:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:45:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "parse.h"
 
-void	sphere_set(void *sphere, char **greed, int i)
+void
+	sphere_set(void *sphere, char **greed, int i)
 {
 	t_sphere	*psphere;
 
@@ -24,7 +25,8 @@ void	sphere_set(void *sphere, char **greed, int i)
 	parse_fval(&psphere->radius, greed[i + 2], i + 2, "radius(");
 }
 
-void	plane_set(void *plane, char **greed, int i)
+void
+	plane_set(void *plane, char **greed, int i)
 {
 	t_plane	*pplane;
 
@@ -36,7 +38,8 @@ void	plane_set(void *plane, char **greed, int i)
 	vec3_normalize(&pplane->n);
 }
 
-void	cylinder_set(void *cylinder, char **greed, int i)
+void
+	cylinder_set(void *cylinder, char **greed, int i)
 {
 	t_cylinder	*pcylinder;
 
@@ -49,7 +52,8 @@ void	cylinder_set(void *cylinder, char **greed, int i)
 	parse_fval(&pcylinder->radius, greed[i + 3], i + 3, "radius(");
 }
 
-void	cone_set(void *cone, char **greed, int i)
+void
+	cone_set(void *cone, char **greed, int i)
 {
 	t_cone	*pcone;
 
@@ -62,7 +66,8 @@ void	cone_set(void *cone, char **greed, int i)
 	parse_fval(&pcone->theta, greed[i + 3], i + 3, "theta(");
 }
 
-void	light_set(t_light *light, char **greed, int i)
+void
+	light_set(t_light *light, char **greed, int i)
 {
 	if (light == NULL)
 		ft_error_wmsg(ERR_PARSE_SET_LI, i, greed[i]);

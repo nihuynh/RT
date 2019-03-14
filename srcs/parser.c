@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/13 13:52:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:44:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include "libft.h"
 #include "parse.h"
 
-/**
- * @brief		Setting config for the type of object we want to parse
- *
- * @param type		The type of object we want to parse
- * @param config 	The struct that is gonna hold the config
- */
+/*
+** @brief		Setting config for the type of object we want to parse
+**
+** @param type		The type of object we want to parse
+** @param config 	The struct that is gonna hold the config
+*/
 
-static inline void	init_parse(int type, t_parse *config)
+static inline void
+	init_parse(int type, t_parse *config)
 {
 	const t_parse index_config[4] = {
 		{"Plane : ", sizeof(t_plane), &plane_set, 5},
@@ -33,15 +34,16 @@ static inline void	init_parse(int type, t_parse *config)
 	config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
 }
 
-/**
- * @brief	Setting the obj struct for the shape
- *
- * @param obj	Struct that we want to set
- * @param type	Type of shape
- * @param shape	The shape
- */
+/*
+** @brief	Setting the obj struct for the shape
+**
+** @param obj	Struct that we want to set
+** @param type	Type of shape
+** @param shape	The shape
+*/
 
-static inline void	obj_set(t_obj *obj, int type, void *shape)
+static inline void
+	obj_set(t_obj *obj, int type, void *shape)
 {
 	obj->type = type;
 	obj->shape = shape;
@@ -55,7 +57,8 @@ static inline void	obj_set(t_obj *obj, int type, void *shape)
 		obj->f_inter = &inter_cylinder;
 }
 
-static inline int	parse_material(t_material *dst, char **tab, int idx)
+static inline int
+	parse_material(t_material *dst, char **tab, int idx)
 {
 	parse_color(&dst->color_ambient, tab[idx], idx, "color_ambient(");
 	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
@@ -69,16 +72,17 @@ static inline int	parse_material(t_material *dst, char **tab, int idx)
 }
 
 /**
- * @brief	General parser for all of the shapes
- *
- * @param greed	Contains the whole input file
- * @param data	General struct for holding data
- * @param l_idx	Line index to navigate in greed
- * @param type	Type of shape to parse
- * @return int	Returns the line on which it finished parsing the shape
- */
+** @brief	General parser for all of the shapes
+**
+** @param greed	Contains the whole input file
+** @param data	General struct for holding data
+** @param l_idx	Line index to navigate in greed
+** @param type	Type of shape to parse
+** @return int	Returns the line on which it finished parsing the shape
+*/
 
-int					parse_shape(char **greed, t_data *data, int l_idx, int type)
+int
+	parse_shape(char **greed, t_data *data, int l_idx, int type)
 {
 	t_list		*node;
 	t_obj		obj;
@@ -101,15 +105,16 @@ int					parse_shape(char **greed, t_data *data, int l_idx, int type)
 }
 
 /**
- * @brief	Parser for light objects
- *
- * @param greed		Contains the whole input file
- * @param data		General struct for holding data
- * @param line_idx	Line index to navigate in greed
- * @return int		Returns the line on which it finished parsing the light
- */
+** @brief	Parser for light objects
+**
+** @param greed		Contains the whole input file
+** @param data		General struct for holding data
+** @param line_idx	Line index to navigate in greed
+** @return int		Returns the line on which it finished parsing the light
+*/
 
-int					parse_light(char **greed, t_data *data, int line_idx)
+int
+	parse_light(char **greed, t_data *data, int line_idx)
 {
 	t_list		*node;
 	t_light		light;
