@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:33:27 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/13 18:53:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 12:26:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	vec3_refract(t_inter *inter, t_vec3 *vf)
 
 	ft_memcpy(&tmpi, &inter->ray.n, sizeof(tmpi));
 	ft_memcpy(&tmpn, &inter->n, sizeof(tmpn));
+	ft_memcpy(vf, &inter->n, sizeof(vf));
 	AAAA = ft_clampf(-1, 1, vec3_dot(&inter->ray.n, &inter->n));
 	BBBB = 1;
 	CCCC = 1.5;
-	ft_memcpy(vf, &inter->n, sizeof(vf));
 	if (AAAA < 0)
 		AAAA = -AAAA;
 	else
