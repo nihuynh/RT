@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/07 17:46:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 18:48:46 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTSTRUCT_H
 # define RTSTRUCT_H
 
+# include <stdbool.h>
 # include "color.h"
 
 typedef struct	s_vec3
@@ -67,6 +68,16 @@ typedef struct	s_cam
 {
 	t_pt3		pos;
 	t_vec3		dir;
+	bool		move_forward;
+	bool		move_backward;
+	bool		strafe_left;
+	bool		strafe_right;
+	bool		move_upward;
+	bool		move_downward;
+	bool		rotate_up;
+	bool		rotate_down;
+	bool		rotate_left;
+	bool		rotate_right;
 }				t_cam;
 
 typedef struct	s_matrix

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 09:49:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBUI_H
 
 # include <SDL.h>
+# include <stdbool.h>
 # include "color.h"
 
 # define THR_C 20
@@ -35,9 +36,9 @@ typedef struct		s_sdl
 	t_data_thr		*data_thr;
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
-	SDL_Event		event;
-	void			(*key_map)(int*, SDL_Keycode, void*);
+	void			(*key_map)(int*, SDL_Keycode, void*, bool state);
 	void			(*mouse_map)(SDL_Event*, void *arg);
+	void			(*update)(void *arg);
 }					t_sdl;
 
 struct				s_data_thr

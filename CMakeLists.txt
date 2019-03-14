@@ -7,14 +7,14 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(RT "")
 
-set(DEBUG_FLAGS -g3 -Og)
+set(DEBUG_FLAGS -g3)
 set(RELEASE_FLAGS -O2 -march=native -flto)
 set(PROFILE_FLAGS -g3 -O2 -march=native)
 
-target_compile_options(RT PRIVATE -Wall -Wextra -Werror)
-target_compile_options(RT PRIVATE "$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
-target_compile_options(RT PRIVATE "$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")
-target_compile_options(RT PRIVATE "$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
+add_compile_options(-Wall -Wextra -Werror)
+add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
+add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")
+add_compile_options("$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
 
 add_subdirectory(lib/libft)
 add_subdirectory(lib/libui)
@@ -33,6 +33,7 @@ set_target_properties(RT
 
 target_sources(RT PRIVATE
         srcs/camera.c
+        srcs/update.c
         srcs/error.c
         srcs/key_mapping.c
         srcs/light.c
