@@ -15,7 +15,7 @@ NAME		:=	RT
 RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
-				setter.c light.c key_mapping.c camera.c
+				setter.c light.c key_mapping.c camera.c update.c
 WIP			:=	light.c inter.c
 # directories :
 SRCDIR  	:=	srcs
