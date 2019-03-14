@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/13 16:48:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:31:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ SIVOID	shine(t_inter *inter, t_inter *inter_light)
 	float	ratio;
 	t_color	shine_color;
 
-	ratio = ft_maxf(0.f, vec3_dot(&inter->deflected.n, &inter_light->ray.n));
+	ratio = fmaxf(0.f, vec3_dot(&inter->deflected.n, &inter_light->ray.n));
 	ratio = powf(ratio, inter->obj->material.spec_power)
 		* inter->obj->material.spec_idx;
 	shine_color = inter_light->color;
