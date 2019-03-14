@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/27 16:58:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:44:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "ftmem.h"
 #include <math.h>
 
-void	camera_pan(t_data *data, float agl)
+void
+	camera_pan(t_data *data, float agl)
 {
 	float	tmp;
 	t_vec3	vi;
@@ -30,7 +31,8 @@ void	camera_pan(t_data *data, float agl)
 	data->sdl.isrender = 0;
 }
 
-void	camera_pitch(t_data *data, float angle)
+void
+	camera_pitch(t_data *data, float angle)
 {
 	t_vec3	vi;
 
@@ -42,7 +44,8 @@ void	camera_pitch(t_data *data, float angle)
 	data->sdl.isrender = 0;
 }
 
-void	camera_zoom(t_data *data, float value)
+void
+	camera_zoom(t_data *data, float value)
 {
 	float mag;
 
@@ -53,13 +56,15 @@ void	camera_zoom(t_data *data, float value)
 	data->sdl.isrender = 0;
 }
 
-void	camera_height(t_data *data, float value)
+void
+	camera_height(t_data *data, float value)
 {
 	data->cam.pos.y += value;
 	data->sdl.isrender = 0;
 }
 
-void	camera_side(t_data *data, float value)
+void
+	camera_side(t_data *data, float value)
 {
 	t_vec3	side;
 	t_vec3	up;

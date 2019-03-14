@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/02/27 17:00:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 09:45:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
  * @return int	Returns the number of lines in the file
  */
 
-int		line_counter(char *str)
+int
+	line_counter(char *str)
 {
 	int		fd;
 	char	*line;
@@ -48,7 +49,8 @@ int		line_counter(char *str)
  * @return int		Line on which it finished parsing the camera
  */
 
-int		parse_camera(char **greed, t_data *data, int line_idx)
+int
+	parse_camera(char **greed, t_data *data, int line_idx)
 {
 	if (DEBUG)
 		ft_printf("camera at line = %i\n", line_idx);
@@ -71,7 +73,8 @@ int		parse_camera(char **greed, t_data *data, int line_idx)
  * @return int		Returns the line on which it finished parsing the content
  */
 
-int		parse_content(char **greed, t_data *data, int line_idx, int line_max)
+int
+	parse_content(char **greed, t_data *data, int line_idx, int line_max)
 {
 	if (greed[++line_idx] == NULL || greed[line_idx][0] != '{')
 		parsing_error(line_idx, ERR_P_BRACKET, data, greed);
@@ -104,7 +107,8 @@ int		parse_content(char **greed, t_data *data, int line_idx, int line_max)
  * @param line_max	Maximum value for line_idx
  */
 
-void	parser(char **greed, t_data *data, int line_max)
+void
+	parser(char **greed, t_data *data, int line_max)
 {
 	int line_idx;
 
@@ -128,7 +132,8 @@ void	parser(char **greed, t_data *data, int line_max)
  * @return int	Return 0 if everything went right, 1 otherwise
  */
 
-int		reader(char *str, t_data *data)
+int
+	reader(char *str, t_data *data)
 {
 	int		fd;
 	int		line_count;

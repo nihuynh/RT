@@ -20,7 +20,7 @@ void	normal_sphere(t_inter *inter)
 	int			is_inside;
 
 	sphere = inter->obj->shape;
-	vec3_sub(&insider, (t_vec3*)&sphere->origin, (t_vec3*)&inter->ray.origin);
+	vec3_sub(&insider, &sphere->origin, &inter->ray.origin);
 	is_inside = (vec3_mag(&insider) < sphere->radius) ? 1 : 0;
 	inter_find(inter, &pt);
 	inter->n.x = pt.x - sphere->origin.x;

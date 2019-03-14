@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/05 14:43:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 09:49:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ struct				s_data_thr
 	int				(*do_pxl) (int, int, void*);
 	void			*prg_data;
 };
-
-# define SIVOID		static inline void
-# define SIFLOAT	static inline float
 
 /*
 ** Color :

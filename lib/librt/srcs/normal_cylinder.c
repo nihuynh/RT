@@ -22,12 +22,12 @@ void	normal_cylinder(t_inter *inter)
 
 	cylinder = inter->obj->shape;
 	inter_find(inter, &pi);
-	vec3_sub(&toby, (t_vec3*)&pi, (t_vec3*)&cylinder->origin);
+	vec3_sub(&toby, &pi, &cylinder->origin);
 	var = vec3_dot(&cylinder->n, &toby);
 	pc.x = cylinder->origin.x + var * cylinder->n.x;
 	pc.y = cylinder->origin.y + var * cylinder->n.y;
 	pc.z = cylinder->origin.z + var * cylinder->n.z;
-	vec3_sub(&toby, (t_vec3*)&pi, (t_vec3*)&pc);
+	vec3_sub(&toby, &pi, &pc);
 	vec3_normalize(&toby);
 	vec3_cpy(&inter->n, &toby);
 }

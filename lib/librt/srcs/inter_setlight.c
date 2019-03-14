@@ -23,8 +23,8 @@ void	inter_setlight(t_inter *inter, t_inter *light_inter, t_light *light)
 	rene = vec3_dot(&inter->ray.n, &inter->n);
 	vec3_cpy(&toby, &inter->n);
 	vec3_scalar(&toby, SHADOW_BIAS);
-	(rene > 0) ? vec3_sub((t_vec3*)&ray.origin, (t_vec3*)&ray.origin, &toby)
-		: vec3_add((t_vec3*)&ray.origin, (t_vec3*)&ray.origin, &toby);
+	(rene > 0) ? vec3_sub(&ray.origin, &ray.origin, &toby)
+		: vec3_add(&ray.origin, &ray.origin, &toby);
 	vec3_find(&ray.origin, &light->origin, &ray.n);
 	light_inter->dist = vec3_mag(&ray.n);
 	vec3_normalize(&ray.n);

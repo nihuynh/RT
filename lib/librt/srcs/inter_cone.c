@@ -34,7 +34,7 @@ static inline float	inter(t_ray *ray, t_cone *cone)
 
 	cos_theta2 = cos(cone->theta * M_PI / 180);
 	cos_theta2 *= cos_theta2;
-	vec3_sub(&rene, (t_vec3*)&ray->origin, (t_vec3*)&cone->origin);
+	vec3_sub(&rene, &ray->origin, &cone->origin);
 	AAAA = vec3_dot(&ray->n, &cone->n);
 	CCCC = vec3_dot(&rene, &cone->n);
 	BBBB = 2 * (AAAA * CCCC - vec3_dot(&ray->n, &rene) * cos_theta2);
