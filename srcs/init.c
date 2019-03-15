@@ -6,11 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/15 16:34:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/15 17:42:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+#include "librt.h"
+#include "ftmem.h"
 
 void
 	init_render(t_data *data)
