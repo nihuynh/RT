@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 13:56:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 15:08:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:20:34 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	fresnel(t_inter *inter, float ior)
 	CCCC = ior;
 	if (AAAA < 0)
 		ft_swapf(&BBBB, &CCCC);
-	EEEE = 
 	DDDD = BBBB / CCCC * sqrtf(fmaxf(0.f, 1 - AAAA * AAAA));
 	if (DDDD >= 1 && AAAA < 0)
 		inter->kr = 1;

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 15:22:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:21:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,18 @@ static inline void
 	t_color	primary;
 	t_ray	absorbed;
 
-	if (inter->obj->material.absorb_idx == 0)
+	if (inter->obj->material.deflect_idx != 0 && inter->obj->material.absorb_idx == 0)
 	{
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
-	else
+	else if (inter->obj->material.absorb_idx != 0)
 	{
 		fresnel(inter, 1.5);
 		// printf("%f\n", inter->kr);
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
-		color_scalar(&primary, inter->kr);
+		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 		inter_setrefract(inter, &absorbed);
 		itocolor(&primary, recursive_cast(data, &absorbed, depth + 1));
