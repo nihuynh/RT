@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 15:21:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,10 @@ typedef struct	s_data
 
 int				reader(char *str, t_data *data);
 void			init_render(t_data *data);
+void			update(void *data);
 int				process_pixel(int x, int y, void *arg);
 void			exit_safe(t_data *data);
-void			key_mapping(int *quit, SDL_Keycode key, void *arg);
+void			key_event(int *quit, SDL_Keycode key, void *arg, bool state);
 void			mouse_mapping(SDL_Event *event, void *arg);
 void			parsing_error(int l_idx, char *error, t_data *d, char **greed);
 int				parse_light(char **greed, t_data *data, int l_idx);

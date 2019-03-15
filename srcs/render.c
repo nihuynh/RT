@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 14:23:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void
 	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam);
 	if (DEBUG)
 		print_matrix(&data->matrix_camera[0], &data->matrix_camera[1]);
-	data->sdl.key_map = &key_mapping;
+	data->sdl.key_map = &key_event;
 	data->sdl.mouse_map = &mouse_mapping;
+	data->sdl.update = &update;
 }
 
 void

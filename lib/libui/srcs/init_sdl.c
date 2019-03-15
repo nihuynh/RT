@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/02/27 17:04:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/14 18:19:58 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int		init_sdl(t_sdl *sdl, int width, int height)
 		error_sdl(sdl);
 	if (!(sdl->renderer = SDL_CreateRenderer(sdl->win, -1, 0x00000001)))
 		error_sdl(sdl);
-	while (SDL_PollEvent(&sdl->event))
-		;
 	SDL_SetHint(SDL_HINT_BMP_SAVE_LEGACY_FORMAT, "1");
 	return (0);
 }
