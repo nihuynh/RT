@@ -13,17 +13,13 @@
 #include "rtstruct.h"
 #include "ftio.h"
 
-void				print_matrix(t_matrix *mat_x, t_matrix *mat_y)
+void				print_matrix(t_matrix *mat)
 {
 	char *format;
 
 	format = "Matrix :\nx : %f, %f ,%f\ny : %f, %f, %f\nz : %f, %f, %f\n";
 	ft_printf(format,
-			mat_x->m[0][0], mat_x->m[0][1], mat_x->m[0][2],
-			mat_x->m[1][0], mat_x->m[1][1], mat_x->m[1][2],
-			mat_x->m[2][0], mat_x->m[2][1], mat_x->m[2][2]);
-	ft_printf(format,
-			mat_y->m[0][0], mat_y->m[0][1], mat_y->m[0][2],
-			mat_y->m[1][0], mat_y->m[1][1], mat_y->m[1][2],
-			mat_y->m[2][0], mat_y->m[2][1], mat_y->m[2][2]);
+			mat->m[0][0], mat->m[0][1], mat->m[0][2],
+			mat->m[1][0], mat->m[1][1], mat->m[1][2],
+			mat->m[2][0], mat->m[2][1], mat->m[2][2]);
 }

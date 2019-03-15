@@ -13,7 +13,7 @@
 #include "rtstruct.h"
 #include "ftmem.h"
 
-static inline void	apply_matrix(t_vec3 *v, t_matrix *mat)
+void	apply_matrix(t_vec3 *v, t_matrix *mat)
 {
 	t_vec3	res;
 
@@ -21,10 +21,4 @@ static inline void	apply_matrix(t_vec3 *v, t_matrix *mat)
 	res.y = v->x * mat->m[1][0] + v->y * mat->m[1][1] + v->z * mat->m[1][2];
 	res.z = v->x * mat->m[2][0] + v->y * mat->m[2][1] + v->z * mat->m[2][2];
 	ft_memcpy(v, &res, sizeof(t_vec3));
-}
-
-void				vec3_matrix_apply(t_vec3 *vec, t_matrix *mx, t_matrix *my)
-{
-	apply_matrix(vec, mx);
-	apply_matrix(vec, my);
 }

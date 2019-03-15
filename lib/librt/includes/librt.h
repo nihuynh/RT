@@ -80,10 +80,13 @@ void		vec3_deflect(t_inter *inter, t_ray *res);
 void		vec3_refract(t_inter *inter, t_vec3 *vf, float ior);
 void		vec3_matrix_camera(t_matrix *matrix, t_cam *cam);
 void		vec3_matrix_mult(t_matrix *matrix, t_matrix *add);
-void		vec3_matrix_apply(t_vec3 *vec, t_matrix *mat_x, t_matrix *mat_y);
+t_matrix	matrix_mult(const t_matrix *lhs, const t_matrix *rhs);
+t_vec3		get_column(t_matrix m, int column);
+void		apply_matrix(t_vec3 *v, t_matrix *mat);
 void		ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n);
-void		print_matrix(t_matrix *mat_x, t_matrix *mat_y);
+void		print_matrix(t_matrix *mat);
 void		mat3_rot(t_matrix *mat_x, t_matrix *mat_y, t_vec3 *vi, t_cam *cam);
+t_matrix	set_rotation(float yz_angle, float xz_angle);
 void		fresnel(t_inter *inter, float ior);
 
 #endif

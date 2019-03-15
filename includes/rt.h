@@ -32,7 +32,7 @@
 # define NO_SHADOW		0
 # define NO_DEFLECT		0
 # define NO_ABSORB		0
-# define DEPTH_MAX		2
+# define DEPTH_MAX		1
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
@@ -43,15 +43,15 @@
 ** User def :
 */
 
-# define T_STEP			10
+# define T_STEP			5
 # define Z_STEP			1
-# define A_STEP			10.0f
+# define A_STEP			(5.0f * (M_PI / 180))
 
 /*
 ** Static def :
 */
 
-# define FOV			45.0f
+# define FOV			90.0f
 
 # define DEV			0
 # define MACB			1
@@ -110,7 +110,8 @@ typedef struct	s_data
 
 int				reader(char *str, t_data *data);
 void			init_render(t_data *data);
-void			update(void *data);
+void			update(void* data);
+void			update_camera(t_cam* cam, bool *isrender);
 int				process_pixel(int x, int y, void *arg);
 void			exit_safe(t_data *data);
 void			key_event(int *quit, SDL_Keycode key, void *arg, bool state);

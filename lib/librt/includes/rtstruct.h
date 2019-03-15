@@ -25,6 +25,11 @@ typedef struct	s_vec3
 
 typedef t_vec3	t_pt3;
 
+typedef struct	s_matrix
+{
+	float		m[3][3];
+}				t_matrix;
+
 typedef struct	s_ray
 {
 	t_pt3		origin;
@@ -68,6 +73,9 @@ typedef struct	s_cam
 {
 	t_pt3		pos;
 	t_vec3		dir;
+	t_matrix	rotation;
+	float		y_angle;
+	float		x_angle;
 	bool		move_forward;
 	bool		move_backward;
 	bool		strafe_left;
@@ -79,11 +87,6 @@ typedef struct	s_cam
 	bool		rotate_left;
 	bool		rotate_right;
 }				t_cam;
-
-typedef struct	s_matrix
-{
-	float		m[3][3];
-}				t_matrix;
 
 /*
 ** @brief Struct for material caracteristics

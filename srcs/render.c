@@ -30,7 +30,7 @@ static inline void
 	p.z = data->cam.pos.z - 1;
 	vec3_find(&data->cam.pos, &p, &n);
 	vec3_normalize(&n);
-	vec3_matrix_apply(&n, &data->matrix_camera[0], &data->matrix_camera[1]);
+	apply_matrix(&n, &data->cam.rotation);
 	vec3_normalize(&n);
 	ray_new(res, &data->cam.pos, &n);
 }

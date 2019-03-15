@@ -22,9 +22,9 @@ void
 
 	len = HEIGHT * WIDTH;
 	vec3_new(&vi, 0, 0, -1);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam);
+	data->cam.rotation = set_rotation(data->cam.x_angle, data->cam.y_angle);
 	if (DEBUG)
-		print_matrix(&data->matrix_camera[0], &data->matrix_camera[1]);
+		print_matrix(&data->cam.rotation);
 	data->sdl.key_map = &key_event;
 	data->sdl.mouse_map = &mouse_mapping;
 	data->sdl.update = &update;

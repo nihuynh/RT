@@ -17,6 +17,7 @@ target_sources(rt PRIVATE
         srcs/inter_setlight.c
         srcs/inter_setrefract.c
         srcs/inter_sphere.c
+        srcs/mat3.c
         srcs/mat3_rot.c
         srcs/normal_cone.c
         srcs/normal_cylinder.c
