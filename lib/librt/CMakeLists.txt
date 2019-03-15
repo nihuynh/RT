@@ -24,6 +24,7 @@ target_sources(rt PRIVATE
         srcs/normal_sphere.c
         srcs/print_matrix.c
         srcs/ray_new.c
+        srcs/fresnel.c
         srcs/vec3_add.c
         srcs/vec3_cos.c
         srcs/vec3_cpy.c
