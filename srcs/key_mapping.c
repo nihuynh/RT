@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
 /*   Updated: 2019/03/14 19:01:00 by tdarchiv         ###   ########.fr       */
@@ -13,7 +13,6 @@
 #include "rt.h"
 #include "ftio.h"
 #include <SDL.h>
-#include <stdio.h>
 
 /*
 ** @brief Key mapping

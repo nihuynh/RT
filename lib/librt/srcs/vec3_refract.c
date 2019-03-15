@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:33:27 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 12:26:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/14 14:54:47 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 #include "libft.h"
 #include <math.h>
 
-void	vec3_refract(t_inter *inter, t_vec3 *vf)
+void	vec3_refract(t_inter *inter, t_vec3 *vf, float ior)
 {
-	float toby[5];
+	float	toby[5];
 	t_vec3	tmpi;
 	t_vec3	tmpn;
 
-	ft_memcpy(&tmpi, &inter->ray.n, sizeof(tmpi));
-	ft_memcpy(&tmpn, &inter->n, sizeof(tmpn));
-	ft_memcpy(vf, &inter->n, sizeof(vf));
-	AAAA = ft_clampf(-1, 1, vec3_dot(&inter->ray.n, &inter->n));
+	tmpi = inter->ray.n;
+	tmpn = inter->n;
+	*vf = inter->n;
+	AAAA = ft_clampf(vec3_dot(&inter->ray.n, &inter->n), -1, 1);
 	BBBB = 1;
-	CCCC = 1.5;
+	CCCC = ior;
 	if (AAAA < 0)
 		AAAA = -AAAA;
 	else
+	{
 		ft_swapf(&BBBB, &CCCC);
+		vf->x = -vf->x;
+		vf->y = -vf->y;
+		vf->z = -vf->z;
+	}
 	DDDD = BBBB / CCCC;
 	EEEE = 1 - DDDD * DDDD * (1 - AAAA * AAAA);
 	if (EEEE < 0)

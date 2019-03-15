@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
 /*   Updated: 2019/03/14 18:48:46 by tdarchiv         ###   ########.fr       */
@@ -127,6 +127,7 @@ struct			s_inter
 	t_vec3		n;
 	t_color		color;
 	t_ray		deflected;
+	float		kr;
 	void		(*find_normal) (t_inter*);
 };
 

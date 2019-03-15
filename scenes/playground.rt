@@ -34,13 +34,13 @@ content
 	{
 		origin(0 0 -100)
 		radius(30)
-		color_ambient(255 0 0)
-		color_diffuse(0.714 0.4284 0.18144)
-		color_specular(255 230 200)
+		color_ambient(0 0 0)
+		color_diffuse(250 250 255)
+		color_specular(255 255 255)
 		self_light(0 0 0)
-		spec_idx(0.5)
-		spec_power(56)
-		absorb_idx(0.0)
-		deflect_idx(0.0)
+		spec_idx(0.1)
+		spec_power(80)
+		absorb_idx(0.98)
+		deflect_idx(0.05)
 	}
 }

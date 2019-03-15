@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_screenshot.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 10:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/13 16:11:14 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:23:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static inline int
 	}
 	return (buttonid);
 }
-
-#include <stdio.h>
 
 static inline char
 	*name_screenshot(char *arg)

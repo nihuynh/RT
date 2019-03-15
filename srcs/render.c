@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
 /*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
@@ -95,14 +95,18 @@ static inline void
 	t_color	primary;
 	t_ray	absorbed;
 
-	if (!(NO_DEFLECT) && inter->obj->material.deflect_idx > 0)
+	if (inter->obj->material.deflect_idx != 0 && inter->obj->material.absorb_idx == 0)
 	{
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
-	if (!(NO_ABSORB) && inter->obj->material.absorb_idx > 0)
+	else if (inter->obj->material.absorb_idx != 0)
 	{
+		fresnel(inter, 1.5);
+		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
+		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
+		color_add(&inter->color, &primary);
 		inter_setrefract(inter, &absorbed);
 		itocolor(&primary, recursive_cast(data, &absorbed, depth + 1));
 		color_scalar(&primary, inter->obj->material.absorb_idx);
