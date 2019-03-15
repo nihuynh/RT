@@ -10,7 +10,7 @@ Error (line 40): comment not well formatted
 Error (line 77): comment not well formatted
 Error (line 114): comment not well formatted
 Error (line 151): comment not well formatted
-Norme: ./srcs/update.c
+Norme: ./srcs/render.c
 --
 --
 Norme: ./srcs/read.c
@@ -19,58 +19,35 @@ Error (line 43): comment not well formatted
 Error (line 66): comment not well formatted
 Error (line 102): comment not well formatted
 Error (line 127): comment not well formatted
-Norme: ./includes/rt.h
---
---
-Norme: ./includes/rt.h
-Error (line 102): C++ comment
-Error (line 105): C++ comment
-Error (line 106): C++ comment
-Norme: ./includes/parse.h
+Norme: ./srcs/update.c
 [1;34mlibft.a[25G[31mNorminette [80G[32m[OK][0m
-Norme: ./srcs/fresnel.c
-Error (line 40): multiple empty lines
-Error (line 58): line has 89 characters
-Error (line 59): line has 89 characters
-Error (line 62): line has 85 characters
-Norme: ./srcs/inter_cone.c
---
---
 Norme: ./srcs/vec3_refract.c
 Error (line 17): function vec3_refract has 30 lines
-Norme: ./includes/rtstruct.h
---
---
-Norme: ./includes/rtstruct.h
-Error (line 88): comment not well formatted
-Error (line 100): Struct s_material bad aligned
-Error (line 116): comment not well formatted
-Error (line 139): comment not well formatted
-Norme: ./includes/librt.h
+Norme: ./includes/color.h
 [1;34mlibrt.a[25G[31mNorminette [80G[32m[OK][0m
 Norme: ./srcs/color_add.c
+Error (line 16): comment not well formatted
+Norme: ./srcs/color_max.c
+--
+--
+Norme: ./srcs/color_max.c
+Error (line 16): comment not well formatted
+Norme: ./srcs/color_scalar.c
+--
+--
+Norme: ./srcs/color_scalar.c
 Error (line 16): comment not well formatted
 Norme: ./srcs/color_mult.c
 --
 --
 Norme: ./srcs/color_mult.c
 Error (line 15): comment not well formatted
-Norme: ./srcs/color_max.c
---
---
-Norme: ./srcs/color_max.c
-Error (line 16): comment not well formatted
-Norme: ./srcs/color_sub.c
---
---
-Norme: ./srcs/color_scalar.c
-Error (line 16): comment not well formatted
-Norme: ./srcs/error_sdl.c
+Norme: ./srcs/colortoi.c
 --
 --
 Norme: ./srcs/loop_sdl.c
 Error (line 16): comment not well formatted
-Norme: ./srcs/render_sdl.c
+Norme: ./srcs/error_sdl.c
 --
 --
 Norme: ./srcs/save_screenshot.c
@@ -91,6 +68,6 @@ Error (line 45): declarations in name_screenshot are bad aligned
 Error (line 49): struct and tm not separated by a single space.
 Error (line 64, col 1): missing space after return
 Error (line 67): declarations in save_screenshot are bad aligned
-Norme: ./includes/color.h
+Norme: ./srcs/render_mthr_sdl.c
 [1;34mlibui.a[25G[31mNorminette [80G[32m[OK][0m
 [1;34mRT[25G[31mNorminette [80G[32m[OK][0m

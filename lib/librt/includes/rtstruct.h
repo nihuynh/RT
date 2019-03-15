@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/15 17:35:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/15 18:49:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct	s_matrix
 	float		m[3][3];
 }				t_matrix;
 
-/**
+/*
 ** @brief Struct for material caracteristics
 ** reflect_idx : depend on the material
 ** transmit_k 	: at 0 for dialectrics
@@ -99,7 +99,7 @@ typedef struct	s_matrix
 
 typedef struct	s_material
 {
-	char*		name;
+	char		*name;
 	t_color		color_ambient;
 	t_color		color_diffuse;
 	t_color		color_specular;
@@ -113,7 +113,7 @@ typedef struct	s_material
 typedef struct s_obj	t_obj;
 typedef struct s_inter	t_inter;
 
-/**
+/*
 ** @brief Struct that hold the intersection.
 ** dist 		: minimal distant at the inter
 ** obj 			: object touch by the ray
@@ -136,7 +136,7 @@ struct			s_inter
 	void		(*find_normal) (t_inter*);
 };
 
-/**
+/*
 ** @brief Struct that hold any shape and is in a t_list
 ** type 		: Type of the shape
 ** shape 		: Pointer to shape data

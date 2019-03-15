@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 13:56:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 17:41:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/15 18:51:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	fresnel(t_inter *inter, float ior)
 	}
 }
 
-
 /*
 ** void fresnel(const Vec3f &I, const Vec3f &N, const float &ior, float &kr)
 ** {
@@ -55,11 +54,11 @@ void	fresnel(t_inter *inter, float ior)
 **     else {
 **         float cost = sqrtf(std::max(0.f, 1 - sint * sint));
 **         cosi = fabsf(cosi);
-**         float Rs = ((etat * cosi) - (etai * cost)) / ((etat * cosi) + (etai * cost));
-**         float Rp = ((etai * cosi) - (etat * cost)) / ((etai * cosi) + (etat * cost));
+**         float Rs = (etat * cosi - etai * cost) / (etat * cosi + etai * cost);
+**         float Rp = (etai * cosi - etat * cost) / (etai * cosi + etat * cost);
 **         kr = (Rs * Rs + Rp * Rp) / 2;
 **     }
-**     // As a consequence of the conservation of energy, transmittance is given by:
-**     // kt = 1 - kr;
+**	As a consequence of the conservation of energy, transmittance is given by:
+**	kt = 1 - kr;
 ** }
 */
