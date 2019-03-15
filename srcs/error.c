@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 09:42:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/15 17:56:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void
 		ft_lstdel(&data->lst_obj, &del_obj);
 	if (data->lst_light)
 		ft_lstdel(&data->lst_light, &del_obj);
-	if (data->core)
-		free(data->core);
 	exit_sdl(&data->sdl);
 	exit(0);
 }

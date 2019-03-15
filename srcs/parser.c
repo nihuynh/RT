@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 09:44:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/15 17:57:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int
 	if (!(node = ft_lstnew(&light, sizeof(t_light))))
 		ft_error(__func__, __LINE__);
 	ft_lstadd(&data->lst_light, node);
-	data->nb_light++;
 	line_idx += 5;
 	return (line_idx);
 }

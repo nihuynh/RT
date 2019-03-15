@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/12 16:49:16 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:59:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	oneframe(char *filename)
 	t_data		data;
 
 	ft_bzero(&data, sizeof(t_data));
-	data.arg = ft_strdup(filename);
+	data.arg = filename;
 	if (reader(filename, &data) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
 	init_sdl(&data.sdl, WIDTH, HEIGHT);
