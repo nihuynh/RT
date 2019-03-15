@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 14:21:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:23:52 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ void
 
 int	recursive_cast(t_data *data, t_ray *rene, int depth);
 
-#include <stdio.h>
-
 static inline void
 	deflect_cast(t_data *data, t_inter *inter, int depth)
 {
@@ -105,7 +103,6 @@ static inline void
 	else if (inter->obj->material.absorb_idx != 0)
 	{
 		fresnel(inter, 1.5);
-		// printf("%f\n", inter->kr);
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
