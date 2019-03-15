@@ -1,0 +1,112 @@
+Norme: ./srcs/init.c
+Error: file must end with a single empty line
+Error (line 31, col 0): no newline after block
+Norme: ./srcs/parser.c
+--
+--
+Norme: ./srcs/parser.c
+Error (line 74): comment not well formatted
+Error (line 107): comment not well formatted
+Norme: ./srcs/cast.c
+--
+--
+Norme: ./srcs/cast.c
+Error: file must end with a single empty line
+Error (line 47, col 0): no newline after block
+Norme: ./srcs/parse_toolbox.c
+--
+--
+Norme: ./srcs/parse_toolbox.c
+Error (line 17): comment not well formatted
+Error (line 40): comment not well formatted
+Error (line 77): comment not well formatted
+Error (line 114): comment not well formatted
+Error (line 151): comment not well formatted
+Norme: ./srcs/light.c
+--
+--
+Norme: ./includes/rt.h
+Error (line 102): C++ comment
+Error (line 105): C++ comment
+Error (line 106): C++ comment
+Norme: ./srcs/read.c
+--
+--
+Norme: ./srcs/read.c
+Error (line 18): comment not well formatted
+Error (line 43): comment not well formatted
+Error (line 66): comment not well formatted
+Error (line 102): comment not well formatted
+Error (line 127): comment not well formatted
+Norme: ./includes/parse.h
+Norme: ./includes/livetime.h
+Error: has double inclusion protection but not with the good define name
+[1;34mlibft.a[25G[31mNorminette [80G[32m[OK][0m
+Norme: ./srcs/fresnel.c
+Error: file must end with a single empty line
+Error (line 40): multiple empty lines
+Error (line 58): line has 89 characters
+Error (line 59): line has 89 characters
+Error (line 62): line has 85 characters
+Norme: ./srcs/inter_plane.c
+--
+--
+Norme: ./srcs/vec3_refract.c
+Error: file must end with a single empty line
+Error (line 17): function vec3_refract has 30 lines
+Norme: ./srcs/vec3_scalar.c
+--
+--
+Norme: ./includes/rtstruct.h
+Error (line 88): comment not well formatted
+Error (line 100): Struct s_material bad aligned
+Error (line 116): comment not well formatted
+Error (line 139): comment not well formatted
+Norme: ./includes/librt.h
+[1;34mlibrt.a[25G[31mNorminette [80G[32m[OK][0m
+Norme: ./srcs/color_add.c
+Error (line 16): comment not well formatted
+Norme: ./srcs/color_mult.c
+--
+--
+Norme: ./srcs/color_mult.c
+Error (line 15): comment not well formatted
+Norme: ./srcs/color_max.c
+--
+--
+Norme: ./srcs/color_max.c
+Error (line 16): comment not well formatted
+Norme: ./srcs/color_scalar.c
+--
+--
+Norme: ./srcs/color_scalar.c
+Error (line 16): comment not well formatted
+Norme: ./srcs/colortoi.c
+--
+--
+Norme: ./srcs/loop_sdl.c
+Error (line 16): comment not well formatted
+Norme: ./includes/color.h
+--
+--
+Norme: ./srcs/save_screenshot.c
+Error (line 17): declarations in confirmation are bad aligned
+Error (line 17): declarations in confirmation must be at the top of the function
+Error (line 17): declarations must be followed by one empty line in confirmation
+Error (line 26, col 33): colorScheme not unixcase
+Error (line 28, col 9): bad spacing
+Error (line 28, col 14): bad spacing
+Error (line 28, col 23): bad spacing
+Error (line 28, col 33): bad spacing
+Error (line 28, col 52): bad spacing
+Error (line 29, col 4): bad spacing
+Error (line 29, col 9): bad spacing
+Error (line 29, col 28): bad spacing
+Error (line 40, col 9): missing parentheses in return statement
+Error (line 45): declarations in name_screenshot are bad aligned
+Error (line 49): struct and tm not separated by a single space.
+Error (line 64, col 1): missing space after return
+Error (line 67): declarations in save_screenshot are bad aligned
+Norme: ./includes/libui.h
+[1;34mlibui.a[25G[31mNorminette [80G[32m[OK][0m
+[1;34mRT[25G[31mNorminette [80G[32m[OK][0m

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 18:48:46 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:35:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,12 @@ typedef struct	s_matrix
 ** @brief Struct for material caracteristics
 ** reflect_idx : depend on the material
 ** transmit_k 	: at 0 for dialectrics
-** http://www.lama.univ-savoie.fr/pagesmembres/lachaud/Cours/INFO805/Tests/html/Material_8h_source.html
+** http://www.lama.univ-savoie.fr/pagesmembres/lachaud/Cours/INFO805/Tests/html/
+** Material_8h_source.html
+** La "brillance" (pour la réfléxion et couplé avec la couleur Specular).
+** La puissance de brillance (coefficient couplé avec la valeur précédente).
+** Le coefficient de  transmission (utilisé pour la réfraction).
+** Le coefficient de réfléxion (utilisé pour la réfléxion).
 */
 
 typedef struct	s_material
@@ -99,10 +104,10 @@ typedef struct	s_material
 	t_color		color_diffuse;
 	t_color		color_specular;
 	t_color		self_light;
-	float		spec_idx;	// La "brillance" du material (utilisé pour la réfléxion et couplé avec la couleur Specular).
-	float		spec_power;	// La puissance de brillance (coefficient couplé avec la valeur précédente).
-	float		absorb_idx;	// Le coefficient de  transmission (utilisé pour la réfraction).
-	float		deflect_idx;// Le coefficient de réfléxion (utilisé pour la réfléxion).
+	float		spec_idx;
+	float		spec_power;
+	float		absorb_idx;
+	float		deflect_idx;
 }				t_material;
 
 typedef struct s_obj	t_obj;

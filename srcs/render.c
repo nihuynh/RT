@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:46:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,58 +35,6 @@ static inline void
 	ray_new(res, &data->cam.pos, &n);
 }
 
-void
-	init_render(t_data *data)
-{
-	int		len;
-	t_vec3	vi;
-
-	len = HEIGHT * WIDTH;
-	vec3_new(&vi, 0, 0, -1);
-	if (!(data->core = ft_memalloc(len * sizeof(t_inter))))
-		exit_safe(data);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam);
-	if (DEBUG)
-		print_matrix(&data->matrix_camera[0], &data->matrix_camera[1]);
-	data->sdl.key_map = &key_event;
-	data->sdl.mouse_map = &mouse_mapping;
-	data->sdl.update = &update;
-}
-
-void
-	cast_primary(t_data *data, t_inter *inter)
-{
-	t_list	*lst;
-	t_obj	*obj;
-
-	lst = data->lst_obj;
-	while (lst != NULL)
-	{
-		obj = lst->content;
-		if (obj != NULL && obj->f_inter != NULL)
-			obj->f_inter(inter, obj);
-		lst = lst->next;
-	}
-}
-
-void
-	cast_light_primary(t_data *data, t_inter *inter)
-{
-	t_list	*lst;
-	t_obj	*obj;
-
-	lst = data->lst_obj;
-	while (lst != NULL)
-	{
-		obj = lst->content;
-		if (obj != NULL && obj->f_inter != NULL)
-			obj->f_inter(inter, obj);
-		if (inter->obj != NULL)
-			return ;
-		lst = lst->next;
-	}
-}
-
 int	recursive_cast(t_data *data, t_ray *rene, int depth);
 
 static inline void
@@ -95,7 +43,7 @@ static inline void
 	t_color	primary;
 	t_ray	absorbed;
 
-	if (inter->obj->material.deflect_idx != 0 && inter->obj->material.absorb_idx == 0)
+	if (inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
 	{
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->obj->material.deflect_idx);
@@ -145,5 +93,5 @@ int __attribute__((hot))
 
 	data = arg;
 	cam_ray(data, &rene, x + 0.5, y + 0.5);
-	return(recursive_cast(data, &rene, 0));
+	return (recursive_cast(data, &rene, 0));
 }

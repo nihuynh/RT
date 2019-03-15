@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   librt.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 14:31:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:36:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,5 @@ void		ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n);
 void		print_matrix(t_matrix *mat_x, t_matrix *mat_y);
 void		mat3_rot(t_matrix *mat_x, t_matrix *mat_y, t_vec3 *vi, t_cam *cam);
 void		fresnel(t_inter *inter, float ior);
-
 
 #endif

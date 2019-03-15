@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_refract.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:33:27 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 14:54:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:36:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,22 @@ void	vec3_refract(t_inter *inter, t_vec3 *vf, float ior)
 	}
 }
 
-// Vec3f refract(const Vec3f &I, const Vec3f &N, const float &ior) 
-// { 
-//     float cosi = clamp(-1, 1, dotProduct(I, N)); 
-//     float etai = 1, etat = ior; 
-//     Vec3f n = N; 
-//     if (cosi < 0)
-// 	{
-// 		cosi = -cosi;
-// 	} else
-// 	{
-// 		std::swap(etai, etat);
-// 		n= -N;
-// 	} 
-//     float eta = etai / etat; 
-//     float k = 1 - eta * eta * (1 - cosi * cosi); 
-//     return k < 0 ? 0 : eta * I + (eta * cosi - sqrtf(k)) * n; 
-// } 
+/*
+** Vec3f refract(const Vec3f &I, const Vec3f &N, const float &ior)
+** {
+**     float cosi = clamp(-1, 1, dotProduct(I, N));
+**     float etai = 1, etat = ior;
+**     Vec3f n = N;
+**     if (cosi < 0)
+** 	{
+** 		cosi = -cosi;
+** 	} else
+** 	{
+** 		std::swap(etai, etat);
+** 		n= -N;
+** 	}
+**     float eta = etai / etat;
+**     float k = 1 - eta * eta * (1 - cosi * cosi);
+**     return k < 0 ? 0 : eta * I + (eta * cosi - sqrtf(k)) * n;
+** }
+*/
