@@ -36,7 +36,7 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 				sdl->key_map(&quit, event.key.keysym.sym, arg, SDL_PRESSED);
 			else if (event.type == SDL_KEYUP && sdl->key_map)
 				sdl->key_map(&quit, event.key.keysym.sym, arg, SDL_RELEASED);
-			else if (event.type == SDL_MOUSEBUTTONDOWN && sdl->mouse_map)
+			else if (event.type == SDL_MOUSEMOTION && sdl->mouse_map)
 				sdl->mouse_map(&event, arg);
 		}
 		if (sdl->update)

@@ -26,6 +26,6 @@ void
 	if (DEBUG)
 		print_matrix(&data->cam.rotation);
 	data->sdl.key_map = &key_event;
-	data->sdl.mouse_map = &mouse_mapping;
+	data->sdl.mouse_map = &mouse_motion;
 	data->sdl.update = &update;
 }

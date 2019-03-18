@@ -59,11 +59,15 @@ void
 }
 
 void
-	mouse_mapping(SDL_Event *event, void *arg)
+	mouse_motion(SDL_Event *event, void *arg)
 {
-	t_data *data;
+	t_data *app;
 
-	data = arg;
-	if (event->type == SDL_MOUSEBUTTONDOWN)
-		return ;
+	app = arg;
+	if (event->motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+	{
+		app->cam.x_angle += event->motion.xrel * MOUSE_SCALING;
+		app->cam.y_angle += event->motion.yrel * MOUSE_SCALING;
+		app->sdl.needs_render = true;
+	}
 }
