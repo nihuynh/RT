@@ -16,6 +16,8 @@
 # include "rtstruct.h"
 # include "color.h"
 
+# define DEG_TO_RAD(X)	((X) * (M_PI / 180))
+
 # define EPSILON		1e-6
 # define SHADOW_BIAS	5e-2
 # define HUGEVAL		1e6

@@ -25,8 +25,8 @@ void	normal_cone(t_inter *inter)
 	inter_find(inter, &pi);
 	vec3_sub(&toby, &pi, &cone->origin);
 	var = vec3_mag(&toby);
-	var /= (vec3_dot(&toby, &cone->n) > 0) ? cos(cone->theta * M_PI / 180.0)
-		: cos((180 - cone->theta) * M_PI / 180.0);
+	var /= (vec3_dot(&toby, &cone->n) > 0) ? cos(DEG_TO_RAD(cone->theta))
+		: cos(DEG_TO_RAD(180 - cone->theta));
 	pc.x = cone->origin.x + var * cone->n.x;
 	pc.y = cone->origin.y + var * cone->n.y;
 	pc.z = cone->origin.z + var * cone->n.z;

@@ -45,7 +45,7 @@
 
 # define T_STEP			5
 # define Z_STEP			1
-# define A_STEP			(5.0f * (M_PI / 180))
+# define A_STEP			DEG_TO_RAD(5)
 
 /*
 ** Static def :
@@ -100,7 +100,6 @@ typedef struct	s_data
 	t_list		*lst_obj;
 	t_list		*lst_light;
 	t_cam		cam;
-	t_matrix	matrix_camera[2];
 	char		*arg;
 }				t_data;
 

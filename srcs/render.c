@@ -24,7 +24,7 @@ static inline void
 	t_vec3	n;
 
 	r = WIDTH / (double)HEIGHT;
-	fovt = tan(FOV * M_PI / 360);
+	fovt = tan(DEG_TO_RAD(FOV) / 2);
 	p.x = (float)((2 * x / WIDTH - 1) * fovt * r) + data->cam.pos.x;
 	p.y = (float)((1 - 2 * y / HEIGHT) * fovt) + data->cam.pos.y;
 	p.z = data->cam.pos.z - 1;

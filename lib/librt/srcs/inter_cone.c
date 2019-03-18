@@ -15,7 +15,7 @@
 
 /*
 **http://lousodrome.net/blog/light/2017/01/03/intersection-of-a-ray-and-a-cone/
-**	cos_theta2 = cos(cone->theta * M_PI / 180);
+**	cos_theta2 = cos(DEG_TO_RAD(cone->theta));
 **	cos_theta2 *= cos_theta2;
 **	AAAA = vec3_dot(&ray->n, &cone->n);
 **	CCCC = vec3_dot(&rene, &cone->n);
@@ -32,7 +32,7 @@ static inline float	inter(t_ray *ray, t_cone *cone)
 	float	det;
 	t_vec3	rene;
 
-	cos_theta2 = cos(cone->theta * M_PI / 180);
+	cos_theta2 = cos(DEG_TO_RAD(cone->theta));
 	cos_theta2 *= cos_theta2;
 	vec3_sub(&rene, &ray->origin, &cone->origin);
 	AAAA = vec3_dot(&ray->n, &cone->n);
