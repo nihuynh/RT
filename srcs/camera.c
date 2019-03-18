@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 09:44:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 16:18:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void
 	data->cam.dir.x = data->cam.dir.x * cos(agl) - data->cam.dir.z * sin(agl);
 	data->cam.dir.z = tmp * sin(agl) + data->cam.dir.z * cos(agl);
 	vec3_normalize(&data->cam.dir);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam);
+	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam.dir);
 	data->sdl.isrender = 0;
 }
 
@@ -40,7 +40,7 @@ void
 	vec3_new(&vi, 0, 0, -1);
 	data->cam.dir.y += (angle > 0) ? 0.1 : -0.1;
 	vec3_normalize(&data->cam.dir);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam);
+	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam.dir);
 	data->sdl.isrender = 0;
 }
 

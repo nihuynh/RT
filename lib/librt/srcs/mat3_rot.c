@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mat3_rot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 04:51:01 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/27 17:15:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 15:32:46 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,16 @@ static inline void	rot_y(t_matrix *mat, t_vec3 *vi, t_vec3 *vf)
 }
 
 void				mat3_rot(t_matrix *mat_x, t_matrix *mat_y,
-										t_vec3 *vi, t_cam *cam)
+										t_vec3 *vi, t_vec3 *vf)
 {
-	if (cam->dir.x == 0 && cam->dir.z == 0 && cam->dir.y != 0)
+	if (vf->x == 0 && vf->z == 0 && vf->y != 0)
 	{
-		mat_special(mat_x, &cam->dir);
+		mat_special(mat_x, vf);
 		mat_unitaire(mat_y);
 	}
 	else
 	{
-		rot_x(mat_x, vi, &cam->dir);
-		rot_y(mat_y, vi, &cam->dir);
+		rot_x(mat_x, vi, vf);
+		rot_y(mat_y, vi, vf);
 	}
 }

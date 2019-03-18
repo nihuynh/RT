@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/15 18:49:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 14:36:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ typedef struct	s_plane
 {
 	t_pt3		origin;
 	t_vec3		n;
+	t_vec3		x;
+	t_vec3		y;
+	float		size_x;
+	float		size_y;
+	float		rotation;
 }				t_plane;
 
 typedef struct	s_sphere

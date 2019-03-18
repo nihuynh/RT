@@ -21,6 +21,7 @@ content
 	{
 		origin(-50 0 0)
 		normal(1 0 0)
+		limit(0 0)
 		color_ambient(255 255 255)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)

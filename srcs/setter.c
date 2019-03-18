@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 09:45:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 15:32:49 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,23 @@ void
 void
 	plane_set(void *plane, char **greed, int i)
 {
-	t_plane	*pplane;
+	t_plane		*pplane;
+	t_matrix	mat[2];
+	t_vec3		vi;
 
 	if (plane == NULL)
 		ft_error_wmsg(ERR_PARSE_SET_PL, i, greed[i]);
 	pplane = plane;
 	parse_origin(&pplane->origin, greed[i + 1], i + 1);
 	parse_normal(&pplane->n, greed[i + 2], i + 2);
+	parse_limit(&pplane->size_x, &pplane->size_y, greed[i + 3], i + 3);
 	vec3_normalize(&pplane->n);
+	vec3_new(&pplane->x, 1, 0, 0);
+	vec3_new(&pplane->y, 0, 1, 0);
+	vec3_new(&vi, 0, 0, -1);
+	mat3_rot(&mat[0], &mat[1], &vi, &pplane->n);
+	vec3_matrix_apply(&pplane->x, &mat[0], &mat[1]);
+	vec3_matrix_apply(&pplane->y, &mat[0], &mat[1]);
 }
 
 void

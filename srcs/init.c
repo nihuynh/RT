@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/15 17:59:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 15:28:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void
 
 	len = HEIGHT * WIDTH;
 	vec3_new(&vi, 0, 0, -1);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam);
+	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam.dir);
 	if (DEBUG)
 		print_matrix(&data->matrix_camera[0], &data->matrix_camera[1]);
 	data->sdl.key_map = &key_event;

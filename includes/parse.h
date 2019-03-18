@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/07 16:25:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 14:45:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void			parse_color(t_color *color, char *str, int line, char *key);
 void			parse_origin(t_pt3 *origin, char *str, int line);
 void			parse_normal(t_vec3 *normal, char *str, int line);
 void			parse_fval(float *val, char *str, int line, const char *key);
+void			parse_limit(float *l_x, float * l_y, char *str, int line);
 
 /*
 ** Setters :

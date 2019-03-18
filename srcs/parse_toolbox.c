@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_toolbox.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 09:43:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 16:17:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,4 +165,30 @@ void
 	*val = ft_atof(str);
 	if (DEBUG)
 		ft_printf("Float value : %f\n", *val);
+}
+
+void
+	parse_limit(float *l_x, float * l_y, char *str, int line)
+{
+	float	toby[2];
+	int		idx;
+
+	idx = -1;
+	if (!str)
+		ft_error_wmsg(ERR_PARSE_STRN, line, str);
+	str = check_key(str, line, "limit(", ERR_PARSE_FLOAT);
+	while (++idx < 2)
+	{
+		toby[idx] = ft_atof(str);
+		while (*str && *str != ' ' && *str != ')')
+			str++;
+		while (*str && *str == ' ' && *str != ')')
+			str++;
+		if (!*str)
+			ft_error_wmsg(ERR_PARSE_FLOAT, line, str);
+	}
+	*l_x = toby[0];
+	*l_y = toby[1];
+	if (DEBUG)
+		ft_printf("Limit : %f %f\n", l_x, l_y);
 }
