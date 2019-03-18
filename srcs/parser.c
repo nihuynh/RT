@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/18 12:01:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 13:41:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,17 @@ static inline void
 	load_material(t_material *dst, char *str)
 {
 	(void)str;
-	itocolor(&dst->color_ambient, 0xFFFFFF);
-	itocolor(&dst->color_diffuse, 0xFFFFFF);
-	itocolor(&dst->color_specular, 0xFFFFFF);
+	// CSV ?
+	// load the material list.
+	// find the right material
+	// copy the mat into dst
+	itocolor(&dst->color_ambient, 0x1D0E12);
+	itocolor(&dst->color_diffuse, 0xB76E2F);
+	itocolor(&dst->color_specular, 0xE7CDB4);
 	itocolor(&dst->self_light, 0x000000);
 	dst->spec_idx = 0.5;
-	dst->spec_power = 0.9;
-	dst->absorb_idx = 0.75;
+	dst->spec_power = 56;
+	dst->absorb_idx = 0;
 	dst->deflect_idx = 0.75;
 }
 
