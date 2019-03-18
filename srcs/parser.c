@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 17:57:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 12:01:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,30 @@ static inline void
 		obj->f_inter = &inter_cylinder;
 }
 
+static inline void
+	load_material(t_material *dst, char *str)
+{
+	(void)str;
+	itocolor(&dst->color_ambient, 0xFFFFFF);
+	itocolor(&dst->color_diffuse, 0xFFFFFF);
+	itocolor(&dst->color_specular, 0xFFFFFF);
+	itocolor(&dst->self_light, 0x000000);
+	dst->spec_idx = 0.5;
+	dst->spec_power = 0.9;
+	dst->absorb_idx = 0.75;
+	dst->deflect_idx = 0.75;
+}
+
 static inline int
 	parse_material(t_material *dst, char **tab, int idx)
 {
+	char *str;
+	if ((str = ft_strstr(tab[idx], "mat(")))
+	{
+		str += 4;
+		load_material(dst, str);
+		return (idx + 2);
+	}
 	parse_color(&dst->color_ambient, tab[idx], idx, "color_ambient(");
 	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
 	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
