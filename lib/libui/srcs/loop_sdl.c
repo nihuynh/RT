@@ -41,7 +41,7 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 		}
 		if (sdl->update)
 			sdl->update(arg);
-		if (!sdl->isrender && sdl->data_thr)
+		if (sdl->needs_render && sdl->data_thr)
 			render_mthr_sdl(sdl);
 	}
 }

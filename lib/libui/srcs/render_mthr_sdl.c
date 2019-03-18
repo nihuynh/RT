@@ -85,8 +85,6 @@ void
 	void		*ptr;
 	pthread_t	toby[THR_C];
 
-	if (sdl->isrender)
-		return ;
 	timer = clock();
 	cthr = -1;
 	sats = 0;
@@ -95,7 +93,7 @@ void
 		ptr = &(sdl->data_thr[cthr]);
 		sats = pthread_create(&toby[cthr], NULL, process_data, ptr);
 	}
-	sdl->isrender = 1;
+	sdl->needs_render = false;
 	cthr = -1;
 	while (++cthr < THR_C)
 		pthread_join(toby[cthr], NULL);

@@ -18,5 +18,5 @@ void	update(void *arg)
 	t_data *app;
 
 	app = arg;
-	update_camera(&app->cam, &app->sdl.isrender);
+	update_camera(&app->cam, &app->sdl.needs_render);
 }

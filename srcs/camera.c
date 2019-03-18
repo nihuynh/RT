@@ -54,7 +54,7 @@ static bool
 }
 
 void
-	update_camera(t_cam *cam, bool *isrender)
+	update_camera(t_cam *cam, bool *needs_render)
 {
 	t_vec3	forward;
 	t_vec3	upward;
@@ -62,14 +62,14 @@ void
 	t_vec3	delta;
 
 	if (update_angles(cam))
-		*isrender = false;
+		*needs_render = true;
 	cam->rotation = set_rotation(cam->y_angle, cam->x_angle);
 	strafe = get_column(cam->rotation, 0);
 	upward = get_column(cam->rotation, 1);
 	forward = get_column(cam->rotation, 2);
 	delta = get_delta_vector(cam, forward, upward, strafe);
 	vec3_scalar(&delta, T_STEP);
-	if (delta.x == 0 || delta.y == 0 || delta.z == 0)
-		*isrender = false;
+	if (delta.x != 0 || delta.y != 0 || delta.z != 0)
+		*needs_render = true;
 	vec3_add(&cam->pos, &cam->pos, &delta);
 }

@@ -32,7 +32,7 @@ void
 	clock_t	timer;
 	t_pxl	idx;
 
-	if (sdl->isrender)
+	if (sdl->needs_render == false)
 		return ;
 	timer = clock();
 	idx.y = -1;

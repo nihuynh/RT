@@ -111,7 +111,7 @@ typedef struct	s_data
 int				reader(char *str, t_data *data);
 void			init_render(t_data *data);
 void			update(void* data);
-void			update_camera(t_cam* cam, bool *isrender);
+void			update_camera(t_cam* cam, bool *needs_render);
 int				process_pixel(int x, int y, void *arg);
 void			exit_safe(t_data *data);
 void			key_event(int *quit, SDL_Keycode key, void *arg, bool state);

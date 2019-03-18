@@ -24,7 +24,7 @@ void				bench(char *filename, unsigned int frame_count)
 	while (--frame > 0)
 	{
 		render_mthr_sdl(&data.sdl);
-		data.sdl.isrender = 0;
+		data.sdl.needs_render = true;
 		while (SDL_PollEvent(&data.sdl.event))
 		{
 			if (data.sdl.event.type == SDL_QUIT)
