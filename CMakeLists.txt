@@ -33,6 +33,8 @@ set_target_properties(RT
 
 target_sources(RT PRIVATE
         srcs/camera.c
+        srcs/init.c
+        srcs/cast.c
         srcs/update.c
         srcs/error.c
         srcs/key_mapping.c

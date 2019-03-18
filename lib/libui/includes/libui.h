@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:39:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,13 @@ typedef struct		s_sdl
 	int				isrender;
 	int				width_vp;
 	int				height_vp;
+	// mthr render data
 	int				thr_len;
 	t_data_thr		*data_thr;
+	// pool render data
+	int				sample_scale;
+	int				pxl_idx;
+	int				offset;
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
 	void			(*key_map)(int*, SDL_Keycode, void*, bool state);
@@ -68,7 +73,7 @@ int					colortoi(t_color *color);
 void				putcolor_sdl(t_sdl *sdl, int color, int x, int y);
 void				putpixel_sdl(t_sdl *sdl, t_color col, int x, int y);
 void				error_sdl(t_sdl *sdl);
-int					init_sdl(t_sdl *sdl, int width, int length);
+int					init_sdl(t_sdl *sdl, int width, int height);
 void				exit_sdl(t_sdl *sdl);
 void				render_sdl(t_sdl *sdl, int (*f) (int, int, void*), void *d);
 void				loop_sdl(t_sdl *sdl, void *arg);

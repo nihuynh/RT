@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/18 14:48:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/18 16:49:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,34 @@ static inline void
 		obj->f_inter = &inter_cylinder;
 }
 
+static inline void
+	load_material(t_material *dst, char *str)
+{
+	(void)str;
+	// CSV ?
+	// load the material list.
+	// find the right material
+	// copy the mat into dst
+	itocolor(&dst->color_ambient, 0x1D0E12);
+	itocolor(&dst->color_diffuse, 0xB76E2F);
+	itocolor(&dst->color_specular, 0xE7CDB4);
+	itocolor(&dst->self_light, 0x000000);
+	dst->spec_idx = 0.5;
+	dst->spec_power = 56;
+	dst->absorb_idx = 0;
+	dst->deflect_idx = 0.75;
+}
+
 static inline int
 	parse_material(t_material *dst, char **tab, int idx)
 {
+	char *str;
+	if ((str = ft_strstr(tab[idx], "mat(")))
+	{
+		str += 4;
+		load_material(dst, str);
+		return (idx + 2);
+	}
 	parse_color(&dst->color_ambient, tab[idx], idx, "color_ambient(");
 	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
 	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
