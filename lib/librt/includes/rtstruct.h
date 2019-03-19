@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/18 14:36:25 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 11:30:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct	s_cone
 	t_pt3		origin;
 	t_vec3		n;
 	float		theta;
+	float		size;
 }				t_cone;
 
 typedef struct	s_cylinder
@@ -60,6 +61,7 @@ typedef struct	s_cylinder
 	t_pt3		origin;
 	t_vec3		n;
 	float		radius;
+	float		size;
 }				t_cylinder;
 
 typedef struct	s_light

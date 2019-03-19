@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/18 16:49:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 11:28:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static inline void
 	const t_parse index_config[4] = {
 		{"Plane : ", sizeof(t_plane), &plane_set, 6},
 		{"Sphere : ", sizeof(t_sphere), &sphere_set, 5},
-		{"Cone : ", sizeof(t_cone), &cone_set, 6},
-		{"Cylinder : ", sizeof(t_cylinder), &cylinder_set, 6},
+		{"Cone : ", sizeof(t_cone), &cone_set, 7},
+		{"Cylinder : ", sizeof(t_cylinder), &cylinder_set, 7},
 	};
 
 	config = ft_memcpy(config, &index_config[type], sizeof(t_parse));

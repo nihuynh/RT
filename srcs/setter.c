@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/18 15:32:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 11:28:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void
 	parse_normal(&pcylinder->n, greed[i + 2], i + 2);
 	vec3_normalize(&pcylinder->n);
 	parse_fval(&pcylinder->radius, greed[i + 3], i + 3, "radius(");
+	parse_fval(&pcylinder->size, greed[i + 4], i + 4, "size(");
 }
 
 void
@@ -73,6 +74,7 @@ void
 	parse_normal(&pcone->n, greed[i + 2], i + 2);
 	vec3_normalize(&pcone->n);
 	parse_fval(&pcone->theta, greed[i + 3], i + 3, "theta(");
+	parse_fval(&pcone->size, greed[i + 4], i + 4, "size(");
 }
 
 void
