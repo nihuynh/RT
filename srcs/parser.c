@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 11:28:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 17:32:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static inline void
 		{"Plane : ", sizeof(t_plane), &plane_set, 6},
 		{"Sphere : ", sizeof(t_sphere), &sphere_set, 5},
 		{"Cone : ", sizeof(t_cone), &cone_set, 7},
-		{"Cylinder : ", sizeof(t_cylinder), &cylinder_set, 7},
+		{"Cylinder : ", sizeof(t_cylinder), &cylinder_set, 7}
 	};
 
 	config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
@@ -57,32 +57,27 @@ static inline void
 		obj->f_inter = &inter_cylinder;
 }
 
-static inline void
-	load_material(t_material *dst, char *str)
+int		matcmp(void *content, void *key)
 {
-	(void)str;
-	// CSV ?
-	// load the material list.
-	// find the right material
-	// copy the mat into dst
-	itocolor(&dst->color_ambient, 0x1D0E12);
-	itocolor(&dst->color_diffuse, 0xB76E2F);
-	itocolor(&dst->color_specular, 0xE7CDB4);
-	itocolor(&dst->self_light, 0x000000);
-	dst->spec_idx = 0.5;
-	dst->spec_power = 56;
-	dst->absorb_idx = 0;
-	dst->deflect_idx = 0.75;
+	t_material	*mat;
+	char		*ckey;
+
+	mat = content;
+	ckey = key;
+	return (!ft_strncasecmp(mat->name, ckey, ft_strlen(mat->name)));
 }
 
 static inline int
-	parse_material(t_material *dst, char **tab, int idx)
+	parse_material(t_data *data, t_material *dst, char **tab, int idx)
 {
-	char *str;
+	char		*str;
+	t_material	*mat;
 	if ((str = ft_strstr(tab[idx], "mat(")))
 	{
 		str += 4;
-		load_material(dst, str);
+		if (!(mat = ft_lstgetelt(data->lst_mat, &matcmp, str)))
+			ft_error(__func__, __LINE__);
+		ft_memcpy(dst, mat, sizeof(t_material));
 		return (idx + 2);
 	}
 	parse_color(&dst->color_ambient, tab[idx], idx, "color_ambient(");
@@ -107,25 +102,25 @@ static inline int
 */
 
 int
-	parse_shape(char **greed, t_data *data, int l_idx, int type)
+	parse_shape(char **greed, t_data *d, int l_idx, int type)
 {
 	t_list		*node;
 	t_obj		obj;
-	t_parse		config;
+	t_parse		cfg;
 	void		*shape;
 	int			idx;
 
-	init_parse(type, &config);
+	init_parse(type, &cfg);
 	if (DEBUG)
-		ft_putendl(config.printout);
-	if (!(shape = malloc(config.content_size)))
+		ft_putendl(cfg.printout);
+	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	config.setter(shape, greed, ++l_idx);
+	cfg.setter(shape, greed, ++l_idx);
 	obj_set(&obj, type, shape);
-	idx = parse_material(&obj.material, greed, l_idx + config.line_offset - 2);
+	idx = parse_material(d, &obj.material, greed, l_idx + cfg.line_offset - 2);
 	if (!(node = ft_lstnew(&obj, sizeof(t_obj))))
 		ft_error(__func__, __LINE__);
-	ft_lstadd(&data->lst_obj, node);
+	ft_lstadd(&d->lst_obj, node);
 	return (idx);
 }
 

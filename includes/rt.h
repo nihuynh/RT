@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 18:02:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 16:17:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct	s_data
 	t_sdl		sdl;
 	t_list		*lst_obj;
 	t_list		*lst_light;
+	t_list		*lst_mat;
 	t_cam		cam;
 	t_matrix	matrix_camera[2];
 	char		*arg;
