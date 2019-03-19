@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/18 16:17:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:59:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void
 }
 
 void
-	parse_limit(float *l_x, float * l_y, char *str, int line)
+	parse_limit(float *l_x, float *l_y, char *str, int line)
 {
 	float	toby[2];
 	int		idx;
@@ -191,4 +191,20 @@ void
 	*l_y = toby[1];
 	if (DEBUG)
 		ft_printf("Limit : %f %f\n", l_x, l_y);
+}
+
+void
+	parse_texture(t_plane *plane, char *str, int line)
+{
+	char *ptr;
+
+	if (!str)
+		ft_error_wmsg(ERR_PARSE_STRN, line, str);
+	str = check_key(str, line, "texture(", ERR_PARSE_NORMAL);
+	if ((ptr = ft_strstr(str, "checkers")))
+		plane->f_texture = &texture_checkers;
+	else if ((ptr = ft_strstr(str, "strips")))
+		plane->f_texture = &texture_strips;
+	else
+		plane->f_texture = NULL;
 }
