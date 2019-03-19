@@ -5,16 +5,36 @@ camera
 }
 content
 {
-	object(light)
+	object(sphere)					# Left
 	{
-		color(255 255 255)
-		origin(25 25 -15)
-		intensity(100)
+		origin(-50  0 -100)
+		radius(20)
+		color_ambient(255 0 0)
+		color_diffuse(255 255 255)
+		color_specular(255 255 255)
+		self_light(0 0 0)
+		spec_idx(0.3)
+		spec_power(100)
+		absorb_idx(0.0)
+		deflect_idx(0.7)
 	}
-	object(sphere)
+	object(sphere)					# Middle
 	{
 		origin(0 0 -100)
-		radius(30)
+		radius(20)
+		color_ambient(255 255 255)
+		color_diffuse(255 255 255)
+		color_specular(255 255 255)
+		self_light(0 0 0)
+		spec_idx(0.3)
+		spec_power(100)
+		absorb_idx(0.0)
+		deflect_idx(0.7)
+	}
+	object(sphere)					# Right
+	{
+		origin(50  0 -100)
+		radius(20)
 		color_ambient(255 255 255)
 		color_diffuse(255 255 255)
 		color_specular(255 255 255)
