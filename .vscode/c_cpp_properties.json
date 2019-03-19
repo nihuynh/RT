@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/RT/includes",
+				"${workspaceFolder}/RT/includes",
+				"${workspaceFolder}/includes",
                 "/Users/nihuynh/.brew/Cellar/sdl2/2.0.9/include/SDL2"
             ],
             "defines": [],
