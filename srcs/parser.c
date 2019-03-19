@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 11:28:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:59:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static inline void
 	init_parse(int type, t_parse *config)
 {
 	const t_parse index_config[4] = {
-		{"Plane : ", sizeof(t_plane), &plane_set, 6},
+		{"Plane : ", sizeof(t_plane), &plane_set, 7},
 		{"Sphere : ", sizeof(t_sphere), &sphere_set, 5},
 		{"Cone : ", sizeof(t_cone), &cone_set, 7},
 		{"Cylinder : ", sizeof(t_cylinder), &cylinder_set, 7},

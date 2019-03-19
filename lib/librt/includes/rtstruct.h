@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 11:30:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:59:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct	s_plane
 	float		size_x;
 	float		size_y;
 	float		rotation;
+	void		(*f_texture)(t_color *, float x, float y);
 }				t_plane;
 
 typedef struct	s_sphere

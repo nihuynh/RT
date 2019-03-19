@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 18:02:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 17:21:55 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Config :
 */
 
-# define BACK_COLOR		0x000000
+# define BACK_COLOR		0x269fef
 # define AMB_LIGHT		0.0625f
 # define NO_LIGHT		0
 # define NO_FACING		0
@@ -32,11 +32,11 @@
 # define NO_SHADOW		0
 # define NO_DEFLECT		0
 # define NO_ABSORB		0
-# define DEPTH_MAX		2
+# define DEPTH_MAX		4
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
-# define MAC			DEV
+# define MAC			IMAC
 # define MTHR			1
 
 /*
@@ -128,5 +128,7 @@ void			camera_height(t_data *data, float value);
 void			camera_side(t_data *data, float value);
 void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
+void			texture_checkers(t_color *color, float x, float y);
+void			texture_strips(t_color *color, float x, float y);
 
 #endif

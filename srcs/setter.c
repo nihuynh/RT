@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 11:28:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:59:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void
 	mat3_rot(&mat[0], &mat[1], &vi, &pplane->n);
 	vec3_matrix_apply(&pplane->x, &mat[0], &mat[1]);
 	vec3_matrix_apply(&pplane->y, &mat[0], &mat[1]);
+	parse_texture(pplane, greed[i + 4], i + 4);
 }
 
 void
