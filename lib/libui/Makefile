@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/19 01:10:59 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/19 01:13:48 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@printf "\033[1;34m$(NAME)\033[25G\033[33mCompile $< $(OKLOGO)"
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(DEP)
 	rmdir $(OBJDIR) 2> /dev/null || true
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning objs $(OKLOGO)"
 .PHONY: clean
