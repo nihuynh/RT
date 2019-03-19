@@ -45,14 +45,20 @@ static inline int
 void
 	key_event(int *quit, SDL_Keycode key, void *arg, bool state)
 {
-	t_data *data;
+	t_data		*app;
+	static bool	mouse_captured;
 
-	data = arg;
+	app = arg;
 	if (key == SDLK_ESCAPE)
 		*quit = 1;
 	else if (key == SDLK_p)
-		save_screenshot(&data->sdl, data->arg);
-	else if (camera(&data->cam, key, state))
+		save_screenshot(&app->sdl, app->arg);
+	else if (key == SDLK_SPACE && state == SDL_RELEASED)
+	{
+		mouse_captured ^= 1;
+		SDL_SetRelativeMouseMode(mouse_captured);
+	}
+	else if (camera(&app->cam, key, state))
 		(void)0;
 	else
 		ft_printf("%s key: %d\n", state ? "Pressed" : "Released", (int)key);
@@ -64,7 +70,7 @@ void
 	t_data *app;
 
 	app = arg;
-	if (event->motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+	if (SDL_GetRelativeMouseMode())
 	{
 		app->cam.x_angle += event->motion.xrel * MOUSE_SCALING;
 		app->cam.y_angle += event->motion.yrel * MOUSE_SCALING;
