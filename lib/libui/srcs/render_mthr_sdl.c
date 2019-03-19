@@ -6,12 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 09:51:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 14:00:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
-#include <time.h>
 #include "libui.h"
 #include "libft.h"
 
@@ -79,7 +78,7 @@ static inline void
 void
 	render_mthr_sdl(t_sdl *sdl)
 {
-	clock_t		timer;
+	long		elapsed_time;
 	int			cthr;
 	int			sats;
 	void		*ptr;
@@ -87,7 +86,7 @@ void
 
 	if (sdl->isrender)
 		return ;
-	timer = clock();
+	elapsed_time = ft_curr_usec();
 	cthr = -1;
 	sats = 0;
 	while (++cthr < THR_C && !sats)
@@ -100,6 +99,6 @@ void
 	while (++cthr < THR_C)
 		pthread_join(toby[cthr], NULL);
 	apply_color(sdl);
-	timer = clock() - timer;
-	ft_printf("Frame took %dms to render\n", (int)timer / 4000);
+	elapsed_time = ft_curr_usec() - elapsed_time;
+	ft_printf("Frame took %f ms to render\n", (float) elapsed_time / 1000);
 }

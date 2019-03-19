@@ -6,12 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 21:35:33 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 09:51:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 13:57:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
-#include <time.h>
+#include "libft.h"
 #include "ftio.h"
 
 static inline void
@@ -29,12 +29,12 @@ static inline void
 void
 	render_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
 {
-	clock_t	timer;
+	long	elapsed_time;
 	t_pxl	idx;
 
 	if (sdl->isrender)
 		return ;
-	timer = clock();
+	elapsed_time = ft_curr_usec();
 	idx.y = -1;
 	while (++idx.y < sdl->height_vp)
 	{
@@ -43,6 +43,6 @@ void
 			putcolor(sdl, do_pxl(idx.x, idx.y, data), idx.x, idx.y);
 	}
 	SDL_RenderPresent(sdl->renderer);
-	timer = clock() - timer;
-	ft_printf("Frame took %dms to render\n", (int)timer / 1000);
+	elapsed_time = ft_curr_usec() - elapsed_time;
+	ft_printf("Frame took %f ms to render\n", (float) elapsed_time / 1000);
 }

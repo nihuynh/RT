@@ -6,12 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/18 11:38:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 13:57:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
-#include <time.h>
 #include "libft.h"
 
 static inline void
@@ -50,5 +49,5 @@ void
 	// wait threads done
 	SDL_RenderPresent(sdl->renderer);
 	elapsed_time = ft_curr_usec() - elapsed_time;
-	ft_printf("Frame took %ld microsec to render\n", elapsed_time);
+	ft_printf("Frame took %f ms to render\n", (float) elapsed_time / 1000);
 }
