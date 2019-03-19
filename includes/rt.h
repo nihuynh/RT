@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 17:37:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 17:39:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Config :
 */
 
-# define BACK_COLOR		0x269fef
+# define BACK_COLOR		0x000000
 # define AMB_LIGHT		0.0625f
 # define NO_LIGHT		0
 # define NO_FACING		0
@@ -36,7 +36,7 @@
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
-# define MAC			IMAC
+# define MAC			DEV
 # define MTHR			1
 
 /*
