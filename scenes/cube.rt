@@ -28,6 +28,7 @@ content
 	{
 		origin(-60 0 0)
 		normal(1 0 0)
+		limit(0 0)
 		color_ambient(255 0 0)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -41,6 +42,7 @@ content
 	{
 		origin(60 0 0)
 		normal(-1 0 0)
+		limit(0 0)
 		color_ambient(0 0 255)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -54,6 +56,7 @@ content
 	{
 		origin(0 0 -100)
 		normal(0 0 1)
+		limit(0 0)
 		color_ambient(255 255 255)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -67,6 +70,7 @@ content
 	{
 		origin(0 -60 0)
 		normal(0 1 0)
+		limit(0 0)
 		color_ambient(255 0 255)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -80,6 +84,7 @@ content
 	{
 		origin(0 60 0)
 		normal(0 -1 0)
+		limit(0 0)
 		color_ambient(0 255 0)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
