@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 17:39:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 17:43:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define DEPTH_MAX		4
 
 # define DEBUG			0
-# define DEBUG_LEAK		0
+# define DEBUG_LEAK		1
 # define MAC			DEV
 # define MTHR			1
 
