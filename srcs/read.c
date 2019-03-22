@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 17:48:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/22 13:03:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ void
 	itocolor(&mat->color_diffuse, ft_atoi_base(split[2], 16));
 	itocolor(&mat->color_specular, ft_atoi_base(split[3], 16));
 	itocolor(&mat->self_light, ft_atoi_base(split[4], 16));
-	mat->spec_idx = ft_atoi(split[5]);
-	mat->spec_power = ft_atoi(split[6]);
-	mat->absorb_idx = ft_atoi(split[7]);
-	mat->deflect_idx = ft_atoi(split[8]);
+	mat->spec_idx = ft_atof(split[5]);
+	mat->spec_power = ft_atof(split[6]);
+	mat->absorb_idx = ft_atof(split[7]);
+	mat->deflect_idx = ft_atof(split[8]);
 }
 
 

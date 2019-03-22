@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 18:00:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/22 12:42:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
-void			cast_light_primary(t_data *data, t_inter *inter);
+float			cast_light_primary(t_data *data, t_inter *inter);
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);
 void			camera_height(t_data *data, float value);
