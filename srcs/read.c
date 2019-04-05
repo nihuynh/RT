@@ -58,7 +58,6 @@ int
 		parsing_error(line_idx, ERR_PARSE_CONTENT, data, greed);
 	parse_origin(&data->cam.pos, greed[line_idx + 2], 3);
 	parse_normal(&data->cam.dir, greed[line_idx + 3], 4);
-	vec3_find(&data->cam.pos, &data->cam.dir, &data->cam.dir);
 	vec3_normalize(&data->cam.dir);
 	return (line_idx + 5);
 }

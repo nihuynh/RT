@@ -3,18 +3,18 @@ project(RT C)
 
 set(CMAKE_C_STANDARD 11)
 
-#set(CMAKE_VERBOSE_MAKEFILE TRUE)
-
-add_executable(RT "")
+set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 set(DEBUG_FLAGS -g3)
 set(RELEASE_FLAGS -O2 -march=native -flto)
 set(PROFILE_FLAGS -g3 -O2 -march=native)
 
-add_compile_options(-Wall -Wextra -Werror)
+add_compile_options(-Wall -Wextra -Werror -pedantic -std=c89)
 add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")
 add_compile_options("$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
+
+add_executable(RT "")
 
 add_subdirectory(lib/libft)
 add_subdirectory(lib/libui)

@@ -17,6 +17,7 @@
 # include "color.h"
 
 # define DEG_TO_RAD(X)	((X) * (M_PI / 180))
+# define M_PI_F (float)M_PI
 
 # define EPSILON		1e-6
 # define SHADOW_BIAS	5e-2
@@ -80,6 +81,7 @@ void		vec3_scalar(t_vec3 *v1, float k);
 void		vec3_sub(t_vec3 *res, t_vec3 *v1, t_vec3 *v2);
 void		vec3_deflect(t_inter *inter, t_ray *res);
 void		vec3_refract(t_inter *inter, t_vec3 *vf, float ior);
+void		vec3_cartesian_to_spherical(t_vec3 v, float *azimuth, float *polar);
 void		vec3_matrix_camera(t_matrix *matrix, t_cam *cam);
 void		vec3_matrix_mult(t_matrix *matrix, t_matrix *add);
 t_matrix	matrix_mult(const t_matrix *lhs, const t_matrix *rhs);

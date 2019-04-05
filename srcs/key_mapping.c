@@ -72,8 +72,8 @@ void
 	app = arg;
 	if (SDL_GetRelativeMouseMode())
 	{
-		app->cam.x_angle += event->motion.xrel * MOUSE_SCALING;
-		app->cam.y_angle += event->motion.yrel * MOUSE_SCALING;
+		app->cam.y_angle += event->motion.xrel * MOUSE_SCALING;
+		app->cam.x_angle += event->motion.yrel * MOUSE_SCALING;
 		app->sdl.needs_render = true;
 	}
 }

@@ -41,4 +41,5 @@ target_sources(rt PRIVATE
         srcs/vec3_print.c
         srcs/vec3_refract.c
         srcs/vec3_scalar.c
-        srcs/vec3_sub.c)
+        srcs/vec3_sub.c
+        srcs/vec3_spherical_cartesian.c)

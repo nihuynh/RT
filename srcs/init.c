@@ -17,12 +17,7 @@
 void
 	init_render(t_data *data)
 {
-	int		len;
-	t_vec3	vi;
-
-	len = HEIGHT * WIDTH;
-	vec3_new(&vi, 0, 0, -1);
-	data->cam.rotation = set_rotation(data->cam.x_angle, data->cam.y_angle);
+	set_direction(&data->cam, data->cam.dir);
 	if (DEBUG)
 		print_matrix(&data->cam.rotation);
 	data->sdl.key_map = &key_event;

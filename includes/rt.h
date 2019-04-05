@@ -122,6 +122,7 @@ void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
 void			cast_light_primary(t_data *data, t_inter *inter);
+void			set_direction(t_cam *cam, t_vec3 direction);
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);
 void			camera_height(t_data *data, float value);

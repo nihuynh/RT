@@ -20,7 +20,7 @@ static t_vec3
 {
 	t_vec3	delta;
 
-	delta = (t_vec3){0};
+	delta = (t_vec3){0, 0, 0};
 	if (cam->move_forward)
 		vec3_sub(&delta, &delta, &forward);
 	if (cam->move_backward)
@@ -43,13 +43,13 @@ static bool
 
 	has_changed = false;
 	if (cam->rotate_right && (has_changed = 1))
-		cam->x_angle += A_STEP;
-	if (cam->rotate_left && (has_changed = 1))
-		cam->x_angle += -A_STEP;
-	if (cam->rotate_up && (has_changed = 1))
-		cam->y_angle += -A_STEP;
-	if (cam->rotate_down && (has_changed = 1))
 		cam->y_angle += A_STEP;
+	if (cam->rotate_left && (has_changed = 1))
+		cam->y_angle += -A_STEP;
+	if (cam->rotate_up && (has_changed = 1))
+		cam->x_angle += -A_STEP;
+	if (cam->rotate_down && (has_changed = 1))
+		cam->x_angle += A_STEP;
 	return (has_changed);
 }
 
@@ -63,7 +63,7 @@ void
 
 	if (update_angles(cam))
 		*needs_render = true;
-	cam->rotation = set_rotation(cam->y_angle, cam->x_angle);
+	cam->rotation = set_rotation(cam->x_angle, cam->y_angle);
 	strafe = get_column(cam->rotation, 0);
 	upward = get_column(cam->rotation, 1);
 	forward = get_column(cam->rotation, 2);
@@ -72,4 +72,16 @@ void
 	if (delta.x != 0 || delta.y != 0 || delta.z != 0)
 		*needs_render = true;
 	vec3_add(&cam->pos, &cam->pos, &delta);
+}
+
+void
+	set_direction(t_cam *cam, t_vec3 direction)
+{
+	float azimuth;
+	float polar;
+
+	vec3_cartesian_to_spherical(direction, &azimuth, &polar);
+	cam->x_angle = polar - (M_PI_F / 2);
+	cam->y_angle = -azimuth - M_PI_F;
+	cam->rotation = set_rotation(cam->x_angle, cam->y_angle);
 }
