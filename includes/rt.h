@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 18:02:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/22 12:42:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define NO_SHADOW		0
 # define NO_DEFLECT		0
 # define NO_ABSORB		0
-# define DEPTH_MAX		1
+# define DEPTH_MAX		4
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
@@ -99,6 +99,7 @@ typedef struct	s_data
 	t_sdl		sdl;
 	t_list		*lst_obj;
 	t_list		*lst_light;
+	t_list		*lst_mat;
 	t_cam		cam;
 	char		*arg;
 }				t_data;
@@ -121,13 +122,15 @@ int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
-void			cast_light_primary(t_data *data, t_inter *inter);
 void			set_direction(t_cam *cam, t_vec3 direction);
+float			cast_light_primary(t_data *data, t_inter *inter);
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);
 void			camera_height(t_data *data, float value);
 void			camera_side(t_data *data, float value);
 void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
+void			texture_checkers(t_color *color, float x, float y);
+void			texture_strips(t_color *color, float x, float y);
 
 #endif

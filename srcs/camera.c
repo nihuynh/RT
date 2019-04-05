@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 09:44:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/18 16:18:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static t_vec3
 	if (cam->move_downward)
 		vec3_sub(&delta, &delta, &upward);
 	return (delta);
+
 }
 
 static bool

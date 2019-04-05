@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/14 09:54:25 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/19 01:13:48 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SDL_SRC		:=	init_sdl.c error_sdl.c putpixel_sdl.c putcolor_sdl.c exit_sdl.c\
 COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
 				colortoi.c color_max.c itocolor.c
 SRC			:=	$(SDL_SRC) $(COLOR)
-HEADERS		:=	libui.h color.h
 # directories :
 SRCDIR  	:=	srcs
 OBJDIR 		:=	objs
@@ -50,7 +49,7 @@ RM			:=	/bin/rm -f
 # **************************************************************************** #
 # Automatic variable :
 OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-HEAD		:=	$(addprefix $(INCDIR)/, $(HEADERS))
+DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
 LIB			:=	$(LFT_LIB) $(LSDL_LIB)
 INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC)
 # **************************************************************************** #
@@ -60,17 +59,19 @@ GREP_ERR	:=	grep 'Error\|Warning' -C1 2> /dev/null || true
 # Rules :
 all: $(NAME)
 .PHONY: all
-$(NAME): $(OBJ) $(HEAD) $(LFT_RULE)
+$(NAME): $(OBJ) $(LFT_RULE)
 	libtool -static -o $@ $(OBJ) && ranlib $@
 	@printf "\n\033[1;34m$@\033[25G\033[32mBuilt $@ $(OKLOGO)"
+-include $(DEP)
 $(LFT_RULE):
 	make -C $(LFT_PATH)/
-$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir $(OBJDIR) 2> /dev/null || true
-	$(CC) $(CFLAGS) -c -o $@ $< $(INC)
+	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $< $(INC)
 	@printf "\033[1;34m$(NAME)\033[25G\033[33mCompile $< $(OKLOGO)"
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(DEP)
 	rmdir $(OBJDIR) 2> /dev/null || true
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning objs $(OKLOGO)"
 .PHONY: clean

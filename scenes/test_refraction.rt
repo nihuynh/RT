@@ -1,0 +1,68 @@
+camera
+{
+	origin(0 75 300)
+	normal(0 60 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(100 100 100)
+		intensity(1000)
+	}
+	object(cylinder)
+	{
+		origin(0 -30 -100)
+		normal(0 1 0)
+		radius(30)
+		size(100)
+		mat(glass)
+	}
+	object(cylinder)
+	{
+		origin(70 -30 -100)
+		normal(0 1 0)
+		radius(30)
+		size(100)
+		mat(glass)
+	}
+	object(cylinder)
+	{
+		origin(-70 -30 -100)
+		normal(0 1 0)
+		radius(30)
+		size(100)
+		mat(glass)
+	}
+	object(plane)
+	{
+		origin(0 -30 0)
+		normal(0 1 0)
+		limit(200 200)
+		texture(checkers)
+		color_ambient(200 200 200)
+		color_diffuse(0.714 0.4284 0.18144)
+		color_specular(0.9 0.8 0.7)
+		self_light(0 0 0)
+		spec_idx(0.5)
+		spec_power(1500)
+		absorb_idx(0.0)
+		deflect_idx(0.0)
+	{
+	object(plane)
+	{
+		origin(0 0 -150)
+		normal(0 0 -1)
+		limit(200 200)
+		texture(strips)
+		color_ambient(200 200 200)
+		color_diffuse(0.714 0.4284 0.18144)
+		color_specular(0.9 0.8 0.7)
+		self_light(0 0 0)
+		spec_idx(0.5)
+		spec_power(1500)
+		absorb_idx(0.0)
+		deflect_idx(0.0)
+	{
+}

@@ -8,20 +8,25 @@ content
 	object(light)
 	{
 		color(255 255 255)
-		origin(25 25 -15)
-		intensity(100)
+		origin(100 100 100)
+		intensity(1000)
 	}
-	object(sphere)
+	object(sphere)					# Left
+	{
+		origin(-50  0 -100)
+		radius(20)
+		mat(redplastic)
+	}
+	object(sphere)					# Middle
 	{
 		origin(0 0 -100)
-		radius(30)
-		color_ambient(255 255 255)
-		color_diffuse(255 255 255)
-		color_specular(255 255 255)
-		self_light(0 0 0)
-		spec_idx(0.3)
-		spec_power(100)
-		absorb_idx(0.0)
-		deflect_idx(0.7)
+		radius(20)
+		mat(whiteplastic)
+	}
+	object(sphere)					# Right
+	{
+		origin(50  0 -100)
+		radius(20)
+		mat(blueplastic)
 	}
 }

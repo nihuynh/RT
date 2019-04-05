@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 17:56:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 17:57:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ static inline void
 	free(obj);
 }
 
+static inline void
+	del_mat(void *content, size_t content_size)
+{
+	t_material *mat;
+
+	(void)content_size;
+	mat = content;
+	free(mat->name);
+	free(mat);
+}
+
 void
 	exit_safe(t_data *data)
 {
@@ -41,8 +52,9 @@ void
 		ft_lstdel(&data->lst_obj, &del_obj);
 	if (data->lst_light)
 		ft_lstdel(&data->lst_light, &del_obj);
+	if (data->lst_mat)
+		ft_lstdel(&data->lst_mat, &del_mat);
 	exit_sdl(&data->sdl);
-	exit(0);
 }
 
 void

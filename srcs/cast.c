@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:36:15 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/15 17:42:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/22 12:40:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,29 @@ void
 	}
 }
 
-void
+float
 	cast_light_primary(t_data *data, t_inter *inter)
 {
 	t_list	*lst;
 	t_obj	*obj;
+	float	scalar;
 
 	lst = data->lst_obj;
+	scalar = 1;
 	while (lst != NULL)
 	{
+		inter->obj = NULL;
 		obj = lst->content;
 		if (obj != NULL && obj->f_inter != NULL)
 			obj->f_inter(inter, obj);
 		if (inter->obj != NULL)
-			return ;
+		{
+			if (inter->obj->material.absorb_idx > 0)
+				scalar *= inter->obj->material.absorb_idx;
+			else
+				return (0);
+		}
 		lst = lst->next;
 	}
+	return (scalar);
 }

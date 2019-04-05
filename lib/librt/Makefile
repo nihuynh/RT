@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/14 14:31:56 by sklepper         ###   ########.fr        #
+#    Updated: 2019/03/19 01:11:30 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ $(LFT_RULE):
 	make -C $(LFT_PATH)/
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir $(OBJDIR) 2> /dev/null || true
-	$(CC) $(CFLAGS) -MMD -c -o $@ $< $(INC)
+	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $< $(INC)
 	@printf "\033[1;34m$(NAME)\033[25G\033[33mCompile $< $(OKLOGO)"
 clean:
 	$(RM) $(OBJ)

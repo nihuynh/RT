@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_matrix_apply.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 18:07:50 by sklepper          #+#    #+#             */
-/*   Updated: 2018/12/20 23:17:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/19 14:37:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
 #include "ftmem.h"
+#include "librt.h"
 
 void	apply_matrix(t_vec3 *v, t_matrix *mat)
 {

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 12:26:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/03/22 12:40:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ static inline void
 	if (!NO_I_LIGHT)
 		color_scalar(&tmp, (light->intensity / scale));
 	if (!NO_SHADOW)
-		cast_light_primary(data, &inter_light);
-	if (inter_light.obj == NULL)
+		scale = cast_light_primary(data, &inter_light);
+	if (scale > 0)
 	{
+		color_scalar(&tmp, scale);
 		scale = facing_ratio(&inter_light);
 		if (!NO_SHINE)
 			shine(inter, &inter_light);

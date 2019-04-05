@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/15 16:46:00 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/19 15:11:05 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
-				cast.c
+				cast.c texture.c
 # directories :
 SRCDIR  	:=	srcs
 OBJDIR 		:=	objs
@@ -93,7 +93,7 @@ $(LUI_RULE):
 	$(MAKE) -sC $(LUI_PATH) $(LIBFLAGS)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir $(OBJDIR) 2> /dev/null || true
-	$(CC) $(CFLAGS) -MMD -c -o $@ $< $(INC)
+	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $< $(INC)
 	@printf "\033[1;34m$(NAME)\033[25G\033[33mCompile $< $(OKLOGO)"
 lib: ## Built the libraries.
 	$(MAKE) -sC $(LFT_PATH) $(LIBFLAGS)

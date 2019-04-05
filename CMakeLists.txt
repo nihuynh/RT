@@ -39,6 +39,7 @@ target_sources(RT PRIVATE
         srcs/error.c
         srcs/key_mapping.c
         srcs/light.c
+        srcs/texture.c
         srcs/main.c
         srcs/parse_toolbox.c
         srcs/parser.c

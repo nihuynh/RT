@@ -15,6 +15,8 @@ content
 	{
 		origin(0 -10 0)
 		normal(0 1 0)
+		limit(0 0)
+		texture(none)
 		color_ambient(50 50 50)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -22,12 +24,14 @@ content
 		spec_idx(0.5)
 		spec_power(0)
 		absorb_idx(0.0)
-		deflect_idx(0.75)
+		deflect_idx(0.0)
 	}
 	object(plane)
 	{
 		origin(0 0 -50)
 		normal(0 0 1)
+		limit(0 0)
+		texture(none)
 		color_ambient(60 60 200)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -35,7 +39,7 @@ content
 		spec_idx(0.5)
 		spec_power(0)
 		absorb_idx(0.0)
-		deflect_idx(0.75)
+		deflect_idx(0.0)
 	}
 	object(sphere)
 	{
@@ -48,13 +52,14 @@ content
 		spec_idx(0.5)
 		spec_power(0.9)
 		absorb_idx(0.0)
-		deflect_idx(0.75)
+		deflect_idx(0.0)
 	}
 	object(cylinder)
 	{
 		origin(-5 0 -20)
 		normal(1 1 0)
 		radius(5)
+		size(0)
 		color_ambient(0 200 0)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -62,13 +67,14 @@ content
 		spec_idx(0.5)
 		spec_power(0.9)
 		absorb_idx(0.0)
-		deflect_idx(0.75)
+		deflect_idx(0.0)
 	}
-		object(cone)
+	object(cone)
 	{
 		origin(5 -5 -18)
 		normal(-0.5 1 0)
 		theta(30)
+		size(0)
 		color_ambient(255 255 0)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -76,6 +82,6 @@ content
 		spec_idx(0.5)
 		spec_power(0.9)
 		absorb_idx(0.0)
-		deflect_idx(0.75)
+		deflect_idx(0.0)
 	}
 }

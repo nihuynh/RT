@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 17:06:30 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/03/22 13:03:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,6 @@
 #include "parse.h"
 #include "libft.h"
 #include <unistd.h>
-
-/**
- * @brief	Basic line counter
- *
- * @param str	The name of the file to open
- * @return int	Returns the number of lines in the file
- */
-
-int
-	line_counter(char *str)
-{
-	int		fd;
-	char	*line;
-	int		line_count;
-
-	line_count = 0;
-	fd = ft_fopen_read(str);
-	while (ft_gnl(fd, &line, "\n") > 0)
-	{
-		line_count++;
-		ft_strdel(&line);
-	}
-	close(fd);
-	return (line_count);
-}
 
 /**
  * @brief	Parser for the camera
@@ -123,6 +98,49 @@ void
 	}
 }
 
+void
+	split_to_mat(char **split, t_material *mat)
+{
+	if (!(mat->name = ft_strdup(split[0])))
+		ft_error(__func__, __LINE__);
+	itocolor(&mat->color_ambient, ft_atoi_base(split[1], 16));
+	itocolor(&mat->color_diffuse, ft_atoi_base(split[2], 16));
+	itocolor(&mat->color_specular, ft_atoi_base(split[3], 16));
+	itocolor(&mat->self_light, ft_atoi_base(split[4], 16));
+	mat->spec_idx = ft_atof(split[5]);
+	mat->spec_power = ft_atof(split[6]);
+	mat->absorb_idx = ft_atof(split[7]);
+	mat->deflect_idx = ft_atof(split[8]);
+}
+
+
+void
+	parse_material_csv(t_data *data, char *csv_file)
+{
+	int			fd;
+	char		*line;
+	char		**split;
+	t_material	node;
+	t_list		*lst_node;
+
+	fd = ft_fopen_read(csv_file);
+	while (ft_gnl(fd, &line, "\n") > 0)
+	{
+		if (!(split = ft_strsplit(line, ';')))
+			ft_error(__func__, __LINE__);
+		if (ft_tablen(split) != 9)
+			ft_error(__func__, __LINE__);
+		split_to_mat(split, &node);
+		if (!(lst_node = ft_lstnew(&node, sizeof(t_material))))
+			ft_error(__func__, __LINE__);
+		ft_lstadd(&data->lst_mat, lst_node);
+		lst_node = NULL;
+		ft_tabdel(split);
+		ft_strdel(&line);
+	}
+	close(fd);
+}
+
 /**
  * @brief	Reading the input file and beginning parsing
  *
@@ -138,7 +156,8 @@ int
 	int		line_count;
 	char	**greed;
 
-	if ((line_count = line_counter(str)) < 9)
+	parse_material_csv(data, "materialList.csv");
+	if ((line_count = ft_line_count(str)) < 9)
 		return (EXIT_FAILURE);
 	if (!(greed = ft_memalloc(sizeof(char *) * (line_count + 1))))
 		return (EXIT_FAILURE);
