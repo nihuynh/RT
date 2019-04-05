@@ -17,15 +17,10 @@
 void
 	init_render(t_data *data)
 {
-	int		len;
-	t_vec3	vi;
-
-	len = HEIGHT * WIDTH;
-	vec3_new(&vi, 0, 0, -1);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam.dir);
+	set_direction(&data->cam, data->cam.dir);
 	if (DEBUG)
-		print_matrix(&data->matrix_camera[0], &data->matrix_camera[1]);
+		print_matrix(&data->cam.rotation);
 	data->sdl.key_map = &key_event;
-	data->sdl.mouse_map = &mouse_mapping;
+	data->sdl.mouse_map = &mouse_motion;
 	data->sdl.update = &update;
 }

@@ -29,7 +29,7 @@ typedef struct s_data_thr	t_data_thr;
 
 typedef struct		s_sdl
 {
-	int				isrender;
+	bool			needs_render;
 	int				width_vp;
 	int				height_vp;
 	// mthr render data

@@ -29,8 +29,7 @@ void
 	plane_set(void *plane, char **greed, int i)
 {
 	t_plane		*pplane;
-	t_matrix	mat[2];
-	t_vec3		vi;
+	t_matrix	rotation;
 
 	if (plane == NULL)
 		ft_error_wmsg(ERR_PARSE_SET_PL, i, greed[i]);
@@ -41,10 +40,9 @@ void
 	vec3_normalize(&pplane->n);
 	vec3_new(&pplane->x, 1, 0, 0);
 	vec3_new(&pplane->y, 0, 1, 0);
-	vec3_new(&vi, 0, 0, -1);
-	mat3_rot(&mat[0], &mat[1], &vi, &pplane->n);
-	vec3_matrix_apply(&pplane->x, &mat[0], &mat[1]);
-	vec3_matrix_apply(&pplane->y, &mat[0], &mat[1]);
+	rotation = create_rotation_from_direction(pplane->n);
+	apply_matrix(&pplane->x, &rotation);
+	apply_matrix(&pplane->y, &rotation);
 	parse_texture(pplane, greed[i + 4], i + 4);
 }
 

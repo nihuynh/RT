@@ -43,15 +43,15 @@
 ** User def :
 */
 
-# define T_STEP			10
+# define T_STEP			5
 # define Z_STEP			1
-# define A_STEP			10.0f
-
+# define A_STEP			DEG_TO_RAD(5)
+# define MOUSE_SCALING	0.01f
 /*
 ** Static def :
 */
 
-# define FOV			45.0f
+# define FOV			90.0f
 
 # define DEV			0
 # define MACB			1
@@ -101,7 +101,6 @@ typedef struct	s_data
 	t_list		*lst_light;
 	t_list		*lst_mat;
 	t_cam		cam;
-	t_matrix	matrix_camera[2];
 	char		*arg;
 }				t_data;
 
@@ -111,17 +110,19 @@ typedef struct	s_data
 
 int				reader(char *str, t_data *data);
 void			init_render(t_data *data);
-void			update(void *data);
+void			update(void* data);
+void			update_camera(t_cam* cam, bool *needs_render);
 int				process_pixel(int x, int y, void *arg);
 void			exit_safe(t_data *data);
 void			key_event(int *quit, SDL_Keycode key, void *arg, bool state);
-void			mouse_mapping(SDL_Event *event, void *arg);
+void			mouse_motion(SDL_Event *event, void *arg);
 void			parsing_error(int l_idx, char *error, t_data *d, char **greed);
 int				parse_light(char **greed, t_data *data, int l_idx);
 int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
+void			set_direction(t_cam *cam, t_vec3 direction);
 float			cast_light_primary(t_data *data, t_inter *inter);
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);

@@ -32,7 +32,7 @@ void
 	long	elapsed_time;
 	t_pxl	idx;
 
-	if (sdl->isrender)
+	if (sdl->needs_render == false)
 		return ;
 	elapsed_time = ft_curr_usec();
 	idx.y = -1;

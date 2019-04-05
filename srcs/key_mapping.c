@@ -41,22 +41,32 @@ static inline void
 void
 	key_event(int *quit, SDL_Keycode key, void *arg, bool state)
 {
-	t_data *data;
+	t_data		*app;
+	static bool	mouse_captured;
 
-	data = arg;
+	app = arg;
 	if (key == SDLK_ESCAPE)
 		*quit = 1;
 	else if (key == SDLK_p)
-		save_screenshot(&data->sdl, data->arg);
-	camera(&data->cam, key, state);
+		save_screenshot(&app->sdl, app->arg);
+	else if (key == SDLK_SPACE && state == SDL_RELEASED)
+	{
+		mouse_captured ^= 1;
+		SDL_SetRelativeMouseMode(mouse_captured);
+	}
+	camera(&app->cam, key, state);
 }
 
 void
-	mouse_mapping(SDL_Event *event, void *arg)
+	mouse_motion(SDL_Event *event, void *arg)
 {
-	t_data *data;
+	t_data *app;
 
-	data = arg;
-	if (event->type == SDL_MOUSEBUTTONDOWN)
-		return ;
+	app = arg;
+	if (SDL_GetRelativeMouseMode())
+	{
+		app->cam.y_angle += event->motion.xrel * MOUSE_SCALING;
+		app->cam.x_angle += event->motion.yrel * MOUSE_SCALING;
+		app->sdl.needs_render = true;
+	}
 }
