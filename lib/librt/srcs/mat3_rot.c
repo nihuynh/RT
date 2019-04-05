@@ -59,3 +59,15 @@ t_matrix
 	set_y_rotation(&y_rotation, y_angle);
 	return (matrix_mult(&y_rotation, &x_rotation));
 }
+
+t_matrix
+	create_rotation_from_direction(t_vec3 direction)
+{
+	float x_angle;
+	float y_angle;
+
+	vec3_cartesian_to_spherical(direction, &y_angle, &x_angle);
+	x_angle = x_angle - (M_PI_F / 2);
+	y_angle = -y_angle - M_PI_F;
+	return (set_rotation(x_angle, y_angle));
+}

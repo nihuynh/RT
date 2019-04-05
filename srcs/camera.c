@@ -34,7 +34,6 @@ static t_vec3
 	if (cam->move_downward)
 		vec3_sub(&delta, &delta, &upward);
 	return (delta);
-
 }
 
 static bool
