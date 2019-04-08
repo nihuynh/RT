@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/22 12:42:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/08 18:21:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@
 
 # define EXIT_FAILURE	1
 # define EXIT_SUCCESS	0
+
+# define RM_UNIT_TEST	0
+# define RM_NORMAL		1
+
 
 /*
 ** Automatic parameters :
