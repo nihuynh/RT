@@ -75,43 +75,6 @@ void
 }
 
 /**
-** @brief Parse the origin of an object from a string
-**
-** @param origin	Adress of the origin to parse
-** @param str		String to parse
-** @param line		Current line of the parsing
-*/
-
-void
-	parse_origin(t_pt3 *origin, char *str, int line)
-{
-	float	toby[3];
-	int		idx;
-
-	idx = -1;
-	if (!str)
-		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	str = check_key(str, line, "origin(", ERR_PARSE_ORIGIN);
-	while (++idx < 3 && *str != ')')
-	{
-		toby[idx] = ft_atof(str);
-		while (*str && *str != ' ' && *str != ')')
-			str++;
-		while (*str && *str == ' ' && *str != ')')
-			str++;
-		if (!*str)
-			ft_error_wmsg(ERR_PARSE_ORIGIN, line, str);
-	}
-	if (idx != 3 && ((*str >= '9' && *str <= '9') || *str == '-'))
-		ft_error_wmsg(ERR_PARSE_ORIGIN, line, str);
-	origin->x = toby[0];
-	origin->y = toby[1];
-	origin->z = toby[2];
-	if (DEBUG)
-		ft_printf("Origin  : %f %f %f\n", origin->x, origin->y, origin->z);
-}
-
-/**
 ** @brief Parse a vector from a string
 **
 ** @param vec		Address of the vector to parse
@@ -129,7 +92,7 @@ void
 	idx = -1;
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	str = check_key(str, line, key, ERR_PARSE_NORMAL);
+	str = check_key(str, line, key, ERR_PARSE_VECTOR);
 	while (++idx < 3)
 	{
 		toby[idx] = ft_atof(str);
@@ -138,10 +101,10 @@ void
 		while (*str && *str == ' ' && *str != ')')
 			str++;
 		if (!*str)
-			ft_error_wmsg(ERR_PARSE_NORMAL, line, str);
+			ft_error_wmsg(ERR_PARSE_VECTOR, line, str);
 	}
 	if (idx != 3 && ((*str >= '9' && *str <= '9') || *str == '-'))
-		ft_error_wmsg(ERR_PARSE_NORMAL, line, str);
+		ft_error_wmsg(ERR_PARSE_VECTOR, line, str);
 	vec->x = toby[0];
 	vec->y = toby[1];
 	vec->z = toby[2];
@@ -201,7 +164,7 @@ void
 
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	str = check_key(str, line, "texture(", ERR_PARSE_NORMAL);
+	str = check_key(str, line, "texture(", ERR_PARSE_VECTOR);
 	if ((ptr = ft_strstr(str, "checkers")))
 		plane->f_texture = &texture_checkers;
 	else if ((ptr = ft_strstr(str, "strips")))
