@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_spherical_cartesian.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdarchiv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:59:42 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/04/05 17:59:45 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/04/08 20:09:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 ** atan() maps [-inf, +inf] to [-PI, PI]
 */
 
-void vec3_cartesian_to_spherical(t_vec3 direction, float *azimuth, float *polar)
+void	vec3_cartesian_to_spherical(t_vec3 dir, float *azimuth, float *polar)
 {
-	*polar = acosf(direction.y);
-	*azimuth = atan2f(direction.x, direction.z);
+	*polar = acosf(dir.y);
+	*azimuth = atan2f(dir.x, dir.z);
 }

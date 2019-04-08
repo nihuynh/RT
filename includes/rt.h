@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/08 18:21:45 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 21:15:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define Z_STEP			1
 # define A_STEP			DEG_TO_RAD(5)
 # define MOUSE_SCALING	0.01f
+
 /*
 ** Static def :
 */
@@ -68,7 +69,6 @@
 
 # define RM_UNIT_TEST	0
 # define RM_NORMAL		1
-
 
 /*
 ** Automatic parameters :
@@ -114,8 +114,8 @@ typedef struct	s_data
 
 int				reader(char *str, t_data *data);
 void			init_render(t_data *data);
-void			update(void* data);
-void			update_camera(t_cam* cam, bool *needs_render);
+void			update(void *data);
+void			update_camera(t_cam *cam, bool *needs_render);
 int				process_pixel(int x, int y, void *arg);
 void			exit_safe(t_data *data);
 void			key_event(int *quit, SDL_Keycode key, void *arg, bool state);

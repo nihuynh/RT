@@ -3,39 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_toolbox.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 15:59:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:11:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "libft.h"
 #include "rt.h"
-
-/**
-** @brief			Verify if a line is containing the proper value and key.
-**
-** @param str 		String to check
-** @param line		Current line of parsing
-** @param key		Parameter to find
-** @param err		Error to send if the parameter is not found
-** @return char*	A pointer to the beginning of the value for the parameter
-*/
-
-static inline char
-	*check_key(char *str, int line, const char *key, char *err)
-{
-	if (!(str = ft_strstr(str, key)))
-		ft_error_wmsg(ERR_P_KEY, line, str);
-	str += ft_strlen(key);
-	if (!*str)
-		ft_error_wmsg(err, line, str);
-	if (ft_strrchr(str, ')') == NULL)
-		ft_error_wmsg(ERR_P_CLOSE_PAR, line, str);
-	return (str);
-}
 
 /**
 ** @brief		Parse the color of an object from a string

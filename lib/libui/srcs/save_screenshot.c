@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 10:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/08 19:51:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 20:03:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline char
 {
 	time_t	t;
 	char	time_stamp[70];
-	char 	*scene_name;
+	char	*scene_name;
 
 	t = time(&t);
 	strftime(time_stamp, sizeof(time_stamp), "%F_%T.bmp", localtime(&t));

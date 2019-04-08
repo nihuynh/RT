@@ -2,6 +2,7 @@
 	"C_Cpp.intelliSenseEngineFallback": "Disabled",
 	"files.associations": {
 		"rt.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"libui.h": "c"
 	}
 }

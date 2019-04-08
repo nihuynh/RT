@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 14:08:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 16:26:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:14:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	texture_strips(t_color *color, float x, float y)
 {
 	float	pattern;
 	float	angle;
-	(void)y;
 
 	angle = 45 * M_PI / 180;
 	pattern = x * cosf(angle) - y * sinf(angle);

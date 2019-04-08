@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:33:27 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 17:41:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 21:00:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 void	vec3_refract(t_inter *inter, t_vec3 *vf, float ior)
 {
 	float	toby[5];
-	t_vec3	tmpi;
-	t_vec3	tmpn;
+	t_vec3	tmp[2];
 
-	tmpi = inter->ray.n;
-	tmpn = inter->n;
+	tmp[0] = inter->ray.n;
+	tmp[1] = inter->n;
 	*vf = inter->n;
 	AAAA = ft_clampf(vec3_dot(&inter->ray.n, &inter->n), -1, 1);
 	BBBB = 1;
@@ -31,19 +30,15 @@ void	vec3_refract(t_inter *inter, t_vec3 *vf, float ior)
 	else
 	{
 		ft_swapf(&BBBB, &CCCC);
-		vf->x = -vf->x;
-		vf->y = -vf->y;
-		vf->z = -vf->z;
+		vec3_scalar(vf, -1);
 	}
-	DDDD = BBBB / CCCC;
-	EEEE = 1 - DDDD * DDDD * (1 - AAAA * AAAA);
-	if (EEEE < 0)
+	if ((EEEE = 1 - (BBBB / CCCC) * (BBBB / CCCC) * (1 - AAAA * AAAA)) < 0)
 		ft_bzero(vf, sizeof(vf));
 	else
 	{
-		vec3_scalar(&tmpi, DDDD);
-		vec3_scalar(&tmpn, DDDD * AAAA - sqrtf(EEEE));
-		vec3_add(vf, &tmpi, &tmpn);
+		vec3_scalar(&tmp[0], (BBBB / CCCC));
+		vec3_scalar(&tmp[1], (BBBB / CCCC) * AAAA - sqrtf(EEEE));
+		vec3_add(vf, &tmp[0], &tmp[1]);
 		vec3_normalize(vf);
 	}
 }
