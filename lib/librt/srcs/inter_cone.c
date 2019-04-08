@@ -24,7 +24,8 @@
 **	CCCC = vec3_mag(&rene) * vec3_mag(&rene) - (1 + tan_theta2) * CCCC * CCCC;
 */
 
-static inline float	inter(t_ray *ray, t_cone *cone)
+static inline float
+	inter(t_ray *ray, t_cone *cone)
 {
 	float	toby[3];
 	float	res[2];
@@ -61,13 +62,14 @@ static inline int
 	inter_pt.y = data->ray.origin.y + dist * data->ray.n.y;
 	inter_pt.z = data->ray.origin.z + dist * data->ray.n.z;
 	vec3_sub(&origin_to_inter, &inter_pt, &cone->origin);
-	scale  = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
-	if (scale  > cone->size || scale <= 0)
+	scale = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
+	if (scale > cone->size || scale <= 0)
 		return (0);
 	return (1);
 }
 
-void				inter_cone(t_inter *data, t_obj *node)
+void
+	inter_cone(t_inter *data, t_obj *node)
 {
 	t_cone	*cone;
 	float	dist;
