@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 21:16:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 23:57:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "parse.h"
 #include "libft.h"
+#include <unistd.h>
 
 int
 	matcmp(void *content, void *key)

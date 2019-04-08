@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 21:15:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 23:54:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include "librt.h"
+# include "rt.h"
 
 # define ERR_PARSE_CONTENT	"ERROR :	Unknown object			at line : "
 
