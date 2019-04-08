@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/22 12:42:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:22:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,6 @@ void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
 void			texture_checkers(t_color *color, float x, float y);
 void			texture_strips(t_color *color, float x, float y);
+void			interface();
 
 #endif

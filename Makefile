@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/19 15:11:05 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/08 18:23:24 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
-				cast.c texture.c
+				cast.c texture.c interface.c
 # directories :
 SRCDIR  	:=	srcs
 OBJDIR 		:=	objs
@@ -30,8 +30,8 @@ LFT_RULE	:=	$(LFT_PATH)/$(LFT_NAME)
 # LIBRT
 LRT_NAME	:=	librt.a
 LRT_PATH	:=	lib/librt
-LRT_LIB	:=	-L $(LRT_PATH) -lrt
-LRT_INC	:=	-I $(LRT_PATH)/includes
+LRT_LIB		:=	-L $(LRT_PATH) -lrt
+LRT_INC		:=	-I $(LRT_PATH)/includes
 LRT_RULE	:=	$(LRT_PATH)/$(LRT_NAME)
 # LIBUI
 LUI_NAME	:=	libui.a
@@ -42,6 +42,12 @@ LUI_RULE	:=	$(LUI_PATH)/$(LUI_NAME)
 # SDL
 LSDL_LIB	:=	$(shell sdl2-config --libs)
 LSDL_INC	:=	$(shell sdl2-config --cflags)
+# CIMGUI
+CIMGUI_NAME	:=	cimgui.dylib
+CIMGUI_PATH :=	lib/cimgui
+CIMGUI_LIB	:=	cimgui.dylib
+CIMGUI_INC	:=	-I $(CIMGUI_PATH)
+CIMGUI_RULE	:=	$(CIMGUI_NAME)
 # **************************************************************************** #
 # Automatic variable :
 # If the first argument is "run"...
@@ -53,8 +59,8 @@ RUN_SCENE	:=	$(or $(RUN_ARGS),$(SCENE))
 SCENES		:= 	$(addprefix $(addprefix scenes/, $(RUN_SCENE)), .rt)
 OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
-LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB)
-INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC)
+LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB)
+INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC) $(CIMGUI_INC)
 # **************************************************************************** #
 # make specs :
 CC			:=	clang
@@ -81,7 +87,7 @@ PHELP		:=	"\033[36m%-26s\033[0m %s\n"
 .DEFAULT_GOAL := all
 all: lib $(NAME) ## Built the project (Default goal).
 .PHONY: all
-$(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(LUI_RULE)
+$(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(LUI_RULE) $(CIMGUI_RULE)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB)
 	@printf "\n\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)"
 -include $(DEP)
@@ -91,6 +97,9 @@ $(LRT_RULE):
 	$(MAKE) -sC $(LRT_PATH) $(LIBFLAGS)
 $(LUI_RULE):
 	$(MAKE) -sC $(LUI_PATH) $(LIBFLAGS)
+$(CIMGUI_RULE):
+	$(MAKE) -sC $(CIMGUI_PATH)
+	cp $(CIMGUI_PATH)/$(CIMGUI_NAME) .
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir $(OBJDIR) 2> /dev/null || true
 	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $< $(INC)
