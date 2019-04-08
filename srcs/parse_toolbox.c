@@ -112,15 +112,16 @@ void
 }
 
 /**
-** @brief Parse the normal of an object from a string
+** @brief Parse a vector from a string
 **
-** @param normal	Adress of the normal to parse
+** @param vec		Address of the vector to parse
 ** @param str		String to parse
 ** @param line		Current line of the parsing
+** @param key		Name of the key
 */
 
 void
-	parse_normal(t_vec3 *normal, char *str, int line)
+	parse_vector(t_vec3 *vec, char *str, int line, char *key)
 {
 	float	toby[3];
 	int		idx;
@@ -128,7 +129,7 @@ void
 	idx = -1;
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	str = check_key(str, line, "normal(", ERR_PARSE_NORMAL);
+	str = check_key(str, line, key, ERR_PARSE_NORMAL);
 	while (++idx < 3)
 	{
 		toby[idx] = ft_atof(str);
@@ -141,11 +142,11 @@ void
 	}
 	if (idx != 3 && ((*str >= '9' && *str <= '9') || *str == '-'))
 		ft_error_wmsg(ERR_PARSE_NORMAL, line, str);
-	normal->x = toby[0];
-	normal->y = toby[1];
-	normal->z = toby[2];
+	vec->x = toby[0];
+	vec->y = toby[1];
+	vec->z = toby[2];
 	if (DEBUG)
-		ft_printf("Normal : %f %f %f\n", normal->x, normal->y, normal->z);
+		ft_printf("Vector : %f %f %f\n", vec->x, vec->y, vec->z);
 }
 
 /**
