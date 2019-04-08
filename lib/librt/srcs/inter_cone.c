@@ -62,8 +62,8 @@ static inline int
 	inter_pt.y = data->ray.origin.y + dist * data->ray.n.y;
 	inter_pt.z = data->ray.origin.z + dist * data->ray.n.z;
 	vec3_sub(&origin_to_inter, &inter_pt, &cone->origin);
-	scale  = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
-	if (scale  > cone->size || scale <= 0)
+	scale = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
+	if (scale > cone->size || scale <= 0)
 		return (0);
 	return (1);
 }
