@@ -16,7 +16,7 @@
 # include "rtstruct.h"
 # include "color.h"
 
-# define DEG_TO_RAD(X)	((X) * (M_PI / 180))
+# define DEG_TO_RAD(X)	((X) * (M_PI_F / 180))
 # define M_PI_F (float)M_PI
 
 # define EPSILON		1e-6
