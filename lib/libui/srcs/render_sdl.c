@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 21:35:33 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 13:57:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 19:22:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void
 	}
 	SDL_RenderPresent(sdl->renderer);
 	elapsed_time = ft_curr_usec() - elapsed_time;
-	ft_printf("Frame took %f ms to render\n", (float) elapsed_time / 1000);
+	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }

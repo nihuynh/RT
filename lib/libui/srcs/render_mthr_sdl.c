@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 14:00:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 19:25:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,5 @@ void
 		pthread_join(toby[cthr], NULL);
 	apply_color(sdl);
 	elapsed_time = ft_curr_usec() - elapsed_time;
-	ft_printf("Frame took %f ms to render\n", (float) elapsed_time / 1000);
+	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }

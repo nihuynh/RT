@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 11:29:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/08 18:31:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 **	CCCC = vec3_mag(&rene) * vec3_mag(&rene) - (1 + tan_theta2) * CCCC * CCCC;
 */
 
-static inline float	inter(t_ray *ray, t_cone *cone)
+static inline float
+	inter(t_ray *ray, t_cone *cone)
 {
 	float	toby[3];
 	float	res[2];
@@ -67,7 +68,8 @@ static inline int
 	return (1);
 }
 
-void				inter_cone(t_inter *data, t_obj *node)
+void
+	inter_cone(t_inter *data, t_obj *node)
 {
 	t_cone	*cone;
 	float	dist;
