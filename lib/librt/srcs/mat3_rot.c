@@ -10,32 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "librt.h"
 #include "ftmath.h"
 #include "ftmem.h"
 
-static inline void	mat_special(t_matrix *mat, t_vec3 *vf)
-{
-	mat->m[0][0] = 1;
-	mat->m[0][1] = 0;
-	mat->m[0][2] = 0;
-	mat->m[1][0] = 0;
-	mat->m[1][1] = 0;
-	mat->m[2][0] = 0;
-	mat->m[2][2] = 0;
-	if (vf->y > 0)
-	{
-		mat->m[1][2] = -1;
-		mat->m[2][1] = 1;
-	}
-	else
-	{
-		mat->m[1][2] = 1;
-		mat->m[2][1] = -1;
-	}
-}
-
-static inline void	mat_unitaire(t_matrix *mat)
+static inline void
+	mat_unitaire(t_matrix *mat)
 {
 	mat->m[0][0] = 1;
 	mat->m[0][1] = 0;
@@ -48,69 +29,45 @@ static inline void	mat_unitaire(t_matrix *mat)
 	mat->m[2][2] = 1;
 }
 
-static inline void	rot_x(t_matrix *mat, t_vec3 *vi, t_vec3 *vf)
+static void
+	set_x_rotation(t_matrix *m, float angle)
 {
-	t_vec3	axis;
-	float	datcos;
-	float	datsin;
-	t_vec3	tmp;
-
-	ft_memcpy(&tmp, vf, sizeof(t_vec3));
-	ft_bzero(mat, sizeof(t_matrix));
-	vec3_normalize(&tmp);
-	tmp.z = (tmp.z > 0) ? -tmp.z : tmp.z;
-	tmp.x = (tmp.x > 0) ? -tmp.x : tmp.x;
-	tmp.z = (tmp.z < tmp.x) ? tmp.z : tmp.x;
-	tmp.z = (tmp.z == 0) ? -1 : tmp.z;
-	tmp.x = 0;
-	vec3_normalize(&tmp);
-	datcos = vec3_dot(vi, &tmp);
-	vec3_cross(vi, &tmp, &axis);
-	datsin = vec3_mag(&axis);
-	if (vf->y < 0)
-		datsin = -datsin;
-	mat->m[0][0] = 1;
-	mat->m[1][1] = datcos;
-	mat->m[1][2] = -datsin;
-	mat->m[2][1] = datsin;
-	mat->m[2][2] = datcos;
+	m->m[1][1] = cosf(angle);
+	m->m[2][1] = -sinf(angle);
+	m->m[1][2] = sinf(angle);
+	m->m[2][2] = cosf(angle);
 }
 
-static inline void	rot_y(t_matrix *mat, t_vec3 *vi, t_vec3 *vf)
+static void
+	set_y_rotation(t_matrix *m, float angle)
 {
-	t_vec3		axis;
-	float		datcos;
-	float		datsin;
-	t_vec3		tmp;
-
-	ft_memcpy(&tmp, vf, sizeof(t_vec3));
-	tmp.y = 0;
-	vec3_normalize(&tmp);
-	datcos = vec3_dot(vi, &tmp);
-	vec3_cross(vi, &tmp, &axis);
-	datsin = vec3_mag(&axis);
-	mat->m[0][0] = axis.x * axis.x * (1 - datcos) + datcos;
-	mat->m[0][1] = axis.x * axis.y * (1 - datcos) - axis.z * datsin;
-	mat->m[0][2] = axis.x * axis.z * (1 - datcos) + axis.y * datsin;
-	mat->m[1][0] = 0;
-	mat->m[1][1] = 1;
-	mat->m[1][2] = 0;
-	mat->m[2][0] = axis.z * axis.x * (1 - datcos) - axis.y * datsin;
-	mat->m[2][1] = axis.z * axis.y * (1 - datcos) + axis.x * datsin;
-	mat->m[2][2] = axis.z * axis.z * (1 - datcos) + datcos;
+	m->m[0][0] = cosf(angle);
+	m->m[2][0] = sinf(angle);
+	m->m[0][2] = -sinf(angle);
+	m->m[2][2] = cosf(angle);
 }
 
-void				mat3_rot(t_matrix *mat_x, t_matrix *mat_y,
-										t_vec3 *vi, t_vec3 *vf)
+t_matrix
+	set_rotation(float x_angle, float y_angle)
 {
-	if (vf->x == 0 && vf->z == 0 && vf->y != 0)
-	{
-		mat_special(mat_x, vf);
-		mat_unitaire(mat_y);
-	}
-	else
-	{
-		rot_x(mat_x, vi, vf);
-		rot_y(mat_y, vi, vf);
-	}
+	t_matrix x_rotation;
+	t_matrix y_rotation;
+
+	mat_unitaire(&x_rotation);
+	mat_unitaire(&y_rotation);
+	set_x_rotation(&x_rotation, x_angle);
+	set_y_rotation(&y_rotation, y_angle);
+	return (matrix_mult(&y_rotation, &x_rotation));
+}
+
+t_matrix
+	create_rotation_from_direction(t_vec3 direction)
+{
+	float x_angle;
+	float y_angle;
+
+	vec3_cartesian_to_spherical(direction, &y_angle, &x_angle);
+	x_angle = x_angle - (M_PI_F / 2);
+	y_angle = -y_angle - M_PI_F;
+	return (set_rotation(x_angle, y_angle));
 }

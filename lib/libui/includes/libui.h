@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/18 11:39:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 19:25:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ typedef struct s_data_thr	t_data_thr;
 
 typedef struct		s_sdl
 {
-	int				isrender;
+	bool			needs_render;
 	int				width_vp;
 	int				height_vp;
-	// mthr render data
 	int				thr_len;
 	t_data_thr		*data_thr;
-	// pool render data
 	int				sample_scale;
 	int				pxl_idx;
 	int				offset;

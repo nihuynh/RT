@@ -1,7 +1,7 @@
 camera
 {
 	origin(0 0 20)
-	normal(0 0 -30)
+	direction(0 0 -30)
 }
 content
 {

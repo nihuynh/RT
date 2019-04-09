@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 14:00:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 19:25:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void
 	void		*ptr;
 	pthread_t	toby[THR_C];
 
-	if (sdl->isrender)
-		return ;
 	elapsed_time = ft_curr_usec();
 	cthr = -1;
 	sats = 0;
@@ -94,11 +92,11 @@ void
 		ptr = &(sdl->data_thr[cthr]);
 		sats = pthread_create(&toby[cthr], NULL, process_data, ptr);
 	}
-	sdl->isrender = 1;
+	sdl->needs_render = false;
 	cthr = -1;
 	while (++cthr < THR_C)
 		pthread_join(toby[cthr], NULL);
 	apply_color(sdl);
 	elapsed_time = ft_curr_usec() - elapsed_time;
-	ft_printf("Frame took %f ms to render\n", (float) elapsed_time / 1000);
+	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }

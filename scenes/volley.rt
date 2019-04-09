@@ -1,0 +1,26 @@
+camera
+{
+	origin(0 0 25)
+	direction(0 0 -1)
+}
+content
+{
+	object(light)
+	{
+		color(255 255 255)
+		origin(80 0 25)
+		intensity(80)
+	}
+	object(light)
+	{
+		color(255 255 255)
+		origin(-80 0 25)
+		intensity(80)
+	}
+	object(sphere)
+	{
+		origin(0 0 -50)
+		radius(30)
+		mat(blueplastic)
+	}
+}

@@ -10,70 +10,78 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include <stdbool.h>
+#include "rtstruct.h"
 #include "librt.h"
-#include "ftmem.h"
-#include <math.h>
+#include "rt.h"
 
-void
-	camera_pan(t_data *data, float agl)
+static t_vec3
+	get_delta_vector(t_cam *cam, t_vec3 forward, t_vec3 upward, t_vec3 strafe)
 {
-	float	tmp;
-	t_vec3	vi;
+	t_vec3	delta;
 
-	agl *= M_PI / 180;
-	vec3_new(&vi, 0, 0, -1);
-	tmp = data->cam.dir.x;
-	data->cam.dir.x = data->cam.dir.x * cos(agl) - data->cam.dir.z * sin(agl);
-	data->cam.dir.z = tmp * sin(agl) + data->cam.dir.z * cos(agl);
-	vec3_normalize(&data->cam.dir);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam.dir);
-	data->sdl.isrender = 0;
+	delta = (t_vec3){0, 0, 0};
+	if (cam->move_forward)
+		vec3_sub(&delta, &delta, &forward);
+	if (cam->move_backward)
+		vec3_add(&delta, &delta, &forward);
+	if (cam->strafe_right)
+		vec3_add(&delta, &delta, &strafe);
+	if (cam->strafe_left)
+		vec3_sub(&delta, &delta, &strafe);
+	if (cam->move_upward)
+		vec3_add(&delta, &delta, &upward);
+	if (cam->move_downward)
+		vec3_sub(&delta, &delta, &upward);
+	return (delta);
+}
+
+static bool
+	update_angles(t_cam *cam)
+{
+	bool has_changed;
+
+	has_changed = false;
+	if (cam->rotate_right && (has_changed = 1))
+		cam->y_angle += A_STEP;
+	if (cam->rotate_left && (has_changed = 1))
+		cam->y_angle += -A_STEP;
+	if (cam->rotate_up && (has_changed = 1))
+		cam->x_angle += -A_STEP;
+	if (cam->rotate_down && (has_changed = 1))
+		cam->x_angle += A_STEP;
+	return (has_changed);
 }
 
 void
-	camera_pitch(t_data *data, float angle)
+	update_camera(t_cam *cam, bool *needs_render)
 {
-	t_vec3	vi;
+	t_vec3	forward;
+	t_vec3	upward;
+	t_vec3	strafe;
+	t_vec3	delta;
 
-	angle *= M_PI / 180;
-	vec3_new(&vi, 0, 0, -1);
-	data->cam.dir.y += (angle > 0) ? 0.1 : -0.1;
-	vec3_normalize(&data->cam.dir);
-	mat3_rot(&data->matrix_camera[0], &data->matrix_camera[1], &vi, &data->cam.dir);
-	data->sdl.isrender = 0;
+	if (update_angles(cam))
+		*needs_render = true;
+	cam->rotation = set_rotation(cam->x_angle, cam->y_angle);
+	strafe = get_column(cam->rotation, 0);
+	upward = get_column(cam->rotation, 1);
+	forward = get_column(cam->rotation, 2);
+	delta = get_delta_vector(cam, forward, upward, strafe);
+	vec3_scalar(&delta, T_STEP);
+	if (delta.x != 0 || delta.y != 0 || delta.z != 0)
+		*needs_render = true;
+	vec3_add(&cam->pos, &cam->pos, &delta);
 }
 
 void
-	camera_zoom(t_data *data, float value)
+	set_direction(t_cam *cam, t_vec3 direction)
 {
-	float mag;
+	float azimuth;
+	float polar;
 
-	mag = 1 / vec3_mag(&data->cam.dir);
-	data->cam.pos.x += data->cam.dir.x * mag * value;
-	data->cam.pos.y += data->cam.dir.y * mag * value;
-	data->cam.pos.z += data->cam.dir.z * mag * value;
-	data->sdl.isrender = 0;
-}
-
-void
-	camera_height(t_data *data, float value)
-{
-	data->cam.pos.y += value;
-	data->sdl.isrender = 0;
-}
-
-void
-	camera_side(t_data *data, float value)
-{
-	t_vec3	side;
-	t_vec3	up;
-
-	vec3_new(&up, 0, 1, 0);
-	vec3_cross(&data->cam.dir, &up, &side);
-	vec3_normalize(&side);
-	data->cam.pos.x += side.x * value;
-	data->cam.pos.y += side.y * value;
-	data->cam.pos.z += side.z * value;
-	data->sdl.isrender = 0;
+	vec3_cartesian_to_spherical(direction, &azimuth, &polar);
+	cam->x_angle = polar - (M_PI_F / 2);
+	cam->y_angle = -azimuth - M_PI_F;
+	cam->rotation = set_rotation(cam->x_angle, cam->y_angle);
 }

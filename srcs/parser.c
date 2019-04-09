@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 17:37:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 21:12:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,12 @@ static inline void
 		obj->f_inter = &inter_cylinder;
 }
 
-int		matcmp(void *content, void *key)
-{
-	t_material	*mat;
-	char		*ckey;
-
-	mat = content;
-	ckey = key;
-	return (!ft_strncasecmp(mat->name, ckey, ft_strlen(mat->name)));
-}
-
 static inline int
 	parse_material(t_data *data, t_material *dst, char **tab, int idx)
 {
 	char		*str;
 	t_material	*mat;
+
 	if ((str = ft_strstr(tab[idx], "mat(")))
 	{
 		str += 4;

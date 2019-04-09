@@ -18,21 +18,19 @@
 static inline void
 	cam_ray(t_data *data, t_ray *res, float x, float y)
 {
-	double	fovt;
-	double	r;
-	t_pt3	p;
-	t_vec3	n;
+	float	fovt;
+	float	r;
+	t_pt3	direction;
 
-	r = WIDTH / (double)HEIGHT;
-	fovt = tan(FOV * M_PI / 360);
-	p.x = (float)((2 * x / WIDTH - 1) * fovt * r) + data->cam.pos.x;
-	p.y = (float)((1 - 2 * y / HEIGHT) * fovt) + data->cam.pos.y;
-	p.z = data->cam.pos.z - 1;
-	vec3_find(&data->cam.pos, &p, &n);
-	vec3_normalize(&n);
-	vec3_matrix_apply(&n, &data->matrix_camera[0], &data->matrix_camera[1]);
-	vec3_normalize(&n);
-	ray_new(res, &data->cam.pos, &n);
+	r = WIDTH / (float)HEIGHT;
+	fovt = tanf(DEG_TO_RAD(FOV) / 2);
+	direction.x = (2 * x / WIDTH - 1) * fovt * r;
+	direction.y = (1 - 2 * y / HEIGHT) * fovt;
+	direction.z = -1;
+	vec3_normalize(&direction);
+	apply_matrix(&direction, &data->cam.rotation);
+	vec3_normalize(&direction);
+	ray_new(res, &data->cam.pos, &direction);
 }
 
 int	recursive_cast(t_data *data, t_ray *rene, int depth);

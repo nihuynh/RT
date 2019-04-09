@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_matrix.c                                     :+:      :+:    :+:   */
+/*   vec3_spherical_cartesian.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 15:05:31 by sklepper          #+#    #+#             */
-/*   Updated: 2018/12/19 20:56:57 by nihuynh          ###   ########.fr       */
+/*   Created: 2019/04/05 17:59:42 by tdarchiv          #+#    #+#             */
+/*   Updated: 2019/04/08 20:09:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtstruct.h"
-#include "ftio.h"
+#include <rtstruct.h>
+#include <math.h>
 
-void				print_matrix(t_matrix *mat)
+/*
+** acos() maps [-1, 1] to [0, PI]
+** atan() maps [-inf, +inf] to [-PI, PI]
+*/
+
+void	vec3_cartesian_to_spherical(t_vec3 dir, float *azimuth, float *polar)
 {
-	char *format;
-
-	format = "Matrix :\nx : %f, %f ,%f\ny : %f, %f, %f\nz : %f, %f, %f\n";
-	ft_printf(format,
-			mat->m[0][0], mat->m[0][1], mat->m[0][2],
-			mat->m[1][0], mat->m[1][1], mat->m[1][2],
-			mat->m[2][0], mat->m[2][1], mat->m[2][2]);
+	*polar = acosf(dir.y);
+	*azimuth = atan2f(dir.x, dir.z);
 }

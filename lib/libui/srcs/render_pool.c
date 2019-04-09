@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 13:57:07 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/08 19:25:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ static inline void
 void
 	init_pool_render(t_sdl *sdl, int thr_count, int (*do_pxl) (int, int, void*))
 {
-	sdl->sample_scale = 1; // dont use for now
+	sdl->sample_scale = 1;
 	sdl->pxl_idx = 0;
 	sdl->offset = 0;
 }
 
+/*
+** Do the render
+** set the parameter
+** go for the compute
+** wait threads done
+*/
 
 void
 	render_pool(t_sdl *sdl, void *data)
@@ -40,14 +46,11 @@ void
 	long	elapsed_time;
 	t_pxl	idx;
 
-	if (sdl->isrender)
+	if (sdl->needs_render == false)
 		return ;
 	elapsed_time = ft_curr_usec();
-	// Do the render
-	// set the parameter
-	// go for the compute
-	// wait threads done
 	SDL_RenderPresent(sdl->renderer);
+	sdl->needs_render = false;
 	elapsed_time = ft_curr_usec() - elapsed_time;
-	ft_printf("Frame took %f ms to render\n", (float) elapsed_time / 1000);
+	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }
