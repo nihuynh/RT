@@ -9,7 +9,7 @@ set(DEBUG_FLAGS -g3)
 set(RELEASE_FLAGS -O2 -march=native -flto)
 set(PROFILE_FLAGS -g3 -O2 -march=native)
 
-add_compile_options(-Wall -Wextra -Werror -pedantic -std=c89)
+add_compile_options(-Wall -Wextra -Werror -pedantic)
 add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")
 add_compile_options("$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
@@ -59,4 +59,5 @@ target_sources(RT PRIVATE
         srcs/setter.c
         srcs/texture.c
         srcs/interface.c
+        srcs/utils.c
         )
