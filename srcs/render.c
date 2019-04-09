@@ -23,7 +23,7 @@ static inline void
 	t_pt3	direction;
 
 	r = WIDTH / (float)HEIGHT;
-	fovt = tanf(DEG_TO_RAD(FOV) / 2);
+	fovt = tanf((FOV * DEG_TO_RAD) / 2);
 	direction.x = (2 * x / WIDTH - 1) * fovt * r;
 	direction.y = (1 - 2 * y / HEIGHT) * fovt;
 	direction.z = -1;

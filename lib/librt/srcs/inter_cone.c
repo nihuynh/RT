@@ -33,7 +33,7 @@ static inline float
 	float	det;
 	t_vec3	rene;
 
-	cos_theta2 = cos(DEG_TO_RAD(cone->theta));
+	cos_theta2 = cos(cone->theta * DEG_TO_RAD);
 	cos_theta2 *= cos_theta2;
 	vec3_sub(&rene, &ray->origin, &cone->origin);
 	AAAA = vec3_dot(&ray->n, &cone->n);

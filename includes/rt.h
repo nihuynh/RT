@@ -45,7 +45,7 @@
 
 # define T_STEP			5
 # define Z_STEP			1
-# define A_STEP			DEG_TO_RAD(5)
+# define A_STEP			5 * DEG_TO_RAD
 # define MOUSE_SCALING	0.01f
 
 /*
