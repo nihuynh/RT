@@ -10,33 +10,27 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	libui.a
+NAME		:=	libimgui_impl.a
 RUNMODE		?=	dev
-SDL_SRC		:=	init_sdl.c error_sdl.c putpixel_sdl.c putcolor_sdl.c exit_sdl.c\
-				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
-				save_screenshot.c
-COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
-				colortoi.c color_max.c itocolor.c
-SRC			:=	$(SDL_SRC) $(COLOR)
+SRC			:=	imgui_impl_opengl2.cpp \
+				imgui_impl_sdl.cpp
 # directories :
-SRCDIR  	:=	srcs
+SRCDIR  	:=	.
 OBJDIR 		:=	objs
 INCDIR  	:=	includes
-# LIBFT
-LIBFT_NAME	:=	libft.a
-LIBFT_PATH	:=	../libft
-LFT_LIB	:=	-L $(LIBFT_PATH) -lft
-LFT_INC	:=	-I $(LIBFT_PATH)/includes
 # SDL
 LSDL_LIB	:=	$(shell sdl2-config --libs)
 LSDL_INC	:=	$(shell sdl2-config --cflags)
+# IMGUI
+LIMGUI_INC  :=	-I ../cimgui/imgui
 # **************************************************************************** #
 # make specs :
 CC			:=	clang
 CFLAGS		:=	-Werror -Wall -Wextra
 CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
+VERBOSE		:= TRUE
 ifeq ($(RUNMODE),dev)
-    CFLAGS	+=	-g3 -O0
+	CFLAGS	+=	-g3 -O0
 	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
 else
 	CFLAGS	+= -O2 -march=native -flto
@@ -48,10 +42,10 @@ RM			:=	/bin/rm -f
 .SUFFIXES:
 # **************************************************************************** #
 # Automatic variable :
-OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
-LIB			:=	$(LFT_LIB) $(LSDL_LIB)
-INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC)
+OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
+DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.cpp=.d))
+LIB			:=	$(LSDL_LIB)
+INC			:=	-I $(INCDIR) $(LSDL_INC) $(LIMGUI_INC)
 # **************************************************************************** #
 OKLOGO		:=	\033[80G\033[32m[OK]\033[0m\n
 GREP_ERR	:=	grep 'Error\|Warning' -C1 2> /dev/null || true
@@ -59,13 +53,13 @@ GREP_ERR	:=	grep 'Error\|Warning' -C1 2> /dev/null || true
 # Rules :
 all: $(NAME)
 .PHONY: all
-$(NAME): $(OBJ) $(LFT_RULE)
+$(NAME): $(OBJ)
 	libtool -static -o $@ $(OBJ) && ranlib $@
 	@printf "\033[1;34m$@\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 -include $(DEP)
 $(LFT_RULE):
 	make -C $(LFT_PATH)/
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: %.cpp
 	mkdir $(OBJDIR) 2> /dev/null || true
 	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $< $(INC)
 	@printf "\033[1;34m$(NAME)\033[25G\033[33mCompile $< $(OKLOGO)"

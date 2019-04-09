@@ -23,6 +23,7 @@ void	oneframe(char *filename)
 	if (reader(filename, &data) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
 	init_sdl(&data.sdl, WIDTH, HEIGHT);
+	interface(data.sdl.win);
 	init_render(&data);
 	if (MTHR)
 	{
@@ -42,7 +43,6 @@ int		main(int ac, char **av)
 		ft_putendl(USAGE);
 		return (-1);
 	}
-	// interface();
 	oneframe(av[1]);
 	while (DEBUG_LEAK)
 		;

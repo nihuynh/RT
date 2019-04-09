@@ -131,6 +131,6 @@ void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
 void			texture_checkers(t_color *color, float x, float y);
 void			texture_strips(t_color *color, float x, float y);
-void			interface();
+void			interface(SDL_Window* window);
 
 #endif

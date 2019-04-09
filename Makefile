@@ -12,6 +12,7 @@
 
 NAME		:=	RT
 #RUNMODE		?=	dev
+#VERBOSE		:= TRUE
 RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
@@ -48,6 +49,14 @@ CIMGUI_PATH :=	lib/cimgui
 CIMGUI_LIB	:=	cimgui.dylib
 CIMGUI_INC	:=	-I $(CIMGUI_PATH)
 CIMGUI_RULE	:=	$(CIMGUI_NAME)
+# IMGUI_IMPL
+IMGUI_IMPL_NAME	:= imgui_impl.a
+IMGUI_IMPL_PATH	:= lib/imgui_impl
+IMGUI_IMPL_LIB	:= -L $(IMGUI_IMPL_PATH) -limgui_impl
+IMGUI_IMPL_INC	:= -I $(IMGUI_IMPL_PATH)
+IMGUI_IMPL_RULE	:= $(IMGUI_IMPL_PATH)/$(IMGUI_IMPL_NAME)
+# OPENGL
+LOPENGL_LIB	:= -framework OpenGl
 # **************************************************************************** #
 # Automatic variable :
 # If the first argument is "run"...
@@ -59,8 +68,8 @@ RUN_SCENE	:=	$(or $(RUN_ARGS),$(SCENE))
 SCENES		:= 	$(addprefix $(addprefix scenes/, $(RUN_SCENE)), .rt)
 OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
-LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB)
-INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC) $(CIMGUI_INC)
+LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB) $(IMGUI_IMPL_LIB) $(LOPENGL_LIB) -lstdc++
+INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC) $(CIMGUI_INC) $(IMGUI_IMPL_INC)
 # **************************************************************************** #
 # make specs :
 CC			:=	clang
@@ -87,9 +96,9 @@ PHELP		:=	"\033[36m%-26s\033[0m %s\n"
 .DEFAULT_GOAL := all
 all: lib $(NAME) ## Built the project (Default goal).
 .PHONY: all
-$(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(LUI_RULE) $(CIMGUI_RULE)
+$(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(LUI_RULE) $(CIMGUI_RULE) $(IMGUI_IMPL_RULE)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB)
-	@printf "\n\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)"
+	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 -include $(DEP)
 $(LFT_RULE):
 	$(MAKE) -sC $(LFT_PATH) $(LIBFLAGS)
@@ -100,6 +109,8 @@ $(LUI_RULE):
 $(CIMGUI_RULE):
 	$(MAKE) -sC $(CIMGUI_PATH)
 	cp $(CIMGUI_PATH)/$(CIMGUI_NAME) .
+$(IMGUI_IMPL_RULE):
+	$(MAKE) -sC $(IMGUI_IMPL_PATH) $(LIBFLAGS)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir $(OBJDIR) 2> /dev/null || true
 	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $< $(INC)
@@ -108,6 +119,7 @@ lib: ## Built the libraries.
 	$(MAKE) -sC $(LFT_PATH) $(LIBFLAGS)
 	$(MAKE) -sC $(LRT_PATH) $(LIBFLAGS)
 	$(MAKE) -sC $(LUI_PATH) $(LIBFLAGS)
+	$(MAKE) -sC $(IMGUI_IMPL_PATH) $(LIBFLAGS)
 .PHONY: lib
 clean:  ## Clean of the project directory (.o & .d).
 	$(RM) $(OBJ)
@@ -119,6 +131,7 @@ lclean: ## Clean of the library.
 	$(MAKE) -C $(LFT_PATH)/ fclean
 	$(MAKE) -C $(LRT_PATH)/ fclean
 	$(MAKE) -C $(LUI_PATH)/ fclean
+	$(MAKE) -C $(IMGUI_IMPL_PATH)/ fclean
 .PHONY: lclean
 dclean: ## Clean of the documentation.
 	$(RM) -r docs/html 2> /dev/null || true
@@ -128,7 +141,9 @@ fclean: clean lclean dclean ## Full clean of the directory & the libs.
 	$(RM) $(NAME)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME) $(OKLOGO)"
 .PHONY: fclean
-re: fclean all ## Rebuilt the project.
+re: ## Rebuild the project.
+	make fclean
+	make all
 .PHONY: re
 git: fclean ## Clean the project directory & add file to git.
 	git add -A

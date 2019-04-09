@@ -63,7 +63,7 @@ all: $(NAME)
 .PHONY: all
 $(NAME): $(OBJ) $(LFT_RULE)
 	libtool -static -o $@ $(OBJ) && ranlib $@
-	@printf "\n\033[1;34m$@\033[25G\033[32mBuilt $@ $(OKLOGO)"
+	@printf "\033[1;34m$@\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 -include $(DEP)
 $(LFT_RULE):
 	make -C $(LFT_PATH)/
