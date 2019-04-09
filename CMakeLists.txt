@@ -45,4 +45,6 @@ target_sources(RT PRIVATE
         srcs/parser.c
         srcs/read.c
         srcs/render.c
-        srcs/setter.c)
+        srcs/setter.c
+        srcs/utils.c
+        )
