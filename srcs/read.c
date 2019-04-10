@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/08 23:57:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/10 16:57:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "parse.h"
 #include "libft.h"
 #include <unistd.h>
-
 
 /**
  * @brief	Parser for the camera
