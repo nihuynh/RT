@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 23:57:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/10 21:56:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void
 	t_list		*lst_node;
 
 	fd = ft_fopen_read(csv_file);
+	if (ft_gnl(fd, &line, "\n") > 0)
+		ft_strdel(&line);
 	while (ft_gnl(fd, &line, "\n") > 0)
 	{
 		if (!(split = ft_strsplit(line, ';')))

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 16:46:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/10 21:50:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static inline void
 	ray_new(res, &data->cam.pos, &direction);
 }
 
-int	recursive_cast(t_data *data, t_ray *rene, int depth);
-
 static inline void
 	deflect_cast(t_data *data, t_inter *inter, int depth)
 {
@@ -49,7 +47,7 @@ static inline void
 	}
 	else if (inter->obj->material.absorb_idx != 0)
 	{
-		fresnel(inter, 1.5);
+		fresnel(inter, 1.2);
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);

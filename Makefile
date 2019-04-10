@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/08 23:55:39 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/10 21:43:57 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,9 +152,9 @@ ls: ## List all the repo to see if the clean is done.
 	| grep -Fv scenes | grep -Fv auteur | awk 'NF!=0'
 .PHONY: ls
 norme: ## Check the norme of the project and the libraries.
-	norminette -R CheckForbiddenSourceHeader srcs includes | $(GREP_ERR)
 	$(MAKE) -C $(LFT_PATH) norme
 	$(MAKE) -C $(LRT_PATH) norme
 	$(MAKE) -C $(LUI_PATH) norme
+	norminette srcs includes | $(GREP_ERR)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mNorminette $(OKLOGO)"
 .PHONY: norme

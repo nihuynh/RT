@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/08 21:15:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/10 21:49:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@
 # define NO_I_LIGHT		0
 # define NO_SHINE		0
 # define NO_SHADOW		0
-# define NO_DEFLECT		0
-# define NO_ABSORB		0
-# define DEPTH_MAX		4
+# define DEPTH_MAX		2
 
 # define DEBUG			0
-# define DEBUG_LEAK		0
 # define MAC			DEV
 # define MTHR			1
 
@@ -52,7 +49,7 @@
 ** Static def :
 */
 
-# define FOV			90.0f
+# define FOV			40.0f
 
 # define DEV			0
 # define MACB			1
@@ -126,6 +123,7 @@ int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
+int				recursive_cast(t_data *data, t_ray *rene, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 float			cast_light_primary(t_data *data, t_inter *inter);
 void			camera_angle(t_data *data, int pan, int pitch);

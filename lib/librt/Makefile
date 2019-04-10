@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/19 01:11:30 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/10 21:41:11 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,6 @@ git: fclean
 	git status
 .PHONY: git
 norme:
-	norminette -R CheckForbiddenSourceHeader srcs includes | $(GREP_ERR)
+	norminette srcs includes | $(GREP_ERR)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mNorminette $(OKLOGO)"
 .PHONY: norme
