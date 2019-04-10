@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/24 16:28:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/10 16:57:12 by nihuynh          ###   ########.fr       */
+/*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
+/*   Updated: 2019/04/10 17:13:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include <unistd.h>
 
 /**
- * @brief	Parser for the camera
- *
- * @param greed		Contains the whole input file
- * @param data		General struct for holding data
- * @param line_idx	Line index to navigate in greed
- * @return int		Line on which it finished parsing the camera
- */
+** @brief	Parser for the camera
+**
+** @param greed		Contains the whole input file
+** @param data		General struct for holding data
+** @param line_idx	Line index to navigate in greed
+** @return int		Line on which it finished parsing the camera
+*/
 
 int
 	parse_camera(char **greed, t_data *data, int line_idx)
@@ -38,14 +38,14 @@ int
 }
 
 /**
- * @brief	Sorting objects in the content section of the input file
- *
- * @param greed		Contains the whole input file
- * @param data		General struct for holding data
- * @param line_idx	Line index to navigate in greed
- * @param line_max	Maximum value for line_idx
- * @return int		Returns the line on which it finished parsing the content
- */
+** @brief	Sorting objects in the content section of the input file
+**
+** @param greed		Contains the whole input file
+** @param data		General struct for holding data
+** @param line_idx	Line index to navigate in greed
+** @param line_max	Maximum value for line_idx
+** @return int		Returns the line on which it finished parsing the content
+*/
 
 int
 	parse_content(char **greed, t_data *data, int line_idx, int line_max)
@@ -74,12 +74,12 @@ int
 }
 
 /**
- * @brief	First sort between the camera parser and the content parser
- *
- * @param greed		Contains the whole input file
- * @param data		General struct for holding data
- * @param line_max	Maximum value for line_idx
- */
+** @brief	First sort between the camera parser and the content parser
+**
+** @param greed		Contains the whole input file
+** @param data		General struct for holding data
+** @param line_max	Maximum value for line_idx
+*/
 
 void
 	parser(char **greed, t_data *data, int line_max)
@@ -99,12 +99,12 @@ void
 }
 
 /**
- * @brief	Reading the input file and beginning parsing
- *
- * @param str	Name of the input file
- * @param data	General struct for holding data
- * @return int	Return 0 if everything went right, 1 otherwise
- */
+** @brief	Reading the input file and beginning parsing
+**
+** @param str	Name of the input file
+** @param data	General struct for holding data
+** @return int	Return 0 if everything went right, 1 otherwise
+*/
 
 int
 	reader(char *str, t_data *data)
