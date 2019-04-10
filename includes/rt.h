@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/08 21:15:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/10 22:01:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
-# define MAC			DEV
+# define MAC			IMAC
 # define MTHR			1
 
 /*
@@ -52,7 +52,7 @@
 ** Static def :
 */
 
-# define FOV			90.0f
+# define FOV			45.0f
 
 # define DEV			0
 # define MACB			1
@@ -137,5 +137,6 @@ void			camera_pan(t_data *data, float angle);
 void			texture_checkers(t_color *color, float x, float y);
 void			texture_strips(t_color *color, float x, float y);
 void			interface(SDL_Window* window);
+void		interface_test(SDL_Window *window);
 
 #endif

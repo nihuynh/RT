@@ -3,9 +3,10 @@
         {
             "name": "Mac",
             "includePath": [
-				"${workspaceFolder}/**",
-				"/Users/nihuynh/.brew/Cellar/sdl2/2.0.9_1/include/SDL2",
-				"/Users/sklepper/.brew/Cellar/sdl2/2.0.9/include/SDL2"
+                "${workspaceFolder}/**",
+                "/Users/nihuynh/.brew/Cellar/sdl2/2.0.9_1/include/SDL2",
+                "/Users/sklepper/.brew/Cellar/sdl2/2.0.9/include/SDL2",
+                "${workspaceFolder}/lib/cimgui"
             ],
             "defines": [],
             "macFrameworkPath": [
