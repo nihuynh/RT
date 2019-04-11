@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdarchiv <tdarchiv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:16:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/03/14 18:48:57 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:40:09 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,13 @@ void	update(void *arg)
 
 	app = arg;
 	update_camera(&app->cam, &app->sdl.needs_render);
+}
+
+void	render_gui(void *arg)
+{
+	t_data *app;
+
+	app = arg;
+	update_texture(app->sdl.img, app->gui);
+	interface(app->gui, app->sdl.win, app->sdl.img);
 }

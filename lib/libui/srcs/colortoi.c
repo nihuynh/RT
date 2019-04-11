@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colortoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/13 21:16:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/11 18:42:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	colortoi(t_color *color)
 {
-	return ((color->r << 16) + (color->g << 8) + color->b);
+	return ((color->r) + (color->g << 8) + (color->b << 16) );
 }

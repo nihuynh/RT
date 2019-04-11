@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mthr_sdl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 19:25:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/11 19:03:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,7 @@
 static inline void
 	putcolor(t_sdl *sdl, int color, int x, int y)
 {
-	t_color	tmp;
-
-	tmp.r = ((color & MASK_RED) >> 16);
-	tmp.g = ((color & MASK_GREEN) >> 8);
-	tmp.b = (color & MASK_BLUE);
-	SDL_SetRenderDrawColor(sdl->renderer, tmp.r, tmp.g, tmp.b, 255);
-	SDL_RenderDrawPoint(sdl->renderer, x, y);
+	sdl->img.pixels[y * sdl->img.width + x] = (uint32_t)color | 0xFF000000; //TODO mieux integrer ça
 }
 
 static inline void
@@ -51,7 +45,6 @@ static inline void
 			idx.x += 4;
 		}
 	}
-	SDL_RenderPresent(sdl->renderer);
 }
 
 static inline void
@@ -68,7 +61,7 @@ static inline void
 	i = -1;
 	while (++i < sdl->thr_len)
 	{
-		slice->data[i] = slice->do_pxl(i % sdl->width_vp,
+			slice->data[i] = slice->do_pxl(i % sdl->width_vp,
 			ofs + i / sdl->width_vp,
 			slice->prg_data);
 	}

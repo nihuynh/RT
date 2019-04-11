@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 15:59:03 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:11:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RTSTRUCT_H
 
 # include <stdbool.h>
+# include <stdint.h>
 # include "color.h"
 
 typedef struct	s_vec3
@@ -76,6 +77,11 @@ typedef struct	s_light
 	t_color		color;
 	float		intensity;
 }				t_light;
+
+typedef struct	s_gui
+{
+	uint32_t	texture_id;
+}				t_gui;
 
 typedef struct	s_cam
 {

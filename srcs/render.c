@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 16:46:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/11 18:46:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static inline void
 	float	r;
 	t_pt3	direction;
 
-	r = WIDTH / (float)HEIGHT;
+	r = data->sdl.img.width / (float)data->sdl.img.height;
 	fovt = tanf(DEG_TO_RAD(FOV) / 2);
-	direction.x = (2 * x / WIDTH - 1) * fovt * r;
-	direction.y = (1 - 2 * y / HEIGHT) * fovt;
+	direction.x = (2 * x / data->sdl.img.width - 1) * fovt * r;
+	direction.y = (1 - 2 * y / data->sdl.img.height) * fovt;
 	direction.z = -1;
 	vec3_normalize(&direction);
 	apply_matrix(&direction, &data->cam.rotation);
@@ -41,13 +41,13 @@ static inline void
 	t_color	primary;
 	t_ray	absorbed;
 
-	if (inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
+	if (!NO_DEFLECT && inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
 	{
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
-	else if (inter->obj->material.absorb_idx != 0)
+	else if (!NO_ABSORB && inter->obj->material.absorb_idx != 0)
 	{
 		fresnel(inter, 1.5);
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));

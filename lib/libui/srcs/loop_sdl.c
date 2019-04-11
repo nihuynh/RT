@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   loop_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/14 17:32:58 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:41:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
 #include "ftio.h"
+#include "imgui_impl_sdl.h"
 
 /**
 ** @brief Loop waiting for events to happen
@@ -30,6 +31,7 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 	{
 		while (SDL_PollEvent(&event))
 		{
+			ImGui_ImplSDL2_ProcessEvent(&event);
 			if (event.type == SDL_QUIT)
 				quit = 1;
 			else if (event.type == SDL_KEYDOWN && sdl->key_map)
@@ -43,5 +45,7 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 			sdl->update(arg);
 		if (sdl->needs_render && sdl->data_thr)
 			render_mthr_sdl(sdl);
+		if (sdl->render_gui)
+			sdl->render_gui(arg);
 	}
 }

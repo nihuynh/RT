@@ -3,6 +3,9 @@
 	"files.associations": {
 		"rt.h": "c",
 		"libft.h": "c",
-		"libui.h": "c"
+		"libui.h": "c",
+		"rtstruct.h": "c",
+		"cimgui.h": "c",
+		"imgui_impl_opengl2.h": "c"
 	}
 }
