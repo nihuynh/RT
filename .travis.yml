@@ -1,0 +1,9 @@
+os: osx
+language: c
+addons:
+  homebrew:
+    packages:
+    - sdl2
+script: make
+notifications:
+  slack: 42born2code:6JQ1d0KBj9Vggul0KNL9p0fW
