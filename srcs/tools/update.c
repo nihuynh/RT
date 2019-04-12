@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:16:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/04/11 17:40:09 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:39:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	render_gui(void *arg)
 
 	app = arg;
 	update_texture(app->sdl.img, app->gui);
-	interface(app->gui, app->sdl.win, app->sdl.img);
+	interface(app);
 }

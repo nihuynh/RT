@@ -6,25 +6,11 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 16:56:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 20:17:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define CIMGUI_DEFINE_ENUMS_AND_STRUCTS
-
-#include "rt.h"
-#include <SDL_video.h>
-#include <SDL.h>
-#include <OpenGL/gl.h>
-#include "cimgui.h"
-#define FLAGS1	ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar
-#define FLAGS2	ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoNav
-#define FLAGS3	ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoCollapse
-#define RENDER_FLAGS FLAGS1 | FLAGS2 | FLAGS3
-#include "imgui_impl_sdl.h"
-#include "imgui_impl_opengl2.h"
-#include "libft.h"
-typedef struct SDL_Window SDL_Window;
+#include "interface.h"
 
 void	window_renderer(t_gui gui, t_img img)
 {
@@ -40,24 +26,17 @@ void	window_renderer(t_gui gui, t_img img)
 	igPopStyleVar(2);
 }
 
-void	window_object()
-{
-	igBegin("Scene", NULL, 0);
-	igText("Scene modifier here");
-	igEnd();
-}
-
 void	window_log(bool *p_open)
 {
 	igBegin("Log", p_open, 0);
-	igText("Scene modifier here");
+	igText("Logs here");
 	igEnd();
 }
 
-void	gui_setup(t_gui *gui, t_img img)
+void	gui_setup(t_gui *gui, t_img img, t_data *app)
 {
 	window_renderer(*gui, img);
-	window_object();
+	window_scene(app);
 	if (gui->log_open)
 		window_log(&gui->log_open);
 }
@@ -69,35 +48,19 @@ void	update_texture(t_img img, t_gui gui)
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void	init_interface(t_gui *gui, SDL_Window *window)
-{
-	SDL_GLContext gl_context;
-
-	gui->log_open = true;
-	gl_context = SDL_GL_CreateContext(window);
-	igCreateContext(NULL);
-	ImGui_ImplSDL2_InitForOpenGL(window, &gl_context);
-	ImGui_ImplOpenGL2_Init();
-	glGenTextures(1, &gui->texture_id);
-	glBindTexture(GL_TEXTURE_2D, gui->texture_id);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-void	interface(t_gui gui, SDL_Window *window, t_img img)
+void	interface(t_data *app)
 {
 	ImGuiIO *io;
 
 	io = igGetIO();
 	ImGui_ImplOpenGL2_NewFrame();
-	ImGui_ImplSDL2_NewFrame(window);
+	ImGui_ImplSDL2_NewFrame(app->sdl.win);
 	igNewFrame();
-	gui_setup(&gui, img);
+	gui_setup(&app->gui, app->sdl.img, app);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
 	glClearColor(0.4, 0.55, 0.6, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL2_RenderDrawData(igGetDrawData());
-	SDL_GL_SwapWindow(window);
+	SDL_GL_SwapWindow(app->sdl.win);
 }

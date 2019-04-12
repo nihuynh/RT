@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 16:13:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:55:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static inline void
 	t_pt3	direction;
 
 	r = data->sdl.img.width / (float)data->sdl.img.height;
-	fovt = tanf((FOV * DEG_TO_RAD) / 2);
+	fovt = tanf((data->scene_settings.fov * DEG_TO_RAD) / 2);
 	direction.x = (2 * x / data->sdl.img.width - 1) * fovt * r;
 	direction.y = (1 - 2 * y / data->sdl.img.height) * fovt;
 	direction.z = -1;
@@ -49,7 +49,7 @@ static inline void
 	else if (data->scene_settings.no_absorb == 0
 		&& inter->obj->material.absorb_idx != 0)
 	{
-		fresnel(inter, 1.2);
+		fresnel(inter, 1.5);
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);

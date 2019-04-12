@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 16:19:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 20:23:55 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Config :
 */
 
-# define BACK_COLOR		0x000000
+# define BACK_COLOR		0xFF0000
 # define AMB_LIGHT		0.0625f
 # define NO_LIGHT		0
 # define NO_FACING		0
@@ -32,13 +32,13 @@
 # define NO_SHADOW		0
 # define NO_DEFLECT		0
 # define NO_ABSORB		0
-# define DEPTH_MAX		4
+# define DEPTH_MAX		2
 
-#define GUI				0
+# define GUI			1
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
-# define MAC			dev
+# define MAC			IMAC
 # define MTHR			1
 
 /*
@@ -104,15 +104,15 @@ typedef struct s_scene
 {
 	int			back_color;
 	float		amb_light;
-	int			no_light;
-	int			no_facing;
-	int			no_i_light;
-	int			no_shine;
-	int			no_shadow;
-	int			no_deflect;
-	int			no_absorb;
+	bool		no_light;
+	bool		no_facing;
+	bool		no_i_light;
+	bool		no_shine;
+	bool		no_shadow;
+	bool		no_deflect;
+	bool		no_absorb;
 	int			depth_max;
-	int			fov;
+	float		fov;
 }				t_scene;
 
 
@@ -159,7 +159,7 @@ void			texture_checkers(t_color *color, float x, float y);
 void			texture_strips(t_color *color, float x, float y);
 void			init_interface(t_gui *gui, SDL_Window *window);
 void			init(t_data	*data);
-void			interface(t_gui gui, SDL_Window *window, t_img img);
+void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);
 void			render_gui(void *arg);
 

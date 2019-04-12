@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/12 20:17:42 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/12 21:00:28 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
-				cast.c texture.c utils.c interface.c
+				cast.c texture.c utils.c interface.c interface_scene.c \
+				init_interface.c interface_colors.c
 # directories :
 VPATH       := ./srcs:./srcs/parser:./srcs/render:./srcs/tools:./srcs/interface:
 OBJDIR 		:=	objs
