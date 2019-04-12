@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 21:35:33 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 19:22:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 23:14:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void
 			putcolor(sdl, do_pxl(idx.x, idx.y, data), idx.x, idx.y);
 	}
 	SDL_RenderPresent(sdl->renderer);
+	sdl->needs_render = false;
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }

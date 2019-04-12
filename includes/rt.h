@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 22:32:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 23:20:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 
 # define DEBUG			0
 # define MAC			IMAC
-# define MTHR			1
 
 /*
 ** User def :

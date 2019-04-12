@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 22:09:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 23:15:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 int		init_sdl(t_sdl *sdl, int width, int height)
 {
 	ft_bzero(sdl, sizeof(t_sdl));
-	sdl->height_vp = height / 2;
-	sdl->width_vp = width / 2;
+	sdl->height_vp = height;
+	sdl->width_vp = width;
 	sdl->img.height = height / 2;
 	sdl->img.width = width / 2;
 	if (!(sdl->img.pixels = malloc(sizeof(uint32_t)

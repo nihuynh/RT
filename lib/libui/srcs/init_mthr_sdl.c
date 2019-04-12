@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 00:14:04 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/19 20:59:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 23:18:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_mthr_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
 	int	vp_len;
 
 	idx = -1;
-	vp_len = sdl->width_vp * sdl->height_vp;
+	vp_len = sdl->img.width * sdl->img.height;
 	sdl->thr_len = vp_len / THR_C;
 	if (!(sdl->data_thr = ft_memalloc(sizeof(t_data_thr) * THR_C)))
 		ft_error(__func__, __LINE__);
