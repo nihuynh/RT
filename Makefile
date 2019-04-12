@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/10 21:43:57 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/12 20:17:42 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
 				cast.c texture.c utils.c interface.c
 # directories :
-SRCDIR  	:=	srcs
+VPATH       := ./srcs:./srcs/parser:./srcs/render:./srcs/tools:./srcs/interface:
 OBJDIR 		:=	objs
 INCDIR  	:=	includes
 # LIBFT
@@ -111,7 +111,7 @@ $(CIMGUI_RULE):
 	cp $(CIMGUI_PATH)/$(CIMGUI_NAME) .
 $(IMGUI_IMPL_RULE):
 	$(MAKE) -sC $(IMGUI_IMPL_PATH) $(LIBFLAGS)
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: %.c
 	mkdir $(OBJDIR) 2> /dev/null || true
 	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $< $(INC)
 	@printf "\033[1;34m$(NAME)\033[25G\033[33mCompile $< $(OKLOGO)"

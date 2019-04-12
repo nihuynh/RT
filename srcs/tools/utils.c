@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/10 21:56:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 20:12:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void
 		ft_strdel(&line);
 	while (ft_gnl(fd, &line, "\n") > 0)
 	{
-		if (!(split = ft_strsplit(line, ';')))
+		if (!(split = ft_strsplit(line, ',')))
 			ft_error(__func__, __LINE__);
 		if (ft_tablen(split) != 9)
 			ft_error(__func__, __LINE__);
