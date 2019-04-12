@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 20:12:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:41:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
+# include <OpenGL/gl.h>
+# include "cimgui.h"
+# include "imgui_impl_sdl.h"
+# include "imgui_impl_opengl2.h"
 
 void	init_interface(t_gui *gui, SDL_Window *window)
 {

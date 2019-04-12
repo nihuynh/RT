@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 21:14:37 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:38:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
-
+# include "cimgui.h"
 
 static inline void
 	light_settings(t_data *app)

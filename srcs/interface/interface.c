@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 20:17:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:40:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
+# include <OpenGL/gl.h>
+# include "cimgui.h"
+# include "imgui_impl_sdl.h"
+# include "imgui_impl_opengl2.h"
 
 void	window_renderer(t_gui gui, t_img img)
 {
