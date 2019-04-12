@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 20:23:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 21:11:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Config :
 */
 
-# define BACK_COLOR		0xFF0000
+# define BACK_COLOR		0x000000
 # define AMB_LIGHT		0.0625f
 # define NO_LIGHT		0
 # define NO_FACING		0

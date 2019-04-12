@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 20:17:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 21:09:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@
 typedef struct SDL_Window SDL_Window;
 
 void	window_scene(t_data *app);
+void	icolortogui(int src, float dest[3]);
+void	guicolortoi(float src[3], int *dest);
+void	colortogui(t_color src, float dest[3]);
+void	guitocolor(float src[3], t_color *dest);
 
 #endif

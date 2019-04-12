@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:44:11 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 20:51:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 21:10:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	guicolortoi(float src[3], int *dest)
 	tmp[0] = src[0];
 	tmp[1] = src[1];
 	tmp[2] = src[2];
-	dest = tmp[0] + (tmp[1] << 8) + (tmp[2] << 16);
+	*dest = tmp[0] + (tmp[1] << 8) + (tmp[2] << 16);
 }
 
 void	colortogui(t_color src, float dest[3])

@@ -6,11 +6,12 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 20:21:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 21:14:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
+
 
 static inline void
 	light_settings(t_data *app)
@@ -31,7 +32,9 @@ static inline void
 	igCheckbox("No Refraction", &app->scene_settings.no_absorb);
 	if (igTreeNodeStr("Sky Color"))
 	{
-		igColorEdit3("Sky Color", color, 0);
+		icolortogui(app->scene_settings.back_color, color);
+		igColorPicker3("Sky Color", color, 0);
+		guicolortoi(color, &app->scene_settings.back_color);
 		igTreePop();
 	}
 	igTreePop();
