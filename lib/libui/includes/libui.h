@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 22:16:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 00:12:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ typedef struct		s_pxl
 
 typedef struct s_data_thr	t_data_thr;
 
-typedef struct	s_img
+typedef struct		s_img
 {
-	uint32_t	*pixels;
-	int			width;
-	int			height;
-}				t_img;
-
+	uint32_t		*pixels;
+	int				width;
+	int				height;
+}					t_img;
 
 typedef struct		s_sdl
 {

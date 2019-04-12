@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:32:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 23:34:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 00:18:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	process_pixel(int x, int y, void *arg)
 	(void)x;
 	(void)y;
 	(void)arg;
-	return (0xFF0000);
+	// return (0xFF0000);
+	// return (0x00FF00);
+	return (0x0000FF);
 }
 
 int	main(void)

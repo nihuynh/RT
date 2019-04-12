@@ -6,15 +6,15 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 23:40:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 00:06:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
-# include <OpenGL/gl.h>
-# include "cimgui.h"
-# include "imgui_impl_sdl.h"
-# include "imgui_impl_opengl2.h"
+#include <OpenGL/gl.h>
+#include "cimgui.h"
+#include "imgui_impl_sdl.h"
+#include "imgui_impl_opengl2.h"
 
 void	window_renderer(t_gui gui, t_img img)
 {
@@ -24,7 +24,7 @@ void	window_renderer(t_gui gui, t_img img)
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
 	igBegin("render", NULL, RENDER_FLAGS);
 	igImage((void*)(intptr_t)gui.texture_id, (ImVec2){img.width, img.height},
-								(ImVec2){0, 0}, (ImVec2){1,1},
+								(ImVec2){0, 0}, (ImVec2){1, 1},
 								(ImVec4){1, 1, 1, 1}, (ImVec4){0, 0, 0, 0});
 	igEnd();
 	igPopStyleVar(2);
@@ -48,7 +48,8 @@ void	gui_setup(t_gui *gui, t_img img, t_data *app)
 void	update_texture(t_img img, t_gui gui)
 {
 	glBindTexture(GL_TEXTURE_2D, gui.texture_id);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.width, img.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.pixels);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.width, img.height, 0, GL_RGBA,
+		GL_UNSIGNED_BYTE, img.pixels);
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 

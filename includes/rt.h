@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 23:20:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 00:07:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@
 ** Structures :
 */
 
-typedef struct s_scene
+typedef struct	s_scene
 {
 	int			back_color;
 	float		amb_light;
@@ -102,7 +102,6 @@ typedef struct s_scene
 	int			depth_max;
 	float		fov;
 }				t_scene;
-
 
 typedef struct	s_data
 {

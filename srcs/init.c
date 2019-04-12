@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 22:09:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 00:08:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void
 }
 
 void
-	init(t_data	*data)
+	init(t_data *data)
 {
 	init_scene(&data->scene_settings);
 	init_sdl(&data->sdl, WIDTH, HEIGHT);
