@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 16:20:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 22:15:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 	{
 		while (SDL_PollEvent(&event))
 		{
-			if (sdl->gui == 1)
-				ImGui_ImplSDL2_ProcessEvent(&event);
+			ImGui_ImplSDL2_ProcessEvent(&event);
 			if (event.type == SDL_QUIT)
 				quit = 1;
 			else if (event.type == SDL_KEYDOWN && sdl->key_map)
@@ -46,7 +45,7 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 			sdl->update(arg);
 		if (sdl->needs_render && sdl->data_thr)
 			render_mthr_sdl(sdl);
-		if (sdl->render_gui && sdl->gui == 1)
+		if (sdl->render_gui)
 			sdl->render_gui(arg);
 	}
 }

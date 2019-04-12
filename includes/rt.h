@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 21:11:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 22:32:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,10 @@
 
 # define BACK_COLOR		0x000000
 # define AMB_LIGHT		0.0625f
-# define NO_LIGHT		0
-# define NO_FACING		0
-# define NO_I_LIGHT		0
-# define NO_SHINE		0
-# define NO_SHADOW		0
-# define NO_DEFLECT		0
-# define NO_ABSORB		0
+# define FOV			40.0f
 # define DEPTH_MAX		2
 
-# define GUI			1
-
 # define DEBUG			0
-# define DEBUG_LEAK		0
 # define MAC			IMAC
 # define MTHR			1
 
@@ -53,8 +44,6 @@
 /*
 ** Static def :
 */
-
-# define FOV			40.0f
 
 # define DEV			0
 # define MACB			1
@@ -94,7 +83,7 @@
 ** Messages for RTV1 :
 */
 
-# define USAGE "usage : ./rtv1 scenes/map_name"
+# define USAGE "Usage : ./RT <scene.rt> [options]\nOptions : hlt"
 
 /*
 ** Structures :

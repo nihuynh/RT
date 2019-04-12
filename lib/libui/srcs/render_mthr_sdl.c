@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mthr_sdl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 15:55:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 22:20:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,12 @@
 #include "libft.h"
 
 static inline void
-	putcolor_gui(t_sdl *sdl, int color, int x, int y)
-{
-	sdl->img.pixels[y * sdl->img.width + x] = (uint32_t)color | 0xFF000000; //TODO mieux integrer ça
-}
-
-static inline void
-	putcolor(t_sdl *sdl, int color, int x, int y)
-{
-	t_color	tmp;
-
-	tmp.r = (color & MASK_RED);
-	tmp.g = ((color & MASK_GREEN) >> 8);
-	tmp.b = ((color & MASK_BLUE) >> 16);
-	SDL_SetRenderDrawColor(sdl->renderer, tmp.r, tmp.g, tmp.b, 255);
-	SDL_RenderDrawPoint(sdl->renderer, x, y);
-}
-
-static inline void
 	apply_color(t_sdl *sdl)
 {
-	t_pxl	idx;
-	int		ofs;
-	int		*cursor;
-	t_pxl	pxl;
+	t_pxl		idx;
+	int			ofs;
+	uint32_t	*pc;
+	int			pxl_idx;
 
 	idx.y = -1;
 	while (++idx.y < THR_C)
@@ -47,23 +29,13 @@ static inline void
 		ofs = idx.y * (sdl->height_vp / THR_C);
 		while (idx.x < sdl->thr_len)
 		{
-			cursor = &sdl->data_thr[idx.y].data[idx.x];
-			pxl.x = idx.x % sdl->width_vp;
-			pxl.y = ofs + idx.x / sdl->width_vp;
-			if (sdl->gui == 0)
-			{
-				putcolor(sdl, cursor[0], pxl.x, pxl.y);
-				putcolor(sdl, cursor[1], pxl.x + 1, pxl.y);
-				putcolor(sdl, cursor[2], pxl.x + 2, pxl.y);
-				putcolor(sdl, cursor[3], pxl.x + 3, pxl.y);
-			}
-			else
-			{
-				putcolor_gui(sdl, cursor[0], pxl.x, pxl.y);
-				putcolor_gui(sdl, cursor[1], pxl.x + 1, pxl.y);
-				putcolor_gui(sdl, cursor[2], pxl.x + 2, pxl.y);
-				putcolor_gui(sdl, cursor[3], pxl.x + 3, pxl.y);
-			}
+			pc = (uint32_t *) &sdl->data_thr[idx.y].data[idx.x];
+			pxl_idx = (ofs + idx.x / sdl->width_vp) * sdl->img.width
+				+ idx.x % sdl->width_vp;
+			sdl->img.pixels[pxl_idx] = pc[0] | C_MASK;
+			sdl->img.pixels[pxl_idx + 1] = pc[1] | C_MASK;
+			sdl->img.pixels[pxl_idx + 2] = pc[2] | C_MASK;
+			sdl->img.pixels[pxl_idx + 3] = pc[3] | C_MASK;
 			idx.x += 4;
 		}
 	}
@@ -112,8 +84,6 @@ void
 	while (++cthr < THR_C)
 		pthread_join(toby[cthr], NULL);
 	apply_color(sdl);
-	if (sdl->gui == 0)
-		SDL_RenderPresent(sdl->renderer);
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }
