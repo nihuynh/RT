@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/10 21:50:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 16:13:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ static inline void
 	t_color	primary;
 	t_ray	absorbed;
 
-	if (!NO_DEFLECT && inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
+	if (data->scene_settings.no_deflect == 0
+	&& inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
 	{
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
-	else if (!NO_ABSORB && inter->obj->material.absorb_idx != 0)
+	else if (data->scene_settings.no_absorb == 0
+		&& inter->obj->material.absorb_idx != 0)
 	{
 		fresnel(inter, 1.2);
 		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
@@ -67,16 +69,16 @@ int
 	inter_set(&inter, rene);
 	cast_primary(data, &inter);
 	if (inter.obj == NULL)
-		return (BACK_COLOR);
+		return (data->scene_settings.back_color);
 	color_cpy(&primary, &inter.color);
-	color_scalar(&primary, AMB_LIGHT);
-	if (data->lst_light == NULL || NO_LIGHT)
+	color_scalar(&primary, data->scene_settings.amb_light);
+	if (data->lst_light == NULL || data->scene_settings.no_light == 1)
 		return (colortoi(&inter.color));
 	inter.find_normal(&inter);
 	cast_shadow(data, &inter);
-	color_scalar(&inter.color, 1.0f - AMB_LIGHT);
+	color_scalar(&inter.color, 1.0f - data->scene_settings.amb_light);
 	color_add(&inter.color, &primary);
-	if (depth < DEPTH_MAX)
+	if (depth < data->scene_settings.depth_max)
 		deflect_cast(data, &inter, depth);
 	return (colortoi(&inter.color));
 }

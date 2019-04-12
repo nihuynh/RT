@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/10 21:49:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 16:19:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,19 @@
 # define BACK_COLOR		0x000000
 # define AMB_LIGHT		0.0625f
 # define NO_LIGHT		0
-# define NO_FACING		1
-# define NO_I_LIGHT		1
-# define NO_SHINE		1
-# define NO_SHADOW		1
-# define NO_DEFLECT		1
-# define NO_ABSORB		1
-# define DEPTH_MAX		1
+# define NO_FACING		0
+# define NO_I_LIGHT		0
+# define NO_SHINE		0
+# define NO_SHADOW		0
+# define NO_DEFLECT		0
+# define NO_ABSORB		0
+# define DEPTH_MAX		4
+
+#define GUI				0
 
 # define DEBUG			0
 # define DEBUG_LEAK		0
-# define MAC			IMAC
+# define MAC			dev
 # define MTHR			1
 
 /*
@@ -98,15 +100,31 @@
 ** Structures :
 */
 
+typedef struct s_scene
+{
+	int			back_color;
+	float		amb_light;
+	int			no_light;
+	int			no_facing;
+	int			no_i_light;
+	int			no_shine;
+	int			no_shadow;
+	int			no_deflect;
+	int			no_absorb;
+	int			depth_max;
+	int			fov;
+}				t_scene;
+
+
 typedef struct	s_data
 {
+	t_scene		scene_settings;
 	t_sdl		sdl;
 	t_gui		gui;
 	t_list		*lst_obj;
 	t_list		*lst_light;
 	t_list		*lst_mat;
 	t_cam		cam;
-
 	char		*arg;
 }				t_data;
 

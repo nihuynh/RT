@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 13:53:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 16:17:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static inline void
 {
 	(key == SDLK_w) && (cam->move_forward = state);
 	(key == SDLK_s) && (cam->move_backward = state);
-	(key == SDLK_q) && (cam->move_upward = state);
-	(key == SDLK_e) && (cam->move_downward = state);
+	(key == SDLK_e) && (cam->move_upward = state);
+	(key == SDLK_q) && (cam->move_downward = state);
 	(key == SDLK_a) && (cam->strafe_left = state);
 	(key == SDLK_d) && (cam->strafe_right = state);
 	(key == SDLK_UP) && (cam->rotate_up = state);

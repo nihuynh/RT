@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/11 18:58:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:42:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ void	window_renderer(t_gui gui, t_img img)
 		igEnd();
 		return ;
 	}
-	igImage((void*)(intptr_t)gui.texture_id, (ImVec2){img.width, img.height}, (ImVec2){0, 0}, (ImVec2){1,1}, (ImVec4){1, 1, 1, 1}, (ImVec4){0, 0, 0, 0});
+	igImage((void*)(intptr_t)gui.texture_id, (ImVec2){img.width, img.height},
+								(ImVec2){0, 0}, (ImVec2){1,1},
+								(ImVec4){1, 1, 1, 1}, (ImVec4){0, 0, 0, 0});
 	igEnd();
 	igPopStyleVar(2);
 }

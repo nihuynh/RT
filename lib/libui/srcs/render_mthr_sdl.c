@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/11 19:03:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:55:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,21 @@
 #include "libft.h"
 
 static inline void
-	putcolor(t_sdl *sdl, int color, int x, int y)
+	putcolor_gui(t_sdl *sdl, int color, int x, int y)
 {
 	sdl->img.pixels[y * sdl->img.width + x] = (uint32_t)color | 0xFF000000; //TODO mieux integrer ça
+}
+
+static inline void
+	putcolor(t_sdl *sdl, int color, int x, int y)
+{
+	t_color	tmp;
+
+	tmp.r = (color & MASK_RED);
+	tmp.g = ((color & MASK_GREEN) >> 8);
+	tmp.b = ((color & MASK_BLUE) >> 16);
+	SDL_SetRenderDrawColor(sdl->renderer, tmp.r, tmp.g, tmp.b, 255);
+	SDL_RenderDrawPoint(sdl->renderer, x, y);
 }
 
 static inline void
@@ -38,10 +50,20 @@ static inline void
 			cursor = &sdl->data_thr[idx.y].data[idx.x];
 			pxl.x = idx.x % sdl->width_vp;
 			pxl.y = ofs + idx.x / sdl->width_vp;
-			putcolor(sdl, cursor[0], pxl.x, pxl.y);
-			putcolor(sdl, cursor[1], pxl.x + 1, pxl.y);
-			putcolor(sdl, cursor[2], pxl.x + 2, pxl.y);
-			putcolor(sdl, cursor[3], pxl.x + 3, pxl.y);
+			if (sdl->gui == 0)
+			{
+				putcolor(sdl, cursor[0], pxl.x, pxl.y);
+				putcolor(sdl, cursor[1], pxl.x + 1, pxl.y);
+				putcolor(sdl, cursor[2], pxl.x + 2, pxl.y);
+				putcolor(sdl, cursor[3], pxl.x + 3, pxl.y);
+			}
+			else
+			{
+				putcolor_gui(sdl, cursor[0], pxl.x, pxl.y);
+				putcolor_gui(sdl, cursor[1], pxl.x + 1, pxl.y);
+				putcolor_gui(sdl, cursor[2], pxl.x + 2, pxl.y);
+				putcolor_gui(sdl, cursor[3], pxl.x + 3, pxl.y);
+			}
 			idx.x += 4;
 		}
 	}
@@ -90,6 +112,8 @@ void
 	while (++cthr < THR_C)
 		pthread_join(toby[cthr], NULL);
 	apply_color(sdl);
+	if (sdl->gui == 0)
+		SDL_RenderPresent(sdl->renderer);
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }

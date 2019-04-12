@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 09:14:13 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/12 18:22:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/12 15:45:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <stdint.h>
 
-# define MASK_RED	0xFF0000
+# define MASK_RED	0xFF
 # define MASK_GREEN	0xFF00
-# define MASK_BLUE	0xFF
+# define MASK_BLUE	0xFF0000
 
 typedef struct		s_color
 {

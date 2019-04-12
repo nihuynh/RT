@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/11 17:42:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:00:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 # include "color.h"
 
-# define THR_C 20
+# define THR_C	20
 
 typedef struct		s_pxl
 {
@@ -37,6 +37,7 @@ typedef struct	s_img
 
 typedef struct		s_sdl
 {
+	int				gui;
 	t_img			img;
 	bool			needs_render;
 	int				width_vp;
@@ -81,7 +82,7 @@ int					colortoi(t_color *color);
 void				putcolor_sdl(t_sdl *sdl, int color, int x, int y);
 void				putpixel_sdl(t_sdl *sdl, t_color col, int x, int y);
 void				error_sdl(t_sdl *sdl);
-int					init_sdl(t_sdl *sdl, int width, int height);
+int					init_sdl(t_sdl *sdl, int width, int height, int gui);
 void				exit_sdl(t_sdl *sdl);
 void				render_sdl(t_sdl *sdl, int (*f) (int, int, void*), void *d);
 void				loop_sdl(t_sdl *sdl, void *arg);
