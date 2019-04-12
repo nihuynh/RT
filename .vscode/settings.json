@@ -5,5 +5,8 @@
 		"libft.h": "c",
 		"libui.h": "c",
 		"unistd.h": "c"
+		"rtstruct.h": "c",
+		"cimgui.h": "c",
+		"imgui_impl_opengl2.h": "c"
 	}
 }

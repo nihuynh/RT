@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
 #    Updated: 2019/04/10 21:40:59 by nihuynh          ###   ########.fr        #
@@ -30,6 +30,12 @@ LFT_INC	:=	-I $(LIBFT_PATH)/includes
 # SDL
 LSDL_LIB	:=	$(shell sdl2-config --libs)
 LSDL_INC	:=	$(shell sdl2-config --cflags)
+# IMGUI_IMPL
+IMGUI_IMPL_NAME	:=	imgui_impl.a
+IMGUI_IMPL_PATH	:=	../imgui_impl
+IMGUI_IMPL_LIB	:=	-L $(IMGUI_IMPL_PATH) -limgui_impl
+IMGUI_IMPL_INC	:=	-I $(IMGUI_IMPL_PATH)
+IMGUI_IMPL_RULE	:=	$(IMGUI_IMPL_PATH)/$(IMGUI_IMPL_NAME)
 # **************************************************************************** #
 # make specs :
 CC			:=	clang
@@ -50,8 +56,8 @@ RM			:=	/bin/rm -f
 # Automatic variable :
 OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
-LIB			:=	$(LFT_LIB) $(LSDL_LIB)
-INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC)
+LIB			:=	$(LFT_LIB) $(LSDL_LIB) $(IMGUI_IMPL_LIB)
+INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(IMGUI_IMPL_INC)
 # **************************************************************************** #
 OKLOGO		:=	\033[80G\033[32m[OK]\033[0m\n
 GREP_ERR	:=	grep 'Error\|Warning' -C1 2> /dev/null || true
@@ -61,7 +67,7 @@ all: $(NAME)
 .PHONY: all
 $(NAME): $(OBJ) $(LFT_RULE)
 	libtool -static -o $@ $(OBJ) && ranlib $@
-	@printf "\n\033[1;34m$@\033[25G\033[32mBuilt $@ $(OKLOGO)"
+	@printf "\033[1;34m$@\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 -include $(DEP)
 $(LFT_RULE):
 	make -C $(LFT_PATH)/

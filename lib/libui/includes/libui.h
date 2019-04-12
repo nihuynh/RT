@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 19:25:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/11 17:42:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,17 @@ typedef struct		s_pxl
 
 typedef struct s_data_thr	t_data_thr;
 
+typedef struct	s_img
+{
+	uint32_t	*pixels;
+	int			width;
+	int			height;
+}				t_img;
+
+
 typedef struct		s_sdl
 {
+	t_img			img;
 	bool			needs_render;
 	int				width_vp;
 	int				height_vp;
@@ -42,6 +51,7 @@ typedef struct		s_sdl
 	void			(*key_map)(int*, SDL_Keycode, void*, bool state);
 	void			(*mouse_map)(SDL_Event*, void *arg);
 	void			(*update)(void *arg);
+	void			(*render_gui)(void *arg);
 }					t_sdl;
 
 struct				s_data_thr

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
 /*   Updated: 2019/04/10 21:49:18 by nihuynh          ###   ########.fr       */
@@ -26,14 +26,17 @@
 # define BACK_COLOR		0x000000
 # define AMB_LIGHT		0.0625f
 # define NO_LIGHT		0
-# define NO_FACING		0
-# define NO_I_LIGHT		0
-# define NO_SHINE		0
-# define NO_SHADOW		0
-# define DEPTH_MAX		2
+# define NO_FACING		1
+# define NO_I_LIGHT		1
+# define NO_SHINE		1
+# define NO_SHADOW		1
+# define NO_DEFLECT		1
+# define NO_ABSORB		1
+# define DEPTH_MAX		1
 
 # define DEBUG			0
-# define MAC			DEV
+# define DEBUG_LEAK		0
+# define MAC			IMAC
 # define MTHR			1
 
 /*
@@ -98,10 +101,12 @@
 typedef struct	s_data
 {
 	t_sdl		sdl;
+	t_gui		gui;
 	t_list		*lst_obj;
 	t_list		*lst_light;
 	t_list		*lst_mat;
 	t_cam		cam;
+
 	char		*arg;
 }				t_data;
 
@@ -134,5 +139,10 @@ void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
 void			texture_checkers(t_color *color, float x, float y);
 void			texture_strips(t_color *color, float x, float y);
+void			init_interface(t_gui *gui, SDL_Window *window);
+void			init(t_data	*data);
+void			interface(t_gui gui, SDL_Window *window, t_img img);
+void			update_texture(t_img img, t_gui gui);
+void			render_gui(void *arg);
 
 #endif

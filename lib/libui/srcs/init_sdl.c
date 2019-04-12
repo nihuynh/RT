@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/14 18:19:58 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:02:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@
 int		init_sdl(t_sdl *sdl, int width, int height)
 {
 	ft_bzero(sdl, sizeof(t_sdl));
-	sdl->width_vp = width;
-	sdl->height_vp = height;
+	sdl->width_vp = width / 2;
+	sdl->height_vp = height / 2; //TODO clean cette merde
+	sdl->img.height = height / 2;
+	sdl->img.width = width / 2;
+	if (!(sdl->img.pixels = malloc(sizeof(uint32_t)
+		* sdl->img.height * sdl->img.width)))
+		error_sdl(sdl);
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		error_sdl(sdl);
 	if (!(sdl->win = SDL_CreateWindow("RT",

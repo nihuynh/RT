@@ -2,3 +2,6 @@
 	path = lib/libft
 	url = https://github.com/nihuynh/Libft.git
 	branch = master
+[submodule "lib/cimgui"]
+	path = lib/cimgui
+	url = https://github.com/cimgui/cimgui.git

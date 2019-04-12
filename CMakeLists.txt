@@ -9,7 +9,7 @@ set(DEBUG_FLAGS -g3)
 set(RELEASE_FLAGS -O2 -march=native -flto)
 set(PROFILE_FLAGS -g3 -O2 -march=native)
 
-add_compile_options(-Wall -Wextra -Werror -pedantic -std=c89)
+add_compile_options(-Wall -Wextra -Werror -pedantic)
 add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")
 add_compile_options("$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
@@ -19,10 +19,21 @@ add_executable(RT "")
 add_subdirectory(lib/libft)
 add_subdirectory(lib/libui)
 add_subdirectory(lib/librt)
+add_subdirectory(lib/cimgui)
+add_subdirectory(lib/imgui_impl)
+target_compile_options(cimgui PRIVATE -Wno-error)
 
 target_link_libraries(RT ft)
 target_link_libraries(RT ui)
 target_link_libraries(RT rt)
+target_link_libraries(RT cimgui)
+target_link_libraries(RT imgui_impl)
+
+target_include_directories(RT PRIVATE lib/cimgui)
+
+find_package(OpenGL REQUIRED)
+
+target_link_libraries(RT ${OPENGL_gl_LIBRARY})
 
 target_include_directories(RT PRIVATE includes)
 
@@ -46,5 +57,7 @@ target_sources(RT PRIVATE
         srcs/read.c
         srcs/render.c
         srcs/setter.c
+        srcs/texture.c
+        srcs/interface.c
         srcs/utils.c
         )

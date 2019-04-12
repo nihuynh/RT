@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
 /*   Updated: 2019/04/10 21:33:44 by nihuynh          ###   ########.fr       */
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-void	interactive(char *filename, int width, int height, int runmode)
+void	interactive(char *filename, int runmode)
 {
 	t_data		data;
 
@@ -25,8 +25,7 @@ void	interactive(char *filename, int width, int height, int runmode)
 		ft_error(__func__, __LINE__);
 	if (runmode == RM_UNIT_TEST)
 		return ;
-	init_sdl(&data.sdl, width, height);
-	init_render(&data);
+	init(&data);
 	if (MTHR)
 	{
 		init_mthr_sdl(&data.sdl, &process_pixel, &data);
@@ -53,7 +52,7 @@ int		main(int ac, char **av)
 	if (ac == 2 || (ac > 2 && options != 0))
 	{
 		mode = (options & (1 << 19)) ? RM_UNIT_TEST : RM_NORMAL;
-		interactive(av[1], WIDTH, HEIGHT, mode);
+		interactive(av[1], mode);
 	}
 	while (options & (1 << 11))
 		;
