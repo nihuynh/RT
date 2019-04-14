@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/14 03:44:04 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/14 16:14:53 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				cast.c texture.c utils.c interface.c interface_scene.c \
 				init_interface.c interface_colors.c
 # directories :
-VPATH       := ./srcs:./srcs/parser:./srcs/render:./srcs/tools:./srcs/interface:
+VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface
 OBJDIR 		:=	objs
 INCDIR  	:=	includes
 # LIBFT
@@ -147,11 +147,6 @@ re: ## Rebuild the project.
 	make fclean
 	make all
 .PHONY: re
-git: fclean ## Clean the project directory & add file to git.
-	git add -A
-	@printf "\033[1;34m$(NAME)\033[25G\033[31mGit sync $(OKLOGO)"
-	git status
-.PHONY: git
 run: all ## Run scenes from the scenes folder.
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mRunning $(SCENES) $(OKLOGO)"
 	./$(NAME) $(SCENES)
@@ -168,15 +163,6 @@ doc: ## Generate a documentation using doxygen.
 	doxygen Doxyfile
 	open docs/html/index.html
 .PHONY: doc
-ls: ## List all the repo to see if the clean is done.
-	\ls -R . $(LFT_PATH) $(LRT_PATH) $(LUI_PATH) \
-	| grep -Fv .c | grep -Fv .h | grep -Fv $(LUI_PATH) \
-	| grep -Fv $(LRT_PATH) | grep -Fv $(LFT_PATH) \
-	| grep -Fv srcs | grep -Fv includes | grep -Fv .rt \
-	| grep -Fv README.md | grep -Fv .pdf | grep -Fv .png \
-	| grep -Fv Makefile | grep -Fv Doxyfile | grep -Fv changelog.md \
-	| grep -Fv scenes | grep -Fv auteur | awk 'NF!=0'
-.PHONY: ls
 norme: ## Check the norme of the project and the libraries.
 	$(MAKE) -C $(LFT_PATH) norme
 	$(MAKE) -C $(LRT_PATH) norme

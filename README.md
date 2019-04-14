@@ -7,10 +7,15 @@ cloc lib/lib* srcs includes Makefile
 pmc to mesure the cache misses
 
 Feature list :
+rtv1 feature
+Can move in the scenes
+screenshot
+Interface
 
 TODO list :
+Fix phong
 Add materials
 Refactor (Fix light & refractions)
 
 Bug list :
-
+screenshot twice (probably function call twice)
