@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 00:07:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/14 04:07:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libui.h"
 
 /*
-** Definition for the RTV1 :
+** Definition for the RT :
 ** Config :
 */
 
@@ -29,7 +29,7 @@
 # define DEPTH_MAX		2
 
 # define DEBUG			0
-# define MAC			IMAC
+# define MAC			MACB
 
 /*
 ** User def :
@@ -38,7 +38,7 @@
 # define T_STEP			5
 # define Z_STEP			1
 # define A_STEP			5 * DEG_TO_RAD
-# define MOUSE_SCALING	0.01f
+# define MOUSE_SCALING	0.005f
 
 /*
 ** Static def :
@@ -79,7 +79,7 @@
 # endif
 
 /*
-** Messages for RTV1 :
+** Messages for RT :
 */
 
 # define USAGE "Usage : ./RT <scene.rt> [options]\nOptions : hlt"

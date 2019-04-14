@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 00:06:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/14 03:54:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static inline void
 void
 	window_scene(t_data *app)
 {
-	igSetNextWindowSizeConstraints((ImVec2){800, 0}, (ImVec2){2500, 2500},
+	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, 0);
 	if (igCollapsingHeader("Render Settings", 0))

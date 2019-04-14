@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 00:06:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/14 03:58:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 void	window_renderer(t_gui gui, t_img img)
 {
 	igSetNextWindowSize((ImVec2){img.width, img.height}, 0);
-	igSetNextWindowPos((ImVec2){0, 0}, 0, (ImVec2){0, 0});
+	if (RENDER_STATIC)
+		igSetNextWindowPos((ImVec2){0, 0}, 0, (ImVec2){0, 0});
 	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
 	igBegin("render", NULL, RENDER_FLAGS);

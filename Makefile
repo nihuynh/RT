@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/12 21:00:28 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/14 03:44:04 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,6 +133,7 @@ lclean: ## Clean of the library.
 	$(MAKE) -C $(LRT_PATH)/ fclean
 	$(MAKE) -C $(LUI_PATH)/ fclean
 	$(MAKE) -C $(IMGUI_IMPL_PATH)/ fclean
+	$(RM) $(CIMGUI_NAME)
 .PHONY: lclean
 dclean: ## Clean of the documentation.
 	$(RM) -r docs/html 2> /dev/null || true

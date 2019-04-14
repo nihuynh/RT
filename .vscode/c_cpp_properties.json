@@ -8,7 +8,8 @@
                 "/Users/sklepper/.brew/Cellar/sdl2/2.0.9/include/SDL2",
                 "${workspaceFolder}/lib/cimgui",
                 "${workspaceFolder}/lib/libui/includes",
-                "${workspaceFolder}/lib/librt/includes"
+                "${workspaceFolder}/lib/librt/includes",
+                "/usr/local/Cellar/sdl2/2.0.9/include/SDL2"
             ],
             "defines": [],
             "macFrameworkPath": [
