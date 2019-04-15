@@ -14,14 +14,7 @@
 
 void	inter_setdeflect(t_inter *inter, t_ray *res)
 {
-	float	rene;
-	t_vec3	toby;
-
 	inter_find(inter, &res->origin);
-	rene = vec3_dot(&inter->ray.n, &inter->n);
-	vec3_cpy(&toby, &inter->n);
-	vec3_scalar(&toby, SHADOW_BIAS);
-	(rene > 0) ? vec3_sub(&res->origin, &res->origin, &toby)
-		: vec3_add(&res->origin, &res->origin, &toby);
 	vec3_deflect(inter, res);
+	ray_offset_origin(res, inter->n);
 }

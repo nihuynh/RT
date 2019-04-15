@@ -133,7 +133,7 @@ int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
-int				recursive_cast(t_data *data, t_ray *rene, int depth);
+int				recursive_cast(t_data *data, t_ray *ray, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 float			cast_light_primary(t_data *data, t_inter *inter);
 void			camera_angle(t_data *data, int pan, int pitch);
