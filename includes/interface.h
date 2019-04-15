@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/14 03:58:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/15 10:50:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define GL_SILENCE_DEPRECATION
 
 # include "rt.h"
-# include <SDL.h>
 
 # define FLAGS1	ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar
 # define FLAGS2	ImGuiWindowFlags_AlwaysAutoResize

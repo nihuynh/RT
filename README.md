@@ -13,6 +13,9 @@ screenshot
 Interface
 
 TODO list :
+cimgui make clean : trigger des erreurs si tu clean deux fois d'affilee & clean mal
+-> on copie les sources dans le repo sans le submodule ?
+scene_settings c'est trop long faut un autre nom
 Fix phong
 Add materials
 Refactor (Fix light & refractions)
