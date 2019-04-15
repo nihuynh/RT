@@ -16,7 +16,7 @@ void	ray_offset_origin(t_ray *ray, t_vec3 normal)
 {
 	float	offset_factor;
 
-	if (vec3_dot(&ray->n, &normal) > 0)
+	if (vec3_dot(&ray->dir, &normal) > 0)
 		offset_factor = SHADOW_BIAS;
 	else
 		offset_factor = -SHADOW_BIAS;

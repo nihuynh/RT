@@ -17,9 +17,9 @@ void		vec3_deflect(t_inter *inter, t_ray *res)
 	t_vec3	tmp;
 	float	dot;
 
-	dot = vec3_dot(&inter->n, &inter->ray.n);
+	dot = vec3_dot(&inter->n, &inter->ray.dir);
 	vec3_cpy(&tmp, &inter->n);
 	vec3_scalar(&tmp, 2 * dot);
-	vec3_sub(&res->n, &inter->ray.n, &tmp);
-	vec3_normalize(&res->n);
+	vec3_sub(&res->dir, &inter->ray.dir, &tmp);
+	vec3_normalize(&res->dir);
 }

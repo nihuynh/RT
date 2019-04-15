@@ -36,9 +36,9 @@ static inline float
 	cos_theta2 = cos(cone->theta * DEG_TO_RAD);
 	cos_theta2 *= cos_theta2;
 	vec3_sub(&rene, &ray->origin, &cone->origin);
-	AAAA = vec3_dot(&ray->n, &cone->n);
+	AAAA = vec3_dot(&ray->dir, &cone->n);
 	CCCC = vec3_dot(&rene, &cone->n);
-	BBBB = 2 * (AAAA * CCCC - vec3_dot(&ray->n, &rene) * cos_theta2);
+	BBBB = 2 * (AAAA * CCCC - vec3_dot(&ray->dir, &rene) * cos_theta2);
 	AAAA = AAAA * AAAA - cos_theta2;
 	CCCC = CCCC * CCCC - vec3_dot(&rene, &rene) * cos_theta2;
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
@@ -58,9 +58,9 @@ static inline int
 	t_vec3	origin_to_inter;
 	float	scale;
 
-	inter_pt.x = data->ray.origin.x + dist * data->ray.n.x;
-	inter_pt.y = data->ray.origin.y + dist * data->ray.n.y;
-	inter_pt.z = data->ray.origin.z + dist * data->ray.n.z;
+	inter_pt.x = data->ray.origin.x + dist * data->ray.dir.x;
+	inter_pt.y = data->ray.origin.y + dist * data->ray.dir.y;
+	inter_pt.z = data->ray.origin.z + dist * data->ray.dir.z;
 	vec3_sub(&origin_to_inter, &inter_pt, &cone->origin);
 	scale = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
 	if (scale > cone->size || scale <= 0)

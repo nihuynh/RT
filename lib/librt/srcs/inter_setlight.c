@@ -18,9 +18,9 @@ void	inter_setlight(t_inter *inter, t_inter *light_inter, t_light *light)
 	t_ray	ray;
 
 	inter_find(inter, &ray.origin);
-	vec3_find(&ray.origin, &light->origin, &ray.n);
-	light_inter->dist = vec3_mag(&ray.n);
-	vec3_normalize(&ray.n);
+	vec3_find(&ray.origin, &light->origin, &ray.dir);
+	light_inter->dist = vec3_mag(&ray.dir);
+	vec3_normalize(&ray.dir);
 	ray_offset_origin(&ray, inter->n);
 	light_inter->obj = NULL;
 	ft_memcpy(&light_inter->ray, &ray, sizeof(t_ray));

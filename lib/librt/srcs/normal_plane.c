@@ -18,6 +18,6 @@ void	normal_plane(t_inter *inter)
 
 	plane = inter->obj->shape;
 	vec3_cpy(&inter->n, &plane->n);
-	if (vec3_dot(&plane->n, &inter->ray.n) > 0)
+	if (vec3_dot(&plane->n, &inter->ray.dir) > 0)
 		vec3_scalar(&inter->n, -1);
 }
