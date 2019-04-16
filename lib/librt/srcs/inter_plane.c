@@ -70,7 +70,7 @@ void
 		if (!(inter_finite(data, plane, dist, plane->f_texture)))
 			return ;
 	if (!plane->f_texture)
-		color_cpy(&data->color, &node->material.color_ambient);
+		data->color = node->material.color_ambient;
 	data->dist = dist;
 	data->obj = node;
 	data->find_normal = &normal_plane;

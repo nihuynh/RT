@@ -35,12 +35,12 @@ static inline void
 		igInputFloat("Intensity", &light->intensity, 0, 0, NULL, 0);
 		if (igTreeNodeStr("Color"))
 		{
-			tmp = colortoi(&light->color);
+			tmp = colortoi(light->color);
 			icolortogui(tmp, n);
 			if (igColorEdit3("Color", n, 0))
 			{
 				guicolortoi(n, &tmp);
-				itocolor(&light->color, tmp);
+				light->color = itocolor(tmp);
 			}
 			igTreePop();
 		}

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colortoi.c                                         :+:      :+:    :+:   */
+/*   itocolor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/09 23:51:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/13 00:03:04 by nihuynh          ###   ########.fr       */
+/*   Created: 2019/03/01 20:28:46 by sklepper          #+#    #+#             */
+/*   Updated: 2019/04/16 13:49:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-int	colortoi(t_color *color)
+t_color
+	itocolor(int color)
 {
-	return ((color->r) + (color->g << 8) + (color->b << 16));
+	return (t_color){
+		(color >> SHIFT_RED) & 0xFF,
+		(color >> SHIFT_GREEN) & 0xFF,
+		(color >> SHIFT_BLUE) & 0xFF
+	};
 }

@@ -7,7 +7,6 @@ target_include_directories(rt PUBLIC includes)
 target_include_directories(rt PRIVATE ../libft/includes)
 
 target_sources(rt PRIVATE
-        srcs/color_cpy.c
         srcs/inter_cone.c
         srcs/inter_cylinder.c
         srcs/inter_find.c
@@ -43,4 +42,11 @@ target_sources(rt PRIVATE
         srcs/vec3_refract.c
         srcs/vec3_scalar.c
         srcs/vec3_sub.c
-        srcs/vec3_spherical_cartesian.c)
+        srcs/vec3_spherical_cartesian.c
+        srcs/color_add.c
+        srcs/color_max.c
+        srcs/color_mult.c
+        srcs/color_scalar.c
+        srcs/color_sub.c
+        srcs/colortoi.c
+        srcs/itocolor.c)

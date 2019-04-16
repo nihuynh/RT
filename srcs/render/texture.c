@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "librt.h"
+#include "color.h"
 #include "math.h"
-#include "libui.h"
 #include "libft.h"
 
 void	texture_checkers(t_color *color, float x, float y)
@@ -19,13 +20,13 @@ void	texture_checkers(t_color *color, float x, float y)
 	float	pattern;
 
 	if (x < 0)
-		x = fabsf((float)(x - 5));
+		x = fabsf(x - 5);
 	if (y < 0)
-		y = fabsf((float)(y - 5));
+		y = fabsf(y - 5);
 	pattern = (fmodf(x, 10) < 5) ^ (fmodf(y, 10) < 5);
 	ft_bzero(color, sizeof(color));
 	if (pattern)
-		itocolor(color, 0xFFFFFF);
+		*color = itocolor(0xFFFFFF);
 }
 
 void	texture_strips(t_color *color, float x, float y)
@@ -33,12 +34,12 @@ void	texture_strips(t_color *color, float x, float y)
 	float	pattern;
 	float	angle;
 
-	angle = 45 * M_PI / 180;
+	angle = 45 * DEG_TO_RAD;
 	pattern = x * cosf(angle) - y * sinf(angle);
 	if (pattern < 0)
 		pattern -= 5;
 	pattern = fabsf(fmodf(pattern, 10)) < 5;
 	ft_bzero(color, sizeof(color));
 	if (pattern)
-		itocolor(color, 0xFFFFFF);
+		*color = itocolor(0xFFFFFF);
 }

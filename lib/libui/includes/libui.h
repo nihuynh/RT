@@ -15,7 +15,6 @@
 
 # include <SDL.h>
 # include <stdbool.h>
-# include "color.h"
 
 # define THR_C		20
 # define C_MASK		0xFF000000
@@ -65,22 +64,9 @@ struct				s_data_thr
 };
 
 /*
-** Color :
-*/
-
-void				color_mult(t_color *color, t_color *mult);
-void				color_scalar(t_color *color, float k);
-void				color_add(t_color *color, t_color *add);
-void				color_sub(t_color *color, t_color *sub);
-void				color_max(t_color *col1, t_color *col2);
-void				itocolor(t_color *res, int color);
-int					colortoi(t_color *color);
-/*
 ** SDL :
 */
 
-void				putcolor_sdl(t_sdl *sdl, int color, int x, int y);
-void				putpixel_sdl(t_sdl *sdl, t_color col, int x, int y);
 void				error_sdl(t_sdl *sdl);
 int					init_sdl(t_sdl *sdl, int width, int height);
 void				exit_sdl(t_sdl *sdl);

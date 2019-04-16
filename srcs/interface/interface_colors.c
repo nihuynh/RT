@@ -14,19 +14,22 @@
 
 void	icolortogui(int src, float dest[3])
 {
-	dest[0] = (src & MASK_RED) / 255.f;
-	dest[1] = ((src & MASK_GREEN) >> 8) / 255.f;
-	dest[2] = ((src & MASK_BLUE) >> 16) / 255.f;
+	t_color color;
+
+	color = itocolor(src);
+	dest[0] = color.r / 255.f;
+	dest[1] = color.g / 255.f;
+	dest[2] = color.b / 255.f;
 }
 
 void	guicolortoi(float src[3], int *dest)
 {
-	int tmp[3];
+	t_color color;
 
-	tmp[0] = src[0] * 255;
-	tmp[1] = src[1] * 255;
-	tmp[2] = src[2] * 255;
-	*dest = tmp[0] + (tmp[1] << 8) + (tmp[2] << 16);
+	color.r = src[0] * 255;
+	color.g = src[1] * 255;
+	color.b = src[2] * 255;
+	*dest = colortoi(color);
 }
 
 void	colortogui(t_color src, float dest[3])

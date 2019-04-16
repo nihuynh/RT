@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   colortoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 09:14:13 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 14:06:54 by sklepper         ###   ########.fr       */
+/*   Created: 2018/12/09 23:51:14 by nihuynh           #+#    #+#             */
+/*   Updated: 2019/04/13 00:03:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "color.h"
 
-# include <stdint.h>
-
-# define MASK_RED	0xFF
-# define MASK_GREEN	0xFF00
-# define MASK_BLUE	0xFF0000
-
-typedef struct		s_color
+int	colortoi(t_color color)
 {
-	uint8_t			r;
-	uint8_t			g;
-	uint8_t			b;
-}					t_color;
-
-#endif
+	return ((color.r << SHIFT_RED)
+		+ (color.g << SHIFT_GREEN)
+		+ (color.b << SHIFT_BLUE));
+}

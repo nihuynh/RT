@@ -14,7 +14,6 @@
 # define LIBRT_H
 
 # include "rtstruct.h"
-# include "color.h"
 
 # define DEG_TO_RAD	(M_PI_F / 180)
 # define M_PI_F (float)M_PI
@@ -29,11 +28,6 @@
 # define DDDD toby[3]
 # define EEEE toby[4]
 
-/*
-** Color :
-*/
-
-void		color_cpy(t_color *dst, t_color *src);
 
 /*
 ** Normal :

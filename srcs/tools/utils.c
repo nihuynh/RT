@@ -54,10 +54,10 @@ static inline void
 {
 	if (!(mat->name = ft_strdup(split[0])))
 		ft_error(__func__, __LINE__);
-	itocolor(&mat->color_ambient, ft_atoi_base(split[1], 16));
-	itocolor(&mat->color_diffuse, ft_atoi_base(split[2], 16));
-	itocolor(&mat->color_specular, ft_atoi_base(split[3], 16));
-	itocolor(&mat->self_light, ft_atoi_base(split[4], 16));
+	mat->color_ambient = itocolor(ft_atoi_base(split[1], 16));
+	mat->color_diffuse = itocolor(ft_atoi_base(split[2], 16));
+	mat->color_specular = itocolor(ft_atoi_base(split[3], 16));
+	mat->self_light = itocolor(ft_atoi_base(split[4], 16));
 	mat->spec_idx = ft_atof(split[5]);
 	mat->spec_power = ft_atof(split[6]);
 	mat->absorb_idx = ft_atof(split[7]);

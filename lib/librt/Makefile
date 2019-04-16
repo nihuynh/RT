@@ -19,7 +19,8 @@ VEC			:=	vec3_add.c vec3_cross.c vec3_mag.c vec3_scalar.c vec3_cos.c \
 INTER		:=	inter_cylinder.c inter_plane.c inter_sphere.c inter_cone.c \
 				inter_set.c inter_find.c inter_setlight.c inter_setdeflect.c \
 				inter_setrefract.c
-COLOR		:=	color_cpy.c
+COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
+				colortoi.c color_max.c itocolor.c
 MATRIX		:=	mat3_rot.c mat3.c
 NORMAL		:=	normal_cone.c normal_sphere.c normal_cylinder.c normal_plane.c
 SRC			:=	$(VEC) $(INTER) $(COLOR) $(NORMAL) $(MATRIX)

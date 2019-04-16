@@ -12,12 +12,10 @@
 
 NAME		:=	libui.a
 RUNMODE		?=	dev
-SDL_SRC		:=	init_sdl.c error_sdl.c putpixel_sdl.c putcolor_sdl.c exit_sdl.c\
+SDL_SRC		:=	init_sdl.c error_sdl.c exit_sdl.c\
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c
-COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
-				colortoi.c color_max.c itocolor.c
-SRC			:=	$(SDL_SRC) $(COLOR)
+SRC			:=	$(SDL_SRC)
 # directories :
 SRCDIR  	:=	srcs
 OBJDIR 		:=	objs

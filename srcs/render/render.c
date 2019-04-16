@@ -42,7 +42,7 @@ static inline void
 	if (data->scene_set.no_deflect == 0
 	&& inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
 	{
-		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
+		primary = recursive_cast(data, &inter->deflected, depth + 1);
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
@@ -50,17 +50,17 @@ static inline void
 		&& inter->obj->material.absorb_idx != 0)
 	{
 		fresnel(inter, 1.5);
-		itocolor(&primary, recursive_cast(data, &inter->deflected, depth + 1));
+		primary = recursive_cast(data, &inter->deflected, depth + 1);
 		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 		inter_setrefract(inter, &absorbed);
-		itocolor(&primary, recursive_cast(data, &absorbed, depth + 1));
+		primary = recursive_cast(data, &absorbed, depth + 1);
 		color_scalar(&primary, inter->obj->material.absorb_idx);
 		color_add(&inter->color, &primary);
 	}
 }
 
-int
+t_color
 	recursive_cast(t_data *data, t_ray *ray, int depth)
 {
 	t_inter	inter;
@@ -69,18 +69,18 @@ int
 	inter_set(&inter, ray);
 	cast_primary(data, &inter);
 	if (inter.obj == NULL)
-		return (data->scene_set.back_color);
-	color_cpy(&primary, &inter.color);
+		return (itocolor(data->scene_set.back_color));
+	primary = inter.color;
 	color_scalar(&primary, data->scene_set.amb_light);
 	if (data->lst_light == NULL || data->scene_set.no_light == 1)
-		return (colortoi(&inter.color));
+		return (inter.color);
 	inter.find_normal(&inter);
 	cast_shadow(data, &inter);
 	color_scalar(&inter.color, 1.0f - data->scene_set.amb_light);
 	color_add(&inter.color, &primary);
 	if (depth < data->scene_set.depth_max)
 		deflect_cast(data, &inter, depth);
-	return (colortoi(&inter.color));
+	return (inter.color);
 }
 
 int __attribute__((hot))
@@ -91,5 +91,5 @@ int __attribute__((hot))
 
 	data = arg;
 	cam_ray(data, &rene, x + 0.5, y + 0.5);
-	return (recursive_cast(data, &rene, 0));
+	return (colortoi(recursive_cast(data, &rene, 0)));
 }

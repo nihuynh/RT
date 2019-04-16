@@ -23,20 +23,11 @@ else()
 endif()
 
 target_sources(ui PRIVATE
-        srcs/color_add.c
-        srcs/color_max.c
-        srcs/color_mult.c
-        srcs/color_scalar.c
-        srcs/color_sub.c
-        srcs/colortoi.c
         srcs/error_sdl.c
         srcs/exit_sdl.c
         srcs/init_mthr_sdl.c
         srcs/init_sdl.c
-        srcs/itocolor.c
         srcs/loop_sdl.c
-        srcs/putcolor_sdl.c
-        srcs/putpixel_sdl.c
         srcs/render_mthr_sdl.c
         srcs/render_sdl.c
         srcs/save_screenshot.c)

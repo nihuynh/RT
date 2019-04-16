@@ -53,7 +53,7 @@ void	gui_setup(t_gui *gui, t_img img, t_data *app)
 void	update_texture(t_img img, t_gui gui)
 {
 	glBindTexture(GL_TEXTURE_2D, gui.texture_id);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.width, img.height, 0, GL_RGBA,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.width, img.height, 0, GL_BGRA,
 		GL_UNSIGNED_BYTE, img.pixels);
 	glBindTexture(GL_TEXTURE_2D, 0);
 }

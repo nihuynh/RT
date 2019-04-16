@@ -14,15 +14,21 @@
 #include "libft.h"
 #include "ftio.h"
 
+#define SHIFT_RED		0
+#define SHIFT_GREEN		8
+#define SHIFT_BLUE		16
+
 static inline void
 	putcolor(t_sdl *sdl, int color, int x, int y)
 {
-	t_color	tmp;
+	uint8_t r;
+	uint8_t g;
+	uint8_t b;
 
-	tmp.r = ((color & MASK_RED) >> 16);
-	tmp.g = ((color & MASK_GREEN) >> 8);
-	tmp.b = (color & MASK_BLUE);
-	SDL_SetRenderDrawColor(sdl->renderer, tmp.r, tmp.g, tmp.b, 255);
+	r = (color >> SHIFT_RED) & 0xFF;
+	g = (color >> SHIFT_GREEN) & 0xFF;
+	b = (color >> SHIFT_BLUE);
+	SDL_SetRenderDrawColor(sdl->renderer, r, g, b, 255);
 	SDL_RenderDrawPoint(sdl->renderer, x, y);
 }
 

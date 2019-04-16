@@ -47,6 +47,8 @@ target_sources(RT PRIVATE
         srcs/interface/interface.c
         srcs/interface/interface_colors.c
         srcs/interface/interface_scene.c
+        srcs/interface/interface_objects.c
+        srcs/interface/object_tools.c
         srcs/parser/parse_toolbox.c
         srcs/parser/parser.c
         srcs/parser/read.c
