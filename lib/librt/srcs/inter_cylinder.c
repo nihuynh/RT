@@ -22,10 +22,10 @@ static inline float
 	t_vec3	rene;
 
 	vec3_sub(&rene, &ray->origin, &cyl->origin);
-	AAAA = vec3_dot(&ray->n, &cyl->n);
+	AAAA = vec3_dot(&ray->dir, &cyl->n);
 	CCCC = vec3_dot(&rene, &cyl->n);
-	BBBB = 2 * (vec3_dot(&ray->n, &rene) - AAAA * CCCC);
-	det = vec3_mag(&ray->n);
+	BBBB = 2 * (vec3_dot(&ray->dir, &rene) - AAAA * CCCC);
+	det = vec3_mag(&ray->dir);
 	AAAA = det * det - AAAA * AAAA;
 	det = vec3_mag(&rene);
 	CCCC = det * det - CCCC * CCCC - cyl->radius * cyl->radius;
@@ -46,9 +46,9 @@ static inline int
 	t_vec3	origin_to_inter;
 	float	scale;
 
-	inter_pt.x = data->ray.origin.x + dist * data->ray.n.x;
-	inter_pt.y = data->ray.origin.y + dist * data->ray.n.y;
-	inter_pt.z = data->ray.origin.z + dist * data->ray.n.z;
+	inter_pt.x = data->ray.origin.x + dist * data->ray.dir.x;
+	inter_pt.y = data->ray.origin.y + dist * data->ray.dir.y;
+	inter_pt.z = data->ray.origin.z + dist * data->ray.dir.z;
 	vec3_sub(&origin_to_inter, &inter_pt, &cylinder->origin);
 	scale = vec3_dot(&origin_to_inter, &cylinder->n)
 			/ vec3_dot(&cylinder->n, &cylinder->n);

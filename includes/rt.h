@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 17:24:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 09:31:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libui.h"
 
 /*
-** Definition for the RTV1 :
+** Definition for the RT :
 ** Config :
 */
 
@@ -38,7 +38,7 @@
 # define T_STEP			5
 # define Z_STEP			1
 # define A_STEP			5 * DEG_TO_RAD
-# define MOUSE_SCALING	0.01f
+# define MOUSE_SCALING	0.005f
 
 /*
 ** Static def :
@@ -79,7 +79,7 @@
 # endif
 
 /*
-** Messages for RTV1 :
+** Messages for RT :
 */
 
 # define USAGE "Usage : ./RT <scene.rt> [options]\nOptions : hlt"
@@ -140,7 +140,7 @@ int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
-int				recursive_cast(t_data *data, t_ray *rene, int depth);
+int				recursive_cast(t_data *data, t_ray *ray, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 float			cast_light_primary(t_data *data, t_inter *inter);
 void			camera_angle(t_data *data, int pan, int pitch);

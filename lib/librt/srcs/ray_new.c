@@ -18,6 +18,6 @@ void	ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n)
 	if (!res || !origin || !n)
 		return ;
 	vec3_cpy(&(res->origin), origin);
-	vec3_cpy(&(res->n), n);
-	vec3_normalize(&res->n);
+	vec3_cpy(&(res->dir), n);
+	vec3_normalize(&res->dir);
 }

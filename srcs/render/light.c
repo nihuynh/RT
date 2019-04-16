@@ -21,7 +21,7 @@ static inline float
 {
 	float	res;
 
-	res = vec3_dot(&inter_light->ray.n, &inter_light->n);
+	res = vec3_dot(&inter_light->ray.dir, &inter_light->n);
 	if (no_facing == 1)
 		return (1);
 	return (res >= 0) ? res : 0;
@@ -33,7 +33,7 @@ static inline void
 	float	ratio;
 	t_color	shine_color;
 
-	ratio = fmaxf(0.f, vec3_dot(&inter->deflected.n, &inter_light->ray.n));
+	ratio = fmaxf(0.f, vec3_dot(&inter->deflected.dir, &inter_light->ray.dir));
 	ratio = powf(ratio, inter->obj->material.spec_power)
 		* inter->obj->material.spec_idx;
 	shine_color = inter_light->color;

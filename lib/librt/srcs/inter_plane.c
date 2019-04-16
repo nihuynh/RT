@@ -20,7 +20,7 @@ static inline float
 	float	nom;
 	t_vec3	sub;
 
-	dn = vec3_dot(&ray->n, &plane->n);
+	dn = vec3_dot(&ray->dir, &plane->n);
 	if (dn > -EPSILON && dn < EPSILON)
 		return (HUGEVAL);
 	vec3_sub(&sub, &ray->origin, &plane->origin);
@@ -39,9 +39,9 @@ static inline int
 	float	scale_x;
 	float	scale_y;
 
-	inter_pt.x = data->ray.origin.x + dist * data->ray.n.x;
-	inter_pt.y = data->ray.origin.y + dist * data->ray.n.y;
-	inter_pt.z = data->ray.origin.z + dist * data->ray.n.z;
+	inter_pt.x = data->ray.origin.x + dist * data->ray.dir.x;
+	inter_pt.y = data->ray.origin.y + dist * data->ray.dir.y;
+	inter_pt.z = data->ray.origin.z + dist * data->ray.dir.z;
 	vec3_sub(&orig_to_inter, &inter_pt, &plan->origin);
 	scale_x = vec3_dot(&orig_to_inter, &plan->x) / vec3_dot(&plan->x, &plan->x);
 	if (plan->size_x)

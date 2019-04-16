@@ -61,12 +61,12 @@ static inline void
 }
 
 int
-	recursive_cast(t_data *data, t_ray *rene, int depth)
+	recursive_cast(t_data *data, t_ray *ray, int depth)
 {
 	t_inter	inter;
 	t_color	primary;
 
-	inter_set(&inter, rene);
+	inter_set(&inter, ray);
 	cast_primary(data, &inter);
 	if (inter.obj == NULL)
 		return (data->scene_set.back_color);

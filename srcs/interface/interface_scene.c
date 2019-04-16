@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 09:30:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 09:31:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static inline void
 void
 	window_scene(t_data *app)
 {
-	igSetNextWindowSizeConstraints((ImVec2){800, 0}, (ImVec2){2500, 2500},
+	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, 0);
 	if(igBeginMenuBar())

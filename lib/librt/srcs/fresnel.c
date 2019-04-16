@@ -19,7 +19,7 @@ void	fresnel(t_inter *inter, float ior)
 	float	toby[5];
 	float	res[2];
 
-	AAAA = ft_clampf(vec3_dot(&inter->ray.n, &inter->n), -1, 1);
+	AAAA = ft_clampf(vec3_dot(&inter->ray.dir, &inter->n), -1, 1);
 	BBBB = 1;
 	CCCC = ior;
 	if (AAAA < 0)

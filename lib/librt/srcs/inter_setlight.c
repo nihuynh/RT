@@ -16,18 +16,12 @@
 void	inter_setlight(t_inter *inter, t_inter *light_inter, t_light *light)
 {
 	t_ray	ray;
-	float	rene;
-	t_vec3	toby;
 
 	inter_find(inter, &ray.origin);
-	rene = vec3_dot(&inter->ray.n, &inter->n);
-	vec3_cpy(&toby, &inter->n);
-	vec3_scalar(&toby, SHADOW_BIAS);
-	(rene > 0) ? vec3_sub(&ray.origin, &ray.origin, &toby)
-		: vec3_add(&ray.origin, &ray.origin, &toby);
-	vec3_find(&ray.origin, &light->origin, &ray.n);
-	light_inter->dist = vec3_mag(&ray.n);
-	vec3_normalize(&ray.n);
+	vec3_find(&ray.origin, &light->origin, &ray.dir);
+	light_inter->dist = vec3_mag(&ray.dir);
+	vec3_normalize(&ray.dir);
+	ray_offset_origin(&ray, inter->n);
 	light_inter->obj = NULL;
 	ft_memcpy(&light_inter->ray, &ray, sizeof(t_ray));
 	ft_memcpy(&light_inter->n, &inter->n, sizeof(t_vec3));

@@ -19,10 +19,10 @@ void	vec3_refract(t_inter *inter, t_vec3 *vf, float ior)
 	float	toby[5];
 	t_vec3	tmp[2];
 
-	tmp[0] = inter->ray.n;
+	tmp[0] = inter->ray.dir;
 	tmp[1] = inter->n;
 	*vf = inter->n;
-	AAAA = ft_clampf(vec3_dot(&inter->ray.n, &inter->n), -1, 1);
+	AAAA = ft_clampf(vec3_dot(&inter->ray.dir, &inter->n), -1, 1);
 	BBBB = 1;
 	CCCC = ior;
 	if (AAAA < 0)

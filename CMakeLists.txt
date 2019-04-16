@@ -43,21 +43,23 @@ set_target_properties(RT
             RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
 
 target_sources(RT PRIVATE
-        srcs/camera.c
+        srcs/interface/init_interface.c
+        srcs/interface/interface.c
+        srcs/interface/interface_colors.c
+        srcs/interface/interface_scene.c
+        srcs/parser/parse_toolbox.c
+        srcs/parser/parser.c
+        srcs/parser/read.c
+        srcs/parser/setter.c
+        srcs/render/camera.c
+        srcs/render/cast.c
+        srcs/render/light.c
+        srcs/render/render.c
+        srcs/render/texture.c
+        srcs/tools/error.c
+        srcs/tools/update.c
+        srcs/tools/utils.c
         srcs/init.c
-        srcs/cast.c
-        srcs/update.c
-        srcs/error.c
         srcs/key_mapping.c
-        srcs/light.c
-        srcs/texture.c
         srcs/main.c
-        srcs/parse_toolbox.c
-        srcs/parser.c
-        srcs/read.c
-        srcs/render.c
-        srcs/setter.c
-        srcs/texture.c
-        srcs/interface.c
-        srcs/utils.c
         )
