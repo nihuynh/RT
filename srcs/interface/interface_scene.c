@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 00:06:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 16:16:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ static inline void
 {
 	float	color[3];
 
-	igCheckbox("No Light", &app->scene_settings.no_light);
+	igCheckbox("No Light", &app->scene_set.no_light);
 	igSameLine(160, 0);
-	igCheckbox("No Light Intensity", &app->scene_settings.no_i_light);
+	igCheckbox("No Light Intensity", &app->scene_set.no_i_light);
 	igSameLine(320, 0);
-	igCheckbox("No Shine", &app->scene_settings.no_shine);
+	igCheckbox("No Shine", &app->scene_set.no_shine);
 	igSameLine(480, 0);
-	igCheckbox("No Shadow", &app->scene_settings.no_shadow);
+	igCheckbox("No Shadow", &app->scene_set.no_shadow);
 	igSameLine(640, 0);
-	igCheckbox("No Facing Ratio", &app->scene_settings.no_facing);
-	igCheckbox("No Reflection", &app->scene_settings.no_deflect);
+	igCheckbox("No Facing Ratio", &app->scene_set.no_facing);
+	igCheckbox("No Reflection", &app->scene_set.no_deflect);
 	igSameLine(160, 0);
-	igCheckbox("No Refraction", &app->scene_settings.no_absorb);
+	igCheckbox("No Refraction", &app->scene_set.no_absorb);
 	if (igTreeNodeStr("Sky Color"))
 	{
-		icolortogui(app->scene_settings.back_color, color);
+		icolortogui(app->scene_set.back_color, color);
 		igColorPicker3("Sky Color", color, 0);
-		guicolortoi(color, &app->scene_settings.back_color);
+		guicolortoi(color, &app->scene_set.back_color);
 		igTreePop();
 	}
 	igTreePop();
@@ -46,8 +46,8 @@ static inline void
 {
 	if (igTreeNodeStr("Camera Settings"))
 	{
-		igDragInt("Depth Max", &app->scene_settings.depth_max, 0.1, 0, 10, NULL);
-		igDragFloat("FOV", &app->scene_settings.fov, 0.1, 30, 110, NULL, 1);
+		igDragInt("Depth Max", &app->scene_set.depth_max, 0.1, 0, 10, NULL);
+		igDragFloat("FOV", &app->scene_set.fov, 0.1, 30, 110, NULL, 1);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Light Settings"))
@@ -56,13 +56,33 @@ static inline void
 		app->sdl.needs_render = true;
 }
 
+static inline void
+	object_settings(t_data *app)
+{
+(void)app;
+}
+
+static inline void
+	menu_bar(t_data *app)
+{
+(void)app;
+	if(igBeginMenu("Menu", 0))
+	{
+		igMenuItemBoolPtr("log", NULL, &app->gui.log_open, 1);
+	}
+}
+
 void
 	window_scene(t_data *app)
 {
 	igSetNextWindowSizeConstraints((ImVec2){800, 0}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, 0);
+	if(igBeginMenuBar())
+		menu_bar(app);
 	if (igCollapsingHeader("Render Settings", 0))
 		render_settings(app);
+	if (igCollapsingHeader("Objects settings", 0))
+		object_settings(app);
 	igEnd();
 }

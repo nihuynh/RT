@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 00:07:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 17:24:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define DEPTH_MAX		2
 
 # define DEBUG			0
-# define MAC			IMAC
+# define MAC			MACB
 
 /*
 ** User def :
@@ -88,6 +88,13 @@
 ** Structures :
 */
 
+typedef struct	s_gui
+{
+	uint32_t	texture_id;
+	bool		log_open;
+	t_list		*light_set;
+}				t_gui;
+
 typedef struct	s_scene
 {
 	int			back_color;
@@ -105,7 +112,7 @@ typedef struct	s_scene
 
 typedef struct	s_data
 {
-	t_scene		scene_settings;
+	t_scene		scene_set;
 	t_sdl		sdl;
 	t_gui		gui;
 	t_list		*lst_obj;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/13 00:08:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/13 16:01:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void
 void
 	init(t_data *data)
 {
-	init_scene(&data->scene_settings);
+	init_scene(&data->scene_set);
 	init_sdl(&data->sdl, WIDTH, HEIGHT);
 	init_render(data);
 	init_interface(&data->gui, data->sdl.win);

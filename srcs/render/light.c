@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 16:11:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/13 16:01:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ static inline void
 	tmp = light->color;
 	inter_setlight(inter, &inter_light, light);
 	scale = inter_light.dist * inter_light.dist;
-	if (data->scene_settings.no_i_light == 0)
+	if (data->scene_set.no_i_light == 0)
 		color_scalar(&tmp, (light->intensity / scale));
-	if (data->scene_settings.no_shadow == 0)
+	if (data->scene_set.no_shadow == 0)
 		scale = cast_light_primary(data, &inter_light);
 	if (scale > 0)
 	{
 		color_scalar(&tmp, scale);
-		scale = facing_ratio(&inter_light, data->scene_settings.no_facing);
-		if (data->scene_settings.no_shine == 0)
+		scale = facing_ratio(&inter_light, data->scene_set.no_facing);
+		if (data->scene_set.no_shine == 0)
 			shine(inter, &inter_light);
 		color_scalar(&tmp, scale);
 		color_add(color, &tmp);
