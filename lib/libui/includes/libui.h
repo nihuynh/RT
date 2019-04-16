@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/13 00:12:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/16 17:28:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ typedef struct		s_sdl
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
 	void			(*key_map)(int*, SDL_Keycode, void*, bool state);
-	void			(*mouse_map)(SDL_Event*, void *arg);
+	void			(*mouse_map)(SDL_Event*, void *);
+	void			(*click_map)(SDL_Event *, void *);
 	void			(*update)(void *arg);
 	void			(*render_gui)(void *arg);
 }					t_sdl;

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 15:41:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:14:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
 
-void	init_interface(t_gui *gui, SDL_Window *window)
+void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
 {
 	SDL_GLContext gl_context;
 
@@ -29,4 +29,6 @@ void	init_interface(t_gui *gui, SDL_Window *window)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
+	gui->light_set = app->lst_light;
+	gui->obj_set = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 15:19:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 16:00:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void
 	if (igCollapsingHeader("Render Settings", 0))
 		render_settings(app);
 	if (igCollapsingHeader("Objects settings", 0))
-		object_settings(app->lst_light, app->lst_obj);
+		object_settings(app);
 	igEnd();
 }

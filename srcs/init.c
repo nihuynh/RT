@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/13 16:01:58 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:47:41 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void
 	init_scene(&data->scene_set);
 	init_sdl(&data->sdl, WIDTH, HEIGHT);
 	init_render(data);
-	init_interface(&data->gui, data->sdl.win);
+	init_interface(&data->gui, data->sdl.win, data);
 }
 
 void
@@ -41,4 +41,5 @@ void
 	data->sdl.mouse_map = &mouse_motion;
 	data->sdl.update = &update;
 	data->sdl.render_gui = &render_gui;
+	data->sdl.click_map = &click_event;
 }

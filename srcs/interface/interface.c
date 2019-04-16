@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 14:37:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:21:09 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,22 @@
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
 
-void	window_renderer(t_gui gui, t_img img)
+void	window_renderer(t_gui *gui, t_img img)
 {
+	ImVec2	pos;
+
 	igSetNextWindowSize((ImVec2){img.width, img.height}, 0);
-	if (RENDER_STATIC)
-		igSetNextWindowPos((ImVec2){0, 0}, 0, (ImVec2){0, 0});
+	// if (RENDER_STATIC)
+	// 	igSetNextWindowPos((ImVec2){0, 0}, 0, (ImVec2){0, 0});
 	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
 	igBegin("render", NULL, RENDER_FLAGS);
-	igImage((void*)(intptr_t)gui.texture_id, (ImVec2){img.width, img.height},
+	igImage((void*)(intptr_t)gui->texture_id, (ImVec2){img.width, img.height},
 								(ImVec2){0, 0}, (ImVec2){1, 1},
 								(ImVec4){1, 1, 1, 1}, (ImVec4){0, 0, 0, 0});
+	pos = igGetWindowPos();
+	gui->pos_render.x = pos.x;
+	gui->pos_render.y = pos.y;
 	igEnd();
 	igPopStyleVar(2);
 }
@@ -39,7 +44,7 @@ void	window_log(bool *p_open)
 
 void	gui_setup(t_gui *gui, t_img img, t_data *app)
 {
-	window_renderer(*gui, img);
+	window_renderer(gui, img);
 	window_scene(app);
 	if (gui->log_open)
 		window_log(&gui->log_open);

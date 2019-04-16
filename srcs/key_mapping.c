@@ -6,13 +6,14 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 16:17:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:55:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "ftio.h"
 #include <SDL.h>
+#include "interface.h"
 
 /*
 ** @brief Key mapping
@@ -55,6 +56,24 @@ void
 		SDL_SetRelativeMouseMode(mouse_captured);
 	}
 	camera(&app->cam, key, state);
+}
+
+void
+	click_event(SDL_Event *event, void *arg)
+{
+	t_data	*app;
+	int		x;
+	int		y;
+
+	app = arg;
+	if (event->button.button == SDL_BUTTON_LEFT && event->button.clicks == 2)
+	{
+		x = event->button.x - app->gui.pos_render.x;
+		y = event->button.y - app->gui.pos_render.y;
+		if (x >= 0 && x < app->sdl.img.width
+		&& y >= 20 && y < app->sdl.img.height)
+			app->gui.obj_set = find_obj_at_pixel(app, x, y);
+	}
 }
 
 void

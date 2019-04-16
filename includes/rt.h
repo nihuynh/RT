@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 09:31:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:56:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct	s_gui
 	uint32_t	texture_id;
 	bool		log_open;
 	t_list		*light_set;
+	t_obj		*obj_set;
+	t_pt3		pos_render;
 }				t_gui;
 
 typedef struct	s_scene
@@ -134,6 +136,7 @@ int				process_pixel(int x, int y, void *arg);
 void			exit_safe(t_data *data);
 void			key_event(int *quit, SDL_Keycode key, void *arg, bool state);
 void			mouse_motion(SDL_Event *event, void *arg);
+void			click_event(SDL_Event *event, void *arg);
 void			parsing_error(int l_idx, char *error, t_data *d, char **greed);
 int				parse_light(char **greed, t_data *data, int l_idx);
 int				parse_shape(char **greed, t_data *data, int l_idx, int type);
@@ -142,6 +145,7 @@ void			cast_shadow(t_data *data, t_inter *inter);
 void			cast_primary(t_data *data, t_inter *inter);
 int				recursive_cast(t_data *data, t_ray *ray, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
+void			cam_ray(t_data *data, t_ray *res, float x, float y);
 float			cast_light_primary(t_data *data, t_inter *inter);
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);
@@ -151,7 +155,7 @@ void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
 void			texture_checkers(t_color *color, float x, float y);
 void			texture_strips(t_color *color, float x, float y);
-void			init_interface(t_gui *gui, SDL_Window *window);
+void			init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void			init(t_data	*data);
 void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 16:01:58 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:50:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "librt.h"
 #include "libft.h"
 
-static inline void
+void
 	cam_ray(t_data *data, t_ray *res, float x, float y)
 {
 	float	fovt;

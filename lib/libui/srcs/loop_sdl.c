@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 22:15:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/16 16:56:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 				sdl->key_map(&quit, event.key.keysym.sym, arg, SDL_RELEASED);
 			else if (event.type == SDL_MOUSEMOTION && sdl->mouse_map)
 				sdl->mouse_map(&event, arg);
+			else if (event.type == SDL_MOUSEBUTTONDOWN && sdl->click_map)
+				sdl->click_map(&event, arg);
 		}
 		if (sdl->update)
 			sdl->update(arg);
