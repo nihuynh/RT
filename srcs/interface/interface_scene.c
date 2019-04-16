@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 16:16:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 09:30:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ static inline void
 static inline void
 	object_settings(t_data *app)
 {
-(void)app;
+	if (igTreeNodeStr("Lights"))
+	{
+		
+	}
 }
 
 static inline void
