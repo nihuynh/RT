@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_colors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:44:11 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/12 23:37:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/16 14:05:41 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	icolortogui(int src, float dest[3])
 {
-	dest[0] = (src & MASK_RED);
-	dest[1] = ((src & MASK_GREEN) >> 8);
-	dest[2] = ((src & MASK_BLUE) >> 16);
+	dest[0] = (src & MASK_RED) / 255.f;
+	dest[1] = ((src & MASK_GREEN) >> 8) / 255.f;
+	dest[2] = ((src & MASK_BLUE) >> 16) / 255.f;
 }
 
 void	guicolortoi(float src[3], int *dest)
 {
 	int tmp[3];
 
-	tmp[0] = src[0];
-	tmp[1] = src[1];
-	tmp[2] = src[2];
+	tmp[0] = src[0] * 255;
+	tmp[1] = src[1] * 255;
+	tmp[2] = src[2] * 255;
 	*dest = tmp[0] + (tmp[1] << 8) + (tmp[2] << 16);
 }
 

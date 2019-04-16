@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 16:39:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 12:24:11 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,6 @@ typedef struct	s_light
 	t_color		color;
 	float		intensity;
 }				t_light;
-
-typedef struct	s_gui
-{
-	uint32_t	texture_id;
-	bool		log_open;
-}				t_gui;
 
 typedef struct	s_cam
 {

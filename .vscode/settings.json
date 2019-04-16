@@ -8,6 +8,8 @@
 		"rtstruct.h": "c",
 		"cimgui.h": "c",
 		"imgui_impl_opengl2.h": "c",
-		"interface.h": "c"
+		"interface.h": "c",
+		"ftlist.h": "c",
+		"color.h": "c"
 	}
 }

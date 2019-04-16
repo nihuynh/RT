@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   object_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 09:14:13 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 14:05:36 by sklepper         ###   ########.fr       */
+/*   Created: 2019/04/16 14:41:32 by sklepper          #+#    #+#             */
+/*   Updated: 2019/04/16 14:44:49 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "rtstruct.h"
 
-# include <stdint.h>
-
-# define MASK_RED	0xFF
-# define MASK_GREEN	0xFF00
-# define MASK_BLUE	0xFF0000
-
-typedef struct		s_color
+void	cpy_pos(t_pt3 src, float dest[3])
 {
-	uint8_t			r;
-	uint8_t			g;
-	uint8_t			b;
-}					t_color;
+	dest[0] = src.x;
+	dest[1] = src.y;
+	dest[2] = src.z;
+}
 
-#endif
+void	cpy_pos_rev(float src[3], t_pt3 *dest)
+{
+	dest->x = src[0];
+	dest->y = src[1];
+	dest->z = src[2];
+}

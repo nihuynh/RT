@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/15 10:50:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/16 14:47:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define GL_SILENCE_DEPRECATION
 
 # include "rt.h"
+# include "cimgui.h"
 
 # define FLAGS1	ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar
 # define FLAGS2	ImGuiWindowFlags_AlwaysAutoResize
@@ -38,5 +39,8 @@ void	icolortogui(int src, float dest[3]);
 void	guicolortoi(float src[3], int *dest);
 void	colortogui(t_color src, float dest[3]);
 void	guitocolor(float src[3], t_color *dest);
+void	object_settings(t_list *light_lst, t_list *obj_lst);
+void	cpy_pos(t_pt3 src, float dest[3]);
+void	cpy_pos_rev(float src[3], t_pt3 *dest);
 
 #endif

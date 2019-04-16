@@ -6,12 +6,12 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 09:31:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/16 15:19:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
-#include "cimgui.h"
+#include <stdio.h>
 
 static inline void
 	light_settings(t_data *app)
@@ -33,8 +33,8 @@ static inline void
 	if (igTreeNodeStr("Sky Color"))
 	{
 		icolortogui(app->scene_set.back_color, color);
-		igColorPicker3("Sky Color", color, 0);
-		guicolortoi(color, &app->scene_set.back_color);
+		if (igColorEdit3("Sky Color", color, 0))
+			guicolortoi(color, &app->scene_set.back_color);
 		igTreePop();
 	}
 	igTreePop();
@@ -57,22 +57,14 @@ static inline void
 }
 
 static inline void
-	object_settings(t_data *app)
-{
-	if (igTreeNodeStr("Lights"))
-	{
-		
-	}
-}
-
-static inline void
 	menu_bar(t_data *app)
 {
-(void)app;
-	if(igBeginMenu("Menu", 0))
+	if(igBeginMenu("Menu", 1))
 	{
 		igMenuItemBoolPtr("log", NULL, &app->gui.log_open, 1);
+		igEndMenu();
 	}
+	igEndMenuBar();
 }
 
 void
@@ -80,12 +72,12 @@ void
 {
 	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
-	igBegin("Scene", NULL, 0);
+	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar);
 	if(igBeginMenuBar())
 		menu_bar(app);
 	if (igCollapsingHeader("Render Settings", 0))
 		render_settings(app);
 	if (igCollapsingHeader("Objects settings", 0))
-		object_settings(app);
+		object_settings(app->lst_light, app->lst_obj);
 	igEnd();
 }

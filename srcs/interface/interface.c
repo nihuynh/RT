@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/14 03:58:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/16 14:37:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include <OpenGL/gl.h>
-#include "cimgui.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
 
@@ -63,6 +62,7 @@ void	interface(t_data *app)
 	ImGui_ImplSDL2_NewFrame(app->sdl.win);
 	igNewFrame();
 	gui_setup(&app->gui, app->sdl.img, app);
+	// igShowDemoWindow(NULL);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
 	glClearColor(0.4, 0.55, 0.6, 1.0f);

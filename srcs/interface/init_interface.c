@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/13 00:05:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/16 15:41:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include <OpenGL/gl.h>
-#include "cimgui.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
 
