@@ -9,7 +9,7 @@ content
 	{
 		color(1 1 1)
 		origin(60 20 0)
-		intensity(100)
+		intensity(5000)
 	}
 	object(sphere)
 	{

@@ -9,19 +9,19 @@ content
 	{
 		color(1 0 0)
 		origin(0 -2 -90)
-		intensity(100)
+		intensity(1000)
 	}
 	object(light)
 	{
 		color(0 1 0)
 		origin(-5 8 -90)
-		intensity(100)
+		intensity(1000)
 	}
 	object(light)
 	{
 		color(0 0 1)
 		origin(5 8 -90)
-		intensity(100)
+		intensity(1000)
 	}
 	object(plane)
 	{

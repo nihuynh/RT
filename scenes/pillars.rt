@@ -9,13 +9,13 @@ content
 	{
 		color(1 1 1)
 		origin(30 0 0)
-		intensity(50)
+		intensity(500)
 	}
 	object(light)
 	{
 		color(1 1 1)
 		origin(-30 0 0)
-		intensity(50)
+		intensity(500)
 	}
 	object(plane)
 	{

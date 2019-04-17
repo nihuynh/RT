@@ -9,7 +9,7 @@ content
 	{
 		color(1 1 1)
 		origin(25 25 -15)
-		intensity(100)
+		intensity(10000)
 	}
 	object(plane)
 	{

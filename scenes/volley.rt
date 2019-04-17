@@ -9,13 +9,13 @@ content
 	{
 		color(1 1 1)
 		origin(80 0 25)
-		intensity(80)
+		intensity(6400)
 	}
 	object(light)
 	{
 		color(1 1 1)
 		origin(-80 0 25)
-		intensity(80)
+		intensity(6400)
 	}
 	object(sphere)
 	{

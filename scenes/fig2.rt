@@ -9,7 +9,7 @@ content
 	{
 		color(1 1 1)
 		origin(100 0 100)
-		intensity(300)
+		intensity(20000)
 	}
 	object(cylinder)
 	{

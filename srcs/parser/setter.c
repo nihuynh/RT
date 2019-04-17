@@ -84,5 +84,4 @@ void
 	parse_color(&light->color, greed[i + 1], i + 1, "color(");
 	parse_vector(&light->origin, greed[i + 2], i + 2, "origin(");
 	parse_fval(&light->intensity, greed[i + 3], i + 3, "intensity(");
-	light->intensity *= light->intensity;
 }
