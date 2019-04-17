@@ -17,16 +17,14 @@
 
 void	texture_checkers(t_color *color, float x, float y)
 {
-	float	pattern;
+	bool	pattern;
 
 	if (x < 0)
 		x = fabsf(x - 5);
 	if (y < 0)
 		y = fabsf(y - 5);
 	pattern = (fmodf(x, 10) < 5) ^ (fmodf(y, 10) < 5);
-	ft_bzero(color, sizeof(color));
-	if (pattern)
-		*color = itocolor(0xFFFFFF);
+	*color = itocolor(pattern * 0xFFFFFF);
 }
 
 void	texture_strips(t_color *color, float x, float y)
@@ -39,7 +37,5 @@ void	texture_strips(t_color *color, float x, float y)
 	if (pattern < 0)
 		pattern -= 5;
 	pattern = fabsf(fmodf(pattern, 10)) < 5;
-	ft_bzero(color, sizeof(color));
-	if (pattern)
-		*color = itocolor(0xFFFFFF);
+	*color = itocolor((bool)pattern * 0xFFFFFF);
 }

@@ -10,6 +10,10 @@ set(RELEASE_FLAGS -O2 -march=native -flto)
 set(PROFILE_FLAGS -g3 -O2 -march=native)
 
 add_compile_options(-Wall -Wextra -Werror -pedantic)
+
+#add_compile_options(-fsanitize=address -g3)
+#add_link_options(-fsanitize=address -fsanitize-recover=address)
+
 add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")
 add_compile_options("$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
@@ -45,7 +49,6 @@ set_target_properties(RT
 target_sources(RT PRIVATE
         srcs/interface/init_interface.c
         srcs/interface/interface.c
-        srcs/interface/interface_colors.c
         srcs/interface/interface_scene.c
         srcs/interface/interface_objects.c
         srcs/interface/object_tools.c

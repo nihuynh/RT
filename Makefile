@@ -18,7 +18,7 @@ SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
 				cast.c texture.c utils.c interface.c interface_scene.c \
-				init_interface.c interface_colors.c interface_objects.c \
+				init_interface.c interface_objects.c \
 				object_tools.c
 # directories :
 VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface

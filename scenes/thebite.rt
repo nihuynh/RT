@@ -7,13 +7,13 @@ content
 {
 	object(light)
 	{
-		color(255 255 255)
+		color(1 1 1)
 		origin(0 0 0)
 		intensity(50)
 	}
 		object(light)
 	{
-		color(255 255 255)
+		color(1 1 1)
 		origin(0 0 -70)
 		intensity(50)
 	}
@@ -31,7 +31,7 @@ content
 		normal(0 1 0)
 		radius(12)
 		size(45)
-		color_ambient(242 194 175)
+		color_ambient(0.95 0.76 0.69)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
 		self_light(0 0 0)
@@ -44,7 +44,7 @@ content
 	{
 		origin(-9 -15 -51)
 		radius(12)
-		color_ambient(232 182 163)
+		color_ambient(0.91 0.71 0.64)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
 		self_light(0 0 0)
@@ -57,7 +57,7 @@ content
 	{
 		origin(9 -15 -51)
 		radius(12)
-		color_ambient(232 182 163)
+		color_ambient(0.91 0.71 0.64)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
 		self_light(0 0 0)
@@ -70,7 +70,7 @@ content
 	{
 		origin(0 -10 -55)
 		radius(12)
-		color_ambient(242 194 175)
+		color_ambient(0.95 0.76 0.69)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
 		self_light(0 0 0)
@@ -83,7 +83,7 @@ content
 	{
 		origin(0 30 -55)
 		radius(13)
-		color_ambient(255 173 171)
+		color_ambient(1 0.68 0.67)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
 		self_light(0 0 0)
