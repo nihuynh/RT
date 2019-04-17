@@ -1,5 +1,5 @@
 # RT
-![Built State](https://travis-ci.com/nihuynh/RT.svg?token=vdGRtMdF2caTTxqJPaok&branch=master)
+[![Build Status](https://travis-ci.com/nihuynh/RT.svg?token=PdGtpZGzFKLd1CBjD7Ym&branch=master)](https://travis-ci.com/nihuynh/RT)
 
 cloc lib/lib* srcs includes Makefile
 17 march => 6261 lines of code.
