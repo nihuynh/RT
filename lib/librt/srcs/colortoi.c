@@ -14,7 +14,8 @@
 
 int	colortoi(t_color color)
 {
-	return ((color.r << SHIFT_RED)
-		+ (color.g << SHIFT_GREEN)
-		+ (color.b << SHIFT_BLUE));
+	color_scalar(&color, 255);
+	return (((uint8_t)color.r << SHIFT_RED)
+		+ ((uint8_t)color.g << SHIFT_GREEN)
+		+ ((uint8_t)color.b << SHIFT_BLUE));
 }

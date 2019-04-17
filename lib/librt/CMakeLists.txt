@@ -48,5 +48,6 @@ target_sources(rt PRIVATE
         srcs/color_mult.c
         srcs/color_scalar.c
         srcs/color_sub.c
+        srcs/color_clamp.c
         srcs/colortoi.c
         srcs/itocolor.c)

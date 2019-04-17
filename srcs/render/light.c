@@ -54,7 +54,9 @@ static inline void
 	scale = inter_light.dist * inter_light.dist;
 	if (data->scene_set.no_i_light == 0)
 		color_scalar(&tmp, (light->intensity / scale));
-	if (data->scene_set.no_shadow == 0)
+	if (data->scene_set.no_shadow)
+		scale = 1;
+	else
 		scale = cast_light_primary(data, &inter_light);
 	if (scale > 0)
 	{

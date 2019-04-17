@@ -22,7 +22,7 @@
 
 void	color_mult(t_color *color, t_color *mult)
 {
-	color->r *= (float)mult->r / 255;
-	color->g *= (float)mult->g / 255;
-	color->b *= (float)mult->b / 255;
+	color->r *= mult->r;
+	color->g *= mult->g;
+	color->b *= mult->b;
 }

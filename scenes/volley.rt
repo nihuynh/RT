@@ -7,13 +7,13 @@ content
 {
 	object(light)
 	{
-		color(255 255 255)
+		color(1 1 1)
 		origin(80 0 25)
 		intensity(80)
 	}
 	object(light)
 	{
-		color(255 255 255)
+		color(1 1 1)
 		origin(-80 0 25)
 		intensity(80)
 	}
