@@ -14,15 +14,14 @@
 #include "libft.h"
 #include <math.h>
 
-void	vec3_refract(t_inter *inter, t_vec3 *vf, float ior)
+t_vec3
+	vec3_refract(t_vec3 ray, t_vec3 normal, float ior)
 {
 	float	toby[5];
-	t_vec3	tmp[2];
+	t_vec3	refracted;
 
-	tmp[0] = inter->ray.dir;
-	tmp[1] = inter->n;
-	*vf = inter->n;
-	AAAA = ft_clampf(vec3_dot(&inter->ray.dir, &inter->n), -1, 1);
+	refracted = normal;
+	AAAA = ft_clampf(vec3_dot(&ray, &normal), -1, 1);
 	BBBB = 1;
 	CCCC = ior;
 	if (AAAA < 0)
@@ -30,17 +29,18 @@ void	vec3_refract(t_inter *inter, t_vec3 *vf, float ior)
 	else
 	{
 		ft_swapf(&BBBB, &CCCC);
-		vec3_scalar(vf, -1);
+		vec3_scalar(&refracted, -1);
 	}
 	if ((EEEE = 1 - (BBBB / CCCC) * (BBBB / CCCC) * (1 - AAAA * AAAA)) < 0)
-		ft_bzero(vf, sizeof(vf));
+		ft_bzero(&refracted, sizeof(t_vec3));
 	else
 	{
-		vec3_scalar(&tmp[0], (BBBB / CCCC));
-		vec3_scalar(&tmp[1], (BBBB / CCCC) * AAAA - sqrtf(EEEE));
-		vec3_add(vf, &tmp[0], &tmp[1]);
-		vec3_normalize(vf);
+		vec3_scalar(&ray, (BBBB / CCCC));
+		vec3_scalar(&normal, (BBBB / CCCC) * AAAA - sqrtf(EEEE));
+		vec3_add(&refracted, &ray, &normal);
+		vec3_normalize(&refracted);
 	}
+	return (refracted);
 }
 
 /*

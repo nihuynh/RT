@@ -12,14 +12,15 @@
 
 #include "librt.h"
 
-void		vec3_deflect(t_inter *inter, t_ray *res)
+t_vec3
+	vec3_deflect(t_vec3 vec, t_vec3 normal)
 {
-	t_vec3	tmp;
+	t_vec3	reflected;
 	float	dot;
 
-	dot = vec3_dot(&inter->n, &inter->ray.dir);
-	vec3_cpy(&tmp, &inter->n);
-	vec3_scalar(&tmp, 2 * dot);
-	vec3_sub(&res->dir, &inter->ray.dir, &tmp);
-	vec3_normalize(&res->dir);
+	dot = vec3_dot(&normal, &vec);
+	vec3_scalar(&normal, 2 * dot);
+	vec3_sub(&reflected, &vec, &normal);
+	vec3_normalize(&reflected);
+	return (reflected);
 }
