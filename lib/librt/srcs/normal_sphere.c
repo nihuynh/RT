@@ -15,17 +15,15 @@
 void	normal_sphere(t_inter *inter)
 {
 	t_sphere	*sphere;
-	t_pt3		pt;
 	t_vec3		insider;
 	int			is_inside;
 
 	sphere = inter->obj->shape;
 	vec3_sub(&insider, &sphere->origin, &inter->ray.origin);
 	is_inside = (vec3_mag(&insider) < sphere->radius) ? 1 : 0;
-	inter_find(inter, &pt);
-	inter->n.x = pt.x - sphere->origin.x;
-	inter->n.y = pt.y - sphere->origin.y;
-	inter->n.z = pt.z - sphere->origin.z;
+	inter->n.x = inter->point.x - sphere->origin.x;
+	inter->n.y = inter->point.y - sphere->origin.y;
+	inter->n.z = inter->point.z - sphere->origin.z;
 	if (is_inside)
 		vec3_scalar(&inter->n, -1);
 	vec3_normalize(&inter->n);

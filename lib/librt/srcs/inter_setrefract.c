@@ -14,7 +14,7 @@
 
 void	inter_setrefract(t_inter *inter, t_ray *res)
 {
-	inter_find(inter, &res->origin);
+	res->origin = inter->point;
 	vec3_refract(inter, &res->dir, 1.5);
 	ray_offset_origin(res, inter->n);
 }

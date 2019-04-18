@@ -74,6 +74,7 @@ t_color
 	if (data->lst_light == NULL || data->scene_set.no_light)
 		return (ambient);
 	color_scalar(&ambient, data->scene_set.amb_light);
+	inter_find(&inter, &inter.point);
 	inter.find_normal(&inter);
 	cast_shadow(data, &inter);
 	color_scalar(&inter.color, 1.0f - data->scene_set.amb_light);

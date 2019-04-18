@@ -130,6 +130,7 @@ typedef struct s_inter	t_inter;
 ** dist 		: minimal distant at the inter
 ** obj 			: object touch by the ray
 ** ray 			: Ray information
+** point		: Intersection point
 ** n 			: Normal of the object at the inter
 ** color		: final color of the pixel
 ** reflected	: Vector director of the ray after the inter
@@ -141,6 +142,7 @@ struct			s_inter
 	float		dist;
 	t_obj		*obj;
 	t_ray		ray;
+	t_pt3		point;
 	t_vec3		n;
 	t_color		color;
 	t_ray		deflected;

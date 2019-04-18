@@ -14,7 +14,7 @@
 
 void	inter_setdeflect(t_inter *inter, t_ray *res)
 {
-	inter_find(inter, &res->origin);
+	res->origin = inter->point;
 	vec3_deflect(inter, res);
 	ray_offset_origin(res, inter->n);
 }

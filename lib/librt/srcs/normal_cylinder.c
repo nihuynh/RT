@@ -15,19 +15,17 @@
 void	normal_cylinder(t_inter *inter)
 {
 	t_cylinder	*cylinder;
-	t_pt3		pi;
 	t_pt3		pc;
 	float		var;
 	t_vec3		toby;
 
 	cylinder = inter->obj->shape;
-	inter_find(inter, &pi);
-	vec3_sub(&toby, &pi, &cylinder->origin);
+	vec3_sub(&toby, &inter->point, &cylinder->origin);
 	var = vec3_dot(&cylinder->n, &toby);
 	pc.x = cylinder->origin.x + var * cylinder->n.x;
 	pc.y = cylinder->origin.y + var * cylinder->n.y;
 	pc.z = cylinder->origin.z + var * cylinder->n.z;
-	vec3_sub(&toby, &pi, &pc);
+	vec3_sub(&toby, &inter->point, &pc);
 	vec3_normalize(&toby);
 	vec3_cpy(&inter->n, &toby);
 }

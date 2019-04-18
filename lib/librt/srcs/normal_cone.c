@@ -16,21 +16,19 @@
 void	normal_cone(t_inter *inter)
 {
 	t_cone	*cone;
-	t_pt3	pi;
 	t_pt3	pc;
 	float	var;
 	t_vec3	toby;
 
 	cone = inter->obj->shape;
-	inter_find(inter, &pi);
-	vec3_sub(&toby, &pi, &cone->origin);
+	vec3_sub(&toby, &inter->point, &cone->origin);
 	var = vec3_mag(&toby);
 	var /= (vec3_dot(&toby, &cone->n) > 0) ? cosf(cone->theta * DEG_TO_RAD)
 		: cosf((180 - cone->theta) * DEG_TO_RAD);
 	pc.x = cone->origin.x + var * cone->n.x;
 	pc.y = cone->origin.y + var * cone->n.y;
 	pc.z = cone->origin.z + var * cone->n.z;
-	vec3_sub(&toby, &pi, &pc);
+	vec3_sub(&toby, &inter->point, &pc);
 	vec3_normalize(&toby);
 	vec3_cpy(&inter->n, &toby);
 }
