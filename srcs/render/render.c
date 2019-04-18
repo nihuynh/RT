@@ -64,20 +64,20 @@ t_color
 	recursive_cast(t_data *data, t_ray *ray, int depth)
 {
 	t_inter	inter;
-	t_color	primary;
+	t_color	ambient;
 
 	inter_set(&inter, ray);
 	cast_primary(data, &inter);
 	if (inter.obj == NULL)
 		return (data->scene_set.back_color);
-	primary = inter.color;
-	color_scalar(&primary, data->scene_set.amb_light);
-	if (data->lst_light == NULL || data->scene_set.no_light == 1)
-		return (inter.color);
+	ambient = inter.obj->material.color_ambient;
+	if (data->lst_light == NULL || data->scene_set.no_light)
+		return (ambient);
+	color_scalar(&ambient, data->scene_set.amb_light);
 	inter.find_normal(&inter);
 	cast_shadow(data, &inter);
 	color_scalar(&inter.color, 1.0f - data->scene_set.amb_light);
-	color_add(&inter.color, &primary);
+	color_add(&inter.color, &ambient);
 	if (depth < data->scene_set.depth_max)
 		deflect_cast(data, &inter, depth);
 	return (inter.color);
