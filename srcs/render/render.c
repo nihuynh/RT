@@ -69,7 +69,7 @@ t_color
 	inter_set(&inter, ray);
 	cast_primary(data, &inter);
 	if (inter.obj == NULL)
-		return (itocolor(data->scene_set.back_color));
+		return (data->scene_set.back_color);
 	primary = inter.color;
 	color_scalar(&primary, data->scene_set.amb_light);
 	if (data->lst_light == NULL || data->scene_set.no_light == 1)
@@ -88,8 +88,11 @@ int __attribute__((hot))
 {
 	t_data	*data;
 	t_ray	rene;
+	t_color	color;
 
 	data = arg;
 	cam_ray(data, &rene, x + 0.5, y + 0.5);
-	return (colortoi(recursive_cast(data, &rene, 0)));
+	color = recursive_cast(data, &rene, 0);
+	color_clamp(&color, 0, 1);
+	return (colortoi(color));
 }

@@ -25,7 +25,7 @@
 void
 	parse_color(t_color *color, char *str, int line, char *key)
 {
-	uint8_t toby[3];
+	float	toby[3];
 	int		idx;
 
 	idx = -1;
@@ -34,7 +34,7 @@ void
 	str = check_key(str, line, key, ERR_PARSE_COLOR);
 	while (++idx < 3)
 	{
-		toby[idx] = (uint8_t)ft_clamp(ft_atoi(str), 0, 255);
+		toby[idx] = ft_atof(str);
 		while (*str && *str != ' ' && *str != ')')
 			str++;
 		while (*str && *str == ' ' && *str != ')')

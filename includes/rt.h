@@ -99,7 +99,7 @@ typedef struct	s_gui
 
 typedef struct	s_scene
 {
-	int			back_color;
+	t_color		back_color;
 	float		amb_light;
 	bool		no_light;
 	bool		no_facing;

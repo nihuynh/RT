@@ -18,30 +18,25 @@ static inline void
 	light_settings(void *res, int i)
 {
 	t_light			*light;
-	t_pt3			tmp2;
-	float			n[3];
-	int				tmp;
+	t_pt3			origin_tmp;
+	t_color			color_tmp;
 	char			tree_name[20];
 
 	ft_bzero(tree_name, sizeof(tree_name));
 	ft_strcat(tree_name, "Light ");
 	ft_strcat(tree_name, ft_itoa(i));
 	light = res;
-	tmp2 = light->origin;
 	if (igTreeNodeStr(tree_name))
 	{
-		if (igInputFloat3("Position", &tmp2.x, NULL, 0))
-			light->origin = tmp2;
+		origin_tmp = light->origin;
+		if (igInputFloat3("Position", &origin_tmp.x, NULL, 0))
+			light->origin = origin_tmp;
 		igInputFloat("Intensity", &light->intensity, 0, 0, NULL, 0);
 		if (igTreeNodeStr("Color"))
 		{
-			tmp = colortoi(light->color);
-			icolortogui(tmp, n);
-			if (igColorEdit3("Color", n, 0))
-			{
-				guicolortoi(n, &tmp);
-				light->color = itocolor(tmp);
-			}
+			color_tmp = light->color;
+			if (igColorEdit3("Color", &color_tmp.r, 0))
+				light->color = color_tmp;
 			igTreePop();
 		}
 		igTreePop();

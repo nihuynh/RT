@@ -16,7 +16,7 @@
 static inline void
 	light_settings(t_data *app)
 {
-	float	color[3];
+	t_color	color_tmp;
 
 	igCheckbox("No Light", &app->scene_set.no_light);
 	igSameLine(160, 0);
@@ -32,9 +32,9 @@ static inline void
 	igCheckbox("No Refraction", &app->scene_set.no_absorb);
 	if (igTreeNodeStr("Sky Color"))
 	{
-		icolortogui(app->scene_set.back_color, color);
-		if (igColorEdit3("Sky Color", color, 0))
-			guicolortoi(color, &app->scene_set.back_color);
+		color_tmp = app->scene_set.back_color;
+		if (igColorEdit3("Sky Color", &color_tmp.r, 0))
+			app->scene_set.back_color = color_tmp;
 		igTreePop();
 	}
 	igTreePop();

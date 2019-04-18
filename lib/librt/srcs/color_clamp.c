@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_scalar.c                                     :+:      :+:    :+:   */
+/*   color_clamp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tdarchiv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 03:28:16 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/01 20:35:20 by nihuynh          ###   ########.fr       */
+/*   Created: 2019/04/17 16:47:24 by tdarchiv          #+#    #+#             */
+/*   Updated: 2019/04/17 16:47:26 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "color.h"
-#include "ftmath.h"
 
 /**
-** @brief Scale color by k then clamp it
+** @brief	Clamp each color channel between min and max
 **
 ** @param color
-** @param k
+** @param min
+** @param max
 */
 
-void	color_scalar(t_color *color, float k)
+void	color_clamp(t_color *color, float min, float max)
 {
-	color->r = color->r * k;
-	color->g = color->g * k;
-	color->b = color->b * k;
+	color->r = fmaxf(min, fminf(color->r, max));
+	color->g = fmaxf(min, fminf(color->g, max));
+	color->b = fmaxf(min, fminf(color->b, max));
 }

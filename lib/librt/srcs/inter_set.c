@@ -15,6 +15,7 @@
 
 void	inter_set(t_inter *inter, t_ray *ray)
 {
+	ft_bzero(inter, sizeof(t_inter));
 	inter->dist = HUGEVAL;
 	inter->obj = NULL;
 	ft_memcpy(&inter->ray, ray, sizeof(t_ray));

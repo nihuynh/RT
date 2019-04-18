@@ -7,9 +7,9 @@ content
 {
 	object(light)
 	{
-		color(255 255 255)
+		color(1 1 1)
 		origin(100 100 100)
-		intensity(1000)
+		intensity(50000)
 	}
 	object(sphere)					# Left
 	{

@@ -22,7 +22,7 @@
 
 void	color_add(t_color *color, t_color *add)
 {
-	color->r = (uint8_t)ft_clamp(color->r + add->r, 0, 255);
-	color->g = (uint8_t)ft_clamp(color->g + add->g, 0, 255);
-	color->b = (uint8_t)ft_clamp(color->b + add->b, 0, 255);
+	color->r += add->r;
+	color->g += add->g;
+	color->b += add->b;
 }

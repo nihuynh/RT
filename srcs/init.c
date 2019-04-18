@@ -17,7 +17,7 @@
 void
 	init_scene(t_scene *scene)
 {
-	scene->back_color = BACK_COLOR;
+	scene->back_color = itocolor(BACK_COLOR);
 	scene->depth_max = DEPTH_MAX;
 	scene->fov = FOV;
 }

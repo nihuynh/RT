@@ -15,9 +15,11 @@
 t_color
 	itocolor(int color)
 {
-	return (t_color){
-		(color >> SHIFT_RED) & 0xFF,
-		(color >> SHIFT_GREEN) & 0xFF,
-		(color >> SHIFT_BLUE) & 0xFF
-	};
+	t_color c;
+
+	c.r = (color >> SHIFT_RED) & 0xFF;
+	c.g = (color >> SHIFT_GREEN) & 0xFF;
+	c.b = (color >> SHIFT_BLUE) & 0xFF;
+	color_scalar(&c, 1 / 255.f);
+	return (c);
 }

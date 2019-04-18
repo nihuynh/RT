@@ -15,7 +15,7 @@
 
 void	color_sub(t_color *color, t_color *sub)
 {
-	color->r = (uint8_t)ft_clamp(color->r - sub->r, 0, 255);
-	color->g = (uint8_t)ft_clamp(color->r - sub->g, 0, 255);
-	color->b = (uint8_t)ft_clamp(color->r - sub->b, 0, 255);
+	color->r -= sub->r;
+	color->g -= sub->g;
+	color->b -= sub->b;
 }
