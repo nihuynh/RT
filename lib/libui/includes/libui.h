@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 17:28:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:27:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_pxl
 }					t_pxl;
 
 typedef struct s_data_thr	t_data_thr;
+typedef struct s_thr_pool	t_thr_pool;
 
 typedef struct		s_img
 {
@@ -34,17 +35,18 @@ typedef struct		s_img
 	int				height;
 }					t_img;
 
+
 typedef struct		s_sdl
 {
 	t_img			img;
 	bool			needs_render;
 	int				width_vp;
 	int				height_vp;
+	// mthr data
 	int				thr_len;
 	t_data_thr		*data_thr;
-	int				sample_scale;
-	int				pxl_idx;
-	int				offset;
+	// pool data
+	t_thr_pool		*pool;
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
 	void			(*key_map)(int*, SDL_Keycode, void*, bool state);
@@ -61,6 +63,23 @@ struct				s_data_thr
 	t_sdl			*sdl;
 	int				(*do_pxl) (int, int, void*);
 	void			*prg_data;
+};
+
+struct				s_thr_pool
+{
+	int				pxl_idx;
+	unsigned short	thr_count;
+	pthread_mutex_t	idx_lock;
+	pthread_mutex_t	idle_count_lock;
+	unsigned short	idle_count;
+	pthread_cond_t	wait_sig;
+	pthread_cond_t	render_done;
+	t_sdl			*sdl;
+	int				(*do_pxl) (int, int, void*);
+	void			*prg_data;
+	// int				sample_scale;
+	// int				offset;
+	pthread_t		*threads;
 };
 
 /*

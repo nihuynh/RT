@@ -6,17 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 21:35:33 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 23:14:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/18 14:32:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
 #include "libft.h"
 #include "ftio.h"
-
-#define SHIFT_RED		0
-#define SHIFT_GREEN		8
-#define SHIFT_BLUE		16
 
 static inline void
 	putcolor(t_sdl *sdl, int color, int x, int y)
@@ -25,9 +21,9 @@ static inline void
 	uint8_t g;
 	uint8_t b;
 
-	r = (color >> SHIFT_RED) & 0xFF;
-	g = (color >> SHIFT_GREEN) & 0xFF;
-	b = (color >> SHIFT_BLUE);
+	r = (color >> 16) & 0xFF;
+	g = (color >> 8) & 0xFF;
+	b = color;
 	SDL_SetRenderDrawColor(sdl->renderer, r, g, b, 255);
 	SDL_RenderDrawPoint(sdl->renderer, x, y);
 }
