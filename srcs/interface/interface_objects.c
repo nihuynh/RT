@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 18:00:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/18 14:15:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,38 @@ static inline void
 }
 
 static inline void
-	object(t_obj *obj)
+	material(t_list *mat_lst)
+{
+	t_list		*current;
+	t_material	*selected;
+	t_material	*tmp;
+	bool		is_selected;
+
+	current = mat_lst;
+	selected = mat_lst->content;
+	tmp = mat_lst->content;
+	if(igBeginCombo("Material", selected->name, 0))
+	{
+		while (tmp)
+		{
+			is_selected = (selected == tmp);
+			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){40, 20}))
+				selected = tmp;
+			if (is_selected)
+				igSetItemDefaultFocus();
+			current = current->next;
+			tmp = current->content;
+		}
+		igEndCombo();
+	}
+}
+
+static inline void
+	object(t_data *app, t_obj *obj)
 {
 	(void)obj;
 	if (igTreeNodeStr("Material"))
-	{
-		igText(obj->material.name);
-		igTreePop();
-	}
+		material(app->lst_mat);
 }
 
 void
@@ -80,7 +104,7 @@ void
 	if (igTreeNodeStr("Objects"))
 	{
 		if (app->gui.obj_set)
-			object(app->gui.obj_set);
+			object(app, app->gui.obj_set);
 		else
 			igText("Click on an object to access its data.");
 		igTreePop();
