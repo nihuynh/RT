@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/18 14:14:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/18 14:20:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void
 		x = event->button.x - app->gui.pos_render.x;
 		y = event->button.y - app->gui.pos_render.y;
 		if (x >= 0 && x < app->sdl.img.width
-		&& y >= 20 && y < app->sdl.img.height)
+		&& y >= 0 && y < app->sdl.img.height)
 			app->gui.obj_set = find_obj_at_pixel(app, x, y);
 	}
 	if (event->button.button == SDL_BUTTON_RIGHT)
