@@ -9,7 +9,7 @@ set(DEBUG_FLAGS -g3)
 set(RELEASE_FLAGS -O2 -march=native -flto)
 set(PROFILE_FLAGS -g3 -O2 -march=native)
 
-add_compile_options(-Wall -Wextra -Werror -pedantic)
+add_compile_options(-Wall -Wextra -pedantic)
 
 #add_compile_options(-fsanitize=address -g3)
 #add_link_options(-fsanitize=address -fsanitize-recover=address)

@@ -22,7 +22,15 @@
 
 void	color_scalar(t_color *color, float k)
 {
-	color->r = color->r * k;
-	color->g = color->g * k;
-	color->b = color->b * k;
+	color->r *= k;
+	color->g *= k;
+	color->b *= k;
+}
+
+t_color	color_scalar_(t_color color, float k)
+{
+	color.r *= k;
+	color.g *= k;
+	color.b *= k;
+	return (color);
 }

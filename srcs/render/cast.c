@@ -29,13 +29,13 @@ void
 }
 
 float
-	cast_light_primary(t_data *data, t_inter *inter)
+	cast_light_primary(t_list *obj_list, t_inter *inter)
 {
 	t_list	*lst;
 	t_obj	*obj;
 	float	scalar;
 
-	lst = data->lst_obj;
+	lst = obj_list;
 	scalar = 1;
 	while (lst != NULL)
 	{
