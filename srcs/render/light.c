@@ -16,11 +16,21 @@
 #include "libft.h"
 #include <math.h>
 
-void add_diffuse_light(t_color *diffuse, t_color light_color, t_inter *inter, t_inter inter_light);
-void add_specular_light(t_color *specular, t_color light_color, t_inter *inter, t_inter inter_light);
+typedef struct	s_shading {
+	t_material	mat;
+	t_light		light;
+	t_vec3		light_dir;
+	t_vec3		hit_pos;
+	t_vec3		normal;
+	t_ray		cam_ray;
+	t_vec3		specular_dir;
+	t_color		diffuse_light_final;
+	t_color		specular_light_final;
+}				t_shading;
 
-void shade_1_light(const t_list *obj, const t_inter *inter, const t_scene *settings, t_light light,
-				   t_color *diffuse_light_final, t_color *specular_light_final);
+void add_specular_light(t_color *specular, t_shading shading, bool no_specular);
+void add_diffuse_light(t_color *diffuse, t_shading shading, bool no_diffuse);
+void shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings);
 
 static inline float
 	facing_ratio(t_vec3 ray_dir, t_vec3 normal, int no_facing)
@@ -33,6 +43,16 @@ static inline float
 	return (res >= 0) ? res : 0;
 }
 
+static inline float
+	specular_factor_(t_shading shading)
+{
+	float factor;
+
+	factor = fmaxf(0.f, vec3_dot(&shading.specular_dir, &shading.light_dir));
+	factor = powf(factor, shading.mat.spec_power);
+	factor *= shading.mat.spec_idx;
+	return (factor);
+}
 static inline float
 	specular_factor(t_inter *inter, t_inter *inter_light, bool no_specular)
 {
@@ -88,11 +108,20 @@ static inline void
 }
 
 float
-	get_light_visibility(t_inter *inter_light, t_list *obj_list, t_scene *settings)
+	get_light_visibility(t_shading s, t_list *obj_list, t_scene *settings)
 {
+	t_inter	inter_light;
+	t_ray	ray;
+
 	if (settings->no_shadow)
 		return (1);
-	return (cast_light_primary(obj_list, inter_light));
+	ray.origin = s.hit_pos;
+	ray.dir = s.light_dir;
+	ray_offset_origin(&ray, s.normal);
+	ft_bzero(&inter_light, sizeof(t_inter));
+	inter_light.ray = ray;
+	inter_light.dist = vec3_mag(vec3_sub_(s.light.origin, s.hit_pos));
+	return (cast_light_primary(obj_list, &inter_light));
 }
 
 float
@@ -103,51 +132,38 @@ float
 	return (1 / (distance * distance));
 }
 
+#define DIFFUSE 0
+#define SPECULAR 1
+
 t_color
 	get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_scene *settings)
 {
 	t_list	*lst;
 	t_light	light;
-	t_color	diffuse_light_final;
-	t_color	specular_light_final;
+	t_color	accum_light[2];
 
 	lst = light_lst;
 	inter_setdeflect(inter, &inter->deflected);
-	diffuse_light_final = (t_color){0, 0, 0};
-	specular_light_final = (t_color){0, 0, 0};
+	accum_light[DIFFUSE] = (t_color){0, 0, 0};
+	accum_light[SPECULAR] = (t_color){0, 0, 0};
 	while (lst != NULL)
 	{
+		
 		light = *(t_light*)lst->content;
-		shade_1_light(obj, inter, settings, light, &diffuse_light_final, &specular_light_final);
+		t_shading shading;
+		shading.light = *(t_light*)lst->content;
+		shading.hit_pos = inter->point;
+		shading.normal = inter->n;
+		shading.mat = inter->obj->material;
+		shading.cam_ray = inter->ray;
+		shading.specular_dir = inter->deflected.dir;
+		shading.light_dir = vec3_normalize_(vec3_sub_(light.origin, inter->point));
+		shade_1_light(accum_light, shading, obj, settings);
 		lst = lst->next;
 	}
-	color_mult(&diffuse_light_final, &inter->obj->material.color_diffuse);
-	color_mult(&specular_light_final, &inter->obj->material.color_specular);
-	return (color_add_(diffuse_light_final, specular_light_final));
-}
-
-struct s_shading {
-	t_material	mat;
-	t_light		light;
-	t_vec3		hit_pos;
-	t_vec3		normal;
-	t_ray		cam_ray;
-};
-
-void shade_1_light(const t_list *obj, const t_inter *inter, const t_scene *settings, )
-{
-	t_inter	inter_light;
-
-	inter_setlight(inter, &inter_light, &light);
-	light.intensity *= get_light_visibility(&inter_light, obj, settings);
-	if (light.intensity == 0)
-		return;
-	light.intensity *= get_distance_attenuation(inter_light.dist, settings);
-	color_scalar(&light.color, light.intensity);
-	if (settings->no_facing == false)
-		add_diffuse_light(diffuse_light_final, light.color, inter, inter_light);
-	if (settings->no_shine == false)
-		add_specular_light(specular_light_final, light.color, inter, inter_light);
+	color_mult(&accum_light[DIFFUSE], &inter->obj->material.color_diffuse);
+	color_mult(&accum_light[SPECULAR], &inter->obj->material.color_specular);
+	return (color_add_(accum_light[DIFFUSE], accum_light[SPECULAR]));
 }
 
 /**
@@ -174,22 +190,38 @@ void shade_1_light(const t_list *obj, const t_inter *inter, const t_scene *setti
  	}
 **/
 
-void add_specular_light(t_color *specular, t_color light_color, t_inter *inter, t_inter inter_light)
+
+void shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings)
+{
+	s.light.intensity *= get_light_visibility(s, obj, settings);
+	if (s.light.intensity == 0)
+		return;
+	s.light.intensity *= get_distance_attenuation(vec3_mag(vec3_sub_(s.light.origin, s.hit_pos)), settings);
+	color_scalar(&s.light.color, s.light.intensity);
+	add_diffuse_light(&light_accum[DIFFUSE], s, settings->no_facing);
+	add_specular_light(&light_accum[SPECULAR], s, settings->no_shine);
+}
+
+void add_specular_light(t_color *specular, t_shading shading, bool no_specular)
 {
 	float _specular_factor;
 
-	_specular_factor = specular_factor(inter, &inter_light, false);
-	color_scalar(&light_color, _specular_factor);
-	color_add(specular, &light_color);
+	if (no_specular)
+		return ;
+	_specular_factor = specular_factor_(shading);
+	color_scalar(&shading.light.color, _specular_factor);
+	color_add(specular, &shading.light.color);
 }
 
-void add_diffuse_light(t_color *diffuse, t_color light_color, t_inter *inter, t_inter inter_light)
+void add_diffuse_light(t_color *diffuse, t_shading shading, bool no_diffuse)
 {
 	float diffuse_factor;
 
-	diffuse_factor = facing_ratio(inter_light.ray.dir, inter->n, false);
-	color_scalar(&light_color, diffuse_factor);
-	color_add(diffuse, &light_color);
+	if (no_diffuse)
+		return ;
+	diffuse_factor = facing_ratio(shading.light_dir, shading.normal, false);
+	color_scalar(&shading.light.color, diffuse_factor);
+	color_add(diffuse, &shading.light.color);
 }
 
 void

@@ -42,7 +42,7 @@ static inline void
 	if (data->scene_set.no_deflect == 0
 	&& inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
 	{
-		primary = recursive_cast(data, &inter->deflected, depth + 1);
+		primary = recursive_cast(data, inter->deflected, depth + 1);
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
@@ -50,18 +50,18 @@ static inline void
 		&& inter->obj->material.absorb_idx != 0)
 	{
 		fresnel(inter, 1.5);
-		primary = recursive_cast(data, &inter->deflected, depth + 1);
+		primary = recursive_cast(data, inter->deflected, depth + 1);
 		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 		inter_setrefract(inter, &absorbed);
-		primary = recursive_cast(data, &absorbed, depth + 1);
+		primary = recursive_cast(data, absorbed, depth + 1);
 		color_scalar(&primary, inter->obj->material.absorb_idx);
 		color_add(&inter->color, &primary);
 	}
 }
 
 t_color
-	recursive_cast(t_data *data, t_ray *ray, int depth)
+	recursive_cast(t_data *data, t_ray ray, int depth)
 {
 	t_inter	inter;
 	t_color	ambient;
@@ -97,7 +97,7 @@ int __attribute__((hot))
 
 	data = arg;
 	cam_ray(data, &rene, x + 0.5, y + 0.5);
-	color = recursive_cast(data, &rene, 0);
+	color = recursive_cast(data, rene, 0);
 	color_clamp(&color, 0, 1);
 	return (colortoi(color));
 }

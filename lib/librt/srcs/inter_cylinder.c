@@ -25,9 +25,9 @@ static inline float
 	AAAA = vec3_dot(&ray->dir, &cyl->n);
 	CCCC = vec3_dot(&rene, &cyl->n);
 	BBBB = 2 * (vec3_dot(&ray->dir, &rene) - AAAA * CCCC);
-	det = vec3_mag(&ray->dir);
+	det = vec3_mag(ray->dir);
 	AAAA = det * det - AAAA * AAAA;
-	det = vec3_mag(&rene);
+	det = vec3_mag(rene);
 	CCCC = det * det - CCCC * CCCC - cyl->radius * cyl->radius;
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
 	if (det < 0)
