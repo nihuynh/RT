@@ -19,6 +19,9 @@
 void add_diffuse_light(t_color *diffuse, t_color light_color, t_inter *inter, t_inter inter_light);
 void add_specular_light(t_color *specular, t_color light_color, t_inter *inter, t_inter inter_light);
 
+void shade_1_light(const t_list *obj, const t_inter *inter, const t_scene *settings, t_light light,
+				   t_color *diffuse_light_final, t_color *specular_light_final);
+
 static inline float
 	facing_ratio(t_vec3 ray_dir, t_vec3 normal, int no_facing)
 {
@@ -115,26 +118,61 @@ t_color
 	while (lst != NULL)
 	{
 		light = *(t_light*)lst->content;
-		float	visibility;
-		float	attenuation;
-		t_inter	inter_light;
-
-		inter_setlight(inter, &inter_light, &light);
-		visibility = get_light_visibility(&inter_light, obj, settings);
-//		if (visibility == 0)
-//			continue;
-		attenuation = get_distance_attenuation(inter_light.dist, settings);
-		color_scalar(&light.color, visibility * attenuation * light.intensity);
-		if (settings->no_facing == false)
-			add_diffuse_light(&diffuse_light_final, light.color, inter, inter_light);
-		if (settings->no_shine == false)
-			add_specular_light(&specular_light_final, light.color, inter, inter_light);
+		shade_1_light(obj, inter, settings, light, &diffuse_light_final, &specular_light_final);
 		lst = lst->next;
 	}
 	color_mult(&diffuse_light_final, &inter->obj->material.color_diffuse);
 	color_mult(&specular_light_final, &inter->obj->material.color_specular);
 	return (color_add_(diffuse_light_final, specular_light_final));
 }
+
+struct s_shading {
+	t_material	mat;
+	t_light		light;
+	t_vec3		hit_pos;
+	t_vec3		normal;
+	t_ray		cam_ray;
+};
+
+void shade_1_light(const t_list *obj, const t_inter *inter, const t_scene *settings, )
+{
+	t_inter	inter_light;
+
+	inter_setlight(inter, &inter_light, &light);
+	light.intensity *= get_light_visibility(&inter_light, obj, settings);
+	if (light.intensity == 0)
+		return;
+	light.intensity *= get_distance_attenuation(inter_light.dist, settings);
+	color_scalar(&light.color, light.intensity);
+	if (settings->no_facing == false)
+		add_diffuse_light(diffuse_light_final, light.color, inter, inter_light);
+	if (settings->no_shine == false)
+		add_specular_light(specular_light_final, light.color, inter, inter_light);
+}
+
+/**
+	input: ray, hitpos, normal, light, obj, settings
+
+	specular_ray = ray(hitpos, reflect(ray, normal))
+ 	foreach light {
+		light_vec = lightpos - hitpos
+ 		if (settings)
+ 		{
+ 			light_ray = ray(hitpos, light_vec.normalize)
+ 			light_ray.origin += normal * 0.005;
+ 			visibility = get_light_visibility(obj_list, light_ray)
+ 			if (visibility == 0)
+ 				continue;
+ 		}
+		if (settings)
+			atten = get_distance_attenuation(light_ray)
+		light_color *= visibility * atten * light.intensity
+		if (settings)
+			diffuse_light += light.color * get_diffuse(light_vec, normal)
+		if (settings)
+			specular_light += light.color * get_specular(light_vec, specular_ray)
+ 	}
+**/
 
 void add_specular_light(t_color *specular, t_color light_color, t_inter *inter, t_inter inter_light)
 {
