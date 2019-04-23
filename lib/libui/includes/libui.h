@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/21 19:09:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/23 19:45:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,16 @@ struct				s_thr_pool
 {
 	int				is_stopped;
 	unsigned short	thr_count;
+	pthread_mutex_t	wait_lock;
+	pthread_cond_t	wait_sig;
 	unsigned int	pxl_idx;
 	pthread_mutex_t	idx_lock;
-	pthread_mutex_t	idle_count_lock;
+	pthread_mutex_t	idle_lock;
 	unsigned short	idle_count;
-	pthread_cond_t	wait_sig;
 	pthread_cond_t	render_done;
 	t_sdl			*sdl;
 	int				(*do_pxl) (int, int, void*);
 	void			*prg_data;
-	// int				sample_scale;
-	// int				offset;
 	pthread_t		*threads;
 };
 
