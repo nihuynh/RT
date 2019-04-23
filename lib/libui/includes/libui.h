@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/18 16:27:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/21 19:09:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ struct				s_data_thr
 
 struct				s_thr_pool
 {
-	int				pxl_idx;
+	int				is_stopped;
 	unsigned short	thr_count;
+	unsigned int	pxl_idx;
 	pthread_mutex_t	idx_lock;
 	pthread_mutex_t	idle_count_lock;
 	unsigned short	idle_count;

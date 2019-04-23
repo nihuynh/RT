@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:32:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/18 16:34:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/23 19:22:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 /*
 **	gcc -Wall -Werror -Wextra test_pool_render.c libui.a -I/Users/nihuynh/.brew/include/SDL2 -L/Users/nihuynh/.brew/lib -lSDL2 ../libft/libft.a
 */
+
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 static inline void
 	putcolor(t_sdl *sdl, int color, int x, int y)
@@ -38,32 +40,26 @@ void *thr_routine(void *arg)
 	t_pxl		idx;
 	int			task_id;
 	int			res;
-	pthread_mutex_t lock;
 
 	pool = arg;
+	task_id = 0;
 	while (42)
 	{
-		pthread_mutex_lock(&(pool->idx_lock));
-			task_id = pool->pxl_idx;
-			pool->pxl_idx += 1;
-		pthread_mutex_unlock(&(pool->idx_lock));
-		// if (task_id > pool->sdl->img.width * pool->sdl->img.height)
-		if (task_id > 800 * 800)
+		pthread_mutex_lock(&lock);
+		while (!pool->sdl->needs_render && !pool->is_stopped)
+			pthread_cond_wait(&pool->wait_sig, &lock);
+		if (pool->is_stopped)
 		{
-			pthread_mutex_lock(&(pool->idle_count_lock));
-				pool->idle_count += 1;
-				if (pool->idle_count == pool->thr_count)
-					pthread_cond_signal(&(pool->render_done));
-			pthread_cond_wait(&(pool->wait_sig), &(pool->idle_count_lock));
-			pthread_mutex_unlock(&(pool->idle_count_lock));
+			pthread_mutex_unlock(&lock);
+			printf("thread %x will exit\n", pthread_self ());
+            pthread_exit(NULL);
 		}
-		idx.x = task_id / pool->sdl->img.width;
-		idx.y = task_id % pool->sdl->img.width;
-		res = pool->do_pxl(idx.x, idx.y, pool->prg_data);
-		putcolor(pool->sdl, res, idx.x, idx.y);
-		// pool->sdl->img.pixels[task_id] = res | C_MASK;
+		pthread_mutex_unlock(&lock);
+		while (ft_btw(task_id, 0, 800 * 800))
+			// do batch of pxl
+		//	present frame
+
 	}
-	pthread_exit(NULL);
 }
 
 int init_pool(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *prg_d, unsigned short thr_count)
@@ -104,10 +100,12 @@ int pool_render(t_thr_pool *pool)
 	if (pool->sdl->needs_render == false)
 		return (EXIT_SUCCESS);
 	elapsed_time = ft_curr_usec();
-	pthread_mutex_lock(&lock);
-	pthread_cond_wait(&pool->render_done, &lock);
-	pthread_mutex_unlock(&lock);
-	SDL_RenderPresent(pool->sdl->renderer);
+	// wait thread to be done
+
+	// pthread_mutex_lock(&lock);
+	// pthread_cond_wait(&pool->render_done, &lock);
+	// pthread_mutex_unlock(&lock);
+	// SDL_RenderPresent(pool->sdl->renderer);
 	pool->sdl->needs_render = false;
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
@@ -116,11 +114,13 @@ int pool_render(t_thr_pool *pool)
 
 int destroy_pool(t_thr_pool *pool)
 {
+	pool->is_stopped = 1;
 	if (pool)
 	{
 		pthread_mutex_lock(&(pool->idx_lock));
         pthread_mutex_destroy(&(pool->idx_lock));
 		pthread_cond_destroy(&(pool->wait_sig));
+		free(pool->threads);
 		free(pool);
 	}
 	return (EXIT_SUCCESS);
