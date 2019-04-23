@@ -20,12 +20,10 @@ typedef struct	s_shading {
 	t_material	mat;
 	t_light		light;
 	t_vec3		light_dir;
+	float		light_dist;
 	t_vec3		hit_pos;
 	t_vec3		normal;
-	t_ray		cam_ray;
 	t_vec3		specular_dir;
-	t_color		diffuse_light_final;
-	t_color		specular_light_final;
 }				t_shading;
 
 void add_specular_light(t_color *specular, t_shading shading, bool no_specular);
@@ -37,9 +35,9 @@ static inline float
 {
 	float	res;
 
-	res = vec3_dot(&ray_dir, &normal);
 	if (no_facing == 1)
 		return (1);
+	res = vec3_dot(&ray_dir, &normal);
 	return (res >= 0) ? res : 0;
 }
 
@@ -120,27 +118,40 @@ float
 	ray_offset_origin(&ray, s.normal);
 	ft_bzero(&inter_light, sizeof(t_inter));
 	inter_light.ray = ray;
-	inter_light.dist = vec3_mag(vec3_sub_(s.light.origin, s.hit_pos));
+	inter_light.dist = s.light_dist;
 	return (cast_light_primary(obj_list, &inter_light));
 }
 
 float
-	get_distance_attenuation(float distance, t_scene *settings)
+	get_distance_attenuation(float distance)
 {
-	if (settings->no_i_light)
-		return (1);
 	return (1 / (distance * distance));
 }
 
 #define DIFFUSE 0
 #define SPECULAR 1
 
+t_shading set_shading_data(const t_inter *inter, t_light *light)
+{
+	t_shading shading;
+
+	shading.light = *light;
+	shading.light_dir = vec3_sub_(light->origin, inter->point);
+	shading.light_dist = vec3_mag(shading.light_dir);
+	shading.hit_pos = inter->point;
+	shading.normal = inter->n;
+	shading.mat = inter->obj->material;
+	shading.specular_dir = inter->deflected.dir;
+	vec3_normalize(&shading.light_dir);
+	return (shading);
+}
+
 t_color
 	get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_scene *settings)
 {
-	t_list	*lst;
-	t_light	light;
-	t_color	accum_light[2];
+	t_shading	shading;
+	t_list		*lst;
+	t_color		accum_light[2];
 
 	lst = light_lst;
 	inter_setdeflect(inter, &inter->deflected);
@@ -148,16 +159,7 @@ t_color
 	accum_light[SPECULAR] = (t_color){0, 0, 0};
 	while (lst != NULL)
 	{
-		
-		light = *(t_light*)lst->content;
-		t_shading shading;
-		shading.light = *(t_light*)lst->content;
-		shading.hit_pos = inter->point;
-		shading.normal = inter->n;
-		shading.mat = inter->obj->material;
-		shading.cam_ray = inter->ray;
-		shading.specular_dir = inter->deflected.dir;
-		shading.light_dir = vec3_normalize_(vec3_sub_(light.origin, inter->point));
+		shading = set_shading_data(inter, (t_light*)lst->content);
 		shade_1_light(accum_light, shading, obj, settings);
 		lst = lst->next;
 	}
@@ -166,38 +168,15 @@ t_color
 	return (color_add_(accum_light[DIFFUSE], accum_light[SPECULAR]));
 }
 
-/**
-	input: ray, hitpos, normal, light, obj, settings
-
-	specular_ray = ray(hitpos, reflect(ray, normal))
- 	foreach light {
-		light_vec = lightpos - hitpos
- 		if (settings)
- 		{
- 			light_ray = ray(hitpos, light_vec.normalize)
- 			light_ray.origin += normal * 0.005;
- 			visibility = get_light_visibility(obj_list, light_ray)
- 			if (visibility == 0)
- 				continue;
- 		}
-		if (settings)
-			atten = get_distance_attenuation(light_ray)
-		light_color *= visibility * atten * light.intensity
-		if (settings)
-			diffuse_light += light.color * get_diffuse(light_vec, normal)
-		if (settings)
-			specular_light += light.color * get_specular(light_vec, specular_ray)
- 	}
-**/
-
-
 void shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings)
 {
-	s.light.intensity *= get_light_visibility(s, obj, settings);
-	if (s.light.intensity == 0)
+	float intensity;
+
+	intensity = get_light_visibility(s, obj, settings);
+	if (intensity == 0)
 		return;
-	s.light.intensity *= get_distance_attenuation(vec3_mag(vec3_sub_(s.light.origin, s.hit_pos)), settings);
-	color_scalar(&s.light.color, s.light.intensity);
+	intensity *= s.light.intensity * get_distance_attenuation(s.light_dist);
+	color_scalar(&s.light.color, intensity);
 	add_diffuse_light(&light_accum[DIFFUSE], s, settings->no_facing);
 	add_specular_light(&light_accum[SPECULAR], s, settings->no_shine);
 }
