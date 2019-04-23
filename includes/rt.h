@@ -24,7 +24,7 @@
 */
 
 # define BACK_COLOR		0x000000
-# define AMB_LIGHT		0.0625f
+# define AMB_LIGHT		0.25f
 # define FOV			40.0f
 # define DEPTH_MAX		2
 

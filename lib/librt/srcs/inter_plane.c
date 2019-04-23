@@ -31,8 +31,7 @@ static inline float
 }
 
 static inline int
-	inter_finite(t_inter *data, t_plane *plan, float dist,
-			void (*f_texture)(t_color*, float, float))
+	inter_finite(t_inter *data, t_plane *plan, float dist)
 {
 	t_pt3	inter_pt;
 	t_vec3	orig_to_inter;
@@ -44,15 +43,13 @@ static inline int
 	inter_pt.z = data->ray.origin.z + dist * data->ray.dir.z;
 	vec3_sub(&orig_to_inter, &inter_pt, &plan->origin);
 	scale_x = vec3_dot(&orig_to_inter, &plan->x) / vec3_dot(&plan->x, &plan->x);
-	if (plan->size_x)
-		if (scale_x > plan->size_x || scale_x < -plan->size_x)
-			return (0);
+	if (plan->size_x && fabsf(scale_x) > plan->size_x)
+		return (0);
 	scale_y = vec3_dot(&orig_to_inter, &plan->y) / vec3_dot(&plan->y, &plan->y);
-	if (plan->size_y)
-		if (scale_y > plan->size_y || scale_y < -plan->size_y)
-			return (0);
-	if (f_texture)
-		f_texture(&data->color, scale_x, scale_y);
+	if (plan->size_y && fabsf(scale_y) > plan->size_y)
+		return (0);
+	if (plan->f_texture)
+		plan->f_texture(&data->color, scale_x, scale_y);
 	return (1);
 }
 
@@ -67,7 +64,7 @@ void
 	if (dist >= data->dist || dist < 0)
 		return ;
 	if (plane->size_x > 0 || plane->size_y > 0 || plane->f_texture)
-		if (!(inter_finite(data, plane, dist, plane->f_texture)))
+		if (!(inter_finite(data, plane, dist)))
 			return ;
 	if (!plane->f_texture)
 		data->color = node->material.color_ambient;
