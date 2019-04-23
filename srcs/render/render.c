@@ -77,11 +77,9 @@ t_color
 	color_scalar(&ambient, data->scene_set.amb_light);
 	inter_find(&inter, &inter.point);
 	inter.find_normal(&inter);
-//	cast_shadow(data, &inter);
 	lighting = get_lighting(data->lst_obj, data->lst_light, &inter, &data->scene_set);
 	inter.color = lighting;
 //	color_add(&inter.color, &lighting);
-//	color_scalar(&inter.color, 1.0f - data->scene_set.amb_light);
 	color_add(&inter.color, &ambient);
 	if (depth < data->scene_set.depth_max)
 		deflect_cast(data, &inter, depth);

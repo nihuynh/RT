@@ -11,10 +11,14 @@
 /* ************************************************************************** */
 
 #include "rt.h"
+#include "rtstruct.h"
 #include "librt.h"
-#include "libui.h"
-#include "libft.h"
+#include "ftlist.h"
+#include "ftmem.h"
 #include <math.h>
+
+#define DIFFUSE 0
+#define SPECULAR 1
 
 typedef struct	s_shading {
 	t_material	mat;
@@ -26,23 +30,17 @@ typedef struct	s_shading {
 	t_vec3		specular_dir;
 }				t_shading;
 
-void add_specular_light(t_color *specular, t_shading shading, bool no_specular);
-void add_diffuse_light(t_color *diffuse, t_shading shading, bool no_diffuse);
-void shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings);
-
 static inline float
-	facing_ratio(t_vec3 ray_dir, t_vec3 normal, int no_facing)
+	facing_ratio(t_vec3 ray_dir, t_vec3 normal)
 {
 	float	res;
 
-	if (no_facing == 1)
-		return (1);
 	res = vec3_dot(&ray_dir, &normal);
 	return (res >= 0) ? res : 0;
 }
 
 static inline float
-	specular_factor_(t_shading shading)
+	specular_factor(t_shading shading)
 {
 	float factor;
 
@@ -50,59 +48,6 @@ static inline float
 	factor = powf(factor, shading.mat.spec_power);
 	factor *= shading.mat.spec_idx;
 	return (factor);
-}
-static inline float
-	specular_factor(t_inter *inter, t_inter *inter_light, bool no_specular)
-{
-	float factor;
-
-	if (no_specular)
-		return (0);
-	factor = fmaxf(0.f, vec3_dot(&inter->deflected.dir, &inter_light->ray.dir));
-	factor = powf(factor, inter->obj->material.spec_power);
-	factor *= inter->obj->material.spec_idx;
-	return (factor);
-}
-
-static inline void
-	shine(t_inter *inter, t_inter *inter_light, bool no_specular)
-{
-	float	ratio;
-	t_color	shine_color;
-
-	if (no_specular)
-		return ;
-	ratio = specular_factor(inter, inter_light, no_specular);
-	shine_color = inter_light->color;
-	color_scalar(&shine_color, ratio);
-	color_mult(&shine_color, &inter->obj->material.color_specular);
-	color_add(&inter->color, &shine_color);
-}
-
-static inline void
-	shadow(t_data *data, t_inter *inter, t_light *light, t_color *color)
-{
-	t_inter	inter_light;
-	t_color	tmp;
-	float	scale;
-
-	tmp = light->color;
-	inter_setlight(inter, &inter_light, light);
-	scale = inter_light.dist * inter_light.dist;
-	if (data->scene_set.no_i_light == 0)
-		color_scalar(&tmp, (light->intensity / scale));
-	if (data->scene_set.no_shadow)
-		scale = 1;
-	else
-		scale = cast_light_primary(data->lst_obj, &inter_light);
-	if (scale > 0)
-	{
-		color_scalar(&tmp, scale);
-		scale = facing_ratio(inter_light.ray.dir, inter_light.n, data->scene_set.no_facing);
-		shine(inter, &inter_light, data->scene_set.no_shine);
-		color_scalar(&tmp, scale);
-		color_add(color, &tmp);
-	}
 }
 
 float
@@ -128,10 +73,32 @@ float
 	return (1 / (distance * distance));
 }
 
-#define DIFFUSE 0
-#define SPECULAR 1
+void
+	add_specular_light(t_color *specular, t_shading shading, bool no_specular)
+{
+	float spec_factor;
 
-t_shading set_shading_data(const t_inter *inter, t_light *light)
+	if (no_specular)
+		return ;
+	spec_factor = specular_factor(shading);
+	color_scalar(&shading.light.color, spec_factor);
+	color_add(specular, &shading.light.color);
+}
+
+void
+	add_diffuse_light(t_color *diffuse, t_shading shading, bool no_diffuse)
+{
+	float diffuse_factor;
+
+	if (no_diffuse)
+		return ;
+	diffuse_factor = facing_ratio(shading.light_dir, shading.normal);
+	color_scalar(&shading.light.color, diffuse_factor);
+	color_add(diffuse, &shading.light.color);
+}
+
+t_shading
+	set_shading_data(const t_inter *inter, t_light *light)
 {
 	t_shading shading;
 
@@ -144,6 +111,20 @@ t_shading set_shading_data(const t_inter *inter, t_light *light)
 	shading.specular_dir = inter->deflected.dir;
 	vec3_normalize(&shading.light_dir);
 	return (shading);
+}
+
+void
+	shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings)
+{
+	float intensity;
+
+	intensity = get_light_visibility(s, obj, settings);
+	if (intensity == 0)
+		return ;
+	intensity *= s.light.intensity * get_distance_attenuation(s.light_dist);
+	color_scalar(&s.light.color, intensity);
+	add_diffuse_light(&light_accum[DIFFUSE], s, settings->no_facing);
+	add_specular_light(&light_accum[SPECULAR], s, settings->no_shine);
 }
 
 t_color
@@ -166,59 +147,4 @@ t_color
 	color_mult(&accum_light[DIFFUSE], &inter->obj->material.color_diffuse);
 	color_mult(&accum_light[SPECULAR], &inter->obj->material.color_specular);
 	return (color_add_(accum_light[DIFFUSE], accum_light[SPECULAR]));
-}
-
-void shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings)
-{
-	float intensity;
-
-	intensity = get_light_visibility(s, obj, settings);
-	if (intensity == 0)
-		return;
-	intensity *= s.light.intensity * get_distance_attenuation(s.light_dist);
-	color_scalar(&s.light.color, intensity);
-	add_diffuse_light(&light_accum[DIFFUSE], s, settings->no_facing);
-	add_specular_light(&light_accum[SPECULAR], s, settings->no_shine);
-}
-
-void add_specular_light(t_color *specular, t_shading shading, bool no_specular)
-{
-	float _specular_factor;
-
-	if (no_specular)
-		return ;
-	_specular_factor = specular_factor_(shading);
-	color_scalar(&shading.light.color, _specular_factor);
-	color_add(specular, &shading.light.color);
-}
-
-void add_diffuse_light(t_color *diffuse, t_shading shading, bool no_diffuse)
-{
-	float diffuse_factor;
-
-	if (no_diffuse)
-		return ;
-	diffuse_factor = facing_ratio(shading.light_dir, shading.normal, false);
-	color_scalar(&shading.light.color, diffuse_factor);
-	color_add(diffuse, &shading.light.color);
-}
-
-void
-cast_shadow(t_data *data, t_inter *inter)
-{
-	t_list  *lst;
-	t_light *light;
-	t_color color;
-
-	lst = data->lst_light;
-	ft_bzero(&color, sizeof(t_color));
-	inter_setdeflect(inter, &inter->deflected);
-	while (lst != NULL)
-	{
-		light = lst->content;
-		if (light != NULL)
-			shadow(data, inter, light, &color);
-		lst = lst->next;
-	}
-	color_mult(&inter->color, &color);
 }
