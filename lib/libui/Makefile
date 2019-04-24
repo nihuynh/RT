@@ -6,15 +6,15 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 12:12:38 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/24 12:25:56 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	libui.a
 RUNMODE		?=	dev
-SDL_SRC		:=	init_sdl.c error_sdl.c exit_sdl.c putcolor_sdl.c\
+SDL_SRC		:=	init_sdl.c error_sdl.c exit_sdl.c\
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
-				save_screenshot.c render_fullscreen.c
+				save_screenshot.c
 SRC			:=	$(SDL_SRC)
 # directories :
 SRCDIR  	:=	srcs

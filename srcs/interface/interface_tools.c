@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/19 11:20:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 13:06:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ void	interface_plane(void *res)
 		plane->origin = tmp.origin;
 	if (igInputFloat3("Normal", &tmp.n.x, NULL, 0))
 		plane->n = tmp.n;
-	if (igInputFloat("X", &tmp.size_x, 0, 0, NULL, 0))
+	if (igInputFloat("X Limit", &tmp.size_x, 0, 0, "%g", 0))
 		plane->size_x = tmp.size_x;
-	igSameLine(160, 0);
-	if (igInputFloat("Y Limit", &tmp.size_y, 0, 0, NULL, 0))
+	if (igInputFloat("Y Limit", &tmp.size_y, 0, 0, "%g", 0))
 		plane->size_y = tmp.size_y;
 }
 

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/19 11:22:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 13:31:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static inline void
 	if (igTreeNodeStr(tree_name))
 	{
 		origin_tmp = light->origin;
-		if (igInputFloat3("Position", &origin_tmp.x, NULL, 0))
+		if (igInputFloat3("Position", &origin_tmp.x, "test %g", 0))
 			light->origin = origin_tmp;
 		igInputFloat("Intensity", &light->intensity, 0, 0, NULL, 0);
 		if (igTreeNodeStr("Color"))
@@ -53,18 +53,18 @@ static inline void
 
 	current = mat_lst;
 	selected = &obj->material;
-	tmp = mat_lst->content;
-	if(igBeginCombo("Material", tmp->name, 0))
+	tmp = current->content;
+	if(igBeginCombo("Material", selected->name, 0))
 	{
 		while (current)
 		{
 			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
-			if (igSelectable((const char*)tmp->name, is_selected, 0, (ImVec2){40, 20}))
-				selected = tmp;
+			if (igSelectable((const char*)tmp->name, is_selected, 0, (ImVec2){0, 0}))
+				obj->material = *tmp;
 			if (is_selected)
 				igSetItemDefaultFocus();
 			current = current->next;
-			if(current)
+			if (current)
 				tmp = current->content;
 		}
 		igEndCombo();
