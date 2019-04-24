@@ -3,17 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/19 11:40:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 14:11:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
-#include <OpenGL/gl.h>
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
+#if defined(__APPLE__)
+#define GL_SILENCE_DEPRECATION
+#include <OpenGL/gl.h>
+#else
+#include <GL/gl.h>
+#endif
 
 void	window_renderer(t_gui *gui, t_img img)
 {
