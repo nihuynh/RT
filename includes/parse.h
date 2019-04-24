@@ -47,8 +47,7 @@ void			parse_color(t_color *color, char *str, int line, char *key);
 void			parse_vector(t_vec3 *vec, char *str, int line, char *key);
 void			parse_fval(float *val, char *str, int line, const char *key);
 void			parse_limit(float *l_x, float *l_y, char *str, int line);
-void			parse_texture(t_plane *plane, char *str, int line);
-
+void			parse_texture(f_texture *texture, char *str, int line);
 /*
 ** Setters :
 */

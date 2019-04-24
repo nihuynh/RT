@@ -133,6 +133,7 @@ t_color
 	t_shading	shading;
 	t_list		*lst;
 	t_color		accum_light[2];
+	t_color		diffuse_color;
 
 	lst = light_lst;
 	inter_setdeflect(inter, &inter->deflected);
@@ -144,7 +145,14 @@ t_color
 		shade_1_light(accum_light, shading, obj, settings);
 		lst = lst->next;
 	}
-	color_mult(&accum_light[DIFFUSE], &inter->obj->material.color_diffuse);
+	if (inter->get_uv)
+	{
+		t_vec3 uv = inter->get_uv(inter);
+		diffuse_color = inter->obj->material.f_texture(uv.x, uv.y);
+	}
+	else
+		diffuse_color = inter->obj->material.color_diffuse;
+	color_mult(&accum_light[DIFFUSE], &diffuse_color);
 	color_mult(&accum_light[SPECULAR], &inter->obj->material.color_specular);
 	return (color_add_(accum_light[DIFFUSE], accum_light[SPECULAR]));
 }

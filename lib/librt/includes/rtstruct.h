@@ -46,7 +46,6 @@ typedef struct	s_plane
 	float		size_x;
 	float		size_y;
 	float		rotation;
-	void		(*f_texture)(t_color *, float x, float y);
 }				t_plane;
 
 typedef struct	s_sphere
@@ -109,6 +108,8 @@ typedef struct	s_cam
 ** Le coefficient de réfléxion (utilisé pour la réfléxion).
 */
 
+typedef t_color	(*f_texture)(float x, float y);
+
 typedef struct	s_material
 {
 	char		*name;
@@ -120,6 +121,7 @@ typedef struct	s_material
 	float		spec_power;
 	float		absorb_idx;
 	float		deflect_idx;
+	f_texture	f_texture;
 }				t_material;
 
 typedef struct s_obj	t_obj;
@@ -148,6 +150,7 @@ struct			s_inter
 	t_ray		deflected;
 	float		kr;
 	void		(*find_normal) (t_inter*);
+	t_vec3		(*get_uv) (t_inter*);
 };
 
 /*
