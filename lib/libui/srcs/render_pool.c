@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 19:01:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 20:18:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 #include "libui.h"
 #include "libft.h"
 
-# define PAUSE		0
-# define RUNNING	1
-# define DONE		2
-# define DUMP		printf("Thread %x is %d [task_id = %d][idle_count = %d][thr_count = %d][pxl_idx = %d]\n", (unsigned int)pthread_self(), state, task_id, pool->idle_count, pool->thr_count, pool->pxl_idx)
+#define PAUSE		0
+#define RUNNING		1
+#define DONE		2
+#define DUMP		printf("Thread %x is %d [task_id = %d][idle_count = %d][thr_count = %d][pxl_idx = %d]\n", (unsigned int)pthread_self(), state, task_id, pool->idle_count, pool->thr_count, pool->pxl_idx)
 
 static inline int
 	do_batch(t_thr_pool *pool)
 {
-	int		task_id;
-	int 	idx_batch;
-	int 	idx;
+	int	task_id;
+	int	idx_batch;
+	int	idx;
 
 	idx_batch = -1;
 	pthread_mutex_lock(&pool->idx_lock);
@@ -44,7 +44,7 @@ static inline int
 }
 
 static inline void
-	*thr_routine(void *arg)
+	*thr_fun(void *arg)
 {
 	t_thr_pool	*pool;
 	int			task_id;
@@ -59,8 +59,7 @@ static inline void
 		while (state == PAUSE && !pool->sdl->needs_render)
 			pthread_cond_wait(&pool->wait_sig, &pool->wait_lock);
 		pthread_mutex_unlock(&pool->wait_lock);
-		if (pool->is_stopped == 1)
-            pthread_exit(NULL);
+		(pool->is_stopped == 1) ? pthread_exit(NULL) : (void*)0;
 		state = RUNNING;
 		while (task_id >= 0)
 			task_id = do_batch(pool);
@@ -72,12 +71,8 @@ static inline void
 			pthread_cond_signal(&pool->render_done);
 			pool->sdl->needs_render = false;
 			pool->idle_count = 0;
-			pool->idle_count = 0;
-			printf("Render trigger\n");
 		}
-
 		pthread_mutex_unlock(&pool->idle_lock);
-		printf("New cycle\n");
 	}
 }
 
@@ -106,9 +101,8 @@ int
 	sdl->pool->prg_data = prg_d;
 	while (++idx < thr_count && !sats)
 	{
-		sats = pthread_create(&sdl->pool->threads[idx], NULL,
-								thr_routine, sdl->pool);
-		pthread_detach(sdl->pool->threads[idx]);
+		sats = pthread_create(&sdl->pool->thrs[idx], NULL, thr_fun, sdl->pool);
+		pthread_detach(sdl->pool->thrs[idx]);
 	}
 	return (EXIT_SUCCESS);
 }

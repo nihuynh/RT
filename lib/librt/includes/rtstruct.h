@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/19 11:19:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 20:11:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,8 @@ typedef struct	s_cam
 
 /*
 ** @brief Struct for material caracteristics
-** reflect_idx : depend on the material
-** transmit_k 	: at 0 for dialectrics
 ** http://www.lama.univ-savoie.fr/pagesmembres/lachaud/Cours/INFO805/Tests/html/
 ** Material_8h_source.html
-** La "brillance" (pour la réfléxion et couplé avec la couleur Specular).
-** La puissance de brillance (coefficient couplé avec la valeur précédente).
-** Le coefficient de  transmission (utilisé pour la réfraction).
-** Le coefficient de réfléxion (utilisé pour la réfléxion).
 */
 
 typedef t_color	(*f_texture)(float x, float y);

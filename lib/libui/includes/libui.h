@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 19:07:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 20:16:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 
 # define THR_C		20
-# define BATCH_SIZE 16
+# define BATCH_SIZE	16
 # define C_MASK		0xFF000000
 
 typedef struct		s_pxl
@@ -36,7 +36,7 @@ typedef struct		s_img
 	int				height;
 }					t_img;
 
-typedef struct s_sdl t_sdl;
+typedef struct s_sdl	t_sdl;
 
 struct				s_sdl
 {
@@ -45,10 +45,8 @@ struct				s_sdl
 	bool			needs_render;
 	int				width_vp;
 	int				height_vp;
-	// mthr data
 	int				thr_len;
 	t_data_thr		*data_thr;
-	// pool data
 	t_thr_pool		*pool;
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
@@ -84,7 +82,7 @@ struct				s_thr_pool
 	t_sdl			*sdl;
 	int				(*do_pxl) (int, int, void*);
 	void			*prg_data;
-	pthread_t		*threads;
+	pthread_t		*thrs;
 };
 
 /*
