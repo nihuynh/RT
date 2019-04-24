@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/04/10 17:13:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:31:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-/**
+/*
 ** @brief	Parser for the camera
 **
 ** @param greed		Contains the whole input file
@@ -37,7 +37,7 @@ int
 	return (line_idx + 5);
 }
 
-/**
+/*
 ** @brief	Sorting objects in the content section of the input file
 **
 ** @param greed		Contains the whole input file
@@ -73,7 +73,7 @@ int
 	return (++line_idx);
 }
 
-/**
+/*
 ** @brief	First sort between the camera parser and the content parser
 **
 ** @param greed		Contains the whole input file
@@ -98,7 +98,7 @@ void
 	}
 }
 
-/**
+/*
 ** @brief	Reading the input file and beginning parsing
 **
 ** @param str	Name of the input file

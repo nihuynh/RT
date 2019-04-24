@@ -25,8 +25,6 @@ void	window_renderer(t_gui *gui, t_img img)
 	ImVec2	pos;
 
 	igSetNextWindowSize((ImVec2){img.width, img.height}, 0);
-	// if (RENDER_STATIC)
-	// 	igSetNextWindowPos((ImVec2){0, 0}, 0, (ImVec2){0, 0});
 	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
 	igBegin("render", NULL, RENDER_FLAGS);
@@ -72,7 +70,6 @@ void	interface(t_data *app)
 	ImGui_ImplSDL2_NewFrame(app->sdl.win);
 	igNewFrame();
 	gui_setup(&app->gui, app->sdl.img, app);
-	// igShowDemoWindow(NULL);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
 	glClearColor(0.4, 0.55, 0.6, 1.0f);

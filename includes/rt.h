@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 12:13:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 18:03:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,13 @@ typedef struct	s_scene
 {
 	t_color		back_color;
 	float		amb_light;
-	bool		no_light;
-	bool		no_facing;
-	bool		no_i_light;
-	bool		no_shine;
-	bool		no_shadow;
-	bool		no_deflect;
-	bool		no_absorb;
+	bool		light;
+	bool		facing;
+	bool		i_light;
+	bool		shine;
+	bool		shadow;
+	bool		deflect;
+	bool		absorb;
 	int			depth_max;
 	float		fov;
 }				t_scene;
@@ -161,6 +161,7 @@ void			init(t_data	*data);
 void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);
 void			render_gui(void *arg);
+void			render_fullscreen(t_sdl *sdl);
 void			interface_sphere(void *res);
 void			interface_plane(void *res);
 void			interface_cylinder(void *res);

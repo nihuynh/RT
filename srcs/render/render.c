@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 17:50:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 18:05:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ static inline void
 	t_color	primary;
 	t_ray	absorbed;
 
-	if (data->scene_set.no_deflect == 0
+	if (data->scene_set.deflect == 1
 	&& inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
 	{
 		primary = recursive_cast(data, &inter->deflected, depth + 1);
 		color_scalar(&primary, inter->obj->material.deflect_idx);
 		color_add(&inter->color, &primary);
 	}
-	else if (data->scene_set.no_absorb == 0
+	else if (data->scene_set.absorb == 1
 		&& inter->obj->material.absorb_idx != 0)
 	{
 		fresnel(inter, 1.5);
@@ -71,7 +71,7 @@ t_color
 	if (inter.obj == NULL)
 		return (data->scene_set.back_color);
 	ambient = inter.obj->material.color_ambient;
-	if (data->lst_light == NULL || data->scene_set.no_light)
+	if (data->lst_light == NULL || !data->scene_set.light)
 		return (ambient);
 	color_scalar(&ambient, data->scene_set.amb_light);
 	inter_find(&inter, &inter.point);

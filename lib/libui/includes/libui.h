@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 12:12:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 19:07:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 
 # define THR_C		20
+# define BATCH_SIZE 16
 # define C_MASK		0xFF000000
 
 typedef struct		s_pxl
@@ -35,8 +36,9 @@ typedef struct		s_img
 	int				height;
 }					t_img;
 
+typedef struct s_sdl t_sdl;
 
-typedef struct		s_sdl
+struct				s_sdl
 {
 	bool			fullscreen;
 	t_img			img;
@@ -55,7 +57,8 @@ typedef struct		s_sdl
 	void			(*click_map)(SDL_Event *, void *);
 	void			(*update)(void *arg);
 	void			(*render_gui)(void *arg);
-}					t_sdl;
+	void			(*render_fullscreen)(t_sdl *sdl);
+};
 
 struct				s_data_thr
 {
@@ -69,13 +72,14 @@ struct				s_data_thr
 struct				s_thr_pool
 {
 	int				is_stopped;
-	unsigned short	thr_count;
+	short			thr_count;
 	pthread_mutex_t	wait_lock;
 	pthread_cond_t	wait_sig;
-	unsigned int	pxl_idx;
+	int				pxl_idx;
+	int				limit;
 	pthread_mutex_t	idx_lock;
 	pthread_mutex_t	idle_lock;
-	unsigned short	idle_count;
+	short			idle_count;
 	pthread_cond_t	render_done;
 	t_sdl			*sdl;
 	int				(*do_pxl) (int, int, void*);
@@ -96,7 +100,13 @@ void				save_screenshot(t_sdl *sdl, char *arg);
 void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 									void *data);
 void				render_mthr_sdl(t_sdl *sdl);
-void				putcolor_sdl(t_sdl *sdl, int color, int x, int y);
-void				render_fullscreen(t_sdl *sdl, t_img *img);
 
+/*
+** Pool Render :
+*/
+
+int					init_pool(t_sdl *sdl, int (*do_pxl) (int, int, void*),
+	void *prg_d, uint16_t thr_count);
+int					pool_render(t_thr_pool *pool);
+int					destroy_pool(t_thr_pool *pool);
 #endif

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   color_add.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 03:26:10 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/01 20:31:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:42:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 #include "ftmath.h"
 
-/**
+/*
 ** @brief	Add color & clamp it between 0-255
 **
 ** @param color
