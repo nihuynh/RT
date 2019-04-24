@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 12:12:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:51:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct		s_img
 	int				width;
 	int				height;
 }					t_img;
-
 
 typedef struct		s_sdl
 {

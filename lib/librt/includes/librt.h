@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/18 15:27:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:51:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define CCCC toby[2]
 # define DDDD toby[3]
 # define EEEE toby[4]
-
 
 /*
 ** Normal :

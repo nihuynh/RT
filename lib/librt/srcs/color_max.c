@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   color_max.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:20:56 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/01 20:32:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:42:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "color.h"
 
-/**
+/*
 ** @brief	Return the max color in RGB between 2 t_color
 **
 ** @param col1

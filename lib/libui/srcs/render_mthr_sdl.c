@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mthr_sdl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/13 00:15:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:50:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static inline void
 		ofs = idx.y * (sdl->img.height / THR_C);
 		while (idx.x < sdl->thr_len)
 		{
-			pc = (uint32_t *) &sdl->data_thr[idx.y].data[idx.x];
+			pc = (uint32_t *)&sdl->data_thr[idx.y].data[idx.x];
 			pxl_idx = (ofs + idx.x / sdl->img.width) * sdl->img.width
 				+ idx.x % sdl->img.width;
 			sdl->img.pixels[pxl_idx] = pc[0] | C_MASK;
@@ -55,9 +55,9 @@ static inline void
 	i = -1;
 	while (++i < sdl->thr_len)
 	{
-			slice->data[i] = slice->do_pxl(i % sdl->img.width,
-			ofs + i / sdl->img.width,
-			slice->prg_data);
+		slice->data[i] = slice->do_pxl(i % sdl->img.width,
+		ofs + i / sdl->img.width,
+		slice->prg_data);
 	}
 	pthread_exit(NULL);
 }

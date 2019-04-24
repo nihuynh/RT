@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   color_mult.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 03:24:03 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/01 20:32:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:42:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-/**
+/*
 ** @brief	Multiply colors
 **
 **
