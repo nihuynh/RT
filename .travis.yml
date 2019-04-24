@@ -8,7 +8,7 @@ addons:
     - sdl2
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
-    echo "linux";
+    make install_sdl;
     fi
 script: make
 

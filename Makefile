@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/16 14:47:15 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/24 11:51:27 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,6 +123,13 @@ lib: ## Built the libraries.
 	$(MAKE) -sC $(LUI_PATH) $(LIBFLAGS)
 	$(MAKE) -sC $(IMGUI_IMPL_PATH) $(LIBFLAGS)
 .PHONY: lib
+install_sdl:
+	curl -L https://www.libsdl.org/release/SDL2-2.0.9.tar.gz | tar xz
+	cd SDL-2.0.9
+	./configure && make
+	sudo make install
+	cd .. && $(RM) -rf SDL-2.0.9
+.PHONY: install_sdl
 clean:  ## Clean of the project directory (.o & .d).
 	$(RM) $(OBJ)
 	$(RM) $(DEP)
