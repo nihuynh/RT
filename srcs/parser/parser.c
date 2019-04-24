@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/19 11:18:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:31:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static inline int
 	return (idx + 9);
 }
 
-/**
+/*
 ** @brief	General parser for all of the shapes
 **
 ** @param greed	Contains the whole input file
@@ -127,7 +127,7 @@ int
 	return (idx);
 }
 
-/**
+/*
 ** @brief	Parser for light objects
 **
 ** @param greed		Contains the whole input file

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_toolbox.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 21:11:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:31:17 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "rt.h"
 
-/**
+/*
 ** @brief		Parse the color of an object from a string
 **
 ** @param color	Adress of the color to parse
@@ -51,7 +51,7 @@ void
 		ft_printf("Color : %i %i %i\n", color->r, color->g, color->b);
 }
 
-/**
+/*
 ** @brief Parse a vector from a string
 **
 ** @param vec		Address of the vector to parse
@@ -89,7 +89,7 @@ void
 		ft_printf("Vector : %f %f %f\n", vec->x, vec->y, vec->z);
 }
 
-/**
+/*
 ** @brief Parse a float value of an object from a string
 **
 ** @param val	Adress of the float value to parse

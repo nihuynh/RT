@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/18 14:20:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:24:52 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void
 		mouse_captured ^= 1;
 		SDL_SetRelativeMouseMode(mouse_captured);
 	}
+	else if (key == SDLK_f && state == SDL_RELEASED)
+		app->sdl.fullscreen = (app->sdl.fullscreen == true) ? false : true;
 	camera(&app->cam, key, state);
 }
 

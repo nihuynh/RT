@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 20:12:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:31:38 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int
 	return (!ft_strncasecmp(mat->name, ckey, ft_strlen(mat->name)));
 }
 
-/**
+/*
 ** @brief			Verify if a line is containing the proper value and key.
 **
 ** @param str 		String to check

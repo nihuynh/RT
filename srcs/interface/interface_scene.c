@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/19 12:06:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:28:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,17 @@ static inline void
 	if (igTreeNodeStr("Camera Settings"))
 	{
 		igDragInt("Depth Max", &app->scene_set.depth_max, 0.1, 0, 10, NULL);
-		igDragFloat("FOV", &app->scene_set.fov, 0.1, 30, 110, NULL, 1);
+		igDragFloat("FOV", &app->scene_set.fov, 0.1, 30, 110, "%g", 1);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Light Settings"))
 		light_settings(app);
-	if (igButton("Apply", (ImVec2){50, 20}))
-		app->sdl.needs_render = true;
 }
 
 static inline void
 	menu_bar(t_data *app)
 {
-	if(igBeginMenu("Menu", 1))
+	if (igBeginMenu("Menu", 1))
 	{
 		igMenuItemBoolPtr("log", NULL, &app->gui.log_open, 1);
 		if (igMenuItemBoolPtr("Fullscreen", NULL, &app->sdl.fullscreen, 1))
@@ -74,12 +72,13 @@ void
 {
 	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
-	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_AlwaysAutoResize);
-	if(igBeginMenuBar())
+	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar
+		| ImGuiWindowFlags_AlwaysAutoResize);
+	if (igBeginMenuBar())
 		menu_bar(app);
-	if (igCollapsingHeader("Render Settings", 0))
+	if (igCollapsingHeader("Render Settings", ImGuiTreeNodeFlags_DefaultOpen))
 		render_settings(app);
-	if (igCollapsingHeader("Objects settings", 0))
+	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))
 		object_settings(app);
 	if (igButton("Render new frame", (ImVec2){130, 20}))
 		app->sdl.needs_render = true;
