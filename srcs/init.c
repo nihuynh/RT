@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 17:47:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 18:07:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ void
 	scene->back_color = itocolor(BACK_COLOR);
 	scene->depth_max = DEPTH_MAX;
 	scene->fov = FOV;
+	scene->absorb = 1;
+	scene->deflect = 1;
+	scene->facing = 1;
+	scene->i_light = 1;
+	scene->light = 1;
+	scene->shadow = 1;
+	scene->shine = 1;
 }
 
 void
@@ -41,5 +48,6 @@ void
 	data->sdl.mouse_map = &mouse_motion;
 	data->sdl.update = &update;
 	data->sdl.render_gui = &render_gui;
+	data->sdl.render_fullscreen = &render_fullscreen;
 	data->sdl.click_map = &click_event;
 }

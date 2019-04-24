@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 15:28:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 18:07:52 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ static inline void
 {
 	t_color	color_tmp;
 
-	igCheckbox("No Light", &app->scene_set.no_light);
+	igCheckbox("Light", &app->scene_set.light);
 	igSameLine(160, 0);
-	igCheckbox("No Light Intensity", &app->scene_set.no_i_light);
+	igCheckbox("Light Intensity", &app->scene_set.i_light);
 	igSameLine(320, 0);
-	igCheckbox("No Shine", &app->scene_set.no_shine);
+	igCheckbox("Shine", &app->scene_set.shine);
 	igSameLine(480, 0);
-	igCheckbox("No Shadow", &app->scene_set.no_shadow);
+	igCheckbox("Shadow", &app->scene_set.shadow);
 	igSameLine(640, 0);
-	igCheckbox("No Facing Ratio", &app->scene_set.no_facing);
-	igCheckbox("No Reflection", &app->scene_set.no_deflect);
+	igCheckbox("Facing Ratio", &app->scene_set.facing);
+	igCheckbox("Reflection", &app->scene_set.deflect);
 	igSameLine(160, 0);
-	igCheckbox("No Refraction", &app->scene_set.no_absorb);
+	igCheckbox("Refraction", &app->scene_set.absorb);
 	if (igTreeNodeStr("Sky Color"))
 	{
 		color_tmp = app->scene_set.back_color;
