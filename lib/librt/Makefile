@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/10 21:41:11 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/24 05:02:37 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ GREP_ERR	:=	grep 'Error\|Warning' -C1 2> /dev/null || true
 all: $(NAME)
 .PHONY: all
 $(NAME): $(OBJ) $(LFT_RULE)
-	libtool -static -o $@ $(OBJ) && ranlib $@
+	ar rc $@ $(OBJ) && ranlib $@
 	@printf "\033[1;34m$@\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 -include $(DEP)
 $(LFT_RULE):

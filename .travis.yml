@@ -9,7 +9,6 @@ addons:
   apt:
     packages:
     - libsdl2-dev
-	- libtool
     # - libsdl2-2.0.9 (this dont works so need to dll the sources and install)
 script: make
 
