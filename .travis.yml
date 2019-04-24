@@ -1,18 +1,18 @@
 language: c
 
 os:
-  - linux
-  - osx
+	- linux
+	- osx
 
 
 addons:
-  homebrew:
-    packages:
-    - sdl2
- apt:
-    packages:
-	- libsdl2-2.0-9
-    - libsdl2-dev
+	homebrew:
+		packages:
+		- sdl2
+	apt:
+    	packages:
+		- libsdl2-2.0-9
+    	- libsdl2-dev
 
 script: make
 
