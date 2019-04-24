@@ -1,6 +1,6 @@
 os:
-- osx
 - linux
+- osx
 language: c
 addons:
   homebrew:
@@ -8,8 +8,8 @@ addons:
     - sdl2
   apt:
     packages:
-    # - libsdl2-dev
-    - libsdl2-2.0.9
+    - libsdl2-dev
+    # - libsdl2-2.0.9 (this dont works so need to dll the sources and install)
 script: make
 
 notifications:
