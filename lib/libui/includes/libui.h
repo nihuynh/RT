@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 16:27:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 19:07:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ typedef struct		s_img
 	int				height;
 }					t_img;
 
-typedef struct		s_sdl
+typedef struct s_sdl t_sdl;
+
+struct				s_sdl
 {
 	bool			fullscreen;
 	t_img			img;
@@ -55,7 +57,8 @@ typedef struct		s_sdl
 	void			(*click_map)(SDL_Event *, void *);
 	void			(*update)(void *arg);
 	void			(*render_gui)(void *arg);
-}					t_sdl;
+	void			(*render_fullscreen)(t_sdl *sdl);
+};
 
 struct				s_data_thr
 {
@@ -97,8 +100,6 @@ void				save_screenshot(t_sdl *sdl, char *arg);
 void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 									void *data);
 void				render_mthr_sdl(t_sdl *sdl);
-void				putcolor_sdl(t_sdl *sdl, int color, int x, int y);
-void				render_fullscreen(t_sdl *sdl, t_img *img);
 
 /*
 ** Pool Render :

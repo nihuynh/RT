@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 19:02:22 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/24 19:07:09 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
 				cast.c texture.c utils.c interface.c interface_scene.c \
 				init_interface.c interface_objects.c interface_tools.c \
-				object_tools.c
+				object_tools.c render_fullscreen.c
 # directories :
 VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface
 OBJDIR 		:=	objs
