@@ -7,9 +7,9 @@ addons:
     packages:
     - sdl2
 install:
-	- if [ $TRAVIS_OS_NAME == "linux" ]; then
-		echo "linux"
-	  fi
+  - if [ $TRAVIS_OS_NAME == "linux" ]; then
+    echo "linux"
+    fi
 script: make
 
 # Notifications :
