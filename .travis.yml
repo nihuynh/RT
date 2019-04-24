@@ -8,14 +8,7 @@ addons:
     - sdl2
 # Download, make and install SDL2-2.0.9 (stable)
 install:
-    - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
-      travis_retry curl -L https://www.libsdl.org/release/SDL2-2.0.9.tar.gz | tar xz
-      cd SDL2-2.0.9
-      ./configure 			> /dev/null 2>&1
-	  make 					> /dev/null 2>&1
-  	  sudo make install 	> /dev/null 2>&1
-      cd ..
-	fi
+	- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "linux"; fi
 script: make
 
 # Notifications :
