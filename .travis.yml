@@ -7,10 +7,9 @@ addons:
   homebrew:
     packages:
     - sdl2
-#   apt:
-#     packages:
-#     - libgl-dev
-# 	- mesa-common-dev
+  apt:
+    packages:
+    - llvm-3.9-dev
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
     sudo sh install_sdl.sh;
