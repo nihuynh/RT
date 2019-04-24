@@ -11,6 +11,8 @@
 		"interface.h": "c",
 		"ftlist.h": "c",
 		"color.h": "c",
-		"parse.h": "c"
+		"parse.h": "c",
+		"imgui_impl_sdl.h": "c",
+		"ftio.h": "c"
 	}
 }

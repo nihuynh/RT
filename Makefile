@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 19:07:09 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/24 19:18:46 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ RUNMODE		?=	release
 # RUNMODE		?=	dev
 #VERBOSE	:= TRUE
 SCENE		:=	playground
-SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
-				setter.c light.c key_mapping.c camera.c update.c init.c \
-				cast.c texture.c utils.c interface.c interface_scene.c \
-				init_interface.c interface_objects.c interface_tools.c \
+SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
+				setter.c light.c key_mapping.c camera.c update.c init.c	\
+				cast.c texture.c utils.c interface.c interface_scene.c	\
+				init_interface.c interface_objects.c interface_tools.c	\
 				object_tools.c render_fullscreen.c
 # directories :
 VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface
@@ -48,7 +48,7 @@ LSDL_INC	:=	$(shell sdl2-config --cflags)
 # CIMGUI
 CIMGUI_NAME	:=	cimgui.dylib
 CIMGUI_PATH :=	lib/cimgui
-CIMGUI_LIB	:=	cimgui.dylib
+CIMGUI_LIB	:=	cimgui.dylib -lstdc++
 CIMGUI_INC	:=	-I $(CIMGUI_PATH)
 CIMGUI_RULE	:=	$(CIMGUI_NAME)
 # IMGUI_IMPL
@@ -70,8 +70,10 @@ RUN_SCENE	:=	$(or $(RUN_ARGS),$(SCENE))
 SCENES		:= 	$(addprefix $(addprefix scenes/, $(RUN_SCENE)), .rt)
 OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
-LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB) $(IMGUI_IMPL_LIB) $(LOPENGL_LIB) -lstdc++
-INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC) $(CIMGUI_INC) $(IMGUI_IMPL_INC)
+LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB)	\
+				$(IMGUI_IMPL_LIB) $(LOPENGL_LIB)
+INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC)	\
+				$(CIMGUI_INC) $(IMGUI_IMPL_INC)
 # **************************************************************************** #
 # make specs :
 CC			:=	clang
