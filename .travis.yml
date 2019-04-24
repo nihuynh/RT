@@ -7,9 +7,6 @@ addons:
   homebrew:
     packages:
     - sdl2
-  apt:
-    packages:
-    - llvm-3.9-dev
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
     sudo sh install_sdl.sh;
