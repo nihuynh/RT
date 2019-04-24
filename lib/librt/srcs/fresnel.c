@@ -11,29 +11,30 @@
 /* ************************************************************************** */
 
 #include "librt.h"
-#include <math.h>
 #include "libft.h"
+#include <math.h>
 
-void	fresnel(t_inter *inter, float ior)
+float	fresnel(t_vec3 ray_dir, t_vec3 normal, float ior)
 {
 	float	toby[5];
 	float	res[2];
 
-	AAAA = ft_clampf(vec3_dot(&inter->ray.dir, &inter->n), -1, 1);
+	vec3_scalar(&ray_dir, -1);
+	AAAA = ft_clampf(vec3_dot(&ray_dir, &normal), -1, 1);
 	BBBB = 1;
 	CCCC = ior;
 	if (AAAA < 0)
 		ft_swapf(&BBBB, &CCCC);
 	DDDD = BBBB / CCCC * sqrtf(fmaxf(0.f, 1 - AAAA * AAAA));
 	if (DDDD >= 1 && AAAA < 0)
-		inter->kr = 1;
+		return (1);
 	else
 	{
 		EEEE = sqrtf(fmaxf(0.f, 1 - DDDD * DDDD));
 		AAAA = fabsf(AAAA);
 		res[0] = ((CCCC * AAAA - BBBB * EEEE) / (CCCC * AAAA + BBBB * EEEE));
 		res[1] = ((BBBB * AAAA - CCCC * EEEE) / (BBBB * AAAA + CCCC * EEEE));
-		inter->kr = (res[0] * res[0] + res[1] * res[1]) / 2;
+		return (res[0] * res[0] + res[1] * res[1]) / 2;
 	}
 }
 

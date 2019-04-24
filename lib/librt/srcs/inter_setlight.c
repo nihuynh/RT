@@ -19,7 +19,7 @@ void	inter_setlight(t_inter *inter, t_inter *light_inter, t_light *light)
 
 	ray.origin = inter->point;
 	vec3_find(&ray.origin, &light->origin, &ray.dir);
-	light_inter->dist = vec3_mag(&ray.dir);
+	light_inter->dist = vec3_mag(ray.dir);
 	vec3_normalize(&ray.dir);
 	ray_offset_origin(&ray, inter->n);
 	light_inter->obj = NULL;

@@ -28,6 +28,7 @@ target_sources(ui PRIVATE
         srcs/init_mthr_sdl.c
         srcs/init_sdl.c
         srcs/loop_sdl.c
+        srcs/render_pool.c
         srcs/render_mthr_sdl.c
         srcs/render_sdl.c
         srcs/save_screenshot.c)

@@ -43,7 +43,6 @@ void
 	rotation = create_rotation_from_direction(pplane->n);
 	apply_matrix(&pplane->x, &rotation);
 	apply_matrix(&pplane->y, &rotation);
-	parse_texture(pplane, greed[i + 4], i + 4);
 }
 
 void

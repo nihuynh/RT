@@ -18,8 +18,19 @@ void		vec3_normalize(t_vec3 *v1)
 
 	if (!v1)
 		return ;
-	k = 1.0f / vec3_mag(v1);
+	k = 1.0f / vec3_mag(*v1);
 	v1->x *= k;
 	v1->y *= k;
 	v1->z *= k;
+}
+
+t_vec3		vec3_normalize_(t_vec3 v1)
+{
+	float k;
+
+	k = 1.0f / vec3_mag(v1);
+	v1.x *= k;
+	v1.y *= k;
+	v1.z *= k;
+	return (v1);
 }

@@ -20,8 +20,8 @@
 **	AAAA = vec3_dot(&ray->n, &cone->n);
 **	CCCC = vec3_dot(&rene, &cone->n);
 **	BBBB = 2.0 * (vec3_dot(&ray->n, &rene) - (1 + tan_theta2) * AAAA * CCCC);
-**	AAAA = vec3_mag(&ray->n) - (1 + tan_theta2) * AAAA * AAAA;
-**	CCCC = vec3_mag(&rene) * vec3_mag(&rene) - (1 + tan_theta2) * CCCC * CCCC;
+**	AAAA = vec3_mag(ray->n) - (1 + tan_theta2) * AAAA * AAAA;
+**	CCCC = vec3_mag(rene) * vec3_mag(rene) - (1 + tan_theta2) * CCCC * CCCC;
 */
 
 static inline float

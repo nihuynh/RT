@@ -18,6 +18,7 @@ void
 	init_scene(t_scene *scene)
 {
 	scene->back_color = itocolor(BACK_COLOR);
+	scene->amb_light = AMB_LIGHT;
 	scene->depth_max = DEPTH_MAX;
 	scene->fov = FOV;
 	scene->absorb = 1;

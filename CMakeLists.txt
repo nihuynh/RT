@@ -9,7 +9,7 @@ set(DEBUG_FLAGS -g3)
 set(RELEASE_FLAGS -O2 -march=native -flto)
 set(PROFILE_FLAGS -g3 -O2 -march=native)
 
-add_compile_options(-Wall -Wextra -Werror -pedantic)
+add_compile_options(-Wall -Wextra -pedantic)
 
 #add_compile_options(-fsanitize=address -g3)
 #add_link_options(-fsanitize=address -fsanitize-recover=address)
@@ -51,6 +51,7 @@ target_sources(RT PRIVATE
         srcs/interface/interface.c
         srcs/interface/interface_scene.c
         srcs/interface/interface_objects.c
+        srcs/interface/interface_tools.c
         srcs/interface/object_tools.c
         srcs/parser/parse_toolbox.c
         srcs/parser/parser.c
@@ -61,6 +62,7 @@ target_sources(RT PRIVATE
         srcs/render/light.c
         srcs/render/render.c
         srcs/render/texture.c
+        srcs/render/render_fullscreen.c
         srcs/tools/error.c
         srcs/tools/update.c
         srcs/tools/utils.c

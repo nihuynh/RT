@@ -13,9 +13,7 @@
 #include "rtstruct.h"
 #include <math.h>
 
-float	vec3_mag(t_vec3 *v1)
+float	vec3_mag(t_vec3 v1)
 {
-	if (!v1)
-		return (0);
-	return (sqrt(v1->x * v1->x + v1->y * v1->y + v1->z * v1->z));
+	return (sqrtf(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z));
 }
