@@ -6,14 +6,14 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 16:59:17 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/24 18:29:08 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	RT
-RUNMODE		?=	dev
+# RUNMODE		?=	dev
 #VERBOSE		:= TRUE
-# RUNMODE		?=	release
+RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
