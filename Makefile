@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 12:14:22 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/24 14:30:17 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	RT
-RUNMODE		?=	dev
+# RUNMODE		?=	dev
 #VERBOSE		:= TRUE
-# RUNMODE		?=	release
+RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
@@ -46,9 +46,15 @@ LUI_RULE	:=	$(LUI_PATH)/$(LUI_NAME)
 LSDL_LIB	:=	$(shell sdl2-config --libs)
 LSDL_INC	:=	$(shell sdl2-config --cflags)
 # CIMGUI
-CIMGUI_NAME	:=	cimgui.dylib
+UNAME_S		:=	$(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	CIMGUI_NAME = cimgui.so
+endif
+ifeq ($(UNAME_S), Darwin)
+	CIMGUI_NAME = cimgui.dylib
+endif
 CIMGUI_PATH :=	lib/cimgui
-CIMGUI_LIB	:=	cimgui.dylib
+CIMGUI_LIB	:=	$(CIMGUI_NAME)
 CIMGUI_INC	:=	-I $(CIMGUI_PATH)
 CIMGUI_RULE	:=	$(CIMGUI_NAME)
 # IMGUI_IMPL
