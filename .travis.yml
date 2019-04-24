@@ -2,13 +2,14 @@ os:
 - linux
 - osx
 language: c
+sudo: required
 addons:
   homebrew:
     packages:
     - sdl2
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
-    make install_sdl;
+    sudo install_sdl.sh;
     fi
 script: make
 
