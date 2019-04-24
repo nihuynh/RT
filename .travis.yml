@@ -4,17 +4,15 @@ os:
   - linux
   - osx
 
-compiler:
-  - gcc
-  - clang
 
 addons:
   homebrew:
     packages:
     - sdl2
-  apt:
+ apt:
     packages:
-    - sdl2
+	- libsdl2-2.0-9
+    - libsdl2-dev
 
 script: make
 
