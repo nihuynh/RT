@@ -46,9 +46,15 @@ LUI_RULE	:=	$(LUI_PATH)/$(LUI_NAME)
 LSDL_LIB	:=	$(shell sdl2-config --libs)
 LSDL_INC	:=	$(shell sdl2-config --cflags)
 # CIMGUI
-CIMGUI_NAME	:=	cimgui.dylib
+UNAME_S		:=	$(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	CIMGUI_NAME = cimgui.so
+endif
+ifeq ($(UNAME_S), Darwin)
+	CIMGUI_NAME = cimgui.dylib
+endif
 CIMGUI_PATH :=	lib/cimgui
-CIMGUI_LIB	:=	cimgui.dylib -lstdc++
+CIMGUI_LIB	:=	$(CIMGUI_NAME) -lstdc++
 CIMGUI_INC	:=	-I $(CIMGUI_PATH)
 CIMGUI_RULE	:=	$(CIMGUI_NAME)
 # IMGUI_IMPL
