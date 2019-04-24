@@ -34,29 +34,30 @@ void
 }
 
 static inline void
-	deflect_cast(t_data *data, t_inter *inter, int depth)
+	cast_bounce(t_data *data, t_inter *inter, int depth)
 {
-	t_color	primary;
 	t_ray	absorbed;
+	t_color	refraction;
+	t_color	reflection;
+	float	kr;
 
-	if (data->scene_set.no_deflect == 0
-	&& inter->obj->material.deflect_idx && !(inter->obj->material.absorb_idx))
+	kr = 1;
+	if (inter->obj->material.deflect_idx || inter->obj->material.absorb_idx)
+		kr = fresnel(inter->ray.dir, inter->n, 1.5);
+	if (data->scene_set.no_deflect == 0 && inter->obj->material.deflect_idx)
 	{
-		primary = recursive_cast(data, inter->deflected, depth + 1);
-		color_scalar(&primary, inter->obj->material.deflect_idx);
-		color_add(&inter->color, &primary);
+		reflection = recursive_cast(data, inter->deflected, depth + 1);
+		color_scalar(&reflection, inter->obj->material.deflect_idx);
+		color_scalar(&reflection, kr);
+		color_add(&inter->color, &reflection);
 	}
-	else if (data->scene_set.no_absorb == 0
-		&& inter->obj->material.absorb_idx != 0)
+	if (data->scene_set.no_absorb == 0 && inter->obj->material.absorb_idx)
 	{
-		fresnel(inter, 1.5);
-		primary = recursive_cast(data, inter->deflected, depth + 1);
-		color_scalar(&primary, inter->kr * inter->obj->material.deflect_idx);
-		color_add(&inter->color, &primary);
 		inter_setrefract(inter, &absorbed);
-		primary = recursive_cast(data, absorbed, depth + 1);
-		color_scalar(&primary, inter->obj->material.absorb_idx);
-		color_add(&inter->color, &primary);
+		refraction = recursive_cast(data, absorbed, depth + 1);
+		color_scalar(&refraction, inter->obj->material.absorb_idx);
+		color_scalar(&refraction, 1 - kr);
+		color_add(&inter->color, &refraction);
 	}
 }
 
@@ -79,10 +80,9 @@ t_color
 	inter.find_normal(&inter);
 	lighting = get_lighting(data->lst_obj, data->lst_light, &inter, &data->scene_set);
 	inter.color = lighting;
-//	color_add(&inter.color, &lighting);
 	color_add(&inter.color, &ambient);
 	if (depth < data->scene_set.depth_max)
-		deflect_cast(data, &inter, depth);
+		cast_bounce(data, &inter, depth);
 	return (inter.color);
 }
 

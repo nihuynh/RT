@@ -88,7 +88,7 @@ void		print_matrix(t_matrix *mat);
 void		mat3_rot(t_matrix *mat_x, t_matrix *mat_y, t_vec3 *vi, t_cam *cam);
 t_matrix	create_rotation_from_direction(t_vec3 direction);
 t_matrix	set_rotation(float yz_angle, float xz_angle);
-void		fresnel(t_inter *inter, float ior);
+float		fresnel(t_vec3 ray_dir, t_vec3 normal, float ior);
 void		ray_offset_origin(t_ray *ray, t_vec3 normal);
 
 #endif
