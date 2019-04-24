@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 16:00:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/19 12:06:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static inline void
 	if(igBeginMenu("Menu", 1))
 	{
 		igMenuItemBoolPtr("log", NULL, &app->gui.log_open, 1);
+		if (igMenuItemBoolPtr("Fullscreen", NULL, &app->sdl.fullscreen, 1))
+			app->sdl.needs_render = 1;
 		igEndMenu();
 	}
 	igEndMenuBar();
@@ -72,12 +74,14 @@ void
 {
 	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
-	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar);
+	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_AlwaysAutoResize);
 	if(igBeginMenuBar())
 		menu_bar(app);
 	if (igCollapsingHeader("Render Settings", 0))
 		render_settings(app);
 	if (igCollapsingHeader("Objects settings", 0))
 		object_settings(app);
+	if (igButton("Render new frame", (ImVec2){130, 20}))
+		app->sdl.needs_render = true;
 	igEnd();
 }

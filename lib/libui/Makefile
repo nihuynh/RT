@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 05:02:46 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/24 12:12:38 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	libui.a
 RUNMODE		?=	dev
-SDL_SRC		:=	init_sdl.c error_sdl.c exit_sdl.c\
+SDL_SRC		:=	init_sdl.c error_sdl.c exit_sdl.c putcolor_sdl.c\
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
-				save_screenshot.c
+				save_screenshot.c render_fullscreen.c
 SRC			:=	$(SDL_SRC)
 # directories :
 SRCDIR  	:=	srcs

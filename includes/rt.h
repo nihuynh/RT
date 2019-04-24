@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/18 10:17:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 12:13:55 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@
 
 typedef struct	s_gui
 {
+	bool		fullscreen;
 	uint32_t	texture_id;
 	bool		log_open;
 	t_list		*light_set;
@@ -160,5 +161,9 @@ void			init(t_data	*data);
 void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);
 void			render_gui(void *arg);
+void			interface_sphere(void *res);
+void			interface_plane(void *res);
+void			interface_cylinder(void *res);
+void			interface_cone(void *res);
 
 #endif

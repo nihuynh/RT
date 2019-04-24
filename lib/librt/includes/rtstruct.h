@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 12:24:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/19 11:19:51 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ struct			s_obj
 	void		*shape;
 	t_material	material;
 	void		(*f_inter) (t_inter*, t_obj*);
+	void		(*f_gui) (void*);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 16:56:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/19 12:05:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void	loop_sdl(t_sdl *sdl, void *arg)
 			sdl->update(arg);
 		if (sdl->needs_render && sdl->data_thr)
 			render_mthr_sdl(sdl);
-		if (sdl->render_gui)
+		if (sdl->render_gui && !sdl->fullscreen)
 			sdl->render_gui(arg);
+		else
+			render_fullscreen(sdl, &sdl->img);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/18 14:15:37 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/19 11:22:51 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static inline void
 }
 
 static inline void
-	material(t_list *mat_lst)
+	material(t_list *mat_lst, t_obj *obj)
 {
 	t_list		*current;
 	t_material	*selected;
@@ -52,19 +52,20 @@ static inline void
 	bool		is_selected;
 
 	current = mat_lst;
-	selected = mat_lst->content;
+	selected = &obj->material;
 	tmp = mat_lst->content;
-	if(igBeginCombo("Material", selected->name, 0))
+	if(igBeginCombo("Material", tmp->name, 0))
 	{
-		while (tmp)
+		while (current)
 		{
-			is_selected = (selected == tmp);
-			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){40, 20}))
+			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
+			if (igSelectable((const char*)tmp->name, is_selected, 0, (ImVec2){40, 20}))
 				selected = tmp;
 			if (is_selected)
 				igSetItemDefaultFocus();
 			current = current->next;
-			tmp = current->content;
+			if(current)
+				tmp = current->content;
 		}
 		igEndCombo();
 	}
@@ -73,9 +74,17 @@ static inline void
 static inline void
 	object(t_data *app, t_obj *obj)
 {
-	(void)obj;
+	igValueInt("Type", obj->type);
 	if (igTreeNodeStr("Material"))
-		material(app->lst_mat);
+	{
+		material(app->lst_mat, obj);
+		igTreePop();
+	}
+	if (igTreeNodeStr("Object"))
+	{
+		obj->f_gui(obj->shape);
+		igTreePop();
+	}
 }
 
 void

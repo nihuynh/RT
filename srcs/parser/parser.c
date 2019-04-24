@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/08 21:12:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/19 11:18:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,25 @@ static inline void
 	obj->type = type;
 	obj->shape = shape;
 	if (type == SPHERE)
+	{
 		obj->f_inter = &inter_sphere;
+		obj->f_gui = &interface_sphere;
+	}
 	else if (type == PLANE)
+	{
 		obj->f_inter = &inter_plane;
+		obj->f_gui = &interface_plane;
+	}
 	else if (type == CONE)
+	{
 		obj->f_inter = &inter_cone;
+		obj->f_gui = &interface_cone;
+	}
 	else if (type == CYLINDER)
+	{
 		obj->f_inter = &inter_cylinder;
+		obj->f_gui = &interface_cylinder;
+	}
 }
 
 static inline int

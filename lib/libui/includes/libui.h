@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/23 19:45:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 12:12:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_img
 
 typedef struct		s_sdl
 {
+	bool			fullscreen;
 	t_img			img;
 	bool			needs_render;
 	int				width_vp;
@@ -95,4 +96,7 @@ void				save_screenshot(t_sdl *sdl, char *arg);
 void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 									void *data);
 void				render_mthr_sdl(t_sdl *sdl);
+void				putcolor_sdl(t_sdl *sdl, int color, int x, int y);
+void				render_fullscreen(t_sdl *sdl, t_img *img);
+
 #endif

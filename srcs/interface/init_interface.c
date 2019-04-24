@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/16 18:14:36 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/19 11:40:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
 {
 	SDL_GLContext gl_context;
 
-	gui->log_open = true;
+	gui->log_open = false;
 	gl_context = SDL_GL_CreateContext(window);
 	igCreateContext(NULL);
 	ImGui_ImplSDL2_InitForOpenGL(window, &gl_context);
