@@ -6,9 +6,10 @@ addons:
   homebrew:
     packages:
     - sdl2
-# Download, make and install SDL2-2.0.9 (stable)
 install:
-	- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "linux"; fi
+	- if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
+		echo "linux"
+	fi
 script: make
 
 # Notifications :
