@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/10 21:40:59 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/24 02:44:07 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,10 +85,9 @@ fclean: clean
 .PHONY: fclean
 re: fclean all
 .PHONY: re
-git: clean
-	git add -A && git status
-	@printf "\033[1;34m$(NAME)\033[25G\033[31mGit sync $(OKLOGO)"
-.PHONY: git
+test: all
+	$(CC) $(CFLAGS) test_pool_render.c $(INC) $(LIB) libui.a
+.PHONY: test
 norme:
 	norminette srcs includes | $(GREP_ERR)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mNorminette $(OKLOGO)"

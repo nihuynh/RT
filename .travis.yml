@@ -1,9 +1,21 @@
-os: osx
 language: c
+
+os:
+  - linux
+  - osx
+
+compiler:
+  - gcc
+  - clang
+
 addons:
   homebrew:
     packages:
     - sdl2
+  apt:
+    packages:
+    - sdl2
+
 script: make
 
 notifications:

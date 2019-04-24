@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:32:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/23 21:18:07 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 02:56:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "../libft/includes/libft.h"
 
 # define BATCH_SIZE 16
-# define WIDTH 		40
-# define HEIGHT		40
+# define WIDTH 		800
+# define HEIGHT		800
 
 /*
 **	gcc -Wall -Werror -Wextra test_pool_render.c libui.a -I/Users/nihuynh/.brew/include/SDL2 -L/Users/nihuynh/.brew/lib -lSDL2 ../libft/libft.a
@@ -40,12 +40,24 @@ void
 int
 	do_batch(t_thr_pool *pool)
 {
-	int	task_id;
+	int		task_id;
+	int 	idx_batch;
+	t_pxl 	idx;
 
-	(void)pool;
-	task_id = 59;
-	printf("Batch started\n");
-
+	idx_batch = -1;
+	pthread_mutex_lock(&pool->idx_lock);
+	task_id = pool->pxl_idx;
+	pool->pxl_idx += BATCH_SIZE;
+	pthread_mutex_unlock(&pool->idx_lock);
+	if (task_id >= WIDTH * HEIGHT)
+		return (-1);
+	while (++idx_batch < BATCH_SIZE)
+	{
+		idx.x = (task_id + idx_batch) % WIDTH;
+		idx.y = (task_id + idx_batch) / WIDTH;
+		putcolor(pool->sdl, pool->do_pxl(idx.x, idx.y, pool->prg_data),
+			idx.x, idx.y);
+	}
 	return (task_id);
 }
 
@@ -64,18 +76,9 @@ void
 			pthread_cond_wait(&pool->wait_sig, &pool->wait_lock);
 		pthread_mutex_unlock(&pool->wait_lock);
 		if (pool->is_stopped)
-		{
-			printf("Thread is exited\n");
             pthread_exit(NULL);
-		}
-		while (ft_btw(task_id, 0, WIDTH * HEIGHT - BATCH_SIZE))
-		{
-			pthread_mutex_lock(&pool->idx_lock);
-			task_id = pool->pxl_idx;
-			pool->pxl_idx += BATCH_SIZE;
-			pthread_mutex_unlock(&pool->idx_lock);
-			printf("Task id is %d\n", task_id);
-		}
+		while (task_id >= 0)
+			task_id = do_batch(pool);
 		pthread_mutex_lock(&pool->idle_lock);
 		pool->idle_count++;
 		if (pool->idle_count == pool->thr_count)
@@ -113,7 +116,6 @@ int
 	}
 	if (idx != thr_count)
 		ft_error(__func__, __LINE__);
-	ft_printf("Pool init with success\n");
 	return (EXIT_SUCCESS);
 }
 
@@ -128,7 +130,7 @@ int
 	pthread_mutex_lock(&pool->idx_lock);
 	pool->pxl_idx = 0;
 	pool->idle_count = 0;
-	ft_printf("Pool is started\n");
+	printf("Pool is started\n");
 	pthread_cond_broadcast(&pool->wait_sig);
 	while (pool->pxl_idx > WIDTH * HEIGHT - BATCH_SIZE)
 		pthread_cond_wait(&pool->render_done, &pool->idx_lock);
@@ -178,7 +180,7 @@ int
 	quit = 0;
 	init_sdl(&sdl, WIDTH, HEIGHT);
 	sdl.needs_render = true;
-	init_pool(&sdl, &process_pixel, NULL, 2);
+	init_pool(&sdl, &process_pixel, NULL, 16);
 	while (!quit)
 	{
 		while (SDL_PollEvent(&event))
