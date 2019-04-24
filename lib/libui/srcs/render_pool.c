@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 20:18:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 20:23:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static inline void
 		while (state == PAUSE && !pool->sdl->needs_render)
 			pthread_cond_wait(&pool->wait_sig, &pool->wait_lock);
 		pthread_mutex_unlock(&pool->wait_lock);
-		(pool->is_stopped == 1) ? pthread_exit(NULL) : (void*)0;
+		if (pool->is_stopped == 1)
+			pthread_exit(NULL);
 		state = RUNNING;
 		while (task_id >= 0)
 			task_id = do_batch(pool);
@@ -92,7 +93,7 @@ int
 	sdl->pool->idx_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 	sdl->pool->idle_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 	sdl->pool->render_done = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
-	if (!(sdl->pool->threads = ft_memalloc(sizeof(pthread_t) * thr_count)))
+	if (!(sdl->pool->thrs = ft_memalloc(sizeof(pthread_t) * thr_count)))
 		ft_error(__func__, __LINE__);
 	sdl->pool->limit = sdl->img.width * sdl->img.height;
 	sdl->pool->thr_count = thr_count;
@@ -137,8 +138,8 @@ int
 	SDL_Delay(100);
 	if (pool)
 	{
-		if (pool->threads)
-			free(pool->threads);
+		if (pool->thrs)
+			free(pool->thrs);
 		free(pool);
 	}
 	return (EXIT_SUCCESS);
