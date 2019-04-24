@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 12:25:56 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/24 18:26:22 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:=	libui.a
 RUNMODE		?=	dev
 SDL_SRC		:=	init_sdl.c error_sdl.c exit_sdl.c\
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
-				save_screenshot.c
+				save_screenshot.c render_pool.c
 SRC			:=	$(SDL_SRC)
 # directories :
 SRCDIR  	:=	srcs
@@ -40,7 +40,7 @@ CC			:=	clang
 CFLAGS		:=	-Werror -Wall -Wextra
 CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 ifeq ($(RUNMODE),dev)
-    CFLAGS	+=	-g3 -O0
+    CFLAGS	+=	-g3 -O0 -fsanitize=thread
 	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
 else
 	CFLAGS	+= -O2 -march=native -flto

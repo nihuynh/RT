@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:32:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 02:56:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 16:12:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int
 {
 	int		task_id;
 	int 	idx_batch;
-	t_pxl 	idx;
+	int 	idx;
 
 	idx_batch = -1;
 	pthread_mutex_lock(&pool->idx_lock);
@@ -53,10 +53,9 @@ int
 		return (-1);
 	while (++idx_batch < BATCH_SIZE)
 	{
-		idx.x = (task_id + idx_batch) % WIDTH;
-		idx.y = (task_id + idx_batch) / WIDTH;
-		putcolor(pool->sdl, pool->do_pxl(idx.x, idx.y, pool->prg_data),
-			idx.x, idx.y);
+		idx = task_id + idx_batch;
+		pool->sdl->img.pixels[idx] = pool->do_pxl(idx % WIDTH,
+			idx / WIDTH, pool->prg_data) | C_MASK;
 	}
 	return (task_id);
 }

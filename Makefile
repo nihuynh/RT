@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 12:14:22 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/24 19:02:22 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	RT
-RUNMODE		?=	dev
-#VERBOSE		:= TRUE
-# RUNMODE		?=	release
+RUNMODE		?=	release
+# RUNMODE		?=	dev
+#VERBOSE	:= TRUE
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
 				setter.c light.c key_mapping.c camera.c update.c init.c \
@@ -79,7 +79,7 @@ CFLAGS		:=	-Werror -Wall -Wextra -g -I$(INCDIR)
 CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 LIBFLAGS 	:=	-j32 RUNMODE=$(RUNMODE)
 ifeq ($(RUNMODE),dev)
-    CFLAGS	+=	-g3 -O0
+    CFLAGS	+=	-g3 -O0 -fsanitize=thread
 	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
 else
 	CFLAGS	+= -O2 -march=native -flto

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 15:51:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 16:27:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 
 # define THR_C		20
+# define BATCH_SIZE 16
 # define C_MASK		0xFF000000
 
 typedef struct		s_pxl
@@ -68,13 +69,14 @@ struct				s_data_thr
 struct				s_thr_pool
 {
 	int				is_stopped;
-	unsigned short	thr_count;
+	short			thr_count;
 	pthread_mutex_t	wait_lock;
 	pthread_cond_t	wait_sig;
-	unsigned int	pxl_idx;
+	int				pxl_idx;
+	int				limit;
 	pthread_mutex_t	idx_lock;
 	pthread_mutex_t	idle_lock;
-	unsigned short	idle_count;
+	short			idle_count;
 	pthread_cond_t	render_done;
 	t_sdl			*sdl;
 	int				(*do_pxl) (int, int, void*);
@@ -98,4 +100,12 @@ void				render_mthr_sdl(t_sdl *sdl);
 void				putcolor_sdl(t_sdl *sdl, int color, int x, int y);
 void				render_fullscreen(t_sdl *sdl, t_img *img);
 
+/*
+** Pool Render :
+*/
+
+int					init_pool(t_sdl *sdl, int (*do_pxl) (int, int, void*),
+	void *prg_d, uint16_t thr_count);
+int					pool_render(t_thr_pool *pool);
+int					destroy_pool(t_thr_pool *pool);
 #endif

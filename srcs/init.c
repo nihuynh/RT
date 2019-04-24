@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 17:47:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 18:50:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void
 	init_sdl(&data->sdl, WIDTH, HEIGHT);
 	init_render(data);
 	init_interface(&data->gui, data->sdl.win, data);
+	data->sdl.needs_render = true;
 }
 
 void
