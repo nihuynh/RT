@@ -66,6 +66,7 @@ content
 	{
 		origin(-15 -10 -20)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -79,6 +80,7 @@ content
 	{
 		origin(-15 -10 -40)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -92,6 +94,7 @@ content
 	{
 		origin(15 -10 -20)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -105,6 +108,7 @@ content
 	{
 		origin(15 -10 -40)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -118,6 +122,7 @@ content
 	{
 		origin(-15 10 -20)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -131,6 +136,7 @@ content
 	{
 		origin(-15 10 -40)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -144,6 +150,7 @@ content
 	{
 		origin(15 10 -20)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -157,6 +164,7 @@ content
 	{
 		origin(15 10 -40)
 		radius(4)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -170,6 +178,7 @@ content
 	{
 		origin(0 -8 -20)
 		radius(2)
+		texture(none)
 		color_ambient(0.75 0 0)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -185,6 +194,7 @@ content
 		normal(0 1 0)
 		radius(2.4)
 		size(0)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -200,6 +210,7 @@ content
 		normal(0 1 0)
 		radius(2.4)
 		size(0)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -215,6 +226,7 @@ content
 		normal(0 1 0)
 		radius(2.4)
 		size(0)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
@@ -230,6 +242,7 @@ content
 		normal(0 1 0)
 		radius(2.4)
 		size(0)
+		texture(none)
 		color_ambient(0.5 0.5 0.5)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 20:21:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/25 02:17:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void
 		}
 		if (sdl->update)
 			sdl->update(arg);
-		if (sdl->needs_render && sdl->data_thr)
+		if ((1) && sdl->needs_render && sdl->data_thr)
 			render_mthr_sdl(sdl);
 		if ((0) && sdl->needs_render && sdl->pool)
 			pool_render(sdl->pool);

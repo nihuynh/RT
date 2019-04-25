@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 20:23:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/25 16:47:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ static inline void
 		if (pool->idle_count == pool->thr_count)
 		{
 			pthread_cond_signal(&pool->render_done);
-			pool->sdl->needs_render = false;
-			pool->idle_count = 0;
+			// pool->idle_count = 0;
 		}
 		pthread_mutex_unlock(&pool->idle_lock);
 	}
@@ -118,9 +117,11 @@ int
 	elapsed_time = ft_curr_usec();
 	pthread_mutex_lock(&pool->idx_lock);
 	pool->pxl_idx = 0;
+	pthread_mutex_lock(&pool->idle_lock);
 	pool->idle_count = 0;
+	pthread_mutex_unlock(&pool->idle_lock);
 	pthread_cond_broadcast(&pool->wait_sig);
-	while (pool->pxl_idx >= pool->limit)
+	while (pool->pxl_idx + BATCH_SIZE <= pool->limit)
 		pthread_cond_wait(&pool->render_done, &pool->idx_lock);
 	pool->pxl_idx = 0;
 	pthread_mutex_unlock(&pool->idx_lock);
