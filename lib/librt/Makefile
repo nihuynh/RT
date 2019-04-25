@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/25 15:57:21 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/25 17:41:33 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 ifeq ($(RUNMODE),dev)
     CFLAGS	+=	-g3 -O0
 	# VERBOSE =	1
-	CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address -fsanitize-recover=address
+	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address -fsanitize-recover=address
 else
 	CFLAGS	+= -O2 -march=native -flto
 endif
