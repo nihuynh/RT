@@ -3,15 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 18:31:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/25 18:18:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include <math.h>
+
+static inline float
+	inter_finite(t_inter *data, t_cone *cone, float dist[2])
+{
+	t_pt3	inter_pt;
+	t_vec3	origin_to_inter;
+	float	scale;
+	int		i;
+	float	dst_final;
+
+	if (cone->size == 0)
+		return ((dist[0] < dist[1]) ? dist[0] : dist[1]);
+	i = -1;
+	dst_final = HUGEVAL;
+	while (++i < 2)
+	{
+		inter_pt.x = data->ray.origin.x + dist[i] * data->ray.dir.x;
+		inter_pt.y = data->ray.origin.y + dist[i] * data->ray.dir.y;
+		inter_pt.z = data->ray.origin.z + dist[i] * data->ray.dir.z;
+		vec3_sub(&origin_to_inter, &inter_pt, &cone->origin);
+		scale = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
+		if (scale < cone->size && scale >= 0)
+			dst_final = (dst_final < dist[i]) ? dst_final : dist[i];
+	}
+	return (dst_final);
+}
 
 /*
 **http://lousodrome.net/blog/light/2017/01/03/intersection-of-a-ray-and-a-cone/
@@ -25,7 +51,7 @@
 */
 
 static inline float
-	inter(t_ray *ray, t_cone *cone)
+	inter(t_inter *data, t_ray *ray, t_cone *cone)
 {
 	float	toby[3];
 	float	res[2];
@@ -48,25 +74,9 @@ static inline float
 	res[0] = (res[0] > 0) ? res[0] : HUGEVAL;
 	res[1] = (-BBBB - sqrt(det)) / (2 * AAAA);
 	res[1] = (res[1] > 0) ? res[1] : HUGEVAL;
-	return ((res[0] < res[1]) ? res[0] : res[1]);
+	return (inter_finite(data, cone, res));
 }
 
-static inline int
-	inter_finite(t_inter *data, t_cone *cone, float dist)
-{
-	t_pt3	inter_pt;
-	t_vec3	origin_to_inter;
-	float	scale;
-
-	inter_pt.x = data->ray.origin.x + dist * data->ray.dir.x;
-	inter_pt.y = data->ray.origin.y + dist * data->ray.dir.y;
-	inter_pt.z = data->ray.origin.z + dist * data->ray.dir.z;
-	vec3_sub(&origin_to_inter, &inter_pt, &cone->origin);
-	scale = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
-	if (scale > cone->size || scale <= 0)
-		return (0);
-	return (1);
-}
 
 void
 	inter_cone(t_inter *data, t_obj *node)
@@ -75,12 +85,9 @@ void
 	float	dist;
 
 	cone = node->shape;
-	dist = inter(&data->ray, cone);
+	dist = inter(data, &data->ray, cone);
 	if (dist >= data->dist || dist < 0)
 		return ;
-	if (cone->size > 0)
-		if (!(inter_finite(data, cone, dist)))
-			return ;
 	data->dist = dist;
 	data->obj = node;
 	data->find_normal = &normal_cone;
