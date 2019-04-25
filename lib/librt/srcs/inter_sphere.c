@@ -43,7 +43,6 @@ void				inter_sphere(t_inter *data, t_obj *node)
 	dist = inter(&data->ray, sphere);
 	if (dist >= data->dist || dist < 0)
 		return ;
-	data->color = node->material.color_ambient;
 	data->dist = dist;
 	data->obj = node;
 	data->find_normal = &normal_sphere;

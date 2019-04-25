@@ -34,7 +34,7 @@ void
 }
 
 static inline void
-	cast_bounce(t_data *data, t_inter *inter, int depth)
+	cast_bounce(t_color *color, t_data *data, t_inter *inter, int depth)
 {
 	t_ray	absorbed;
 	t_color	refraction;
@@ -49,7 +49,7 @@ static inline void
 		reflection = recursive_cast(data, inter->deflected, depth + 1);
 		color_scalar(&reflection, inter->obj->material.deflect_idx);
 		color_scalar(&reflection, kr);
-		color_add(&inter->color, &reflection);
+		color_add(color, &reflection);
 	}
 	if (data->scene_set.absorb && inter->obj->material.absorb_idx)
 	{
@@ -57,7 +57,7 @@ static inline void
 		refraction = recursive_cast(data, absorbed, depth + 1);
 		color_scalar(&refraction, inter->obj->material.absorb_idx);
 		color_scalar(&refraction, 1 - kr);
-		color_add(&inter->color, &refraction);
+		color_add(color, &refraction);
 	}
 }
 
@@ -79,11 +79,10 @@ t_color
 	inter_find(&inter, &inter.point);
 	inter.find_normal(&inter);
 	lighting = get_lighting(data->lst_obj, data->lst_light, &inter, &data->scene_set);
-	inter.color = lighting;
-	color_add(&inter.color, &ambient);
+	color_add(&lighting, &ambient);
 	if (depth < data->scene_set.depth_max)
-		cast_bounce(data, &inter, depth);
-	return (inter.color);
+		cast_bounce(&lighting, data, &inter, depth);
+	return (lighting);
 }
 
 int __attribute__((hot))

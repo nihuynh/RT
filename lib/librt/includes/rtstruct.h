@@ -128,7 +128,6 @@ typedef struct s_inter	t_inter;
 ** ray 			: Ray information
 ** point		: Intersection point
 ** n 			: Normal of the object at the inter
-** color		: final color of the pixel
 ** reflected	: Vector director of the ray after the inter
 ** find_normal	: Methode to find the normal of the object hit
 */
@@ -140,9 +139,7 @@ struct			s_inter
 	t_ray		ray;
 	t_pt3		point;
 	t_vec3		n;
-	t_color		color;
 	t_ray		deflected;
-	float		kr;
 	void		(*find_normal) (t_inter*);
 	t_vec3		(*get_uv) (t_inter*);
 };

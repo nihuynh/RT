@@ -81,7 +81,6 @@ void
 	if (cone->size > 0)
 		if (!(inter_finite(data, cone, dist)))
 			return ;
-	data->color = node->material.color_ambient;
 	data->dist = dist;
 	data->obj = node;
 	data->find_normal = &normal_cone;

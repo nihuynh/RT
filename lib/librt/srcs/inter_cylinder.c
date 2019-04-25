@@ -70,7 +70,6 @@ void
 	if (cylinder->size > 0)
 		if (!(inter_finite(data, cylinder, dist)))
 			return ;
-	data->color = node->material.color_ambient;
 	data->dist = dist;
 	data->obj = node;
 	data->find_normal = &normal_cylinder;
