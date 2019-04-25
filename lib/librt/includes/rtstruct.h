@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 20:11:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/25 15:37:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ typedef t_color	(*f_texture)(float x, float y);
 typedef struct	s_material
 {
 	char		*name;
-	t_color		color_ambient;
 	t_color		color_diffuse;
 	t_color		color_specular;
 	t_color		self_light;

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 18:03:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:14:34 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 */
 
 # define BACK_COLOR		0x000000
-# define AMB_LIGHT		0.25f
+# define AMB_LIGHT		(t_color){0.2, 0.2, 0.2}
 # define FOV			40.0f
 # define DEPTH_MAX		2
 
@@ -101,7 +101,7 @@ typedef struct	s_gui
 typedef struct	s_scene
 {
 	t_color		back_color;
-	float		amb_light;
+	t_color		amb_light;
 	bool		light;
 	bool		facing;
 	bool		i_light;

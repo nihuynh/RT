@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 18:26:22 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/25 15:57:18 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ CC			:=	clang
 CFLAGS		:=	-Werror -Wall -Wextra
 CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 ifeq ($(RUNMODE),dev)
-    CFLAGS	+=	-g3 -O0 -fsanitize=thread
-	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
+    CFLAGS	+=	-g3 -O0
+	CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address -fsanitize-recover=address
 else
 	CFLAGS	+= -O2 -march=native -flto
 endif

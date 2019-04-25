@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 15:31:38 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:27:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,13 @@ static inline void
 {
 	if (!(mat->name = ft_strdup(split[0])))
 		ft_error(__func__, __LINE__);
-	mat->color_ambient = itocolor(ft_atoi_base(split[1], 16));
-	mat->color_diffuse = itocolor(ft_atoi_base(split[2], 16));
-	mat->color_specular = itocolor(ft_atoi_base(split[3], 16));
-	mat->self_light = itocolor(ft_atoi_base(split[4], 16));
-	mat->spec_idx = ft_atof(split[5]);
-	mat->spec_power = ft_atof(split[6]);
-	mat->absorb_idx = ft_atof(split[7]);
-	mat->deflect_idx = ft_atof(split[8]);
+	mat->color_diffuse = itocolor(ft_atoi_base(split[1], 16));
+	mat->color_specular = itocolor(ft_atoi_base(split[2], 16));
+	mat->self_light = itocolor(ft_atoi_base(split[3], 16));
+	mat->spec_idx = ft_atof(split[4]);
+	mat->spec_power = ft_atof(split[5]);
+	mat->absorb_idx = ft_atof(split[6]);
+	mat->deflect_idx = ft_atof(split[7]);
 }
 
 void
@@ -80,7 +79,7 @@ void
 	{
 		if (!(split = ft_strsplit(line, ',')))
 			ft_error(__func__, __LINE__);
-		if (ft_tablen(split) != 9)
+		if (ft_tablen(split) != 8)
 			ft_error(__func__, __LINE__);
 		split_to_mat(split, &node);
 		if (!(lst_node = ft_lstnew(&node, sizeof(t_material))))

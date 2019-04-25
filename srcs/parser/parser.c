@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 14:43:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:37:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,14 @@ static inline int
 	}
 	dst->name = "";
 	parse_texture(&dst->f_texture, tab[idx], idx);
-	parse_color(&dst->color_ambient, tab[idx + 1], idx + 1, "color_ambient(");
-	parse_color(&dst->color_diffuse, tab[idx + 2], idx + 2, "color_diffuse(");
-	parse_color(&dst->color_specular, tab[idx + 3], idx + 3, "color_specular(");
-	parse_color(&dst->self_light, tab[idx + 4], idx + 4, "self_light(");
-	parse_fval(&dst->spec_idx, tab[idx + 5], idx + 5, "spec_idx(");
-	parse_fval(&dst->spec_power, tab[idx + 6], idx + 6, "spec_power(");
-	parse_fval(&dst->absorb_idx, tab[idx + 7], idx + 7, "absorb_idx(");
-	parse_fval(&dst->deflect_idx, tab[idx + 8], idx + 8, "deflect_idx(");
-	return (idx + 10);
+	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
+	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
+	parse_color(&dst->self_light, tab[idx + 3], idx + 3, "self_light(");
+	parse_fval(&dst->spec_idx, tab[idx + 4], idx + 4, "spec_idx(");
+	parse_fval(&dst->spec_power, tab[idx + 5], idx + 5, "spec_power(");
+	parse_fval(&dst->absorb_idx, tab[idx + 6], idx + 6, "absorb_idx(");
+	parse_fval(&dst->deflect_idx, tab[idx + 7], idx + 7, "deflect_idx(");
+	return (idx + 9);
 }
 
 /*

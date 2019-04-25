@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 18:05:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:25:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ t_color
 	cast_primary(data, &inter);
 	if (inter.obj == NULL)
 		return (data->scene_set.back_color);
-	ambient = inter.obj->material.color_ambient;
+	ambient = inter.obj->material.color_diffuse;
 	if (data->lst_light == NULL || !data->scene_set.light)
 		return (ambient);
-	color_scalar(&ambient, data->scene_set.amb_light);
+	color_mult(&ambient, &data->scene_set.amb_light);
 	inter_find(&inter, &inter.point);
 	inter.find_normal(&inter);
 	lighting = get_lighting(data->lst_obj, data->lst_light, &inter, &data->scene_set);

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 15:30:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:25:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,14 @@ static inline void
 	t_color color_tmp;
 
 	(void)mat;
-	color_tmp = mat->color_ambient;
-	if (igColorEdit3("Object Color", &color_tmp.r, 0))
-		mat->color_ambient = color_tmp;
 	color_tmp = mat->color_diffuse;
-	if (igColorEdit3("Diffuse Color", &color_tmp.r, 0))
+	if (igColorEdit3("Object Color", &color_tmp.r, 0))
 		mat->color_diffuse = color_tmp;
 	color_tmp = mat->color_specular;
 	if (igColorEdit3("Specular Color", &color_tmp.r, 0))
 		mat->color_specular = color_tmp;
 	igDragFloat("Specular Index", &mat->spec_idx, 0.01, 0, 1, "%g", 1);
-	igDragFloat("Specular Power", &mat->spec_power, 0.1, 0, 100, "%g", 1);
+	igDragFloat("Specular Power", &mat->spec_power, 0.1, 0, 1000, "%g", 1);
 	igDragFloat("Reflection Index", &mat->deflect_idx, 0.01, 0, 1, "%g", 1);
 	igDragFloat("Refraction Index", &mat->absorb_idx, 0.01, 0, 1, "%g", 1);
 	igTreePop();

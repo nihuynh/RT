@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 18:07:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:16:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,17 @@ static inline void
 	igCheckbox("Shine", &app->scene_set.shine);
 	igSameLine(480, 0);
 	igCheckbox("Shadow", &app->scene_set.shadow);
-	igSameLine(640, 0);
 	igCheckbox("Facing Ratio", &app->scene_set.facing);
-	igCheckbox("Reflection", &app->scene_set.deflect);
 	igSameLine(160, 0);
+	igCheckbox("Reflection", &app->scene_set.deflect);
+	igSameLine(320, 0);
 	igCheckbox("Refraction", &app->scene_set.absorb);
-	if (igTreeNodeStr("Sky Color"))
-	{
-		color_tmp = app->scene_set.back_color;
-		if (igColorEdit3("Sky Color", &color_tmp.r, 0))
-			app->scene_set.back_color = color_tmp;
-		igTreePop();
-	}
+	color_tmp = app->scene_set.back_color;
+	if (igColorEdit3("Sky Color", &color_tmp.r, 0))
+		app->scene_set.back_color = color_tmp;
+	color_tmp = app->scene_set.amb_light;
+	if (igColorEdit3("Ambient light color", &color_tmp.r, 0))
+		app->scene_set.amb_light = color_tmp;
 	igTreePop();
 	igNewLine();
 }
@@ -46,8 +45,8 @@ static inline void
 {
 	if (igTreeNodeStr("Camera Settings"))
 	{
-		igDragInt("Depth Max", &app->scene_set.depth_max, 0.1, 0, 10, NULL);
-		igDragFloat("FOV", &app->scene_set.fov, 0.1, 30, 110, "%g", 1);
+		igSliderInt("Depth Max", &app->scene_set.depth_max, 0, 10, NULL);
+		igSliderFloat("FOV", &app->scene_set.fov, 30, 110, "%g", 1);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Light Settings"))
