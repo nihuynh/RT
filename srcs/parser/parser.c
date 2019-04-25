@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 15:31:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/25 14:41:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static inline int
 		ft_memcpy(dst, mat, sizeof(t_material));
 		return (idx + 2);
 	}
+	dst->name = "";
 	parse_color(&dst->color_ambient, tab[idx], idx, "color_ambient(");
 	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
 	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
