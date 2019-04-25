@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:32:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 02:56:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/24 20:22:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int
 {
 	int		task_id;
 	int 	idx_batch;
-	t_pxl 	idx;
+	int 	idx;
 
 	idx_batch = -1;
 	pthread_mutex_lock(&pool->idx_lock);
@@ -53,10 +53,9 @@ int
 		return (-1);
 	while (++idx_batch < BATCH_SIZE)
 	{
-		idx.x = (task_id + idx_batch) % WIDTH;
-		idx.y = (task_id + idx_batch) / WIDTH;
-		putcolor(pool->sdl, pool->do_pxl(idx.x, idx.y, pool->prg_data),
-			idx.x, idx.y);
+		idx = task_id + idx_batch;
+		pool->sdl->img.pixels[idx] = pool->do_pxl(idx % WIDTH,
+			idx / WIDTH, pool->prg_data) | C_MASK;
 	}
 	return (task_id);
 }
@@ -102,7 +101,7 @@ int
 	sdl->pool->idx_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 	sdl->pool->idle_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 	sdl->pool->render_done = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
-	if (!(sdl->pool->threads = ft_memalloc(sizeof(pthread_t) * thr_count)))
+	if (!(sdl->pool->thrs = ft_memalloc(sizeof(pthread_t) * thr_count)))
 		ft_error(__func__, __LINE__);
 	sdl->pool->thr_count = thr_count;
 	sdl->pool->sdl = sdl;
@@ -110,9 +109,9 @@ int
 	sdl->pool->prg_data = prg_d;
 	while (++idx < thr_count && !sats)
 	{
-		sats = pthread_create(&sdl->pool->threads[idx], NULL,
+		sats = pthread_create(&sdl->pool->thrs[idx], NULL,
 								thr_routine, sdl->pool);
-		pthread_detach(sdl->pool->threads[idx]);
+		pthread_detach(sdl->pool->thrs[idx]);
 	}
 	if (idx != thr_count)
 		ft_error(__func__, __LINE__);
@@ -149,8 +148,8 @@ int destroy_pool(t_thr_pool *pool)
 	SDL_Delay(100);
 	if (pool)
 	{
-		if (pool->threads)
-			free(pool->threads);
+		if (pool->thrs)
+			free(pool->thrs);
 		free(pool);
 	}
 	return (EXIT_SUCCESS);

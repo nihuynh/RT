@@ -135,17 +135,15 @@ void
 }
 
 void
-	parse_texture(t_plane *plane, char *str, int line)
+	parse_texture(f_texture *texture, char *str, int line)
 {
-	char *ptr;
-
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);
 	str = check_key(str, line, "texture(", ERR_PARSE_VECTOR);
-	if ((ptr = ft_strstr(str, "checkers")))
-		plane->f_texture = &texture_checkers;
-	else if ((ptr = ft_strstr(str, "strips")))
-		plane->f_texture = &texture_strips;
+	if (ft_strstr(str, "checkers"))
+		*texture = &texture_checkers;
+	else if (ft_strstr(str, "strips"))
+		*texture = &texture_strips;
 	else
-		plane->f_texture = NULL;
+		*texture = NULL;
 }

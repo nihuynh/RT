@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 18:07:33 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 19:07:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void
 	init_scene(t_scene *scene)
 {
 	scene->back_color = itocolor(BACK_COLOR);
+	scene->amb_light = AMB_LIGHT;
 	scene->depth_max = DEPTH_MAX;
 	scene->fov = FOV;
 	scene->absorb = 1;
@@ -36,6 +37,7 @@ void
 	init_sdl(&data->sdl, WIDTH, HEIGHT);
 	init_render(data);
 	init_interface(&data->gui, data->sdl.win, data);
+	data->sdl.needs_render = true;
 }
 
 void

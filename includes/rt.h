@@ -24,7 +24,7 @@
 */
 
 # define BACK_COLOR		0x000000
-# define AMB_LIGHT		0.0625f
+# define AMB_LIGHT		0.25f
 # define FOV			40.0f
 # define DEPTH_MAX		2
 
@@ -143,19 +143,21 @@ int				parse_light(char **greed, t_data *data, int l_idx);
 int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
+t_color 		get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_scene *settings);
 void			cast_primary(t_data *data, t_inter *inter);
-t_color			recursive_cast(t_data *data, t_ray *ray, int depth);
+t_color			recursive_cast(t_data *data, t_ray ray, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 void			cam_ray(t_data *data, t_ray *res, float x, float y);
-float			cast_light_primary(t_data *data, t_inter *inter);
+float			cast_light_primary(t_list *obj_list, t_inter *inter);
+
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);
 void			camera_height(t_data *data, float value);
 void			camera_side(t_data *data, float value);
 void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
-void			texture_checkers(t_color *color, float x, float y);
-void			texture_strips(t_color *color, float x, float y);
+t_color			texture_checkers(float x, float y);
+t_color			texture_strips(float x, float y);
 void			init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void			init(t_data	*data);
 void			interface(t_data *app);

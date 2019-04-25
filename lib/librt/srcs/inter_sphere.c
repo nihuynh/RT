@@ -21,7 +21,7 @@ static inline float	inter(t_ray *ray, t_sphere *sphere)
 	t_vec3	rene;
 
 	vec3_sub(&rene, &ray->origin, &sphere->origin);
-	AAAA = vec3_mag(&ray->dir);
+	AAAA = vec3_mag(ray->dir);
 	BBBB = 2.0 * vec3_dot(&ray->dir, &rene);
 	CCCC = vec3_dot(&rene, &rene) - sphere->radius * sphere->radius;
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
@@ -43,7 +43,6 @@ void				inter_sphere(t_inter *data, t_obj *node)
 	dist = inter(&data->ray, sphere);
 	if (dist >= data->dist || dist < 0)
 		return ;
-	data->color = node->material.color_ambient;
 	data->dist = dist;
 	data->obj = node;
 	data->find_normal = &normal_sphere;

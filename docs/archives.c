@@ -63,7 +63,7 @@ void				vec3_matrix_camera(t_matrix *matrix, t_cam *cam)
 	vec3_print(&toby[1]);
 	datcos = vec3_dot(&toby[0], &toby[1]);
 	vec3_cross(&toby[0], &toby[1], &axis);
-	datsin = vec3_mag(&axis);
+	datsin = vec3_mag(axis);
 	matrix_math(datcos, datsin, &axis, matrix);
 	print_matrix(matrix);
 }

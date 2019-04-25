@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/19 11:19:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/24 20:11:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct	s_plane
 	float		size_x;
 	float		size_y;
 	float		rotation;
-	void		(*f_texture)(t_color *, float x, float y);
 }				t_plane;
 
 typedef struct	s_sphere
@@ -99,15 +98,11 @@ typedef struct	s_cam
 
 /*
 ** @brief Struct for material caracteristics
-** reflect_idx : depend on the material
-** transmit_k 	: at 0 for dialectrics
 ** http://www.lama.univ-savoie.fr/pagesmembres/lachaud/Cours/INFO805/Tests/html/
 ** Material_8h_source.html
-** La "brillance" (pour la réfléxion et couplé avec la couleur Specular).
-** La puissance de brillance (coefficient couplé avec la valeur précédente).
-** Le coefficient de  transmission (utilisé pour la réfraction).
-** Le coefficient de réfléxion (utilisé pour la réfléxion).
 */
+
+typedef t_color	(*f_texture)(float x, float y);
 
 typedef struct	s_material
 {
@@ -120,6 +115,7 @@ typedef struct	s_material
 	float		spec_power;
 	float		absorb_idx;
 	float		deflect_idx;
+	f_texture	f_texture;
 }				t_material;
 
 typedef struct s_obj	t_obj;
@@ -132,7 +128,6 @@ typedef struct s_inter	t_inter;
 ** ray 			: Ray information
 ** point		: Intersection point
 ** n 			: Normal of the object at the inter
-** color		: final color of the pixel
 ** reflected	: Vector director of the ray after the inter
 ** find_normal	: Methode to find the normal of the object hit
 */
@@ -144,10 +139,9 @@ struct			s_inter
 	t_ray		ray;
 	t_pt3		point;
 	t_vec3		n;
-	t_color		color;
 	t_ray		deflected;
-	float		kr;
 	void		(*find_normal) (t_inter*);
+	t_vec3		(*get_uv) (t_inter*);
 };
 
 /*

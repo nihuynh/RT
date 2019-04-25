@@ -26,3 +26,11 @@ void	color_add(t_color *color, t_color *add)
 	color->g += add->g;
 	color->b += add->b;
 }
+
+t_color	color_add_(t_color color, t_color add)
+{
+	color.r += add.r;
+	color.g += add.g;
+	color.b += add.b;
+	return (color);
+}

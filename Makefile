@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 18:29:08 by sklepper         ###   ########.fr        #
+#    Updated: 2019/04/24 19:18:46 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	RT
-# RUNMODE		?=	dev
-#VERBOSE		:= TRUE
 RUNMODE		?=	release
+# RUNMODE		?=	dev
+#VERBOSE	:= TRUE
 SCENE		:=	playground
-SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c \
-				setter.c light.c key_mapping.c camera.c update.c init.c \
-				cast.c texture.c utils.c interface.c interface_scene.c \
-				init_interface.c interface_objects.c interface_tools.c \
+SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
+				setter.c light.c key_mapping.c camera.c update.c init.c	\
+				cast.c texture.c utils.c interface.c interface_scene.c	\
+				init_interface.c interface_objects.c interface_tools.c	\
 				object_tools.c render_fullscreen.c
 # directories :
 VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface
@@ -46,9 +46,15 @@ LUI_RULE	:=	$(LUI_PATH)/$(LUI_NAME)
 LSDL_LIB	:=	$(shell sdl2-config --libs)
 LSDL_INC	:=	$(shell sdl2-config --cflags)
 # CIMGUI
-CIMGUI_NAME	:=	cimgui.dylib
+UNAME_S		:=	$(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	CIMGUI_NAME = cimgui.so
+endif
+ifeq ($(UNAME_S), Darwin)
+	CIMGUI_NAME = cimgui.dylib
+endif
 CIMGUI_PATH :=	lib/cimgui
-CIMGUI_LIB	:=	cimgui.dylib
+CIMGUI_LIB	:=	$(CIMGUI_NAME) -lstdc++
 CIMGUI_INC	:=	-I $(CIMGUI_PATH)
 CIMGUI_RULE	:=	$(CIMGUI_NAME)
 # IMGUI_IMPL
@@ -70,8 +76,10 @@ RUN_SCENE	:=	$(or $(RUN_ARGS),$(SCENE))
 SCENES		:= 	$(addprefix $(addprefix scenes/, $(RUN_SCENE)), .rt)
 OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
-LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB) $(IMGUI_IMPL_LIB) $(LOPENGL_LIB) -lstdc++
-INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC) $(CIMGUI_INC) $(IMGUI_IMPL_INC)
+LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB)	\
+				$(IMGUI_IMPL_LIB) $(LOPENGL_LIB)
+INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC)	\
+				$(CIMGUI_INC) $(IMGUI_IMPL_INC)
 # **************************************************************************** #
 # make specs :
 CC			:=	clang
@@ -79,7 +87,7 @@ CFLAGS		:=	-Werror -Wall -Wextra -g -I$(INCDIR)
 CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 LIBFLAGS 	:=	-j32 RUNMODE=$(RUNMODE)
 ifeq ($(RUNMODE),dev)
-    CFLAGS	+=	-g3 -O0
+    CFLAGS	+=	-g3 -O0 -fsanitize=thread
 	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
 else
 	CFLAGS	+= -O2 -march=native -flto

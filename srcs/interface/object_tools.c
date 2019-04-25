@@ -19,7 +19,7 @@ t_obj	*find_obj_at_pixel(t_data *app, int x, int y)
 	t_ray	ray;
 
 	cam_ray(app, &ray, x + 0.5, y + 0.5);
-	inter_set(&inter, &ray);
+	inter_set(&inter, ray);
 	cast_primary(app, &inter);
 	return (inter.obj);
 }
