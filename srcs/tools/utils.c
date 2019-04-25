@@ -54,6 +54,7 @@ static inline void
 {
 	if (!(mat->name = ft_strdup(split[0])))
 		ft_error(__func__, __LINE__);
+	mat->f_texture = NULL;
 	mat->color_diffuse = itocolor(ft_atoi_base(split[1], 16));
 	mat->color_specular = itocolor(ft_atoi_base(split[2], 16));
 	mat->self_light = itocolor(ft_atoi_base(split[3], 16));
