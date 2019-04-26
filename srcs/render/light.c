@@ -51,7 +51,7 @@ static inline float
 }
 
 float
-	get_light_visibility(t_shading s, t_list *obj_list, t_scene *settings)
+	get_light_visibility(t_shading s, t_list *obj_list, t_settings *settings)
 {
 	t_inter	inter_light;
 	t_ray	ray;
@@ -114,7 +114,7 @@ t_shading
 }
 
 void
-	shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings)
+	shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_settings *settings)
 {
 	float intensity;
 
@@ -128,7 +128,7 @@ void
 }
 
 t_color
-	get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_scene *settings)
+	get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_settings *settings)
 {
 	t_shading	shading;
 	t_list		*lst;

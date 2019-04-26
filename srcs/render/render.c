@@ -23,7 +23,7 @@ void
 	t_pt3	direction;
 
 	r = data->sdl.img.width / (float)data->sdl.img.height;
-	fovt = tanf((data->scene_set.fov * DEG_TO_RAD) / 2);
+	fovt = tanf((data->settings.fov * DEG_TO_RAD) / 2);
 	direction.x = (2 * x / data->sdl.img.width - 1) * fovt * r;
 	direction.y = (1 - 2 * y / data->sdl.img.height) * fovt;
 	direction.z = -1;
@@ -44,14 +44,14 @@ static inline void
 	kr = 1;
 	if (inter->obj->material.deflect_idx || inter->obj->material.absorb_idx)
 		kr = fresnel(inter->ray.dir, inter->n, 1.5);
-	if (data->scene_set.deflect && inter->obj->material.deflect_idx)
+	if (data->settings.deflect && inter->obj->material.deflect_idx)
 	{
 		reflection = recursive_cast(data, inter->deflected, depth + 1);
 		color_scalar(&reflection, inter->obj->material.deflect_idx);
 		color_scalar(&reflection, kr);
 		color_add(color, &reflection);
 	}
-	if (data->scene_set.absorb && inter->obj->material.absorb_idx)
+	if (data->settings.absorb && inter->obj->material.absorb_idx)
 	{
 		inter_setrefract(inter, &absorbed);
 		refraction = recursive_cast(data, absorbed, depth + 1);
@@ -71,16 +71,16 @@ t_color
 	inter_set(&inter, ray);
 	cast_primary(data, &inter);
 	if (inter.obj == NULL)
-		return (data->scene_set.back_color);
+		return (data->settings.back_color);
 	ambient = inter.obj->material.color_diffuse;
-	if (data->lst_light == NULL || !data->scene_set.light)
+	if (data->scene.lst_light == NULL || !data->settings.light)
 		return (ambient);
-	color_mult(&ambient, &data->scene_set.amb_light);
+	color_mult(&ambient, &data->settings.amb_light);
 	inter_find(&inter, &inter.point);
 	inter.obj->find_normal(&inter);
-	lighting = get_lighting(data->lst_obj, data->lst_light, &inter, &data->scene_set);
+	lighting = get_lighting(data->scene.lst_obj, data->scene.lst_light, &inter, &data->settings);
 	color_add(&lighting, &ambient);
-	if (depth < data->scene_set.depth_max)
+	if (depth < data->settings.depth_max)
 		cast_bounce(&lighting, data, &inter, depth);
 	return (lighting);
 }

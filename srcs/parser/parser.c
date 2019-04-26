@@ -132,7 +132,7 @@ int
 	idx = parse_material(d, &obj.material, greed, l_idx + cfg.line_offset - 2);
 	if (!(node = ft_lstnew(&obj, sizeof(t_obj))))
 		ft_error(__func__, __LINE__);
-	ft_lstadd(&d->lst_obj, node);
+	ft_lstadd(&d->scene.lst_obj, node);
 	return (idx);
 }
 
@@ -157,7 +157,7 @@ int
 	light_set(&light, greed, line_idx);
 	if (!(node = ft_lstnew(&light, sizeof(t_light))))
 		ft_error(__func__, __LINE__);
-	ft_lstadd(&data->lst_light, node);
+	ft_lstadd(&data->scene.lst_light, node);
 	line_idx += 5;
 	return (line_idx);
 }

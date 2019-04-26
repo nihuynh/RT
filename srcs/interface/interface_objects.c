@@ -117,7 +117,7 @@ void
 	if (igTreeNodeStr("Lights"))
 	{
 		i = 0;
-		lst = app->lst_light;
+		lst = app->scene.lst_light;
 		while (lst)
 		{
 			light_settings(lst->content, i);

@@ -18,7 +18,7 @@ void
 	t_list	*lst;
 	t_obj	*obj;
 
-	lst = data->lst_obj;
+	lst = data->scene.lst_obj;
 	while (lst != NULL)
 	{
 		obj = lst->content;

@@ -18,24 +18,24 @@ static inline void
 {
 	t_color	color_tmp;
 
-	igCheckbox("Light", &app->scene_set.light);
+	igCheckbox("Light", &app->settings.light);
 	igSameLine(160, 0);
-	igCheckbox("Light Intensity", &app->scene_set.i_light);
+	igCheckbox("Light Intensity", &app->settings.i_light);
 	igSameLine(320, 0);
-	igCheckbox("Shine", &app->scene_set.shine);
+	igCheckbox("Shine", &app->settings.shine);
 	igSameLine(480, 0);
-	igCheckbox("Shadow", &app->scene_set.shadow);
-	igCheckbox("Facing Ratio", &app->scene_set.facing);
+	igCheckbox("Shadow", &app->settings.shadow);
+	igCheckbox("Facing Ratio", &app->settings.facing);
 	igSameLine(160, 0);
-	igCheckbox("Reflection", &app->scene_set.deflect);
+	igCheckbox("Reflection", &app->settings.deflect);
 	igSameLine(320, 0);
-	igCheckbox("Refraction", &app->scene_set.absorb);
-	color_tmp = app->scene_set.back_color;
+	igCheckbox("Refraction", &app->settings.absorb);
+	color_tmp = app->settings.back_color;
 	if (igColorEdit3("Sky Color", &color_tmp.r, 0))
-		app->scene_set.back_color = color_tmp;
-	color_tmp = app->scene_set.amb_light;
+		app->settings.back_color = color_tmp;
+	color_tmp = app->settings.amb_light;
 	if (igColorEdit3("Ambient light color", &color_tmp.r, 0))
-		app->scene_set.amb_light = color_tmp;
+		app->settings.amb_light = color_tmp;
 	igTreePop();
 	igNewLine();
 }
@@ -45,8 +45,8 @@ static inline void
 {
 	if (igTreeNodeStr("Camera Settings"))
 	{
-		igSliderInt("Depth Max", &app->scene_set.depth_max, 0, 10, NULL);
-		igSliderFloat("FOV", &app->scene_set.fov, 30, 110, "%g", 1);
+		igSliderInt("Depth Max", &app->settings.depth_max, 0, 10, NULL);
+		igSliderFloat("FOV", &app->settings.fov, 30, 110, "%g", 1);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Light Settings"))
