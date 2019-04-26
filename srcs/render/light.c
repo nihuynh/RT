@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/26 23:20:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 23:26:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ static inline float
 t_color
 	get_light_visibility(t_shading s, t_list *obj_list, t_settings *settings)
 {
+	t_inter	inter_light;
+	t_ray	ray;
+
 	if (settings->shadow == false)
 		return ((t_color){1, 1, 1});
 	ray.origin = s.hit_pos;
