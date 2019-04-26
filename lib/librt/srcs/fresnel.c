@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fresnel.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 13:56:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/15 18:51:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/26 23:39:47 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ float	fresnel(t_vec3 ray_dir, t_vec3 normal, float ior)
 	float	toby[5];
 	float	res[2];
 
+	if (ior == 0)
+		return (1);
 	vec3_scalar(&ray_dir, -1);
 	AAAA = ft_clampf(vec3_dot(&ray_dir, &normal), -1, 1);
 	BBBB = 1;
