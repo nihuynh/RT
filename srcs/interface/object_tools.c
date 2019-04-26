@@ -20,6 +20,6 @@ t_obj	*find_obj_at_pixel(t_data *app, int x, int y)
 
 	cam_ray(app, &ray, x + 0.5, y + 0.5);
 	inter_set(&inter, ray);
-	cast_primary(app, &inter);
+	cast_primary(app->scene.lst_obj, &inter);
 	return (inter.obj);
 }

@@ -14,17 +14,17 @@
 #include "ftmath.h"
 
 /*
-** @brief	Add color & clamp it between 0-255
+** @brief	Add color
 **
 ** @param color
 ** @param add
 */
 
-void	color_add(t_color *color, t_color *add)
+void	color_add(t_color *color, t_color add)
 {
-	color->r += add->r;
-	color->g += add->g;
-	color->b += add->b;
+	color->r += add.r;
+	color->g += add.g;
+	color->b += add.b;
 }
 
 t_color	color_add_(t_color color, t_color add)

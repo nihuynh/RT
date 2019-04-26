@@ -13,12 +13,12 @@
 #include "rt.h"
 
 void
-	cast_primary(t_data *data, t_inter *inter)
+	cast_primary(t_list *obj_list, t_inter *inter)
 {
 	t_list	*lst;
 	t_obj	*obj;
 
-	lst = data->scene.lst_obj;
+	lst = obj_list;
 	while (lst != NULL)
 	{
 		obj = lst->content;

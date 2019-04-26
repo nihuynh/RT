@@ -82,7 +82,7 @@ void
 		return ;
 	spec_factor = specular_factor(shading);
 	color_scalar(&shading.light.color, spec_factor);
-	color_add(specular, &shading.light.color);
+	color_add(specular, shading.light.color);
 }
 
 void
@@ -94,7 +94,7 @@ void
 		return ;
 	diffuse_factor = facing_ratio(shading.light_dir, shading.normal);
 	color_scalar(&shading.light.color, diffuse_factor);
-	color_add(diffuse, &shading.light.color);
+	color_add(diffuse, shading.light.color);
 }
 
 t_shading
@@ -128,21 +128,21 @@ void
 }
 
 t_color
-	get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_settings *settings)
+	get_lighting(t_scene scene, t_inter *inter, t_settings *settings)
 {
 	t_shading	shading;
 	t_list		*lst;
 	t_color		accum_light[2];
 	t_color		diffuse_color;
 
-	lst = light_lst;
+	lst = scene.lst_light;
 	inter_setdeflect(inter, &inter->deflected);
 	accum_light[DIFFUSE] = (t_color){0, 0, 0};
 	accum_light[SPECULAR] = (t_color){0, 0, 0};
 	while (lst != NULL)
 	{
 		shading = set_shading_data(inter, (t_light*)lst->content);
-		shade_1_light(accum_light, shading, obj, settings);
+		shade_1_light(accum_light, shading, scene.lst_obj, settings);
 		lst = lst->next;
 	}
 

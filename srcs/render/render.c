@@ -33,55 +33,56 @@ void
 	ray_new(res, &data->cam.pos, &direction);
 }
 
-static inline void
-	cast_bounce(t_color *color, t_data *data, t_inter *inter, int depth)
+static inline t_color
+	cast_bounce(t_scene scene, t_settings settings, t_inter *inter, int depth)
 {
 	t_ray	absorbed;
-	t_color	refraction;
 	t_color	reflection;
+	t_color	refraction;
 	float	kr;
 
+	reflection = (t_color){0, 0, 0};
+	refraction = (t_color){0, 0, 0};
 	kr = 1;
 	if (inter->obj->material.deflect_idx || inter->obj->material.absorb_idx)
 		kr = fresnel(inter->ray.dir, inter->n, 1.5);
-	if (data->settings.deflect && inter->obj->material.deflect_idx)
+	if (settings.deflect && inter->obj->material.deflect_idx)
 	{
-		reflection = recursive_cast(data, inter->deflected, depth + 1);
+		reflection = recursive_cast(scene, settings, inter->deflected, depth + 1);
 		color_scalar(&reflection, inter->obj->material.deflect_idx);
 		color_scalar(&reflection, kr);
-		color_add(color, &reflection);
 	}
-	if (data->settings.absorb && inter->obj->material.absorb_idx)
+	if (settings.absorb && inter->obj->material.absorb_idx)
 	{
 		inter_setrefract(inter, &absorbed);
-		refraction = recursive_cast(data, absorbed, depth + 1);
+		refraction = recursive_cast(scene, settings, absorbed, depth + 1);
 		color_scalar(&refraction, inter->obj->material.absorb_idx);
 		color_scalar(&refraction, 1 - kr);
-		color_add(color, &refraction);
 	}
+	return (color_add_(reflection, refraction));
 }
 
 t_color
-	recursive_cast(t_data *data, t_ray ray, int depth)
+	recursive_cast(t_scene scene, t_settings settings, t_ray ray, int depth)
 {
 	t_inter	inter;
 	t_color	ambient;
 	t_color	lighting;
 
 	inter_set(&inter, ray);
-	cast_primary(data, &inter);
+	cast_primary(scene.lst_obj, &inter);
 	if (inter.obj == NULL)
-		return (data->settings.back_color);
+		return (settings.back_color);
 	ambient = inter.obj->material.color_diffuse;
-	if (data->scene.lst_light == NULL || !data->settings.light)
+	if (scene.lst_light == NULL || !settings.light)
 		return (ambient);
-	color_mult(&ambient, &data->settings.amb_light);
+	color_mult(&ambient, &settings.amb_light);
 	inter_find(&inter, &inter.point);
 	inter.obj->find_normal(&inter);
-	lighting = get_lighting(data->scene.lst_obj, data->scene.lst_light, &inter, &data->settings);
-	color_add(&lighting, &ambient);
-	if (depth < data->settings.depth_max)
-		cast_bounce(&lighting, data, &inter, depth);
+	lighting = get_lighting(scene, &inter, &settings);
+	color_add(&lighting, ambient);
+	if (depth < settings.depth_max)
+		color_add(&lighting, cast_bounce(scene, settings, &inter, depth));
 	return (lighting);
 }
 
@@ -94,7 +95,7 @@ int __attribute__((hot))
 
 	data = arg;
 	cam_ray(data, &rene, x + 0.5, y + 0.5);
-	color = recursive_cast(data, rene, 0);
+	color = recursive_cast(data->scene, data->settings, rene, 0);
 	color_clamp(&color, 0, 1);
 	return (colortoi(color));
 }
