@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/25 15:27:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:05:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static inline void
 	mat->spec_power = ft_atof(split[5]);
 	mat->absorb_idx = ft_atof(split[6]);
 	mat->deflect_idx = ft_atof(split[7]);
+	mat->refraction_idx = ft_atof(split[8]);
 }
 
 void
@@ -80,7 +81,7 @@ void
 	{
 		if (!(split = ft_strsplit(line, ',')))
 			ft_error(__func__, __LINE__);
-		if (ft_tablen(split) != 8)
+		if (ft_tablen(split) != 9)
 			ft_error(__func__, __LINE__);
 		split_to_mat(split, &node);
 		if (!(lst_node = ft_lstnew(&node, sizeof(t_material))))

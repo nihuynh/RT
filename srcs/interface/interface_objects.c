@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 15:25:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:18:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static inline void
 	igDragFloat("Specular Index", &mat->spec_idx, 0.01, 0, 1, "%g", 1);
 	igDragFloat("Specular Power", &mat->spec_power, 0.1, 0, 1000, "%g", 1);
 	igDragFloat("Reflection Index", &mat->deflect_idx, 0.01, 0, 1, "%g", 1);
-	igDragFloat("Refraction Index", &mat->absorb_idx, 0.01, 0, 1, "%g", 1);
+	igDragFloat("Refraction Index", &mat->refraction_idx, 0.01, 0, 2, "%g", 1);
+	igDragFloat("Transparency", &mat->absorb_idx, 0.01, 0, 1, "%g", 1);
 	igTreePop();
 }
 

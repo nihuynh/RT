@@ -22,6 +22,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
+		refraction_idx(0)
 	}
 	object(sphere) //milieu
 	{
@@ -34,6 +35,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
+		refraction_idx(0)
 	}
 	object(sphere) //droite
 	{
@@ -46,6 +48,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
+		refraction_idx(0)
 	}
     object(plane) //droite
     {
@@ -60,5 +63,6 @@ content
         spec_power(0.9)
         absorb_idx(0.0)
         deflect_idx(0.75)
+		refraction_idx(0)
     }
 }

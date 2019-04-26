@@ -11,7 +11,7 @@ content
 		origin(0 0 0)
 		intensity(50)
 	}
-		object(light)
+	object(light)
 	{
 		color(1 1 1)
 		origin(0 0 -70)
@@ -38,6 +38,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.0)
+		refraction_idx(0)
 	}
 	object(sphere)
 	{
@@ -50,6 +51,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.0)
+		refraction_idx(0)
 	}
 	object(sphere)
 	{
@@ -62,6 +64,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.0)
+		refraction_idx(0)
 	}
 	object(sphere)
 	{
@@ -74,6 +77,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.0)
+		refraction_idx(0)
 	}
 	object(sphere)
 	{
@@ -86,5 +90,6 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.0)
-		}
+		refraction_idx(0)
+	}
 }

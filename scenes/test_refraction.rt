@@ -48,6 +48,7 @@ content
 		spec_power(1500)
 		absorb_idx(0.0)
 		deflect_idx(0.0)
+		refraction_idx(0)
 	{
 	object(plane)
 	{
@@ -62,5 +63,6 @@ content
 		spec_power(1500)
 		absorb_idx(0.0)
 		deflect_idx(0.0)
+		refraction_idx(0)
 	{
 }

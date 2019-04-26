@@ -24,6 +24,7 @@ content
 		spec_power(50)
 		absorb_idx(0.0)
 		deflect_idx(1)
+		refraction_idx(0)
 	}
 	object(plane)
 	{
@@ -38,6 +39,7 @@ content
 		spec_power(50)
 		absorb_idx(0.0)
 		deflect_idx(1)
+		refraction_idx(0)
 	}
 	object(sphere)
 	{
@@ -51,6 +53,7 @@ content
 		spec_power(50)
 		absorb_idx(0)
 		deflect_idx(0.7)
+		refraction_idx(0)
 	}
 	object(cylinder)
 	{
@@ -66,6 +69,7 @@ content
 		spec_power(20)
 		absorb_idx(0.0)
 		deflect_idx(1)
+		refraction_idx(0)
 	}
 	object(cone)
 	{
@@ -81,5 +85,6 @@ content
 		spec_power(15)
 		absorb_idx(0.0)
 		deflect_idx(1)
+		refraction_idx(0)
 	}
 }

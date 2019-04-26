@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 15:37:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:09:09 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ static inline int
 	parse_fval(&dst->spec_power, tab[idx + 5], idx + 5, "spec_power(");
 	parse_fval(&dst->absorb_idx, tab[idx + 6], idx + 6, "absorb_idx(");
 	parse_fval(&dst->deflect_idx, tab[idx + 7], idx + 7, "deflect_idx(");
-	return (idx + 9);
+	parse_fval(&dst->refraction_idx, tab[idx + 8], idx + 8, "refraction_idx(");
+	return (idx + 10);
 }
 
 /*

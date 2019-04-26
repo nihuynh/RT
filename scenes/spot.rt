@@ -36,6 +36,7 @@ content
 		spec_power(0)
 		absorb_idx(0.0)
 		deflect_idx(0)
+		refraction_idx(0)
 	}
 	object(sphere) //bas-gauche
 	{
@@ -48,6 +49,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
+		refraction_idx(0)
 	}
 	object(sphere) //haut-gauche
 	{
@@ -60,6 +62,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
+		refraction_idx(0)
 	}
 	object(sphere) //bas-droite
 	{
@@ -72,6 +75,7 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
+		refraction_idx(0)
 	}
 	object(sphere) //haut-droite
 	{
@@ -84,5 +88,6 @@ content
 		spec_power(0.9)
 		absorb_idx(0.0)
 		deflect_idx(0.75)
+		refraction_idx(0)
 	}
 }

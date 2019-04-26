@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/25 15:37:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:04:34 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct	s_material
 	float		spec_power;
 	float		absorb_idx;
 	float		deflect_idx;
+	float		refraction_idx;
 	f_texture	f_texture;
 }				t_material;
 
