@@ -13,20 +13,6 @@
 #include "librt.h"
 #include <math.h>
 
-t_vec3
-	get_plane_uv(t_inter *inter)
-{
-	t_plane	*plan;
-	t_vec3	orig_to_inter;
-	t_vec3	uv;
-
-	plan = (t_plane *)inter->obj->shape;
-	orig_to_inter = vec3_sub_(inter->point, plan->origin);
-	uv.x = vec3_dot(&orig_to_inter, &plan->x);
-	uv.y = vec3_dot(&orig_to_inter, &plan->y);
-	return (uv);
-}
-
 static inline float
 	inter(t_ray *ray, t_plane *plane)
 {
@@ -78,9 +64,20 @@ void
 	if (plane->size_x > 0 || plane->size_y > 0)
 		if (!(inter_finite(data, plane, dist)))
 			return ;
-	if (node->material.f_texture)
-		data->get_uv = &get_plane_uv;
 	data->dist = dist;
 	data->obj = node;
-	data->find_normal = &normal_plane;
+}
+
+t_vec3
+	get_plane_uv(t_inter *inter)
+{
+	t_plane	*plan;
+	t_vec3	orig_to_inter;
+	t_vec3	uv;
+
+	plan = (t_plane *)inter->obj->shape;
+	orig_to_inter = vec3_sub_(inter->point, plan->origin);
+	uv.x = vec3_dot(&orig_to_inter, &plan->x);
+	uv.y = vec3_dot(&orig_to_inter, &plan->y);
+	return (uv);
 }

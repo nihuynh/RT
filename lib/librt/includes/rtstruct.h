@@ -140,8 +140,6 @@ struct			s_inter
 	t_pt3		point;
 	t_vec3		n;
 	t_ray		deflected;
-	void		(*find_normal) (t_inter*);
-	t_vec3		(*get_uv) (t_inter*);
 };
 
 /*
@@ -159,6 +157,8 @@ struct			s_obj
 	void		*shape;
 	t_material	material;
 	void		(*f_inter) (t_inter*, t_obj*);
+	void		(*find_normal) (t_inter*);
+	t_vec3		(*get_uv) (t_inter*);
 	void		(*f_gui) (void*);
 };
 

@@ -77,5 +77,4 @@ void
 		return ;
 	data->dist = dist;
 	data->obj = node;
-	data->find_normal = &normal_cylinder;
 }

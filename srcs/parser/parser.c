@@ -45,27 +45,34 @@ static inline void
 static inline void
 	obj_set(t_obj *obj, int type, void *shape)
 {
+	ft_bzero(obj, sizeof(t_obj));
 	obj->type = type;
 	obj->shape = shape;
 	if (type == SPHERE)
 	{
 		obj->f_inter = &inter_sphere;
 		obj->f_gui = &interface_sphere;
+		obj->find_normal = &normal_sphere;
+		obj->get_uv = &get_sphere_uv;
 	}
 	else if (type == PLANE)
 	{
 		obj->f_inter = &inter_plane;
 		obj->f_gui = &interface_plane;
+		obj->find_normal = &normal_plane;
+		obj->get_uv = &get_plane_uv;
 	}
 	else if (type == CONE)
 	{
 		obj->f_inter = &inter_cone;
 		obj->f_gui = &interface_cone;
+		obj->find_normal = &normal_cone;
 	}
 	else if (type == CYLINDER)
 	{
 		obj->f_inter = &inter_cylinder;
 		obj->f_gui = &interface_cylinder;
+		obj->find_normal = &normal_cylinder;
 	}
 }
 

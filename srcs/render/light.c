@@ -145,9 +145,10 @@ t_color
 		shade_1_light(accum_light, shading, obj, settings);
 		lst = lst->next;
 	}
-	if (inter->get_uv && inter->obj->material.f_texture)
+
+	if (inter->obj->material.f_texture && inter->obj->get_uv)
 	{
-		t_vec3 uv = inter->get_uv(inter);
+		t_vec3 uv = inter->obj->get_uv(inter);
 		diffuse_color = inter->obj->material.f_texture(uv.x, uv.y);
 	}
 	else

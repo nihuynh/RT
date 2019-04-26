@@ -77,7 +77,7 @@ t_color
 		return (ambient);
 	color_mult(&ambient, &data->scene_set.amb_light);
 	inter_find(&inter, &inter.point);
-	inter.find_normal(&inter);
+	inter.obj->find_normal(&inter);
 	lighting = get_lighting(data->lst_obj, data->lst_light, &inter, &data->scene_set);
 	color_add(&lighting, &ambient);
 	if (depth < data->scene_set.depth_max)
