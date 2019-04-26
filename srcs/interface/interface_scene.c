@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 15:16:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:35:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static inline void
 void
 	window_scene(t_data *app)
 {
+	igSetNextWindowPos((ImVec2){app->sdl.img.width, 0},
+						ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar

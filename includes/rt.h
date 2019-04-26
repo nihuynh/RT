@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 15:14:34 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:57:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define DEPTH_MAX		2
 
 # define DEBUG			0
-# define MAC			IMAC
+# define MAC			MACB
 
 /*
 ** User def :
@@ -148,7 +148,7 @@ void			cast_primary(t_data *data, t_inter *inter);
 t_color			recursive_cast(t_data *data, t_ray ray, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 void			cam_ray(t_data *data, t_ray *res, float x, float y);
-float			cast_light_primary(t_list *obj_list, t_inter *inter);
+t_color			cast_light_primary(t_list *obj_list, t_inter *inter);
 
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);
@@ -168,5 +168,6 @@ void			interface_sphere(void *res);
 void			interface_plane(void *res);
 void			interface_cylinder(void *res);
 void			interface_cone(void *res);
+bool			bool_color(t_color color);
 
 #endif

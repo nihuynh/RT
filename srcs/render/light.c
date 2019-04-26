@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 18:48:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:00:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static inline float
 	return (factor);
 }
 
-float
+t_color
 	get_light_visibility(t_shading s, t_list *obj_list, t_scene *settings)
 {
 	t_inter	inter_light;
 	t_ray	ray;
 
 	if (settings->shadow == false)
-		return (1);
+		return ((t_color){1, 1, 1});
 	ray.origin = s.hit_pos;
 	ray.dir = s.light_dir;
 	ray_offset_origin(&ray, s.normal);
@@ -116,13 +116,14 @@ t_shading
 void
 	shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings)
 {
-	float intensity;
+	t_color intensity;
 
 	intensity = get_light_visibility(s, obj, settings);
-	if (intensity == 0)
+	if (!(bool_color(intensity)))
 		return ;
-	intensity *= s.light.intensity * get_distance_attenuation(s.light_dist);
-	color_scalar(&s.light.color, intensity);
+	color_scalar(&intensity,
+				s.light.intensity * get_distance_attenuation(s.light_dist));
+	color_mult(&s.light.color, &intensity);
 	add_diffuse_light(&light_accum[DIFFUSE], s, !settings->facing);
 	add_specular_light(&light_accum[SPECULAR], s, !settings->shine);
 }

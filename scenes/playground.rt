@@ -22,8 +22,8 @@ content
 		self_light(0 0 0)
 		spec_idx(1)
 		spec_power(150)
-		absorb_idx(0)
-		deflect_idx(0)
+		refraction_color(0 0 0)
+		reflection_color(0 0 0)
 		refraction_idx(0)
 	{
 	object(sphere)
@@ -36,8 +36,8 @@ content
         self_light(0 0 0)
         spec_idx(1)
         spec_power(200)
-        absorb_idx(1)
-        deflect_idx(1)
+        refraction_color(1 1 1)
+        reflection_color(1 1 1)
 		refraction_idx(1)
 	}
     object(sphere)
@@ -50,8 +50,8 @@ content
         self_light(0 0 0)
         spec_idx(1)
         spec_power(200)
-        absorb_idx(0.7)
-        deflect_idx(1)
+        refraction_color(0.7 0.7 0.7)
+        reflection_color(1 1 1)
 		refraction_idx(1.5)
     }
     object(sphere)
@@ -64,8 +64,8 @@ content
         self_light(0 0 0)
         spec_idx(1)
         spec_power(200)
-        absorb_idx(0)
-        deflect_idx(1)
+        refraction_color(0 0 0)
+        reflection_color(1 1 1)
 		refraction_idx(0)
    }
 }

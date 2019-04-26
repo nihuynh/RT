@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/26 15:05:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:04:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static inline void
 	mat->self_light = itocolor(ft_atoi_base(split[3], 16));
 	mat->spec_idx = ft_atof(split[4]);
 	mat->spec_power = ft_atof(split[5]);
-	mat->absorb_idx = ft_atof(split[6]);
-	mat->deflect_idx = ft_atof(split[7]);
+	mat->refraction_color = itocolor(ft_atoi_base(split[6], 16));
+	mat->reflection_color = itocolor(ft_atoi_base(split[7], 16));
 	mat->refraction_idx = ft_atof(split[8]);
 }
 

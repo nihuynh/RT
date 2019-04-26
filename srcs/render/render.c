@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 15:25:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:04:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,21 @@ static inline void
 	float	kr;
 
 	kr = 1;
-	if (inter->obj->material.deflect_idx || inter->obj->material.absorb_idx)
+	if (bool_color(inter->obj->material.reflection_color)
+		|| bool_color(inter->obj->material.refraction_color))
 		kr = fresnel(inter->ray.dir, inter->n, 1.5);
-	if (data->scene_set.deflect && inter->obj->material.deflect_idx)
+	if (data->scene_set.deflect && bool_color(inter->obj->material.reflection_color))
 	{
 		reflection = recursive_cast(data, inter->deflected, depth + 1);
-		color_scalar(&reflection, inter->obj->material.deflect_idx);
+		color_mult(&reflection, &inter->obj->material.reflection_color);
 		color_scalar(&reflection, kr);
 		color_add(color, &reflection);
 	}
-	if (data->scene_set.absorb && inter->obj->material.absorb_idx)
+	if (data->scene_set.absorb && bool_color(inter->obj->material.refraction_color))
 	{
 		inter_setrefract(inter, &absorbed);
 		refraction = recursive_cast(data, absorbed, depth + 1);
-		color_scalar(&refraction, inter->obj->material.absorb_idx);
+		color_mult(&refraction, &inter->obj->material.refraction_color);
 		color_scalar(&refraction, 1 - kr);
 		color_add(color, &refraction);
 	}

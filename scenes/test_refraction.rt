@@ -46,8 +46,8 @@ content
 		self_light(0 0 0)
 		spec_idx(0.5)
 		spec_power(1500)
-		absorb_idx(0.0)
-		deflect_idx(0.0)
+		refraction_color(0 0 0)
+		reflection_color(0 0 0)
 		refraction_idx(0)
 	{
 	object(plane)
@@ -61,8 +61,8 @@ content
 		self_light(0 0 0)
 		spec_idx(0.5)
 		spec_power(1500)
-		absorb_idx(0.0)
-		deflect_idx(0.0)
+		refraction_color(0 0 0)
+		reflection_color(0 0 0)
 		refraction_idx(0)
 	{
 }

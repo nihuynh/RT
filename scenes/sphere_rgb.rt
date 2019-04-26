@@ -20,8 +20,8 @@ content
 		self_light(0 0 0)
 		spec_idx(0.5)
 		spec_power(0.9)
-		absorb_idx(0.0)
-		deflect_idx(0.75)
+		refraction_color(0 0 0)
+		reflection_color(0.75 0.75 0.75)
 		refraction_idx(0)
 	}
 	object(sphere) //milieu
@@ -33,8 +33,8 @@ content
 		self_light(0 0 0)
 		spec_idx(0.5)
 		spec_power(0.9)
-		absorb_idx(0.0)
-		deflect_idx(0.75)
+		refraction_color(0 0 0)
+		reflection_color(0.75 0.75 0.75)
 		refraction_idx(0)
 	}
 	object(sphere) //droite
@@ -46,8 +46,8 @@ content
 		self_light(0 0 0)
 		spec_idx(0.5)
 		spec_power(0.9)
-		absorb_idx(0.0)
-		deflect_idx(0.75)
+		refraction_color(0 0 0)
+		reflection_color(0.75 0.75 0.75)
 		refraction_idx(0)
 	}
     object(plane) //droite
@@ -61,8 +61,8 @@ content
         self_light(0 0 0)
         spec_idx(0.5)
         spec_power(0.9)
-        absorb_idx(0.0)
-        deflect_idx(0.75)
+        refraction_color(0 0 0)
+        reflection_color(0.75 0.75 0.75)
 		refraction_idx(0)
     }
 }

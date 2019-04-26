@@ -22,8 +22,8 @@ content
 		self_light(0 0 0)
 		spec_idx(1)
 		spec_power(50)
-		absorb_idx(0.0)
-		deflect_idx(1)
+		refraction_color(0 0 0)
+		reflection_color(1 1 1)
 		refraction_idx(0)
 	}
 	object(plane)
@@ -37,8 +37,8 @@ content
 		self_light(0 0 0)
 		spec_idx(1)
 		spec_power(50)
-		absorb_idx(0.0)
-		deflect_idx(1)
+		refraction_color(0 0 0)
+		reflection_color(1 1 1)
 		refraction_idx(0)
 	}
 	object(sphere)
@@ -51,8 +51,8 @@ content
 		self_light(0 0 0)
 		spec_idx(1)
 		spec_power(50)
-		absorb_idx(0)
-		deflect_idx(0.7)
+		refraction_color(0 0 0)
+		reflection_color(0.7 0.7 0.7)
 		refraction_idx(0)
 	}
 	object(cylinder)
@@ -67,8 +67,8 @@ content
 		self_light(0 0 0)
 		spec_idx(1)
 		spec_power(20)
-		absorb_idx(0.0)
-		deflect_idx(1)
+		refraction_color(0 0 0)
+		reflection_color(1 1 1)
 		refraction_idx(0)
 	}
 	object(cone)
@@ -83,8 +83,8 @@ content
 		self_light(0 0 0)
 		spec_idx(1)
 		spec_power(15)
-		absorb_idx(0.0)
-		deflect_idx(1)
+		refraction_color(0 0 0)
+		reflection_color(1 1 1)
 		refraction_idx(0)
 	}
 }
