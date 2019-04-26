@@ -145,7 +145,6 @@ t_color
 		shade_1_light(accum_light, shading, scene.lst_obj, settings);
 		lst = lst->next;
 	}
-
 	if (inter->obj->material.f_texture && inter->obj->get_uv)
 	{
 		t_vec3 uv = inter->obj->get_uv(inter);
