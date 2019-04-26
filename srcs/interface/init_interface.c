@@ -34,6 +34,6 @@ void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
-	gui->light_set = app->lst_light;
+	gui->light_set = app->scene.lst_light;
 	gui->obj_set = NULL;
 }

@@ -98,7 +98,7 @@ typedef struct	s_gui
 	t_pt3		pos_render;
 }				t_gui;
 
-typedef struct	s_scene
+typedef struct	s_settings
 {
 	t_color		back_color;
 	t_color		amb_light;
@@ -111,15 +111,20 @@ typedef struct	s_scene
 	bool		absorb;
 	int			depth_max;
 	float		fov;
+}				t_settings;
+
+typedef struct s_scene
+{
+	t_list		*lst_obj;
+	t_list		*lst_light;
 }				t_scene;
 
 typedef struct	s_data
 {
-	t_scene		scene_set;
+	t_settings	settings;
 	t_sdl		sdl;
 	t_gui		gui;
-	t_list		*lst_obj;
-	t_list		*lst_light;
+	t_scene		scene;
 	t_list		*lst_mat;
 	t_cam		cam;
 	char		*arg;
@@ -143,9 +148,9 @@ int				parse_light(char **greed, t_data *data, int l_idx);
 int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
-t_color 		get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_scene *settings);
-void			cast_primary(t_data *data, t_inter *inter);
-t_color			recursive_cast(t_data *data, t_ray ray, int depth);
+t_color			get_lighting(t_scene scene, t_inter *inter, t_settings *setng);
+void			cast_primary(t_list *obj_list, t_inter *inter);
+t_color			recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 void			cam_ray(t_data *data, t_ray *res, float x, float y);
 t_color			cast_light_primary(t_list *obj_list, t_inter *inter);

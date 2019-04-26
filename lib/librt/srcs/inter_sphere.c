@@ -45,5 +45,13 @@ void				inter_sphere(t_inter *data, t_obj *node)
 		return ;
 	data->dist = dist;
 	data->obj = node;
-	data->find_normal = &normal_sphere;
+}
+
+t_vec3				get_sphere_uv(t_inter *inter)
+{
+	t_vec3	uv;
+
+	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
+	vec3_scalar(&uv, 50);
+	return (uv);
 }

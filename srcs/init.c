@@ -15,25 +15,25 @@
 #include "ftmem.h"
 
 void
-	init_scene(t_scene *scene)
+	init_settings(t_settings *settings)
 {
-	scene->back_color = itocolor(BACK_COLOR);
-	scene->amb_light = AMB_LIGHT;
-	scene->depth_max = DEPTH_MAX;
-	scene->fov = FOV;
-	scene->absorb = 1;
-	scene->deflect = 1;
-	scene->facing = 1;
-	scene->i_light = 1;
-	scene->light = 1;
-	scene->shadow = 1;
-	scene->shine = 1;
+	settings->back_color = itocolor(BACK_COLOR);
+	settings->amb_light = AMB_LIGHT;
+	settings->depth_max = DEPTH_MAX;
+	settings->fov = FOV;
+	settings->absorb = 1;
+	settings->deflect = 1;
+	settings->facing = 1;
+	settings->i_light = 1;
+	settings->light = 1;
+	settings->shadow = 1;
+	settings->shine = 1;
 }
 
 void
 	init(t_data *data)
 {
-	init_scene(&data->scene_set);
+	init_settings(&data->settings);
 	init_sdl(&data->sdl, WIDTH, HEIGHT);
 	init_render(data);
 	init_interface(&data->gui, data->sdl.win, data);
