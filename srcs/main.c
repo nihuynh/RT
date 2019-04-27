@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/25 01:35:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/27 11:37:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	interactive(char *filename, int runmode)
 	if (runmode == RM_UNIT_TEST)
 		return ;
 	init(&data);
-	// init_pool(&data.sdl, &process_pixel, &data, 16);
 	init_mthr_sdl(&data.sdl, &process_pixel, &data);
 	loop_sdl(&data.sdl, &data);
 	exit_safe(&data);

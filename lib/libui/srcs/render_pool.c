@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/25 16:47:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/27 11:29:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,26 @@ static inline void
 {
 	t_thr_pool	*pool;
 	int			task_id;
-	int			state;
 
 	pool = arg;
+	task_id = -1;
 	while (42)
 	{
-		task_id = 0;
-		state = PAUSE;
 		pthread_mutex_lock(&pool->wait_lock);
-		while (state == PAUSE && !pool->sdl->needs_render)
+		while (task_id < 0)
+		{
 			pthread_cond_wait(&pool->wait_sig, &pool->wait_lock);
+			task_id = 0;
+		}
 		pthread_mutex_unlock(&pool->wait_lock);
 		if (pool->is_stopped == 1)
 			pthread_exit(NULL);
-		state = RUNNING;
 		while (task_id >= 0)
 			task_id = do_batch(pool);
-		state = DONE;
 		pthread_mutex_lock(&pool->idle_lock);
 		pool->idle_count++;
 		if (pool->idle_count == pool->thr_count)
-		{
 			pthread_cond_signal(&pool->render_done);
-			// pool->idle_count = 0;
-		}
 		pthread_mutex_unlock(&pool->idle_lock);
 	}
 }
@@ -112,8 +108,6 @@ int
 {
 	long	elapsed_time;
 
-	if (pool->sdl->needs_render == false)
-		return (EXIT_SUCCESS);
 	elapsed_time = ft_curr_usec();
 	pthread_mutex_lock(&pool->idx_lock);
 	pool->pxl_idx = 0;
@@ -135,13 +129,13 @@ int
 	destroy_pool(t_thr_pool *pool)
 {
 	pool->is_stopped = 1;
-	pthread_cond_broadcast(&pool->wait_sig);
-	SDL_Delay(100);
-	if (pool)
-	{
-		if (pool->thrs)
-			free(pool->thrs);
-		free(pool);
-	}
+	// pthread_cond_broadcast(&pool->wait_sig);
+	// SDL_Delay(100);
+	// if (pool)
+	// {
+	// 	if (pool->thrs)
+	// 		free(pool->thrs);
+	// 	free(pool);
+	// }
 	return (EXIT_SUCCESS);
 }
