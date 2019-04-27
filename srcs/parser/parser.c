@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 15:31:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:04:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,34 @@ static inline void
 static inline void
 	obj_set(t_obj *obj, int type, void *shape)
 {
+	ft_bzero(obj, sizeof(t_obj));
 	obj->type = type;
 	obj->shape = shape;
 	if (type == SPHERE)
 	{
 		obj->f_inter = &inter_sphere;
 		obj->f_gui = &interface_sphere;
+		obj->find_normal = &normal_sphere;
+		obj->get_uv = &get_sphere_uv;
 	}
 	else if (type == PLANE)
 	{
 		obj->f_inter = &inter_plane;
 		obj->f_gui = &interface_plane;
+		obj->find_normal = &normal_plane;
+		obj->get_uv = &get_plane_uv;
 	}
 	else if (type == CONE)
 	{
 		obj->f_inter = &inter_cone;
 		obj->f_gui = &interface_cone;
+		obj->find_normal = &normal_cone;
 	}
 	else if (type == CYLINDER)
 	{
 		obj->f_inter = &inter_cylinder;
 		obj->f_gui = &interface_cylinder;
+		obj->find_normal = &normal_cylinder;
 	}
 }
 
@@ -83,15 +90,16 @@ static inline int
 		ft_memcpy(dst, mat, sizeof(t_material));
 		return (idx + 2);
 	}
+	dst->name = "";
 	parse_texture(&dst->f_texture, tab[idx], idx);
-	parse_color(&dst->color_ambient, tab[idx + 1], idx + 1, "color_ambient(");
-	parse_color(&dst->color_diffuse, tab[idx + 2], idx + 2, "color_diffuse(");
-	parse_color(&dst->color_specular, tab[idx + 3], idx + 3, "color_specular(");
-	parse_color(&dst->self_light, tab[idx + 4], idx + 4, "self_light(");
-	parse_fval(&dst->spec_idx, tab[idx + 5], idx + 5, "spec_idx(");
-	parse_fval(&dst->spec_power, tab[idx + 6], idx + 6, "spec_power(");
-	parse_fval(&dst->absorb_idx, tab[idx + 7], idx + 7, "absorb_idx(");
-	parse_fval(&dst->deflect_idx, tab[idx + 8], idx + 8, "deflect_idx(");
+	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
+	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
+	parse_color(&dst->self_light, tab[idx + 3], idx + 3, "self_light(");
+	parse_fval(&dst->spec_idx, tab[idx + 4], idx + 4, "spec_idx(");
+	parse_fval(&dst->spec_power, tab[idx + 5], idx + 5, "spec_power(");
+	parse_color(&dst->refraction_color, tab[idx + 6], idx + 6, "refraction_color(");
+	parse_color(&dst->reflection_color, tab[idx + 7], idx + 7, "reflection_color(");
+	parse_fval(&dst->refraction_idx, tab[idx + 8], idx + 8, "refraction_idx(");
 	return (idx + 10);
 }
 
@@ -124,7 +132,7 @@ int
 	idx = parse_material(d, &obj.material, greed, l_idx + cfg.line_offset - 2);
 	if (!(node = ft_lstnew(&obj, sizeof(t_obj))))
 		ft_error(__func__, __LINE__);
-	ft_lstadd(&d->lst_obj, node);
+	ft_lstadd(&d->scene.lst_obj, node);
 	return (idx);
 }
 
@@ -149,7 +157,7 @@ int
 	light_set(&light, greed, line_idx);
 	if (!(node = ft_lstnew(&light, sizeof(t_light))))
 		ft_error(__func__, __LINE__);
-	ft_lstadd(&data->lst_light, node);
+	ft_lstadd(&data->scene.lst_light, node);
 	line_idx += 5;
 	return (line_idx);
 }

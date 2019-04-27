@@ -48,10 +48,10 @@ static inline void
 void
 	exit_safe(t_data *data)
 {
-	if (data->lst_obj)
-		ft_lstdel(&data->lst_obj, &del_obj);
-	if (data->lst_light)
-		ft_lstdel(&data->lst_light, &del_obj);
+	if (data->scene.lst_obj)
+		ft_lstdel(&data->scene.lst_obj, &del_obj);
+	if (data->scene.lst_light)
+		ft_lstdel(&data->scene.lst_light, &del_obj);
 	if (data->lst_mat)
 		ft_lstdel(&data->lst_mat, &del_mat);
 	exit_sdl(&data->sdl);

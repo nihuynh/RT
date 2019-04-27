@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 18:04:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 23:26:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static inline float
 	return (factor);
 }
 
-float
-	get_light_visibility(t_shading s, t_list *obj_list, t_scene *settings)
+t_color
+	get_light_visibility(t_shading s, t_list *obj_list, t_settings *settings)
 {
 	t_inter	inter_light;
 	t_ray	ray;
 
 	if (settings->shadow == false)
-		return (1);
+		return ((t_color){1, 1, 1});
 	ray.origin = s.hit_pos;
 	ray.dir = s.light_dir;
 	ray_offset_origin(&ray, s.normal);
@@ -82,7 +82,7 @@ void
 		return ;
 	spec_factor = specular_factor(shading);
 	color_scalar(&shading.light.color, spec_factor);
-	color_add(specular, &shading.light.color);
+	color_add(specular, shading.light.color);
 }
 
 void
@@ -94,7 +94,7 @@ void
 		return ;
 	diffuse_factor = facing_ratio(shading.light_dir, shading.normal);
 	color_scalar(&shading.light.color, diffuse_factor);
-	color_add(diffuse, &shading.light.color);
+	color_add(diffuse, shading.light.color);
 }
 
 t_shading
@@ -114,40 +114,41 @@ t_shading
 }
 
 void
-	shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_scene *settings)
+	shade_1_light(t_color *light_accum, t_shading s, t_list *obj, t_settings *settings)
 {
-	float intensity;
+	t_color intensity;
 
 	intensity = get_light_visibility(s, obj, settings);
-	if (intensity == 0)
+	if (!(bool_color(intensity)))
 		return ;
-	intensity *= s.light.intensity * get_distance_attenuation(s.light_dist);
-	color_scalar(&s.light.color, intensity);
+	color_scalar(&intensity,
+				s.light.intensity * get_distance_attenuation(s.light_dist));
+	color_mult(&s.light.color, &intensity);
 	add_diffuse_light(&light_accum[DIFFUSE], s, !settings->facing);
 	add_specular_light(&light_accum[SPECULAR], s, !settings->shine);
 }
 
 t_color
-	get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_scene *settings)
+	get_lighting(t_scene scene, t_inter *inter, t_settings *settings)
 {
 	t_shading	shading;
 	t_list		*lst;
 	t_color		accum_light[2];
 	t_color		diffuse_color;
 
-	lst = light_lst;
+	lst = scene.lst_light;
 	inter_setdeflect(inter, &inter->deflected);
 	accum_light[DIFFUSE] = (t_color){0, 0, 0};
 	accum_light[SPECULAR] = (t_color){0, 0, 0};
 	while (lst != NULL)
 	{
 		shading = set_shading_data(inter, (t_light*)lst->content);
-		shade_1_light(accum_light, shading, obj, settings);
+		shade_1_light(accum_light, shading, scene.lst_obj, settings);
 		lst = lst->next;
 	}
-	if (inter->get_uv)
+	if (inter->obj->material.f_texture && inter->obj->get_uv)
 	{
-		t_vec3 uv = inter->get_uv(inter);
+		t_vec3 uv = inter->obj->get_uv(inter);
 		diffuse_color = inter->obj->material.f_texture(uv.x, uv.y);
 	}
 	else

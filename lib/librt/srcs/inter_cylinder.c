@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:20:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/08 20:08:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/25 18:41:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,33 @@
 #include <math.h>
 
 static inline float
-	inter(t_ray *ray, t_cylinder *cyl)
+	inter_finite(t_inter *data, t_cylinder *cyl, float dist[2])
+{
+	t_pt3	inter_pt;
+	t_vec3	origin_to_inter;
+	float	scale;
+	int		i;
+	float	dst_final;
+
+	if (cyl->size == 0)
+		return ((dist[0] < dist[1]) ? dist[0] : dist[1]);
+	i = -1;
+	dst_final = HUGEVAL;
+	while (++i < 2)
+	{
+		inter_pt.x = data->ray.origin.x + dist[i] * data->ray.dir.x;
+		inter_pt.y = data->ray.origin.y + dist[i] * data->ray.dir.y;
+		inter_pt.z = data->ray.origin.z + dist[i] * data->ray.dir.z;
+		vec3_sub(&origin_to_inter, &inter_pt, &cyl->origin);
+		scale = vec3_dot(&origin_to_inter, &cyl->n) / vec3_dot(&cyl->n, &cyl->n);
+		if (scale < cyl->size && scale >= 0)
+			dst_final = (dst_final < dist[i]) ? dst_final : dist[i];
+	}
+	return (dst_final);
+}
+
+static inline float
+	inter(t_inter *data, t_ray *ray, t_cylinder *cyl)
 {
 	float	toby[3];
 	float	res[2];
@@ -36,25 +62,7 @@ static inline float
 	res[0] = (res[0] > 0) ? res[0] : HUGEVAL;
 	res[1] = (-BBBB - sqrt(det)) / (2 * AAAA);
 	res[1] = (res[1] > 0) ? res[1] : HUGEVAL;
-	return ((res[0] < res[1]) ? res[0] : res[1]);
-}
-
-static inline int
-	inter_finite(t_inter *data, t_cylinder *cylinder, float dist)
-{
-	t_pt3	inter_pt;
-	t_vec3	origin_to_inter;
-	float	scale;
-
-	inter_pt.x = data->ray.origin.x + dist * data->ray.dir.x;
-	inter_pt.y = data->ray.origin.y + dist * data->ray.dir.y;
-	inter_pt.z = data->ray.origin.z + dist * data->ray.dir.z;
-	vec3_sub(&origin_to_inter, &inter_pt, &cylinder->origin);
-	scale = vec3_dot(&origin_to_inter, &cylinder->n)
-			/ vec3_dot(&cylinder->n, &cylinder->n);
-	if (scale > cylinder->size || scale <= 0)
-		return (0);
-	return (1);
+	return (inter_finite(data, cyl, res));
 }
 
 void
@@ -64,14 +72,9 @@ void
 	float		dist;
 
 	cylinder = node->shape;
-	dist = inter(&data->ray, cylinder);
+	dist = inter(data, &data->ray, cylinder);
 	if (dist >= data->dist || dist < 0)
 		return ;
-	if (cylinder->size > 0)
-		if (!(inter_finite(data, cylinder, dist)))
-			return ;
-	data->color = node->material.color_ambient;
 	data->dist = dist;
 	data->obj = node;
-	data->find_normal = &normal_cylinder;
 }

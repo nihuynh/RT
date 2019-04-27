@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 18:07:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:35:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,24 @@ static inline void
 {
 	t_color	color_tmp;
 
-	igCheckbox("Light", &app->scene_set.light);
+	igCheckbox("Light", &app->settings.light);
 	igSameLine(160, 0);
-	igCheckbox("Light Intensity", &app->scene_set.i_light);
+	igCheckbox("Light Intensity", &app->settings.i_light);
 	igSameLine(320, 0);
-	igCheckbox("Shine", &app->scene_set.shine);
+	igCheckbox("Shine", &app->settings.shine);
 	igSameLine(480, 0);
-	igCheckbox("Shadow", &app->scene_set.shadow);
-	igSameLine(640, 0);
-	igCheckbox("Facing Ratio", &app->scene_set.facing);
-	igCheckbox("Reflection", &app->scene_set.deflect);
+	igCheckbox("Shadow", &app->settings.shadow);
+	igCheckbox("Facing Ratio", &app->settings.facing);
 	igSameLine(160, 0);
-	igCheckbox("Refraction", &app->scene_set.absorb);
-	if (igTreeNodeStr("Sky Color"))
-	{
-		color_tmp = app->scene_set.back_color;
-		if (igColorEdit3("Sky Color", &color_tmp.r, 0))
-			app->scene_set.back_color = color_tmp;
-		igTreePop();
-	}
+	igCheckbox("Reflection", &app->settings.deflect);
+	igSameLine(320, 0);
+	igCheckbox("Refraction", &app->settings.absorb);
+	color_tmp = app->settings.back_color;
+	if (igColorEdit3("Sky Color", &color_tmp.r, 0))
+		app->settings.back_color = color_tmp;
+	color_tmp = app->settings.amb_light;
+	if (igColorEdit3("Ambient light color", &color_tmp.r, 0))
+		app->settings.amb_light = color_tmp;
 	igTreePop();
 	igNewLine();
 }
@@ -46,8 +45,8 @@ static inline void
 {
 	if (igTreeNodeStr("Camera Settings"))
 	{
-		igDragInt("Depth Max", &app->scene_set.depth_max, 0.1, 0, 10, NULL);
-		igDragFloat("FOV", &app->scene_set.fov, 0.1, 30, 110, "%g", 1);
+		igSliderInt("Depth Max", &app->settings.depth_max, 0, 10, NULL);
+		igSliderFloat("FOV", &app->settings.fov, 30, 110, "%g", 1);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Light Settings"))
@@ -70,6 +69,8 @@ static inline void
 void
 	window_scene(t_data *app)
 {
+	igSetNextWindowPos((ImVec2){app->sdl.img.width, 0},
+						ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar

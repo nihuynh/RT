@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 20:11:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/26 16:04:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,14 @@ typedef t_color	(*f_texture)(float x, float y);
 typedef struct	s_material
 {
 	char		*name;
-	t_color		color_ambient;
 	t_color		color_diffuse;
 	t_color		color_specular;
 	t_color		self_light;
 	float		spec_idx;
 	float		spec_power;
-	float		absorb_idx;
-	float		deflect_idx;
+	t_color		refraction_color;
+	t_color		reflection_color;
+	float		refraction_idx;
 	f_texture	f_texture;
 }				t_material;
 
@@ -128,7 +128,6 @@ typedef struct s_inter	t_inter;
 ** ray 			: Ray information
 ** point		: Intersection point
 ** n 			: Normal of the object at the inter
-** color		: final color of the pixel
 ** reflected	: Vector director of the ray after the inter
 ** find_normal	: Methode to find the normal of the object hit
 */
@@ -140,11 +139,7 @@ struct			s_inter
 	t_ray		ray;
 	t_pt3		point;
 	t_vec3		n;
-	t_color		color;
 	t_ray		deflected;
-	float		kr;
-	void		(*find_normal) (t_inter*);
-	t_vec3		(*get_uv) (t_inter*);
 };
 
 /*
@@ -162,6 +157,8 @@ struct			s_obj
 	void		*shape;
 	t_material	material;
 	void		(*f_inter) (t_inter*, t_obj*);
+	void		(*find_normal) (t_inter*);
+	t_vec3		(*get_uv) (t_inter*);
 	void		(*f_gui) (void*);
 };
 

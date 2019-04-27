@@ -15,13 +15,13 @@ content
 	{
 		origin(0 0 -100)
 		radius(50)
-		color_ambient(1 0 0)
 		color_diffuse(0.714 0.4284 0.18144)
 		color_specular(0.9 0.8 0.7)
 		self_light(0 0 0)
 		spec_idx(0.5)
 		spec_power(0.9)
-		absorb_idx(0.0)
-		deflect_idx(0.75)
+		refraction_color(0 0 0)
+		reflection_color(0.75 0.75 0.75)
+		refraction_idx(0)
 	}
 }

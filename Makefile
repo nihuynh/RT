@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 19:18:46 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/04/26 16:05:38 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				setter.c light.c key_mapping.c camera.c update.c init.c	\
 				cast.c texture.c utils.c interface.c interface_scene.c	\
 				init_interface.c interface_objects.c interface_tools.c	\
-				object_tools.c render_fullscreen.c
+				object_tools.c render_fullscreen.c render_toolbox.c
 # directories :
 VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface
 OBJDIR 		:=	objs
@@ -87,8 +87,8 @@ CFLAGS		:=	-Werror -Wall -Wextra -g -I$(INCDIR)
 CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 LIBFLAGS 	:=	-j32 RUNMODE=$(RUNMODE)
 ifeq ($(RUNMODE),dev)
-    CFLAGS	+=	-g3 -O0 -fsanitize=thread
-	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
+    CFLAGS	+=	-g3 -O0
+	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address -fsanitize-recover=address
 else
 	CFLAGS	+= -O2 -march=native -flto
 endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 14:11:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/26 15:35:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	window_renderer(t_gui *gui, t_img img)
 {
 	ImVec2	pos;
 
+	igSetNextWindowPos((ImVec2){0, 0}, ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSize((ImVec2){img.width, img.height}, 0);
 	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);

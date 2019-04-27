@@ -37,6 +37,9 @@ void		normal_cone(t_inter *inter);
 void		normal_cylinder(t_inter *inter);
 void		normal_plane(t_inter *inter);
 
+t_vec3		get_sphere_uv(t_inter *inter);
+t_vec3		get_plane_uv(t_inter *inter);
+
 /*
 ** Intersection :
 */

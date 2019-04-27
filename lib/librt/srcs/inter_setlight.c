@@ -25,5 +25,4 @@ void	inter_setlight(t_inter *inter, t_inter *light_inter, t_light *light)
 	light_inter->obj = NULL;
 	ft_memcpy(&light_inter->ray, &ray, sizeof(t_ray));
 	ft_memcpy(&light_inter->n, &inter->n, sizeof(t_vec3));
-	ft_memcpy(&light_inter->color, &light->color, sizeof(t_color));
 }

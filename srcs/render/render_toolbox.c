@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_tools.c                                     :+:      :+:    :+:   */
+/*   render_toolbox.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 14:41:32 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 12:31:27 by sklepper         ###   ########.fr       */
+/*   Created: 2019/04/26 15:51:11 by sklepper          #+#    #+#             */
+/*   Updated: 2019/04/26 16:05:46 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-#include "librt.h"
 
-t_obj	*find_obj_at_pixel(t_data *app, int x, int y)
+bool	bool_color(t_color color)
 {
-	t_inter	inter;
-	t_ray	ray;
-
-	cam_ray(app, &ray, x + 0.5, y + 0.5);
-	inter_set(&inter, ray);
-	cast_primary(app->scene.lst_obj, &inter);
-	return (inter.obj);
+	if (color.r > 0 || color.g > 0 || color.b > 0)
+		return (true);
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 23:12:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/27 11:46:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 */
 
 # define BACK_COLOR		0x000000
-# define AMB_LIGHT		0.25f
+# define AMB_LIGHT		(t_color){0.2, 0.2, 0.2}
 # define FOV			40.0f
 # define DEPTH_MAX		2
 
@@ -98,10 +98,10 @@ typedef struct	s_gui
 	t_pt3		pos_render;
 }				t_gui;
 
-typedef struct	s_scene
+typedef struct	s_settings
 {
 	t_color		back_color;
-	float		amb_light;
+	t_color		amb_light;
 	bool		light;
 	bool		facing;
 	bool		i_light;
@@ -111,15 +111,20 @@ typedef struct	s_scene
 	bool		absorb;
 	int			depth_max;
 	float		fov;
+}				t_settings;
+
+typedef struct s_scene
+{
+	t_list		*lst_obj;
+	t_list		*lst_light;
 }				t_scene;
 
 typedef struct	s_data
 {
-	t_scene		scene_set;
+	t_settings	settings;
 	t_sdl		sdl;
 	t_gui		gui;
-	t_list		*lst_obj;
-	t_list		*lst_light;
+	t_scene		scene;
 	t_list		*lst_mat;
 	t_cam		cam;
 	char		*arg;
@@ -143,12 +148,12 @@ int				parse_light(char **greed, t_data *data, int l_idx);
 int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
-t_color 		get_lighting(t_list *obj, t_list *light_lst, t_inter *inter, t_scene *settings);
-void			cast_primary(t_data *data, t_inter *inter);
-t_color			recursive_cast(t_data *data, t_ray ray, int depth);
+t_color			get_lighting(t_scene scene, t_inter *inter, t_settings *setng);
+void			cast_primary(t_list *obj_list, t_inter *inter);
+t_color			recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 void			cam_ray(t_data *data, t_ray *res, float x, float y);
-float			cast_light_primary(t_list *obj_list, t_inter *inter);
+t_color			cast_light_primary(t_list *obj_list, t_inter *inter);
 
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);
@@ -168,5 +173,6 @@ void			interface_sphere(void *res);
 void			interface_plane(void *res);
 void			interface_cylinder(void *res);
 void			interface_cone(void *res);
+bool			bool_color(t_color color);
 
 #endif
