@@ -15,18 +15,18 @@ content
 	{
 		origin(-50  0 -100)
 		radius(20)
-		mat(redplastic)
+		mat(red plastic)
 	}
 	object(sphere)					# Middle
 	{
 		origin(0 0 -100)
 		radius(20)
-		mat(whiteplastic)
+		mat(white plastic)
 	}
 	object(sphere)					# Right
 	{
 		origin(50 0 -100)
 		radius(20)
-		mat(blueplastic)
+		mat(blue plastic)
 	}
 }

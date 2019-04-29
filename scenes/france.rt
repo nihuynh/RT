@@ -17,7 +17,7 @@ content
 		normal(0 0 1)
 		limit(25 50)
 		texture(none)
-		mat(redplastic)
+		mat(red plastic)
 	}
 	object(plane)
 	{
@@ -25,7 +25,7 @@ content
 		normal(0 0 1)
 		limit(25 50)
 		texture(none)
-		mat(blueplastic)
+		mat(blue plastic)
 	}
 	object(plane)
 	{
@@ -33,6 +33,6 @@ content
 		normal(0 0 1)
 		limit(25 50)
 		texture(none)
-		mat(whiteplastic)
+		mat(white plastic)
 	}
 }

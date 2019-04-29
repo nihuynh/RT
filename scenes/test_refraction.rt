@@ -17,7 +17,7 @@ content
 		normal(0 1 0)
 		radius(30)
 		size(100)
-		mat(glass)
+		mat(transparent glass)
 	}
 	object(cylinder)
 	{
@@ -25,7 +25,7 @@ content
 		normal(0 1 0)
 		radius(30)
 		size(100)
-		mat(glass)
+		mat(transparent glass)
 	}
 	object(cylinder)
 	{
@@ -33,7 +33,7 @@ content
 		normal(0 1 0)
 		radius(30)
 		size(100)
-		mat(glass)
+		mat(transparent glass)
 	}
 	object(plane)
 	{

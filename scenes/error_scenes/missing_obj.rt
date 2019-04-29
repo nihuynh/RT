@@ -15,6 +15,6 @@ content
 	{
 		origin(-50  0 -100)
 		radius(20)
-		mat(glass)
+		mat(transparent glass)
 	}
 }

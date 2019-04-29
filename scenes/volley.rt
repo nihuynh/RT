@@ -21,6 +21,6 @@ content
 	{
 		origin(0 0 -50)
 		radius(30)
-		mat(blueplastic)
+		mat(blue plastic)
 	}
 }

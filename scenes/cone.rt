@@ -16,14 +16,14 @@ content
 		origin(0 -50 0)
 		normal(0 1 0)
 		limit(0 0)
-		mat(whitePlastic)
+		mat(white plastic)
 	}
 	object(plane)
 	{
 		origin(0 50 0)
 		normal(0 1 0)
 		limit(0 0)
-		mat(whitePlastic)
+		mat(white plastic)
 	}
 	object(cone)
 	{
