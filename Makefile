@@ -19,7 +19,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				setter.c light.c key_mapping.c camera.c update.c init.c	\
 				cast.c texture.c utils.c interface.c interface_scene.c	\
 				init_interface.c interface_objects.c interface_tools.c	\
-				object_tools.c render_fullscreen.c render_toolbox.c
+				object_tools.c render_fullscreen.c
 # directories :
 VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface
 OBJDIR 		:=	objs

@@ -173,6 +173,5 @@ void			interface_sphere(void *res);
 void			interface_plane(void *res);
 void			interface_cylinder(void *res);
 void			interface_cone(void *res);
-bool			bool_color(t_color color);
 
 #endif

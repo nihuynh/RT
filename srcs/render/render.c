@@ -44,16 +44,16 @@ static inline t_color
 	reflection = (t_color){0, 0, 0};
 	refraction = (t_color){0, 0, 0};
 	kr = 1;
-	if (bool_color(inter->obj->material.reflection_color)
-		|| bool_color(inter->obj->material.refraction_color))
+	if (color_bool(inter->obj->material.reflection_color)
+		|| color_bool(inter->obj->material.refraction_color))
 		kr = fresnel(inter->ray.dir, inter->n, inter->obj->material.refraction_idx);
-	if (settings.deflect && bool_color(inter->obj->material.reflection_color))
+	if (settings.deflect && color_bool(inter->obj->material.reflection_color))
 	{
 		reflection = recursive_cast(scene, settings, inter->deflected, depth + 1);
 		color_mult(&reflection, &inter->obj->material.reflection_color);
 		color_scalar(&reflection, kr);
 	}
-	if (settings.absorb && bool_color(inter->obj->material.refraction_color))
+	if (settings.absorb && color_bool(inter->obj->material.refraction_color))
 	{
 		inter_setrefract(inter, &absorbed);
 		refraction = recursive_cast(scene, settings, absorbed, depth + 1);

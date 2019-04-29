@@ -45,7 +45,7 @@ t_color
 			obj->f_inter(inter, obj);
 		if (inter->obj != NULL)
 		{
-			if (bool_color(inter->obj->material.refraction_color))
+			if (color_bool(inter->obj->material.refraction_color))
 				color_mult(&scalar, &inter->obj->material.refraction_color);
 			else
 				return ((t_color){0, 0, 0});

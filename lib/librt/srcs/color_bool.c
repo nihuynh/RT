@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "color.h"
 
-bool	bool_color(t_color color)
+bool	color_bool(t_color color)
 {
 	if (color.r > 0 || color.g > 0 || color.b > 0)
 		return (true);

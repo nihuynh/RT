@@ -119,10 +119,10 @@ void
 	t_color intensity;
 
 	intensity = get_light_visibility(s, obj, settings);
-	if (!(bool_color(intensity)))
+	if (!(color_bool(intensity)))
 		return ;
-	color_scalar(&intensity,
-				s.light.intensity * get_distance_attenuation(s.light_dist));
+	color_scalar(&intensity, s.light.intensity);
+	color_scalar(&intensity, get_distance_attenuation(s.light_dist));
 	color_mult(&s.light.color, &intensity);
 	add_diffuse_light(&light_accum[DIFFUSE], s, !settings->facing);
 	add_specular_light(&light_accum[SPECULAR], s, !settings->shine);
