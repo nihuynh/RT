@@ -78,3 +78,20 @@ void
 	data->dist = dist;
 	data->obj = node;
 }
+
+t_vec3
+	get_cylinder_uv(t_inter *inter)
+{
+	t_cylinder	*cylinder;
+	t_vec3		hitpoint_to_origin;
+	t_vec3		uv;
+	float		height;
+
+	cylinder = inter->obj->shape;
+	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
+	hitpoint_to_origin = vec3_sub_(cylinder->origin, inter->point);
+	height = vec3_dot(&hitpoint_to_origin, &cylinder->n);
+	vec3_scalar(&uv, 50);
+	uv.y = height;
+	return (uv);
+}

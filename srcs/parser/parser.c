@@ -67,12 +67,14 @@ static inline void
 		obj->f_inter = &inter_cone;
 		obj->f_gui = &interface_cone;
 		obj->find_normal = &normal_cone;
+		obj->get_uv = &get_cone_uv;
 	}
 	else if (type == CYLINDER)
 	{
 		obj->f_inter = &inter_cylinder;
 		obj->f_gui = &interface_cylinder;
 		obj->find_normal = &normal_cylinder;
+		obj->get_uv = &get_cylinder_uv;
 	}
 }
 
