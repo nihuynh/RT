@@ -28,6 +28,7 @@ typedef struct	s_color
 }				t_color;
 
 void			color_mult(t_color *color, t_color *mult);
+t_color			color_mult_(t_color color, t_color mult);
 void			color_scalar(t_color *color, float k);
 t_color			color_scalar_(t_color color, float k);
 void			color_add(t_color *color, t_color add);

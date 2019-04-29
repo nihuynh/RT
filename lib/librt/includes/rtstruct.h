@@ -171,4 +171,15 @@ struct			s_obj
 	void		(*f_gui) (void*);
 };
 
+typedef struct	s_shading {
+	t_material	mat;
+	t_light		light;
+	t_vec3		light_dir;
+	float		light_dist;
+	t_vec3		hit_pos;
+	t_vec3		normal;
+	t_vec3		specular_dir;
+	t_vec3		uv;
+}				t_shading;
+
 #endif

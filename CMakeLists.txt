@@ -11,7 +11,7 @@ set(PROFILE_FLAGS -g3 -O2 -march=native)
 
 add_compile_options(-Wall -Wextra -pedantic)
 
-#add_compile_options(-fsanitize=address -g3)
+#add_compile_options(-fsanitize=address -fsanitize-recover=address -g3)
 #add_link_options(-fsanitize=address -fsanitize-recover=address)
 
 add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
@@ -53,6 +53,7 @@ target_sources(RT PRIVATE
         srcs/interface/interface_objects.c
         srcs/interface/interface_tools.c
         srcs/interface/object_tools.c
+        srcs/interface/interface_lists.c
         srcs/parser/parse_toolbox.c
         srcs/parser/parser.c
         srcs/parser/read.c
@@ -62,6 +63,7 @@ target_sources(RT PRIVATE
         srcs/render/light.c
         srcs/render/render.c
         srcs/render/texture.c
+        srcs/render/texture_toolbox.c
         srcs/render/render_fullscreen.c
         srcs/tools/error.c
         srcs/tools/update.c

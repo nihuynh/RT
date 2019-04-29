@@ -26,3 +26,11 @@ void	color_mult(t_color *color, t_color *mult)
 	color->g *= mult->g;
 	color->b *= mult->b;
 }
+
+t_color	color_mult_(t_color color, t_color mult)
+{
+	color.r *= mult.r;
+	color.g *= mult.g;
+	color.b *= mult.b;
+	return (color);
+}

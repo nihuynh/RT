@@ -15,6 +15,8 @@
 #include "librt.h"
 #include "libft.h"
 
+t_shading get_shading_data(t_inter *inter);
+
 void
 	cam_ray(t_data *data, t_ray *res, float x, float y)
 {
@@ -66,25 +68,35 @@ static inline t_color
 t_color
 	recursive_cast(t_scene scene, t_settings settings, t_ray ray, int depth)
 {
-	t_inter	inter;
-	t_color	ambient;
-	t_color	lighting;
+	t_shading	shading;
+	t_inter		inter;
+	t_color		lighting;
 
 	inter_set(&inter, ray);
 	cast_primary(scene.lst_obj, &inter);
 	if (inter.obj == NULL)
 		return (settings.back_color);
-	ambient = inter.obj->material.color_diffuse;
-	if (scene.lst_light == NULL || !settings.light)
-		return (ambient);
-	color_mult(&ambient, &settings.amb_light);
-	inter_find(&inter, &inter.point);
-	inter.obj->find_normal(&inter);
-	lighting = get_lighting(scene, &inter, &settings);
-	color_add(&lighting, ambient);
+	shading = get_shading_data(&inter);
+	lighting = get_lighting(shading, scene, &inter, &settings);
 	if (depth < settings.depth_max)
 		color_add(&lighting, cast_bounce(scene, settings, &inter, depth));
 	return (lighting);
+}
+
+t_shading get_shading_data(t_inter *inter)
+{
+	t_shading shading;
+
+	ft_bzero(&shading, sizeof(t_shading));
+	inter_find(inter, &inter->point);
+	inter->obj->find_normal(inter);
+	inter_setdeflect(inter, &inter->deflected);
+	shading.uv = inter->obj->get_uv(inter);
+	shading.hit_pos = inter->point;
+	shading.normal = inter->n;
+	shading.mat = inter->obj->material;
+	shading.specular_dir = inter->deflected.dir;
+	return (shading);
 }
 
 int __attribute__((hot))

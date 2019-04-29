@@ -20,16 +20,6 @@
 #define DIFFUSE 0
 #define SPECULAR 1
 
-typedef struct	s_shading {
-	t_material	mat;
-	t_light		light;
-	t_vec3		light_dir;
-	float		light_dist;
-	t_vec3		hit_pos;
-	t_vec3		normal;
-	t_vec3		specular_dir;
-}				t_shading;
-
 static inline float
 	facing_ratio(t_vec3 ray_dir, t_vec3 normal)
 {
@@ -97,20 +87,13 @@ void
 	color_add(diffuse, shading.light.color);
 }
 
-t_shading
-	set_shading_data(const t_inter *inter, t_light *light)
+void
+	set_light_data(t_shading *shading, const t_inter *inter, t_light *light)
 {
-	t_shading shading;
-
-	shading.light = *light;
-	shading.light_dir = vec3_sub_(light->origin, inter->point);
-	shading.light_dist = vec3_mag(shading.light_dir);
-	shading.hit_pos = inter->point;
-	shading.normal = inter->n;
-	shading.mat = inter->obj->material;
-	shading.specular_dir = inter->deflected.dir;
-	vec3_normalize(&shading.light_dir);
-	return (shading);
+	shading->light = *light;
+	shading->light_dir = vec3_sub_(light->origin, inter->point);
+	shading->light_dist = vec3_mag(shading->light_dir);
+	vec3_normalize(&shading->light_dir);
 }
 
 void
@@ -129,31 +112,32 @@ void
 }
 
 t_color
-	get_lighting(t_scene scene, t_inter *inter, t_settings *settings)
+	get_lighting(t_shading s, t_scene scene, t_inter *inter, t_settings *settings)
 {
-	t_shading	shading;
 	t_list		*lst;
 	t_color		accum_light[2];
 	t_color		diffuse_color;
+	t_color		final_color;
 
 	lst = scene.lst_light;
-	inter_setdeflect(inter, &inter->deflected);
 	accum_light[DIFFUSE] = (t_color){0, 0, 0};
 	accum_light[SPECULAR] = (t_color){0, 0, 0};
 	while (lst != NULL)
 	{
-		shading = set_shading_data(inter, (t_light*)lst->content);
-		shade_1_light(accum_light, shading, scene.lst_obj, settings);
+		set_light_data(&s, inter, (t_light *) lst->content);
+		shade_1_light(accum_light, s, scene.lst_obj, settings);
 		lst = lst->next;
 	}
 	if (inter->obj->material.tex->f_texture && inter->obj->get_uv)
-	{
-		t_vec3 uv = inter->obj->get_uv(inter);
-		diffuse_color = inter->obj->material.tex->f_texture(inter->obj->material.tex, uv.x, uv.y);
-	}
+		diffuse_color = inter->obj->material.tex->f_texture(inter->obj->material.tex, s.uv.x, s.uv.y);
 	else
 		diffuse_color = inter->obj->material.color_diffuse;
+	final_color = color_mult_(settings->amb_light, diffuse_color);
+	if (settings->light == false)
+		return (final_color);
 	color_mult(&accum_light[DIFFUSE], &diffuse_color);
 	color_mult(&accum_light[SPECULAR], &inter->obj->material.color_specular);
-	return (color_add_(accum_light[DIFFUSE], accum_light[SPECULAR]));
+	color_add(&final_color, accum_light[DIFFUSE]);
+	color_add(&final_color, accum_light[SPECULAR]);
+	return (final_color);
 }
