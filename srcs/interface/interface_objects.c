@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/26 16:05:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/29 19:04:14 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,9 @@ static inline void
 		if (igInputFloat3("Position (X Y Z)", &origin_tmp.x, "%g", 0))
 			light->origin = origin_tmp;
 		igInputFloat("Intensity", &light->intensity, 0, 0, "%g", 0);
-		if (igTreeNodeStr("Color"))
-		{
-			color_tmp = light->color;
-			if (igColorEdit3("Color", &color_tmp.r, 0))
-				light->color = color_tmp;
-			igTreePop();
-		}
+		color_tmp = light->color;
+		if (igColorEdit3("Color", &color_tmp.r, 0))
+			light->color = color_tmp;
 		igTreePop();
 	}
 }
@@ -47,7 +43,6 @@ static inline void
 {
 	t_color color_tmp;
 
-	(void)mat;
 	color_tmp = mat->color_diffuse;
 	if (igColorEdit3("Object Color", &color_tmp.r, 0))
 		mat->color_diffuse = color_tmp;
@@ -67,33 +62,12 @@ static inline void
 }
 
 static inline void
-	material(t_list *mat_lst, t_obj *obj)
+	material(t_data *app, t_obj *obj)
 {
-	t_list		*current;
-	t_material	*selected;
-	t_material	*tmp;
-	bool		is_selected;
-
-	current = mat_lst;
-	selected = &obj->material;
-	tmp = current->content;
-	if (igBeginCombo("Material", selected->name, 0))
-	{
-		while (current)
-		{
-			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
-			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
-				obj->material = *tmp;
-			if (is_selected)
-				igSetItemDefaultFocus();
-			current = current->next;
-			if (current)
-				tmp = current->content;
-		}
-		igEndCombo();
-	}
+	material_list(app->lst_mat, obj);
+	texture_list(app->lst_tex, obj);
 	if (igTreeNodeStr("Material Details"))
-		material_details(selected);
+		material_details(&obj->material);
 }
 
 static inline void
@@ -102,7 +76,7 @@ static inline void
 	igValueInt("Type", obj->type);
 	if (igTreeNodeStr("Material"))
 	{
-		material(app->lst_mat, obj);
+		material(app, obj);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Object"))

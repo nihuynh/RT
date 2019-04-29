@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/26 16:04:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/29 18:03:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static inline int
 		return (idx + 2);
 	}
 	dst->name = "";
-	parse_texture(&dst->f_texture, tab[idx], idx);
+	dst->tex = parse_texture(data->lst_tex, tab[idx], idx);
 	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
 	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
 	parse_color(&dst->self_light, tab[idx + 3], idx + 3, "self_light(");

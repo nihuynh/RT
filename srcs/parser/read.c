@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/04/24 15:31:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/29 17:59:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int
 	char	**greed;
 
 	parse_material_csv(data, "materialList.csv");
+	init_textures(data);
 	if ((line_count = ft_line_count(str)) < 9)
 		return (EXIT_FAILURE);
 	if (!(greed = ft_memalloc(sizeof(char *) * (line_count + 1))))

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/26 16:04:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/29 19:18:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ char
 }
 
 static inline void
-	split_to_mat(char **split, t_material *mat)
+	split_to_mat(t_data *data, char **split, t_material *mat)
 {
 	if (!(mat->name = ft_strdup(split[0])))
 		ft_error(__func__, __LINE__);
-	mat->f_texture = NULL;
+	if (!(mat->tex = ft_lstgetelt(data->lst_tex, &texcmp, split[0])))
+		mat->tex = ft_lstgetelt(data->lst_tex, &texcmp, "none");
 	mat->color_diffuse = itocolor(ft_atoi_base(split[1], 16));
 	mat->color_specular = itocolor(ft_atoi_base(split[2], 16));
 	mat->self_light = itocolor(ft_atoi_base(split[3], 16));
@@ -83,7 +84,7 @@ void
 			ft_error(__func__, __LINE__);
 		if (ft_tablen(split) != 9)
 			ft_error(__func__, __LINE__);
-		split_to_mat(split, &node);
+		split_to_mat(data, split, &node);
 		if (!(lst_node = ft_lstnew(&node, sizeof(t_material))))
 			ft_error(__func__, __LINE__);
 		ft_lstadd(&data->lst_mat, lst_node);

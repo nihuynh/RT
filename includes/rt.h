@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/27 11:46:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/29 16:55:34 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct	s_data
 	t_gui		gui;
 	t_scene		scene;
 	t_list		*lst_mat;
+	t_list		*lst_tex;
 	t_cam		cam;
 	char		*arg;
 }				t_data;
@@ -161,10 +162,11 @@ void			camera_height(t_data *data, float value);
 void			camera_side(t_data *data, float value);
 void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
-t_color			texture_checkers(float x, float y);
-t_color			texture_strips(float x, float y);
+t_color			texture_checkers(t_texture *tex, float x, float y);
+t_color			texture_strips(t_texture *tex, float x, float y);
 void			init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void			init(t_data	*data);
+void			init_textures(t_data *app);
 void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);
 void			render_gui(void *arg);

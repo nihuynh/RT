@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/26 23:26:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/29 19:18:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,10 +146,10 @@ t_color
 		shade_1_light(accum_light, shading, scene.lst_obj, settings);
 		lst = lst->next;
 	}
-	if (inter->obj->material.f_texture && inter->obj->get_uv)
+	if (inter->obj->material.tex->f_texture && inter->obj->get_uv)
 	{
 		t_vec3 uv = inter->obj->get_uv(inter);
-		diffuse_color = inter->obj->material.f_texture(uv.x, uv.y);
+		diffuse_color = inter->obj->material.tex->f_texture(inter->obj->material.tex, uv.x, uv.y);
 	}
 	else
 		diffuse_color = inter->obj->material.color_diffuse;

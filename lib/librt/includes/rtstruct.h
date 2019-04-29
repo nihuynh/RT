@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/26 16:04:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/29 16:56:55 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,16 @@ typedef struct	s_cam
 ** Material_8h_source.html
 */
 
-typedef t_color	(*f_texture)(float x, float y);
+typedef	struct s_texture 	t_texture;
+
+typedef t_color	(*f_texture)(t_texture*, float x, float y);
+
+struct s_texture
+{
+	char		*name;
+	uint32_t	*pixels;
+	f_texture	f_texture;
+};
 
 typedef struct	s_material
 {
@@ -115,7 +124,7 @@ typedef struct	s_material
 	t_color		refraction_color;
 	t_color		reflection_color;
 	float		refraction_idx;
-	f_texture	f_texture;
+	t_texture	*tex;
 }				t_material;
 
 typedef struct s_obj	t_obj;

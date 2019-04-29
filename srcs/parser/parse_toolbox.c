@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 15:31:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/29 19:23:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,18 +132,4 @@ void
 	*l_y = toby[1];
 	if (DEBUG)
 		ft_printf("Limit : %f %f\n", l_x, l_y);
-}
-
-void
-	parse_texture(f_texture *texture, char *str, int line)
-{
-	if (!str)
-		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	str = check_key(str, line, "texture(", ERR_PARSE_VECTOR);
-	if (ft_strstr(str, "checkers"))
-		*texture = &texture_checkers;
-	else if (ft_strstr(str, "strips"))
-		*texture = &texture_strips;
-	else
-		*texture = NULL;
 }
