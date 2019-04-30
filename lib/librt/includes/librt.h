@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   librt.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 15:51:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:26:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 # define SHADOW_BIAS	5e-2
 # define HUGEVAL		1e6
 
-# define AAAA toby[0]
-# define BBBB toby[1]
-# define CCCC toby[2]
-# define DDDD toby[3]
-# define EEEE toby[4]
+# define AAAA quad[0]
+# define BBBB quad[1]
+# define CCCC quad[2]
+# define DDDD quad[3]
+# define EEEE quad[4]
 
 /*
 ** Normal :

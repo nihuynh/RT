@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fresnel.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 13:56:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/26 23:39:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:26:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 float	fresnel(t_vec3 ray_dir, t_vec3 normal, float ior)
 {
-	float	toby[5];
+	float	quad[5];
 	float	res[2];
 
 	if (ior == 0)

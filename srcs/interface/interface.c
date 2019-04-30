@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/26 15:35:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:09:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
 #if defined(__APPLE__)
-#define GL_SILENCE_DEPRECATION
-#include <OpenGL/gl.h>
+# define GL_SILENCE_DEPRECATION
+# include <OpenGL/gl.h>
 #else
-#include <GL/gl.h>
+# include <GL/gl.h>
 #endif
 
 void	window_renderer(t_gui *gui, t_img img)
@@ -73,7 +73,7 @@ void	interface(t_data *app)
 	gui_setup(&app->gui, app->sdl.img, app);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
-	glClearColor(0.4, 0.55, 0.6, 1.0f);
+	glClearColor(0.107f, 0.277f, 0.348f, 1.000f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL2_RenderDrawData(igGetDrawData());
 	SDL_GL_SwapWindow(app->sdl.win);

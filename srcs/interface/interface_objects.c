@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_objects.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/29 19:04:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:57:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 #include "libft.h"
 
 static inline void
-	light_settings(void *res, int i)
+	light_settings(t_list *node, int i)
 {
 	t_light			*light;
 	t_pt3			origin_tmp;
 	t_color			color_tmp;
+	char			*light_id;
 	char			tree_name[20];
 
-	ft_bzero(tree_name, sizeof(tree_name));
-	ft_strcat(tree_name, "Light ");
-	ft_strcat(tree_name, ft_itoa(i));
-	light = res;
+	if (!(light_id = ft_itoa(i)))
+		ft_error(__func__, __LINE__);
+	ft_strcpy(tree_name, "Light ");
+	ft_strcat(tree_name, light_id);
+	ft_strdel(&light_id);
+	light = node->content;
 	if (igTreeNodeStr(tree_name))
 	{
 		origin_tmp = light->origin;
@@ -96,12 +99,7 @@ void
 	{
 		i = 0;
 		lst = app->scene.lst_light;
-		while (lst)
-		{
-			light_settings(lst->content, i);
-			lst = lst->next;
-			i++;
-		}
+		ft_lstiteri(app->scene.lst_light, &light_settings);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Objects"))
