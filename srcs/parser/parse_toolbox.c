@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_toolbox.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/29 19:23:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:44:39 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void
 			str++;
 		while (*str && *str == ' ' && *str != ')')
 			str++;
-		if (!*str)
-			ft_error_wmsg(ERR_PARSE_COLOR, line, str);
+		if (!*str || *str == ')')
+			break;
 	}
-	if (idx != 3 && ((*str >= '9' && *str <= '9') || *str == '-'))
+	if (idx != 3)
 		ft_error_wmsg(ERR_PARSE_COLOR, line, str);
 	color->r = toby[0];
 	color->g = toby[1];
@@ -77,10 +77,10 @@ void
 			str++;
 		while (*str && *str == ' ' && *str != ')')
 			str++;
-		if (!*str)
-			ft_error_wmsg(ERR_PARSE_VECTOR, line, str);
+		if (!*str || *str == ')')
+			break;
 	}
-	if (idx != 3 && ((*str >= '9' && *str <= '9') || *str == '-'))
+	if (idx != 3)
 		ft_error_wmsg(ERR_PARSE_VECTOR, line, str);
 	vec->x = toby[0];
 	vec->y = toby[1];
@@ -125,7 +125,7 @@ void
 			str++;
 		while (*str && *str == ' ' && *str != ')')
 			str++;
-		if (!*str)
+		if (!*str || *str == ')')
 			ft_error_wmsg(ERR_PARSE_FLOAT, line, str);
 	}
 	*l_x = toby[0];
