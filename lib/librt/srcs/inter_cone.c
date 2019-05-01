@@ -103,6 +103,7 @@ t_vec3
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
 	hitpoint_to_origin = vec3_sub_(cone->origin, inter->point);
 	height = vec3_dot(&hitpoint_to_origin, &cone->n);
+	uv.x *= M_INV_PI_F;
 	vec3_scalar(&uv, 50);
 	uv.y = height;
 	return (uv);

@@ -17,6 +17,7 @@
 
 # define DEG_TO_RAD	(M_PI_F / 180)
 # define M_PI_F (float)M_PI
+# define M_INV_PI_F (1.f / M_PI_F)
 
 # define EPSILON		1e-6
 # define SHADOW_BIAS	5e-2

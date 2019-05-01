@@ -52,6 +52,7 @@ t_vec3				get_sphere_uv(t_inter *inter)
 	t_vec3	uv;
 
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
+	uv.x *= M_INV_PI_F;
 	vec3_scalar(&uv, 50);
 	return (uv);
 }
