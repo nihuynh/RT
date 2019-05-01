@@ -149,7 +149,7 @@ int				parse_light(char **greed, t_data *data, int l_idx);
 int				parse_shape(char **greed, t_data *data, int l_idx, int type);
 void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
 void			cast_shadow(t_data *data, t_inter *inter);
-t_color			get_lighting(t_shading s, t_scene scene, t_inter *inter, t_settings *setng);
+t_color			get_lighting(t_shading s, t_scene scene, t_settings *setng);
 void			cast_primary(t_list *obj_list, t_inter *inter);
 t_color			recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);

@@ -77,9 +77,7 @@ t_color
 	if (inter.obj == NULL)
 		return (settings.back_color);
 	shading = get_shading_data(&inter);
-	if ((0))
-		return *(t_color*)&shading.normal;
-	lighting = get_lighting(shading, scene, &inter, &settings);
+	lighting = get_lighting(shading, scene, &settings);
 	if (depth < settings.depth_max)
 		color_add(&lighting, cast_bounce(scene, settings, &inter, depth));
 	return (lighting);
