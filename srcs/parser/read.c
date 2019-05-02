@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/04/29 20:02:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:04:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int
 		parsing_error(line_idx, ERR_PARSE_CONTENT, data, greed);
 	parse_vector(&data->cam.pos, greed[line_idx + 2], 3, "origin(");
 	parse_vector(&data->cam.dir, greed[line_idx + 3], 4, "direction(");
+	parse_color(&data->settings.amb_light, greed[line_idx + 4], 4, "amb_light(");
 	vec3_normalize(&data->cam.dir);
-	return (line_idx + 5);
+	return (line_idx + 6);
 }
 
 /*

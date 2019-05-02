@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 19:07:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/02 14:06:38 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void
 	init_settings(t_settings *settings)
 {
 	settings->back_color = itocolor(BACK_COLOR);
-	settings->amb_light = AMB_LIGHT;
 	settings->depth_max = DEPTH_MAX;
 	settings->fov = FOV;
 	settings->absorb = 1;
