@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_toolbox.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/29 19:17:56 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 22:33:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,17 @@ static inline void
 	textures_procedural(t_data *app)
 {
 	t_texture	node;
-	t_list		*lst_node;
 
 	node.pixels = NULL;
 	node.name = "none";
 	node.f_texture = NULL;
-	if (!(lst_node = ft_lstnew(&node, sizeof(t_texture))))
-		ft_error(__func__, __LINE__);
-	ft_lstadd(&app->lst_tex, lst_node);
+	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
 	node.name = "checkers";
 	node.f_texture = &texture_checkers;
-	if (!(lst_node = ft_lstnew(&node, sizeof(t_texture))))
-		ft_error(__func__, __LINE__);
-	ft_lstadd(&app->lst_tex, lst_node);
+	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
 	node.name = "strips";
 	node.f_texture = &texture_strips;
-	if (!(lst_node = ft_lstnew(&node, sizeof(t_texture))))
-		ft_error(__func__, __LINE__);
-	ft_lstadd(&app->lst_tex, lst_node);
+	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
 }
 
 void

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/29 19:18:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 22:34:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void
 	char		*line;
 	char		**split;
 	t_material	node;
-	t_list		*lst_node;
 
 	fd = ft_fopen_read(csv_file);
 	if (ft_gnl(fd, &line, "\n") > 0)
@@ -85,10 +84,7 @@ void
 		if (ft_tablen(split) != 9)
 			ft_error(__func__, __LINE__);
 		split_to_mat(data, split, &node);
-		if (!(lst_node = ft_lstnew(&node, sizeof(t_material))))
-			ft_error(__func__, __LINE__);
-		ft_lstadd(&data->lst_mat, lst_node);
-		lst_node = NULL;
+		ft_lstpushnew(&data->lst_mat, &node, sizeof(t_material));
 		ft_tabdel(split);
 		ft_strdel(&line);
 	}

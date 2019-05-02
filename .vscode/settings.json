@@ -13,6 +13,13 @@
 		"color.h": "c",
 		"parse.h": "c",
 		"imgui_impl_sdl.h": "c",
-		"ftio.h": "c"
+		"ftio.h": "c",
+		"iterator": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c",
+		"ftmem.h": "c",
+		"stddef.h": "c",
+		"ftstring.h": "c"
 	}
 }

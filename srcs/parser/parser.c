@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/29 18:03:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 22:52:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,37 +45,20 @@ static inline void
 static inline void
 	obj_set(t_obj *obj, int type, void *shape)
 {
+	const t_objset obj_func[] = {
+		{&inter_plane, &interface_plane, &normal_plane, &get_plane_uv},
+		{&inter_sphere, &interface_sphere, &normal_sphere, &get_sphere_uv},
+		{&inter_cone, &interface_cone, &normal_cone, &get_cone_uv},
+		{&inter_cylinder, &interface_cylinder, &normal_cylinder, &get_cylinder_uv},
+	};
+
 	ft_bzero(obj, sizeof(t_obj));
 	obj->type = type;
 	obj->shape = shape;
-	if (type == SPHERE)
-	{
-		obj->f_inter = &inter_sphere;
-		obj->f_gui = &interface_sphere;
-		obj->find_normal = &normal_sphere;
-		obj->get_uv = &get_sphere_uv;
-	}
-	else if (type == PLANE)
-	{
-		obj->f_inter = &inter_plane;
-		obj->f_gui = &interface_plane;
-		obj->find_normal = &normal_plane;
-		obj->get_uv = &get_plane_uv;
-	}
-	else if (type == CONE)
-	{
-		obj->f_inter = &inter_cone;
-		obj->f_gui = &interface_cone;
-		obj->find_normal = &normal_cone;
-		obj->get_uv = &get_cone_uv;
-	}
-	else if (type == CYLINDER)
-	{
-		obj->f_inter = &inter_cylinder;
-		obj->f_gui = &interface_cylinder;
-		obj->find_normal = &normal_cylinder;
-		obj->get_uv = &get_cylinder_uv;
-	}
+	obj->f_inter = obj_func[type].f_inter;
+	obj->f_gui = obj_func[type].f_gui;
+	obj->find_normal = obj_func[type].find_normal;
+	obj->get_uv = obj_func[type].get_uv;
 }
 
 static inline int
@@ -118,7 +101,6 @@ static inline int
 int
 	parse_shape(char **greed, t_data *d, int l_idx, int type)
 {
-	t_list		*node;
 	t_obj		obj;
 	t_parse		cfg;
 	void		*shape;
@@ -132,9 +114,7 @@ int
 	cfg.setter(shape, greed, ++l_idx);
 	obj_set(&obj, type, shape);
 	idx = parse_material(d, &obj.material, greed, l_idx + cfg.line_offset - 2);
-	if (!(node = ft_lstnew(&obj, sizeof(t_obj))))
-		ft_error(__func__, __LINE__);
-	ft_lstadd(&d->scene.lst_obj, node);
+	ft_lstpushnew(&d->scene.lst_obj, &obj, sizeof(t_obj));
 	return (idx);
 }
 
@@ -150,16 +130,13 @@ int
 int
 	parse_light(char **greed, t_data *data, int line_idx)
 {
-	t_list		*node;
 	t_light		light;
 
 	line_idx++;
 	if (DEBUG)
 		ft_putendl("Light :");
 	light_set(&light, greed, line_idx);
-	if (!(node = ft_lstnew(&light, sizeof(t_light))))
-		ft_error(__func__, __LINE__);
-	ft_lstadd(&data->scene.lst_light, node);
+	ft_lstpushnew(&data->scene.lst_light, &light, sizeof(t_light));
 	line_idx += 5;
 	return (line_idx);
 }

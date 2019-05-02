@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/29 18:03:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 22:52:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,13 @@ typedef struct	s_parse
 	void		(*setter) (void*, char **, int);
 	size_t		line_offset;
 }				t_parse;
+
+typedef struct	s_objset
+{
+	void		(*f_inter) (t_inter*, t_obj*);
+	void		(*f_gui) (void*);
+	void		(*find_normal) (t_inter*);
+	t_vec3		(*get_uv) (t_inter*);
+}				t_objset;
 
 #endif
