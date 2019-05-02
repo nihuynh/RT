@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/02 14:06:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:12:17 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef struct	s_settings
 {
 	t_color		back_color;
 	t_color		amb_light;
+	t_color		filter;
 	bool		light;
 	bool		facing;
 	bool		i_light;

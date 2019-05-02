@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/02 14:06:38 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:14:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void
 {
 	settings->back_color = itocolor(BACK_COLOR);
 	settings->depth_max = DEPTH_MAX;
+	settings->filter = (t_color){1, 1, 1};
 	settings->fov = FOV;
 	settings->absorb = 1;
 	settings->deflect = 1;

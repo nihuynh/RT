@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/26 15:35:25 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:17:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,24 @@
 #include <stdio.h>
 
 static inline void
-	light_settings(t_data *app)
+	color_lights(t_data *app)
 {
 	t_color	color_tmp;
 
+	color_tmp = app->settings.back_color;
+	if (igColorEdit3("Sky Color", &color_tmp.r, 0))
+		app->settings.back_color = color_tmp;
+	color_tmp = app->settings.amb_light;
+	if (igColorEdit3("Ambient light color", &color_tmp.r, 0))
+		app->settings.amb_light = color_tmp;
+	color_tmp = app->settings.filter;
+	if (igColorEdit3("Filter color", &color_tmp.r, 0))
+		app->settings.filter = color_tmp;
+}
+
+static inline void
+	light_settings(t_data *app)
+{
 	igCheckbox("Light", &app->settings.light);
 	igSameLine(160, 0);
 	igCheckbox("Light Intensity", &app->settings.i_light);
@@ -30,12 +44,7 @@ static inline void
 	igCheckbox("Reflection", &app->settings.deflect);
 	igSameLine(320, 0);
 	igCheckbox("Refraction", &app->settings.absorb);
-	color_tmp = app->settings.back_color;
-	if (igColorEdit3("Sky Color", &color_tmp.r, 0))
-		app->settings.back_color = color_tmp;
-	color_tmp = app->settings.amb_light;
-	if (igColorEdit3("Ambient light color", &color_tmp.r, 0))
-		app->settings.amb_light = color_tmp;
+	color_lights(app);
 	igTreePop();
 	igNewLine();
 }
