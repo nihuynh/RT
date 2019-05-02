@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:20:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/25 18:41:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:26:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static inline float
 static inline float
 	inter(t_inter *data, t_ray *ray, t_cylinder *cyl)
 {
-	float	toby[3];
+	float	quad[3];
 	float	res[2];
 	float	det;
 	t_vec3	rene;
@@ -91,6 +91,7 @@ t_vec3
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
 	hitpoint_to_origin = vec3_sub_(cylinder->origin, inter->point);
 	height = vec3_dot(&hitpoint_to_origin, &cylinder->n);
+	uv.x *= M_INV_PI_F;
 	vec3_scalar(&uv, 50);
 	uv.y = height;
 	return (uv);

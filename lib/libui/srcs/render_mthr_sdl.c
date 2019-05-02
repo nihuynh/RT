@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mthr_sdl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 15:50:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:26:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void
 	int			cthr;
 	int			sats;
 	void		*ptr;
-	pthread_t	toby[THR_C];
+	pthread_t	threads[THR_C];
 
 	elapsed_time = ft_curr_usec();
 	cthr = -1;
@@ -77,12 +77,12 @@ void
 	while (++cthr < THR_C && !sats)
 	{
 		ptr = &(sdl->data_thr[cthr]);
-		sats = pthread_create(&toby[cthr], NULL, process_data, ptr);
+		sats = pthread_create(&threads[cthr], NULL, process_data, ptr);
 	}
 	sdl->needs_render = false;
 	cthr = -1;
 	while (++cthr < THR_C)
-		pthread_join(toby[cthr], NULL);
+		pthread_join(threads[cthr], NULL);
 	apply_color(sdl);
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);

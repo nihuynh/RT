@@ -88,10 +88,10 @@ void
 }
 
 void
-	set_light_data(t_shading *shading, const t_inter *inter, t_light *light)
+	set_light_data(t_shading *shading, t_light *light)
 {
 	shading->light = *light;
-	shading->light_dir = vec3_sub_(light->origin, inter->point);
+	shading->light_dir = vec3_sub_(light->origin, shading->hit_pos);
 	shading->light_dist = vec3_mag(shading->light_dir);
 	vec3_normalize(&shading->light_dir);
 }
@@ -112,31 +112,31 @@ void
 }
 
 t_color
-	get_lighting(t_shading s, t_scene scene, t_inter *inter, t_settings *settings)
+	get_lighting(t_shading s, t_scene scene, t_settings *settings)
 {
-	t_list		*lst;
+	t_list		*current_light;
 	t_color		accum_light[2];
 	t_color		diffuse_color;
 	t_color		final_color;
 
-	lst = scene.lst_light;
 	accum_light[DIFFUSE] = (t_color){0, 0, 0};
 	accum_light[SPECULAR] = (t_color){0, 0, 0};
-	while (lst != NULL)
+	current_light = scene.lst_light;
+	while (current_light != NULL)
 	{
-		set_light_data(&s, inter, (t_light *) lst->content);
+		set_light_data(&s, current_light->content);
 		shade_1_light(accum_light, s, scene.lst_obj, settings);
-		lst = lst->next;
+		current_light = current_light->next;
 	}
-	if (inter->obj->material.tex->f_texture && inter->obj->get_uv)
-		diffuse_color = inter->obj->material.tex->f_texture(inter->obj->material.tex, s.uv.x, s.uv.y);
+	if (s.mat.tex->f_texture)
+		diffuse_color = s.mat.tex->f_texture(s.mat.tex, s.uv.x, s.uv.y);
 	else
-		diffuse_color = inter->obj->material.color_diffuse;
+		diffuse_color = s.mat.color_diffuse;
 	final_color = color_mult_(settings->amb_light, diffuse_color);
 	if (settings->light == false)
 		return (final_color);
 	color_mult(&accum_light[DIFFUSE], &diffuse_color);
-	color_mult(&accum_light[SPECULAR], &inter->obj->material.color_specular);
+	color_mult(&accum_light[SPECULAR], &s.mat.color_specular);
 	color_add(&final_color, accum_light[DIFFUSE]);
 	color_add(&final_color, accum_light[SPECULAR]);
 	return (final_color);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/25 18:18:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:26:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static inline float
 static inline float
 	inter(t_inter *data, t_ray *ray, t_cone *cone)
 {
-	float	toby[3];
+	float	quad[3];
 	float	res[2];
 	double	cos_theta2;
 	float	det;
@@ -103,6 +103,7 @@ t_vec3
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
 	hitpoint_to_origin = vec3_sub_(cone->origin, inter->point);
 	height = vec3_dot(&hitpoint_to_origin, &cone->n);
+	uv.x *= M_INV_PI_F;
 	vec3_scalar(&uv, 50);
 	uv.y = height;
 	return (uv);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:06 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/07 16:55:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:26:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static inline float	inter(t_ray *ray, t_sphere *sphere)
 {
-	float	toby[3];
+	float	quad[3];
 	float	res[2];
 	float	det;
 	t_vec3	rene;
@@ -52,6 +52,7 @@ t_vec3				get_sphere_uv(t_inter *inter)
 	t_vec3	uv;
 
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
+	uv.x *= M_INV_PI_F;
 	vec3_scalar(&uv, 50);
 	return (uv);
 }

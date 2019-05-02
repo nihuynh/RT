@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:33:27 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/08 21:00:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:26:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 t_vec3
 	vec3_refract(t_vec3 ray, t_vec3 normal, float ior)
 {
-	float	toby[5];
+	float	quad[5];
 	t_vec3	refracted;
 
 	refracted = normal;
