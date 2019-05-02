@@ -2,7 +2,7 @@ camera
 {
 	origin(0 10 60)
 	direction(0 0 -1)
-	amb_light(0.2 0.2 0.2)
+	amb_light(0.1 0.1 0.1)
 }
 content
 {
