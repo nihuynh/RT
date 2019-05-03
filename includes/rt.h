@@ -25,7 +25,7 @@
 
 # define BACK_COLOR		0x000000
 # define FOV			40.0f
-# define DEPTH_MAX		2
+# define DEPTH_MAX		0
 
 # define DEBUG			0
 # define MAC			MACB

@@ -22,11 +22,7 @@ t_color
 	bool	pattern;
 
 	(void)tex;
-	if (x < 0)
-		x = fabsf(x - 5);
-	if (y < 0)
-		y = fabsf(y - 5);
-	pattern = (fmodf(x, 10) < 5) ^ (fmodf(y, 10) < 5);
+	pattern = (fmodf(x, 1.f) < 0.5f) ^ (fmodf(y, 1) < 0.5f);
 	return (itocolor(pattern * 0xFFFFFF));
 }
 
@@ -53,7 +49,7 @@ t_color sample(t_texture *texture, float x, float y)
 {
 //	printf("x: %f  y:  %f\n", x, y);
 	int x_ = (ft_clampf(x, 0, 1) * (texture->width - 1));
-	int y_ = (ft_clampf(1-y, 0, 1) * (texture->height - 1));
+	int y_ = (ft_clampf(y, 0, 1) * (texture->height - 1));
 //	printf("x: %d  y:  %d\n\n", x_, y_);
 //	int x_ = ft_clamp(x, 0, texture->width);
 //	int y_ = ft_clamp(y, 0, texture->height);

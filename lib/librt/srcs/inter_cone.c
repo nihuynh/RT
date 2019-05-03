@@ -91,20 +91,23 @@ void
 	data->obj = node;
 }
 
+
+//TODO: UV are weirdly distorted when normal is not close to world axes
 t_vec3
 	get_cone_uv(t_inter *inter)
 {
 	t_cone	*cone;
-	t_vec3	hitpoint_to_origin;
+	t_vec3	origin_to_hitpoint;
 	t_vec3	uv;
 	float	height;
 
-	cone = inter->obj->shape;
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
-	hitpoint_to_origin = vec3_sub_(cone->origin, inter->point);
-	height = vec3_dot(&hitpoint_to_origin, &cone->n);
-	uv.x *= M_INV_PI_F;
-	vec3_scalar(&uv, 50);
+	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
+	cone = inter->obj->shape;
+	origin_to_hitpoint = vec3_sub_(inter->point, cone->origin);
+	height = vec3_dot(&origin_to_hitpoint, &cone->n);
 	uv.y = height;
+	if (cone->size > 0)
+		uv.y = 1 - (uv.y / cone->size);
 	return (uv);
 }

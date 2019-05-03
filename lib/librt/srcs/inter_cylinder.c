@@ -83,16 +83,17 @@ t_vec3
 	get_cylinder_uv(t_inter *inter)
 {
 	t_cylinder	*cylinder;
-	t_vec3		hitpoint_to_origin;
+	t_vec3		origin_to_hitpoint;
 	t_vec3		uv;
 	float		height;
 
-	cylinder = inter->obj->shape;
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
-	hitpoint_to_origin = vec3_sub_(cylinder->origin, inter->point);
-	height = vec3_dot(&hitpoint_to_origin, &cylinder->n);
-	uv.x *= M_INV_PI_F;
-	vec3_scalar(&uv, 50);
+	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
+	cylinder = inter->obj->shape;
+	origin_to_hitpoint = vec3_sub_(inter->point, cylinder->origin);
+	height = vec3_dot(&origin_to_hitpoint, &cylinder->n);
 	uv.y = height;
+	if (cylinder->size > 0)
+		uv.y = 1 - (uv.y / cylinder->size);
 	return (uv);
 }

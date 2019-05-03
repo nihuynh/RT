@@ -38,8 +38,8 @@ void
 	parse_vector(&pplane->n, greed[i + 2], i + 2, "normal(");
 	parse_limit(&pplane->size_x, &pplane->size_y, greed[i + 3], i + 3);
 	vec3_normalize(&pplane->n);
-	vec3_new(&pplane->x, 1, 0, 0);
-	vec3_new(&pplane->y, 0, 1, 0);
+	vec3_new(&pplane->x, -1, 0, 0);
+	vec3_new(&pplane->y, 0, -1, 0);
 	rotation = create_rotation_from_direction(pplane->n);
 	apply_matrix(&pplane->x, &rotation);
 	apply_matrix(&pplane->y, &rotation);
