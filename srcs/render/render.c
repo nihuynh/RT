@@ -110,6 +110,7 @@ int __attribute__((hot))
 	cam_ray(data, &rene, x + 0.5, y + 0.5);
 	color = recursive_cast(data->scene, data->settings, rene, 0);
 	color_clamp(&color, 0, 1);
+//	color = sample(data->lst_tex->content, (float)x / data->sdl.img.width, (float)y / data->sdl.img.height);
 	color_mult(&color, &data->settings.filter);
 	return (colortoi(color));
 }

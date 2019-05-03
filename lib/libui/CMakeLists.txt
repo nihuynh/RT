@@ -7,6 +7,9 @@ target_include_directories(ui PUBLIC includes)
 target_include_directories(ui PRIVATE ../libft/includes)
 target_include_directories(ui PRIVATE ../imgui_impl)
 
+target_include_directories(ui PRIVATE ../librt/includes)
+#target_link_libraries(ui librt)
+
 # Add SDL2 path to list of searched paths for packages
 #set(CMAKE_PREFIX_PATH "D:/Dev/Lib/SDL2-2.0.8")
 

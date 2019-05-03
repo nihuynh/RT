@@ -109,8 +109,10 @@ typedef t_color	(*f_texture)(t_texture*, float x, float y);
 struct s_texture
 {
 	char		*name;
-	uint32_t	*pixels;
+	char		*pixels;
 	f_texture	f_texture;
+	int			width;
+	int			height;
 };
 
 typedef struct	s_material

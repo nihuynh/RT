@@ -10,9 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <zconf.h>
 #include "rt.h"
 #include "libft.h"
 #include "parse.h"
+
+t_texture create_texture(char *filename);
+char *load_texture(char *filename, int *width, int *height);
+t_color sample(t_texture *texture, float x, float y);
 
 int
 	texcmp(void *content, void *key)
@@ -49,18 +54,66 @@ void
 }
 
 t_texture
-	*parse_texture(t_list *lst_tex, char *str, int line)
+	*parse_texture(t_list **lst_tex, char *str, int line)
 {
 	t_texture	*tex;
 
-	tex = NULL;
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	if ((str = ft_strstr(str, "texture(")))
+	if (!(str = ft_strstr(str, "texture(")))
+		return (NULL);
+	str += 8;
+	tex = ft_lstgetelt(*lst_tex, &texcmp, str);
+	if (tex == NULL)
 	{
-		str += 8;
-		if (!(tex = ft_lstgetelt(lst_tex, &texcmp, str)))
-			tex = ft_lstgetelt(lst_tex, &texcmp, "none");
+		if (ft_strstr(str, ".ppm"))
+		{
+			t_texture new_tex = create_texture(str);
+			ft_lstpushnew(lst_tex, &new_tex, sizeof(t_texture));
+			return (ft_lstgetelt(*lst_tex, &texcmp, str));
+		}
+		else
+			return (ft_lstgetelt(*lst_tex, &texcmp, "none"));
 	}
 	return (tex);
+}
+
+t_texture create_texture(char *filename)
+{
+	t_texture	result;
+	char		*cleaned_name;
+
+	cleaned_name = ft_strdup(filename);
+	cleaned_name[ft_strlen(cleaned_name) - 1] = '\0';
+	result.f_texture = &sample;
+	result.name = cleaned_name;
+	result.pixels = load_texture(cleaned_name, &result.width, &result.height);
+	return result;
+}
+
+
+
+char *load_texture(char *filename, int *width, int *height)
+{
+	int		fd;
+	char	*line;
+
+	fd = ft_fopen_read(filename);
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	if (ft_strncasecmp(line, "P6", 2) != 0)
+	{
+		ft_printf("Bad header [%s]\n", line);
+		ft_error(__func__, __LINE__);
+	}
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	*width = ft_atoi(line);
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	*height = ft_atoi(line);
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	int max_value = ft_atoi(line);
+	printf("%dx%d, max: %d\n", *width, *height, max_value);
+	char *pixels = malloc(*width * *height * 3);
+	lseek(fd, 18, SEEK_SET);
+	read(fd, pixels, *width * *height * 3);
+	return pixels;
 }

@@ -45,18 +45,18 @@ static inline void
 	*process_data(void *arg)
 {
 	t_data_thr	*slice;
-	t_sdl		*sdl;
+	t_img		img;
 	int			i;
 	int			ofs;
 
 	slice = arg;
-	sdl = slice->sdl;
-	ofs = slice->idx * (sdl->img.height / THR_C);
+	img = slice->sdl->img;
+	ofs = slice->idx * (img.height / THR_C);
 	i = -1;
-	while (++i < sdl->thr_len)
+	while (++i < slice->sdl->thr_len)
 	{
-		slice->data[i] = slice->do_pxl(i % sdl->img.width,
-		ofs + i / sdl->img.width,
+		slice->data[i] = slice->do_pxl(i % img.width,
+		ofs + i / img.width,
 		slice->prg_data);
 	}
 	pthread_exit(NULL);

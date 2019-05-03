@@ -39,8 +39,15 @@ int
 char
 	*check_key(char *str, int line, const char *key, char *err)
 {
+	static char buffer[128];
+
 	if (!(str = ft_strstr(str, key)))
-		ft_error_wmsg(ERR_P_KEY, line, str);
+	{
+		strncat(buffer, "Missing key: \"", 128);
+		strncat(buffer, key, 128);
+		strncat(buffer, "\" at line ", 128);
+		ft_error_wmsg(buffer, line, str);
+	}
 	str += ft_strlen(key);
 	if (!*str)
 		ft_error_wmsg(err, line, str);

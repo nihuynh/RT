@@ -164,6 +164,7 @@ void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
 t_color			texture_checkers(t_texture *tex, float x, float y);
 t_color			texture_strips(t_texture *tex, float x, float y);
+t_color 		sample(t_texture *texture, float x, float y);
 void			init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void			init(t_data	*data);
 void			init_textures(t_data *app);

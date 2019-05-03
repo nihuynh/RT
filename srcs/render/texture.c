@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ftmath.h>
 #include "rt.h"
 #include "librt.h"
 #include "color.h"
@@ -42,4 +43,27 @@ t_color
 		pattern -= 5;
 	pattern = fabsf(fmodf(pattern, 10)) < 5;
 	return (itocolor((bool)pattern * 0xFFFFFF));
+}
+
+typedef struct tmp {
+	unsigned char a, b, c;
+} tmp;
+
+t_color sample(t_texture *texture, float x, float y)
+{
+//	printf("x: %f  y:  %f\n", x, y);
+	int x_ = (ft_clampf(x, 0, 1) * (texture->width - 1));
+	int y_ = (ft_clampf(1-y, 0, 1) * (texture->height - 1));
+//	printf("x: %d  y:  %d\n\n", x_, y_);
+//	int x_ = ft_clamp(x, 0, texture->width);
+//	int y_ = ft_clamp(y, 0, texture->height);
+//	int y_ = (ft_clampf(y, 0, 0.9) * (texture->height - 1));
+	t_color result;
+	tmp *ptr = texture->pixels;
+	ptr += (y_ * (texture->width) + (x_));
+	result.r = ptr->a / 255.f;
+	result.g = ptr->b / 255.f;
+	result.b = ptr->c / 255.f;
+//	vec3_print((t_vec3 *) (&result));
+	return (result);
 }
