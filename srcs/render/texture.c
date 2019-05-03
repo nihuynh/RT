@@ -59,7 +59,7 @@ t_color sample(t_texture *texture, float x, float y)
 //	int y_ = ft_clamp(y, 0, texture->height);
 //	int y_ = (ft_clampf(y, 0, 0.9) * (texture->height - 1));
 	t_color result;
-	tmp *ptr = texture->pixels;
+	tmp *ptr = (tmp *) texture->pixels;
 	ptr += (y_ * (texture->width) + (x_));
 	result.r = ptr->a / 255.f;
 	result.g = ptr->b / 255.f;

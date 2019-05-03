@@ -64,6 +64,7 @@ target_sources(RT PRIVATE
         srcs/render/render.c
         srcs/render/texture.c
         srcs/render/texture_toolbox.c
+        srcs/render/texture_loader.c
         srcs/render/render_fullscreen.c
         srcs/tools/error.c
         srcs/tools/update.c
