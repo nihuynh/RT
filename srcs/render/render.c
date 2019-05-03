@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/02 14:15:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:51:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ int __attribute__((hot))
 	data = arg;
 	cam_ray(data, &rene, x + 0.5, y + 0.5);
 	color = recursive_cast(data->scene, data->settings, rene, 0);
+	if (data->settings.anti_a)
+		color = anti_aliasing(color, data, x, y);
 	color_clamp(&color, 0, 1);
 	color_mult(&color, &data->settings.filter);
 	return (colortoi(color));

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/02 14:12:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/03 16:00:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct	s_settings
 	bool		shadow;
 	bool		deflect;
 	bool		absorb;
+	bool		anti_a;
 	int			depth_max;
 	float		fov;
 }				t_settings;
@@ -155,6 +156,7 @@ t_color			recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 void			cam_ray(t_data *data, t_ray *res, float x, float y);
 t_color			cast_light_primary(t_list *obj_list, t_inter *inter);
+t_color			anti_aliasing(t_color col_prim, t_data *app, int x, int y);
 
 void			camera_angle(t_data *data, int pan, int pitch);
 void			camera_zoom(t_data *data, float value);

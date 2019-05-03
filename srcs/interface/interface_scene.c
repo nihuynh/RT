@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/02 14:17:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:52:49 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ static inline void
 	igCheckbox("Reflection", &app->settings.deflect);
 	igSameLine(320, 0);
 	igCheckbox("Refraction", &app->settings.absorb);
+	igSameLine(480, 0);
+	igCheckbox("Anti Aliasing", &app->settings.anti_a);
 	color_lights(app);
+
 	igTreePop();
 	igNewLine();
 }
