@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 14:35:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/04 14:55:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/04 15:47:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,13 @@
 void
 	apply_simple_filter(t_sdl *sdl, uint32_t (*func) (uint32_t))
 {
-	t_pxl		idx;
 	int			idx_pxl;
-	uint32_t	tmp_color;
+	int			idx_limit;
 
-	idx.y = -1;
-	while (++idx.y < sdl->img.height)
+	idx_pxl = -1;
+	idx_limit = sdl->img.height * sdl->img.width;
+	while (++idx_pxl < idx_limit)
 	{
-		idx.x = -1;
-		while (++idx.x < sdl->img.width)
-		{
-			idx_pxl = (idx.y * sdl->img.height) + idx.x;
-			tmp_color = sdl->img.pixels[idx_pxl];
-			sdl->img.pixels[idx_pxl] = func(tmp_color);
-		}
+		sdl->img.pixels[idx_pxl] = func(sdl->img.pixels[idx_pxl]) | C_MASK;
 	}
 }
