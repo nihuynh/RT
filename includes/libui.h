@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 20:16:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/04 14:55:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void				save_screenshot(t_sdl *sdl, char *arg);
 void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 									void *data);
 void				render_mthr_sdl(t_sdl *sdl);
+void				apply_simple_filter(t_sdl *sdl, uint32_t (*fun) (uint32_t));
 
 /*
 ** Pool Render :

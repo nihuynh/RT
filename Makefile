@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/03 15:48:18 by sklepper         ###   ########.fr        #
+#    Updated: 2019/05/04 15:04:55 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,12 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				init_interface.c interface_objects.c interface_tools.c	\
 				object_tools.c render_fullscreen.c texture_toolbox.c \
 				interface_lists.c filters.c
+SRC			+=	init_sdl.c error_sdl.c exit_sdl.c\
+				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
+				save_screenshot.c render_pool.c post_process.c
 # directories :
-VPATH       := ./srcs ./srcs/parser ./srcs/render ./srcs/tools ./srcs/interface
+VPATH       :=	./srcs ./srcs/parser ./srcs/render ./srcs/tools	\
+				./srcs/interface ./srcs/render_utils
 OBJDIR 		:=	objs
 INCDIR  	:=	includes
 # LIBFT
@@ -37,12 +41,6 @@ LRT_PATH	:=	lib/librt
 LRT_LIB		:=	-L $(LRT_PATH) -lrt
 LRT_INC		:=	-I $(LRT_PATH)/includes
 LRT_RULE	:=	$(LRT_PATH)/$(LRT_NAME)
-# LIBUI
-LUI_NAME	:=	libui.a
-LUI_PATH	:=	lib/libui
-LUI_LIB		:=	-L $(LUI_PATH) -lui
-LUI_INC		:=	-I $(LUI_PATH)/includes
-LUI_RULE	:=	$(LUI_PATH)/$(LUI_NAME)
 # SDL
 LSDL_LIB	:=	$(shell sdl2-config --libs)
 LSDL_INC	:=	$(shell sdl2-config --cflags)
@@ -77,9 +75,9 @@ RUN_SCENE	:=	$(or $(RUN_ARGS),$(SCENE))
 SCENES		:= 	$(addprefix $(addprefix scenes/, $(RUN_SCENE)), .rt)
 OBJ			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 DEP			:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
-LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(LUI_LIB) $(CIMGUI_LIB)	\
+LIB			:=	$(LFT_LIB) $(LRT_LIB) $(LSDL_LIB) $(CIMGUI_LIB)	\
 				$(IMGUI_IMPL_LIB) $(LOPENGL_LIB)
-INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC) $(LUI_INC)	\
+INC			:=	-I $(INCDIR) $(LFT_INC) $(LSDL_INC) $(LRT_INC)	\
 				$(CIMGUI_INC) $(IMGUI_IMPL_INC)
 # **************************************************************************** #
 # make specs :
@@ -107,7 +105,7 @@ PHELP		:=	"\033[36m%-26s\033[0m %s\n"
 .DEFAULT_GOAL := all
 all: lib $(NAME) ## Built the project (Default goal).
 .PHONY: all
-$(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(LUI_RULE) $(CIMGUI_RULE) $(IMGUI_IMPL_RULE)
+$(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(CIMGUI_RULE) $(IMGUI_IMPL_RULE)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB)
 	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 -include $(DEP)
@@ -115,8 +113,6 @@ $(LFT_RULE):
 	$(MAKE) -sC $(LFT_PATH) $(LIBFLAGS)
 $(LRT_RULE):
 	$(MAKE) -sC $(LRT_PATH) $(LIBFLAGS)
-$(LUI_RULE):
-	$(MAKE) -sC $(LUI_PATH) $(LIBFLAGS)
 $(CIMGUI_RULE):
 	$(MAKE) -sC $(CIMGUI_PATH)
 	cp $(CIMGUI_PATH)/$(CIMGUI_NAME) .
@@ -129,7 +125,6 @@ $(OBJDIR)/%.o: %.c
 lib: ## Built the libraries.
 	$(MAKE) -sC $(LFT_PATH) $(LIBFLAGS)
 	$(MAKE) -sC $(LRT_PATH) $(LIBFLAGS)
-	$(MAKE) -sC $(LUI_PATH) $(LIBFLAGS)
 	$(MAKE) -sC $(IMGUI_IMPL_PATH) $(LIBFLAGS)
 .PHONY: lib
 clean:  ## Clean of the project directory (.o & .d).
@@ -141,7 +136,6 @@ clean:  ## Clean of the project directory (.o & .d).
 lclean: ## Clean of the library.
 	$(MAKE) -C $(LFT_PATH)/ fclean
 	$(MAKE) -C $(LRT_PATH)/ fclean
-	$(MAKE) -C $(LUI_PATH)/ fclean
 	$(MAKE) -C $(IMGUI_IMPL_PATH)/ fclean
 	$(RM) $(CIMGUI_NAME)
 .PHONY: lclean
@@ -176,7 +170,6 @@ doc: ## Generate a documentation using doxygen.
 norme: ## Check the norme of the project and the libraries.
 	$(MAKE) -C $(LFT_PATH) norme
 	$(MAKE) -C $(LRT_PATH) norme
-	$(MAKE) -C $(LUI_PATH) norme
 	norminette srcs includes | $(GREP_ERR)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mNorminette $(OKLOGO)"
 .PHONY: norme

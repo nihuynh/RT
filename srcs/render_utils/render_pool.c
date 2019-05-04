@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/27 11:29:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/04 15:09:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 #include <stdio.h>
 #include "libui.h"
 #include "libft.h"
-
-#define PAUSE		0
-#define RUNNING		1
-#define DONE		2
-#define DUMP		printf("Thread %x is %d [task_id = %d][idle_count = %d][thr_count = %d][pxl_idx = %d]\n", (unsigned int)pthread_self(), state, task_id, pool->idle_count, pool->thr_count, pool->pxl_idx)
 
 static inline int
 	do_batch(t_thr_pool *pool)
