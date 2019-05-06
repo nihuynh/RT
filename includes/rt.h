@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:32:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:03:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct	s_gui
 	bool		fullscreen;
 	uint32_t	texture_id;
 	bool		log_open;
+	bool		export_open;
 	t_list		*light_set;
 	t_obj		*obj_set;
 	t_pt3		pos_render;
@@ -180,6 +181,8 @@ void			interface_cylinder(void *res);
 void			interface_cone(void *res);
 void			change_window_title(SDL_Window *win, t_data *app);
 void			fullscreen(t_sdl *sdl, t_gui *gui);
+int				export_scene(t_data *data, char *filename);
+void			export_material(int fd, t_material *mat);
 
 t_color			sepia(t_color in);
 t_color			grayscale(t_color in);

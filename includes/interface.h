@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:08:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 18:34:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 ** Prototypes :
 */
 
+void	export_window(t_data *app);
 void	window_scene(t_data *app);
 void	icolortogui(int src, float dest[3]);
 void	guicolortoi(float src[3], int *dest);
