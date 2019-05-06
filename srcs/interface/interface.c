@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:22:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:02:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	gui_setup(t_gui *gui, t_img img, t_data *app)
 	window_scene(app);
 	if (gui->log_open)
 		window_log(&gui->log_open);
+	if (gui->export_open)
+		export_window(app);
 }
 
 void	update_texture(t_img img, t_gui gui)
@@ -70,6 +72,7 @@ void	interface(t_data *app)
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(app->sdl.win);
 	igNewFrame();
+	// igShowDemoWindow(NULL);
 	gui_setup(&app->gui, app->sdl.img, app);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);

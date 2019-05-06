@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/06 18:29:02 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/06 19:05:40 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				init_interface.c interface_objects.c interface_tools.c	\
 				object_tools.c render_fullscreen.c texture_toolbox.c \
 				interface_lists.c filters.c export.c export_utils.c \
-				export_toolbox.c fullscreen.c
+				fullscreen.c interface_export.c export_toolbox.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c\
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:03:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 19:14:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static inline void
 {
 	if (igBeginMenu("Menu", 1))
 	{
-		igMenuItemBoolPtr("log", NULL, &app->gui.log_open, 1);
+		igMenuItemBoolPtr("Export", NULL, &app->gui.export_open, 1);
+		igMenuItemBoolPtr("Log", NULL, &app->gui.log_open, 1);
 		if (igMenuItemBoolPtr("Fullscreen", NULL, &app->sdl.fullscreen, 1))
 		{
 			fullscreen(&app->sdl, &app->gui);
