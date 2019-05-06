@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:28:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 17:32:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define DEPTH_MAX		2
 
 # define DEBUG			0
-# define MAC			MACB
+# define MAC			IMAC
 
 /*
 ** User def :
@@ -180,5 +180,8 @@ void			interface_cylinder(void *res);
 void			interface_cone(void *res);
 void			change_window_title(SDL_Window *win, t_data *app);
 void			fullscreen(t_sdl *sdl, t_gui *gui);
+
+t_color			sepia(t_color in);
+t_color			grayscale(t_color in);
 
 #endif

@@ -6,44 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/04 16:19:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 16:20:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
 #include "libui.h"
 #include "libft.h"
-#include "librt.h"
-#include "color.h"
-
-uint32_t	sepia(uint32_t in_col)
-{
-	t_color c;
-	t_color out;
-
-	c.r = (in_col >> SHIFT_RED) & 0xFF;
-	c.g = (in_col >> SHIFT_GREEN) & 0xFF;
-	c.b = (in_col >> SHIFT_BLUE) & 0xFF;
-	out.r = ft_clampf((c.r * .393) + (c.g *.769) + (c.b * .189), 0, 255.0);
-	out.g = ft_clampf((c.r * .349) + (c.g *.686) + (c.b * .168), 0, 255.0);
-	out.b = ft_clampf((c.r * .272) + (c.g *.534) + (c.b * .131), 0, 255.0);
-	color_scalar(&out, 1 / 255.f);
-	return (colortoi(out));
-}
-
-uint32_t	grayscale(uint32_t in_col)
-{
-	t_color	c;
-	int		out;
-	int		res;
-
-	c.r = (in_col >> SHIFT_RED) & 0xFF;
-	c.g = (in_col >> SHIFT_GREEN) & 0xFF;
-	c.b = (in_col >> SHIFT_BLUE) & 0xFF;
-	out = (c.r + c.g + c.b) / 3;
-	res = (out << SHIFT_RED) + (out << SHIFT_GREEN) + (out << SHIFT_BLUE);
-	return (res);
-}
 
 static inline void
 	apply_color(t_sdl *sdl)
@@ -115,7 +84,6 @@ void
 	while (++cthr < THR_C)
 		pthread_join(threads[cthr], NULL);
 	apply_color(sdl);
-	// apply_simple_filter(sdl, &sepia);
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 }
