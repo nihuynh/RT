@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/27 11:24:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 16:47:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void
 			render_mthr_sdl(sdl);
 		if (sdl->needs_render && sdl->pool)
 			pool_render(sdl->pool);
-		if (sdl->render_gui && !sdl->fullscreen)
+		if (sdl->render_gui)
 			sdl->render_gui(arg);
 	}
 }
