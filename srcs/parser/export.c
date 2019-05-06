@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 19:50:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 01:25:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,27 @@ static inline void
 	export_camera(int fd, t_cam *cam, t_color amb_light)
 {
 	write(fd, "camera\n{\n", 9);
-	dprintf(fd, "\torigin(%f %f %f)\n", cam->pos.x, cam->pos.y, cam->pos.z);
-	dprintf(fd, "\tdirection(%f %f %f)\n", cam->dir.x, cam->dir.y, cam->dir.z);
-	dprintf(fd, "\tamb_light(%f %f %f)", amb_light.r, amb_light.g, amb_light.b);
+	dprintf(fd, "\torigin(%.3f %.3f %.3f)\n", cam->pos.x, cam->pos.y,
+		cam->pos.z);
+	dprintf(fd, "\tdirection(%.3f %.3f %.3f)\n", cam->dir.x, cam->dir.y,
+		cam->dir.z);
+	dprintf(fd, "\tamb_light(%.3f %.3f %.3f)", amb_light.r, amb_light.g,
+		amb_light.b);
 	write(fd, "\n}\n", 3);
 }
 
 static inline void
 	export_light(int fd, t_list *node)
 {
-	t_light *l;
+	t_light *light;
 
-	l = node->content;
+	light = node->content;
 	write(fd, "\tobject(light)\n\t{\n", 18);
-	dprintf(fd, "\t\tcolor(%f %f %f)\n", l->color.r, l->color.g, l->color.b);
-	dprintf(fd, "\t\torigin(%f %f %f)", l->origin.x, l->origin.y, l->origin.z);
-	dprintf(fd, "\n\t\tintensity(%f)\n", l->intensity);
+	dprintf(fd, "\t\tcolor(%.3f %.3f %.3f)\n", light->color.r, light->color.g,
+		light->color.b);
+	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", light->origin.x, light->origin.y,
+		light->origin.z);
+	dprintf(fd, "\n\t\tintensity(%.3f)\n", light->intensity);
 	write(fd, "\t}\n", 3);
 }
 
