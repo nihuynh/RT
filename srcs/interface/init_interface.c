@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:15:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:25:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	change_window_title(SDL_Window *win, t_data *app)
 		app->gui.scene_name = app->arg;
 	else
 		app->gui.scene_name++;
-	title = ft_strjoin("RT - " , app->gui.scene_name);
+	if (!(title = ft_strjoin("RT - ", app->gui.scene_name)))
+		ft_error(__func__, __LINE__);
 	SDL_SetWindowTitle(win, title);
 	free(title);
 }

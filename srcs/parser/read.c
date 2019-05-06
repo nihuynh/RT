@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/02 14:04:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:07:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@
 */
 
 int
-	parse_camera(char **greed, t_data *data, int line_idx)
+	parse_camera(char **greed, t_data *data, int line_i)
 {
 	if (DEBUG)
-		ft_printf("camera at line = %i\n", line_idx);
-	if (greed[line_idx + 2] == NULL || greed[line_idx + 3] == NULL)
-		parsing_error(line_idx, ERR_PARSE_CONTENT, data, greed);
-	parse_vector(&data->cam.pos, greed[line_idx + 2], 3, "origin(");
-	parse_vector(&data->cam.dir, greed[line_idx + 3], 4, "direction(");
-	parse_color(&data->settings.amb_light, greed[line_idx + 4], 4, "amb_light(");
+		ft_printf("camera at line = %i\n", line_i);
+	if (greed[line_i + 2] == NULL || greed[line_i + 3] == NULL)
+		parsing_error(line_i, ERR_PARSE_CONTENT, data, greed);
+	parse_vector(&data->cam.pos, greed[line_i + 2], 3, "origin(");
+	parse_vector(&data->cam.dir, greed[line_i + 3], 4, "direction(");
+	parse_color(&data->settings.amb_light, greed[line_i + 4], 4, "amb_light(");
 	vec3_normalize(&data->cam.dir);
-	return (line_idx + 6);
+	return (line_i + 6);
 }
 
 /*
