@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/03 16:00:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 17:28:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct	s_gui
 	t_list		*light_set;
 	t_obj		*obj_set;
 	t_pt3		pos_render;
+	int			flags_render;
 }				t_gui;
 
 typedef struct	s_settings
@@ -177,5 +178,7 @@ void			interface_sphere(void *res);
 void			interface_plane(void *res);
 void			interface_cylinder(void *res);
 void			interface_cone(void *res);
+void			change_window_title(SDL_Window *win, t_data *app);
+void			fullscreen(t_sdl *sdl, t_gui *gui);
 
 #endif

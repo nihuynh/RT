@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:16:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/04/24 17:29:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 16:47:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,5 @@ void	render_gui(void *arg)
 
 	app = arg;
 	update_texture(app->sdl.img, app->gui);
-	if (!app->sdl.fullscreen)
-		interface(app);
-	else
-		render_fullscreen(&app->sdl);
+	interface(app);
 }
