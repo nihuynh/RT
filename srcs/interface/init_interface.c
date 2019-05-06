@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:01:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:15:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@
 
 void	change_window_title(SDL_Window *win, t_data *app)
 {
-	char *scene_name;
+	char	*title;
 
-	if (!(scene_name = ft_strrchr(app->arg, '/')))
-		scene_name = app->arg;
+	if (!(app->gui.scene_name = ft_strrchr(app->arg, '/')))
+		app->gui.scene_name = app->arg;
 	else
-		scene_name++;
-	scene_name = ft_strjoin("RT - " , scene_name);
-	SDL_SetWindowTitle(win, scene_name);
-	free(scene_name);
+		app->gui.scene_name++;
+	title = ft_strjoin("RT - " , app->gui.scene_name);
+	SDL_SetWindowTitle(win, title);
+	free(title);
 }
 
 void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
