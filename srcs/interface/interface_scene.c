@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:25:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:03:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static inline void
 	igSameLine(480, 0);
 	igCheckbox("Anti Aliasing", &app->settings.anti_a);
 	color_lights(app);
-
 	igTreePop();
 	igNewLine();
 }

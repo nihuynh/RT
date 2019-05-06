@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/30 19:00:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 19:05:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void
 		while (*str && *str == ' ' && *str != ')')
 			str++;
 		if (!*str || *str == ')')
-			break;
+			break ;
 	}
 	if (idx != 2)
 		ft_error_wmsg(ERR_PARSE_COLOR, line, str);
@@ -78,7 +78,7 @@ void
 		while (*str && *str == ' ' && *str != ')')
 			str++;
 		if (!*str || *str == ')')
-			break;
+			break ;
 	}
 	if (idx != 2)
 		ft_error_wmsg(ERR_PARSE_VECTOR, line, str);
@@ -125,9 +125,11 @@ void
 			str++;
 		while (*str && *str == ' ' && *str != ')')
 			str++;
-		if (!*str)
-			ft_error_wmsg(ERR_PARSE_FLOAT, line, str);
+		if (!*str || *str == ')')
+			break ;
 	}
+	if (idx != 1)
+		ft_error_wmsg(ERR_PARSE_FLOAT, line, str);
 	*l_x = toby[0];
 	*l_y = toby[1];
 	if (DEBUG)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:30:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:03:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	change_window_title(SDL_Window *win, t_data *app)
 		scene_name = app->arg;
 	else
 		scene_name++;
-	scene_name = ft_strjoin("RT - " , scene_name);
+	if (!(scene_name = ft_strjoin("RT - ", scene_name)))
+		ft_error(__func__, __LINE__);
 	SDL_SetWindowTitle(win, scene_name);
 	free(scene_name);
 }

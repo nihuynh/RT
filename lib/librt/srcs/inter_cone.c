@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/30 16:26:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 19:03:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline float
 	inter_finite(t_inter *data, t_cone *cone, float dist[2])
 {
 	t_pt3	inter_pt;
-	t_vec3	origin_to_inter;
+	t_vec3	ori_2_inter;
 	float	scale;
 	int		i;
 	float	dst_final;
@@ -31,8 +31,8 @@ static inline float
 		inter_pt.x = data->ray.origin.x + dist[i] * data->ray.dir.x;
 		inter_pt.y = data->ray.origin.y + dist[i] * data->ray.dir.y;
 		inter_pt.z = data->ray.origin.z + dist[i] * data->ray.dir.z;
-		vec3_sub(&origin_to_inter, &inter_pt, &cone->origin);
-		scale = vec3_dot(&origin_to_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
+		vec3_sub(&ori_2_inter, &inter_pt, &cone->origin);
+		scale = vec3_dot(&ori_2_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
 		if (scale < cone->size && scale >= 0)
 			dst_final = (dst_final < dist[i]) ? dst_final : dist[i];
 	}

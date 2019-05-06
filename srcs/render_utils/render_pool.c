@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/04 15:09:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 19:11:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,16 @@ int
 	destroy_pool(t_thr_pool *pool)
 {
 	pool->is_stopped = 1;
-	// pthread_cond_broadcast(&pool->wait_sig);
-	// SDL_Delay(100);
-	// if (pool)
-	// {
-	// 	if (pool->thrs)
-	// 		free(pool->thrs);
-	// 	free(pool);
-	// }
+	if ((0))
+	{
+		pthread_cond_broadcast(&pool->wait_sig);
+		SDL_Delay(100);
+		if (pool)
+		{
+			if (pool->thrs)
+				free(pool->thrs);
+			free(pool);
+		}
+	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:34:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 19:09:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,12 @@ static inline int
 	parse_color(&dst->self_light, tab[idx + 3], idx + 3, "self_light(");
 	parse_fval(&dst->spec_idx, tab[idx + 4], idx + 4, "spec_idx(");
 	parse_fval(&dst->spec_power, tab[idx + 5], idx + 5, "spec_power(");
-	parse_color(&dst->refraction_color, tab[idx + 6], idx + 6, "refraction_color(");
-	parse_color(&dst->reflection_color, tab[idx + 7], idx + 7, "reflection_color(");
-	parse_fval(&dst->refraction_idx, tab[idx + 8], idx + 8, "refraction_idx(");
-	return (idx + 10);
+	idx += 6;
+	parse_color(&dst->refraction_color, tab[idx], idx, "refraction_color(");
+	idx++;
+	parse_color(&dst->reflection_color, tab[idx], idx, "reflection_color(");
+	parse_fval(&dst->refraction_idx, tab[idx + 1], idx + 1, "refraction_idx(");
+	return (idx + 3);
 }
 
 /*
