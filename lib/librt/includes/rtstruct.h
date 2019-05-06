@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 17:34:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 19:43:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,6 @@ struct			s_inter
 struct			s_obj
 {
 	int			type;
-	char		name[16];
 	void		*shape;
 	t_material	material;
 	void		(*f_inter) (t_inter*, t_obj*);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:09:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 19:45:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int
 	init_parse(type, &cfg);
 	if (DEBUG)
 		ft_putendl(cfg.printout);
-	ft_strcpy(obj.name, cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
 	cfg.setter(shape, greed, ++l_idx);
