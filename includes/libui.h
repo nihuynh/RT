@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/04 14:55:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 16:19:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,5 @@ int					init_pool(t_sdl *sdl, int (*do_pxl) (int, int, void*),
 	void *prg_d, uint16_t thr_count);
 int					pool_render(t_thr_pool *pool);
 int					destroy_pool(t_thr_pool *pool);
+
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/03 16:00:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/06 16:23:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define DEPTH_MAX		2
 
 # define DEBUG			0
-# define MAC			MACB
+# define MAC			IMAC
 
 /*
 ** User def :
@@ -177,5 +177,8 @@ void			interface_sphere(void *res);
 void			interface_plane(void *res);
 void			interface_cylinder(void *res);
 void			interface_cone(void *res);
+
+t_color			sepia(t_color in);
+t_color			grayscale(t_color in);
 
 #endif
