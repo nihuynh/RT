@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 16:27:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 18:21:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int __attribute__((hot))
 		color = anti_aliasing(color, data, x, y);
 	color_clamp(&color, 0, 1);
 	color_mult(&color, &data->settings.filter);
-	color = sepia(color);
+	// color = sepia(color);
 	// color = grayscale(color);
 	return (colortoi(color));
 }
