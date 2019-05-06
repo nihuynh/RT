@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/02 22:52:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 17:58:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void			parse_vector(t_vec3 *vec, char *str, int line, char *key);
 void			parse_fval(float *val, char *str, int line, const char *key);
 void			parse_limit(float *l_x, float *l_y, char *str, int line);
 t_texture		*parse_texture(t_list *lst_tex, char *str, int line);
+
 /*
 ** Setters :
 */
@@ -60,6 +61,16 @@ void			sphere_set(void *sphere, char **greed, int i);
 void			light_set(t_light *light, char **greed, int i);
 
 /*
+** Export :
+*/
+
+void			plane_export(int fd, void *shape);
+void			sphere_export(int fd, void *shape);
+void			cone_export(int fd, void *shape);
+void			cylinder_export(int fd, void *shape);
+void			export_material(int fd, t_material *mat);
+
+/*
 ** Structs :
 */
 
@@ -68,6 +79,7 @@ typedef struct	s_parse
 	char		*printout;
 	size_t		content_size;
 	void		(*setter) (void*, char **, int);
+	void		(*export) (int, void*);
 	size_t		line_offset;
 }				t_parse;
 

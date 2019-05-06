@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/02 22:52:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/06 17:34:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static inline void
 	init_parse(int type, t_parse *config)
 {
 	const t_parse index_config[4] = {
-		{"Plane : ", sizeof(t_plane), &plane_set, 6},
-		{"Sphere : ", sizeof(t_sphere), &sphere_set, 5},
-		{"Cone : ", sizeof(t_cone), &cone_set, 7},
-		{"Cylinder : ", sizeof(t_cylinder), &cylinder_set, 7}
+		{"plane", sizeof(t_plane), &plane_set, &plane_export, 6},
+		{"sphere", sizeof(t_sphere), &sphere_set, &sphere_export, 5},
+		{"cone", sizeof(t_cone), &cone_set, &cone_export, 7},
+		{"cylinder", sizeof(t_cylinder), &cylinder_set, &cylinder_export, 7}
 	};
 
 	config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
@@ -109,10 +109,12 @@ int
 	init_parse(type, &cfg);
 	if (DEBUG)
 		ft_putendl(cfg.printout);
+	ft_strcpy(obj.name, cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
 	cfg.setter(shape, greed, ++l_idx);
 	obj_set(&obj, type, shape);
+	obj.export = cfg.export;
 	idx = parse_material(d, &obj.material, greed, l_idx + cfg.line_offset - 2);
 	ft_lstpushnew(&d->scene.lst_obj, &obj, sizeof(t_obj));
 	return (idx);
