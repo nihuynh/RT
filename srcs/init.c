@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/02 14:14:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/07 21:09:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ void
 	data->sdl.mouse_map = &mouse_motion;
 	data->sdl.update = &update;
 	data->sdl.render_gui = &render_gui;
-	data->sdl.render_fullscreen = &render_fullscreen;
 	data->sdl.click_map = &click_event;
 }

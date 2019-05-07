@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 16:19:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 21:09:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ struct				s_sdl
 	void			(*click_map)(SDL_Event *, void *);
 	void			(*update)(void *arg);
 	void			(*render_gui)(void *arg);
-	void			(*render_fullscreen)(t_sdl *sdl);
 };
 
 struct				s_data_thr

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 18:34:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/07 20:45:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void	guitocolor(float src[3], t_color *dest);
 void	object_settings(t_data *app);
 void	material_list(t_list *lst_mat, t_obj *obj);
 void	texture_list(t_list *lst_tex, t_obj *obj);
+void	new_obj_list(int *type);
 t_obj	*find_obj_at_pixel(t_data *app, int x, int y);
+void	new_light(t_data *app);
+void	new_obj(t_data *app, int type);
+void	new_obj_window(t_data *app);
+void	delete_obj_window(t_data *app);
+void	delete_obj(t_data *app);
 
 #endif

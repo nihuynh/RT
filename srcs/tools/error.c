@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 03:36:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 20:36:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void
 	ft_error(__func__, __LINE__);
 }
 
-static inline void
+void
 	del_obj(void *content, size_t content_size)
 {
 	t_obj *obj;

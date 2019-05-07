@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:02:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/07 20:45:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	gui_setup(t_gui *gui, t_img img, t_data *app)
 		window_log(&gui->log_open);
 	if (gui->export_open)
 		export_window(app);
+	if (gui->new_obj_open)
+		new_obj_window(app);
+	if (gui->delete_obj_open)
+		delete_obj_window(app);
 }
 
 void	update_texture(t_img img, t_gui gui)

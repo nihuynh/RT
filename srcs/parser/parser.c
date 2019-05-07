@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:45:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 16:35:52 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static inline void
 ** @param shape	The shape
 */
 
-static inline void
+void
 	obj_set(t_obj *obj, int type, void *shape)
 {
 	const t_objset obj_func[] = {

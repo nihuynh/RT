@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 03:30:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 21:09:11 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ typedef struct	s_gui
 	uint32_t	texture_id;
 	bool		log_open;
 	bool		export_open;
+	bool		new_obj_open;
+	bool		delete_obj_open;
+	int			new_obj_type;
 	t_list		*light_set;
 	t_obj		*obj_set;
 	t_pt3		pos_render;
@@ -176,7 +179,6 @@ void			init_textures(t_data *app);
 void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);
 void			render_gui(void *arg);
-void			render_fullscreen(t_sdl *sdl);
 void			interface_sphere(void *res);
 void			interface_plane(void *res);
 void			interface_cylinder(void *res);
@@ -185,6 +187,8 @@ void			change_window_title(SDL_Window *win, t_data *app);
 void			fullscreen(t_sdl *sdl, t_gui *gui);
 int				export_scene(t_data *data, char *filename);
 void			export_material(int fd, t_material *mat);
+int				texcmp(void *content, void *key);
+void			del_obj(void *content, size_t content_size);
 
 t_color			sepia(t_color in);
 t_color			grayscale(t_color in);

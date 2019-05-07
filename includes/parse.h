@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 17:58:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 16:52:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@
 # define ERR_PARSE_SET_CO	"ERROR :	Set-up of the cone		at line : "
 # define ERR_PARSE_SET_LI	"ERROR :	Set-up of the light		at line : "
 # define ERR_FILE			"ERROR :	File is too small to be valid"
+
+/*
+** New object
+*/
+
+void			obj_set(t_obj *obj, int type, void *shape);
+void			sphere_new(void *res, char **greed, int i);
+void			plane_new(void *res, char **greed, int i);
+void			cylinder_new(void *res, char **greed, int i);
+void			cone_new(void *res, char **greed, int i);
 
 /*
 ** Getters :

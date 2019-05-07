@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_toolbox.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/02 22:33:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 19:47:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ t_texture
 		if (!(tex = ft_lstgetelt(lst_tex, &texcmp, str)))
 			tex = ft_lstgetelt(lst_tex, &texcmp, "none");
 	}
+	else
+		ft_error(__func__, __LINE__);
 	return (tex);
 }

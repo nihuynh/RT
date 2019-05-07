@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:14:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 20:44:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,15 @@ static inline void
 			fullscreen(&app->sdl, &app->gui);
 			app->sdl.needs_render = 1;
 		}
+		igEndMenu();
+	}
+	if (igBeginMenu("Scene", 1))
+	{
+		igMenuItemBoolPtr("New Object", NULL, &app->gui.new_obj_open, 1);
+		if (igMenuItemBool("New Light", NULL, 0, 1))
+			new_light(app);
+		igMenuItemBoolPtr("Delete Selected Object", NULL,
+							&app->gui.delete_obj_open, 1);
 		igEndMenu();
 	}
 	igEndMenuBar();
