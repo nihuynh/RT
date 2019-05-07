@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/03/19 17:57:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 03:36:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void
 		ft_lstdel(&data->scene.lst_light, &del_obj);
 	if (data->lst_mat)
 		ft_lstdel(&data->lst_mat, &del_mat);
+	SDL_GL_DeleteContext(data->gui.gl_context);
 	exit_sdl(&data->sdl);
 }
 

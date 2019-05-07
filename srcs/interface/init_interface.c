@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:25:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/07 03:35:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@ void	change_window_title(SDL_Window *win, t_data *app)
 
 void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
 {
-	SDL_GLContext gl_context;
-
 	gui->log_open = false;
 	gui->export_open = false;
-	gl_context = SDL_GL_CreateContext(window);
+	gui->gl_context = SDL_GL_CreateContext(window);
 	igCreateContext(NULL);
-	ImGui_ImplSDL2_InitForOpenGL(window, &gl_context);
+	ImGui_ImplSDL2_InitForOpenGL(window, &gui->gl_context);
 	ImGui_ImplOpenGL2_Init();
 	glGenTextures(1, &gui->texture_id);
 	glBindTexture(GL_TEXTURE_2D, gui->texture_id);

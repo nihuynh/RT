@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 01:14:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/07 03:30:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct	s_gui
 	t_obj		*obj_set;
 	t_pt3		pos_render;
 	int			flags_render;
+	SDL_GLContext gl_context;
 }				t_gui;
 
 typedef struct	s_settings
