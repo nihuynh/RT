@@ -49,6 +49,7 @@ void
 	cylinder_set(void *cylinder, char **greed, int i)
 {
 	t_cylinder	*pcylinder;
+	t_matrix	rotation;
 
 	if (cylinder == NULL)
 		ft_error_wmsg(ERR_PARSE_SET_CY, i, greed[i]);
@@ -56,6 +57,9 @@ void
 	parse_vector(&pcylinder->origin, greed[i + 1], i + 1, "origin(");
 	parse_vector(&pcylinder->n, greed[i + 2], i + 2, "normal(");
 	vec3_normalize(&pcylinder->n);
+	pcylinder->z = (t_vec3){1, 0, 0};
+	rotation = create_rotation_from_direction(pcylinder->n);
+	apply_matrix(&pcylinder->z, &rotation);
 	parse_fval(&pcylinder->radius, greed[i + 3], i + 3, "radius(");
 	parse_fval(&pcylinder->size, greed[i + 4], i + 4, "size(");
 }

@@ -134,7 +134,7 @@ t_color
 		diffuse_color = s.mat.color_diffuse;
 	final_color = color_mult_(settings->amb_light, diffuse_color);
 	if (settings->light == false)
-		return (final_color);
+		return (diffuse_color);
 	color_mult(&accum_light[DIFFUSE], &diffuse_color);
 	color_mult(&accum_light[SPECULAR], &s.mat.color_specular);
 	color_add(&final_color, accum_light[DIFFUSE]);

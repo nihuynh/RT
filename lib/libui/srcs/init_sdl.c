@@ -19,7 +19,7 @@ int		init_sdl(t_sdl *sdl, int width, int height)
 	ft_bzero(sdl, sizeof(t_sdl));
 	sdl->height_vp = height;
 	sdl->width_vp = width;
-	sdl->img.height = height / 2;
+	sdl->img.height = height;
 	sdl->img.width = width / 2;
 	if (!(sdl->img.pixels = malloc(sizeof(uint32_t)
 		* sdl->img.height * sdl->img.width)))

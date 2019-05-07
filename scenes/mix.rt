@@ -27,24 +27,9 @@ content
 		reflection_color(0.04 0.04 0.04)
 		refraction_idx(0)
 	}
-	object(plane)
-	{
-		origin(0 0 -50)
-		normal(0 0 1)
-		limit(50 50)
-		texture(uv_checker.ppm)
-		color_diffuse(0.25 0.25 0.75)
-		color_specular(0.9 0.8 0.7)
-		self_light(0 0 0)
-		spec_idx(1)
-		spec_power(50)
-		refraction_color(0 0 0)
-		reflection_color(0.04 0.04 0.04)
-		refraction_idx(0)
-	}
 	object(sphere)
 	{
-		origin(-20 -5 0)
+		origin(-40 -5 0)
 		radius(15)
 		texture(uv_checker.ppm)
 		color_diffuse(0.95 0 0)
@@ -58,7 +43,7 @@ content
 	}
 	object(cylinder)
 	{
-		origin(20 0 -20)
+		origin(40 0 0)
 		normal(1 1 0)
 		radius(5)
 		size(20)
@@ -74,7 +59,7 @@ content
 	}
 	object(cone)
 	{
-		origin(5 -5 -18)
+		origin(5 -5 0)
 		normal(0 1 0)
 		theta(30)
 		size(20)

@@ -66,6 +66,7 @@ typedef struct	s_cylinder
 {
 	t_pt3		origin;
 	t_vec3		n;
+	t_vec3		z;
 	float		radius;
 	float		size;
 }				t_cylinder;

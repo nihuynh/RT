@@ -15,6 +15,8 @@
 #include "librt.h"
 #include "libft.h"
 
+extern bool debug;
+
 t_shading get_shading_data(t_inter *inter);
 
 void
@@ -77,8 +79,19 @@ t_color
 	if (inter.obj == NULL)
 		return (settings.back_color);
 	shading = get_shading_data(&inter);
-//	return (t_color){0.5f + shading.normal.x / 2.f, 0.5f + shading.normal.y / 2.f, 0.5f + shading.normal.z / 2.f};
-	return (t_color){shading.uv.x, shading.uv.x, shading.uv.x};
+	//	return (t_color){0.5f + shading.normal.x / 2.f, 0.5f + shading.normal.y / 2.f, 0.5f + shading.normal.z / 2.f};
+	if (debug)
+	{
+		printf("UV    : x = %.3f y = %.3f\n", shading.uv.x, shading.uv.y);
+		printf("Normal: x = %.3f y = %.3f z = %.3f\n", shading.normal.x, shading.normal.y, shading.normal.z);
+		if (inter.obj->type == CYLINDER)
+			printf("Z axis: x = %.3f y = %.3f z = %.3f\n", ((t_cylinder*)inter.obj->shape)->z.x, ((t_cylinder*)inter.obj->shape)->z.y, ((t_cylinder*)inter.obj->shape)->z.z);
+		debug = false;
+	}
+//	if (settings.light == false)
+//		return (t_color){shading.uv.x, shading.uv.x, shading.uv.x};
+//	if (settings.i_light == false)
+//		return (t_color){shading.normal.x, shading.normal.y, shading.normal.z};
 	lighting = get_lighting(shading, scene, &settings);
 	if (depth < settings.depth_max)
 		color_add(&lighting, cast_bounce(scene, settings, &inter, depth));

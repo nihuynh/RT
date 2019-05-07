@@ -13,6 +13,8 @@
 #include "librt.h"
 #include <math.h>
 
+void matrix_transpose(t_matrix *matrix);
+
 static inline float
 	inter_finite(t_inter *data, t_cone *cone, float dist[2])
 {
@@ -96,18 +98,39 @@ void
 t_vec3
 	get_cone_uv(t_inter *inter)
 {
-	t_cone	*cone;
-	t_vec3	origin_to_hitpoint;
-	t_vec3	uv;
-	float	height;
+	t_cone		*cone;
+	t_vec3		origin_to_hitpoint;
+	t_vec3		uv;
+	t_matrix	rotation;
+	t_vec3		hit_normal_reoriented;
 
-	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
-	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
 	cone = inter->obj->shape;
+	rotation = create_rotation_from_direction(cone->n);
+	matrix_transpose(&rotation);
+	apply_matrix(&hit_normal_reoriented, &rotation);
+	vec3_cartesian_to_spherical(hit_normal_reoriented, &uv.x, &uv.y);
+	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
 	origin_to_hitpoint = vec3_sub_(inter->point, cone->origin);
-	height = vec3_dot(&origin_to_hitpoint, &cone->n);
-	uv.y = height;
+	uv.y = vec3_dot(&origin_to_hitpoint, &cone->n);
 	if (cone->size > 0)
 		uv.y = 1 - (uv.y / cone->size);
 	return (uv);
+}
+
+void matrix_transpose(t_matrix *matrix)
+{
+	t_matrix	tmp;
+
+	tmp = *matrix;
+	matrix->m[0][0] = tmp.m[0][0];
+	matrix->m[0][1] = tmp.m[1][0];
+	matrix->m[0][2] = tmp.m[2][0];
+
+	matrix->m[1][0] = tmp.m[0][1];
+	matrix->m[1][1] = tmp.m[1][1];
+	matrix->m[1][2] = tmp.m[2][1];
+
+	matrix->m[2][0] = tmp.m[0][2];
+	matrix->m[2][1] = tmp.m[1][2];
+	matrix->m[2][2] = tmp.m[2][2];
 }

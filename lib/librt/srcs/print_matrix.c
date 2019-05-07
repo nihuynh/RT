@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 
 #include "rtstruct.h"
-#include "ftio.h"
+#include "stdio.h"
 
 void				print_matrix(t_matrix *mat)
 {
 	char *format;
 
-	format = "Matrix :\nx : %f, %f ,%f\ny : %f, %f, %f\nz : %f, %f, %f\n";
-	ft_printf(format,
+	format = "Matrix:  x       y      z\n\t\t% .2f, % .2f, % .2f\n\t\t% .2f, % .2f, % .2f\n\t\t% .2f, % .2f, % .2f\n";
+	printf(format,
 			mat->m[0][0], mat->m[0][1], mat->m[0][2],
 			mat->m[1][0], mat->m[1][1], mat->m[1][2],
 			mat->m[2][0], mat->m[2][1], mat->m[2][2]);

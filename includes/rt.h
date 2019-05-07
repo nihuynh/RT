@@ -65,7 +65,7 @@
 
 # if (MAC == MACB)
 #  define WIDTH			1680
-#  define HEIGHT		1000
+#  define HEIGHT		700
 # elif (MAC == IMAC)
 #  define WIDTH			2560
 #  define HEIGHT		1400

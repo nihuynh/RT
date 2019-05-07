@@ -15,6 +15,8 @@
 #include <SDL.h>
 #include "interface.h"
 
+bool debug;
+
 /*
 ** @brief Key mapping
 **
@@ -82,7 +84,10 @@ void
 		y = event->button.y - app->gui.pos_render.y;
 		if (x >= 0 && x < app->sdl.img.width
 			&& y >= 0 && y < app->sdl.img.height)
+		{
+			debug = true;
 			process_pixel(x, y, app);
+		}
 	}
 }
 

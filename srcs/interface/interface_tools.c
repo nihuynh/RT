@@ -29,8 +29,9 @@ void	interface_sphere(void *res)
 
 void	interface_plane(void *res)
 {
-	t_plane	*plane;
-	t_plane	tmp;
+	t_plane		*plane;
+	t_plane		tmp;
+	t_matrix	rotation;
 
 	plane = res;
 	tmp = *plane;
@@ -40,7 +41,14 @@ void	interface_plane(void *res)
 		plane->n = tmp.n;
 	igSameLine(0, 0);
 	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
 		vec3_normalize(&plane->n);
+		vec3_new(&plane->x, -1, 0, 0);
+		vec3_new(&plane->y, 0, -1, 0);
+		rotation = create_rotation_from_direction(plane->n);
+		apply_matrix(&plane->x, &rotation);
+		apply_matrix(&plane->y, &rotation);
+	}
 	if (igInputFloat("X Limit", &tmp.size_x, 0, 0, "%g", 0))
 		plane->size_x = tmp.size_x;
 	if (igInputFloat("Y Limit", &tmp.size_y, 0, 0, "%g", 0))
