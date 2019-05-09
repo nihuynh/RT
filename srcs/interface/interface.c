@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 20:45:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:50:51 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	window_renderer(t_gui *gui, t_img img)
 	pos = igGetWindowPos();
 	gui->pos_render.x = pos.x;
 	gui->pos_render.y = pos.y;
+	gui->render_focused = !igIsWindowFocused(0);
 	igEnd();
 	igPopStyleVar(2);
 }
@@ -58,6 +59,10 @@ void	gui_setup(t_gui *gui, t_img img, t_data *app)
 		new_obj_window(app);
 	if (gui->delete_obj_open)
 		delete_obj_window(app);
+	if (gui->load_open)
+		load_window(app);
+	if (gui->error_open)
+		error_window(app);
 }
 
 void	update_texture(t_img img, t_gui gui)

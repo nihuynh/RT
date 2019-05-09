@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/07 21:08:40 by sklepper         ###   ########.fr        #
+#    Updated: 2019/05/09 15:03:32 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				init_interface.c interface_objects.c interface_tools.c	\
 				object_tools.c texture_toolbox.c new_object_tools.c \
 				interface_lists.c filters.c export.c export_utils.c \
-				fullscreen.c interface_windows.c export_toolbox.c new_object.c
-SRC			+=	init_sdl.c error_sdl.c exit_sdl.c\
+				fullscreen.c interface_windows.c export_toolbox.c new_object.c \
+				reload.c
+SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c
 # directories :

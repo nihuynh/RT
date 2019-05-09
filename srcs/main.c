@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/27 11:37:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 15:01:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	interactive(char *filename, int runmode)
 	t_data		data;
 
 	ft_bzero(&data, sizeof(t_data));
-	data.arg = filename;
+	data.arg = ft_strdup(filename);
 	if (reader(filename, &data) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
 	if (runmode == RM_UNIT_TEST)

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 20:44:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:36:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static inline void
 {
 	if (igBeginMenu("Menu", 1))
 	{
-		igMenuItemBoolPtr("Export", NULL, &app->gui.export_open, 1);
+		igMenuItemBoolPtr("Load Scene", NULL, &app->gui.load_open, 1);
+		igMenuItemBoolPtr("Export Scene", NULL, &app->gui.export_open, 1);
 		igMenuItemBoolPtr("Log", NULL, &app->gui.log_open, 1);
 		if (igMenuItemBoolPtr("Fullscreen", NULL, &app->sdl.fullscreen, 1))
 		{

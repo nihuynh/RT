@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 20:36:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:01:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void
 	free(obj);
 }
 
-static inline void
+void
 	del_mat(void *content, size_t content_size)
 {
 	t_material *mat;
@@ -48,12 +48,15 @@ static inline void
 void
 	exit_safe(t_data *data)
 {
+	free(data->arg);
 	if (data->scene.lst_obj)
 		ft_lstdel(&data->scene.lst_obj, &del_obj);
 	if (data->scene.lst_light)
 		ft_lstdel(&data->scene.lst_light, &del_obj);
 	if (data->lst_mat)
 		ft_lstdel(&data->lst_mat, &del_mat);
+	if (data->lst_tex)
+		ft_lstdel(&data->lst_tex, &del_obj);
 	SDL_GL_DeleteContext(data->gui.gl_context);
 	exit_sdl(&data->sdl);
 }

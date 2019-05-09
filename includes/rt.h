@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 13:58:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:49:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,13 @@ typedef struct	s_gui
 	char		*scene_name;
 	bool		fullscreen;
 	uint32_t	texture_id;
+	bool		render_focused;
 	bool		log_open;
 	bool		export_open;
 	bool		new_obj_open;
 	bool		delete_obj_open;
+	bool		load_open;
+	bool		error_open;
 	int			new_obj_type;
 	t_list		*light_set;
 	t_obj		*obj_set;
@@ -177,6 +180,7 @@ t_color			texture_strips(t_texture *tex, float x, float y);
 void			init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void			init(t_data	*data);
 void			init_textures(t_data *app);
+void			init_settings(t_settings *settings);
 void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);
 void			render_gui(void *arg);
@@ -190,6 +194,8 @@ int				export_scene(t_data *data, char *filename);
 void			export_material(int fd, t_material *mat);
 int				texcmp(void *content, void *key);
 void			del_obj(void *content, size_t content_size);
+void			del_mat(void *content, size_t content_size);
+void			reload(t_data *app, char *filename);
 
 t_color			sepia(t_color in);
 t_color			grayscale(t_color in);

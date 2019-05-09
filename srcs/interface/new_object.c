@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 21:01:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:33:41 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static inline void
 	config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
 }
 
-void	new_obj(t_data *app, int type)
+void
+	new_obj(t_data *app, int type)
 {
 	t_obj		new;
 	t_parse		cfg;
@@ -45,7 +46,8 @@ void	new_obj(t_data *app, int type)
 	ft_lstpushnew(&app->scene.lst_obj, &new, sizeof(t_obj));
 }
 
-void	new_light(t_data *app)
+void
+	new_light(t_data *app)
 {
 	t_light	light;
 
@@ -55,12 +57,14 @@ void	new_light(t_data *app)
 	ft_lstpushnew(&app->scene.lst_light, &light, sizeof(t_light));
 }
 
-int		obj_cmp(void *content, void *key)
+int
+	obj_cmp(void *content, void *key)
 {
 	return (content == key);
 }
 
-void	delete_obj(t_data *app)
+void
+	delete_obj(t_data *app)
 {
 	t_list	*ptr;
 	t_list	*to_del;
