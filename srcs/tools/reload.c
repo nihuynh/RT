@@ -6,12 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 15:28:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 18:02:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "libft.h"
+#include "interface.h"
 #include <fcntl.h>
 
 bool	check_file(char *filename)
@@ -42,5 +43,6 @@ void	reload(t_data *app, char *filename)
 		ft_error(__func__, __LINE__);
 	init_settings(&app->settings);
 	init_render(app);
+	init_gui(&app->gui, app);
 	change_window_title(app->sdl.win, app);
 }

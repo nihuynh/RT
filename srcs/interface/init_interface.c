@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 16:43:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 18:02:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,19 @@ void	change_window_title(SDL_Window *win, t_data *app)
 	free(title);
 }
 
-void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
+void	init_gui(t_gui *gui, t_data *app)
 {
 	gui->log_open = false;
 	gui->export_open = false;
+	gui->light_set = app->scene.lst_light;
+	gui->obj_set = NULL;
+	gui->flags_render = 2;
+	gui->new_obj_type = 0;
+}
+
+void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
+{
+
 	if (!(gui->gl_context = SDL_GL_CreateContext(window)))
 		ft_error(__func__, __LINE__);
 	igCreateContext(NULL);
@@ -49,9 +58,5 @@ void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
-	gui->light_set = app->scene.lst_light;
-	gui->obj_set = NULL;
-	gui->flags_render = 2;
-	gui->new_obj_type = 0;
 	change_window_title(window, app);
 }

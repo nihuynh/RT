@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 15:31:38 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 18:01:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void	delete_obj(t_data *app);
 void	load_window(t_data *app);
 bool	check_file(char *filename);
 void	error_window(t_data *app);
+void	init_gui(t_gui *gui, t_data *app);
 
 #endif
