@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 18:01:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 20:20:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,7 @@ void			reload(t_data *app, char *filename);
 
 t_color			sepia(t_color in);
 t_color			grayscale(t_color in);
+
+t_shading		get_shading_data(t_inter *inter);
 
 #endif

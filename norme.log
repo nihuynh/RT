@@ -1,17 +1,16 @@
 [1;34mlibft.a[25G[31mNorminette [80G[32m[OK][0m
 [1;34mlibrt.a[25G[31mNorminette [80G[32m[OK][0m
 Norme: ./srcs/render/render.c
-Error (line 18): declaration of get_shading_data forbidden in .c
-Error (line 51): line has 85 characters
-Error (line 54): line has 83 characters
-Error (line 117): C++ comment
-Error (line 118): C++ comment
-Norme: ./srcs/render/texture.c
+Error (line 49): line has 85 characters
+Error (line 52): line has 83 characters
+Error (line 115): C++ comment
+Error (line 116): C++ comment
+Norme: ./srcs/render_utils/error_sdl.c
 --
 --
 Norme: ./srcs/render/light.c
 Error: 9 functions in the file
 Error (line 100): line has 88 characters
 Error (line 114): function get_lighting has 26 lines
-Norme: ./srcs/render_utils/init_sdl.c
+Norme: ./srcs/render/texture.c
 [1;34mRT[25G[31mNorminette [80G[32m[OK][0m

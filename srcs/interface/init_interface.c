@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 18:02:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 20:16:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	init_gui(t_gui *gui, t_data *app)
 
 void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
 {
-
 	if (!(gui->gl_context = SDL_GL_CreateContext(window)))
 		ft_error(__func__, __LINE__);
 	igCreateContext(NULL);

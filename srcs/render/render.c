@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 19:10:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 20:17:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <math.h>
 #include "librt.h"
 #include "libft.h"
-
-t_shading get_shading_data(t_inter *inter);
 
 void
 	cam_ray(t_data *data, t_ray *res, float x, float y)

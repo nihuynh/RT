@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/09 18:09:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 20:16:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ typedef struct	s_material
 	float		refraction_idx;
 	t_texture	*tex;
 }				t_material;
-
 
 /*
 ** @brief Struct that hold the intersection.
