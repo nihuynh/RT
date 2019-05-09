@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:28:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 15:33:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 17:08:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	load_window(t_data *app)
 		else
 			app->gui.error_open = true;
 		app->gui.load_open = false;
-
 	}
 	igEnd();
 }

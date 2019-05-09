@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 17:01:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 17:07:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	interface(t_data *app)
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(app->sdl.win);
 	igNewFrame();
-	// igShowDemoWindow(NULL);
 	gui_setup(&app->gui, app->sdl.img, app);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
