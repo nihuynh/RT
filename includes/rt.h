@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 15:49:33 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 18:01:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RT_H
 
 # include "rtstruct.h"
-# include "ftlist.h"
+# include "data_struct.h"
 # include <SDL.h>
 # include "libui.h"
 
@@ -84,66 +84,6 @@
 # define USAGE "Usage : ./RT <scene.rt> [options]\nOptions : hlt"
 
 /*
-** Structures :
-*/
-
-typedef struct	s_gui
-{
-	t_cam		cam_cpy;
-	char		*scene_name;
-	bool		fullscreen;
-	uint32_t	texture_id;
-	bool		render_focused;
-	bool		log_open;
-	bool		export_open;
-	bool		new_obj_open;
-	bool		delete_obj_open;
-	bool		load_open;
-	bool		error_open;
-	int			new_obj_type;
-	t_list		*light_set;
-	t_obj		*obj_set;
-	t_pt3		pos_render;
-	int			flags_render;
-	SDL_GLContext gl_context;
-}				t_gui;
-
-typedef struct	s_settings
-{
-	t_color		back_color;
-	t_color		amb_light;
-	t_color		filter;
-	bool		light;
-	bool		facing;
-	bool		i_light;
-	bool		shine;
-	bool		shadow;
-	bool		deflect;
-	bool		absorb;
-	bool		anti_a;
-	int			depth_max;
-	float		fov;
-}				t_settings;
-
-typedef struct	s_scene
-{
-	t_list		*lst_obj;
-	t_list		*lst_light;
-}				t_scene;
-
-typedef struct	s_data
-{
-	t_settings	settings;
-	t_sdl		sdl;
-	t_gui		gui;
-	t_scene		scene;
-	t_list		*lst_mat;
-	t_list		*lst_tex;
-	t_cam		cam;
-	char		*arg;
-}				t_data;
-
-/*
 ** Prototypes :
 */
 
@@ -184,10 +124,10 @@ void			init_settings(t_settings *settings);
 void			interface(t_data *app);
 void			update_texture(t_img img, t_gui gui);
 void			render_gui(void *arg);
-void			interface_sphere(void *res);
-void			interface_plane(void *res);
-void			interface_cylinder(void *res);
-void			interface_cone(void *res);
+void			ui_sphere(void *res);
+void			ui_plane(void *res);
+void			ui_cylinder(void *res);
+void			ui_cone(void *res);
 void			change_window_title(SDL_Window *win, t_data *app);
 void			fullscreen(t_sdl *sdl, t_gui *gui);
 int				export_scene(t_data *data, char *filename);

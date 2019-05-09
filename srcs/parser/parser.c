@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 16:35:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 17:51:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void
 	obj_set(t_obj *obj, int type, void *shape)
 {
 	const t_objset obj_func[] = {
-		{&inter_plane, &interface_plane, &normal_plane, &get_plane_uv},
-		{&inter_sphere, &interface_sphere, &normal_sphere, &get_sphere_uv},
-		{&inter_cone, &interface_cone, &normal_cone, &get_cone_uv},
-		{&inter_cylinder, &interface_cylinder, &normal_cylinder, &get_cylinder_uv},
+		{&inter_plane, &ui_plane, &normal_plane, &get_plane_uv},
+		{&inter_sphere, &ui_sphere, &normal_sphere, &get_sphere_uv},
+		{&inter_cone, &ui_cone, &normal_cone, &get_cone_uv},
+		{&inter_cylinder, &ui_cylinder, &normal_cylinder, &get_cylinder_uv},
 	};
 
 	ft_bzero(obj, sizeof(t_obj));

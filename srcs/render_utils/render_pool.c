@@ -6,12 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 19:11:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 17:29:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
-#include <stdio.h>
 #include "libui.h"
 #include "libft.h"
 

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/07 01:25:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 17:51:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 #include "parse.h"
 #include "libft.h"
 #include <stdio.h>
+#include <locale.h>
 #include <fcntl.h>
 #include <unistd.h>
 
 static inline void
 	export_camera(int fd, t_cam *cam, t_color amb_light)
 {
+	t_pt3	direction;
+
+	direction = cam->dir;
+	apply_matrix(&direction, &cam->rotation);
+	vec3_normalize(&direction);
 	write(fd, "camera\n{\n", 9);
 	dprintf(fd, "\torigin(%.3f %.3f %.3f)\n", cam->pos.x, cam->pos.y,
 		cam->pos.z);
-	dprintf(fd, "\tdirection(%.3f %.3f %.3f)\n", cam->dir.x, cam->dir.y,
-		cam->dir.z);
+	dprintf(fd, "\tdirection(%.3f %.3f %.3f)\n", direction.x, direction.y,
+		direction.z);
 	dprintf(fd, "\tamb_light(%.3f %.3f %.3f)", amb_light.r, amb_light.g,
 		amb_light.b);
 	write(fd, "\n}\n", 3);
@@ -48,8 +54,8 @@ static inline void
 static inline void
 	export_obj(int fd, t_list *node)
 {
-	const char*	names[] = {
-		"plane","sphere","cone","cylinder"
+	const char	*names[] = {
+		"plane", "sphere", "cone", "cylinder"
 	};
 	t_obj		*obj;
 
@@ -74,6 +80,7 @@ int
 {
 	int fd;
 
+	setlocale(LC_NUMERIC, "en-US");
 	fd = open(filename, O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR);
 	if (fd == -1)
 	{
@@ -83,5 +90,6 @@ int
 	export_camera(fd, &data->cam, data->settings.amb_light);
 	export_content(fd, &data->scene);
 	close(fd);
+	setlocale(LC_NUMERIC, NULL);
 	return (0);
 }

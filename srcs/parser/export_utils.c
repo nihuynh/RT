@@ -6,12 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:21:36 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/07 01:29:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 17:29:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
 #include <stdio.h>
+#include <locale.h>
 
 void	plane_export(int fd, void *shape)
 {

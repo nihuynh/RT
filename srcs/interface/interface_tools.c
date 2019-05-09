@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/29 18:55:34 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 17:52:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "rtstruct.h"
 #include "librt.h"
 
-void	interface_sphere(void *res)
+void	ui_sphere(void *res)
 {
 	t_sphere	*sphere;
 	t_sphere	tmp;
@@ -27,7 +27,7 @@ void	interface_sphere(void *res)
 		sphere->radius = tmp.radius;
 }
 
-void	interface_plane(void *res)
+void	ui_plane(void *res)
 {
 	t_plane	*plane;
 	t_plane	tmp;
@@ -47,7 +47,7 @@ void	interface_plane(void *res)
 		plane->size_y = tmp.size_y;
 }
 
-void	interface_cylinder(void *res)
+void	ui_cylinder(void *res)
 {
 	t_cylinder	*cylinder;
 	t_cylinder	tmp;
@@ -67,7 +67,7 @@ void	interface_cylinder(void *res)
 		cylinder->size = tmp.size;
 }
 
-void	interface_cone(void *res)
+void	ui_cone(void *res)
 {
 	t_cone	*cone;
 	t_cone	tmp;

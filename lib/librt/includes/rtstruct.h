@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 19:43:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/09 18:09:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,17 @@ typedef struct	s_cam
 ** @brief Struct for material caracteristics
 ** http://www.lama.univ-savoie.fr/pagesmembres/lachaud/Cours/INFO805/Tests/html/
 ** Material_8h_source.html
+** typedef t_color	(*f_texture)(t_texture*, float x, float y);
 */
 
-typedef	struct s_texture 	t_texture;
+typedef	struct s_texture	t_texture;
 
-typedef t_color	(*f_texture)(t_texture*, float x, float y);
-
-struct s_texture
+struct			s_texture
 {
 	char		*name;
 	uint32_t	*pixels;
-	f_texture	f_texture;
+	t_color		(*f_texture)(t_texture*, float x, float y);
+	void		(*export) (int, void*);
 };
 
 typedef struct	s_material
@@ -127,8 +127,6 @@ typedef struct	s_material
 	t_texture	*tex;
 }				t_material;
 
-typedef struct s_obj	t_obj;
-typedef struct s_inter	t_inter;
 
 /*
 ** @brief Struct that hold the intersection.
@@ -140,6 +138,9 @@ typedef struct s_inter	t_inter;
 ** reflected	: Vector director of the ray after the inter
 ** find_normal	: Methode to find the normal of the object hit
 */
+
+typedef struct s_obj	t_obj;
+typedef struct s_inter	t_inter;
 
 struct			s_inter
 {
