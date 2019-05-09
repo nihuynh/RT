@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 20:02:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:43:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)
 {
 	gui->log_open = false;
 	gui->export_open = false;
-	gui->gl_context = SDL_GL_CreateContext(window);
+	if (!(gui->gl_context = SDL_GL_CreateContext(window)))
+		ft_error(__func__, __LINE__);
 	igCreateContext(NULL);
 	ImGui_ImplSDL2_InitForOpenGL(window, &gui->gl_context);
 	ImGui_ImplOpenGL2_Init();

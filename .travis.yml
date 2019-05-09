@@ -11,7 +11,9 @@ install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
     sudo sh install_sdl.sh;
     fi
-script: make
+script:
+make
+make test
 
 # Notifications :
 matrix:

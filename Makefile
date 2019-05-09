@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/09 15:03:32 by sklepper         ###   ########.fr        #
+#    Updated: 2019/05/09 16:18:40 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,6 +169,10 @@ doc: ## Generate a documentation using doxygen.
 	doxygen Doxyfile
 	open docs/html/index.html
 .PHONY: doc
+test: all ## This check the parsing on all the map in the scenes directory.
+	@for file in `LS scenes | grep .rt | sort -u`; \
+		do echo $$file && ./RT scenes/$$file -t; done
+.PHONY: test
 norme: ## Check the norme of the project and the libraries.
 	$(MAKE) -C $(LFT_PATH) norme
 	$(MAKE) -C $(LRT_PATH) norme
