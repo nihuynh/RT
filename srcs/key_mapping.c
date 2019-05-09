@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 15:52:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:02:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void
 	}
 	else if (key == SDLK_f && state == SDL_RELEASED)
 		app->sdl.fullscreen = (app->sdl.fullscreen == true) ? false : true;
+	else if (key == SDLK_r && state == SDL_RELEASED
+			&& (app->sdl.needs_render = 1))
+		app->cam = app->gui.cam_cpy;
 	camera(&app->cam, key, state);
 }
 

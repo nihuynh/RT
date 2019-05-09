@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 21:09:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 13:58:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@
 
 typedef struct	s_gui
 {
+	t_cam		cam_cpy;
 	char		*scene_name;
 	bool		fullscreen;
 	uint32_t	texture_id;

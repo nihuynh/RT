@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/07 21:09:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 13:58:41 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void
 	data->sdl.update = &update;
 	data->sdl.render_gui = &render_gui;
 	data->sdl.click_map = &click_event;
+	data->gui.cam_cpy = data->cam;
 }
