@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 14:33:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/09 17:05:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void
 	t_list	*to_del;
 
 	ptr = app->scene.lst_obj;
-	if (!(to_del = ft_lstgetelt_2(ptr, &obj_cmp, app->gui.obj_set)))
+	if (!(to_del = ft_lstgetnode(ptr, &obj_cmp, app->gui.obj_set)))
 		ft_error(__func__, __LINE__);
 	if (ptr == to_del)
 	{
@@ -86,4 +86,5 @@ void
 		ptr->next = to_del->next;
 		ft_lstdelone(&to_del, &del_obj);
 	}
+	app->gui.obj_set = NULL;
 }
