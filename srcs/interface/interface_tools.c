@@ -31,7 +31,6 @@ void	interface_plane(void *res)
 {
 	t_plane		*plane;
 	t_plane		tmp;
-	t_matrix	rotation;
 
 	plane = res;
 	tmp = *plane;
@@ -43,11 +42,7 @@ void	interface_plane(void *res)
 	if (igButton("Normalize", (ImVec2){0, 0}))
 	{
 		vec3_normalize(&plane->n);
-		vec3_new(&plane->x, -1, 0, 0);
-		vec3_new(&plane->y, 0, -1, 0);
-		rotation = create_rotation_from_direction(plane->n);
-		apply_matrix(&plane->x, &rotation);
-		apply_matrix(&plane->y, &rotation);
+		create_orthobasis_from_y_axis(plane->n, &plane->x, &plane->y);
 	}
 	if (igInputFloat("X Limit", &tmp.size_x, 0, 0, "%g", 0))
 		plane->size_x = tmp.size_x;
@@ -68,7 +63,10 @@ void	interface_cylinder(void *res)
 		cylinder->n = tmp.n;
 	igSameLine(0, 0);
 	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
 		vec3_normalize(&cylinder->n);
+		create_orthobasis_from_y_axis(cylinder->n, &cylinder->x, &cylinder->z);
+	}
 	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
 		cylinder->radius = tmp.radius;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
@@ -88,7 +86,10 @@ void	interface_cone(void *res)
 		cone->n = tmp.n;
 	igSameLine(0, 0);
 	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
 		vec3_normalize(&cone->n);
+		create_orthobasis_from_y_axis(cone->n, &cone->x, &cone->z);
+	}
 	if (igInputFloat("Theta", &tmp.theta, 0, 0, "%g", 0))
 		cone->theta = tmp.theta;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))

@@ -90,7 +90,7 @@ void		apply_matrix(t_vec3 *v, t_matrix *mat);
 void		ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n);
 void		print_matrix(t_matrix *mat);
 void		mat3_rot(t_matrix *mat_x, t_matrix *mat_y, t_vec3 *vi, t_cam *cam);
-t_matrix	create_rotation_from_direction(t_vec3 direction);
+void		create_orthobasis_from_y_axis(t_vec3 y, t_vec3 *x, t_vec3 *z);
 t_matrix	set_rotation(float yz_angle, float xz_angle);
 float		fresnel(t_vec3 ray_dir, t_vec3 normal, float ior);
 void		ray_offset_origin(t_ray *ray, t_vec3 normal);

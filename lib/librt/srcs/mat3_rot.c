@@ -60,14 +60,19 @@ t_matrix
 	return (matrix_mult(&y_rotation, &x_rotation));
 }
 
-t_matrix
-	create_rotation_from_direction(t_vec3 direction)
+void
+	create_orthobasis_from_y_axis(t_vec3 y_axis, t_vec3 *x_axis, t_vec3 *z_axis)
 {
-	float x_angle;
-	float y_angle;
+	float		x_angle;
+	float		y_angle;
+	t_matrix	rotation;
 
-	vec3_cartesian_to_spherical(direction, &y_angle, &x_angle);
+	*x_axis = (t_vec3){-1, 0, 0};
+	*z_axis = (t_vec3){0, -1, 0};
+	vec3_cartesian_to_spherical(y_axis, &y_angle, &x_angle);
 	x_angle = x_angle - (M_PI_F / 2);
 	y_angle = -y_angle - M_PI_F;
-	return (set_rotation(x_angle, y_angle));
+	rotation = set_rotation(x_angle, y_angle);
+	apply_matrix(x_axis, &rotation);
+	apply_matrix(z_axis, &rotation);
 }
