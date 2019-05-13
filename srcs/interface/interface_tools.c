@@ -29,8 +29,8 @@ void	ui_sphere(void *res)
 
 void	ui_plane(void *res)
 {
-	t_plane	*plane;
-	t_plane	tmp;
+	t_plane		*plane;
+	t_plane		tmp;
 
 	plane = res;
 	tmp = *plane;
@@ -40,7 +40,10 @@ void	ui_plane(void *res)
 		plane->n = tmp.n;
 	igSameLine(0, 0);
 	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
 		vec3_normalize(&plane->n);
+		create_orthobasis_from_y_axis(plane->n, &plane->x, &plane->y);
+	}
 	if (igInputFloat("X Limit", &tmp.size_x, 0, 0, "%g", 0))
 		plane->size_x = tmp.size_x;
 	if (igInputFloat("Y Limit", &tmp.size_y, 0, 0, "%g", 0))
@@ -60,7 +63,10 @@ void	ui_cylinder(void *res)
 		cylinder->n = tmp.n;
 	igSameLine(0, 0);
 	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
 		vec3_normalize(&cylinder->n);
+		create_orthobasis_from_y_axis(cylinder->n, &cylinder->x, &cylinder->z);
+	}
 	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
 		cylinder->radius = tmp.radius;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
@@ -80,7 +86,10 @@ void	ui_cone(void *res)
 		cone->n = tmp.n;
 	igSameLine(0, 0);
 	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
 		vec3_normalize(&cone->n);
+		create_orthobasis_from_y_axis(cone->n, &cone->x, &cone->z);
+	}
 	if (igInputFloat("Theta", &tmp.theta, 0, 0, "%g", 0))
 		cone->theta = tmp.theta;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))

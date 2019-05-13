@@ -25,7 +25,7 @@
 
 # define BACK_COLOR		0x000000
 # define FOV			40.0f
-# define DEPTH_MAX		2
+# define DEPTH_MAX		0
 
 # define DEBUG			0
 # define MAC			MACB
@@ -65,7 +65,7 @@
 
 # if (MAC == MACB)
 #  define WIDTH			1680
-#  define HEIGHT		1000
+#  define HEIGHT		700
 # elif (MAC == IMAC)
 #  define WIDTH			2560
 #  define HEIGHT		1400
@@ -122,6 +122,8 @@ void			camera_pan(t_data *data, float angle);
 
 t_color			texture_checkers(t_material *mat, t_vec3 uv);
 t_color			texture_strips(t_material *mat, t_vec3 uv);
+t_color 		sample(t_material *texture, t_vec3 uv);
+char			*load_texture(char *filename, int *width, int *height);
 
 void			init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void			init(t_data	*data);

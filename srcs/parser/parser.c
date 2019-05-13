@@ -76,7 +76,7 @@ static inline int
 		return (idx + 2);
 	}
 	dst->name = "";
-	dst->tex = parse_texture(data->lst_tex, tab[idx], idx);
+	dst->tex = parse_texture(&data->lst_tex, tab[idx], idx);
 	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
 	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
 	parse_color(&dst->color_tex, tab[idx + 3], idx + 3, "color_tex(");

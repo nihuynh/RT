@@ -12,6 +12,7 @@
 
 #include "librt.h"
 #include <math.h>
+#include <ftmath.h>
 
 static inline float
 	inter_finite(t_inter *data, t_cylinder *cyl, float dist[2])
@@ -83,16 +84,23 @@ t_vec3
 	get_cylinder_uv(t_inter *inter)
 {
 	t_cylinder	*cylinder;
-	t_vec3		hitpoint_to_origin;
+	t_vec3		origin_to_hitpoint;
 	t_vec3		uv;
-	float		height;
+	t_vec3		x_projection;
+	float		z_projection;
 
 	cylinder = inter->obj->shape;
-	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
-	hitpoint_to_origin = vec3_sub_(cylinder->origin, inter->point);
-	height = vec3_dot(&hitpoint_to_origin, &cylinder->n);
-	uv.x *= M_INV_PI_F;
-	vec3_scalar(&uv, 50);
-	uv.y = height;
+	origin_to_hitpoint = vec3_sub_(inter->point, cylinder->origin);
+	uv.y = vec3_dot(&origin_to_hitpoint, &cylinder->n);
+	if (cylinder->size > 0)
+		uv.y = 1 - (uv.y / cylinder->size);
+	z_projection = vec3_dot(&origin_to_hitpoint, &cylinder->z);
+	z_projection /= cylinder->radius;
+	z_projection = ft_clampf(z_projection, -0.99999f, 0.99999f);
+	uv.x = acosf(z_projection) * M_INV_PI_F * 0.5f;
+	x_projection = cylinder->x;
+	vec3_scalar(&x_projection, vec3_dot(&origin_to_hitpoint, &cylinder->x));
+	if (vec3_dot(&x_projection, &cylinder->x) < 0)
+		uv.x = 1 - uv.x;
 	return (uv);
 }

@@ -24,8 +24,9 @@ static inline void
 	r = (color >> 16) & 0xFF;
 	g = (color >> 8) & 0xFF;
 	b = color;
-	SDL_SetRenderDrawColor(sdl->renderer, r, g, b, 255);
-	SDL_RenderDrawPoint(sdl->renderer, x, y);
+//	SDL_SetRenderDrawColor(sdl->renderer, r, g, b, 255);
+//	SDL_RenderDrawPoint(sdl->renderer, x, y);
+	sdl->img.pixels[y * sdl->img.width + x] = color;
 }
 
 void
@@ -42,9 +43,11 @@ void
 	{
 		idx.x = -1;
 		while (++idx.x < sdl->width_vp)
+		{
 			putcolor(sdl, do_pxl(idx.x, idx.y, data), idx.x, idx.y);
+		}
 	}
-	SDL_RenderPresent(sdl->renderer);
+//	SDL_RenderPresent(sdl->renderer);
 	sdl->needs_render = false;
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);

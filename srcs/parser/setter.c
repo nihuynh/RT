@@ -29,7 +29,6 @@ void
 	plane_set(void *plane, char **greed, int i)
 {
 	t_plane		*pplane;
-	t_matrix	rotation;
 
 	if (plane == NULL)
 		ft_error_wmsg(ERR_PARSE_SET_PL, i, greed[i]);
@@ -38,11 +37,7 @@ void
 	parse_vector(&pplane->n, greed[i + 2], i + 2, "normal(");
 	parse_limit(&pplane->size_x, &pplane->size_y, greed[i + 3], i + 3);
 	vec3_normalize(&pplane->n);
-	vec3_new(&pplane->x, 1, 0, 0);
-	vec3_new(&pplane->y, 0, 1, 0);
-	rotation = create_rotation_from_direction(pplane->n);
-	apply_matrix(&pplane->x, &rotation);
-	apply_matrix(&pplane->y, &rotation);
+	create_orthobasis_from_y_axis(pplane->n, &pplane->x, &pplane->y);
 }
 
 void
@@ -56,6 +51,7 @@ void
 	parse_vector(&pcylinder->origin, greed[i + 1], i + 1, "origin(");
 	parse_vector(&pcylinder->n, greed[i + 2], i + 2, "normal(");
 	vec3_normalize(&pcylinder->n);
+	create_orthobasis_from_y_axis(pcylinder->n, &pcylinder->x, &pcylinder->z);
 	parse_fval(&pcylinder->radius, greed[i + 3], i + 3, "radius(");
 	parse_fval(&pcylinder->size, greed[i + 4], i + 4, "size(");
 }
@@ -63,7 +59,7 @@ void
 void
 	cone_set(void *cone, char **greed, int i)
 {
-	t_cone	*pcone;
+	t_cone		*pcone;
 
 	if (cone == NULL)
 		ft_error_wmsg(ERR_PARSE_SET_CO, i, greed[i]);
@@ -71,6 +67,7 @@ void
 	parse_vector(&pcone->origin, greed[i + 1], i + 1, "origin(");
 	parse_vector(&pcone->n, greed[i + 2], i + 2, "normal(");
 	vec3_normalize(&pcone->n);
+	create_orthobasis_from_y_axis(pcone->n, &pcone->x, &pcone->z);
 	parse_fval(&pcone->theta, greed[i + 3], i + 3, "theta(");
 	parse_fval(&pcone->size, greed[i + 4], i + 4, "size(");
 }

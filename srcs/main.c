@@ -11,9 +11,7 @@
 /* ************************************************************************** */
 
 #include "rt.h"
-#include "libui.h"
 #include "libft.h"
-#include <unistd.h>
 
 void	interactive(char *filename, int runmode)
 {

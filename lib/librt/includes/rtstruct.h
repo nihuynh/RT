@@ -60,12 +60,16 @@ typedef struct	s_cone
 	t_vec3		n;
 	float		theta;
 	float		size;
+	t_vec3		x;
+	t_vec3		z;
 }				t_cone;
 
 typedef struct	s_cylinder
 {
 	t_pt3		origin;
+	t_vec3		x;
 	t_vec3		n;
+	t_vec3		z;
 	float		radius;
 	float		size;
 }				t_cylinder;
@@ -109,9 +113,11 @@ typedef	struct s_material	t_material;
 struct			s_texture
 {
 	char		*name;
-	uint32_t	*pixels;
 	t_color		(*f_texture)(t_material*, t_vec3);
 	void		(*export) (int, void*);
+	char		*pixels;
+	int			width;
+	int			height;
 };
 
 struct			s_material

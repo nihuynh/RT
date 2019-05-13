@@ -79,5 +79,15 @@ t_vec3
 	orig_to_inter = vec3_sub_(inter->point, plan->origin);
 	uv.x = vec3_dot(&orig_to_inter, &plan->x);
 	uv.y = vec3_dot(&orig_to_inter, &plan->y);
+	if (plan->size_x > 0)
+	{
+		uv.x /= plan->size_x;
+		uv.x = .5f + uv.x * 0.5f;
+	}
+	if (plan->size_y > 0)
+	{
+		uv.y /= plan->size_y;
+		uv.y = .5f + uv.y * 0.5f;
+	}
 	return (uv);
 }

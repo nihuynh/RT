@@ -22,7 +22,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				object_tools.c texture_toolbox.c new_object_tools.c \
 				interface_lists.c filters.c export.c export_utils.c \
 				fullscreen.c interface_windows.c export_toolbox.c new_object.c \
-				reload.c perturbation.c
+				reload.c perturbation.c texture_loader.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c render_time.c

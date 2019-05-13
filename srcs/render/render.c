@@ -111,6 +111,7 @@ int __attribute__((hot))
 	if (data->settings.anti_a)
 		color = anti_aliasing(color, data, x, y);
 	color_clamp(&color, 0, 1);
+//	color = sample(data->lst_tex->content, (float)x / data->sdl.img.width, (float)y / data->sdl.img.height);
 	color_mult(&color, &data->settings.filter);
 	if (data->sdl.sepia)
 		color = sepia(color);

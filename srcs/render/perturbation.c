@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ftmath.h>
 #include "rt.h"
 #include "librt.h"
 #include "color.h"
@@ -20,11 +21,7 @@ float
 {
 	float	pattern;
 
-	if (x < 0)
-		x = fabsf(x - 5);
-	if (y < 0)
-		y = fabsf(y - 5);
-	pattern = (fmodf(x, 10) < 5) ^ (fmodf(y, 10) < 5);
+	pattern = (fmodf(x, 1.f) < 0.5f) ^ (fmodf(y, 1) < 0.5f);
 	return (pattern);
 }
 
@@ -60,4 +57,30 @@ t_color
 	res = color_linear_inter(mat->color_diffuse, mat->color_tex,
 		pattern_checkers(uv.x, uv.y));
 	return (res);
+}
+
+typedef struct tmp {
+	unsigned char a, b, c;
+} tmp;
+
+t_color sample(t_material *mat, t_vec3 uv)
+{
+	t_texture *texture;
+
+	texture = mat->tex;
+//	printf("x: %f  y:  %f\n", x, y);
+	int x_ = (ft_clampf(uv.x, 0, 1) * (texture->width - 1));
+	int y_ = (ft_clampf(uv.y, 0, 1) * (texture->height - 1));
+//	printf("x: %d  y:  %d\n\n", x_, y_);
+//	int x_ = ft_clamp(x, 0, texture->width);
+//	int y_ = ft_clamp(y, 0, texture->height);
+//	int y_ = (ft_clampf(y, 0, 0.9) * (texture->height - 1));
+	t_color result;
+	tmp *ptr = (tmp *) texture->pixels;
+	ptr += (y_ * (texture->width) + (x_));
+	result.r = ptr->a / 255.f;
+	result.g = ptr->b / 255.f;
+	result.b = ptr->c / 255.f;
+//	vec3_print((t_vec3 *) (&result));
+	return (result);
 }

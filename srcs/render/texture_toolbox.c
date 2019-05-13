@@ -10,9 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <zconf.h>
 #include "rt.h"
 #include "libft.h"
 #include "parse.h"
+
+t_texture create_texture(char *filename);
 
 int
 	texcmp(void *content, void *key)
@@ -49,20 +52,42 @@ void
 }
 
 t_texture
-	*parse_texture(t_list *lst_tex, char *str, int line)
+	*parse_texture(t_list **lst_tex, char *str, int line)
 {
 	t_texture	*tex;
 
-	tex = NULL;
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	if ((str = ft_strstr(str, "texture(")))
+	if (!(str = ft_strstr(str, "texture(")))
+		return (NULL);
+	str += 8;
+	tex = ft_lstgetelt(*lst_tex, &texcmp, str);
+	if (tex == NULL)
 	{
-		str += 8;
-		if (!(tex = ft_lstgetelt(lst_tex, &texcmp, str)))
-			tex = ft_lstgetelt(lst_tex, &texcmp, "none");
+		if (ft_strstr(str, ".ppm"))
+		{
+			t_texture new_tex = create_texture(str);
+			ft_lstpushnew(lst_tex, &new_tex, sizeof(t_texture));
+			return (ft_lstgetelt(*lst_tex, &texcmp, str));
+		}
+		else
+			return (ft_lstgetelt(*lst_tex, &texcmp, "none"));
 	}
-	else
-		ft_error(__func__, __LINE__);
 	return (tex);
 }
+
+t_texture create_texture(char *filename)
+{
+	t_texture	result;
+	char		*cleaned_name;
+
+	cleaned_name = ft_strdup(filename);
+	cleaned_name[ft_strlen(cleaned_name) - 1] = '\0';
+	result.f_texture = &sample;
+	result.name = cleaned_name;
+	result.pixels = load_texture(cleaned_name, &result.width, &result.height);
+	return result;
+}
+
+
+
