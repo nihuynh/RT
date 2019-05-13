@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/09 17:51:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 01:12:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int
 {
 	int fd;
 
-	setlocale(LC_NUMERIC, "en-US");
+	setlocale(LC_NUMERIC, "C");
 	fd = open(filename, O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR);
 	if (fd == -1)
 	{
