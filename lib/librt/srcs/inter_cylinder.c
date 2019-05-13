@@ -12,6 +12,7 @@
 
 #include "librt.h"
 #include <math.h>
+#include <ftmath.h>
 
 static inline float
 	inter_finite(t_inter *data, t_cylinder *cyl, float dist[2])
@@ -85,15 +86,21 @@ t_vec3
 	t_cylinder	*cylinder;
 	t_vec3		origin_to_hitpoint;
 	t_vec3		uv;
-	float		height;
+	t_vec3		x_projection;
+	float		z_projection;
 
-	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
-	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
 	cylinder = inter->obj->shape;
 	origin_to_hitpoint = vec3_sub_(inter->point, cylinder->origin);
-	height = vec3_dot(&origin_to_hitpoint, &cylinder->n);
-	uv.y = height;
+	uv.y = vec3_dot(&origin_to_hitpoint, &cylinder->n);
 	if (cylinder->size > 0)
 		uv.y = 1 - (uv.y / cylinder->size);
+	z_projection = vec3_dot(&origin_to_hitpoint, &cylinder->z);
+	z_projection /= cylinder->radius;
+	z_projection = ft_clampf(z_projection, -0.99999f, 0.99999f);
+	uv.x = ((acosf(z_projection)) / M_PI_F) / 2;
+	x_projection = cylinder->x;
+	vec3_scalar(&x_projection, vec3_dot(&origin_to_hitpoint, &cylinder->x));
+	if (vec3_dot(&x_projection, &cylinder->x) < 0)
+		uv.x = 1 - uv.x;
 	return (uv);
 }

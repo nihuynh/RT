@@ -60,11 +60,14 @@ typedef struct	s_cone
 	t_vec3		n;
 	float		theta;
 	float		size;
+	t_vec3		x;
+	t_vec3		z;
 }				t_cone;
 
 typedef struct	s_cylinder
 {
 	t_pt3		origin;
+	t_vec3		x;
 	t_vec3		n;
 	t_vec3		z;
 	float		radius;

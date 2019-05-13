@@ -12,6 +12,7 @@
 
 #include "librt.h"
 #include <math.h>
+#include <ftmath.h>
 
 void matrix_transpose(t_matrix *matrix);
 
@@ -93,27 +94,28 @@ void
 	data->obj = node;
 }
 
-
-//TODO: UV are weirdly distorted when normal is not close to world axes
 t_vec3
 	get_cone_uv(t_inter *inter)
 {
 	t_cone		*cone;
 	t_vec3		origin_to_hitpoint;
 	t_vec3		uv;
-	t_matrix	rotation;
-	t_vec3		hit_normal_reoriented;
+	t_vec3		x_projection;
+	float		z_projection;
 
 	cone = inter->obj->shape;
-	rotation = create_rotation_from_direction(cone->n);
-	matrix_transpose(&rotation);
-	apply_matrix(&hit_normal_reoriented, &rotation);
-	vec3_cartesian_to_spherical(hit_normal_reoriented, &uv.x, &uv.y);
-	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
 	origin_to_hitpoint = vec3_sub_(inter->point, cone->origin);
 	uv.y = vec3_dot(&origin_to_hitpoint, &cone->n);
 	if (cone->size > 0)
 		uv.y = 1 - (uv.y / cone->size);
+	z_projection = vec3_dot(&origin_to_hitpoint, &cone->z);
+	z_projection /= sinf(cone->theta * DEG_TO_RAD) * vec3_mag(origin_to_hitpoint);
+	z_projection = ft_clampf(z_projection, -0.99999f, 0.99999f);
+	uv.x = ((acosf(z_projection)) / M_PI_F) / 2;
+	x_projection = cone->x;
+	vec3_scalar(&x_projection, vec3_dot(&origin_to_hitpoint, &cone->x));
+	if (vec3_dot(&x_projection, &cone->x) < 0)
+		uv.x = 1 - uv.x;
 	return (uv);
 }
 
