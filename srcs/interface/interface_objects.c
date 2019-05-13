@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/30 15:57:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/13 17:42:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ static inline void
 	color_tmp = mat->color_diffuse;
 	if (igColorEdit3("Object Color", &color_tmp.r, 0))
 		mat->color_diffuse = color_tmp;
+	color_tmp = mat->color_tex;
+	if (igColorEdit3("Color of the pattern", &color_tmp.r, 0))
+		mat->color_tex = color_tmp;
 	color_tmp = mat->color_specular;
 	if (igColorEdit3("Specular Color", &color_tmp.r, 0))
 		mat->color_specular = color_tmp;

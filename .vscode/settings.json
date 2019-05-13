@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"rtstruct.h": "c",
-		"math.h": "c",
-		"color.h": "c"
-	},
-	"C_Cpp.errorSquiggles": "Disabled"
-}
