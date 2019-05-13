@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 20:20:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/12 07:56:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,14 @@ void			camera_height(t_data *data, float value);
 void			camera_side(t_data *data, float value);
 void			camera_pitch(t_data *data, float angle);
 void			camera_pan(t_data *data, float angle);
-t_color			texture_checkers(t_texture *tex, float x, float y);
-t_color			texture_strips(t_texture *tex, float x, float y);
+
+/*
+** Textures :
+*/
+
+t_color			texture_checkers(t_material *mat, t_vec3 uv);
+t_color			texture_strips(t_material *mat, t_vec3 uv);
+
 void			init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void			init(t_data	*data);
 void			init_textures(t_data *app);

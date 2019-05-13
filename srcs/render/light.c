@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/29 19:18:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/12 07:19:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ t_color
 		current_light = current_light->next;
 	}
 	if (s.mat.tex->f_texture)
-		diffuse_color = s.mat.tex->f_texture(s.mat.tex, s.uv.x, s.uv.y);
+		diffuse_color = s.mat.tex->f_texture(&s.mat, s.uv);
 	else
 		diffuse_color = s.mat.color_diffuse;
 	final_color = color_mult_(settings->amb_light, diffuse_color);

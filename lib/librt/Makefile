@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/25 17:41:33 by sklepper         ###   ########.fr        #
+#    Updated: 2019/05/12 06:26:22 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INTER		:=	inter_cylinder.c inter_plane.c inter_sphere.c inter_cone.c \
 				inter_set.c inter_find.c inter_setlight.c inter_setdeflect.c \
 				inter_setrefract.c
 COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
-				colortoi.c color_max.c itocolor.c color_clamp.c color_bool.c
+				colortoi.c color_max.c itocolor.c color_clamp.c color_bool.c \
+				color_linear_inter.c
 MATRIX		:=	mat3_rot.c mat3.c
 NORMAL		:=	normal_cone.c normal_sphere.c normal_cylinder.c normal_plane.c
 SRC			:=	$(VEC) $(INTER) $(COLOR) $(NORMAL) $(MATRIX)

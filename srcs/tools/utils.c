@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/02 22:34:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/12 06:07:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static inline void
 		mat->tex = ft_lstgetelt(data->lst_tex, &texcmp, "none");
 	mat->color_diffuse = itocolor(ft_atoi_base(split[1], 16));
 	mat->color_specular = itocolor(ft_atoi_base(split[2], 16));
-	mat->self_light = itocolor(ft_atoi_base(split[3], 16));
+	mat->color_tex = itocolor(ft_atoi_base(split[3], 16));
 	mat->spec_idx = ft_atof(split[4]);
 	mat->spec_power = ft_atof(split[5]);
 	mat->refraction_color = itocolor(ft_atoi_base(split[6], 16));

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/09 20:16:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/12 07:18:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,28 +104,29 @@ typedef struct	s_cam
 */
 
 typedef	struct s_texture	t_texture;
+typedef	struct s_material	t_material;
 
 struct			s_texture
 {
 	char		*name;
 	uint32_t	*pixels;
-	t_color		(*f_texture)(t_texture*, float x, float y);
+	t_color		(*f_texture)(t_material*, t_vec3);
 	void		(*export) (int, void*);
 };
 
-typedef struct	s_material
+struct			s_material
 {
 	char		*name;
 	t_color		color_diffuse;
 	t_color		color_specular;
-	t_color		self_light;
+	t_color		color_tex;
 	float		spec_idx;
 	float		spec_power;
 	t_color		refraction_color;
 	t_color		reflection_color;
 	float		refraction_idx;
 	t_texture	*tex;
-}				t_material;
+};
 
 /*
 ** @brief Struct that hold the intersection.

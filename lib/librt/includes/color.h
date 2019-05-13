@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 09:14:13 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/16 14:05:36 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/12 06:27:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void			color_scalar(t_color *color, float k);
 t_color			color_scalar_(t_color color, float k);
 void			color_add(t_color *color, t_color add);
 t_color			color_add_(t_color color, t_color add);
-void			color_sub(t_color *color, t_color *sub);
+t_color			color_sub(t_color color, t_color sub);
 void			color_max(t_color *col1, t_color *col2);
 void			color_clamp(t_color *color, float min, float max);
 bool			color_bool(t_color color);
 t_color			itocolor(int color);
 int				colortoi(t_color color);
+t_color			color_linear_inter(t_color color0, t_color color1, float value);
 
 #endif

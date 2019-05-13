@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:57:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/09 17:29:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/12 06:07:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void
 	dprintf(fd, "\t\ttexture(%s)\n", mat->tex->name);
 	export_color(fd, "color_diffuse", mat->color_diffuse);
 	export_color(fd, "color_specular", mat->color_specular);
-	export_color(fd, "self_light", mat->self_light);
+	export_color(fd, "color_tex", mat->color_tex);
 	dprintf(fd, "\t\tspec_idx(%.3f)\n", mat->spec_idx);
 	dprintf(fd, "\t\tspec_power(%.3f)\n", mat->spec_power);
 	export_color(fd, "refraction_color", mat->refraction_color);

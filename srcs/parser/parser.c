@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 17:51:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/12 06:07:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static inline int
 	dst->tex = parse_texture(data->lst_tex, tab[idx], idx);
 	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
 	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
-	parse_color(&dst->self_light, tab[idx + 3], idx + 3, "self_light(");
+	parse_color(&dst->color_tex, tab[idx + 3], idx + 3, "color_tex(");
 	parse_fval(&dst->spec_idx, tab[idx + 4], idx + 4, "spec_idx(");
 	parse_fval(&dst->spec_power, tab[idx + 5], idx + 5, "spec_power(");
 	idx += 6;

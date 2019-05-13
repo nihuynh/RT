@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/09 16:18:40 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/12 07:57:42 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,12 @@ RUNMODE		?=	release
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				setter.c light.c key_mapping.c camera.c update.c init.c	\
-				cast.c texture.c utils.c interface.c interface_scene.c	\
+				cast.c utils.c interface.c interface_scene.c	\
 				init_interface.c interface_objects.c interface_tools.c	\
 				object_tools.c texture_toolbox.c new_object_tools.c \
 				interface_lists.c filters.c export.c export_utils.c \
 				fullscreen.c interface_windows.c export_toolbox.c new_object.c \
-				reload.c
+				reload.c perturbation.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c

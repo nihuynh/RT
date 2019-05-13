@@ -6,11 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:59:42 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/04/08 20:09:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/12 07:10:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtstruct.h>
+#include "rtstruct.h"
 #include <math.h>
 
 /*

@@ -1,45 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   perturbation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 14:08:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/29 16:20:42 by sklepper         ###   ########.fr       */
+/*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
+/*   Updated: 2019/05/12 07:56:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "librt.h"
 #include "color.h"
-#include "math.h"
+#include <math.h>
 
-t_color
-	texture_checkers(t_texture *tex, float x, float y)
+float
+	pattern_checkers(float x, float y)
 {
-	bool	pattern;
+	float	pattern;
 
-	(void)tex;
 	if (x < 0)
 		x = fabsf(x - 5);
 	if (y < 0)
 		y = fabsf(y - 5);
 	pattern = (fmodf(x, 10) < 5) ^ (fmodf(y, 10) < 5);
-	return (itocolor(pattern * 0xFFFFFF));
+	return (pattern);
 }
 
-t_color
-	texture_strips(t_texture *tex, float x, float y)
+float
+	pattern_strips(float x, float y)
 {
 	float	pattern;
 	float	angle;
 
-	(void)tex;
 	angle = 45 * DEG_TO_RAD;
 	pattern = x * cosf(angle) - y * sinf(angle);
 	if (pattern < 0)
 		pattern -= 5;
 	pattern = fabsf(fmodf(pattern, 10)) < 5;
-	return (itocolor((bool)pattern * 0xFFFFFF));
+	return (pattern);
+}
+
+t_color
+	texture_strips(t_material *mat, t_vec3 uv)
+{
+	t_color res;
+
+	res = color_linear_inter(mat->color_diffuse, mat->color_tex,
+		pattern_strips(uv.x, uv.y));
+	return (res);
+}
+
+t_color
+	texture_checkers(t_material *mat, t_vec3 uv)
+{
+	t_color res;
+
+	res = color_linear_inter(mat->color_diffuse, mat->color_tex,
+		pattern_checkers(uv.x, uv.y));
+	return (res);
 }

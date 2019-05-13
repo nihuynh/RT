@@ -4,11 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/Users/nihuynh/.brew/Cellar/sdl2/2.0.9_1/include/SDL2",
-                "/Users/sklepper/.brew/Cellar/sdl2/2.0.9/include/SDL2",
                 "${workspaceFolder}/lib/cimgui",
                 "${workspaceFolder}/includes",
-                "${workspaceFolder}/lib/libui/includes",
 				"${workspaceFolder}/lib/librt/includes",
 				"${workspaceFolder}/lib/libft/includes",
                 "/usr/local/Cellar/sdl2/2.0.9/include/SDL2"
