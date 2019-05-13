@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:08:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 20:16:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/13 16:54:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	change_window_title(SDL_Window *win, t_data *app)
 
 void	init_gui(t_gui *gui, t_data *app)
 {
-	gui->log_open = false;
 	gui->export_open = false;
 	gui->light_set = app->scene.lst_light;
 	gui->obj_set = NULL;
 	gui->flags_render = 2;
 	gui->new_obj_type = 0;
+	gui->stats_open = true;
 }
 
 void	init_interface(t_gui *gui, SDL_Window *window, t_data *app)

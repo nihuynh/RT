@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/13 15:02:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/13 16:54:49 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ void	window_renderer(t_gui *gui, t_img img)
 	igPopStyleVar(2);
 }
 
-void	window_log(bool *p_open)
+void	window_stats(t_data *app, bool *p_open)
 {
-	igBegin("Log", p_open, 0);
-	igText("Logs here");
+	igSetNextWindowPos((ImVec2){0, app->sdl.img.height}, (ImGuiCond_Once), (ImVec2){0, 0});
+	igBegin("Stats", p_open, ImGuiWindowFlags_AlwaysAutoResize);
+	igText("Last frame took : %fms", app->sdl.render_time[24]);
+	igPlotLines("Render Time (ms)", &(app->sdl.render_time[0]), 25, 0, NULL, 0, 3.402823466e+38F, (ImVec2){400, 80}, 4);
 	igEnd();
 }
 
@@ -51,8 +53,8 @@ void	gui_setup(t_gui *gui, t_img img, t_data *app)
 {
 	window_renderer(gui, img);
 	window_scene(app);
-	if (gui->log_open)
-		window_log(&gui->log_open);
+	if (gui->stats_open)
+		window_stats(app, &gui->stats_open);
 	if (gui->export_open)
 		export_window(app);
 	if (gui->new_obj_open)
@@ -82,6 +84,7 @@ void	interface(t_data *app)
 	ImGui_ImplSDL2_NewFrame(app->sdl.win);
 	igNewFrame();
 	gui_setup(&app->gui, app->sdl.img, app);
+	// igShowDemoWindow(NULL);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
 	glClearColor(0.107f, 0.277f, 0.348f, 1.000f);

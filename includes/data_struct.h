@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_struct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/09 18:02:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/13 16:54:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct		s_gui
 	bool			fullscreen;
 	uint32_t		texture_id;
 	bool			render_focused;
-	bool			log_open;
+	bool			stats_open;
 	bool			export_open;
 	bool			new_obj_open;
 	bool			delete_obj_open;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mthr_sdl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 16:20:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/13 15:41:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void
 		pthread_join(threads[cthr], NULL);
 	apply_color(sdl);
 	elapsed_time = ft_curr_usec() - elapsed_time;
-	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
+	push_render_time(sdl, elapsed_time);
 }
