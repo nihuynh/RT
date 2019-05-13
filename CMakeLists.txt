@@ -21,14 +21,12 @@ add_compile_options("$<$<CONFIG:PROFILE>:${PROFILE_FLAGS}>")
 add_executable(RT "")
 
 add_subdirectory(lib/libft)
-add_subdirectory(lib/libui)
 add_subdirectory(lib/librt)
 add_subdirectory(lib/cimgui)
 add_subdirectory(lib/imgui_impl)
 target_compile_options(cimgui PRIVATE -Wno-error)
 
 target_link_libraries(RT ft)
-target_link_libraries(RT ui)
 target_link_libraries(RT rt)
 target_link_libraries(RT cimgui)
 target_link_libraries(RT imgui_impl)
@@ -47,27 +45,46 @@ set_target_properties(RT
             RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
 
 target_sources(RT PRIVATE
+        srcs/interface/fullscreen.c
         srcs/interface/init_interface.c
         srcs/interface/interface.c
-        srcs/interface/interface_scene.c
-        srcs/interface/interface_objects.c
-        srcs/interface/interface_tools.c
-        srcs/interface/object_tools.c
         srcs/interface/interface_lists.c
+        srcs/interface/interface_objects.c
+        srcs/interface/interface_scene.c
+        srcs/interface/interface_tools.c
+        srcs/interface/interface_windows.c
+        srcs/interface/new_object.c
+        srcs/interface/new_object_tools.c
+        srcs/interface/object_tools.c
+        srcs/parser/export.c
+        srcs/parser/export_toolbox.c
+        srcs/parser/export_utils.c
         srcs/parser/parse_toolbox.c
         srcs/parser/parser.c
         srcs/parser/read.c
         srcs/parser/setter.c
         srcs/render/camera.c
         srcs/render/cast.c
+        srcs/render/filters.c
         srcs/render/light.c
+        srcs/render/perturbation.c
+        srcs/render/post_process.c
         srcs/render/render.c
-        srcs/render/texture.c
         srcs/render/texture_toolbox.c
+        srcs/render_utils/error_sdl.c
+        srcs/render_utils/exit_sdl.c
+        srcs/render_utils/init_mthr_sdl.c
+        srcs/render_utils/init_sdl.c
+        srcs/render_utils/loop_sdl.c
+        srcs/render_utils/render_mthr_sdl.c
+        srcs/render_utils/render_pool.c
+        srcs/render_utils/render_sdl.c
+        srcs/render_utils/render_time.c
+        srcs/render_utils/save_screenshot.c
         srcs/tools/error.c
+        srcs/tools/reload.c
         srcs/tools/update.c
         srcs/tools/utils.c
         srcs/init.c
         srcs/key_mapping.c
-        srcs/main.c
-        )
+        srcs/main.c)

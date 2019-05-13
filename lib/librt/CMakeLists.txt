@@ -50,5 +50,6 @@ target_sources(rt PRIVATE
         srcs/color_sub.c
         srcs/color_clamp.c
         srcs/color_bool.c
+        srcs/color_linear_inter.c
         srcs/colortoi.c
         srcs/itocolor.c)
