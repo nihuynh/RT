@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/07 21:09:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:58:47 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ struct				s_sdl
 	void			(*click_map)(SDL_Event *, void *);
 	void			(*update)(void *arg);
 	void			(*render_gui)(void *arg);
+	bool			sepia;
+	bool			grayscale;
+	float			render_time[25];
 };
 
 struct				s_data_thr
@@ -98,6 +101,7 @@ void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 									void *data);
 void				render_mthr_sdl(t_sdl *sdl);
 void				apply_simple_filter(t_sdl *sdl, uint32_t (*fun) (uint32_t));
+void				push_render_time(t_sdl *sdl, long new_frame);
 
 /*
 ** Pool Render :

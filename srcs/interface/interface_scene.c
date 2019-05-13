@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 17:29:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/13 16:58:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ static inline void
 	}
 	if (igTreeNodeStr("Light Settings"))
 		light_settings(app);
+	if (igTreeNodeStr("Filters"))
+	{
+		if (igCheckbox("Sepia", &app->sdl.sepia))
+			app->sdl.grayscale = false;
+		igSameLine(160, 0);
+		if (igCheckbox("GrayScale", &app->sdl.grayscale))
+			app->sdl.sepia = false;
+		igTreePop();
+	}
 }
 
 static inline void
@@ -70,7 +79,7 @@ static inline void
 	{
 		igMenuItemBoolPtr("Load Scene", NULL, &app->gui.load_open, 1);
 		igMenuItemBoolPtr("Export Scene", NULL, &app->gui.export_open, 1);
-		igMenuItemBoolPtr("Log", NULL, &app->gui.log_open, 1);
+		igMenuItemBoolPtr("Stats", NULL, &app->gui.stats_open, 1);
 		if (igMenuItemBoolPtr("Fullscreen", NULL, &app->sdl.fullscreen, 1))
 		{
 			fullscreen(&app->sdl, &app->gui);

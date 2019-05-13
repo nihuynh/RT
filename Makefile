@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/12 07:57:42 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/13 17:35:22 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				reload.c perturbation.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
-				save_screenshot.c render_pool.c post_process.c
+				save_screenshot.c render_pool.c post_process.c render_time.c
 # directories :
 VPATH       :=	./srcs ./srcs/parser ./srcs/render ./srcs/tools	\
 				./srcs/interface ./srcs/render_utils

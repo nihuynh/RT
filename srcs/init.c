@@ -6,13 +6,14 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/09 14:50:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/13 16:57:38 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "librt.h"
 #include "ftmem.h"
+#include "interface.h"
 
 void
 	init_settings(t_settings *settings)
@@ -31,25 +32,26 @@ void
 }
 
 void
-	init(t_data *data)
+	init(t_data *app)
 {
-	init_settings(&data->settings);
-	init_sdl(&data->sdl, WIDTH, HEIGHT);
-	init_render(data);
-	init_interface(&data->gui, data->sdl.win, data);
+	init_settings(&app->settings);
+	init_sdl(&app->sdl, WIDTH, HEIGHT);
+	init_render(app);
+	init_interface(&app->gui, app->sdl.win, app);
+	init_gui(&app->gui, app);
 }
 
 void
-	init_render(t_data *data)
+	init_render(t_data *app)
 {
-	set_direction(&data->cam, data->cam.dir);
+	set_direction(&app->cam, app->cam.dir);
 	if (DEBUG)
-		print_matrix(&data->cam.rotation);
-	data->sdl.key_map = &key_event;
-	data->sdl.mouse_map = &mouse_motion;
-	data->sdl.update = &update;
-	data->sdl.render_gui = &render_gui;
-	data->sdl.click_map = &click_event;
-	data->sdl.needs_render = true;
-	data->gui.cam_cpy = data->cam;
+		print_matrix(&app->cam.rotation);
+	app->sdl.key_map = &key_event;
+	app->sdl.mouse_map = &mouse_motion;
+	app->sdl.update = &update;
+	app->sdl.render_gui = &render_gui;
+	app->sdl.click_map = &click_event;
+	app->sdl.needs_render = true;
+	app->gui.cam_cpy = app->cam;
 }
