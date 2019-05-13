@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 17:29:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/13 15:14:38 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ static inline void
 	}
 	if (igTreeNodeStr("Light Settings"))
 		light_settings(app);
+	if (igTreeNodeStr("Filters"))
+	{
+		if (igCheckbox("Sepia", &app->sdl.sepia))
+			app->sdl.grayscale = false;
+		igSameLine(160, 0);
+		if (igCheckbox("GrayScale", &app->sdl.grayscale))
+			app->sdl.sepia = false;
+		igTreePop();
+	}
 }
 
 static inline void

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/07 21:09:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:11:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ struct				s_sdl
 	void			(*click_map)(SDL_Event *, void *);
 	void			(*update)(void *arg);
 	void			(*render_gui)(void *arg);
+	bool			sepia;
+	bool			grayscale;
 };
 
 struct				s_data_thr
