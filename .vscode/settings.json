@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"rt.h": "c",
+		"libft.h": "c",
+		"ftctype.h": "c",
+		"ftconvert.h": "c",
+		"parse.h": "c",
+		"locale.h": "c",
+		"stdio.h": "c"
+	}
+}
