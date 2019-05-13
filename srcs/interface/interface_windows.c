@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_windows.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:28:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 17:34:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 01:55:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void	error_window(t_data *app)
 
 void	export_window(t_data *app)
 {
-	char buff[30];
+	char buff[50];
 
-	ft_strcpy(buff, app->gui.scene_name);
+	ft_strcpy(buff, "scenes/");
+	ft_strlcat(buff, app->gui.scene_name, 50 - ft_strlen(buff));
 	igBegin("Export Scene", &app->gui.export_open,
 				ImGuiWindowFlags_AlwaysAutoResize);
-	if (igInputText("Filename", buff, 30, ImGuiInputTextFlags_EnterReturnsTrue,
+	if (igInputText("Filename", buff, 50, ImGuiInputTextFlags_EnterReturnsTrue,
 			NULL, NULL))
 	{
 		export_scene(app, buff);
@@ -84,8 +85,7 @@ void	load_window(t_data *app)
 {
 	char buff[50];
 
-	ft_bzero(buff, sizeof(buff));
-	ft_strcpy(buff, app->arg);
+	ft_strlcpy(buff, app->arg, 50);
 	igBegin("Load Scene", &app->gui.load_open,
 				ImGuiWindowFlags_AlwaysAutoResize);
 	if (igInputText("Filename", buff, 50, ImGuiInputTextFlags_EnterReturnsTrue,
