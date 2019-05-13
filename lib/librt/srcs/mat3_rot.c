@@ -60,6 +60,10 @@ t_matrix
 	return (matrix_mult(&y_rotation, &x_rotation));
 }
 
+/*
+** Alternative http://jcgt.org/published/0006/01/01/paper.pdf
+*/
+
 void
 	create_orthobasis_from_y_axis(t_vec3 y_axis, t_vec3 *x_axis, t_vec3 *z_axis)
 {

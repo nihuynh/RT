@@ -43,9 +43,7 @@ char
 
 	if (!(str = ft_strstr(str, key)))
 	{
-		strncat(buffer, "Missing key: \"", 128);
-		strncat(buffer, key, 128);
-		strncat(buffer, "\" at line ", 128);
+		snprintf(buffer, 128, "Missing key: \"%s\" at line ", key);
 		ft_error_wmsg(buffer, line, str);
 	}
 	str += ft_strlen(key);

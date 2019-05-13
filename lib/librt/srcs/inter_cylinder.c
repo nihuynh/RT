@@ -97,7 +97,7 @@ t_vec3
 	z_projection = vec3_dot(&origin_to_hitpoint, &cylinder->z);
 	z_projection /= cylinder->radius;
 	z_projection = ft_clampf(z_projection, -0.99999f, 0.99999f);
-	uv.x = ((acosf(z_projection)) / M_PI_F) / 2;
+	uv.x = acosf(z_projection) * M_INV_PI_F * 0.5f;
 	x_projection = cylinder->x;
 	vec3_scalar(&x_projection, vec3_dot(&origin_to_hitpoint, &cylinder->x));
 	if (vec3_dot(&x_projection, &cylinder->x) < 0)
