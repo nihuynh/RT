@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:31:49 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 13:09:00 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 22:02:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "librt.h"
 #include "ftmem.h"
 #include "interface.h"
+#include "config.h"
 
 void
 	init_settings(t_settings *settings)

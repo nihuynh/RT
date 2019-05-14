@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/12 07:56:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 20:20:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,16 @@ t_texture
 	t_texture	result;
 	char		*cleaned_name;
 
-	cleaned_name = ft_strdup(filename);
-	cleaned_name[ft_strlen(cleaned_name) - 1] = '\0';
+	if (!(result.name = ft_strdup(filename)))
+		ft_error(__func__, __LINE__);
+	result.name[ft_strlen(result.name) - 1] = '\0';
+	if (!(cleaned_name = ft_strdup("resources/textures/")))
+		ft_error(__func__, __LINE__);
+	if (!(cleaned_name = ft_strjoinfree(cleaned_name, result.name)))
+		ft_error(__func__, __LINE__);
 	result.f_texture = &sample;
-	result.name = cleaned_name;
 	result.pixels = load_texture(cleaned_name, &result.width, &result.height);
+	ft_strdel(&cleaned_name);
 	return (result);
 }
 

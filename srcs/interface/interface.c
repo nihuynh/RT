@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 19:08:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 22:02:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
+#include "config.h"
 #if defined(__APPLE__)
 # define GL_SILENCE_DEPRECATION
 # include <OpenGL/gl.h>

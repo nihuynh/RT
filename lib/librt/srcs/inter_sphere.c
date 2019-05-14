@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:06 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/30 16:26:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 22:08:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ t_vec3				get_sphere_uv(t_inter *inter)
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
 	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
 	uv.y *= M_INV_PI_F;
-//	vec3_scalar(&uv, 50);
 	return (uv);
 }

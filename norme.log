@@ -1,23 +1,13 @@
 [1;34mlibft.a[25G[31mNorminette [80G[32m[OK][0m
-Norme: ./srcs/inter_cylinder.c
-Warning: /Users/nihuynh/Master/RT/lib/librt/srcs/inter_cylinder.c may not compile or is invalid for some reasons.
-Norme: ./srcs/inter_plane.c
---
---
 Norme: ./srcs/inter_cone.c
 Warning: /Users/nihuynh/Master/RT/lib/librt/srcs/inter_cone.c may not compile or is invalid for some reasons.
-Norme: ./srcs/inter_setrefract.c
+Norme: ./srcs/inter_find.c
 --
 --
+Norme: ./srcs/inter_cylinder.c
+Warning: /Users/nihuynh/Master/RT/lib/librt/srcs/inter_cylinder.c may not compile or is invalid for some reasons.
 Norme: ./srcs/inter_sphere.c
-Error (line 57): C++ comment
-Norme: ./srcs/mat3.c
 [1;34mlibrt.a[25G[31mNorminette [80G[32m[OK][0m
-Norme: ./srcs/key_mapping.c
-Error (line 18, col 5): global named debug is not well prefixed
-Norme: ./srcs/parser/export.c
---
---
 Norme: ./srcs/render/perturbation.c
 Error: global scope bad aligned
 Error (line 62): declaration of Struct forbidden in .c
@@ -55,12 +45,12 @@ Error (line 49): line has 85 characters
 Error (line 52): line has 83 characters
 Error (line 114): C++ comment
 Error (line 114): line has 109 characters
-Norme: ./srcs/render_utils/init_mthr_sdl.c
+Norme: ./srcs/render_utils/error_sdl.c
 --
 --
 Norme: ./srcs/render_utils/render_sdl.c
 Error (line 27): C++ comment
 Error (line 28): C++ comment
 Error (line 50): C++ comment
-Norme: ./srcs/render_utils/render_pool.c
+Norme: ./srcs/render_utils/save_screenshot.c
 [1;34mRT[25G[31mNorminette [80G[32m[OK][0m

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 19:08:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 21:59:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@
 # define FLAGS3	ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoCollapse
 # define FLAGS4	ImGuiWindowFlags_NoBringToFrontOnFocus
 # define RENDER_FLAGS FLAGS1 | FLAGS2 | FLAGS3 | FLAGS4
-
-/*
-** Config :
-*/
-
-# define RENDER_STATIC	1
-# define SHOW_DEMO		1
 
 /*
 ** Prototypes :

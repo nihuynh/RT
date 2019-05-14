@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 19:05:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 22:04:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,8 @@
 # include "libui.h"
 
 /*
-** Definition for the RT :
-** Config :
-*/
-
-# define BACK_COLOR		0x000000
-# define FOV			40.0f
-# define DEPTH_MAX		2
-
-# define DEBUG			0
-# define MAC			MACB
-
-/*
-** User def :
-*/
-
-# define T_STEP			5
-# define Z_STEP			1
-# define A_STEP			5 * DEG_TO_RAD
-# define MOUSE_SCALING	0.005f
-
-/*
 ** Static def :
 */
-
-# define DEV			0
-# define MACB			1
-# define IMAC			2
-# define IMAC4K			3
 
 # define PLANE			0
 # define SPHERE			1
@@ -58,24 +32,6 @@
 
 # define RM_UNIT_TEST	0
 # define RM_NORMAL		1
-
-/*
-** Automatic parameters :
-*/
-
-# if (MAC == MACB)
-#  define WIDTH			1680
-#  define HEIGHT		1000
-# elif (MAC == IMAC)
-#  define WIDTH			2560
-#  define HEIGHT		1400
-# elif (MAC == IMAC4K)
-#  define WIDTH			3200
-#  define HEIGHT		1800
-# else
-#  define WIDTH			840
-#  define HEIGHT		500
-# endif
 
 /*
 ** Messages for RT :
@@ -140,9 +96,9 @@ void		change_window_title(SDL_Window *win, t_data *app);
 void		fullscreen(t_sdl *sdl, t_gui *gui);
 int			export_scene(t_data *data, char *filename);
 void		export_material(int fd, t_material *mat);
-int			texcmp(void *content, void *key);
 void		del_obj(void *content, size_t content_size);
-void		del_mat(void *content, size_t content_size);
+void		free_lst(t_data *data);
+int			texcmp(void *content, void *key);
 void		reload(t_data *app, char *filename);
 
 t_color		sepia(t_color in);

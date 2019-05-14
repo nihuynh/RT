@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 15:50:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 22:13:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "ftio.h"
+#include "ftmath.h"
 #include <SDL.h>
+#include "config.h"
 #include "interface.h"
-
-bool debug;
 
 /*
 ** @brief Key mapping
@@ -79,20 +79,9 @@ void
 	{
 		x = event->button.x - app->gui.pos_render.x;
 		y = event->button.y - app->gui.pos_render.y;
-		if (x >= 0 && x < app->sdl.img.width
-		&& y >= 0 && y < app->sdl.img.height)
+		if (ft_btw(x, 0, app->sdl.img.width)
+		&& ft_btw(y, 0, app->sdl.img.height))
 			app->gui.obj_set = find_obj_at_pixel(app, x, y);
-	}
-	if (event->button.button == SDL_BUTTON_RIGHT)
-	{
-		x = event->button.x - app->gui.pos_render.x;
-		y = event->button.y - app->gui.pos_render.y;
-		if (x >= 0 && x < app->sdl.img.width
-			&& y >= 0 && y < app->sdl.img.height)
-		{
-			debug = true;
-			process_pixel(x, y, app);
-		}
 	}
 }
 
