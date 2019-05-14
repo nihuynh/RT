@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/12 06:07:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 00:47:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 static inline void
 	init_parse(int type, t_parse *config)
 {
-	const t_parse index_config[4] = {
+	const t_parse index_config[] = {
 		{"plane", sizeof(t_plane), &plane_set, &plane_export, 6},
 		{"sphere", sizeof(t_sphere), &sphere_set, &sphere_export, 5},
 		{"cone", sizeof(t_cone), &cone_set, &cone_export, 7},
@@ -49,7 +49,7 @@ void
 		{&inter_plane, &ui_plane, &normal_plane, &get_plane_uv},
 		{&inter_sphere, &ui_sphere, &normal_sphere, &get_sphere_uv},
 		{&inter_cone, &ui_cone, &normal_cone, &get_cone_uv},
-		{&inter_cylinder, &ui_cylinder, &normal_cylinder, &get_cylinder_uv},
+		{&inter_cylinder, &ui_cylinder, &normal_cylinder, &get_cylinder_uv}
 	};
 
 	ft_bzero(obj, sizeof(t_obj));
