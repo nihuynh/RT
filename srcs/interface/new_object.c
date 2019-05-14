@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 17:07:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 12:45:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void
 	tmp = ft_lstgetelt(app->lst_mat, &matcmp, "white plastic");
 	new.material = *tmp;
 	ft_lstpushnew(&app->scene.lst_obj, &new, sizeof(t_obj));
+	app->gui.obj_set = app->scene.lst_obj->content;
 }
 
 void
