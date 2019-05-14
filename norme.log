@@ -30,14 +30,14 @@ Error (line 77): C++ comment
 Error (line 79, col 6): ptr is instanciated during declaration
 Error (line 79, col 18): space after cast
 Error (line 84): C++ comment
-Norme: ./srcs/render/light.c
+Norme: ./srcs/parser/setter.c
 --
 --
 Norme: ./srcs/render/light.c
 Error: 9 functions in the file
 Error (line 100): line has 88 characters
 Error (line 114): function get_lighting has 26 lines
-Norme: ./srcs/render/post_process.c
+Norme: ./srcs/render/render.c
 --
 --
 Norme: ./srcs/render/render.c
@@ -45,7 +45,7 @@ Error (line 49): line has 85 characters
 Error (line 52): line has 83 characters
 Error (line 114): C++ comment
 Error (line 114): line has 109 characters
-Norme: ./srcs/render_utils/error_sdl.c
+Norme: ./srcs/render/post_process.c
 --
 --
 Norme: ./srcs/render_utils/render_sdl.c

@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/14 21:35:06 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/14 23:08:42 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ CIMGUI_LIB	:=	$(CIMGUI_NAME) -lstdc++
 CIMGUI_INC	:=	-I $(CIMGUI_PATH)
 CIMGUI_RULE	:=	$(CIMGUI_NAME)
 # IMGUI_IMPL
-IMGUI_IMPL_NAME	:= imgui_impl.a
+IMGUI_IMPL_NAME	:= libimgui_impl.a
 IMGUI_IMPL_PATH	:= lib/imgui_impl
 IMGUI_IMPL_LIB	:= -L $(IMGUI_IMPL_PATH) -limgui_impl
 IMGUI_IMPL_INC	:= -I $(IMGUI_IMPL_PATH)
