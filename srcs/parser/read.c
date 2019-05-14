@@ -31,9 +31,9 @@ int
 		ft_printf("camera at line = %i\n", line_i);
 	if (greed[line_i + 2] == NULL || greed[line_i + 3] == NULL)
 		parsing_error(line_i, ERR_PARSE_CONTENT, data, greed);
-	parse_vector(&data->cam.pos, greed[line_i + 2], 3, "origin(");
-	parse_vector(&data->cam.dir, greed[line_i + 3], 4, "direction(");
-	parse_color(&data->settings.amb_light, greed[line_i + 4], 4, "amb_light(");
+	parse_vector(&data->cam.pos, greed, line_i + 2, "origin(");
+	parse_vector(&data->cam.dir, greed, line_i + 3, "direction(");
+	parse_color(&data->settings.amb_light, greed, line_i + 4, "amb_light(");
 	vec3_normalize(&data->cam.dir);
 	return (line_i + 6);
 }

@@ -64,24 +64,26 @@ t_texture
 }
 
 t_texture
-	*parse_texture(t_list **lst_tex, char *str, int line)
+	*parse_texture(t_list **lst_tex, char **lines, int line_idx)
 {
 	t_texture	*tex;
 	t_texture	new_tex;
+	char		*line;
 
-	if (!str)
-		ft_error_wmsg(ERR_PARSE_STRN, line, str);
-	if (!(str = ft_strstr(str, "texture(")))
+	line = lines[line_idx];
+	if (!line)
+		ft_error_wmsg(ERR_PARSE_STRN, line_idx, line);
+	if (!(line = ft_strstr(line, "texture(")))
 		return (NULL);
-	str += 8;
-	tex = ft_lstgetelt(*lst_tex, &texcmp, str);
+	line += 8;
+	tex = ft_lstgetelt(*lst_tex, &texcmp, line);
 	if (tex == NULL)
 	{
-		if (ft_strstr(str, ".ppm"))
+		if (ft_strstr(line, ".ppm"))
 		{
-			new_tex = create_texture(str);
+			new_tex = create_texture(line);
 			ft_lstpushnew(lst_tex, &new_tex, sizeof(t_texture));
-			return (ft_lstgetelt(*lst_tex, &texcmp, str));
+			return (ft_lstgetelt(*lst_tex, &texcmp, line));
 		}
 		else
 			return (ft_lstgetelt(*lst_tex, &texcmp, "none"));

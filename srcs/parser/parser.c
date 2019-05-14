@@ -75,19 +75,18 @@ static inline int
 		ft_memcpy(dst, mat, sizeof(t_material));
 		return (idx + 2);
 	}
+	ft_bzero(dst, sizeof(t_material));
 	dst->name = "";
-	dst->tex = parse_texture(&data->lst_tex, tab[idx], idx);
-	parse_color(&dst->color_diffuse, tab[idx + 1], idx + 1, "color_diffuse(");
-	parse_color(&dst->color_specular, tab[idx + 2], idx + 2, "color_specular(");
-	parse_color(&dst->color_tex, tab[idx + 3], idx + 3, "color_tex(");
-	parse_fval(&dst->spec_idx, tab[idx + 4], idx + 4, "spec_idx(");
-	parse_fval(&dst->spec_power, tab[idx + 5], idx + 5, "spec_power(");
-	idx += 6;
-	parse_color(&dst->refraction_color, tab[idx], idx, "refraction_color(");
-	idx++;
-	parse_color(&dst->reflection_color, tab[idx], idx, "reflection_color(");
-	parse_fval(&dst->refraction_idx, tab[idx + 1], idx + 1, "refraction_idx(");
-	return (idx + 3);
+	dst->tex = parse_texture(&data->lst_tex, tab, idx++);
+	parse_color(&dst->color_diffuse, tab, idx++, "color_diffuse(");
+	parse_color(&dst->color_specular, tab, idx++, "color_specular(");
+	parse_color(&dst->color_tex, tab, idx++, "color_tex(");
+	parse_fval(&dst->spec_idx, tab, idx++, "spec_idx(");
+	parse_fval(&dst->spec_power, tab, idx++, "spec_power(");
+	parse_color(&dst->refraction_color, tab, idx++, "refraction_color(");
+	parse_color(&dst->reflection_color, tab, idx++, "reflection_color(");
+	parse_fval(&dst->refraction_idx, tab, idx++, "refraction_idx(");
+	return (idx + 1);
 }
 
 /*
