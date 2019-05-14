@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 17:26:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 11:02:09 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	fullscreen(t_sdl *sdl, t_gui *gui)
 {
 	int	idx;
 
-	sdl->img.height = (sdl->img.height == sdl->height_vp) ? sdl->height_vp / 2
+	sdl->img.height = (sdl->img.height == sdl->height_vp) ? sdl->height_vp * 0.7
 															: sdl->height_vp;
-	sdl->img.width = (sdl->img.width == sdl->width_vp) ? sdl->width_vp / 2
+	sdl->img.width = (sdl->img.width == sdl->width_vp) ? sdl->width_vp * 0.7
 														: sdl->width_vp;
 	free(sdl->img.pixels);
 	if (!(sdl->img.pixels = malloc(sizeof(uint32_t)

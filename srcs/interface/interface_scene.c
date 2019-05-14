@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/13 16:58:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 10:55:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ static inline void
 	igCheckbox("Light Intensity", &app->settings.i_light);
 	igSameLine(320, 0);
 	igCheckbox("Shine", &app->settings.shine);
-	igSameLine(480, 0);
 	igCheckbox("Shadow", &app->settings.shadow);
-	igCheckbox("Facing Ratio", &app->settings.facing);
 	igSameLine(160, 0);
-	igCheckbox("Reflection", &app->settings.deflect);
+	igCheckbox("Facing Ratio", &app->settings.facing);
 	igSameLine(320, 0);
+	igCheckbox("Reflection", &app->settings.deflect);
 	igCheckbox("Refraction", &app->settings.absorb);
-	igSameLine(480, 0);
+	igSameLine(160, 0);
 	igCheckbox("Anti Aliasing", &app->settings.anti_a);
 	color_lights(app);
 	igTreePop();
@@ -104,7 +103,7 @@ void
 {
 	igSetNextWindowPos((ImVec2){app->sdl.img.width, 0},
 						ImGuiCond_Once, (ImVec2){0, 0});
-	igSetNextWindowSizeConstraints((ImVec2){800, 120}, (ImVec2){2500, 2500},
+	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar
 		| ImGuiWindowFlags_AlwaysAutoResize);
