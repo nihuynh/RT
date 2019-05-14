@@ -15,8 +15,6 @@
 #include "libft.h"
 #include "parse.h"
 
-t_texture create_texture(char *filename);
-
 int
 	texcmp(void *content, void *key)
 {
@@ -52,9 +50,24 @@ void
 }
 
 t_texture
+	create_texture(char *filename)
+{
+	t_texture	result;
+	char		*cleaned_name;
+
+	cleaned_name = ft_strdup(filename);
+	cleaned_name[ft_strlen(cleaned_name) - 1] = '\0';
+	result.f_texture = &sample;
+	result.name = cleaned_name;
+	result.pixels = load_texture(cleaned_name, &result.width, &result.height);
+	return (result);
+}
+
+t_texture
 	*parse_texture(t_list **lst_tex, char *str, int line)
 {
 	t_texture	*tex;
+	t_texture	new_tex;
 
 	if (!str)
 		ft_error_wmsg(ERR_PARSE_STRN, line, str);
@@ -66,7 +79,7 @@ t_texture
 	{
 		if (ft_strstr(str, ".ppm"))
 		{
-			t_texture new_tex = create_texture(str);
+			new_tex = create_texture(str);
 			ft_lstpushnew(lst_tex, &new_tex, sizeof(t_texture));
 			return (ft_lstgetelt(*lst_tex, &texcmp, str));
 		}
@@ -75,19 +88,3 @@ t_texture
 	}
 	return (tex);
 }
-
-t_texture create_texture(char *filename)
-{
-	t_texture	result;
-	char		*cleaned_name;
-
-	cleaned_name = ft_strdup(filename);
-	cleaned_name[ft_strlen(cleaned_name) - 1] = '\0';
-	result.f_texture = &sample;
-	result.name = cleaned_name;
-	result.pixels = load_texture(cleaned_name, &result.width, &result.height);
-	return result;
-}
-
-
-
