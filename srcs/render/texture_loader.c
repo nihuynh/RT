@@ -10,23 +10,52 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftio.h>
-#include <ftstring.h>
-#include <ftconvert.h>
+#include "ftio.h"
+#include "ftstring.h"
+#include "ftconvert.h"
 #include <unistd.h>
 #include <stdlib.h>
+
+int		parse_header(int fd, int *width, int *height)
+{
+	char	*line;
+	int		header_bytes;
+
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	header_bytes = ft_strlen(line) + 1;
+	if (ft_strncasecmp(line, "P6", 2) != 0)
+	{
+		ft_printf("Bad header [%s]\n", line);
+		ft_error(__func__, __LINE__);
+	}
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	header_bytes += ft_strlen(line) + 1;
+	free(line);
+	*width = ft_atoi(line);
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	header_bytes += ft_strlen(line) + 1;
+	free(line);
+	*height = ft_atoi(line);
+	ft_gnl(fd, &line, "\t\n\r\v ");
+	header_bytes += ft_strlen(line) + 1;
+	free(line);
+	return (header_bytes);
+}
 
 /*
 ** We want to use read() for the pixel data but ft_gnl will mess with the cursor
 ** offset.
 ** To reposition the cursor immediately after the metadata, we have to reopen
 ** the file and read past the metadata to skip it.
+** ft_gnl will return incorrect data on a sucessive read if ft_gnl doesn't reach
+** the end of the file, so we do a dummy gnl call at the end
 */
 
 char	*read_pixel_data(char *filename, int cursor, int pixel_count)
 {
 	char	*pixels;
 	int		fd;
+	char	*line;
 
 	pixels = malloc(pixel_count * 3);
 	if (pixels == NULL)
@@ -34,34 +63,20 @@ char	*read_pixel_data(char *filename, int cursor, int pixel_count)
 	fd = ft_fopen_read(filename);
 	read(fd, pixels, cursor);
 	read(fd, pixels, pixel_count * 3);
+	ft_gnl(fd, &line, "\n");
 	close(fd);
 	return (pixels);
 }
 
 char	*load_texture(char *filename, int *width, int *height)
 {
-	int		fd;
-	char	*line;
-	int		cursor;
+	int	fd;
+	int	header_bytes;
 
-	cursor = 0;
+	ft_printf("Loading [%s] ... ", filename);
 	fd = ft_fopen_read(filename);
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	cursor += ft_strlen(line) + 1;
-	if (ft_strncasecmp(line, "P6", 2) != 0)
-	{
-		ft_printf("Bad header [%s]\n", line);
-		ft_error(__func__, __LINE__);
-	}
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	cursor += ft_strlen(line) + 1;
-	*width = ft_atoi(line);
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	cursor += ft_strlen(line) + 1;
-	*height = ft_atoi(line);
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	cursor += ft_strlen(line) + 1;
+	header_bytes = parse_header(fd, width, height);
 	close(fd);
 	ft_printf("%d x %d\n", *width, *height);
-	return (read_pixel_data(filename, cursor, *width * *height));
+	return (read_pixel_data(filename, header_bytes, *width * *height));
 }
