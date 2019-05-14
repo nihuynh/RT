@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/12 07:56:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 13:08:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # define BACK_COLOR		0x000000
 # define FOV			40.0f
-# define DEPTH_MAX		0
+# define DEPTH_MAX		2
 
 # define DEBUG			0
 # define MAC			MACB
