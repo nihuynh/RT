@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 18:01:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 19:08:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 ** Config :
 */
 
-# define RENDER_STATIC		1
+# define RENDER_STATIC	1
+# define SHOW_DEMO		1
 
 /*
 ** Prototypes :

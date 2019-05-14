@@ -6,6 +6,10 @@
 		"ftconvert.h": "c",
 		"parse.h": "c",
 		"locale.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"data_struct.h": "c",
+		"libui.h": "c",
+		"sdl.h": "c",
+		"stdbool.h": "c"
 	}
 }
