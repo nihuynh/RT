@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/14 01:39:47 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 14:48:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int
 	if (DEBUG)
 		ft_puttab(greed);
 	parser(greed, data, line_count);
+	open_textures(data);
 	ft_lstrev(&data->scene.lst_light);
 	ft_lstrev(&data->scene.lst_obj);
 	ft_tabdel(greed);

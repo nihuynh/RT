@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdarchiv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/03 15:32:32 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/05/14 14:50:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rt.h"
 #include "ftio.h"
 #include "ftstring.h"
 #include "ftconvert.h"
@@ -79,4 +80,38 @@ char	*load_texture(char *filename, int *width, int *height)
 	close(fd);
 	ft_printf("%d x %d\n", *width, *height);
 	return (read_pixel_data(filename, header_bytes, *width * *height));
+}
+
+#include "rt.h"
+#include <dirent.h>
+#include "libft.h"
+
+void	add_texture(char *name, t_data *app)
+{
+	char		*dir;
+	t_texture	tex;
+
+	dir = ft_strjoin("./textures/", name);
+	tex.pixels = load_texture(dir, &tex.width, &tex.height);
+	tex.f_texture = &sample;
+	tex.name = name;
+	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
+	ft_printf("Texture loaded : %s\n", name);
+}
+
+void	open_textures(t_data *app)
+{
+	DIR *d;
+	struct dirent *dir;
+
+	(void)app;
+	d = opendir("./textures");
+	if (d)
+	{
+		while ((dir = readdir(d)) != NULL)
+		{
+			if (ft_strstr(dir->d_name, ".ppm"))
+				add_texture(dir->d_name, app);
+		}
+	}
 }

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/13 17:35:22 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/14 14:27:18 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	RT
-RUNMODE		?=	release
-# RUNMODE		?=	dev
+# RUNMODE		?=	release
+RUNMODE		?=	dev
 #VERBOSE	:= TRUE
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\

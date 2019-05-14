@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/07 16:52:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 14:13:14 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void			parse_vector(t_vec3 *vec, char *str, int line, char *key);
 void			parse_fval(float *val, char *str, int line, const char *key);
 void			parse_limit(float *l_x, float *l_y, char *str, int line);
 t_texture		*parse_texture(t_list **lst_tex, char *str, int line);
+void			open_textures(t_data *app);
 
 /*
 ** Setters :
