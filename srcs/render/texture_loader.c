@@ -58,8 +58,7 @@ char	*read_pixel_data(char *filename, int cursor, int pixel_count)
 	int		fd;
 	char	*line;
 
-	if (!(pixels = malloc(pixel_count * 3)))
-		ft_error(__func__, __LINE__);
+	pixels = malloc(pixel_count * 3);
 	if (pixels == NULL)
 		ft_error(__func__, __LINE__);
 	fd = ft_fopen_read(filename);

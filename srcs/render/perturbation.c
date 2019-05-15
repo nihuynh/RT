@@ -19,10 +19,12 @@
 float
 	pattern_checkers(float x, float y)
 {
-	float	pattern;
+	int yi;
+	int xi;
 
-	pattern = (fmodf(x, 1.f) < 0.5f) ^ (fmodf(y, 1) < 0.5f);
-	return (pattern);
+	xi = abs((int)x) + (x < 0);
+	yi = abs((int)y) + (y < 0);
+	return ((xi + yi) & 0x1);
 }
 
 float

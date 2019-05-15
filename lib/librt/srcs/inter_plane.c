@@ -80,14 +80,8 @@ t_vec3
 	uv.x = vec3_dot(&orig_to_inter, &plan->x);
 	uv.y = vec3_dot(&orig_to_inter, &plan->y);
 	if (plan->size_x > 0)
-	{
-		uv.x /= plan->size_x;
-		uv.x = .5f + uv.x * 0.5f;
-	}
+		uv.x = .5f + 0.5f * (uv.x / plan->size_x);
 	if (plan->size_y > 0)
-	{
-		uv.y /= plan->size_y;
-		uv.y = .5f + uv.y * 0.5f;
-	}
+		uv.y = .5f + 0.5f * (uv.y / plan->size_y);
 	return (uv);
 }
