@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 12:45:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 21:51:16 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static inline void
 	init_new(int type, t_parse *config)
 {
-	const t_parse index_config[4] = {
+	const t_parse index_config[] = {
 		{"plane", sizeof(t_plane), &plane_new, &plane_export, 6},
 		{"sphere", sizeof(t_sphere), &sphere_new, &sphere_export, 5},
 		{"cone", sizeof(t_cone), &cone_new, &cone_export, 7},

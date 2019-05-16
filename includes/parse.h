@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 14:13:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/16 14:32:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int				texcmp(void *content, void *key);
 char			*check_key(char *str, int line, const char *key, char *err);
 void			parse_material_csv(t_data *data, char *csv_file);
 void			ft_error_wmsg(char *str, int line, char *endl);
-void			parse_color(t_color *color, char *str, int line, char *key);
-void			parse_vector(t_vec3 *vec, char *str, int line, char *key);
-void			parse_fval(float *val, char *str, int line, const char *key);
-void			parse_limit(float *l_x, float *l_y, char *str, int line);
-t_texture		*parse_texture(t_list **lst_tex, char *str, int line);
+void			parse_color(t_color *color, char **lines, int idx, char *key);
+void			parse_fval(float *val, char **lines, int idx, const char *key);
+void			parse_vector(t_vec3 *vec, char **lines, int idx, char *key);
+void			parse_limit(float *l_x, float *l_y, char **lines, int line_idx);
+t_texture		*parse_texture(t_list **lst_tex, char **lines, int line_idx);
 void			open_textures(t_data *app);
 
 /*

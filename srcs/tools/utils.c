@@ -57,6 +57,7 @@ char
 static inline void
 	split_to_mat(t_data *data, char **split, t_material *mat)
 {
+	ft_bzero(mat, sizeof(t_material));
 	if (!(mat->name = ft_strdup(split[0])))
 		ft_error(__func__, __LINE__);
 	if (!(mat->tex = ft_lstgetelt(data->lst_tex, &texcmp, split[0])))

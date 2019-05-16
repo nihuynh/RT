@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/14 14:27:18 by sklepper         ###   ########.fr        #
+#    Updated: 2019/05/16 14:33:09 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				object_tools.c texture_toolbox.c new_object_tools.c \
 				interface_lists.c filters.c export.c export_utils.c \
 				fullscreen.c interface_windows.c export_toolbox.c new_object.c \
-				reload.c perturbation.c texture_loader.c
+				reload.c perturbation.c texture_loader.c free.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c render_time.c
@@ -59,7 +59,7 @@ CIMGUI_LIB	:=	$(CIMGUI_NAME) -lstdc++
 CIMGUI_INC	:=	-I $(CIMGUI_PATH)
 CIMGUI_RULE	:=	$(CIMGUI_NAME)
 # IMGUI_IMPL
-IMGUI_IMPL_NAME	:= imgui_impl.a
+IMGUI_IMPL_NAME	:= libimgui_impl.a
 IMGUI_IMPL_PATH	:= lib/imgui_impl
 IMGUI_IMPL_LIB	:= -L $(IMGUI_IMPL_PATH) -limgui_impl
 IMGUI_IMPL_INC	:= -I $(IMGUI_IMPL_PATH)

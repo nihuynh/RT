@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 18:02:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 21:57:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,24 @@
 #include "libft.h"
 #include "interface.h"
 #include <fcntl.h>
+#include <unistd.h>
 
 bool	check_file(char *filename)
 {
-	if (open(filename, O_RDONLY) == -1)
-		return (false);
-	return (true);
-}
+	int fd;
 
-void	free_reload(t_data *app)
-{
-	free(app->arg);
-	if (app->scene.lst_obj)
-		ft_lstdel(&app->scene.lst_obj, &del_obj);
-	if (app->scene.lst_light)
-		ft_lstdel(&app->scene.lst_light, &del_obj);
-	if (app->lst_mat)
-		ft_lstdel(&app->lst_mat, &del_mat);
-	if (app->lst_tex)
-		ft_lstdel(&app->lst_tex, &del_obj);
+	if ((fd = open(filename, O_RDONLY)) == -1)
+		return (false);
+	close(fd);
+	return (true);
 }
 
 void	reload(t_data *app, char *filename)
 {
-	free_reload(app);
-	app->arg = ft_strdup(filename);
+	free(app->arg);
+	free_lst(app);
+	if (!(app->arg = ft_strdup(filename)))
+		ft_error(__func__, __LINE__);
 	if (reader(filename, app) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
 	init_settings(&app->settings);

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/13 16:54:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/14 22:02:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
+#include "config.h"
 #if defined(__APPLE__)
 # define GL_SILENCE_DEPRECATION
 # include <OpenGL/gl.h>
@@ -42,10 +43,12 @@ void	window_renderer(t_gui *gui, t_img img)
 
 void	window_stats(t_data *app, bool *p_open)
 {
-	igSetNextWindowPos((ImVec2){0, app->sdl.img.height}, (ImGuiCond_Once), (ImVec2){0, 0});
+	igSetNextWindowPos((ImVec2){0, app->sdl.img.height}, (ImGuiCond_Once),
+		(ImVec2){0, 0});
 	igBegin("Stats", p_open, ImGuiWindowFlags_AlwaysAutoResize);
 	igText("Last frame took : %fms", app->sdl.render_time[24]);
-	igPlotLines("Render Time (ms)", &(app->sdl.render_time[0]), 25, 0, NULL, 0, 3.402823466e+38F, (ImVec2){400, 80}, 4);
+	igPlotLines("Render Time (ms)", &(app->sdl.render_time[0]), 25, 0, NULL, 0,
+		3.402823466e+38F, (ImVec2){400, 80}, 4);
 	igEnd();
 }
 
@@ -84,7 +87,8 @@ void	interface(t_data *app)
 	ImGui_ImplSDL2_NewFrame(app->sdl.win);
 	igNewFrame();
 	gui_setup(&app->gui, app->sdl.img, app);
-	// igShowDemoWindow(NULL);
+	if (SHOW_DEMO)
+		igShowDemoWindow(NULL);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
 	glClearColor(0.107f, 0.277f, 0.348f, 1.000f);

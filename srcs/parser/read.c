@@ -6,11 +6,12 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/14 14:48:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/16 14:32:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+#include "config.h"
 #include "parse.h"
 #include "libft.h"
 #include <unistd.h>
@@ -31,9 +32,9 @@ int
 		ft_printf("camera at line = %i\n", line_i);
 	if (greed[line_i + 2] == NULL || greed[line_i + 3] == NULL)
 		parsing_error(line_i, ERR_PARSE_CONTENT, data, greed);
-	parse_vector(&data->cam.pos, greed[line_i + 2], 3, "origin(");
-	parse_vector(&data->cam.dir, greed[line_i + 3], 4, "direction(");
-	parse_color(&data->settings.amb_light, greed[line_i + 4], 4, "amb_light(");
+	parse_vector(&data->cam.pos, greed, line_i + 2, "origin(");
+	parse_vector(&data->cam.dir, greed, line_i + 3, "direction(");
+	parse_color(&data->settings.amb_light, greed, line_i + 4, "amb_light(");
 	vec3_normalize(&data->cam.dir);
 	return (line_i + 6);
 }

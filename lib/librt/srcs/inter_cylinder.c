@@ -6,13 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:20:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 19:03:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/14 22:07:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
+#include "ftmath.h"
 #include <math.h>
-#include <ftmath.h>
 
 static inline float
 	inter_finite(t_inter *data, t_cylinder *cyl, float dist[2])

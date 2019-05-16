@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/14 14:50:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/16 14:32:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		parse_header(int fd, int *width, int *height)
 		ft_printf("Bad header [%s]\n", line);
 		ft_error(__func__, __LINE__);
 	}
+	free(line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
 	free(line);
@@ -58,13 +59,15 @@ char	*read_pixel_data(char *filename, int cursor, int pixel_count)
 	int		fd;
 	char	*line;
 
-	pixels = malloc(pixel_count * 3);
+	if (!(pixels = malloc(pixel_count * 3)))
+		ft_error(__func__, __LINE__);
 	if (pixels == NULL)
 		ft_error(__func__, __LINE__);
 	fd = ft_fopen_read(filename);
 	read(fd, pixels, cursor);
 	read(fd, pixels, pixel_count * 3);
 	ft_gnl(fd, &line, "\n");
+	free(line);
 	close(fd);
 	return (pixels);
 }
