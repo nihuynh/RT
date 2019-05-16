@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/16 15:06:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:39:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int		parse_header(int fd, int *width, int *height)
 	*height = ft_atoi(line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
-	while (ft_gnl(fd, &line, "\t\n\r\v"))
-		;
 	free(line);
+	while (ft_gnl(fd, &line, "\t\n\r\v"))
+		free(line);
 	return (header_bytes);
 }
 
@@ -104,6 +104,7 @@ void	add_texture(char *name, t_data *app)
 		ft_error(__func__, __LINE__);
 	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
 	ft_printf("Texture loaded : %s\n", name);
+	free(dir);
 }
 
 void	open_textures(t_data *app)
@@ -120,5 +121,6 @@ void	open_textures(t_data *app)
 			if (ft_strstr(dir->d_name, ".ppm"))
 				add_texture(dir->d_name, app);
 		}
+		closedir(d);
 	}
 }
