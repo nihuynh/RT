@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_toolbox.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 20:20:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/16 15:02:34 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void
 	init_textures(t_data *app)
 {
 	textures_procedural(app);
+	open_textures(app);
 }
 
 t_texture
@@ -72,7 +73,6 @@ t_texture
 	*parse_texture(t_list **lst_tex, char **lines, int line_idx)
 {
 	t_texture	*tex;
-	t_texture	new_tex;
 	char		*line;
 
 	line = lines[line_idx];
@@ -83,15 +83,6 @@ t_texture
 	line += 8;
 	tex = ft_lstgetelt(*lst_tex, &texcmp, line);
 	if (tex == NULL)
-	{
-		if (ft_strstr(line, ".ppm"))
-		{
-			new_tex = create_texture(line);
-			ft_lstpushnew(lst_tex, &new_tex, sizeof(t_texture));
-			return (ft_lstgetelt(*lst_tex, &texcmp, line));
-		}
-		else
-			return (ft_lstgetelt(*lst_tex, &texcmp, "none"));
-	}
+		return (ft_lstgetelt(*lst_tex, &texcmp, "none"));
 	return (tex);
 }

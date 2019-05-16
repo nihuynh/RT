@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/16 14:32:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:02:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ int
 	if (DEBUG)
 		ft_puttab(greed);
 	parser(greed, data, line_count);
-	open_textures(data);
 	ft_lstrev(&data->scene.lst_light);
 	ft_lstrev(&data->scene.lst_obj);
 	ft_tabdel(greed);
