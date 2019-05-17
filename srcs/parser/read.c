@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/17 06:10:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 18:01:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int
 	if (DEBUG)
 		ft_printf("camera at line = %i\n", line_i);
 	if (greed[line_i + 2] == NULL || greed[line_i + 3] == NULL)
-		parsing_error(line_i, ERR_PARSE_CONTENT, data, greed);
+		parsing_error(line_i, ERR_P_CONTENT, data, greed);
 	parse_vector(&data->cam.pos, greed, line_i + 2, "origin(");
 	parse_vector(&data->cam.dir, greed, line_i + 3, "direction(");
 	parse_color(&data->settings.amb_light, greed, line_i + 4, "amb_light(");
@@ -52,6 +52,8 @@ int
 int
 	parse_content(char **greed, t_data *data, int line_idx, int line_max)
 {
+	char *obj_type;
+
 	if (greed[++line_idx] == NULL || greed[line_idx][0] != '{')
 		parsing_error(line_idx, ERR_P_BRACKET, data, greed);
 	line_idx++;
@@ -59,18 +61,21 @@ int
 	{
 		if (greed[line_idx][0] == '}')
 			return (++line_idx);
-		else if (ft_strstr(greed[line_idx], "object(light)") != NULL)
+		obj_type = check_key(greed[line_idx], line_idx, "object(", ERR_P_CONTENT);
+		if (ft_strstr(greed[line_idx], "light") != NULL)
 			line_idx = parse_light(greed, data, line_idx);
-		else if (ft_strstr(greed[line_idx], "object(plane)") != NULL)
+		else if (ft_strstr(greed[line_idx], "plane") != NULL)
 			line_idx = parse_shape(greed, data, line_idx, PLANE);
-		else if (ft_strstr(greed[line_idx], "object(sphere)") != NULL)
+		else if (ft_strstr(greed[line_idx], "sphere") != NULL)
 			line_idx = parse_shape(greed, data, line_idx, SPHERE);
-		else if (ft_strstr(greed[line_idx], "object(cylinder)") != NULL)
+		else if (ft_strstr(greed[line_idx], "cylinder") != NULL)
 			line_idx = parse_shape(greed, data, line_idx, CYLINDER);
-		else if (ft_strstr(greed[line_idx], "object(cone)") != NULL)
+		else if (ft_strstr(greed[line_idx], "cone") != NULL)
 			line_idx = parse_shape(greed, data, line_idx, CONE);
+		else if (ft_strstr(greed[line_idx], "csg") != NULL)
+			line_idx = parse_shape(greed, data, line_idx, CSG);
 		else
-			parsing_error(line_idx, ERR_PARSE_CONTENT, data, greed);
+			parsing_error(line_idx, ERR_P_CONTENT, data, greed);
 	}
 	return (++line_idx);
 }
@@ -96,7 +101,7 @@ void
 		else if (ft_strstr(greed[line_idx], "camera") != NULL)
 			line_idx = parse_camera(greed, data, line_idx);
 		else
-			parsing_error(line_idx, ERR_PARSE_CONTENT, data, greed);
+			parsing_error(line_idx, ERR_P_CONTENT, data, greed);
 	}
 }
 

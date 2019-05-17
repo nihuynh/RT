@@ -1,0 +1,32 @@
+camera
+{
+	origin(0 0 0)
+	direction(0 0 -1)
+	amb_light(0.1 0.1 0.1)
+}
+content
+{
+	object(light)
+	{
+		color(1 1 1)
+		origin(60 20 0)
+		intensity(5000)
+	}
+	object(csg)
+	{
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		origin(0 0 -50)
+		radius(10)
+		mat(white plastic)
+	}
+	object(plane)
+	{
+		origin(0 -10 0)
+		normal(0 1 0)
+		limit(100 100)
+		mat(white plastic)
+	}
+}

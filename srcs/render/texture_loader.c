@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/16 15:39:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/17 07:15:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+#include "config.h"
 #include "ftio.h"
 #include "ftstring.h"
 #include "ftconvert.h"
@@ -96,7 +97,7 @@ void	add_texture(char *name, t_data *app)
 	char		*dir;
 	t_texture	tex;
 
-	if (!(dir = ft_strjoin("./resources/textures/", name)))
+	if (!(dir = ft_strjoin(TEX_DIR, name)))
 		ft_error(__func__, __LINE__);
 	tex.pixels = load_texture(dir, &tex.width, &tex.height);
 	tex.f_texture = &sample;
@@ -112,8 +113,7 @@ void	open_textures(t_data *app)
 	DIR *d;
 	struct dirent *dir;
 
-	(void)app;
-	d = opendir("./resources/textures");
+	d = opendir(TEX_DIR);
 	if (d)
 	{
 		while ((dir = readdir(d)) != NULL)

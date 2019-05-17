@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 22:04:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 08:09:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define DEBUG			0
 # define MAC			MACB
+# define TEX_DIR		"./resources/textures/"
 
 /*
 ** User def :

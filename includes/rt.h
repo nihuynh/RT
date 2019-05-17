@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 06:51:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 17:54:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void		parse_material_csv(t_data *data, char *csv_file);
 # define SPHERE			1
 # define CONE			2
 # define CYLINDER		3
+# define CSG			4
 
 # define EXIT_FAILURE	1
 # define EXIT_SUCCESS	0

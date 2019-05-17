@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 01:12:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 18:19:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,12 @@ static inline void
 static inline void
 	export_obj(int fd, t_list *node)
 {
-	const char	*names[] = {
-		"plane", "sphere", "cone", "cylinder"
-	};
+	t_parse		cfg;
 	t_obj		*obj;
 
 	obj = node->content;
-	dprintf(fd, "\tobject(%s)\n\t{\n", names[obj->type]);
+	init_parse_cfg(obj->type, &cfg);
+	dprintf(fd, "\tobject(%s)\n\t{\n", cfg.printout);
 	obj->export(fd, obj->shape);
 	export_material(fd, &obj->material);
 	write(fd, "\t}\n", 3);

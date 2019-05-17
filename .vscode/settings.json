@@ -14,6 +14,9 @@
 		"interface.h": "c",
 		"ftmath.h": "c",
 		"math.h": "c",
-		"rtstruct.h": "c"
+		"rtstruct.h": "c",
+		"zconf.h": "c",
+		"limits": "c",
+		"type_traits": "c"
 	}
 }

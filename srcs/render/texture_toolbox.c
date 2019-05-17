@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   texture_toolbox.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/16 15:02:34 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/17 07:10:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <zconf.h>
 #include "rt.h"
+#include "config.h"
 #include "libft.h"
 #include "parse.h"
 
@@ -59,7 +60,7 @@ t_texture
 	if (!(result.name = ft_strdup(filename)))
 		ft_error(__func__, __LINE__);
 	result.name[ft_strlen(result.name) - 1] = '\0';
-	if (!(cleaned_name = ft_strdup("resources/textures/")))
+	if (!(cleaned_name = ft_strdup(TEX_DIR)))
 		ft_error(__func__, __LINE__);
 	if (!(cleaned_name = ft_strjoinfree(cleaned_name, result.name)))
 		ft_error(__func__, __LINE__);

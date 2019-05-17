@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 21:51:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 18:36:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 #include "parse.h"
 #include "libft.h"
 
-static inline void
-	init_new(int type, t_parse *config)
+static inline t_built
+	get_built_func(int type)
 {
-	const t_parse index_config[] = {
-		{"plane", sizeof(t_plane), &plane_new, &plane_export, 6},
-		{"sphere", sizeof(t_sphere), &sphere_new, &sphere_export, 5},
-		{"cone", sizeof(t_cone), &cone_new, &cone_export, 7},
-		{"cylinder", sizeof(t_cylinder), &cylinder_new, &cylinder_export, 7}
+	const t_built built_func[] = {
+		{&plane_new},
+		{&sphere_new},
+		{&cone_new},
+		{&cylinder_new}
 	};
-
-	config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
+	return (built_func[type]);
 }
 
 void
@@ -35,10 +34,10 @@ void
 	void		*shape;
 	t_material	*tmp;
 
-	init_new(type, &cfg);
+	init_parse_cfg(type, &cfg);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	cfg.setter(shape, NULL, 0);
+	(get_built_func(type)).setter(shape, NULL, 0);
 	obj_set(&new, type, shape);
 	new.export = cfg.export;
 	tmp = ft_lstgetelt(app->lst_mat, &matcmp, "white plastic");
