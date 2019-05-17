@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/16 14:32:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/17 06:19:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void			cone_new(void *res, char **greed, int i);
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
 char			*check_key(char *str, int line, const char *key, char *err);
-void			parse_material_csv(t_data *data, char *csv_file);
 void			ft_error_wmsg(char *str, int line, char *endl);
 void			parse_color(t_color *color, char **lines, int idx, char *key);
 void			parse_fval(float *val, char **lines, int idx, const char *key);

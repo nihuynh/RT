@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 22:15:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 06:37:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void
 void
 	exit_safe(t_data *data)
 {
-	free(data->arg);
 	free_lst(data);
 	SDL_GL_DeleteContext(data->gui.gl_context);
 	exit_sdl(&data->sdl);

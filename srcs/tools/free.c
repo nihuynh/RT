@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/16 15:30:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/17 06:30:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,21 @@ static inline void
 }
 
 void
-	free_lst(t_data *data)
+	free_scene(t_data *app)
 {
-	if (data->scene.lst_obj)
-		ft_lstdel(&data->scene.lst_obj, &del_obj);
-	if (data->scene.lst_light)
-		ft_lstdel(&data->scene.lst_light, &del_light);
-	if (data->lst_mat)
-		ft_lstdel(&data->lst_mat, &del_mat);
-	if (data->lst_tex)
-		ft_lstdel(&data->lst_tex, &del_tex);
+	ft_strdel(&app->arg);
+	if (app->scene.lst_obj)
+		ft_lstdel(&app->scene.lst_obj, &del_obj);
+	if (app->scene.lst_light)
+		ft_lstdel(&app->scene.lst_light, &del_light);
+}
+
+void
+	free_lst(t_data *app)
+{
+	free_scene(app);
+	if (app->lst_mat)
+		ft_lstdel(&app->lst_mat, &del_mat);
+	if (app->lst_tex)
+		ft_lstdel(&app->lst_tex, &del_tex);
 }
