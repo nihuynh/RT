@@ -71,6 +71,7 @@ target_sources(RT PRIVATE
         srcs/render/post_process.c
         srcs/render/render.c
         srcs/render/texture_toolbox.c
+        lib/librt/srcs/uv_mapping.c
         srcs/render_utils/error_sdl.c
         srcs/render_utils/exit_sdl.c
         srcs/render_utils/init_mthr_sdl.c

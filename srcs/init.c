@@ -23,13 +23,13 @@ void
 	settings->depth_max = DEPTH_MAX;
 	settings->filter = (t_color){1, 1, 1};
 	settings->fov = FOV;
-	settings->absorb = 1;
-	settings->deflect = 1;
-	settings->facing = 1;
-	settings->i_light = 1;
-	settings->light = 1;
-	settings->shadow = 1;
-	settings->shine = 1;
+	settings->absorb = 0;
+	settings->deflect = 0;
+	settings->facing = 0;
+	settings->i_light = 0;
+	settings->light = 0;
+	settings->shadow = 0;
+	settings->shine = 0;
 }
 
 void

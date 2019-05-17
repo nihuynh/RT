@@ -95,6 +95,7 @@ t_shading
 	shading.normal = inter->n;
 	shading.mat = inter->obj->material;
 	shading.specular_dir = inter->deflected.dir;
+	apply_uv_mapping(&shading.uv, inter->obj->material.uv_mapping);
 	return (shading);
 }
 

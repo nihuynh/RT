@@ -76,6 +76,7 @@ float		vec3_mag(t_vec3 v1);
 void		vec3_normalize(t_vec3 *v1);
 t_vec3		vec3_normalize_(t_vec3 v1);
 void		vec3_print(t_vec3 *data);
+void		vec3_print_(char *msg, t_vec3 *data);
 void		vec3_scalar(t_vec3 *v1, float k);
 void		vec3_sub(t_vec3 *res, t_vec3 *v1, t_vec3 *v2);
 t_vec3		vec3_sub_(t_vec3 a, t_vec3 b);
@@ -95,4 +96,6 @@ t_matrix	set_rotation(float yz_angle, float xz_angle);
 float		fresnel(t_vec3 ray_dir, t_vec3 normal, float ior);
 void		ray_offset_origin(t_ray *ray, t_vec3 normal);
 
+void		apply_uv_mapping(t_vec3 *uv, t_uv_mapping mapping);
+float		remap_to_0_to_1(float x);
 #endif

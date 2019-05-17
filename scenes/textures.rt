@@ -107,7 +107,7 @@ content
 	{
 		origin(-40.000 0.000 50.000)
 		radius(10.000)
-		texture(uv_checker.ppm)
+		texture(sanic.ppm)
 		color_diffuse(0.950 0.000 0.000)
 		color_specular(0.900 0.800 0.700)
 		color_tex(0.000 0.000 0.000)

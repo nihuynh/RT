@@ -36,8 +36,8 @@ float
 	angle = 45 * DEG_TO_RAD;
 	pattern = x * cosf(angle) - y * sinf(angle);
 	if (pattern < 0)
-		pattern -= 5;
-	pattern = fabsf(fmodf(pattern, 10)) < 5;
+		pattern -= 0.5f;
+	pattern = fabsf(fmodf(pattern, 1)) < 0.5f;
 	return (pattern);
 }
 
@@ -67,12 +67,22 @@ typedef struct tmp {
 
 t_color sample(t_material *mat, t_vec3 uv)
 {
-	t_texture *texture;
+	t_texture	*texture;
+	int			x_;
+	int			y_;
 
 	texture = mat->tex;
 //	printf("x: %f  y:  %f\n", x, y);
-	int x_ = (ft_clampf(uv.x, 0, 1) * (texture->width - 1));
-	int y_ = (ft_clampf(uv.y, 0, 1) * (texture->height - 1));
+	if (mat->uv_mapping.repeat)
+	{
+		x_ = fabsf(fmodf(uv.x, 1) * (texture->width - 1));
+		y_ = fabsf(fmodf(uv.y, 1) * (texture->height - 1));
+	}
+	else
+	{
+		x_ = (ft_clampf(uv.x, 0, 1) * (texture->width - 1));
+		y_ = (ft_clampf(uv.y, 0, 1) * (texture->height - 1));
+	}
 //	printf("x: %d  y:  %d\n\n", x_, y_);
 //	int x_ = ft_clamp(x, 0, texture->width);
 //	int y_ = ft_clamp(y, 0, texture->height);

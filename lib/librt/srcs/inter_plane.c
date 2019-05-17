@@ -68,20 +68,24 @@ void
 	data->obj = node;
 }
 
+bool debug = false;
+
 t_vec3
 	get_plane_uv(t_inter *inter)
 {
-	t_plane	*plan;
-	t_vec3	orig_to_inter;
-	t_vec3	uv;
+	t_plane			*plan;
+	t_vec3			orig_to_inter;
+	t_vec3			uv;
 
 	plan = (t_plane *)inter->obj->shape;
 	orig_to_inter = vec3_sub_(inter->point, plan->origin);
 	uv.x = vec3_dot(&orig_to_inter, &plan->x);
 	uv.y = vec3_dot(&orig_to_inter, &plan->y);
+	if (debug)
+		vec3_print_("from projection: ", &uv);
 	if (plan->size_x > 0)
-		uv.x = .5f + 0.5f * (uv.x / plan->size_x);
+		uv.x = remap_to_0_to_1(uv.x / plan->size_x);
 	if (plan->size_y > 0)
-		uv.y = .5f + 0.5f * (uv.y / plan->size_y);
+		uv.y = remap_to_0_to_1(uv.y / plan->size_y);
 	return (uv);
 }

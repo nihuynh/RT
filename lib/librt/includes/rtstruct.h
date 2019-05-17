@@ -120,18 +120,27 @@ struct			s_texture
 	int			height;
 };
 
+typedef struct	s_uv_mapping {
+	float	offset_x;
+	float	offset_y;
+	float	scale_x;
+	float	scale_y;
+	bool	repeat;
+}				t_uv_mapping;
+
 struct			s_material
 {
-	char		*name;
-	t_color		color_diffuse;
-	t_color		color_specular;
-	t_color		color_tex;
-	float		spec_idx;
-	float		spec_power;
-	t_color		refraction_color;
-	t_color		reflection_color;
-	float		refraction_idx;
-	t_texture	*tex;
+	char			*name;
+	t_color			color_diffuse;
+	t_color			color_specular;
+	t_color			color_tex;
+	float			spec_idx;
+	float			spec_power;
+	t_color			refraction_color;
+	t_color			reflection_color;
+	float			refraction_idx;
+	t_texture		*tex;
+	t_uv_mapping	uv_mapping;
 };
 
 /*
