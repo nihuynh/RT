@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/17 18:01:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/18 01:31:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-/*
+/**
 ** @brief	Parser for the camera
 **
 ** @param greed		Contains the whole input file
@@ -25,21 +25,38 @@
 ** @return int		Line on which it finished parsing the camera
 */
 
-int
-	parse_camera(char **greed, t_data *data, int line_i)
+void
+	parse_camera(t_data *data, t_parse_txt *scene_file)
 {
-	if (DEBUG)
-		ft_printf("camera at line = %i\n", line_i);
-	if (greed[line_i + 2] == NULL || greed[line_i + 3] == NULL)
-		parsing_error(line_i, ERR_P_CONTENT, data, greed);
-	parse_vector(&data->cam.pos, greed, line_i + 2, "origin(");
-	parse_vector(&data->cam.dir, greed, line_i + 3, "direction(");
-	parse_color(&data->settings.amb_light, greed, line_i + 4, "amb_light(");
+	parse_vector(&data->cam.pos, scene_file->greed, scene_file->line_idx++, "origin(");
+	parse_vector(&data->cam.dir, scene_file->greed, scene_file->line_idx++, "direction(");
+	parse_color(&data->settings.amb_light, scene_file->greed, scene_file->line_idx++, "amb_light(");
 	vec3_normalize(&data->cam.dir);
-	return (line_i + 6);
 }
 
-/*
+
+int
+	check_parse_set(char **greed, t_data *data, int line_idx)
+{
+	char	*type_tested;
+	int		type;
+
+	type = -1;
+	type_tested = NULL;
+	while ((type_tested = get_obj_str(++type)))
+	{
+		if (ft_strstr(greed[line_idx], type_tested) != NULL)
+		{
+			line_idx = parse_shape(greed, data, line_idx + 2, type);
+			return (line_idx);
+		}
+	}
+	return (0);
+}
+
+
+
+/**
 ** @brief	Sorting objects in the content section of the input file
 **
 ** @param greed		Contains the whole input file
@@ -49,38 +66,27 @@ int
 ** @return int		Returns the line on which it finished parsing the content
 */
 
-int
-	parse_content(char **greed, t_data *data, int line_idx, int line_max)
+void
+	parse_content(t_data *data, t_parse_txt *scene_file)
 {
-	char *obj_type;
+	char	*obj_type;
+	int		isin_obj_dataset;
 
-	if (greed[++line_idx] == NULL || greed[line_idx][0] != '{')
-		parsing_error(line_idx, ERR_P_BRACKET, data, greed);
-	line_idx++;
-	while (greed[line_idx] && line_idx < line_max)
+	while (scene_file->line_idx < scene_file->line_max - 2)
 	{
-		if (greed[line_idx][0] == '}')
-			return (++line_idx);
-		obj_type = check_key(greed[line_idx], line_idx, "object(", ERR_P_CONTENT);
-		if (ft_strstr(greed[line_idx], "light") != NULL)
-			line_idx = parse_light(greed, data, line_idx);
-		else if (ft_strstr(greed[line_idx], "plane") != NULL)
-			line_idx = parse_shape(greed, data, line_idx, PLANE);
-		else if (ft_strstr(greed[line_idx], "sphere") != NULL)
-			line_idx = parse_shape(greed, data, line_idx, SPHERE);
-		else if (ft_strstr(greed[line_idx], "cylinder") != NULL)
-			line_idx = parse_shape(greed, data, line_idx, CYLINDER);
-		else if (ft_strstr(greed[line_idx], "cone") != NULL)
-			line_idx = parse_shape(greed, data, line_idx, CONE);
-		else if (ft_strstr(greed[line_idx], "csg") != NULL)
-			line_idx = parse_shape(greed, data, line_idx, CSG);
+		obj_type = check_key(scene_file->greed[scene_file->line_idx], scene_file->line_idx, "object(", ERR_P_CONTENT);
+		if (ft_strstr(obj_type, "light") != NULL)
+			scene_file->line_idx = parse_light(scene_file->greed, data, scene_file->line_idx);
+		else if ((isin_obj_dataset = check_parse_set(scene_file->greed, data, scene_file->line_idx)))
+			scene_file->line_idx = isin_obj_dataset;
 		else
-			parsing_error(line_idx, ERR_P_CONTENT, data, greed);
+			parsing_error(ERR_P_CONTENT, scene_file, __func__, __LINE__);
+		if (ft_strstr(scene_file->greed[scene_file->line_idx], "}") != NULL)
+			scene_file->line_idx++;
 	}
-	return (++line_idx);
 }
 
-/*
+/**
 ** @brief	First sort between the camera parser and the content parser
 **
 ** @param greed		Contains the whole input file
@@ -89,23 +95,25 @@ int
 */
 
 void
-	parser(char **greed, t_data *data, int line_max)
+	parser(t_data *data, t_parse_txt *scene_file)
 {
-	int line_idx;
-
-	line_idx = 0;
-	while (line_idx < line_max)
+	if (ft_strstr(scene_file->greed[scene_file->line_idx], "camera"))
 	{
-		if (ft_strstr(greed[line_idx], "content") != NULL)
-			line_idx = parse_content(greed, data, line_idx, line_max);
-		else if (ft_strstr(greed[line_idx], "camera") != NULL)
-			line_idx = parse_camera(greed, data, line_idx);
-		else
-			parsing_error(line_idx, ERR_P_CONTENT, data, greed);
+		scene_file->line_idx += 2;
+		parse_camera(data, scene_file);
+		scene_file->line_idx++;
 	}
+	if (ft_strstr(scene_file->greed[scene_file->line_idx], "content"))
+	{
+		scene_file->line_idx += 2;
+		parse_content(data, scene_file);
+		scene_file->line_idx++;
+	}
+	else
+		parsing_error(ERR_P_CONTENT, scene_file, __func__, __LINE__);
 }
 
-/*
+/**
 ** @brief	Reading the input file and beginning parsing
 **
 ** @param str	Name of the input file
@@ -116,24 +124,24 @@ void
 int
 	reader(char *str, t_data *data)
 {
-	int		fd;
-	int		line_count;
-	char	**greed;
+	int			fd;
+	t_parse_txt	scene_file;
 
-	if ((line_count = ft_line_count(str)) < 9)
+	if ((scene_file.line_max = ft_line_count(str)) < 9)
 		return (EXIT_FAILURE);
-	if (!(greed = ft_memalloc(sizeof(char *) * (line_count + 1))))
+	if (!(scene_file.greed = ft_memalloc(sizeof(char *) * (scene_file.line_max + 1))))
 		return (EXIT_FAILURE);
 	fd = ft_fopen_read(str);
-	line_count = 0;
-	while (ft_gnl(fd, &greed[line_count], "\n") > 0)
-		line_count++;
+	scene_file.line_idx = 0;
+	while (ft_gnl(fd, &scene_file.greed[scene_file.line_idx], "\n") > 0)
+		scene_file.line_idx++;
 	close(fd);
+	scene_file.line_idx = 0;
 	if (DEBUG)
-		ft_puttab(greed);
-	parser(greed, data, line_count);
+		ft_puttab(scene_file.greed);
+	parser(data, &scene_file);
 	ft_lstrev(&data->scene.lst_light);
 	ft_lstrev(&data->scene.lst_obj);
-	ft_tabdel(greed);
+	ft_tabdel(scene_file.greed);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/17 18:19:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 19:38:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,10 @@ static inline void
 static inline void
 	export_obj(int fd, t_list *node)
 {
-	t_parse		cfg;
 	t_obj		*obj;
 
 	obj = node->content;
-	init_parse_cfg(obj->type, &cfg);
-	dprintf(fd, "\tobject(%s)\n\t{\n", cfg.printout);
+	dprintf(fd, "\tobject(%s)\n\t{\n", get_obj_str(obj->type));
 	obj->export(fd, obj->shape);
 	export_material(fd, &obj->material);
 	write(fd, "\t}\n", 3);

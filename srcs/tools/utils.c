@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/12 06:07:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 21:51:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ char
 	if (!(str = ft_strstr(str, key)))
 	{
 		snprintf(buffer, 128, "Missing key: \"%s\" at line ", key);
-		ft_error_wmsg(buffer, line, str);
+		ft_parse_err(__func__, __LINE__, buffer, line, str);
 	}
 	str += ft_strlen(key);
 	if (!*str)
-		ft_error_wmsg(err, line, str);
+		ft_parse_err(__func__, __LINE__, err, line, str);
 	if (ft_strrchr(str, ')') == NULL)
-		ft_error_wmsg(ERR_P_CLOSE_PAR, line, str);
+		ft_parse_err(__func__, __LINE__, ERR_P_CLOSE_PAR, line, str);
 	return (str);
 }
 

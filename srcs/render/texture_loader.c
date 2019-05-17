@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/17 07:15:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 21:30:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ char	*load_texture(char *filename, int *width, int *height)
 	int	fd;
 	int	header_bytes;
 
-	ft_printf("Loading [%s] ... ", filename);
+	if (DEBUG)
+		ft_printf("Loading [%s] ... ", filename);
 	fd = ft_fopen_read(filename);
 	header_bytes = parse_header(fd, width, height);
 	close(fd);
-	ft_printf("%d x %d\n", *width, *height);
+	if (DEBUG)
+		ft_printf("%d x %d\n", *width, *height);
 	return (read_pixel_data(filename, header_bytes, *width * *height));
 }
 
@@ -104,7 +106,8 @@ void	add_texture(char *name, t_data *app)
 	if(!(tex.name = ft_strdup(name)))
 		ft_error(__func__, __LINE__);
 	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
-	ft_printf("Texture loaded : %s\n", name);
+	if (DEBUG)
+		ft_printf("Texture loaded : %s\n", name);
 	free(dir);
 }
 

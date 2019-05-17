@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 22:02:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 21:45:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void
 	idx = -1;
 	line = lines[line_idx];
 	if (!line)
-		ft_error_wmsg(ERR_PARSE_STRN, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
 	line = check_key(line, line_idx, key, ERR_PARSE_COLOR);
 	while (++idx < 3)
 	{
@@ -47,7 +47,7 @@ void
 			break ;
 	}
 	if (idx != 2)
-		ft_error_wmsg(ERR_PARSE_COLOR, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_COLOR, line_idx, line);
 	*color = (t_color){toby[0], toby[1], toby[2]};
 	if (DEBUG)
 		ft_printf("Color : %i %i %i\n", color->r, color->g, color->b);
@@ -72,7 +72,7 @@ void
 	idx = -1;
 	line = lines[line_idx];
 	if (!line)
-		ft_error_wmsg(ERR_PARSE_STRN, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
 	line = check_key(line, line_idx, key, ERR_PARSE_VECTOR);
 	while (++idx < 3)
 	{
@@ -85,7 +85,7 @@ void
 			break ;
 	}
 	if (idx != 2)
-		ft_error_wmsg(ERR_PARSE_VECTOR, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_VECTOR, line_idx, line);
 	*vec = (t_vec3){toby[0], toby[1], toby[2]};
 	if (DEBUG)
 		ft_printf("Vector : %f %f %f\n", vec->x, vec->y, vec->z);
@@ -107,7 +107,7 @@ void
 
 	line = lines[line_idx];
 	if (!line)
-		ft_error_wmsg(ERR_PARSE_STRN, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
 	line = check_key(line, line_idx, key, ERR_PARSE_FLOAT);
 	*val = ft_atof(line);
 	if (DEBUG)
@@ -124,7 +124,7 @@ void
 	idx = -1;
 	line = lines[line_idx];
 	if (!line)
-		ft_error_wmsg(ERR_PARSE_STRN, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
 	line = check_key(line, line_idx, "limit(", ERR_PARSE_FLOAT);
 	while (++idx < 2)
 	{
@@ -137,7 +137,7 @@ void
 			break ;
 	}
 	if (idx != 1)
-		ft_error_wmsg(ERR_PARSE_FLOAT, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_FLOAT, line_idx, line);
 	*l_x = toby[0];
 	*l_y = toby[1];
 	if (DEBUG)

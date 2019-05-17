@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 07:10:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 21:48:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_texture
 
 	line = lines[line_idx];
 	if (!line)
-		ft_error_wmsg(ERR_PARSE_STRN, line_idx, line);
+		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
 	if (!(line = ft_strstr(line, "texture(")))
 		return (NULL);
 	line += 8;

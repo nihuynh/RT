@@ -17,6 +17,7 @@
 		"rtstruct.h": "c",
 		"zconf.h": "c",
 		"limits": "c",
-		"type_traits": "c"
+		"type_traits": "c",
+		"parser.h": "c"
 	}
 }

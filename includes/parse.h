@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/17 18:30:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 22:45:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,17 @@ typedef struct	s_built
 {
 	void		(*setter) (void*, char **, int);
 }				t_built;
+
+typedef struct	s_parse_txt
+{
+	char 		**greed;
+	int			line_idx;
+	int			line_max;
+}				t_parse_txt;
+
+
+void			parsing_error(char *error_msg, t_parse_txt *scene_file, const char func[], int line);
+
 /*
 ** New object
 */
@@ -73,6 +84,9 @@ void			cone_new(void *res, char **greed, int i);
 ** Getters :
 */
 
+void			create_obj(t_obj *obj, char **greed, int *l_idx, int type);
+
+char			*get_obj_str(int type);
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
 char			*check_key(char *str, int line, const char *key, char *err);
@@ -106,5 +120,15 @@ void			cone_export(int fd, void *shape);
 void			cylinder_export(int fd, void *shape);
 void			export_material(int fd, t_material *mat);
 
+/*
+** CSG :
+*/
+
+void 			csg_set(void *cone, char **greed, int i);
+void 			csg_export(int fd, void *shape);
+void 			inter_csg(t_inter *data, t_obj *node);
+void 			ui_csg(void *res);
+void 			normal_csg(t_inter *inter);
+t_vec3 			get_csg_uv(t_inter *inter);
 
 #endif

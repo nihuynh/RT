@@ -6,19 +6,27 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 06:37:45 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 22:43:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "libft.h"
 #include "libui.h"
+#include "parse.h"
 
 void
-	ft_error_wmsg(char *str, int line, char *endl)
+	ft_error_wmsg(char *msg, int line, char *endl)
 {
-	ft_printf("%s%d\n Parser endl : %s", str, line, endl);
+	ft_printf("%s%d\n Parser endl : %s", msg, line, endl);
 	ft_error(__func__, __LINE__);
+}
+
+void
+	ft_parse_err(const char function[], int line, char *msg, int line_idx, char *endl)
+{
+	ft_printf("%s%d\n Parser endl : %s", msg, line_idx, endl);
+	ft_error(function, line);
 }
 
 void
@@ -30,10 +38,13 @@ void
 }
 
 void
-	parsing_error(int line, char *error, t_data *data, char **greed)
+	parsing_error(char *error_msg,
+		t_parse_txt *scene_file, const char func[], int line)
 {
-	line++;
-	ft_error_wmsg(error, line, greed[line]);
-	ft_tabdel(greed);
-	exit_safe(data);
+	t_data *app;
+
+	app = get_app(NULL);
+	ft_parse_err(func, line, error_msg, scene_file->line_idx, scene_file->greed[scene_file->line_idx]);
+	ft_tabdel(scene_file->greed);
+	exit_safe(app);
 }

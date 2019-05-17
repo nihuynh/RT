@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 17:54:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 22:44:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 /*
 ** Prototypes :
 */
+t_data		*get_app(t_data *app);
 
 /*
 ** Render :
@@ -64,6 +65,8 @@ void		click_event(SDL_Event *event, void *arg);
 /*
 ** Exit :
 */
+
+void		ft_parse_err(const char function[], int line, char *str, int line_idx, char *endl);
 
 void		exit_safe(t_data *data);
 void		del_obj(void *content, size_t content_size);
@@ -119,7 +122,6 @@ void		change_window_title(SDL_Window *win, t_data *app);
 ** Parser :
 */
 
-void		parsing_error(int l_idx, char *error, t_data *d, char **greed);
 int			parse_light(char **greed, t_data *data, int l_idx);
 int			parse_shape(char **greed, t_data *data, int l_idx, int type);
 
@@ -134,12 +136,6 @@ void		parse_material_csv(t_data *data, char *csv_file);
 /*
 ** Static def :
 */
-
-# define PLANE			0
-# define SPHERE			1
-# define CONE			2
-# define CYLINDER		3
-# define CSG			4
 
 # define EXIT_FAILURE	1
 # define EXIT_SUCCESS	0

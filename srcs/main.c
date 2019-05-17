@@ -6,30 +6,40 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 06:31:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/17 21:06:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "libft.h"
 
+t_data *get_app(t_data *app)
+{
+	static t_data *_app;
+
+	if (app != NULL)
+		_app = app;
+	return (_app);
+}
+
 void	interactive(char *filename, int runmode)
 {
-	t_data		data;
+	t_data		app;
 
-	ft_bzero(&data, sizeof(t_data));
-	if (!(data.arg = ft_strdup(filename)))
+	ft_bzero(&app, sizeof(t_data));
+	get_app(&app);
+	if (!(app.arg = ft_strdup(filename)))
 		ft_error(__func__, __LINE__);
-	init_textures(&data);
-	parse_material_csv(&data, "materialList.csv");
-	if (reader(filename, &data) == EXIT_FAILURE)
+	init_textures(&app);
+	parse_material_csv(&app, "materialList.csv");
+	if (reader(filename, &app) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
 	if (runmode == RM_UNIT_TEST)
 		return ;
-	init(&data);
-	init_mthr_sdl(&data.sdl, &process_pixel, &data);
-	loop_sdl(&data.sdl, &data);
-	exit_safe(&data);
+	init(&app);
+	init_mthr_sdl(&app.sdl, &process_pixel, &app);
+	loop_sdl(&app.sdl, &app);
+	exit_safe(&app);
 }
 
 int		main(int ac, char **av)
