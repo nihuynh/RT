@@ -14,12 +14,12 @@ content
 	}
 	object(csg)
 	{
-		mat(white plastic)
-	}
-	object(sphere)
-	{
-		origin(0 0 -50)
-		radius(10)
+		object(sphere)
+		{
+			origin(0 0 -50)
+			radius(10)
+			mat(white plastic)
+		}
 		mat(white plastic)
 	}
 	object(plane)

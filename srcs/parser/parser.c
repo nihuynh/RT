@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/18 01:02:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/18 03:11:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void
 
 	app = get_app(NULL);
 	init_parse_cfg(type, &cfg);
+	*l_idx +=  2;
 	if (DEBUG)
 		ft_putendl(cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
@@ -77,15 +78,14 @@ void
 	*l_idx += parse_material(app, &(obj->material), greed, *l_idx);
 }
 
-int
-	parse_shape(char **greed, t_data *d, int l_idx, int type)
+void
+	parse_shape(t_data *app, t_parse_txt *scene_file, int type)
 {
 	t_obj		obj;
 
-	create_obj(&obj, greed, &l_idx, type);
-	ft_lstpushnew(&d->scene.lst_obj, &obj, sizeof(t_obj));
-	l_idx++;
-	return (l_idx);
+	create_obj(&obj, scene_file->greed, &scene_file->line_idx, type);
+	ft_lstpushnew(&app->scene.lst_obj, &obj, sizeof(t_obj));
+	scene_file->line_idx++;
 }
 
 /*
@@ -97,16 +97,15 @@ int
 ** @return int		Returns the line on which it finished parsing the light
 */
 
-int
-	parse_light(char **greed, t_data *data, int line_idx)
+void
+	parse_light(t_data *data, t_parse_txt *scene_file)
 {
 	t_light		light;
 
 	if (DEBUG)
 		ft_putendl("Light :");
-	line_idx += 2;
-	light_set(&light, greed, line_idx);
+	scene_file->line_idx += 2;
+	light_set(&light, scene_file->greed, scene_file->line_idx);
 	ft_lstpushnew(&data->scene.lst_light, &light, sizeof(t_light));
-	line_idx += 4;
-	return (line_idx);
+	scene_file->line_idx += 4;
 }

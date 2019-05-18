@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/18 01:31:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/18 04:00:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void
 
 
 int
-	check_parse_set(char **greed, t_data *data, int line_idx)
+	parse_obj(t_data *app, t_parse_txt *scene_file)
 {
 	char	*type_tested;
 	int		type;
@@ -45,13 +45,13 @@ int
 	type_tested = NULL;
 	while ((type_tested = get_obj_str(++type)))
 	{
-		if (ft_strstr(greed[line_idx], type_tested) != NULL)
+		if (ft_strstr(scene_file->greed[scene_file->line_idx], type_tested))
 		{
-			line_idx = parse_shape(greed, data, line_idx + 2, type);
-			return (line_idx);
+			parse_shape(app, scene_file, type);
+			return (EXIT_SUCCESS);
 		}
 	}
-	return (0);
+	return (EXIT_FAILURE);
 }
 
 
@@ -66,20 +66,27 @@ int
 ** @return int		Returns the line on which it finished parsing the content
 */
 
+char
+	*check_if_obj(t_parse_txt *scene_file, char *err_msg)
+{
+	char *res;
+
+	res = check_key(scene_file->greed[scene_file->line_idx],
+					scene_file->line_idx, "object(", err_msg);
+	return (res);
+}
+
 void
 	parse_content(t_data *data, t_parse_txt *scene_file)
 {
 	char	*obj_type;
-	int		isin_obj_dataset;
 
-	while (scene_file->line_idx < scene_file->line_max - 2)
+	while (scene_file->line_idx + 2 < scene_file->line_max)
 	{
-		obj_type = check_key(scene_file->greed[scene_file->line_idx], scene_file->line_idx, "object(", ERR_P_CONTENT);
+		obj_type = check_if_obj(scene_file, ERR_P_CONTENT);
 		if (ft_strstr(obj_type, "light") != NULL)
-			scene_file->line_idx = parse_light(scene_file->greed, data, scene_file->line_idx);
-		else if ((isin_obj_dataset = check_parse_set(scene_file->greed, data, scene_file->line_idx)))
-			scene_file->line_idx = isin_obj_dataset;
-		else
+			parse_light(data, scene_file);
+		else if (parse_obj(data, scene_file))
 			parsing_error(ERR_P_CONTENT, scene_file, __func__, __LINE__);
 		if (ft_strstr(scene_file->greed[scene_file->line_idx], "}") != NULL)
 			scene_file->line_idx++;
@@ -107,7 +114,6 @@ void
 	{
 		scene_file->line_idx += 2;
 		parse_content(data, scene_file);
-		scene_file->line_idx++;
 	}
 	else
 		parsing_error(ERR_P_CONTENT, scene_file, __func__, __LINE__);
@@ -120,6 +126,15 @@ void
 ** @param data	General struct for holding data
 ** @return int	Return 0 if everything went right, 1 otherwise
 */
+
+char			*safe_line(t_parse_txt *scene_file)
+{
+	if (ft_btw(scene_file->line_idx, 0, scene_file->line_max))
+		parsing_error("line_idx out of range", scene_file, __func__, __LINE__);
+	if (!(scene_file->greed[scene_file->line_idx]))
+		parsing_error("String null", scene_file, __func__, __LINE__);
+	return (scene_file->greed[scene_file->line_idx]);
+}
 
 int
 	reader(char *str, t_data *data)
@@ -137,6 +152,7 @@ int
 		scene_file.line_idx++;
 	close(fd);
 	scene_file.line_idx = 0;
+	scene_file.get_curr_line = &safe_line;
 	if (DEBUG)
 		ft_puttab(scene_file.greed);
 	parser(data, &scene_file);

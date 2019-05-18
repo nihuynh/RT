@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/18 01:09:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/18 02:00:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void
 		{"sphere", sizeof(t_sphere), &sphere_set, &sphere_export, 2},
 		{"cone", sizeof(t_cone), &cone_set, &cone_export, 4},
 		{"cylinder", sizeof(t_cylinder), &cylinder_set, &cylinder_export, 4},
-		{"csg", sizeof(t_btree), &csg_set, &csg_export, 1}
+		{"csg", sizeof(t_btree), &csg_set, &csg_export, 0}
 	};
-	if (ft_btw(type, 0, sizeof(index_config) / sizeof(t_parse) - 1))
+	if (ft_btw(type, 0, sizeof(index_config) / sizeof(t_parse)))
 	{
 		config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
 		return ;

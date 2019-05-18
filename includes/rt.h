@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 22:44:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/18 02:21:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,6 @@ void		ui_plane(void *res);
 void		ui_cylinder(void *res);
 void		ui_cone(void *res);
 void		change_window_title(SDL_Window *win, t_data *app);
-
-/*
-** Parser :
-*/
-
-int			parse_light(char **greed, t_data *data, int l_idx);
-int			parse_shape(char **greed, t_data *data, int l_idx, int type);
 
 /*
 ** Export :

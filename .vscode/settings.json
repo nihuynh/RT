@@ -18,6 +18,7 @@
 		"zconf.h": "c",
 		"limits": "c",
 		"type_traits": "c",
-		"parser.h": "c"
+		"parser.h": "c",
+		"unistd.h": "c"
 	}
 }

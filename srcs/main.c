@@ -6,12 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 21:06:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/18 01:47:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "libft.h"
+#include "config.h"
 
 t_data *get_app(t_data *app)
 {
@@ -32,12 +33,18 @@ void	interactive(char *filename, int runmode)
 		ft_error(__func__, __LINE__);
 	init_textures(&app);
 	parse_material_csv(&app, "materialList.csv");
+	if (DEBUG)
+		ft_printf("Loading textures and material are completed\n");
 	if (reader(filename, &app) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
+	if (DEBUG)
+		ft_printf("Parsing is completed\n");
 	if (runmode == RM_UNIT_TEST)
 		return ;
 	init(&app);
 	init_mthr_sdl(&app.sdl, &process_pixel, &app);
+	if (DEBUG)
+		ft_printf("RT is starting\n");
 	loop_sdl(&app.sdl, &app);
 	exit_safe(&app);
 }

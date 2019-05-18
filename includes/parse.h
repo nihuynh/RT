@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/17 22:45:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/18 03:50:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,22 @@ typedef struct	s_built
 	void		(*setter) (void*, char **, int);
 }				t_built;
 
-typedef struct	s_parse_txt
+typedef struct	s_parse_txt t_parse_txt;
+
+struct			s_parse_txt
 {
 	char 		**greed;
 	int			line_idx;
 	int			line_max;
-}				t_parse_txt;
+	char		*(*get_curr_line) (t_parse_txt *);
+};
 
+/*
+** Parser :
+*/
 
+void			parse_light(t_data *data, t_parse_txt *scene_file);
+void			parse_shape(t_data *app, t_parse_txt *scene_file, int type);
 void			parsing_error(char *error_msg, t_parse_txt *scene_file, const char func[], int line);
 
 /*
