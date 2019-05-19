@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 18:19:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 23:25:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void
 	}
 	*color = (t_color){toby[0], toby[1], toby[2]};
 	if (DEBUG)
-		ft_printf("Color : %i %i %i\n", color->r, color->g, color->b);
+		ft_printf("Color : %f %f %f\n", color->r, color->g, color->b);
 }
 
 void
