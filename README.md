@@ -21,4 +21,3 @@ Add materials
 Refactor (Fix light & refractions)
 
 Bug list :
-screenshot twice (probably function call twice)

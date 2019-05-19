@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/17 21:17:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 04:27:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,35 @@ typedef struct	s_csg_op
 	int			type;
 }				t_csg_op;
 
-t_btree	*csg_parse_op(int *line_idx, int type)
+t_btree	*csg_parse_op(t_parse_txt *scene_file, int type)
 {
 	t_csg_op res;
 
-	line_idx++;
+	scene_file->line_idx++;
 	res.type = type;
 	return (ft_b3new(&res, sizeof(t_csg_op)));
 }
-t_btree	*csg_parse_obj(char **greed, int *line_idx, int type)
+
+t_btree	*csg_parse_obj(t_parse_txt *scene_file, int type)
 {
 	t_obj res;
 
-	create_obj(&res, greed, line_idx, type);
+	create_obj(&res, scene_file, type);
+	check_closing_bracket(scene_file);
 	return (ft_b3new(&res, sizeof(t_obj)));
 }
 
-int			csg_is_op(char **greed, int *i)
+int			csg_is_op(t_parse_txt *scene_file)
 {
-	if (ft_strstr(greed[*i], "AND") != NULL)
+	if (ft_strstr(scene_file->get_curr_line(scene_file), "AND") != NULL)
 		return (1);
-	if (ft_strstr(greed[*i], "NOT") != NULL)
+	if (ft_strstr(scene_file->get_curr_line(scene_file), "NOT") != NULL)
 		return (2);
-	if (ft_strstr(greed[*i], "UNION") != NULL)
+	if (ft_strstr(scene_file->get_curr_line(scene_file), "UNION") != NULL)
 		return (3);
 	return (0);
 }
-int			csg_is_obj(char **greed, int *i)
+int			csg_is_obj(t_parse_txt *scene_file)
 {
 	char	*type_tested;
 	int		type;
@@ -57,36 +59,46 @@ int			csg_is_obj(char **greed, int *i)
 	type_tested = NULL;
 	while ((type_tested = get_obj_str(++type)))
 	{
-		if (ft_strstr(greed[*i], type_tested) != NULL)
+		if (ft_strstr(scene_file->get_curr_line(scene_file), type_tested) != NULL)
 			return (type);
 	}
 	return (-1);
 }
 
-t_btree	*csg_parse(char **greed, int *i)
+t_btree	*csg_tree_parse(t_parse_txt *scene_file)
 {
 	t_btree		*root;
 	int			type_csg_node;
 
 	root = NULL;
 	type_csg_node = -1;
-	if ((type_csg_node = csg_is_op(greed, i)))
-		root = csg_parse_op(i, type_csg_node);
-	else if ((type_csg_node = csg_is_obj(greed, i)) != -1)
-		root = csg_parse_obj(greed, i, type_csg_node);
+	if ((type_csg_node = csg_is_op(scene_file)))
+		root = csg_parse_op(scene_file, type_csg_node);
+	else if ((type_csg_node = csg_is_obj(scene_file)) != -1)
+		root = csg_parse_obj(scene_file, type_csg_node);
 	else
 		ft_error(__func__, __LINE__);
 	if (root->content_size == sizeof(t_obj))
 		return (root);
-	root->right = csg_parse(greed, i);
-	root->left = csg_parse(greed, i);
+	root->right = csg_tree_parse(scene_file);
+	root->left = csg_tree_parse(scene_file);
 	return (root);
 }
 
-void 	csg_set(void *root, char **greed, int i)
+void 	csg_set(void *csg, t_parse_txt *scene_file)
 {
-	free(&root);
-	root = csg_parse(greed, &i);
+	t_csg		*pcsg;
+
+	if (csg == NULL)
+	{
+		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
+		scene_file->err_exit(ERR_PARSE_SET_CSG, scene_file);
+	}
+	pcsg = csg;
+	parse_vector(&pcsg->origin, scene_file->greed, scene_file->line_idx++, "origin(");
+	parse_vector(&pcsg->n, scene_file->greed, scene_file->line_idx++, "normal(");
+	// parse tree
+	pcsg->root = csg_tree_parse(scene_file);
 }
 
 

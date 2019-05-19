@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/18 03:20:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 02:04:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,3 @@ void
 	exit_sdl(&data->sdl);
 }
 
-void
-	parsing_error(char *error_msg,
-		t_parse_txt *scene_file, const char func[], int line)
-{
-	t_data *app;
-
-	app = get_app(NULL);
-	ft_parse_err(func, line, error_msg, scene_file->line_idx,
-		scene_file->greed[scene_file->line_idx]);
-	ft_tabdel(scene_file->greed);
-	exit_safe(app);
-}

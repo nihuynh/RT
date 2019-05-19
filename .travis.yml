@@ -20,7 +20,7 @@ matrix:
 notifications:
   slack: 42born2code:6JQ1d0KBj9Vggul0KNL9p0fW
 
-# blocklist
-branches:
-  except:
-  - Sam_wip
+# # blocklist
+# branches:
+#   except:
+#   - Sam_wip

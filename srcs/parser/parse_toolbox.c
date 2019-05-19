@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/17 21:45:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 04:11:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include "libft.h"
 #include "config.h"
 #include "rt.h"
-
-/*
-** @brief		Parse the color of an object from a string
-**
-** @param color		Adress of the color to parse
-** @param lines		Array of all lines
-** @param line_idx	Current line of the parsing
-** @param key		Name of the key
-*/
 
 void
 	parse_color(t_color *color, char **lines, int line_idx, char *key)
@@ -53,15 +44,6 @@ void
 		ft_printf("Color : %i %i %i\n", color->r, color->g, color->b);
 }
 
-/*
-** @brief Parse a vector from a string
-**
-** @param vec		Address of the vector to parse
-** @param lines		Array of all lines
-** @param line_idx	Current line of the parsing
-** @param key		Name of the key
-*/
-
 void
 	parse_vector(t_vec3 *vec, char **lines, int line_idx, char *key)
 {
@@ -90,15 +72,6 @@ void
 	if (DEBUG)
 		ft_printf("Vector : %f %f %f\n", vec->x, vec->y, vec->z);
 }
-
-/*
-** @brief Parse a float value of an object from a string
-**
-** @param val	Adress of the float value to parse
-** @param lines		Array of all lines
-** @param line_idx	Current line of the parsing
-** @param key		Name of the key
-*/
 
 void
 	parse_fval(float *val, char **lines, int line_idx, const char *key)

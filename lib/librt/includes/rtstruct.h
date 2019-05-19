@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/12 07:18:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 00:22:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 # include <stdint.h>
+# include "ftbtree.h"
 # include "color.h"
 
 typedef struct	s_vec3
@@ -73,6 +74,15 @@ typedef struct	s_cylinder
 	float		radius;
 	float		size;
 }				t_cylinder;
+
+typedef struct	s_csg
+{
+	t_pt3		origin;
+	t_vec3		x;
+	t_vec3		n;
+	t_vec3		z;
+	t_btree		*root;
+}				t_csg;
 
 typedef struct	s_light
 {

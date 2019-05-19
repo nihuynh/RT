@@ -14,9 +14,18 @@ content
 	}
 	object(csg)
 	{
+		origin(0 0 -50)
+		normal(0 1 0)
+		NOT
 		object(sphere)
 		{
-			origin(0 0 -50)
+			origin(-10 0 -50)
+			radius(10)
+			mat(white plastic)
+		}
+		object(sphere)
+		{
+			origin(10 0 -50)
 			radius(10)
 			mat(white plastic)
 		}

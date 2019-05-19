@@ -50,7 +50,7 @@ content
 		refraction_color(0 0 0)
 		reflection_color(0 0 0)
 		refraction_idx(0)
-	{
+	}
 	object(plane)
 	{
 		origin(0 0 -150)
@@ -65,5 +65,5 @@ content
 		refraction_color(0 0 0)
 		reflection_color(0 0 0)
 		refraction_idx(0)
-	{
+	}
 }

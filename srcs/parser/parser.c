@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/18 03:11:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 04:26:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static inline int
 */
 
 void
-	create_obj(t_obj *obj, char **greed, int *l_idx, int type)
+	create_obj(t_obj *obj, t_parse_txt *scene_file, int type)
 {
 	t_parse		cfg;
 	void		*shape;
@@ -66,46 +66,57 @@ void
 
 	app = get_app(NULL);
 	init_parse_cfg(type, &cfg);
-	*l_idx +=  2;
 	if (DEBUG)
 		ft_putendl(cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	cfg.setter(shape, greed, *l_idx);
+	scene_file->line_idx++;
+	if (ft_strchr(scene_file->get_curr_line(scene_file), '{') != NULL)
+		scene_file->line_idx++;
+	cfg.setter(shape, scene_file);
 	obj_set(obj, type, shape);
 	obj->export = cfg.export;
-	*l_idx +=  cfg.line_offset;
-	*l_idx += parse_material(app, &(obj->material), greed, *l_idx);
+	scene_file->line_idx += parse_material(app, &(obj->material), scene_file->greed, scene_file->line_idx);
 }
+
+/**
+** @brief Built a shape obj and add it to the scene.lst_obj
+**
+** @param app
+** @param scene_file
+** @param type
+*/
 
 void
 	parse_shape(t_data *app, t_parse_txt *scene_file, int type)
 {
 	t_obj		obj;
 
-	create_obj(&obj, scene_file->greed, &scene_file->line_idx, type);
+	if (DEBUG)
+		ft_putendl("Shape node :");
+	create_obj(&obj, scene_file, type);
 	ft_lstpushnew(&app->scene.lst_obj, &obj, sizeof(t_obj));
-	scene_file->line_idx++;
+	check_closing_bracket(scene_file);
+
 }
 
-/*
-** @brief	Parser for light objects
+/**
+** @brief Built a light obj and add it to the scene.lst_light
 **
-** @param greed		Contains the whole input file
-** @param data		General struct for holding data
-** @param line_idx	Line index to navigate in greed
-** @return int		Returns the line on which it finished parsing the light
+** @param data
+** @param scene_file
 */
 
 void
-	parse_light(t_data *data, t_parse_txt *scene_file)
+	parse_light(t_data *app, t_parse_txt *scene_file)
 {
 	t_light		light;
 
 	if (DEBUG)
-		ft_putendl("Light :");
-	scene_file->line_idx += 2;
-	light_set(&light, scene_file->greed, scene_file->line_idx);
-	ft_lstpushnew(&data->scene.lst_light, &light, sizeof(t_light));
-	scene_file->line_idx += 4;
+		ft_putendl("Light node :");
+	scene_file->line_idx++;
+	check_opening_bracket(scene_file);
+	light_set(&light, scene_file);
+	ft_lstpushnew(&app->scene.lst_light, &light, sizeof(t_light));
+	check_closing_bracket(scene_file);
 }
