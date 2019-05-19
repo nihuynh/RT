@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/18 03:49:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 06:34:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,33 @@ int
 */
 
 char
-	*check_key(char *str, int line, const char *key, char *err)
+	*check_key(t_parse_txt *scene_file, const char *key)
 {
-	static char buffer[128];
+	char *str;
 
+	str = scene_file->pop_line(scene_file);
 	if (!(str = ft_strstr(str, key)))
 	{
-		snprintf(buffer, 128, "Missing key: \"%s\" at line ", key);
-		ft_parse_err(__func__, __LINE__, buffer, line, str);
+		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
+		scene_file->err_exit(ERR_P_KEY, scene_file);
 	}
 	str += ft_strlen(key);
-	if (!*str)
-		ft_parse_err(__func__, __LINE__, err, line, str);
 	if (ft_strrchr(str, ')') == NULL)
-		ft_parse_err(__func__, __LINE__, ERR_P_CLOSE_PAR, line, str);
+	{
+		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
+		scene_file->err_exit(ERR_P_CLOSE_PAR, scene_file);
+	}
 	return (str);
 }
 
 static inline void
-	split_to_mat(t_data *data, char **split, t_material *mat)
+	split_to_mat(t_data *app, char **split, t_material *mat)
 {
 	ft_bzero(mat, sizeof(t_material));
 	if (!(mat->name = ft_strdup(split[0])))
 		ft_error(__func__, __LINE__);
-	if (!(mat->tex = ft_lstgetelt(data->lst_tex, &texcmp, split[0])))
-		mat->tex = ft_lstgetelt(data->lst_tex, &texcmp, "none");
+	if (!(mat->tex = ft_lstgetelt(app->lst_tex, &texcmp, split[0])))
+		mat->tex = ft_lstgetelt(app->lst_tex, &texcmp, "none");
 	mat->color_diffuse = itocolor(ft_atoi_base(split[1], 16));
 	mat->color_specular = itocolor(ft_atoi_base(split[2], 16));
 	mat->color_tex = itocolor(ft_atoi_base(split[3], 16));
@@ -73,7 +75,7 @@ static inline void
 }
 
 void
-	parse_material_csv(t_data *data, char *csv_file)
+	parse_material_csv(t_data *app, char *csv_file)
 {
 	int			fd;
 	char		*line;
@@ -89,8 +91,8 @@ void
 			ft_error(__func__, __LINE__);
 		if (ft_tablen(split) != 9)
 			ft_error(__func__, __LINE__);
-		split_to_mat(data, split, &node);
-		ft_lstpushnew(&data->lst_mat, &node, sizeof(t_material));
+		split_to_mat(app, split, &node);
+		ft_lstpushnew(&app->lst_mat, &node, sizeof(t_material));
 		ft_tabdel(split);
 		ft_strdel(&line);
 	}

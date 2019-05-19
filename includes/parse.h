@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 04:23:42 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 06:21:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,29 @@
 # include "librt.h"
 # include "rt.h"
 
-# define ERR_P_CAMERA		"Err during parsing camera"
-# define ERR_P_CONTENT		"Err during parsing content"
-# define ERR_UNKNWD_OBJ		"Unknown object"
+# define ERR_P_CAMERA		"Err : camera is missing"
+# define ERR_P_CONTENT		"Err : content is missing"
+# define ERR_UNKNWD_OBJ		"Err : Unknown object"
+# define ERR_UNKNWD_MAT		"Err : Unknown material"
 
-# define ERR_PARSE_VECTOR	"Parsing of the Vector"
-# define ERR_PARSE_FLOAT	"Parsing of the Float"
-# define ERR_PARSE_COLOR	"Parsing of the Color"
-# define ERR_PARSE_STRN		"NULL string"
+# define ERR_PARSE_VECTOR	"Err : Parsing of the Vector"
+# define ERR_PARSE_FLOAT	"Err : Parsing of the Float"
+# define ERR_PARSE_COLOR	"Err : Parsing of the Color"
+# define ERR_PARSE_LIMIT	"Err : Parsing of limit"
+# define ERR_PARSE_STRN		"Err : NULL string"
 
-# define ERR_P_CLOSE_PAR	"Missing parenthese"
-# define ERR_P_BRACKET_CLSE	"Missing closing bracket"
-# define ERR_P_BRACKET_OPEN	"Missing opening bracket"
-# define ERR_P_KEY			"Missing key"
+# define ERR_P_CLOSE_PAR	"Err : Missing parenthese"
+# define ERR_P_BRACKET_CLSE	"Err : Missing closing bracket"
+# define ERR_P_BRACKET_OPEN	"Err : Missing opening bracket"
+# define ERR_P_KEY			"Err : Missing key"
 
-# define ERR_PARSE_SET_SP	"*sphere	is null"
-# define ERR_PARSE_SET_CY	"*cylinder	is null"
-# define ERR_PARSE_SET_PL	"*plan		is null"
-# define ERR_PARSE_SET_CO	"*cone		is null"
-# define ERR_PARSE_SET_LI	"*light		is null"
-# define ERR_PARSE_SET_CSG	"*csg		is null"
-# define ERR_FILE			"File is too small to be valid"
+# define ERR_PARSE_SET_SP	"Err : *sphere	is null"
+# define ERR_PARSE_SET_CY	"Err : *cylinder	is null"
+# define ERR_PARSE_SET_PL	"Err : *plan		is null"
+# define ERR_PARSE_SET_CO	"Err : *cone		is null"
+# define ERR_PARSE_SET_LI	"Err : *light		is null"
+# define ERR_PARSE_SET_CSG	"Err : *csg		is null"
+# define ERR_FILE			"Err : File is too small to be valid"
 
 /*
 ** Structs :
@@ -86,12 +88,28 @@ struct			s_parse_txt
 ** Parser :
 */
 
+int				load_parse_txt(t_parse_txt *scene_file, char *filename);
 void			check_opening_bracket(t_parse_txt *scene_file);
 void			check_closing_bracket(t_parse_txt *scene_file);
 
-int				load_parse_txt(t_parse_txt *scene_file, char *filename);
-void			parse_light(t_data *data, t_parse_txt *scene_file);
+void			parse_light(t_data *app, t_parse_txt *scene_file);
 void			parse_shape(t_data *app, t_parse_txt *scene_file, int type);
+
+void			init_parse_cfg(int type, t_parse *config);
+void			obj_set(t_obj *obj, int type, void *shape);
+
+t_texture		*parse_texture(t_list **lst_tex, t_parse_txt *scene_file);
+void 			csg_set(void *root, t_parse_txt *scene_file);
+void			cone_set(void *cone, t_parse_txt *scene_file);
+void			cylinder_set(void *cylinder, t_parse_txt *scene_file);
+void			plane_set(void *plane, t_parse_txt *scene_file);
+void			sphere_set(void *sphere, t_parse_txt *scene_file);
+void			light_set(t_light *light, t_parse_txt *scene_file);
+
+void			parse_color(t_color *color, char *key, t_parse_txt *scene_file);
+void			parse_fval(float *val, char *key, t_parse_txt *scene_file);
+void			parse_vector(t_vec3 *vec, char *key, t_parse_txt *scene_file);
+void			parse_limit(float *l_x, float *l_y, t_parse_txt *scene_file);
 
 /*
 ** New object
@@ -105,31 +123,13 @@ void			cone_new(void *res, char **greed, int i);
 /*
 ** Getters :
 */
+
 void			create_obj(t_obj *obj, t_parse_txt *scene_file, int type);
 char			*get_obj_str(int type);
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
-char			*check_key(char *str, int line, const char *key, char *err);
-void			ft_error_wmsg(char *str, int line, char *endl);
-void			parse_color(t_color *color, char **lines, int idx, char *key);
-void			parse_fval(float *val, char **lines, int idx, const char *key);
-void			parse_vector(t_vec3 *vec, char **lines, int idx, char *key);
-void			parse_limit(float *l_x, float *l_y, char **lines, int line_idx);
-t_texture		*parse_texture(t_list **lst_tex, char **lines, int line_idx);
+char			*check_key(t_parse_txt *scene_file, const char *key);
 void			open_textures(t_data *app);
-
-/*
-** Setters :
-*/
-void 			csg_set(void *root, t_parse_txt *scene_file);
-void			cone_set(void *cone, t_parse_txt *scene_file);
-void			cylinder_set(void *cylinder, t_parse_txt *scene_file);
-void			plane_set(void *plane, t_parse_txt *scene_file);
-void			sphere_set(void *sphere, t_parse_txt *scene_file);
-void			light_set(t_light *light, t_parse_txt *scene_file);
-
-void			obj_set(t_obj *obj, int type, void *shape);
-void			init_parse_cfg(int type, t_parse *config);
 
 /*
 ** Export :

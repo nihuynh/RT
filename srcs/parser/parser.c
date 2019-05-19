@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 04:26:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 06:51:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,37 @@
 
 
 
-static inline int
-	parse_material(t_data *data, t_material *dst, char **tab, int idx)
+static inline void
+	parse_material(t_material *dst, t_parse_txt *scene_file)
 {
+	t_data		*app;
 	char		*str;
 	t_material	*mat;
-	int			idx_local;
 
-	if ((str = ft_strstr(tab[idx], "mat(")))
+	app = get_app(NULL);
+	if ((str = ft_strstr(scene_file->get_curr_line(scene_file), "mat(")))
 	{
 		str += 4;
-		if (!(mat = ft_lstgetelt(data->lst_mat, &matcmp, str)))
-			ft_error(__func__, __LINE__);
+		if (!(mat = ft_lstgetelt(app->lst_mat, &matcmp, str)))
+		{
+			scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
+			scene_file->err_exit(ERR_UNKNWD_MAT, scene_file);
+		}
 		ft_memcpy(dst, mat, sizeof(t_material));
-		return (1);
+		scene_file->line_idx++;
+		return ;
 	}
-	idx_local = idx;
 	ft_bzero(dst, sizeof(t_material));
 	dst->name = "";
-	dst->tex = parse_texture(&data->lst_tex, tab, idx++);
-	parse_color(&dst->color_diffuse, tab, idx++, "color_diffuse(");
-	parse_color(&dst->color_specular, tab, idx++, "color_specular(");
-	parse_color(&dst->color_tex, tab, idx++, "color_tex(");
-	parse_fval(&dst->spec_idx, tab, idx++, "spec_idx(");
-	parse_fval(&dst->spec_power, tab, idx++, "spec_power(");
-	parse_color(&dst->refraction_color, tab, idx++, "refraction_color(");
-	parse_color(&dst->reflection_color, tab, idx++, "reflection_color(");
-	parse_fval(&dst->refraction_idx, tab, idx++, "refraction_idx(");
-	return (idx - idx_local);
+	dst->tex = parse_texture(&app->lst_tex, scene_file);
+	parse_color(&dst->color_diffuse, "color_diffuse(", scene_file);
+	parse_color(&dst->color_specular, "color_specular(", scene_file);
+	parse_color(&dst->color_tex, "color_tex(", scene_file);
+	parse_fval(&dst->spec_idx, "spec_idx(", scene_file);
+	parse_fval(&dst->spec_power, "spec_power(", scene_file);
+	parse_color(&dst->refraction_color, "refraction_color(", scene_file);
+	parse_color(&dst->reflection_color, "reflection_color(", scene_file);
+	parse_fval(&dst->refraction_idx, "refraction_idx(", scene_file);
 }
 
 /*
@@ -70,13 +73,12 @@ void
 		ft_putendl(cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	scene_file->line_idx++;
-	if (ft_strchr(scene_file->get_curr_line(scene_file), '{') != NULL)
-		scene_file->line_idx++;
+	check_opening_bracket(scene_file);
 	cfg.setter(shape, scene_file);
 	obj_set(obj, type, shape);
 	obj->export = cfg.export;
-	scene_file->line_idx += parse_material(app, &(obj->material), scene_file->greed, scene_file->line_idx);
+	parse_material(&(obj->material), scene_file);
+	check_closing_bracket(scene_file);
 }
 
 /**
@@ -96,7 +98,6 @@ void
 		ft_putendl("Shape node :");
 	create_obj(&obj, scene_file, type);
 	ft_lstpushnew(&app->scene.lst_obj, &obj, sizeof(t_obj));
-	check_closing_bracket(scene_file);
 
 }
 
@@ -114,7 +115,6 @@ void
 
 	if (DEBUG)
 		ft_putendl("Light node :");
-	scene_file->line_idx++;
 	check_opening_bracket(scene_file);
 	light_set(&light, scene_file);
 	ft_lstpushnew(&app->scene.lst_light, &light, sizeof(t_light));

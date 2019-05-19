@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/18 02:21:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 07:45:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 /*
 ** Prototypes :
 */
+
 t_data		*get_app(t_data *app);
 
 /*
@@ -38,12 +39,12 @@ void		update_texture(t_img img, t_gui gui);
 void		render_gui(void *arg);
 int			process_pixel(int x, int y, void *arg);
 void		light_intensity(t_inter *inter, t_color *color, t_ray *ray);
-void		cast_shadow(t_data *data, t_inter *inter);
+void		cast_shadow(t_data *app, t_inter *inter);
 t_color		get_lighting(t_shading s, t_scene scene, t_settings *setng);
 void		cast_primary(t_list *obj_list, t_inter *inter);
 t_color		recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
 void		set_direction(t_cam *cam, t_vec3 direction);
-void		cam_ray(t_data *data, t_ray *res, float x, float y);
+void		cam_ray(t_data *app, t_ray *res, float x, float y);
 t_color		cast_light_primary(t_list *obj_list, t_inter *inter);
 
 /*
@@ -51,11 +52,11 @@ t_color		cast_light_primary(t_list *obj_list, t_inter *inter);
 */
 
 void		init_interface(t_gui *gui, SDL_Window *window, t_data *app);
-void		init(t_data	*data);
+void		init(t_data	*app);
 void		init_textures(t_data *app);
 void		default_settings(t_settings *settings);
-int			reader(char *str, t_data *data);
-void		hook_sdl(t_data *data);
+int			reader(char *str, t_data *app);
+void		hook_sdl(t_data *app);
 void		update(void *data);
 void		update_camera(t_cam *cam, bool *needs_render);
 void		key_event(int *quit, SDL_Keycode key, void *arg, bool state);
@@ -66,24 +67,22 @@ void		click_event(SDL_Event *event, void *arg);
 ** Exit :
 */
 
-void		ft_parse_err(const char function[], int line, char *str, int line_idx, char *endl);
-
-void		exit_safe(t_data *data);
+void		exit_safe(t_data *app);
 void		del_obj(void *content, size_t content_size);
-void		free_scene(t_data *data);
-void		free_lst(t_data *data);
+void		free_scene(t_data *app);
+void		free_lst(t_data *app);
 
 /*
 ** Camera :
 */
 
 void		hook_cam_to_gui(t_data *app);
-void		camera_angle(t_data *data, int pan, int pitch);
-void		camera_zoom(t_data *data, float value);
-void		camera_height(t_data *data, float value);
-void		camera_side(t_data *data, float value);
-void		camera_pitch(t_data *data, float angle);
-void		camera_pan(t_data *data, float angle);
+void		camera_angle(t_data *app, int pan, int pitch);
+void		camera_zoom(t_data *app, float value);
+void		camera_height(t_data *app, float value);
+void		camera_side(t_data *app, float value);
+void		camera_pitch(t_data *app, float angle);
+void		camera_pan(t_data *app, float angle);
 
 /*
 ** Textures :
@@ -122,9 +121,9 @@ void		change_window_title(SDL_Window *win, t_data *app);
 ** Export :
 */
 
-int			export_scene(t_data *data, char *filename);
+int			export_scene(t_data *app, char *filename);
 void		export_material(int fd, t_material *mat);
-void		parse_material_csv(t_data *data, char *csv_file);
+void		parse_material_csv(t_data *app, char *csv_file);
 
 /*
 ** Static def :

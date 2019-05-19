@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 04:11:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 06:35:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@
 #include "rt.h"
 
 void
-	parse_color(t_color *color, char **lines, int line_idx, char *key)
+	parse_color(t_color *color, char *key, t_parse_txt *scene_file)
 {
 	float	toby[3];
 	int		idx;
 	char	*line;
 
 	idx = -1;
-	line = lines[line_idx];
-	if (!line)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
-	line = check_key(line, line_idx, key, ERR_PARSE_COLOR);
+	line = check_key(scene_file, key);
 	while (++idx < 3)
 	{
 		toby[idx] = ft_atof(line);
@@ -38,24 +35,24 @@ void
 			break ;
 	}
 	if (idx != 2)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_COLOR, line_idx, line);
+	{
+		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
+		scene_file->err_exit(ERR_PARSE_COLOR, scene_file);
+	}
 	*color = (t_color){toby[0], toby[1], toby[2]};
 	if (DEBUG)
 		ft_printf("Color : %i %i %i\n", color->r, color->g, color->b);
 }
 
 void
-	parse_vector(t_vec3 *vec, char **lines, int line_idx, char *key)
+	parse_vector(t_vec3 *vec, char *key, t_parse_txt *scene_file)
 {
 	float	toby[3];
 	int		idx;
 	char	*line;
 
 	idx = -1;
-	line = lines[line_idx];
-	if (!line)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
-	line = check_key(line, line_idx, key, ERR_PARSE_VECTOR);
+	line = check_key(scene_file, key);
 	while (++idx < 3)
 	{
 		toby[idx] = ft_atof(line);
@@ -67,38 +64,35 @@ void
 			break ;
 	}
 	if (idx != 2)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_VECTOR, line_idx, line);
+	{
+		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
+		scene_file->err_exit(ERR_PARSE_VECTOR, scene_file);
+	}
 	*vec = (t_vec3){toby[0], toby[1], toby[2]};
 	if (DEBUG)
 		ft_printf("Vector : %f %f %f\n", vec->x, vec->y, vec->z);
 }
 
 void
-	parse_fval(float *val, char **lines, int line_idx, const char *key)
+	parse_fval(float *val, char *key, t_parse_txt *scene_file)
 {
 	char	*line;
 
-	line = lines[line_idx];
-	if (!line)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
-	line = check_key(line, line_idx, key, ERR_PARSE_FLOAT);
+	line = check_key(scene_file, key);
 	*val = ft_atof(line);
 	if (DEBUG)
 		ft_printf("Float value : %f\n", *val);
 }
 
 void
-	parse_limit(float *l_x, float *l_y, char **lines, int line_idx)
+	parse_limit(float *l_x, float *l_y, t_parse_txt *scene_file)
 {
 	float	toby[2];
 	int		idx;
 	char	*line;
 
 	idx = -1;
-	line = lines[line_idx];
-	if (!line)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
-	line = check_key(line, line_idx, "limit(", ERR_PARSE_FLOAT);
+	line = check_key(scene_file, "limit(");
 	while (++idx < 2)
 	{
 		toby[idx] = ft_atof(line);
@@ -110,7 +104,10 @@ void
 			break ;
 	}
 	if (idx != 1)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_FLOAT, line_idx, line);
+	{
+		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
+		scene_file->err_exit(ERR_PARSE_LIMIT, scene_file);
+	}
 	*l_x = toby[0];
 	*l_y = toby[1];
 	if (DEBUG)

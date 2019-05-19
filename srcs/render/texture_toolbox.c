@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 21:48:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 06:36:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,12 @@ t_texture
 }
 
 t_texture
-	*parse_texture(t_list **lst_tex, char **lines, int line_idx)
+	*parse_texture(t_list **lst_tex, t_parse_txt *scene_file)
 {
 	t_texture	*tex;
 	char		*line;
 
-	line = lines[line_idx];
-	if (!line)
-		ft_parse_err(__func__, __LINE__, ERR_PARSE_STRN, line_idx, line);
-	if (!(line = ft_strstr(line, "texture(")))
-		return (NULL);
-	line += 8;
+	line = check_key(scene_file, "texture(");
 	tex = ft_lstgetelt(*lst_tex, &texcmp, line);
 	if (tex == NULL)
 		return (ft_lstgetelt(*lst_tex, &texcmp, "none"));

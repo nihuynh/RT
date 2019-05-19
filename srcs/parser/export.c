@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/17 19:38:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 06:30:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static inline void
 }
 
 int
-	export_scene(t_data *data, char *filename)
+	export_scene(t_data *app, char *filename)
 {
 	int fd;
 
@@ -84,8 +84,8 @@ int
 		ft_printf("Error during export [%s]\n", filename);
 		return (-1);
 	}
-	export_camera(fd, &data->cam, data->settings.amb_light);
-	export_content(fd, &data->scene);
+	export_camera(fd, &app->cam, app->settings.amb_light);
+	export_content(fd, &app->scene);
 	close(fd);
 	setlocale(LC_NUMERIC, NULL);
 	return (0);

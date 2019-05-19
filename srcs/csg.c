@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 04:27:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 07:40:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ t_btree	*csg_parse_obj(t_parse_txt *scene_file, int type)
 {
 	t_obj res;
 
+	scene_file->line_idx++;
 	create_obj(&res, scene_file, type);
-	check_closing_bracket(scene_file);
 	return (ft_b3new(&res, sizeof(t_obj)));
 }
 
@@ -50,6 +50,7 @@ int			csg_is_op(t_parse_txt *scene_file)
 		return (3);
 	return (0);
 }
+
 int			csg_is_obj(t_parse_txt *scene_file)
 {
 	char	*type_tested;
@@ -95,8 +96,8 @@ void 	csg_set(void *csg, t_parse_txt *scene_file)
 		scene_file->err_exit(ERR_PARSE_SET_CSG, scene_file);
 	}
 	pcsg = csg;
-	parse_vector(&pcsg->origin, scene_file->greed, scene_file->line_idx++, "origin(");
-	parse_vector(&pcsg->n, scene_file->greed, scene_file->line_idx++, "normal(");
+	parse_vector(&pcsg->origin, "origin(", scene_file);
+	parse_vector(&pcsg->n, "normal(", scene_file);
 	// parse tree
 	pcsg->root = csg_tree_parse(scene_file);
 }

@@ -6,15 +6,15 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 04:08:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 07:35:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "config.h"
 #include "parse.h"
-#include "lifetime.h"
 #include <unistd.h>
+#include <stdlib.h>
+#include <sys/errno.h>
 
 static inline char
 	*safe_line(t_parse_txt *scene_file)
@@ -28,7 +28,7 @@ static inline char
 	if (!(scene_file->greed[scene_file->line_idx]))
 	{
 		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit("Str is null", scene_file);
+		scene_file->err_exit(ERR_PARSE_STRN, scene_file);
 	}
 	return (scene_file->greed[scene_file->line_idx]);
 }
@@ -51,12 +51,13 @@ static inline void
 
 	app = get_app(NULL);
 	scene_file->line_idx -= scene_file->is_pop;
-	ft_printf("%s\nPARSE_TXT : [line :%d]%s\n%s : %s (%s:%d)",
+	ft_printf("%s\nPARSE_TXT : [line :%d]%s\n%s : %s (%s:%d)\n",
 		err_msg, scene_file->line_idx, scene_file->greed[scene_file->line_idx],
 		"Error in the function", scene_file->err_func, scene_file->err_file,
 		scene_file->err_at_line);
 	ft_tabdel(scene_file->greed);
 	exit_safe(app);
+	exit(errno);
 }
 
 static inline void
