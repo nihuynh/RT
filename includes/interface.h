@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 17:14:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 20:41:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 # define GL_SILENCE_DEPRECATION
 
-# include "rt.h"
+# include "data_struct.h"
 # include "cimgui.h"
 
 # define FLAGS1	ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar
@@ -26,11 +26,24 @@
 # define RENDER_FLAGS FLAGS1 | FLAGS2 | FLAGS3 | FLAGS4
 
 /*
+** Hooks :
+*/
+
+void	fullscreen(t_sdl *sdl, t_gui *gui);
+void	scene_window(t_ui_func *ui);
+void	ui_hook_file_mng(t_ui_func *ui_func);
+void	ui_hook_obj_mng(t_ui_func *ui_func);
+void	ui_hook_render(t_ui_func *ui_func);
+
+int		export_scene(t_data *app, char *filename);
+void	export_material(int fd, t_material *mat);
+
+void	load_scene(t_data *app, char *filename);
+
+/*
 ** Prototypes :
 */
 
-void	export_window(t_data *app);
-void	window_scene(t_data *app);
 void	icolortogui(int src, float dest[3]);
 void	guicolortoi(float src[3], int *dest);
 void	colortogui(t_color src, float dest[3]);
@@ -42,12 +55,8 @@ void	new_obj_list(int *type);
 t_obj	*find_obj_at_pixel(t_data *app, int x, int y);
 void	new_light(t_data *app);
 void	new_obj(t_data *app, int type);
-void	new_obj_window(t_data *app);
-void	delete_obj_window(t_data *app);
 void	delete_obj(t_data *app);
-void	load_window(t_data *app);
 bool	check_file(char *filename);
-void	error_window(t_data *app);
 
 /*
 ** UI shape :

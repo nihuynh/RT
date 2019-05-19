@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 17:30:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 20:32:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ t_data		*get_app(t_data *app);
 */
 
 t_shading	get_shading_data(t_inter *inter);
-void		update_texture(t_img img, t_gui gui);
 void		render_gui(void *arg);
 int			process_pixel(int x, int y, void *arg);
 void		light_intensity(t_inter *inter, t_color *color, t_ray *ray);
@@ -50,10 +49,6 @@ t_color		cast_light_primary(t_list *obj_list, t_inter *inter);
 /*
 ** Init :
 */
-
-// void		hook_render_to_gui(t_gui *gui, SDL_Window *window);
-// void		init(t_data	*app);
-// void		default_settings(t_settings *settings);
 
 void		hook_sdl(t_data *app);
 void		init_textures(t_data *app);
@@ -95,17 +90,13 @@ t_color		anti_aliasing(t_color col_prim, t_data *app, int x, int y);
 ** Interface :
 */
 
-void		fullscreen(t_sdl *sdl, t_gui *gui);
-void		load_scene(t_data *app, char *filename);
 void		interface(t_data *app);
 
 
 /*
-** Export :
+** Loading :
 */
 
-int			export_scene(t_data *app, char *filename);
-void		export_material(int fd, t_material *mat);
 void		parse_material_csv(t_data *app, char *csv_file);
 
 /*

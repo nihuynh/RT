@@ -52,7 +52,7 @@ target_sources(RT PRIVATE
         srcs/interface/interface_objects.c
         srcs/interface/interface_scene.c
         srcs/interface/interface_tools.c
-        srcs/interface/interface_windows.c
+        srcs/interface/ui_hook_file_mng.c
         srcs/interface/new_object.c
         srcs/interface/new_object_tools.c
         srcs/interface/object_tools.c

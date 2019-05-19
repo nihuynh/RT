@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 10:55:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/19 20:27:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,48 +72,49 @@ static inline void
 }
 
 static inline void
-	menu_bar(t_data *app)
+	menu_bar_scene_window(t_ui_func *ui)
 {
 	if (igBeginMenu("Menu", 1))
 	{
-		igMenuItemBoolPtr("Load Scene", NULL, &app->gui.load_open, 1);
-		igMenuItemBoolPtr("Export Scene", NULL, &app->gui.export_open, 1);
-		igMenuItemBoolPtr("Stats", NULL, &app->gui.stats_open, 1);
-		if (igMenuItemBoolPtr("Fullscreen", NULL, &app->sdl.fullscreen, 1))
+		igMenuItemBoolPtr("Load Scene", NULL, &ui->load_open, 1);
+		igMenuItemBoolPtr("Export Scene", NULL, &ui->export_open, 1);
+		igMenuItemBoolPtr("Stats", NULL, &ui->stats_open, 1);
+		if (igMenuItemBoolPtr("Fullscreen", NULL, &ui->app->sdl.fullscreen, 1))
 		{
-			fullscreen(&app->sdl, &app->gui);
-			app->sdl.needs_render = 1;
+			fullscreen(&ui->app->sdl, &ui->app->gui);
+			ui->app->sdl.needs_render = 1;
 		}
 		igEndMenu();
 	}
 	if (igBeginMenu("Scene", 1))
 	{
-		igMenuItemBoolPtr("New Object", NULL, &app->gui.new_obj_open, 1);
+		igMenuItemBoolPtr("New Object", NULL, &ui->add_obj_open, 1);
 		if (igMenuItemBool("New Light", NULL, 0, 1))
-			new_light(app);
+			new_light(ui->app);
 		igMenuItemBoolPtr("Delete Selected Object", NULL,
-							&app->gui.delete_obj_open, 1);
+							&ui->del_obj_open, 1);
 		igEndMenu();
 	}
 	igEndMenuBar();
 }
 
 void
-	window_scene(t_data *app)
+	scene_window(t_ui_func *ui)
 {
-	igSetNextWindowPos((ImVec2){app->sdl.img.width, 0},
+	igSetNextWindowPos((ImVec2){ui->app->sdl.img.width, 0},
 						ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar
 		| ImGuiWindowFlags_AlwaysAutoResize);
 	if (igBeginMenuBar())
-		menu_bar(app);
+		menu_bar_scene_window(ui);
 	if (igCollapsingHeader("Render Settings", ImGuiTreeNodeFlags_DefaultOpen))
-		render_settings(app);
+		render_settings(ui->app);
 	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))
-		object_settings(app);
+		object_settings(ui->app);
 	if (igButton("Render new frame", (ImVec2){130, 20}))
-		app->sdl.needs_render = true;
+		ui->app->sdl.needs_render = true;
 	igEnd();
 }
+

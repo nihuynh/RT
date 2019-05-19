@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 17:29:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 20:56:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@
 static inline void
 	default_gui_settings(t_gui *gui, t_data *app)
 {
-	gui->export_open = false;
+	gui->ui.export_open = false;
 	gui->light_set = app->scene.lst_light;
 	gui->obj_set = NULL;
-	gui->flags_render = 2;
-	gui->new_obj_type = 0;
-	gui->stats_open = true;
+	gui->ui.flags_render = 2;
+	gui->ui.add_obj_type = 0;
+	gui->ui.stats_open = true;
 }
 
 static inline void
@@ -62,6 +62,9 @@ void
 	app->sdl.render_gui = &render_gui;
 	app->sdl.click_map = &click_event;
 	hook_render_to_gui(&app->gui, app->sdl.win);
+	ui_hook_file_mng(&app->gui.ui);
+	ui_hook_obj_mng(&app->gui.ui);
+	ui_hook_render(&app->gui.ui);
 }
 
 static inline void
