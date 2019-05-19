@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 21:59:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 17:14:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ void	delete_obj(t_data *app);
 void	load_window(t_data *app);
 bool	check_file(char *filename);
 void	error_window(t_data *app);
-void	init_gui(t_gui *gui, t_data *app);
+
+/*
+** UI shape :
+*/
+
+void	ui_sphere(void *res);
+void	ui_plane(void *res);
+void	ui_cylinder(void *res);
+void	ui_cone(void *res);
 
 #endif

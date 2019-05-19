@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 07:45:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 17:30:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,13 @@ t_color		cast_light_primary(t_list *obj_list, t_inter *inter);
 ** Init :
 */
 
-void		init_interface(t_gui *gui, SDL_Window *window, t_data *app);
-void		init(t_data	*app);
-void		init_textures(t_data *app);
-void		default_settings(t_settings *settings);
-int			reader(char *str, t_data *app);
+// void		hook_render_to_gui(t_gui *gui, SDL_Window *window);
+// void		init(t_data	*app);
+// void		default_settings(t_settings *settings);
+
 void		hook_sdl(t_data *app);
+void		init_textures(t_data *app);
+int			reader(char *str, t_data *app);
 void		update(void *data);
 void		update_camera(t_cam *cam, bool *needs_render);
 void		key_event(int *quit, SDL_Keycode key, void *arg, bool state);
@@ -73,22 +74,9 @@ void		free_scene(t_data *app);
 void		free_lst(t_data *app);
 
 /*
-** Camera :
-*/
-
-void		hook_cam_to_gui(t_data *app);
-void		camera_angle(t_data *app, int pan, int pitch);
-void		camera_zoom(t_data *app, float value);
-void		camera_height(t_data *app, float value);
-void		camera_side(t_data *app, float value);
-void		camera_pitch(t_data *app, float angle);
-void		camera_pan(t_data *app, float angle);
-
-/*
 ** Textures :
 */
 
-int			texcmp(void *content, void *key);
 t_color		texture_checkers(t_material *mat, t_vec3 uv);
 t_color		texture_strips(t_material *mat, t_vec3 uv);
 t_color		sample(t_material *texture, t_vec3 uv);
@@ -108,14 +96,9 @@ t_color		anti_aliasing(t_color col_prim, t_data *app, int x, int y);
 */
 
 void		fullscreen(t_sdl *sdl, t_gui *gui);
-void		reload(t_data *app, char *filename);
-
+void		load_scene(t_data *app, char *filename);
 void		interface(t_data *app);
-void		ui_sphere(void *res);
-void		ui_plane(void *res);
-void		ui_cylinder(void *res);
-void		ui_cone(void *res);
-void		change_window_title(SDL_Window *win, t_data *app);
+
 
 /*
 ** Export :

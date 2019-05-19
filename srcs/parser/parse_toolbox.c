@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 06:35:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:19:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void
 	char	*line;
 
 	idx = -1;
-	line = check_key(scene_file, key);
+	line = get_args_key_require(scene_file, key);
 	while (++idx < 3)
 	{
 		toby[idx] = ft_atof(line);
@@ -52,7 +52,7 @@ void
 	char	*line;
 
 	idx = -1;
-	line = check_key(scene_file, key);
+	line = get_args_key_require(scene_file, key);
 	while (++idx < 3)
 	{
 		toby[idx] = ft_atof(line);
@@ -78,7 +78,7 @@ void
 {
 	char	*line;
 
-	line = check_key(scene_file, key);
+	line = get_args_key_require(scene_file, key);
 	*val = ft_atof(line);
 	if (DEBUG)
 		ft_printf("Float value : %f\n", *val);
@@ -92,7 +92,7 @@ void
 	char	*line;
 
 	idx = -1;
-	line = check_key(scene_file, "limit(");
+	line = get_args_key_require(scene_file, "limit(");
 	while (++idx < 2)
 	{
 		toby[idx] = ft_atof(line);

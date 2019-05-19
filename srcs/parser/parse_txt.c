@@ -6,15 +6,23 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 07:35:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 16:54:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rt.h"
 #include "libft.h"
 #include "parse.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/errno.h>
+
+/**
+** @brief Check if the line_idx is in range and return the curr_line.
+**
+** @param scene_file
+** @return char*
+*/
 
 static inline char
 	*safe_line(t_parse_txt *scene_file)
@@ -33,6 +41,13 @@ static inline char
 	return (scene_file->greed[scene_file->line_idx]);
 }
 
+/**
+** @brief Return the curr_line and move line_idx to the next line.
+**
+** @param scene_file
+** @return char*
+*/
+
 static inline char
 	*pop_line(t_parse_txt *scene_file)
 {
@@ -44,19 +59,23 @@ static inline char
 	return (res);
 }
 
+/**
+** @brief Format the exit message and clean the memory then exit.
+**
+** @param err_msg
+** @param scene_file
+*/
+
 static inline void
 	err_exit(char *err_msg, t_parse_txt *scene_file)
 {
-	t_data *app;
-
-	app = get_app(NULL);
 	scene_file->line_idx -= scene_file->is_pop;
 	ft_printf("%s\nPARSE_TXT : [line :%d]%s\n%s : %s (%s:%d)\n",
 		err_msg, scene_file->line_idx, scene_file->greed[scene_file->line_idx],
 		"Error in the function", scene_file->err_func, scene_file->err_file,
 		scene_file->err_at_line);
 	ft_tabdel(scene_file->greed);
-	exit_safe(app);
+	exit_safe(scene_file->app);
 	exit(errno);
 }
 
@@ -71,12 +90,13 @@ static inline void
 
 
 int
-	load_parse_txt(t_parse_txt *scene_file, char *filename)
+	load_parse_txt(t_parse_txt *scene_file, t_data *app, char *filename)
 {
 	int		fd;
 	size_t	size_greed;
 
 	ft_bzero(scene_file, sizeof(t_parse_txt));
+	scene_file->app = app;
 	scene_file->get_curr_line = &safe_line;
 	scene_file->pop_line = &pop_line;
 	scene_file->err_set = &err_set;

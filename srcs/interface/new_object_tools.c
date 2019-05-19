@@ -3,34 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   new_object_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:36:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 19:55:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/19 16:50:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
 void
-	sphere_new(void *res, char **greed, int i)
+	sphere_new(void *res)
 {
 	t_sphere	*sphere;
 
-	(void)greed;
-	(void)i;
 	sphere = res;
 	sphere->origin = (t_pt3){0, 0, 0};
 	sphere->radius = 10;
 }
 
 void
-	plane_new(void *res, char **greed, int i)
+	plane_new(void *res)
 {
 	t_plane		*plane;
 
-	(void)greed;
-	(void)i;
 	plane = res;
 	plane->origin = (t_pt3){0, 0, 0};
 	plane->n = (t_vec3){0, 0, 1};
@@ -41,12 +37,10 @@ void
 }
 
 void
-	cylinder_new(void *res, char **greed, int i)
+	cylinder_new(void *res)
 {
 	t_cylinder	*cylinder;
 
-	(void)greed;
-	(void)i;
 	cylinder = res;
 	cylinder->origin = (t_pt3){0, 0, 0};
 	cylinder->n = (t_vec3){0, 1, 0};
@@ -55,12 +49,10 @@ void
 }
 
 void
-	cone_new(void *res, char **greed, int i)
+	cone_new(void *res)
 {
 	t_cone	*cone;
 
-	(void)greed;
-	(void)i;
 	cone = res;
 	cone->origin = (t_pt3){0, 0, 0};
 	cone->n = (t_vec3){0, 1, 0};

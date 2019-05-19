@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/18 01:47:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 17:21:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,16 @@ void	interactive(char *filename, int runmode)
 
 	ft_bzero(&app, sizeof(t_data));
 	get_app(&app);
-	if (!(app.arg = ft_strdup(filename)))
-		ft_error(__func__, __LINE__);
 	init_textures(&app);
-	parse_material_csv(&app, "materialList.csv");
+	parse_material_csv(&app, "resources/materialList.csv");
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
-	if (reader(filename, &app) == EXIT_FAILURE)
-		ft_error(__func__, __LINE__);
-	if (DEBUG)
-		ft_printf("Parsing is completed\n");
+	init_sdl(&app.sdl, WIDTH, HEIGHT);
+	init_mthr_sdl(&app.sdl, &process_pixel, &app);
+	hook_sdl(&app);
+	load_scene(&app, filename);
 	if (runmode == RM_UNIT_TEST)
 		return ;
-	init(&app);
-	init_mthr_sdl(&app.sdl, &process_pixel, &app);
 	if (DEBUG)
 		ft_printf("RT is starting\n");
 	loop_sdl(&app.sdl, &app);

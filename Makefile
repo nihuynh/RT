@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/19 07:29:29 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/19 18:31:56 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ RUNMODE		?=	release
 #VERBOSE	:= TRUE
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
-				setter.c light.c key_mapping.c camera.c update.c init.c	\
+				setter.c light.c key_mapping.c camera.c update.c	\
 				cast.c utils.c interface.c interface_scene.c	\
-				init_interface.c interface_objects.c interface_tools.c	\
-				object_tools.c texture_toolbox.c new_object_tools.c \
-				interface_lists.c filters.c export.c export_utils.c \
+				interface_objects.c interface_tools.c	\
+				object_tools.c texture_toolbox.c new_object_tools.c	\
+				interface_lists.c filters.c export.c export_utils.c	\
 				fullscreen.c interface_windows.c export_toolbox.c new_object.c \
 				reload.c perturbation.c texture_loader.c free.c csg.c  \
 				obj_data.c parse_txt.c parse_utils.c

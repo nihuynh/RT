@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 07:40:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:19:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ t_btree	*csg_parse_obj(t_parse_txt *scene_file, int type)
 {
 	t_obj res;
 
-	scene_file->line_idx++;
 	create_obj(&res, scene_file, type);
 	return (ft_b3new(&res, sizeof(t_obj)));
 }
@@ -53,17 +52,10 @@ int			csg_is_op(t_parse_txt *scene_file)
 
 int			csg_is_obj(t_parse_txt *scene_file)
 {
-	char	*type_tested;
-	int		type;
+	char *line;
 
-	type = -1;
-	type_tested = NULL;
-	while ((type_tested = get_obj_str(++type)))
-	{
-		if (ft_strstr(scene_file->get_curr_line(scene_file), type_tested) != NULL)
-			return (type);
-	}
-	return (-1);
+	line = get_args_key_require(scene_file, "object(");
+	return (get_obj_type(line));
 }
 
 t_btree	*csg_tree_parse(t_parse_txt *scene_file)
@@ -77,8 +69,6 @@ t_btree	*csg_tree_parse(t_parse_txt *scene_file)
 		root = csg_parse_op(scene_file, type_csg_node);
 	else if ((type_csg_node = csg_is_obj(scene_file)) != -1)
 		root = csg_parse_obj(scene_file, type_csg_node);
-	else
-		ft_error(__func__, __LINE__);
 	if (root->content_size == sizeof(t_obj))
 		return (root);
 	root->right = csg_tree_parse(scene_file);

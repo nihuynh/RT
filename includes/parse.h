@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 06:21:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:19:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PARSE_H
 
 # include <stddef.h>
-# include "librt.h"
-# include "rt.h"
+# include "rtstruct.h"
+# include "data_struct.h"
 
 # define ERR_P_CAMERA		"Err : camera is missing"
 # define ERR_P_CONTENT		"Err : content is missing"
@@ -42,7 +42,7 @@
 # define ERR_FILE			"Err : File is too small to be valid"
 
 /*
-** Structs :
+** Parsing structs :
 */
 
 typedef struct	s_parse_txt t_parse_txt;
@@ -55,6 +55,22 @@ typedef struct	s_parse
 	void		(*export) (int, void*);
 }				t_parse;
 
+struct			s_parse_txt
+{
+	char 		**greed;
+	int			line_idx;
+	int			line_max;
+	short		is_pop;
+	const char	*err_func;
+	const char	*err_file;
+	int			err_at_line;
+	t_data		*app;
+	char		*(*get_curr_line) (t_parse_txt*);
+	char		*(*pop_line) (t_parse_txt*);
+	void		(*err_set) (t_parse_txt*, const char[], int , const char []);
+	void		(*err_exit) (char *, t_parse_txt*);
+};
+
 typedef struct	s_objset
 {
 	void		(*f_inter) (t_inter*, t_obj*);
@@ -65,46 +81,23 @@ typedef struct	s_objset
 
 typedef struct	s_built
 {
-	void		(*setter) (void*, char **, int);
+	void		(*setter) (void*);
 }				t_built;
-
-
-struct			s_parse_txt
-{
-	char 		**greed;
-	int			line_idx;
-	int			line_max;
-	short		is_pop;
-	const char	*err_func;
-	const char	*err_file;
-	int			err_at_line;
-	char		*(*get_curr_line) (t_parse_txt*);
-	char		*(*pop_line) (t_parse_txt*);
-	void		(*err_set) (t_parse_txt*, const char[], int , const char []);
-	void		(*err_exit) (char *, t_parse_txt*);
-};
 
 /*
 ** Parser :
 */
 
-int				load_parse_txt(t_parse_txt *scene_file, char *filename);
+int				load_parse_txt(t_parse_txt *s_f, t_data *app, char *filename);
 void			check_opening_bracket(t_parse_txt *scene_file);
 void			check_closing_bracket(t_parse_txt *scene_file);
 
-void			parse_light(t_data *app, t_parse_txt *scene_file);
-void			parse_shape(t_data *app, t_parse_txt *scene_file, int type);
+void			parse_light(t_parse_txt *scene_file);
+void			parse_shape(t_parse_txt *scene_file, int type);
 
 void			init_parse_cfg(int type, t_parse *config);
 void			obj_set(t_obj *obj, int type, void *shape);
 
-t_texture		*parse_texture(t_list **lst_tex, t_parse_txt *scene_file);
-void 			csg_set(void *root, t_parse_txt *scene_file);
-void			cone_set(void *cone, t_parse_txt *scene_file);
-void			cylinder_set(void *cylinder, t_parse_txt *scene_file);
-void			plane_set(void *plane, t_parse_txt *scene_file);
-void			sphere_set(void *sphere, t_parse_txt *scene_file);
-void			light_set(t_light *light, t_parse_txt *scene_file);
 
 void			parse_color(t_color *color, char *key, t_parse_txt *scene_file);
 void			parse_fval(float *val, char *key, t_parse_txt *scene_file);
@@ -115,21 +108,34 @@ void			parse_limit(float *l_x, float *l_y, t_parse_txt *scene_file);
 ** New object
 */
 
-void			sphere_new(void *res, char **greed, int i);
-void			plane_new(void *res, char **greed, int i);
-void			cylinder_new(void *res, char **greed, int i);
-void			cone_new(void *res, char **greed, int i);
+void			sphere_new(void *res);
+void			plane_new(void *res);
+void			cylinder_new(void *res);
+void			cone_new(void *res);
 
 /*
 ** Getters :
 */
 
-void			create_obj(t_obj *obj, t_parse_txt *scene_file, int type);
-char			*get_obj_str(int type);
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
-char			*check_key(t_parse_txt *scene_file, const char *key);
+
+void			create_obj(t_obj *obj, t_parse_txt *scene_file, int type);
+char			*get_obj_str(int type);
+int				get_obj_type(char *obj_type);
+char			*get_args_key_require(t_parse_txt *scene_file, const char *key);
 void			open_textures(t_data *app);
+
+/*
+** Setters :
+*/
+
+void			light_set(t_light *light, t_parse_txt *scene_file);
+void			cone_set(void *cone, t_parse_txt *scene_file);
+void			cylinder_set(void *cylinder, t_parse_txt *scene_file);
+void			plane_set(void *plane, t_parse_txt *scene_file);
+void			sphere_set(void *sphere, t_parse_txt *scene_file);
+void 			csg_set(void *root, t_parse_txt *scene_file);
 
 /*
 ** Export :
@@ -139,13 +145,13 @@ void			plane_export(int fd, void *shape);
 void			sphere_export(int fd, void *shape);
 void			cone_export(int fd, void *shape);
 void			cylinder_export(int fd, void *shape);
+void 			csg_export(int fd, void *shape);
 void			export_material(int fd, t_material *mat);
 
 /*
 ** CSG :
 */
 
-void 			csg_export(int fd, void *shape);
 void 			inter_csg(t_inter *data, t_obj *node);
 void 			ui_csg(void *res);
 void 			normal_csg(t_inter *inter);

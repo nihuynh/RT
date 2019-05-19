@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 06:36:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 16:26:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,6 @@
 #include "config.h"
 #include "libft.h"
 #include "parse.h"
-
-int
-	texcmp(void *content, void *key)
-{
-	t_texture	*tex;
-	char		*ckey;
-
-	tex = content;
-	ckey = key;
-	return (!ft_strncasecmp(tex->name, ckey, ft_strlen(tex->name)));
-}
 
 static inline void
 	textures_procedural(t_data *app)
@@ -70,15 +59,3 @@ t_texture
 	return (result);
 }
 
-t_texture
-	*parse_texture(t_list **lst_tex, t_parse_txt *scene_file)
-{
-	t_texture	*tex;
-	char		*line;
-
-	line = check_key(scene_file, "texture(");
-	tex = ft_lstgetelt(*lst_tex, &texcmp, line);
-	if (tex == NULL)
-		return (ft_lstgetelt(*lst_tex, &texcmp, "none"));
-	return (tex);
-}

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:28:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 01:55:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 17:02:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	load_window(t_data *app)
 			NULL, NULL))
 	{
 		if (check_file(buff))
-			reload(app, buff);
+			load_scene(app, buff);
 		else
 			app->gui.error_open = true;
 		app->gui.load_open = false;

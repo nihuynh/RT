@@ -6,20 +6,21 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 00:41:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 16:51:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "rt.h"
 #include "config.h"
 #include "libft.h"
 #include "parse.h"
+#include "librt.h"
+#include "interface.h"
 
 /*
 ** @brief		Setting config for the type of object we want to parse
 **
-** @param type		The type of object we want to parse
-** @param config 	The struct that is gonna hold the config
+** @param type		: type of the object requested
+** @param config	: Dst of the data
 */
 
 void
@@ -30,7 +31,7 @@ void
 		{"sphere", sizeof(t_sphere), &sphere_set, &sphere_export},
 		{"cone", sizeof(t_cone), &cone_set, &cone_export},
 		{"cylinder", sizeof(t_cylinder), &cylinder_set, &cylinder_export},
-		{"csg", sizeof(t_btree), &csg_set, &csg_export}
+		{"csg", sizeof(t_csg), &csg_set, &csg_export}
 	};
 	if (ft_btw(type, 0, sizeof(index_config) / sizeof(t_parse)))
 	{
@@ -42,6 +43,13 @@ void
 	config->printout = NULL;
 }
 
+/**
+** @brief Return the str from type
+**
+** @param type		: Object type
+** @return char*	: str of object type
+*/
+
 char
 	*get_obj_str(int type)
 {
@@ -50,6 +58,36 @@ char
 	init_parse_cfg(type, &cfg);
 	return (cfg.printout);
 }
+
+/**
+** @brief Return the obj type from a str
+**
+** @param obj_type	: str who can be object type
+** @return int		: Object type
+*/
+
+int
+	get_obj_type(char *obj_type)
+{
+	char	*type_tested;
+	int		type;
+
+	type = -1;
+	type_tested = NULL;
+	while ((type_tested = get_obj_str(++type)))
+	{
+		if (ft_strstr(obj_type, type_tested))
+			return (type);
+	}
+	return (-1);
+}
+
+/**
+** @brief Get the obj functions depending on the type needed
+**
+** @param type		: type of the object requested
+** @param config 	: Dst of the data
+*/
 
 void
 	init_obj_cfg(int type, t_objset *config)
@@ -65,12 +103,12 @@ void
 	config = ft_memcpy(config, &obj_func[type], sizeof(t_objset));
 }
 
-/*
-** @brief	Setting the obj struct for the shape
+/**
+** @brief	Setting the obj struct.
 **
-** @param obj	Struct that we want to set
-** @param type	Type of shape
-** @param shape	The shape
+** @param obj 	: Dst of the data
+** @param type	: type of the object requested
+** @param shape	: Adress of the shape data
 */
 
 void

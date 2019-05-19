@@ -20,6 +20,7 @@
 		"type_traits": "c",
 		"parser.h": "c",
 		"unistd.h": "c",
-		"lifetime.h": "c"
+		"lifetime.h": "c",
+		"config.h": "c"
 	}
 }

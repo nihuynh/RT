@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/17 18:36:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/19 16:50:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void
 	init_parse_cfg(type, &cfg);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	(get_built_func(type)).setter(shape, NULL, 0);
+	(get_built_func(type)).setter(shape);
 	obj_set(&new, type, shape);
 	new.export = cfg.export;
 	tmp = ft_lstgetelt(app->lst_mat, &matcmp, "white plastic");
