@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/19 23:05:04 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/20 17:13:31 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				interface_lists.c filters.c export.c export_utils.c	\
 				fullscreen.c export_toolbox.c new_object.c \
 				reload.c perturbation.c texture_loader.c free.c csg.c  \
-				obj_data.c parse_txt.c parse_utils.c \
+				obj_data.c parse_txt.c parse_utils.c interface_menu.c \
 				ui_hook_file_mng.c ui_hook_obj_mng.c ui_hook_render.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
