@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_hook_file_mng.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:28:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 20:59:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:26:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	stats_window(t_ui_func *ui)
 {
 	if (ui->stats_open == false)
 		return ;
-	igSetNextWindowPos((ImVec2){0, ui->app->sdl.img.height}, (ImGuiCond_Once),
+	igSetNextWindowPos((ImVec2){0, ui->app->sdl.img.height + 18}, (ImGuiCond_Once),
 		(ImVec2){0, 0});
 	igBegin("Stats", &ui->stats_open, ImGuiWindowFlags_AlwaysAutoResize);
 	igText("Last frame took : %fms", ui->app->sdl.render_time[24]);

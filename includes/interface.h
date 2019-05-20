@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 20:41:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:12:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	scene_window(t_ui_func *ui);
 void	ui_hook_file_mng(t_ui_func *ui_func);
 void	ui_hook_obj_mng(t_ui_func *ui_func);
 void	ui_hook_render(t_ui_func *ui_func);
+void	interface_mainmenu(t_ui_func *ui);
 
 int		export_scene(t_data *app, char *filename);
 void	export_material(int fd, t_material *mat);

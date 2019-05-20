@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:36:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 16:50:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 14:54:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void
 	plane = res;
 	plane->origin = (t_pt3){0, 0, 0};
 	plane->n = (t_vec3){0, 0, 1};
-	plane->size_x = 0;
-	plane->size_y = 0;
+	plane->size_x = 50;
+	plane->size_y = 50;
 	plane->x = (t_vec3){1, 0, 0};
 	plane->y = (t_vec3){0, 1, 0};
 }

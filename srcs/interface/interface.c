@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:27:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:12:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ui_render(t_ui_func *ui)
 {
 	ui->render_win(ui);
 	ui->scene_win(ui);
+	interface_mainmenu(ui);
 	if (ui->err_win != NULL)
 		ui->err_win(ui);
 	if (ui->load_win != NULL)
