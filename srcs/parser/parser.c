@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 18:25:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:00:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static inline t_texture
 	tex = ft_lstgetelt(scene_file->app->lst_tex, &texcmp, line);
 	if (tex == NULL)
 		return (ft_lstgetelt(scene_file->app->lst_tex, &texcmp, "none"));
+	if (!(tex->pixels))
+		tex->pixels = load_texture(tex);
 	return (tex);
 }
 

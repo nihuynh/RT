@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 05:22:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:04:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int				load_parse_txt(t_parse_txt *s_f, t_data *app, char *filename);
 void			check_opening_bracket(t_parse_txt *scene_file);
 void			check_closing_bracket(t_parse_txt *scene_file);
 
+void			create_obj(t_obj *obj, t_parse_txt *scene_file, int type);
 void			parse_light(t_parse_txt *scene_file);
 void			parse_shape(t_parse_txt *scene_file, int type);
 
@@ -115,17 +116,21 @@ void			cylinder_new(void *res);
 void			cone_new(void *res);
 
 /*
-** Getters :
+** list of material & textures :
 */
 
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
+char			*load_texture(t_texture *tex);
+void			open_textures(t_data *app);
 
-void			create_obj(t_obj *obj, t_parse_txt *scene_file, int type);
+/*
+** Getters :
+*/
+
 char			*get_obj_str(int type);
 int				get_obj_type(char *obj_type);
 char			*get_args_key_require(t_parse_txt *scene_file, const char *key);
-void			open_textures(t_data *app);
 
 /*
 ** Setters :

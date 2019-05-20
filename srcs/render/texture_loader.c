@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/20 11:46:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:09:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,19 @@ char	*read_pixel_data(char *filename, int cursor, int pixel_count)
 	return (pixels);
 }
 
-char	*load_texture(char *filename, int *width, int *height)
+char	*load_texture(t_texture *tex)
 {
 	int	fd;
 	int	header_bytes;
 
 	if (DEBUG)
-		ft_printf("Loading [%s] ... ", filename);
-	fd = ft_fopen_read(filename);
-	header_bytes = parse_header(fd, width, height);
+		ft_printf("Loading [%s] ... ", tex->dir);
+	fd = ft_fopen_read(tex->dir);
+	header_bytes = parse_header(fd, &tex->width, &tex->height);
 	close(fd);
 	if (DEBUG)
-		ft_printf("%d x %d\n", *width, *height);
-	return (read_pixel_data(filename, header_bytes, *width * *height));
+		ft_printf("%d x %d\n", tex->width, tex->height);
+	return (read_pixel_data(tex->dir, header_bytes, tex->width * tex->height));
 }
 
 #include "rt.h"
@@ -106,7 +106,7 @@ void	add_texture(char *name, t_data *app)
 		ft_error(__func__, __LINE__);
 	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
 	if (DEBUG)
-		ft_printf("Texture loaded : %s\n", name);
+		ft_printf("Texture added : %s\n", name);
 }
 
 void	open_textures(t_data *app)

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   perturbation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 11:48:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 12:52:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftmath.h>
-#include "rt.h"
+#include "ftmath.h"
+#include "ftio.h"
+#include "rtstruct.h"
 #include "librt.h"
 #include "color.h"
 #include <math.h>
@@ -69,7 +70,10 @@ t_color sample(t_material *mat, t_vec3 uv)
 
 	tex = mat->tex;
 	if (!(tex->pixels))
-		tex->pixels = load_texture(tex->dir, &tex->width, &tex->height);
+	{
+		ft_printf("Texture is not load.");
+		ft_error(__func__, __LINE__);
+	}
 //	printf("x: %f  y:  %f\n", x, y);
 	int x_ = (ft_clampf(uv.x, 0, 1) * (tex->width - 1));
 	int y_ = (ft_clampf(uv.y, 0, 1) * (tex->height - 1));
