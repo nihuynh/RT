@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:16:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/19 20:19:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:54:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	update(void *arg)
 	app = arg;
 	update_camera(&app->cam, &app->sdl.needs_render);
 }
-
 
 void	update_texture(t_img img, t_gui gui)
 {

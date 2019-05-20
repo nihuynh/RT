@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/20 05:38:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:52:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static inline void
 	check_opening_bracket(scene_file);
 	while (scene_file->line_idx < scene_file->line_max - 1)
 	{
-		if (ft_strrchr(scene_file->get_curr_line(scene_file),'}') != NULL)
+		if (ft_strrchr(scene_file->get_curr_line(scene_file), '}') != NULL)
 			break ;
 		obj_type = get_args_key_require(scene_file, "object(");
 		if (ft_strstr(obj_type, "light") != NULL)
@@ -53,7 +53,7 @@ static inline void
 	check_closing_bracket(scene_file);
 }
 
-/**
+/*
 ** @brief 	:  Parse the camera & the content
 **
 ** @param scene_file	: data in txt to parse
@@ -78,7 +78,7 @@ static inline void
 	}
 }
 
-/**
+/*
 ** @brief	: Top function to organise the parsing
 **
 ** @param filename	: file to parse

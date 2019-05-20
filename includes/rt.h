@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:07:45 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 14:01:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ t_color		anti_aliasing(t_color col_prim, t_data *app, int x, int y);
 */
 
 void		interface(t_data *app);
-
 
 /*
 ** Loading :

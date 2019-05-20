@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/20 13:19:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:54:00 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "ftconvert.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <dirent.h>
 
 int		parse_header(int fd, int *width, int *height)
 {
@@ -92,10 +93,6 @@ char	*load_texture(t_texture *tex)
 	return (read_pixel_data(tex->dir, header_bytes, tex->width * tex->height));
 }
 
-#include "rt.h"
-#include <dirent.h>
-#include "libft.h"
-
 void	add_texture(char *name, t_data *app)
 {
 	t_texture	tex;
@@ -104,7 +101,7 @@ void	add_texture(char *name, t_data *app)
 		ft_error(__func__, __LINE__);
 	tex.pixels = NULL;
 	tex.f_texture = &sample;
-	if(!(tex.name = ft_strdup(name)))
+	if (!(tex.name = ft_strdup(name)))
 		ft_error(__func__, __LINE__);
 	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
 	if (DEBUG)
@@ -113,8 +110,8 @@ void	add_texture(char *name, t_data *app)
 
 void	open_textures(t_data *app)
 {
-	DIR *d;
-	struct dirent *dir;
+	DIR				*d;
+	struct dirent	*dir;
 
 	d = opendir(TEX_DIR);
 	if (d)

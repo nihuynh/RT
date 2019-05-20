@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:04:47 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 14:02:55 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 ** Parsing structs :
 */
 
-typedef struct	s_parse_txt t_parse_txt;
+typedef struct s_parse_txt	t_parse_txt;
 
 typedef struct	s_parse
 {
@@ -58,7 +58,7 @@ typedef struct	s_parse
 
 struct			s_parse_txt
 {
-	char 		**greed;
+	char		**greed;
 	int			line_idx;
 	int			line_max;
 	short		is_pop;
@@ -68,7 +68,7 @@ struct			s_parse_txt
 	t_data		*app;
 	char		*(*get_curr_line) (t_parse_txt*);
 	char		*(*pop_line) (t_parse_txt*);
-	void		(*err_set) (t_parse_txt*, const char[], int , const char []);
+	void		(*err_set) (t_parse_txt*, const char[], int, const char[]);
 	void		(*err_exit) (char *, t_parse_txt*);
 };
 
@@ -99,7 +99,6 @@ void			parse_shape(t_parse_txt *scene_file, int type);
 
 void			init_parse_cfg(int type, t_parse *config);
 void			obj_set(t_obj *obj, int type, void *shape);
-
 
 void			parse_color(t_color *color, char *key, t_parse_txt *scene_file);
 void			parse_fval(float *val, char *key, t_parse_txt *scene_file);
@@ -141,7 +140,7 @@ void			cone_set(void *cone, t_parse_txt *scene_file);
 void			cylinder_set(void *cylinder, t_parse_txt *scene_file);
 void			plane_set(void *plane, t_parse_txt *scene_file);
 void			sphere_set(void *sphere, t_parse_txt *scene_file);
-void 			csg_set(void *root, t_parse_txt *scene_file);
+void			csg_set(void *root, t_parse_txt *scene_file);
 
 /*
 ** Export :
@@ -151,16 +150,16 @@ void			plane_export(int fd, void *shape);
 void			sphere_export(int fd, void *shape);
 void			cone_export(int fd, void *shape);
 void			cylinder_export(int fd, void *shape);
-void 			csg_export(int fd, void *shape);
+void			csg_export(int fd, void *shape);
 void			export_material(int fd, t_material *mat);
 
 /*
 ** CSG :
 */
 
-void 			inter_csg(t_inter *data, t_obj *node);
-void 			ui_csg(void *res);
-void 			normal_csg(t_inter *inter);
-t_vec3 			get_csg_uv(t_inter *inter);
+void			inter_csg(t_inter *data, t_obj *node);
+void			ui_csg(void *res);
+void			normal_csg(t_inter *inter);
+t_vec3			get_csg_uv(t_inter *inter);
 
 #endif

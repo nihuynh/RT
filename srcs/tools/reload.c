@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 20:56:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 14:00:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static inline void
 		print_matrix(&app->cam.rotation);
 	app->gui.cam_cpy = app->cam;
 }
-
 
 bool
 	check_file(char *filename)

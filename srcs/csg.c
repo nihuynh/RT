@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:36:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:28:46 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void			inter_csg(t_inter *data, t_obj *node)
 	(void)data;
 	(void)node;
 }
-
 
 /*
 ** UI :

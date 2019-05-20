@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 04:18:50 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:45:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:51:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ char
 ** @param scene_file
 */
 
-void	check_opening_bracket(t_parse_txt *scene_file)
+void
+	check_opening_bracket(t_parse_txt *scene_file)
 {
 	if (ft_strchr(scene_file->get_curr_line(scene_file), '{') != NULL)
 		scene_file->line_idx++;
@@ -64,7 +65,8 @@ void	check_opening_bracket(t_parse_txt *scene_file)
 ** @param scene_file
 */
 
-void	check_closing_bracket(t_parse_txt *scene_file)
+void
+	check_closing_bracket(t_parse_txt *scene_file)
 {
 	if (ft_strchr(scene_file->get_curr_line(scene_file), '}') != NULL)
 		scene_file->line_idx++;
