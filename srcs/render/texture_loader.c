@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/20 13:09:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:19:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ char	*load_texture(t_texture *tex)
 	int	fd;
 	int	header_bytes;
 
+	if (tex->dir == NULL)
+		return (NULL);
 	if (DEBUG)
 		ft_printf("Loading [%s] ... ", tex->dir);
 	fd = ft_fopen_read(tex->dir);
