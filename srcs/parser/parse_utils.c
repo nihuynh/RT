@@ -6,14 +6,14 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 04:18:50 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:51:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "ftstring.h"
 
-/*
+/**
 ** @brief Verify curr_line is containing the proper value and key.
 **
 ** @param scene_file
@@ -41,7 +41,7 @@ char
 	return (check_line_args);
 }
 
-/*
+/**
 ** @brief Verify that the curr_line is a opening bracket
 **
 ** @param scene_file
@@ -59,7 +59,7 @@ void
 	}
 }
 
-/*
+/**
 ** @brief  Verify that the curr_line is a closing bracket
 **
 ** @param scene_file

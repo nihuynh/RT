@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:41:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "librt.h"
 #include "interface.h"
 
-/*
+/**
 ** @brief		Setting config for the type of object we want to parse
 **
 ** @param type		: type of the object requested
@@ -44,7 +44,7 @@ void
 	config->printout = NULL;
 }
 
-/*
+/**
 ** @brief Return the str from type
 **
 ** @param type		: Object type
@@ -60,7 +60,7 @@ char
 	return (cfg.printout);
 }
 
-/*
+/**
 ** @brief Return the obj type from a str
 **
 ** @param obj_type	: str who can be object type
@@ -83,7 +83,7 @@ int
 	return (-1);
 }
 
-/*
+/**
 ** @brief Get the obj functions depending on the type needed
 **
 ** @param type		: type of the object requested
@@ -104,7 +104,7 @@ void
 	config = ft_memcpy(config, &obj_func[type], sizeof(t_objset));
 }
 
-/*
+/**
 ** @brief	Setting the obj struct.
 **
 ** @param obj 	: Dst of the data

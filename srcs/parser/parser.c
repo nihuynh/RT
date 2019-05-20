@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:44:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static inline t_material
 	return (mat);
 }
 
-/*
+/**
 ** @brief	General parser for all of the shapes
 **
 ** @param obj_dst		: Dst of the data
@@ -89,7 +89,7 @@ void
 	check_closing_bracket(scene_file);
 }
 
-/*
+/**
 ** @brief Built a shape obj and add it to the scene.lst_obj
 **
 ** @param scene_file	: Parsing struct
@@ -108,7 +108,7 @@ void
 
 }
 
-/*
+/**
 ** @brief Built a light obj and add it to the scene.lst_light
 **
 ** @param scene_file	: Parsing struct

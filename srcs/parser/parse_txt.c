@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:42:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <sys/errno.h>
 
-/*
+/**
 ** @brief Check if the line_idx is in range and return the curr_line.
 **
 ** @param scene_file	: data in txt to parse
@@ -41,7 +41,7 @@ static inline char
 	return (scene_file->greed[scene_file->line_idx]);
 }
 
-/*
+/**
 ** @brief Return the curr_line and move line_idx to the next line.
 **
 ** @param scene_file	: data in txt to parse
@@ -59,7 +59,7 @@ static inline char
 	return (res);
 }
 
-/*
+/**
 ** @brief Print the exit message and exit after cleaning the data allocated.
 **
 ** @param err_msg		: message to explain the error.
@@ -79,7 +79,7 @@ static inline void
 	exit(errno);
 }
 
-/*
+/**
 ** @brief Save data that produce the exit.
 **
 ** @param scene_file	: data in txt to parse
@@ -97,7 +97,7 @@ static inline void
 	scene_file->err_at_line = line_in_code;
 }
 
-/*
+/**
 ** @brief	: Load a file into the t_parse_txt & bind the hooks and t_data app
 **
 ** @param scene_file	: data in txt to parse

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/20 13:52:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static inline void
 	check_closing_bracket(scene_file);
 }
 
-/*
+/**
 ** @brief 	:  Parse the camera & the content
 **
 ** @param scene_file	: data in txt to parse
@@ -78,7 +78,7 @@ static inline void
 	}
 }
 
-/*
+/**
 ** @brief	: Top function to organise the parsing
 **
 ** @param filename	: file to parse
