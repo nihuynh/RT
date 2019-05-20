@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 18:19:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 05:22:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,24 @@
 # define ERR_UNKNWD_OBJ		"Err : Unknown object"
 # define ERR_UNKNWD_MAT		"Err : Unknown material"
 
-# define ERR_PARSE_VECTOR	"Err : Parsing of the Vector"
-# define ERR_PARSE_FLOAT	"Err : Parsing of the Float"
-# define ERR_PARSE_COLOR	"Err : Parsing of the Color"
-# define ERR_PARSE_LIMIT	"Err : Parsing of limit"
+# define ERR_PARSE_VECTOR	"Err : [Vector]	Wrong number of args"
+# define ERR_PARSE_FLOAT	"Err : [Float]	Wrong number of args"
+# define ERR_PARSE_COLOR	"Err : [Color]	Wrong number of args"
+# define ERR_PARSE_LIMIT	"Err : [Limit]	Wrong number of args"
 # define ERR_PARSE_STRN		"Err : NULL string"
+# define ERR_PARSE_OUTR		"Err : line_idx out of range"
 
 # define ERR_P_CLOSE_PAR	"Err : Missing parenthese"
 # define ERR_P_BRACKET_CLSE	"Err : Missing closing bracket"
 # define ERR_P_BRACKET_OPEN	"Err : Missing opening bracket"
 # define ERR_P_KEY			"Err : Missing key"
 
-# define ERR_PARSE_SET_SP	"Err : *sphere	is null"
+# define ERR_PARSE_SET_SP	"Err : *sphere		is null"
 # define ERR_PARSE_SET_CY	"Err : *cylinder	is null"
 # define ERR_PARSE_SET_PL	"Err : *plan		is null"
 # define ERR_PARSE_SET_CO	"Err : *cone		is null"
 # define ERR_PARSE_SET_LI	"Err : *light		is null"
-# define ERR_PARSE_SET_CSG	"Err : *csg		is null"
+# define ERR_PARSE_SET_CSG	"Err : *csg			is null"
 # define ERR_FILE			"Err : File is too small to be valid"
 
 /*

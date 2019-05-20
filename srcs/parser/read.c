@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/19 23:19:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 05:38:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ static inline void
 	check_closing_bracket(scene_file);
 }
 
+/**
+** @brief 	:  Parse the camera & the content
+**
+** @param scene_file	: data in txt to parse
+*/
+
 static inline void
 	parser(t_parse_txt *scene_file)
 {
@@ -71,6 +77,14 @@ static inline void
 		scene_file->err_exit(ERR_P_CONTENT, scene_file);
 	}
 }
+
+/**
+** @brief	: Top function to organise the parsing
+**
+** @param filename	: file to parse
+** @param app		: link to the data
+** @return int		: status of the function
+*/
 
 int
 	reader(char *filename, t_data *app)

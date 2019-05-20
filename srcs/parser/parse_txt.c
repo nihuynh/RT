@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 16:54:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 05:35:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 /**
 ** @brief Check if the line_idx is in range and return the curr_line.
 **
-** @param scene_file
-** @return char*
+** @param scene_file	: data in txt to parse
+** @return char*		: curr_line
 */
 
 static inline char
@@ -31,7 +31,7 @@ static inline char
 	if (!(ft_btw(scene_file->line_idx, 0, scene_file->line_max)))
 	{
 		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit("line_idx out of range", scene_file);
+		scene_file->err_exit(ERR_PARSE_OUTR, scene_file);
 	}
 	if (!(scene_file->greed[scene_file->line_idx]))
 	{
@@ -44,8 +44,8 @@ static inline char
 /**
 ** @brief Return the curr_line and move line_idx to the next line.
 **
-** @param scene_file
-** @return char*
+** @param scene_file	: data in txt to parse
+** @return char*		: curr_line before the increment of line_idx
 */
 
 static inline char
@@ -60,10 +60,10 @@ static inline char
 }
 
 /**
-** @brief Format the exit message and clean the memory then exit.
+** @brief Print the exit message and exit after cleaning the data allocated.
 **
-** @param err_msg
-** @param scene_file
+** @param err_msg		: message to explain the error.
+** @param scene_file	: data in txt to parse
 */
 
 static inline void
@@ -79,6 +79,15 @@ static inline void
 	exit(errno);
 }
 
+/**
+** @brief Save data that produce the exit.
+**
+** @param scene_file	: data in txt to parse
+** @param err_func		: function where the error occure
+** @param line_in_code	: line where the error occure
+** @param err_file		: file where the error occure
+*/
+
 static inline void
 	err_set(t_parse_txt *scene_file, const char err_func[],
 		int line_in_code, const char err_file[])
@@ -88,6 +97,14 @@ static inline void
 	scene_file->err_at_line = line_in_code;
 }
 
+/**
+** @brief	: Load a file into the t_parse_txt & bind the hooks and t_data app
+**
+** @param scene_file	: data in txt to parse
+** @param app			: link to the data
+** @param filename		: file to load
+** @return int			: status of the function
+*/
 
 int
 	load_parse_txt(t_parse_txt *scene_file, t_data *app, char *filename)
