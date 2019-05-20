@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:13:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 22:22:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "config.h"
 #include "rt.h"
 
-void
-	parse_color(t_color *color, char *key, t_parse_txt *scene_file)
+t_color
+	parse_color(char *key, t_parse_txt *scene_file)
 {
 	float	toby[3];
 	int		idx;
@@ -39,13 +39,13 @@ void
 		err_set(scene_file, __func__, __LINE__, __FILE__);
 		err_exit(ERR_PARSE_COLOR, scene_file);
 	}
-	*color = (t_color){toby[0], toby[1], toby[2]};
 	if (DEBUG)
-		ft_printf("Color : %f %f %f\n", color->r, color->g, color->b);
+		ft_printf("Color : %f %f %f\n", toby[0], toby[1], toby[2]);
+	return ((t_color){toby[0], toby[1], toby[2]});
 }
 
-void
-	parse_vector(t_vec3 *vec, char *key, t_parse_txt *scene_file)
+t_vec3
+	parse_vector(char *key, t_parse_txt *scene_file)
 {
 	float	toby[3];
 	int		idx;
@@ -68,20 +68,22 @@ void
 		err_set(scene_file, __func__, __LINE__, __FILE__);
 		err_exit(ERR_PARSE_VECTOR, scene_file);
 	}
-	*vec = (t_vec3){toby[0], toby[1], toby[2]};
 	if (DEBUG)
-		ft_printf("Vector : %f %f %f\n", vec->x, vec->y, vec->z);
+		ft_printf("Vector : %f %f %f\n", toby[0], toby[1], toby[2]);
+	return ((t_vec3){toby[0], toby[1], toby[2]});
 }
 
-void
-	parse_fval(float *val, char *key, t_parse_txt *scene_file)
+float
+	parse_fval(char *key, t_parse_txt *scene_file)
 {
 	char	*line;
+	float	res;
 
 	line = get_args_key_require(scene_file, key);
-	*val = ft_atof(line);
+	res = ft_atof(line);
 	if (DEBUG)
-		ft_printf("Float value : %f\n", *val);
+		ft_printf("Float value : %f\n", res);
+	return (res);
 }
 
 void
@@ -111,5 +113,5 @@ void
 	*l_x = toby[0];
 	*l_y = toby[1];
 	if (DEBUG)
-		ft_printf("Limit : %f %f\n", l_x, l_y);
+		ft_printf("Limit : %f %f\n", toby[0], toby[1]);
 }

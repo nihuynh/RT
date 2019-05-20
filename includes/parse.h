@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 18:21:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 22:21:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ void			parse_shape(t_parse_txt *scene_file, int type);
 void			init_parse_cfg(int type, t_parse *config);
 void			obj_set(t_obj *obj, int type, void *shape);
 
-void			parse_color(t_color *color, char *key, t_parse_txt *scene_file);
-void			parse_fval(float *val, char *key, t_parse_txt *scene_file);
-void			parse_vector(t_vec3 *vec, char *key, t_parse_txt *scene_file);
+t_color 		parse_color(char *key, t_parse_txt *scene_file);
+float			parse_fval(char *key, t_parse_txt *scene_file);
+t_vec3			parse_vector(char *key, t_parse_txt *scene_file);
 void			parse_limit(float *l_x, float *l_y, t_parse_txt *scene_file);
 
 /*

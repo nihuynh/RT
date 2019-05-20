@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:13:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 22:38:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ static inline t_material
 	ft_bzero(&mat, sizeof(t_material));
 	mat.name = "";
 	mat.tex = parse_texture(scene_file);
-	parse_color(&mat.color_diffuse, "color_diffuse(", scene_file);
-	parse_color(&mat.color_specular, "color_specular(", scene_file);
-	parse_color(&mat.color_tex, "color_tex(", scene_file);
-	parse_fval(&mat.spec_idx, "spec_idx(", scene_file);
-	parse_fval(&mat.spec_power, "spec_power(", scene_file);
-	parse_color(&mat.refraction_color, "refraction_color(", scene_file);
-	parse_color(&mat.reflection_color, "reflection_color(", scene_file);
-	parse_fval(&mat.refraction_idx, "refraction_idx(", scene_file);
+	mat.color_diffuse = parse_color("color_diffuse(", scene_file);
+	mat.color_specular = parse_color("color_specular(", scene_file);
+	mat.color_tex = parse_color("color_tex(", scene_file);
+	mat.spec_idx = parse_fval("spec_idx(", scene_file);
+	mat.spec_power = parse_fval("spec_power(", scene_file);
+	mat.refraction_color = parse_color("refraction_color(", scene_file);
+	mat.reflection_color = parse_color("reflection_color(", scene_file);
+	mat.refraction_idx = parse_fval("refraction_idx(", scene_file);
 	return (mat);
 }
 

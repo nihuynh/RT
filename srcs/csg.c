@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:13:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 22:39:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,8 @@ void			csg_set(void *csg, t_parse_txt *scene_file)
 		err_exit(ERR_PARSE_SET_CSG, scene_file);
 	}
 	pcsg = csg;
-	parse_vector(&pcsg->origin, "origin(", scene_file);
-	parse_vector(&pcsg->n, "normal(", scene_file);
-	// parse tree
+	pcsg->origin = parse_vector("origin(", scene_file);
+	pcsg->n = parse_vector("normal(", scene_file);
 	pcsg->root = csg_tree_parse(scene_file);
 }
 
