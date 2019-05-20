@@ -68,8 +68,6 @@ void
 	data->obj = node;
 }
 
-bool debug = false;
-
 t_vec3
 	get_plane_uv(t_inter *inter)
 {
@@ -81,8 +79,6 @@ t_vec3
 	orig_to_inter = vec3_sub_(inter->point, plan->origin);
 	uv.x = vec3_dot(&orig_to_inter, &plan->x);
 	uv.y = vec3_dot(&orig_to_inter, &plan->y);
-	if (debug)
-		vec3_print_("from projection: ", &uv);
 	if (plan->size_x > 0)
 		uv.x = remap_to_0_to_1(uv.x / plan->size_x);
 	if (plan->size_y > 0)

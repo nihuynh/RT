@@ -87,7 +87,7 @@ static inline int
 	parse_color(&dst->refraction_color, tab, idx++, "refraction_color(");
 	parse_color(&dst->reflection_color, tab, idx++, "reflection_color(");
 	parse_fval(&dst->refraction_idx, tab, idx++, "refraction_idx(");
-	dst->uv_mapping = (t_uv_mapping){0, 0, 1, 1};
+	dst->uv_mapping = (t_uv_mapping){0, 0, 1, 1, true};
 	return (idx + 1);
 }
 
