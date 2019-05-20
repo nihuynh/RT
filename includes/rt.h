@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 20:32:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 11:44:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_color		texture_checkers(t_material *mat, t_vec3 uv);
 t_color		texture_strips(t_material *mat, t_vec3 uv);
 t_color		sample(t_material *texture, t_vec3 uv);
 char		*load_texture(char *filename, int *width, int *height);
-
+char		*load_texture(char *filename, int *width, int *height);
 
 /*
 ** Post-process :

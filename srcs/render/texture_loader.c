@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/17 21:30:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 11:46:14 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,17 @@ char	*load_texture(char *filename, int *width, int *height)
 
 void	add_texture(char *name, t_data *app)
 {
-	char		*dir;
 	t_texture	tex;
 
-	if (!(dir = ft_strjoin(TEX_DIR, name)))
+	if (!(tex.dir = ft_strjoin(TEX_DIR, name)))
 		ft_error(__func__, __LINE__);
-	tex.pixels = load_texture(dir, &tex.width, &tex.height);
+	tex.pixels = NULL;
 	tex.f_texture = &sample;
 	if(!(tex.name = ft_strdup(name)))
 		ft_error(__func__, __LINE__);
 	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
 	if (DEBUG)
 		ft_printf("Texture loaded : %s\n", name);
-	free(dir);
 }
 
 void	open_textures(t_data *app)

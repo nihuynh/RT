@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perturbation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/12 07:56:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 11:48:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,21 @@ typedef struct tmp {
 
 t_color sample(t_material *mat, t_vec3 uv)
 {
-	t_texture *texture;
+	t_texture *tex;
 
-	texture = mat->tex;
+	tex = mat->tex;
+	if (!(tex->pixels))
+		tex->pixels = load_texture(tex->dir, &tex->width, &tex->height);
 //	printf("x: %f  y:  %f\n", x, y);
-	int x_ = (ft_clampf(uv.x, 0, 1) * (texture->width - 1));
-	int y_ = (ft_clampf(uv.y, 0, 1) * (texture->height - 1));
+	int x_ = (ft_clampf(uv.x, 0, 1) * (tex->width - 1));
+	int y_ = (ft_clampf(uv.y, 0, 1) * (tex->height - 1));
 //	printf("x: %d  y:  %d\n\n", x_, y_);
 //	int x_ = ft_clamp(x, 0, texture->width);
 //	int y_ = ft_clamp(y, 0, texture->height);
 //	int y_ = (ft_clampf(y, 0, 0.9) * (texture->height - 1));
 	t_color result;
-	tmp *ptr = (tmp *) texture->pixels;
-	ptr += (y_ * (texture->width) + (x_));
+	tmp *ptr = (tmp *) tex->pixels;
+	ptr += (y_ * (tex->width) + (x_));
 	result.r = ptr->a / 255.f;
 	result.g = ptr->b / 255.f;
 	result.b = ptr->c / 255.f;

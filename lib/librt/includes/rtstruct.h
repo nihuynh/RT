@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 00:22:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 11:25:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef	struct s_material	t_material;
 struct			s_texture
 {
 	char		*name;
+	char		*dir;
 	t_color		(*f_texture)(t_material*, t_vec3);
 	void		(*export) (int, void*);
 	char		*pixels;
