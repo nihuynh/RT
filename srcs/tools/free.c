@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/18 01:56:58 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:23:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static inline void
 	{
 		free(texture->pixels);
 		free(texture->name);
+		free(texture->dir);
 	}
 	free(texture);
 }
