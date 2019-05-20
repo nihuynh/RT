@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:16:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 18:21:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 # define ERR_PARSE_COLOR	"Err : [Color]	Wrong number of args"
 # define ERR_PARSE_LIMIT	"Err : [Limit]	Wrong number of args"
 # define ERR_OP_EQUAL_OBJ	"Err : [Csg]	sizeof(t_obj) == sizeof(t_csg_op)"
-# define ERR_PARSE_STRN		"Err : NULL string"
+# define ERR_PARSE_STRN		"Err : line		is NULL"
+# define ERR_GREED_NULL		"Err : greed	is NULL"
 # define ERR_PARSE_OUTR		"Err : line_idx out of range"
 
 # define ERR_P_CLOSE_PAR	"Err : Missing parenthese"

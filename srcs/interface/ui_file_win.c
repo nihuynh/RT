@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:30:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:16:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	load_win(t_ui_func *ui)
 			load_scene(ui->app, buff);
 		else
 		{
-			ft_strlcpy("File does not exist", ui->err_msg, sizeof(ui->err_msg));
+			ft_strlcpy(ui->err_msg, "File does not exist", sizeof(ui->err_msg));
 			ui->err_open = true;
 		}
 		ui->load_open = false;

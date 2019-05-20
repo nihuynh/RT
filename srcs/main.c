@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:40:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:00:38 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	interactive(char *filename, int runmode)
 	if (DEBUG)
 		ft_printf("RT is starting\n");
 	loop_sdl(&app.sdl, &app);
-	exit_safe(&app);
+	free_app(&app);
 }
 
 int		main(int ac, char **av)

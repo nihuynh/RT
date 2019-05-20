@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 14:01:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:00:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		click_event(SDL_Event *event, void *arg);
 ** Exit :
 */
 
+void		free_app(t_data *app);
 void		exit_safe(t_data *app);
 void		del_obj(void *content, size_t content_size);
 void		free_scene(t_data *app);

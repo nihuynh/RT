@@ -6,11 +6,12 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:41:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:56:11 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
+#include "rt.h"
 
 void
 	interface_mainmenu(t_ui_func *ui)
@@ -24,7 +25,8 @@ void
 		igMenuItemBoolPtr("Open Scene", NULL, &ui->load_open, 1);
 		igMenuItemBoolPtr("Export Scene", NULL, &ui->export_open, 1);
 		igMenuItemBool("Reload Current Scene", NULL, 0, 1);
-		igMenuItemBool("Quit", NULL, 0, 1);
+		if(igMenuItemBool("Quit", NULL, 0, 1))
+			exit_safe(get_app(NULL));
 		igEndMenu();
 	}
 	if (igBeginMenu("Edit", 1))

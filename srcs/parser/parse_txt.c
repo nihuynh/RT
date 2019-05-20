@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_txt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:14:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 18:20:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 char
 	*get_curr_line(t_parse_txt *scene_file)
 {
+	if (!(scene_file->greed))
+	{
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_GREED_NULL, scene_file);
+	}
 	scene_file->is_pop = 0;
 	if (!(ft_btw(scene_file->line_idx, 0, scene_file->line_max)))
 	{
@@ -71,7 +76,7 @@ void
 {
 	scene_file->line_idx -= scene_file->is_pop;
 	ft_printf("%s\nPARSE_TXT : [line :%d]%s\n%s : %s (%s:%d)\n",
-		err_msg, scene_file->line_idx, scene_file->greed[scene_file->line_idx],
+		err_msg, scene_file->line_idx, get_curr_line(scene_file),
 		"Error in the function", scene_file->err_func, scene_file->err_file,
 		scene_file->err_at_line);
 	ft_tabdel(scene_file->greed);
