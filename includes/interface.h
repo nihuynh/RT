@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:12:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:28:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,16 @@
 */
 
 void	fullscreen(t_sdl *sdl, t_gui *gui);
-void	scene_window(t_ui_func *ui);
-void	ui_hook_file_mng(t_ui_func *ui_func);
-void	ui_hook_obj_mng(t_ui_func *ui_func);
-void	ui_hook_render(t_ui_func *ui_func);
+void	err_win(t_ui_func *ui);
+void	export_win(t_ui_func *ui);
+void	load_win(t_ui_func *ui);
+void	stats_win(t_ui_func *ui);
+
+void	add_obj_win(t_ui_func *ui);
+void	del_obj_win(t_ui_func *ui);
+
+void	render_win(t_ui_func *ui);
+void	scene_win(t_ui_func *ui);
 void	interface_mainmenu(t_ui_func *ui);
 
 int		export_scene(t_data *app, char *filename);

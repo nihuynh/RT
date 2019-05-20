@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ui_hook_obj_mng.c                                  :+:      :+:    :+:   */
+/*   ui_edit_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 20:46:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:07:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "ftmem.h"
 
-void	add_obj_window(t_ui_func *ui)
+void	add_obj_win(t_ui_func *ui)
 {
 	if (ui->add_obj_open == false)
 		return ;
@@ -30,7 +30,7 @@ void	add_obj_window(t_ui_func *ui)
 	igEnd();
 }
 
-void	del_obj_window(t_ui_func *ui)
+void	del_obj_win(t_ui_func *ui)
 {
 	if (ui->del_obj_open == false)
 		return ;
@@ -56,12 +56,4 @@ void	del_obj_window(t_ui_func *ui)
 			ui->del_obj_open = false;
 	}
 	igEnd();
-}
-
-void	ui_hook_obj_mng(t_ui_func *ui_func)
-{
-	ui_func->add_obj_win = &add_obj_window;
-	ui_func->del_obj_win = &del_obj_window;
-	// ui_func->FUNCTION_ = &FUNCTION__window;
-	// ui_func->FUNCTION_ = &FUNCTION__window;
 }

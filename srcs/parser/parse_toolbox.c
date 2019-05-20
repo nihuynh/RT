@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 23:25:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:13:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void
 	}
 	if (idx != 2)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_COLOR, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_COLOR, scene_file);
 	}
 	*color = (t_color){toby[0], toby[1], toby[2]};
 	if (DEBUG)
@@ -65,8 +65,8 @@ void
 	}
 	if (idx != 2)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_VECTOR, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_VECTOR, scene_file);
 	}
 	*vec = (t_vec3){toby[0], toby[1], toby[2]};
 	if (DEBUG)
@@ -105,8 +105,8 @@ void
 	}
 	if (idx != 1)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_LIMIT, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_LIMIT, scene_file);
 	}
 	*l_x = toby[0];
 	*l_y = toby[1];

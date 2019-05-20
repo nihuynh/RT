@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_txt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:14:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@
 ** @return char*		: curr_line
 */
 
-static inline char
-	*safe_line(t_parse_txt *scene_file)
+char
+	*get_curr_line(t_parse_txt *scene_file)
 {
 	scene_file->is_pop = 0;
 	if (!(ft_btw(scene_file->line_idx, 0, scene_file->line_max)))
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_OUTR, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_OUTR, scene_file);
 	}
 	if (!(scene_file->greed[scene_file->line_idx]))
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_STRN, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_STRN, scene_file);
 	}
 	return (scene_file->greed[scene_file->line_idx]);
 }
@@ -48,12 +48,12 @@ static inline char
 ** @return char*		: curr_line before the increment of line_idx
 */
 
-static inline char
+char
 	*pop_line(t_parse_txt *scene_file)
 {
 	char *res;
 
-	res = scene_file->get_curr_line(scene_file);
+	res = get_curr_line(scene_file);
 	scene_file->is_pop = 1;
 	scene_file->line_idx++;
 	return (res);
@@ -66,7 +66,7 @@ static inline char
 ** @param scene_file	: data in txt to parse
 */
 
-static inline void
+void
 	err_exit(char *err_msg, t_parse_txt *scene_file)
 {
 	scene_file->line_idx -= scene_file->is_pop;
@@ -88,7 +88,7 @@ static inline void
 ** @param err_file		: file where the error occure
 */
 
-static inline void
+void
 	err_set(t_parse_txt *scene_file, const char err_func[],
 		int line_in_code, const char err_file[])
 {
@@ -114,10 +114,6 @@ int
 
 	ft_bzero(scene_file, sizeof(t_parse_txt));
 	scene_file->app = app;
-	scene_file->get_curr_line = &safe_line;
-	scene_file->pop_line = &pop_line;
-	scene_file->err_set = &err_set;
-	scene_file->err_exit = &err_exit;
 	if ((scene_file->line_max = ft_line_count(filename)) < 9)
 		return (EXIT_FAILURE);
 	size_greed = sizeof(char *) * (scene_file->line_max + 1);

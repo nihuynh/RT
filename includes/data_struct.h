@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 20:56:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:17:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,13 @@ struct				s_ui_func
 	int				add_obj_type;
 	bool			render_open;
 	bool			scene_open;
-	void			(*err_win)		(t_ui_func*);
-	void			(*load_win)		(t_ui_func*);
-	void			(*export_win)	(t_ui_func*);
-	void			(*stats_win)	(t_ui_func*);
-	void			(*del_obj_win)	(t_ui_func*);
-	void			(*add_obj_win)	(t_ui_func*);
-	void			(*render_win)	(t_ui_func*);
-	void			(*scene_win)	(t_ui_func*);
 };
+
+typedef struct		s_win
+{
+	bool			is_open;
+	void			(*func_win)	(t_ui_func*);
+}					t_win;
 
 typedef struct		s_gui
 {

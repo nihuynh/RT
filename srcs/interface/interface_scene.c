@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:17:33 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:29:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static inline void
 }
 
 void
-	scene_window(t_ui_func *ui)
+	scene_win(t_ui_func *ui)
 {
 	igSetNextWindowPos((ImVec2){ui->app->sdl.img.width, 18},
 						ImGuiCond_Once, (ImVec2){0, 0});

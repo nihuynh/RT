@@ -8,10 +8,11 @@
                 "${workspaceFolder}/includes",
                 "${workspaceFolder}/lib/librt/includes",
                 "${workspaceFolder}/lib/libft/includes",
-				"/usr/local/Cellar/sdl2/2.0.9/include/SDL2",
-				"/Users/sklepper/.brew/Cellar/SDL2/2.0.9_1/include/sdl2",
+                "/usr/local/Cellar/sdl2/2.0.9/include/SDL2",
+                "/Users/sklepper/.brew/Cellar/SDL2/2.0.9_1/include/sdl2",
                 "/Library/Frameworks/SDL.framework/Versions/A/Headers",
-                "/Library/Frameworks/SDL2.framework/Versions/A/Headers"
+                "/Library/Frameworks/SDL2.framework/Versions/A/Headers",
+                "/Users/nihuynh/.brew/Cellar/sdl2/2.0.9_1/include/SDL2"
             ],
             "defines": [],
             "macFrameworkPath": [

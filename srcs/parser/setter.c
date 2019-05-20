@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 16:38:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:13:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void
 
 	if (sphere == NULL)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_SET_SP, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_SP, scene_file);
 	}
 	psphere = sphere;
 	parse_vector(&psphere->origin, "origin(", scene_file);
@@ -35,8 +35,8 @@ void
 
 	if (plane == NULL)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_SET_PL, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_PL, scene_file);
 	}
 	pplane = plane;
 	parse_vector(&pplane->origin, "origin(", scene_file);
@@ -53,8 +53,8 @@ void
 
 	if (cylinder == NULL)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_SET_CY, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_CY, scene_file);
 	}
 	pcylinder = cylinder;
 	parse_vector(&pcylinder->origin, "origin(", scene_file);
@@ -72,8 +72,8 @@ void
 
 	if (cone == NULL)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_SET_CO, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_CO, scene_file);
 	}
 	pcone = cone;
 	parse_vector(&pcone->origin, "origin(", scene_file);
@@ -89,8 +89,8 @@ void
 {
 	if (light == NULL)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_SET_LI, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_LI, scene_file);
 	}
 	parse_color(&light->color, "color(", scene_file);
 	parse_vector(&light->origin, "origin(", scene_file);

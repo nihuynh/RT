@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ui_hook_file_mng.c                                 :+:      :+:    :+:   */
+/*   ui_file_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 18:28:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:26:16 by sklepper         ###   ########.fr       */
+/*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
+/*   Updated: 2019/05/20 17:30:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "rt.h"
 
-void	error_window(t_ui_func *ui)
+void	err_win(t_ui_func *ui)
 {
 	if (ui->err_open == false)
 		return ;
@@ -25,7 +25,7 @@ void	error_window(t_ui_func *ui)
 	igEnd();
 }
 
-void	export_window(t_ui_func *ui)
+void	export_win(t_ui_func *ui)
 {
 	char buff[50];
 
@@ -44,7 +44,7 @@ void	export_window(t_ui_func *ui)
 	igEnd();
 }
 
-void	load_window(t_ui_func *ui)
+void	load_win(t_ui_func *ui)
 {
 	char		buff[50];
 
@@ -60,7 +60,7 @@ void	load_window(t_ui_func *ui)
 			load_scene(ui->app, buff);
 		else
 		{
-			ft_strlcpy("File don't exist", ui->err_msg, sizeof(ui->err_msg));
+			ft_strlcpy("File does not exist", ui->err_msg, sizeof(ui->err_msg));
 			ui->err_open = true;
 		}
 		ui->load_open = false;
@@ -68,7 +68,7 @@ void	load_window(t_ui_func *ui)
 	igEnd();
 }
 
-void	stats_window(t_ui_func *ui)
+void	stats_win(t_ui_func *ui)
 {
 	if (ui->stats_open == false)
 		return ;
@@ -79,13 +79,4 @@ void	stats_window(t_ui_func *ui)
 	igPlotLines("Render Time (ms)", &(ui->app->sdl.render_time[0]), 25, 0, NULL,
 		0, 3.402823466e+38F, (ImVec2){400, 80}, 4);
 	igEnd();
-}
-
-void	ui_hook_file_mng(t_ui_func *ui_func)
-{
-	ui_func->app = get_app(NULL);
-	ui_func->err_win = &error_window;
-	ui_func->load_win = &load_window;
-	ui_func->export_win = &export_window;
-	ui_func->stats_win = &stats_window;
 }

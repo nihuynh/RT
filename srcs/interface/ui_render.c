@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ui_hook_render.c                                   :+:      :+:    :+:   */
+/*   ui_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:20:03 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:30:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 
-void	render_window(t_ui_func *ui)
+void	render_win(t_ui_func *ui)
 {
 	ImVec2	pos;
 
@@ -32,12 +32,4 @@ void	render_window(t_ui_func *ui)
 	ui->app->gui.render_focused = !igIsWindowFocused(0);
 	igEnd();
 	igPopStyleVar(2);
-}
-
-void	ui_hook_render(t_ui_func *ui)
-{
-	ui->render_win = &render_window;
-	ui->scene_win = &scene_window;
-	// ui_func->menu_bar = &menu_bar;
-	// ui_func->FUNCTION_ = &FUNCTION__window;
 }
