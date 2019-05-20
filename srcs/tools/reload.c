@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 14:00:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:05:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ void
 	app->sdl.render_gui = &render_gui;
 	app->sdl.click_map = &click_event;
 	hook_render_to_gui(&app->gui, app->sdl.win);
-	ui_hook_file_mng(&app->gui.ui);
-	ui_hook_obj_mng(&app->gui.ui);
-	ui_hook_render(&app->gui.ui);
+	app->gui.ui.app = app;
 }
 
 static inline void

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 14:02:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:16:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ERR_PARSE_FLOAT	"Err : [Float]	Wrong number of args"
 # define ERR_PARSE_COLOR	"Err : [Color]	Wrong number of args"
 # define ERR_PARSE_LIMIT	"Err : [Limit]	Wrong number of args"
+# define ERR_OP_EQUAL_OBJ	"Err : [Csg]	sizeof(t_obj) == sizeof(t_csg_op)"
 # define ERR_PARSE_STRN		"Err : NULL string"
 # define ERR_PARSE_OUTR		"Err : line_idx out of range"
 
@@ -61,16 +62,18 @@ struct			s_parse_txt
 	char		**greed;
 	int			line_idx;
 	int			line_max;
-	short		is_pop;
+	t_data		*app;
+	bool		is_pop;
 	const char	*err_func;
 	const char	*err_file;
 	int			err_at_line;
-	t_data		*app;
-	char		*(*get_curr_line) (t_parse_txt*);
-	char		*(*pop_line) (t_parse_txt*);
-	void		(*err_set) (t_parse_txt*, const char[], int, const char[]);
-	void		(*err_exit) (char *, t_parse_txt*);
 };
+
+void			err_set(t_parse_txt *scene_file, const char err_func[],
+					int line_in_code, const char err_file[]);
+void			err_exit(char *err_msg, t_parse_txt *scene_file);
+char			*pop_line(t_parse_txt *scene_file);
+char			*get_curr_line(t_parse_txt *scene_file);
 
 typedef struct	s_objset
 {

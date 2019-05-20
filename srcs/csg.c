@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   csg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 14:28:46 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:13:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ t_btree			*csg_parse_obj(t_parse_txt *scene_file, int type)
 
 int				csg_is_op(t_parse_txt *scene_file)
 {
-	if (ft_strstr(scene_file->get_curr_line(scene_file), "AND") != NULL)
+	if (ft_strstr(get_curr_line(scene_file), "AND") != NULL)
 		return (1);
-	if (ft_strstr(scene_file->get_curr_line(scene_file), "NOT") != NULL)
+	if (ft_strstr(get_curr_line(scene_file), "NOT") != NULL)
 		return (2);
-	if (ft_strstr(scene_file->get_curr_line(scene_file), "UNION") != NULL)
+	if (ft_strstr(get_curr_line(scene_file), "UNION") != NULL)
 		return (3);
 	return (0);
 }
@@ -71,8 +71,8 @@ t_btree			*csg_tree_parse(t_parse_txt *scene_file)
 		root = csg_parse_obj(scene_file, type_csg_node);
 	if (root->content_size == sizeof(t_obj))
 		return (root);
-	root->right = csg_tree_parse(scene_file);
 	root->left = csg_tree_parse(scene_file);
+	root->right = csg_tree_parse(scene_file);
 	return (root);
 }
 
@@ -80,10 +80,15 @@ void			csg_set(void *csg, t_parse_txt *scene_file)
 {
 	t_csg		*pcsg;
 
+	if (sizeof(t_obj) == sizeof(t_csg_op))
+	{
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_OP_EQUAL_OBJ, scene_file);
+	}
 	if (csg == NULL)
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_PARSE_SET_CSG, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_CSG, scene_file);
 	}
 	pcsg = csg;
 	parse_vector(&pcsg->origin, "origin(", scene_file);

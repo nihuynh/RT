@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:17:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static inline void
 	check_opening_bracket(scene_file);
 	while (scene_file->line_idx < scene_file->line_max - 1)
 	{
-		if (ft_strrchr(scene_file->get_curr_line(scene_file), '}') != NULL)
+		if (ft_strrchr(get_curr_line(scene_file), '}') != NULL)
 			break ;
 		obj_type = get_args_key_require(scene_file, "object(");
 		if (ft_strstr(obj_type, "light") != NULL)
@@ -46,8 +46,8 @@ static inline void
 			parse_shape(scene_file, type);
 		else
 		{
-			scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-			scene_file->err_exit(ERR_UNKNWD_OBJ, scene_file);
+			err_set(scene_file, __func__, __LINE__, __FILE__);
+			err_exit(ERR_UNKNWD_OBJ, scene_file);
 		}
 	}
 	check_closing_bracket(scene_file);
@@ -62,19 +62,19 @@ static inline void
 static inline void
 	parser(t_parse_txt *scene_file)
 {
-	if (ft_strstr(scene_file->get_curr_line(scene_file), "camera"))
+	if (ft_strstr(get_curr_line(scene_file), "camera"))
 		parse_camera(scene_file);
 	else
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_P_CAMERA, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_P_CAMERA, scene_file);
 	}
-	if (ft_strstr(scene_file->get_curr_line(scene_file), "content"))
+	if (ft_strstr(get_curr_line(scene_file), "content"))
 		parse_content(scene_file);
 	else
 	{
-		scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-		scene_file->err_exit(ERR_P_CONTENT, scene_file);
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_P_CONTENT, scene_file);
 	}
 }
 
@@ -93,8 +93,8 @@ int
 
 	if (load_parse_txt(&scene_file, app, filename))
 	{
-		scene_file.err_set(&scene_file, __func__, __LINE__, __FILE__);
-		scene_file.err_exit(ERR_FILE, &scene_file);
+		err_set(&scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_FILE, &scene_file);
 	}
 	if (DEBUG)
 		ft_puttab(scene_file.greed);

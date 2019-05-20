@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:30:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:09:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static inline void
 }
 
 static inline void
-	menu_bar_scene_window(t_ui_func *ui)
+	menu_bar_scene_win(t_ui_func *ui)
 {
 	if (igBeginMenu("Menu", 1))
 	{
@@ -99,7 +99,7 @@ static inline void
 }
 
 void
-	scene_window(t_ui_func *ui)
+	scene_win(t_ui_func *ui)
 {
 	igSetNextWindowPos((ImVec2){ui->app->sdl.img.width, 0},
 						ImGuiCond_Once, (ImVec2){0, 0});
@@ -108,7 +108,7 @@ void
 	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar
 		| ImGuiWindowFlags_AlwaysAutoResize);
 	if (igBeginMenuBar())
-		menu_bar_scene_window(ui);
+		menu_bar_scene_win(ui);
 	if (igCollapsingHeader("Render Settings", ImGuiTreeNodeFlags_DefaultOpen))
 		render_settings(ui->app);
 	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))

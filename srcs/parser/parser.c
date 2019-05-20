@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:13:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static inline t_material
 	t_material	mat;
 	t_material	*mat_from_lst;
 
-	if ((str = ft_strstr(scene_file->get_curr_line(scene_file), "mat(")))
+	if ((str = ft_strstr(get_curr_line(scene_file), "mat(")))
 	{
 		str += 4;
 		if (!(mat_from_lst = ft_lstgetelt(scene_file->app->lst_mat, &matcmp, str)))
 		{
-			scene_file->err_set(scene_file, __func__, __LINE__, __FILE__);
-			scene_file->err_exit(ERR_UNKNWD_MAT, scene_file);
+			err_set(scene_file, __func__, __LINE__, __FILE__);
+			err_exit(ERR_UNKNWD_MAT, scene_file);
 		}
 		scene_file->line_idx++;
 		return (*mat_from_lst);

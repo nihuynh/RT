@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:27:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:04:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@
 
 void	ui_render(t_ui_func *ui)
 {
-	ui->render_win(ui);
-	ui->scene_win(ui);
-	if (ui->err_win != NULL)
-		ui->err_win(ui);
-	if (ui->load_win != NULL)
-		ui->load_win(ui);
-	if (ui->export_win != NULL)
-		ui->export_win(ui);
-	if (ui->add_obj_win != NULL)
-		ui->add_obj_win(ui);
-	if (ui->del_obj_win != NULL)
-		ui->del_obj_win(ui);
-	if (ui->stats_win != NULL)
-		ui->stats_win(ui);
+	render_win(ui);
+	scene_win(ui);
+	if (ui->err_open)
+		err_win(ui);
+	if (ui->stats_open)
+		stats_win(ui);
+	if (ui->load_open)
+		load_win(ui);
+	if (ui->export_open)
+		export_win(ui);
+	if (ui->del_obj_open)
+		del_obj_win(ui);
+	if (ui->add_obj_open)
+		add_obj_win(ui);
 }
 
 void	interface(t_data *app)
