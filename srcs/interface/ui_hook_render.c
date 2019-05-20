@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_hook_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 21:06:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:39:46 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	render_window(t_ui_func *ui)
 	ImVec2	pos;
 
 	igSetNextWindowPos((ImVec2){0, 0}, ui->flags_render, (ImVec2){0, 0});
-	igSetNextWindowSize((ImVec2){ui->app->sdl.img.width, ui->app->sdl.img.height}, 0);
+	igSetNextWindowSize((ImVec2){ui->app->sdl.img.width,
+								ui->app->sdl.img.height}, 0);
 	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
 	igBegin("render", NULL, RENDER_FLAGS);

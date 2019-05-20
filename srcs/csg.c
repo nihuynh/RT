@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   csg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 18:19:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:36:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_csg_op
 	int			type;
 }				t_csg_op;
 
-t_btree	*csg_parse_op(t_parse_txt *scene_file, int type)
+t_btree			*csg_parse_op(t_parse_txt *scene_file, int type)
 {
 	t_csg_op res;
 
@@ -31,7 +31,7 @@ t_btree	*csg_parse_op(t_parse_txt *scene_file, int type)
 	return (ft_b3new(&res, sizeof(t_csg_op)));
 }
 
-t_btree	*csg_parse_obj(t_parse_txt *scene_file, int type)
+t_btree			*csg_parse_obj(t_parse_txt *scene_file, int type)
 {
 	t_obj res;
 
@@ -39,7 +39,7 @@ t_btree	*csg_parse_obj(t_parse_txt *scene_file, int type)
 	return (ft_b3new(&res, sizeof(t_obj)));
 }
 
-int			csg_is_op(t_parse_txt *scene_file)
+int				csg_is_op(t_parse_txt *scene_file)
 {
 	if (ft_strstr(scene_file->get_curr_line(scene_file), "AND") != NULL)
 		return (1);
@@ -50,7 +50,7 @@ int			csg_is_op(t_parse_txt *scene_file)
 	return (0);
 }
 
-int			csg_is_obj(t_parse_txt *scene_file)
+int				csg_is_obj(t_parse_txt *scene_file)
 {
 	char *line;
 
@@ -58,7 +58,7 @@ int			csg_is_obj(t_parse_txt *scene_file)
 	return (get_obj_type(line));
 }
 
-t_btree	*csg_tree_parse(t_parse_txt *scene_file)
+t_btree			*csg_tree_parse(t_parse_txt *scene_file)
 {
 	t_btree		*root;
 	int			type_csg_node;
@@ -76,7 +76,7 @@ t_btree	*csg_tree_parse(t_parse_txt *scene_file)
 	return (root);
 }
 
-void 	csg_set(void *csg, t_parse_txt *scene_file)
+void			csg_set(void *csg, t_parse_txt *scene_file)
 {
 	t_csg		*pcsg;
 
@@ -92,8 +92,7 @@ void 	csg_set(void *csg, t_parse_txt *scene_file)
 	pcsg->root = csg_tree_parse(scene_file);
 }
 
-
-void 	inter_csg(t_inter *data, t_obj *node)
+void			inter_csg(t_inter *data, t_obj *node)
 {
 	// Do stuff
 	(void)data;
@@ -105,7 +104,7 @@ void 	inter_csg(t_inter *data, t_obj *node)
 ** UI :
 */
 
-void 	ui_csg(void *shape)
+void			ui_csg(void *shape)
 {
 	t_btree *root;
 
@@ -113,7 +112,7 @@ void 	ui_csg(void *shape)
 	// built interface with imgui
 }
 
-void 	csg_export(int fd, void *shape)
+void			csg_export(int fd, void *shape)
 {
 	t_btree *root;
 
@@ -128,17 +127,16 @@ void 	csg_export(int fd, void *shape)
 ** Useless for csg because it's not the primitives :
 */
 
-void 	normal_csg(t_inter *inter)
+void			normal_csg(t_inter *inter)
 {
 	// Do stuff
 	(void)inter;
 }
 
-t_vec3 get_csg_uv(t_inter *inter)
+t_vec3			get_csg_uv(t_inter *inter)
 {
 	t_vec3 tmp;
 
 	tmp = inter->obj->get_uv(inter);
 	return (tmp);
 }
-

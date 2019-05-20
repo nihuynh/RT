@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_lists.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 12:59:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:30:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	texture_list(t_list *lst_tex, t_obj *obj)
 
 	current = lst_tex;
 	selected = obj->material.tex;
-	tmp = current->content;
 	if (igBeginCombo("Texture", selected->name, 0))
 	{
 		while (current)
 		{
+			tmp = current->content;
 			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
 			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
 			{
@@ -65,8 +65,6 @@ void	texture_list(t_list *lst_tex, t_obj *obj)
 			if (is_selected)
 				igSetItemDefaultFocus();
 			current = current->next;
-			if (current)
-				tmp = current->content;
 		}
 		igEndCombo();
 	}

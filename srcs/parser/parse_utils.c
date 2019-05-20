@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 04:18:50 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 18:25:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:45:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parse.h"
-# include "ftstring.h"
+#include "parse.h"
+#include "ftstring.h"
 
-/**
+/*
 ** @brief Verify curr_line is containing the proper value and key.
 **
 ** @param scene_file
-** @param key			: key to find
-** @return char*		: A pointer to the beginning of the value for the parameter
+** @param key		: key to find
+** @return char*	: A pointer to the beginning of the value for the parameter
 */
 
 char
@@ -41,7 +41,7 @@ char
 	return (check_line_args);
 }
 
-/**
+/*
 ** @brief Verify that the curr_line is a opening bracket
 **
 ** @param scene_file
@@ -58,7 +58,7 @@ void	check_opening_bracket(t_parse_txt *scene_file)
 	}
 }
 
-/**
+/*
 ** @brief  Verify that the curr_line is a closing bracket
 **
 ** @param scene_file

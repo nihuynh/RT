@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perturbation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 12:52:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:46:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ t_color
 	return (res);
 }
 
-typedef struct tmp {
+typedef struct	tmp {
 	unsigned char a, b, c;
-} tmp;
+}				tmp;
 
-t_color sample(t_material *mat, t_vec3 uv)
+t_color
+	sample(t_material *mat, t_vec3 uv)
 {
 	t_texture *tex;
 

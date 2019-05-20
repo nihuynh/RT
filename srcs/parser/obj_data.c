@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 16:51:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:41:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void
 		{"cylinder", sizeof(t_cylinder), &cylinder_set, &cylinder_export},
 		{"csg", sizeof(t_csg), &csg_set, &csg_export}
 	};
+
 	if (ft_btw(type, 0, sizeof(index_config) / sizeof(t_parse)))
 	{
 		config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
@@ -43,7 +44,7 @@ void
 	config->printout = NULL;
 }
 
-/**
+/*
 ** @brief Return the str from type
 **
 ** @param type		: Object type
@@ -59,7 +60,7 @@ char
 	return (cfg.printout);
 }
 
-/**
+/*
 ** @brief Return the obj type from a str
 **
 ** @param obj_type	: str who can be object type
@@ -82,7 +83,7 @@ int
 	return (-1);
 }
 
-/**
+/*
 ** @brief Get the obj functions depending on the type needed
 **
 ** @param type		: type of the object requested
@@ -103,7 +104,7 @@ void
 	config = ft_memcpy(config, &obj_func[type], sizeof(t_objset));
 }
 
-/**
+/*
 ** @brief	Setting the obj struct.
 **
 ** @param obj 	: Dst of the data

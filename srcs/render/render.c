@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 06:26:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:17:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int __attribute__((hot))
 	if (app->settings.anti_a)
 		color = anti_aliasing(color, app, x, y);
 	color_clamp(&color, 0, 1);
-//	color = sample(app->lst_tex->content, (float)x / app->sdl.img.width, (float)y / app->sdl.img.height);
 	color_mult(&color, &app->settings.filter);
 	if (app->sdl.sepia)
 		color = sepia(color);

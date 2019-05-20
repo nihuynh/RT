@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/19 20:52:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:40:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "config.h"
 #include "interface.h"
 
-t_data *get_app(t_data *app)
+t_data	*get_app(t_data *app)
 {
-	static t_data *_app;
+	static t_data *app_save;
 
 	if (app != NULL)
-		_app = app;
-	return (_app);
+		app_save = app;
+	return (app_save);
 }
 
 void	interactive(char *filename, int runmode)
