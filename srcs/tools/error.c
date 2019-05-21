@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 18:00:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/21 03:23:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-#include "libft.h"
-#include "libui.h"
-#include "parse.h"
 
 void
 	free_app(t_data *app)

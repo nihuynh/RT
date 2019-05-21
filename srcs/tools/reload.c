@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:05:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 02:25:16 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static inline void
 	if (!(title = ft_strjoin("RT - ", app->gui.scene_name)))
 		ft_error(__func__, __LINE__);
 	SDL_SetWindowTitle(win, title);
-	free(title);
+	ft_strdel(&title);
 }
 
 void

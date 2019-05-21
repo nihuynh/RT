@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/20 13:54:00 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/21 03:34:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ int		parse_header(int fd, int *width, int *height)
 		ft_printf("Bad header [%s]\n", line);
 		ft_error(__func__, __LINE__);
 	}
-	free(line);
+	ft_strdel(&line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
-	free(line);
 	*width = ft_atoi(line);
+	ft_strdel(&line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
-	free(line);
 	*height = ft_atoi(line);
+	ft_strdel(&line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
-	free(line);
+	ft_strdel(&line);
 	while (ft_gnl(fd, &line, "\t\n\r\v"))
-		free(line);
+		ft_strdel(&line);
 	return (header_bytes);
 }
 
@@ -71,7 +71,7 @@ char	*read_pixel_data(char *filename, int cursor, int pixel_count)
 	read(fd, pixels, cursor);
 	read(fd, pixels, pixel_count * 3);
 	ft_gnl(fd, &line, "\n");
-	free(line);
+	ft_strdel(&line);
 	close(fd);
 	return (pixels);
 }

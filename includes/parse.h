@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 22:21:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:15:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,14 @@ typedef struct	s_built
 ** Parser :
 */
 
+void			init_parse_cfg(int type, t_parse *config);
 int				load_parse_txt(t_parse_txt *s_f, t_data *app, char *filename);
 void			check_opening_bracket(t_parse_txt *scene_file);
 void			check_closing_bracket(t_parse_txt *scene_file);
 
-void			create_obj(t_obj *obj, t_parse_txt *scene_file, int type);
+void			create_obj_from_txt(t_obj *obj, t_parse_txt *scene_file, int type);
 void			parse_light(t_parse_txt *scene_file);
 void			parse_shape(t_parse_txt *scene_file, int type);
-
-void			init_parse_cfg(int type, t_parse *config);
-void			obj_set(t_obj *obj, int type, void *shape);
 
 t_color 		parse_color(char *key, t_parse_txt *scene_file);
 float			parse_fval(char *key, t_parse_txt *scene_file);
@@ -131,8 +129,6 @@ void			open_textures(t_data *app);
 ** Getters :
 */
 
-char			*get_obj_str(int type);
-int				get_obj_type(char *obj_type);
 char			*get_args_key_require(t_parse_txt *scene_file, const char *key);
 
 /*
@@ -147,22 +143,11 @@ void			sphere_set(void *sphere, t_parse_txt *scene_file);
 void			csg_set(void *root, t_parse_txt *scene_file);
 
 /*
-** Export :
-*/
-
-void			plane_export(int fd, void *shape);
-void			sphere_export(int fd, void *shape);
-void			cone_export(int fd, void *shape);
-void			cylinder_export(int fd, void *shape);
-void			csg_export(int fd, void *shape);
-void			export_material(int fd, t_material *mat);
-
-/*
 ** CSG :
 */
 
+int				csg_is_op(t_parse_txt *scene_file);
 void			inter_csg(t_inter *data, t_obj *node);
-void			ui_csg(void *res);
 void			normal_csg(t_inter *inter);
 t_vec3			get_csg_uv(t_inter *inter);
 

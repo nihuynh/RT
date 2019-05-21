@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 23:05:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:28:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define FOV			40.0f
 # define DEPTH_MAX		2
 
-# define DEBUG			1
+# define DEBUG			0
 # define MAC			MACB
 # define TEX_DIR		"./resources/textures/"
 

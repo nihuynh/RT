@@ -6,14 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 22:22:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:03:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
 #include "libft.h"
+#include "parse.h"
 #include "config.h"
-#include "rt.h"
 
 t_color
 	parse_color(char *key, t_parse_txt *scene_file)
@@ -114,4 +113,16 @@ void
 	*l_y = toby[1];
 	if (DEBUG)
 		ft_printf("Limit : %f %f\n", toby[0], toby[1]);
+}
+
+int
+	csg_is_op(t_parse_txt *scene_file)
+{
+	if (ft_strstr(get_curr_line(scene_file), AND_STR) != NULL)
+		return (AND);
+	if (ft_strstr(get_curr_line(scene_file), NOT_STR) != NULL)
+		return (NOT);
+	if (ft_strstr(get_curr_line(scene_file), UNION_STR) != NULL)
+		return (UNION);
+	return (0);
 }

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   obj_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/21 03:13:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parse.h"
 #include "config.h"
 #include "libft.h"
-#include "parse.h"
+#include "export.h"
 #include "librt.h"
 #include "interface.h"
 

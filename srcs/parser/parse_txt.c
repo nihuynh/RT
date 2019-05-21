@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parse_txt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 18:20:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/21 02:59:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "libft.h"
 #include "parse.h"
 #include <unistd.h>

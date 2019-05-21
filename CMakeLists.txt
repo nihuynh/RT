@@ -58,7 +58,9 @@ target_sources(RT PRIVATE
         srcs/interface/object_tools.c
         srcs/parser/export.c
         srcs/parser/export_toolbox.c
-        srcs/parser/export_utils.c
+        srcs/parser/export_shape.c
+        srcs/parser/export_csg.c
+        srcs/parser/parse_csg.c
         srcs/parser/parse_toolbox.c
         srcs/parser/parser.c
         srcs/parser/read.c

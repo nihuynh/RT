@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:17:47 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:00:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,10 @@ struct				s_data
 	t_cam			cam;
 	char			*arg;
 };
+
+void				exit_safe(t_data *app);
+char				*get_obj_str(int type);
+int					get_obj_type(char *obj_type);
+void				obj_set(t_obj *obj, int type, void *shape);
 
 #endif

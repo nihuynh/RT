@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 16:39:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:11:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
-#include "parse.h"
 #include "libft.h"
+#include "export.h"
+
 #include <stdio.h>
 #include <locale.h>
 #include <fcntl.h>
@@ -52,7 +53,7 @@ static inline void
 }
 
 static inline void
-	export_obj(int fd, t_list *node)
+	export_obj_from_lst(int fd, t_list *node)
 {
 	t_obj		*obj;
 
@@ -68,7 +69,7 @@ static inline void
 {
 	write(fd, "content\n{\n", 10);
 	ft_lstiter_arg(fd, scene->lst_light, &export_light);
-	ft_lstiter_arg(fd, scene->lst_obj, &export_obj);
+	ft_lstiter_arg(fd, scene->lst_obj, &export_obj_from_lst);
 	write(fd, "}\n", 2);
 }
 

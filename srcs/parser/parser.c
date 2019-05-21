@@ -6,11 +6,10 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 22:38:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:18:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "config.h"
 #include "libft.h"
 #include "parse.h"
@@ -71,7 +70,7 @@ static inline t_material
 */
 
 void
-	create_obj(t_obj *obj_dst, t_parse_txt *scene_file, int type)
+	create_obj_from_txt(t_obj *obj_dst, t_parse_txt *scene_file, int type)
 {
 	t_parse		cfg;
 	void		*shape;
@@ -103,7 +102,7 @@ void
 
 	if (DEBUG)
 		ft_putendl("Shape node :");
-	create_obj(&obj, scene_file, type);
+	create_obj_from_txt(&obj, scene_file, type);
 	ft_lstpushnew(&scene_file->app->scene.lst_obj, &obj, sizeof(t_obj));
 
 }

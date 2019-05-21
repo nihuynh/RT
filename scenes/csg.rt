@@ -21,7 +21,7 @@ content
 		{
 			origin(-10 0 -50)
 			radius(10)
-			mat(white plastic)
+			mat(red plastic)
 		}
 		object(sphere)
 		{

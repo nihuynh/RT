@@ -6,23 +6,51 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:23:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:24:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "libft.h"
+#include "parse.h"
 #include "libui.h"
 #include "config.h"
+
+void free_btree(t_btree *node)
+{
+	t_obj *obj_in_btree;
+
+	if (node->content_size == sizeof(t_obj))
+	{
+		obj_in_btree = node->content;
+		free(obj_in_btree->shape);
+		obj_in_btree->shape = NULL;
+	}
+	free(node->content);
+	node->content = NULL;
+	free(node);
+	node = NULL;
+}
 
 void
 	del_obj(void *content, size_t content_size)
 {
-	t_obj *obj;
+	t_obj	*obj;
+	t_csg	*csg;
+	int		type_csg;
+	t_btree *root;
+
 
 	(void)content_size;
-	obj = content;
+	obj = (t_obj*)content;
+	type_csg = get_obj_type("csg");
+	csg = obj->shape;
+	if (obj->type == type_csg)
+	{
+		root = csg->root;
+		ft_b3del(&root, free_btree);
+	}
 	free(obj->shape);
+	obj->shape = NULL;
 	free(obj);
 }
 
@@ -34,6 +62,7 @@ static inline void
 	(void)content_size;
 	light = content;
 	free(light);
+	light = NULL;
 }
 
 static inline void
@@ -43,12 +72,9 @@ static inline void
 
 	(void)content_size;
 	texture = content;
-	if (texture->pixels)
-	{
-		free(texture->pixels);
-		free(texture->name);
-		free(texture->dir);
-	}
+	ft_strdel(&texture->pixels);
+	ft_strdel(&texture->name);
+	ft_strdel(&texture->dir);
 	free(texture);
 }
 
@@ -59,7 +85,7 @@ static inline void
 
 	(void)content_size;
 	mat = content;
-	free(mat->name);
+	ft_strdel(&mat->name);
 	free(mat);
 }
 

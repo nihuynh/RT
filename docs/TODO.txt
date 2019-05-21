@@ -1,0 +1,20 @@
+RT :
+
+Parser template tore & cube OBB
+CSG inter
+Video youtube
+Perturbation normal & spéculaire
+
+Optionnals :
+
+Fix pool render
+Cimgui en static & compile RT on linux
+STL files
+Adaptative AA
+Adaptative sous_sampling
+Test unitaire
+git hooks
+
+
+DONE :
+CSG export & free

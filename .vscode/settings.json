@@ -22,6 +22,7 @@
 		"unistd.h": "c",
 		"lifetime.h": "c",
 		"config.h": "c",
-		"cimgui.h": "c"
+		"cimgui.h": "c",
+		"ftbtree.h": "c"
 	}
 }
