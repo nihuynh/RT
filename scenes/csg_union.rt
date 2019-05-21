@@ -17,19 +17,17 @@ content
 		origin(0 0 -50)
 		normal(0 1 0)
 		UNION
-		object(cone)
+		object(sphere)
 		{
-			origin(0 0 -100)
-			normal(0 1 0)
-			theta(30)
-			size(20)
+			origin(-10 0 -50)
+			radius(20)
 			mat(red plastic)
 		}
 		object(sphere)
 		{
-			origin(-10 0 -50)
-			radius(10)
-			mat(green plastic)
+			origin(10 0 -50)
+			radius(20)
+			mat(white plastic)
 		}
 		mat(white plastic)
 	}

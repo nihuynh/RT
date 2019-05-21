@@ -6,17 +6,17 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:06 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 22:08:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 19:24:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include <math.h>
 
-static inline float	inter(t_ray *ray, t_sphere *sphere)
+static inline t_vec2	inter_vec2(t_ray *ray, t_sphere *sphere)
 {
 	float	quad[3];
-	float	res[2];
+	t_vec2	res;
 	float	det;
 	t_vec3	rene;
 
@@ -26,25 +26,38 @@ static inline float	inter(t_ray *ray, t_sphere *sphere)
 	CCCC = vec3_dot(&rene, &rene) - sphere->radius * sphere->radius;
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
 	if (det < 0)
-		return (HUGEVAL);
-	res[0] = (-BBBB + sqrt(det)) / (2 * AAAA);
-	res[0] = (res[0] > 0) ? res[0] : HUGEVAL;
-	res[1] = (-BBBB - sqrt(det)) / (2 * AAAA);
-	res[1] = (res[1] > 0) ? res[1] : HUGEVAL;
-	return ((res[0] < res[1]) ? res[0] : res[1]);
+	{
+		res.x = HUGEVAL;
+		res.y = HUGEVAL;
+		return (res);
+	}
+	res.x = (-BBBB + sqrt(det)) / (2 * AAAA);
+	res.y = (-BBBB - sqrt(det)) / (2 * AAAA);
+	return (res);
 }
 
-void				inter_sphere(t_inter *data, t_obj *node)
+static inline float	inter_local(t_inter *inter, t_ray *ray, t_sphere *sphere)
+{
+	t_vec2	res;
+
+	res = inter_vec2(ray, sphere);
+	inter->dist_max = (res.x > res.y) ? res.x : res.y;
+	res.x = (res.x > 0) ? res.x : HUGEVAL;
+	res.y = (res.y > 0) ? res.y : HUGEVAL;
+	return ((res.x < res.y) ? res.x : res.y);
+}
+
+void				inter_sphere(t_inter *inter, t_obj *node)
 {
 	t_sphere	*sphere;
 	float		dist;
 
 	sphere = node->shape;
-	dist = inter(&data->ray, sphere);
-	if (dist >= data->dist || dist < 0)
+	dist = inter_local(inter, &inter->ray, sphere);
+	if (dist >= inter->dist || dist < 0)
 		return ;
-	data->dist = dist;
-	data->obj = node;
+	inter->dist = dist;
+	inter->obj = node;
 }
 
 t_vec3				get_sphere_uv(t_inter *inter)
