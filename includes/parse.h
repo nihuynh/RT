@@ -22,10 +22,10 @@
 # define ERR_UNKNWD_OBJ		"Err : Unknown object"
 # define ERR_UNKNWD_MAT		"Err : Unknown material"
 
-# define ERR_PARSE_VECTOR	"Err : [Vector]	Wrong number of args"
+# define ERR_PARSE_VEC3		"Err : [Vec3]	Wrong number of args"
 # define ERR_PARSE_FLOAT	"Err : [Float]	Wrong number of args"
 # define ERR_PARSE_COLOR	"Err : [Color]	Wrong number of args"
-# define ERR_PARSE_LIMIT	"Err : [Limit]	Wrong number of args"
+# define ERR_PARSE_VEC2		"Err : [Vec2]	Wrong number of args"
 # define ERR_OP_EQUAL_OBJ	"Err : [Csg]	sizeof(t_obj) == sizeof(t_csg_op)"
 # define ERR_PARSE_STRN		"Err : line		is NULL"
 # define ERR_GREED_NULL		"Err : greed	is NULL"
@@ -105,7 +105,7 @@ void			parse_shape(t_parse_txt *scene_file, int type);
 t_color 		parse_color(char *key, t_parse_txt *scene_file);
 float			parse_fval(char *key, t_parse_txt *scene_file);
 t_vec3			parse_vector(char *key, t_parse_txt *scene_file);
-void			parse_limit(float *l_x, float *l_y, t_parse_txt *scene_file);
+t_vec2			parse_vec2(char *key, t_parse_txt *scene_file);
 
 /*
 ** New object

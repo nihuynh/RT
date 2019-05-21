@@ -44,10 +44,10 @@ void	ui_plane(void *res)
 		vec3_normalize(&plane->n);
 		create_orthobasis_from_y_axis(plane->n, &plane->x, &plane->y);
 	}
-	if (igInputFloat("X Limit", &tmp.size_x, 0, 0, "%g", 0))
-		plane->size_x = tmp.size_x;
-	if (igInputFloat("Y Limit", &tmp.size_y, 0, 0, "%g", 0))
-		plane->size_y = tmp.size_y;
+	if (igInputFloat("X Limit", &tmp.size.x, 0, 0, "%g", 0))
+		plane->size.x = tmp.size.x;
+	if (igInputFloat("Y Limit", &tmp.size.y, 0, 0, "%g", 0))
+		plane->size.y = tmp.size.y;
 }
 
 void	ui_cylinder(void *res)

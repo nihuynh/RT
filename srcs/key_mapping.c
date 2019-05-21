@@ -68,20 +68,23 @@ void
 }
 
 void
-	click_event(SDL_Event *event, void *arg)
+	click_event(SDL_Event *ev, void *arg)
 {
 	t_data	*app;
 	int		x;
 	int		y;
 
 	app = arg;
-	if (event->button.button == SDL_BUTTON_LEFT && event->button.clicks == 2)
+	x = ev->button.x - app->gui.pos_render.x;
+	y = ev->button.y - app->gui.pos_render.y;
+	if (ft_btw(x, 0, app->sdl.img.width) && ft_btw(y, 0, app->sdl.img.height))
 	{
-		x = event->button.x - app->gui.pos_render.x;
-		y = event->button.y - app->gui.pos_render.y;
-		if (ft_btw(x, 0, app->sdl.img.width)
-		&& ft_btw(y, 0, app->sdl.img.height))
+		if (ev->button.button == SDL_BUTTON_LEFT && ev->button.clicks == 2)
 			app->gui.obj_set = find_obj_at_pixel(app, x, y);
+		if (ev->button.button == SDL_BUTTON_RIGHT)
+		{
+			process_pixel(x, y, app);
+		}
 	}
 	if (event->button.button == SDL_BUTTON_RIGHT)
 	{

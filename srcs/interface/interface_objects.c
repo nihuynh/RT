@@ -42,9 +42,26 @@ static inline void
 }
 
 static inline void
+	uv_mapping_details(t_uv_mapping *uv_mapping)
+{
+	t_vec2	uv;
+
+	uv = uv_mapping->scale;
+	if (igSliderFloat2("UV scale", &uv.x, 0, 10, "%.2g", 10))
+		uv_mapping->scale = uv;
+	uv = uv_mapping->offset;
+	if (igSliderFloat2("UV offset", &uv.x, -1, 1, "%.2g", 1))
+		uv_mapping->offset = uv;
+	if (igRadioButtonBool("Repeat", uv_mapping->repeat == true))
+		uv_mapping->repeat = true;
+	if (igRadioButtonBool("Clamp", uv_mapping->repeat == false))
+		uv_mapping->repeat = false;
+}
+
+static inline void
 	material_details(t_material *mat)
 {
-	t_color color_tmp;
+	t_color	color_tmp;
 
 	color_tmp = mat->color_diffuse;
 	if (igColorEdit3("Object Color", &color_tmp.r, 0))
@@ -64,6 +81,7 @@ static inline void
 	color_tmp = mat->refraction_color;
 	if (igColorEdit3("Refraction Color", &color_tmp.r, 0))
 		mat->refraction_color = color_tmp;
+	uv_mapping_details(&mat->uv_mapping);
 	igTreePop();
 }
 

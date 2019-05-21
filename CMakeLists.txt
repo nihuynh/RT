@@ -95,6 +95,7 @@ target_sources(RT PRIVATE
         srcs/tools/reload.c
         srcs/tools/update.c
         srcs/tools/utils.c
+        srcs/tools/free.c
         srcs/csg.c
         srcs/key_mapping.c
         srcs/main.c)

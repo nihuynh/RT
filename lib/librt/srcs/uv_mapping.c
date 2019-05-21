@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_print.c                                       :+:      :+:    :+:   */
+/*   uv_mapping.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tdarchiv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 02:37:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/19 19:07:16 by sklepper         ###   ########.fr       */
+/*   Created: 2019/05/16 15:34:35 by tdarchiv          #+#    #+#             */
+/*   Updated: 2019/05/16 15:34:38 by tdarchiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
-#include "ftio.h"
 
-void	vec3_print(t_vec3 *data)
+void	apply_uv_mapping(t_vec3 *uv, t_uv_mapping mapping)
 {
-	ft_printf("x = %f y = %f z = %f\n", data->x, data->y, data->z);
+	uv->x = uv->x * mapping.scale.x + mapping.offset.x;
+	uv->y = uv->y * mapping.scale.y + mapping.offset.y;
 }
 
-void	vec3_print_(char *msg, t_vec3 *data)
+/*
+** Remap a float from [-1, 1] to [0, 1]
+*/
+
+float	remap_to_0_to_1(float x)
 {
-	ft_printf("%s x = %f y = %f z = %f\n", msg, data->x, data->y, data->z);
+	return (x * 0.5f + 0.5f);
 }

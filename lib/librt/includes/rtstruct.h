@@ -18,6 +18,12 @@
 # include "ftbtree.h"
 # include "color.h"
 
+typedef struct	s_vec2
+{
+	float		x;
+	float		y;
+}				t_vec2;
+
 typedef struct	s_vec3
 {
 	float		x;
@@ -44,8 +50,7 @@ typedef struct	s_plane
 	t_vec3		n;
 	t_vec3		x;
 	t_vec3		y;
-	float		size_x;
-	float		size_y;
+	t_vec2		size;
 	float		rotation;
 }				t_plane;
 
@@ -131,18 +136,25 @@ struct			s_texture
 	int			height;
 };
 
+typedef struct	s_uv_mapping {
+	t_vec2	offset;
+	t_vec2	scale;
+	bool	repeat;
+}				t_uv_mapping;
+
 struct			s_material
 {
-	char		*name;
-	t_color		color_diffuse;
-	t_color		color_specular;
-	t_color		color_tex;
-	float		spec_idx;
-	float		spec_power;
-	t_color		refraction_color;
-	t_color		reflection_color;
-	float		refraction_idx;
-	t_texture	*tex;
+	char			*name;
+	t_color			color_diffuse;
+	t_color			color_specular;
+	t_color			color_tex;
+	float			spec_idx;
+	float			spec_power;
+	t_color			refraction_color;
+	t_color			reflection_color;
+	float			refraction_idx;
+	t_texture		*tex;
+	t_uv_mapping	uv_mapping;
 };
 
 /*

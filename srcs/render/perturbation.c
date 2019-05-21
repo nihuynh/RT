@@ -16,14 +16,17 @@
 #include "librt.h"
 #include "color.h"
 #include <math.h>
+#include <stdlib.h>
 
 float
 	pattern_checkers(float x, float y)
 {
-	float	pattern;
+	int yi;
+	int xi;
 
-	pattern = (fmodf(x, 1.f) < 0.5f) ^ (fmodf(y, 1) < 0.5f);
-	return (pattern);
+	xi = abs((int)x) + (x < 0);
+	yi = abs((int)y) + (y < 0);
+	return ((xi + yi) & 0x1);
 }
 
 float
@@ -35,8 +38,8 @@ float
 	angle = 45 * DEG_TO_RAD;
 	pattern = x * cosf(angle) - y * sinf(angle);
 	if (pattern < 0)
-		pattern -= 5;
-	pattern = fabsf(fmodf(pattern, 10)) < 5;
+		pattern -= 0.5f;
+	pattern = fabsf(fmodf(pattern, 1)) < 0.5f;
 	return (pattern);
 }
 
@@ -60,34 +63,32 @@ t_color
 	return (res);
 }
 
-typedef struct	tmp {
-	unsigned char a, b, c;
-}				tmp;
-
 t_color
 	sample(t_material *mat, t_vec3 uv)
 {
-	t_texture *tex;
+	unsigned char	*pixel_ptr;
+	t_texture		*texture;
+	t_color			pixel;
+	int				x;
+	int				y;
 
-	tex = mat->tex;
-	if (!(tex->pixels))
+	texture = mat->tex;
+	if (mat->uv_mapping.repeat)
 	{
-		ft_printf("Texture is not load.");
-		ft_error(__func__, __LINE__);
+		uv.x = fmodf(uv.x, 1) + (uv.x < 0);
+		uv.y = fmodf(uv.y, 1) + (uv.y < 0);
 	}
-//	printf("x: %f  y:  %f\n", x, y);
-	int x_ = (ft_clampf(uv.x, 0, 1) * (tex->width - 1));
-	int y_ = (ft_clampf(uv.y, 0, 1) * (tex->height - 1));
-//	printf("x: %d  y:  %d\n\n", x_, y_);
-//	int x_ = ft_clamp(x, 0, texture->width);
-//	int y_ = ft_clamp(y, 0, texture->height);
-//	int y_ = (ft_clampf(y, 0, 0.9) * (texture->height - 1));
-	t_color result;
-	tmp *ptr = (tmp *) tex->pixels;
-	ptr += (y_ * (tex->width) + (x_));
-	result.r = ptr->a / 255.f;
-	result.g = ptr->b / 255.f;
-	result.b = ptr->c / 255.f;
-//	vec3_print((t_vec3 *) (&result));
-	return (result);
+	else
+	{
+		uv.x = ft_clampf(uv.x, 0, 0.99999f);
+		uv.y = ft_clampf(uv.y, 0, 0.99999f);
+	}
+	x = uv.x * texture->width;
+	y = uv.y * texture->height;
+	pixel_ptr = (unsigned char*)texture->pixels;
+	pixel_ptr += (y * texture->width * 3) + (x * 3);
+	pixel.r = pixel_ptr[0] / 255.f;
+	pixel.g = pixel_ptr[1] / 255.f;
+	pixel.b = pixel_ptr[2] / 255.f;
+	return (pixel);
 }

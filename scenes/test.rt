@@ -25,6 +25,8 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(1.000 0.878 0.247)
 		refraction_idx(0.000)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 	object(cone)
 	{
@@ -41,6 +43,8 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(1.000 0.878 0.247)
 		refraction_idx(0.000)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 	object(cylinder)
 	{
@@ -57,6 +61,8 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(1.000 0.878 0.247)
 		refraction_idx(0.000)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 	object(plane)
 	{
@@ -72,6 +78,8 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(0.000 0.000 0.000)
 		refraction_idx(0.000)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 	object(plane)
 	{
@@ -87,6 +95,8 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(0.000 0.000 0.000)
 		refraction_idx(0.000)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 	object(cone)
 	{
@@ -103,5 +113,7 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(1.000 0.878 0.247)
 		refraction_idx(0.000)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 }

@@ -49,10 +49,10 @@ void				inter_sphere(t_inter *data, t_obj *node)
 
 t_vec3				get_sphere_uv(t_inter *inter)
 {
-	t_vec3	uv;
+	t_vec3			uv;
 
 	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
-	uv.x = (uv.x * M_INV_PI_F * 0.5f) + 0.5f;
+	uv.x = remap_to_0_to_1(uv.x * M_INV_PI_F);
 	uv.y *= M_INV_PI_F;
 	return (uv);
 }

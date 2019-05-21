@@ -25,6 +25,8 @@ content
 		refraction_color(0 0 0)
 		reflection_color(0.04 0.04 0.04)
 		refraction_idx(0)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 }
 
