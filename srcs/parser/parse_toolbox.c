@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:03:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:58:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ void
 int
 	csg_is_op(t_parse_txt *scene_file)
 {
-	if (ft_strstr(get_curr_line(scene_file), AND_STR) != NULL)
-		return (AND);
+	if (ft_strstr(get_curr_line(scene_file), INTER_STR) != NULL)
+		return (INTER);
 	if (ft_strstr(get_curr_line(scene_file), NOT_STR) != NULL)
 		return (NOT);
 	if (ft_strstr(get_curr_line(scene_file), UNION_STR) != NULL)

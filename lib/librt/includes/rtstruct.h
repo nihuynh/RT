@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 01:59:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 04:06:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ typedef struct	s_csg
 }				t_csg;
 
 
-# define AND		1
-# define AND_STR	"AND"
+# define INTER		1
+# define INTER_STR	"INTER"
 # define NOT		2
 # define NOT_STR	"NOT"
 # define UNION		3
@@ -175,6 +175,7 @@ typedef struct s_inter	t_inter;
 struct			s_inter
 {
 	float		dist;
+	float		dist_max;
 	t_obj		*obj;
 	t_ray		ray;
 	t_pt3		point;
