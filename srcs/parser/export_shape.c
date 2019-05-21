@@ -22,7 +22,7 @@ void
 	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", p->origin.x, p->origin.y,
 		p->origin.z);
 	dprintf(fd, "\n\t\tnormal(%.3f %.3f %.3f)\n", p->n.x, p->n.y, p->n.z);
-	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", p->size_x, p->size_y);
+	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", p->size.x, p->size.y);
 }
 
 void

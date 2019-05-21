@@ -30,8 +30,7 @@ void
 	plane = res;
 	plane->origin = (t_pt3){0, 0, 0};
 	plane->n = (t_vec3){0, 0, 1};
-	plane->size_x = 50;
-	plane->size_y = 50;
+	plane->size = (t_vec2){50, 50};
 	plane->x = (t_vec3){1, 0, 0};
 	plane->y = (t_vec3){0, 1, 0};
 }

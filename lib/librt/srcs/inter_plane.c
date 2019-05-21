@@ -43,10 +43,10 @@ static inline int
 	inter_pt.z = data->ray.origin.z + dist * data->ray.dir.z;
 	vec3_sub(&orig_to_inter, &inter_pt, &plan->origin);
 	scale_x = vec3_dot(&orig_to_inter, &plan->x) / vec3_dot(&plan->x, &plan->x);
-	if (plan->size_x && fabsf(scale_x) > plan->size_x)
+	if (plan->size.x && fabsf(scale_x) > plan->size.x)
 		return (0);
 	scale_y = vec3_dot(&orig_to_inter, &plan->y) / vec3_dot(&plan->y, &plan->y);
-	if (plan->size_y && fabsf(scale_y) > plan->size_y)
+	if (plan->size.y && fabsf(scale_y) > plan->size.y)
 		return (0);
 	return (1);
 }
@@ -61,7 +61,7 @@ void
 	dist = inter(&data->ray, plane);
 	if (dist >= data->dist || dist < 0)
 		return ;
-	if (plane->size_x > 0 || plane->size_y > 0)
+	if (plane->size.x > 0 || plane->size.y > 0)
 		if (!(inter_finite(data, plane, dist)))
 			return ;
 	data->dist = dist;
@@ -79,9 +79,9 @@ t_vec3
 	orig_to_inter = vec3_sub_(inter->point, plan->origin);
 	uv.x = vec3_dot(&orig_to_inter, &plan->x);
 	uv.y = vec3_dot(&orig_to_inter, &plan->y);
-	if (plan->size_x > 0)
-		uv.x = remap_to_0_to_1(uv.x / plan->size_x);
-	if (plan->size_y > 0)
-		uv.y = remap_to_0_to_1(uv.y / plan->size_y);
+	if (plan->size.x > 0)
+		uv.x = remap_to_0_to_1(uv.x / plan->size.x);
+	if (plan->size.y > 0)
+		uv.y = remap_to_0_to_1(uv.y / plan->size.y);
 	return (uv);
 }

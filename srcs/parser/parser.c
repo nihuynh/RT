@@ -58,7 +58,9 @@ static inline t_material
 	mat.refraction_color = parse_color("refraction_color(", scene_file);
 	mat.reflection_color = parse_color("reflection_color(", scene_file);
 	mat.refraction_idx = parse_fval("refraction_idx(", scene_file);
-	mat.uv_mapping = (t_uv_mapping){0, 0, 1, 1, true};
+	mat.uv_mapping.scale = parse_vec2("uv_scale(", scene_file);
+	mat.uv_mapping.offset = parse_vec2("uv_offset(", scene_file);
+	mat.uv_mapping.repeat = true;
 	return (mat);
 }
 

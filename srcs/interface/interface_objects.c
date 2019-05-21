@@ -44,20 +44,14 @@ static inline void
 static inline void
 	uv_mapping_details(t_uv_mapping *uv_mapping)
 {
-	t_vec3	uv;
+	t_vec2	uv;
 
-	uv = (t_vec3) {uv_mapping->scale_x, uv_mapping->scale_y, 0};
+	uv = uv_mapping->scale;
 	if (igSliderFloat2("UV scale", &uv.x, 0, 10, "%.2g", 10))
-	{
-		uv_mapping->scale_x = uv.x;
-		uv_mapping->scale_y = uv.y;
-	}
-	uv = (t_vec3) {uv_mapping->offset_x, uv_mapping->offset_y, 0};
+		uv_mapping->scale = uv;
+	uv = uv_mapping->offset;
 	if (igSliderFloat2("UV offset", &uv.x, -1, 1, "%.2g", 1))
-	{
-		uv_mapping->offset_x = uv.x;
-		uv_mapping->offset_y = uv.y;
-	}
+		uv_mapping->offset = uv;
 	if (igRadioButtonBool("Repeat", uv_mapping->repeat == true))
 		uv_mapping->repeat = true;
 	if (igRadioButtonBool("Clamp", uv_mapping->repeat == false))

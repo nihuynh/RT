@@ -14,8 +14,8 @@
 
 void	apply_uv_mapping(t_vec3 *uv, t_uv_mapping mapping)
 {
-	uv->x = uv->x * mapping.scale_x + mapping.offset_x;
-	uv->y = uv->y * mapping.scale_y + mapping.offset_y;
+	uv->x = uv->x * mapping.scale.x + mapping.offset.x;
+	uv->y = uv->y * mapping.scale.y + mapping.offset.y;
 }
 
 /*

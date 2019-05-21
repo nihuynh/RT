@@ -67,8 +67,6 @@ void
 	camera(&app->cam, key, state);
 }
 
-extern bool debug = false;
-
 void
 	click_event(SDL_Event *ev, void *arg)
 {
@@ -85,9 +83,7 @@ void
 			app->gui.obj_set = find_obj_at_pixel(app, x, y);
 		if (ev->button.button == SDL_BUTTON_RIGHT)
 		{
-			debug = true;
 			process_pixel(x, y, app);
-			debug = false;
 		}
 	}
 }

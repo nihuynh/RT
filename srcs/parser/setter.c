@@ -41,7 +41,7 @@ void
 	pplane = plane;
 	pplane->origin = parse_vector("origin(", scene_file);
 	pplane->n = parse_vector("normal(", scene_file);
-	parse_limit(&pplane->size_x, &pplane->size_y, scene_file);
+	pplane->size = parse_vec2("limit(", scene_file);
 	vec3_normalize(&pplane->n);
 	create_orthobasis_from_y_axis(pplane->n, &pplane->x, &pplane->y);
 }

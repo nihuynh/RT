@@ -65,7 +65,7 @@ t_vec3
 	if (idx != 2)
 	{
 		err_set(scene_file, __func__, __LINE__, __FILE__);
-		err_exit(ERR_PARSE_VECTOR, scene_file);
+		err_exit(ERR_PARSE_VEC3, scene_file);
 	}
 	if (DEBUG)
 		ft_printf("Vector : %f %f %f\n", toby[0], toby[1], toby[2]);
@@ -85,15 +85,15 @@ float
 	return (res);
 }
 
-void
-	parse_limit(float *l_x, float *l_y, t_parse_txt *scene_file)
+t_vec2
+	parse_vec2(char *key, t_parse_txt *scene_file)
 {
 	float	toby[2];
 	int		idx;
 	char	*line;
 
 	idx = -1;
-	line = get_args_key_require(scene_file, "limit(");
+	line = get_args_key_require(scene_file, key);
 	while (++idx < 2)
 	{
 		toby[idx] = ft_atof(line);
@@ -107,12 +107,11 @@ void
 	if (idx != 1)
 	{
 		err_set(scene_file, __func__, __LINE__, __FILE__);
-		err_exit(ERR_PARSE_LIMIT, scene_file);
+		err_exit(ERR_PARSE_VEC2, scene_file);
 	}
-	*l_x = toby[0];
-	*l_y = toby[1];
 	if (DEBUG)
 		ft_printf("Limit : %f %f\n", toby[0], toby[1]);
+	return ((t_vec2){toby[0], toby[1]});
 }
 
 int

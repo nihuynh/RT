@@ -18,6 +18,12 @@
 # include "ftbtree.h"
 # include "color.h"
 
+typedef struct	s_vec2
+{
+	float		x;
+	float		y;
+}				t_vec2;
+
 typedef struct	s_vec3
 {
 	float		x;
@@ -44,8 +50,7 @@ typedef struct	s_plane
 	t_vec3		n;
 	t_vec3		x;
 	t_vec3		y;
-	float		size_x;
-	float		size_y;
+	t_vec2		size;
 	float		rotation;
 }				t_plane;
 
@@ -145,10 +150,8 @@ struct			s_texture
 };
 
 typedef struct	s_uv_mapping {
-	float	offset_x;
-	float	offset_y;
-	float	scale_x;
-	float	scale_y;
+	t_vec2	offset;
+	t_vec2	scale;
 	bool	repeat;
 }				t_uv_mapping;
 
