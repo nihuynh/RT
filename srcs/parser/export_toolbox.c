@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:57:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 02:36:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 20:17:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static inline void
 	export_color(int fd, char *name, t_color color)
 {
 	dprintf(fd, "\t\t%s(%.3f %.3f %.3f)\n", name, color.r, color.g, color.b);
+}
+
+static inline void
+	export_tvec2(int fd, char *name, t_vec2 vec)
+{
+	dprintf(fd, "\t\t%s(%.3f %.3f)\n", name, vec.x, vec.y);
 }
 
 void
@@ -31,4 +37,6 @@ void
 	export_color(fd, "refraction_color", mat->refraction_color);
 	export_color(fd, "reflection_color", mat->reflection_color);
 	dprintf(fd, "\t\trefraction_idx(%.3f)\n", mat->refraction_idx);
+	export_tvec2(fd, "uv_scale", mat->uv_mapping.scale);
+	export_tvec2(fd, "uv_offset", mat->uv_mapping.offset);
 }
