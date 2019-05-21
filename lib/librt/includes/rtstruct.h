@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 15:46:47 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 17:29:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,6 @@ typedef struct	s_csg_op
 	int			type;
 	t_inter		left;
 	t_inter		right;
-	t_ray		*incoming;
 
 }				t_csg_op;
 

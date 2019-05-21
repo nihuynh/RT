@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/21 02:33:39 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/21 17:34:19 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 LIBFLAGS 	:=	-j32 RUNMODE=$(RUNMODE)
 ifeq ($(RUNMODE),dev)
     CFLAGS	+=	-g3 -O0
-	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address -fsanitize-recover=address
+	# CFLAGS	+=	-fsanitize=address -fsanitize-recover=address
 else
 	CFLAGS	+= -O2 -march=native -flto
 endif

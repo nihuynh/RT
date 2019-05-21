@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 16:22:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 18:04:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,10 @@ t_inter
 }
 
 t_inter
-	inter_from_csg_op(t_csg_op *csg_op)
+	inter_from_csg_op(t_csg_op *csg_op, t_ray incoming)
 {
 	t_inter no_inter;
 
-	inter_set(&no_inter, *csg_op->incoming);
 	if (csg_op->type == INTER)
 		return (inter_compare(csg_op->left, csg_op->right));
 	if (csg_op->type == NOT)
@@ -68,35 +67,35 @@ t_inter
 	if (csg_op->type == UNION)
 		return (union_compare(csg_op->left, csg_op->right));
 	ft_error(__func__, __LINE__);
+	inter_set(&no_inter, incoming);
 	return (no_inter);
 }
 
 t_inter
-	inter_from_csg_obj(t_obj *obj, t_ray *incoming)
+	inter_from_csg_obj(t_obj *obj, t_ray incoming)
 {
 	t_inter res;
 
-	inter_set(&res, *incoming);
+	inter_set(&res, incoming);
 	obj->f_inter(&res, obj);
 	return (res);
 }
 
 t_inter
-	inter_from_btree(t_btree *node, t_ray *incoming)
+	inter_from_btree(t_btree *node, t_ray incoming)
 {
 	t_csg_op *csg_op;
 
 	if (node->content_size == sizeof(t_obj))
 		return (inter_from_csg_obj(node->content, incoming));
 	csg_op = node->content;
-	csg_op->incoming = incoming;
 	csg_op->left = inter_from_btree(node->left, incoming);
 	csg_op->right = inter_from_btree(node->right, incoming);
-	return (inter_from_csg_op(csg_op));
+	return (inter_from_csg_op(csg_op, incoming));
 }
 
 static inline t_inter
-	inter(t_ray *incoming, t_csg *csg)
+	inter(t_ray incoming, t_csg *csg)
 {
 	t_inter	res;
 
@@ -111,8 +110,10 @@ void
 	t_csg	*csg_shape;
 
 	csg_shape = node->shape;
-	csg_inter = inter(&top_inter->ray, csg_shape);
-	if (csg_inter.dist >= top_inter->dist || csg_inter.dist < 0)
+	csg_inter = inter(top_inter->ray, csg_shape);
+	if (csg_inter.dist <=  EPSILON || csg_inter.dist >= HUGEVAL)
+		return ;
+	if (csg_inter.dist >= top_inter->dist)
 		return ;
 	top_inter->dist = csg_inter.dist;
 	top_inter->obj = csg_inter.obj;
