@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:11:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:58:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static inline void
 	int type;
 
 	type = node_content->type;
-	if (type == AND)
-		dprintf(fd, "\t\t%s\n", AND_STR);
+	if (type == INTER)
+		dprintf(fd, "\t\t%s\n", INTER_STR);
 	if (type == NOT)
 		dprintf(fd, "\t\t%s\n", NOT_STR);
 	if (type == UNION)

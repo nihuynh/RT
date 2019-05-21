@@ -79,7 +79,7 @@ void
 		ptr = &(sdl->data_thr[cthr]);
 		sats = pthread_create(&threads[cthr], NULL, process_data, ptr);
 	}
-//	sdl->needs_render = false;
+	sdl->needs_render = false;
 	cthr = -1;
 	while (++cthr < THR_C)
 		pthread_join(threads[cthr], NULL);

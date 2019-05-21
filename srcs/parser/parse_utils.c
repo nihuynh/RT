@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 04:18:50 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:14:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 16:15:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+#include "ftio.h"
 #include "ftstring.h"
 
 /**
@@ -30,7 +31,8 @@ char
 	if (!(check_line_args = ft_strstr(check_line_args, key)))
 	{
 		err_set(scene_file, __func__, __LINE__, __FILE__);
-		err_exit(ERR_P_KEY, scene_file);
+		ft_printf("%s : %s", ERR_P_KEY, key);
+		err_exit("", scene_file);
 	}
 	check_line_args += ft_strlen(key);
 	if (ft_strrchr(check_line_args, ')') == NULL)
