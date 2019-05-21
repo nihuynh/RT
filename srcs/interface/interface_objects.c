@@ -87,7 +87,7 @@ static inline void
 	color_tmp = mat->refraction_color;
 	if (igColorEdit3("Refraction Color", &color_tmp.r, 0))
 		mat->refraction_color = color_tmp;
-	uv_mapping_details(mat);
+	uv_mapping_details(&mat->uv_mapping);
 	igTreePop();
 }
 

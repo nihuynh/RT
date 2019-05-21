@@ -46,20 +46,27 @@ set_target_properties(RT
 
 target_sources(RT PRIVATE
         srcs/interface/fullscreen.c
-        srcs/interface/init_interface.c
         srcs/interface/interface.c
         srcs/interface/interface_lists.c
+        srcs/interface/interface_menu.c
         srcs/interface/interface_objects.c
         srcs/interface/interface_scene.c
         srcs/interface/interface_tools.c
-        srcs/interface/interface_windows.c
         srcs/interface/new_object.c
         srcs/interface/new_object_tools.c
         srcs/interface/object_tools.c
+        srcs/interface/ui_edit_win.c
+        srcs/interface/ui_file_win.c
+        srcs/interface/ui_render.c
         srcs/parser/export.c
+        srcs/parser/export_csg.c
+        srcs/parser/export_shape.c
         srcs/parser/export_toolbox.c
-        srcs/parser/export_utils.c
+        srcs/parser/obj_data.c
+        srcs/parser/parse_csg.c
         srcs/parser/parse_toolbox.c
+        srcs/parser/parse_txt.c
+        srcs/parser/parse_utils.c
         srcs/parser/parser.c
         srcs/parser/read.c
         srcs/parser/setter.c
@@ -70,8 +77,9 @@ target_sources(RT PRIVATE
         srcs/render/perturbation.c
         srcs/render/post_process.c
         srcs/render/render.c
+        srcs/render/texture_loader.c
         srcs/render/texture_toolbox.c
-        lib/librt/srcs/uv_mapping.c
+        srcs/render_utils
         srcs/render_utils/error_sdl.c
         srcs/render_utils/exit_sdl.c
         srcs/render_utils/init_mthr_sdl.c
@@ -82,12 +90,12 @@ target_sources(RT PRIVATE
         srcs/render_utils/render_sdl.c
         srcs/render_utils/render_time.c
         srcs/render_utils/save_screenshot.c
-        srcs/render/texture_loader.c
         srcs/tools/error.c
+        srcs/tools/free.c
         srcs/tools/reload.c
         srcs/tools/update.c
         srcs/tools/utils.c
         srcs/tools/free.c
-        srcs/init.c
+        srcs/csg.c
         srcs/key_mapping.c
         srcs/main.c)

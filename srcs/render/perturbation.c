@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   perturbation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/12 07:56:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/20 13:46:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftmath.h>
-#include "rt.h"
+#include "ftmath.h"
+#include "ftio.h"
+#include "rtstruct.h"
 #include "librt.h"
 #include "color.h"
 #include <math.h>
+#include <stdlib.h>
 
 float
 	pattern_checkers(float x, float y)

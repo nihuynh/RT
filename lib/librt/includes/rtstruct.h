@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/12 07:18:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 01:59:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 # include <stdint.h>
+# include "ftbtree.h"
 # include "color.h"
 
 typedef struct	s_vec3
@@ -74,6 +75,28 @@ typedef struct	s_cylinder
 	float		size;
 }				t_cylinder;
 
+typedef struct	s_csg
+{
+	t_pt3		origin;
+	t_vec3		x;
+	t_vec3		n;
+	t_vec3		z;
+	t_btree		*root;
+}				t_csg;
+
+
+# define AND		1
+# define AND_STR	"AND"
+# define NOT		2
+# define NOT_STR	"NOT"
+# define UNION		3
+# define UNION_STR	"UNION"
+
+typedef struct	s_csg_op
+{
+	int			type;
+}				t_csg_op;
+
 typedef struct	s_light
 {
 	t_pt3		origin;
@@ -113,6 +136,7 @@ typedef	struct s_material	t_material;
 struct			s_texture
 {
 	char		*name;
+	char		*dir;
 	t_color		(*f_texture)(t_material*, t_vec3);
 	void		(*export) (int, void*);
 	char		*pixels;

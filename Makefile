@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/14 23:08:42 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/21 02:33:39 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,16 @@ RUNMODE		?=	release
 #VERBOSE	:= TRUE
 SCENE		:=	playground
 SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
-				setter.c light.c key_mapping.c camera.c update.c init.c	\
+				setter.c light.c key_mapping.c camera.c update.c	\
 				cast.c utils.c interface.c interface_scene.c	\
-				init_interface.c interface_objects.c interface_tools.c	\
-				object_tools.c texture_toolbox.c new_object_tools.c \
-				interface_lists.c filters.c export.c export_utils.c \
-				fullscreen.c interface_windows.c export_toolbox.c new_object.c \
-				reload.c perturbation.c texture_loader.c free.c
+				interface_objects.c interface_tools.c	\
+				object_tools.c texture_toolbox.c new_object_tools.c	\
+				interface_lists.c filters.c export.c export_shape.c	\
+				fullscreen.c export_toolbox.c new_object.c \
+				reload.c perturbation.c texture_loader.c free.c csg.c  \
+				obj_data.c parse_txt.c parse_utils.c interface_menu.c \
+				ui_file_win.c ui_edit_win.c ui_render.c parse_csg.c \
+				export_csg.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c render_time.c

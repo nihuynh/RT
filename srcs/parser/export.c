@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 01:12:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:11:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
-#include "parse.h"
+#include "librt.h"
 #include "libft.h"
+#include "export.h"
+
 #include <stdio.h>
 #include <locale.h>
 #include <fcntl.h>
@@ -52,15 +53,12 @@ static inline void
 }
 
 static inline void
-	export_obj(int fd, t_list *node)
+	export_obj_from_lst(int fd, t_list *node)
 {
-	const char	*names[] = {
-		"plane", "sphere", "cone", "cylinder"
-	};
 	t_obj		*obj;
 
 	obj = node->content;
-	dprintf(fd, "\tobject(%s)\n\t{\n", names[obj->type]);
+	dprintf(fd, "\tobject(%s)\n\t{\n", get_obj_str(obj->type));
 	obj->export(fd, obj->shape);
 	export_material(fd, &obj->material);
 	write(fd, "\t}\n", 3);
@@ -71,12 +69,12 @@ static inline void
 {
 	write(fd, "content\n{\n", 10);
 	ft_lstiter_arg(fd, scene->lst_light, &export_light);
-	ft_lstiter_arg(fd, scene->lst_obj, &export_obj);
+	ft_lstiter_arg(fd, scene->lst_obj, &export_obj_from_lst);
 	write(fd, "}\n", 2);
 }
 
 int
-	export_scene(t_data *data, char *filename)
+	export_scene(t_data *app, char *filename)
 {
 	int fd;
 
@@ -87,8 +85,8 @@ int
 		ft_printf("Error during export [%s]\n", filename);
 		return (-1);
 	}
-	export_camera(fd, &data->cam, data->settings.amb_light);
-	export_content(fd, &data->scene);
+	export_camera(fd, &app->cam, app->settings.amb_light);
+	export_content(fd, &app->scene);
 	close(fd);
 	setlocale(LC_NUMERIC, NULL);
 	return (0);

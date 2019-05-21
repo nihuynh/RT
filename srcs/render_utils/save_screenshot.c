@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 10:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/04 15:10:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 02:26:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void
 	else
 	{
 		SDL_SaveBMP(surface, name);
-		free(name);
+		ft_strdel(&name);
 	}
 	ft_putendl("Screenshot taken ! enjoy !");
 	SDL_FreeSurface(surface);

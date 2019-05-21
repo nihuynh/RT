@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 16:47:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static inline void
 		sdl->click_map(&event, arg);
 }
 
-/*
+/**
 ** @brief Loop waiting for events to happen
 **
 ** @param sdl

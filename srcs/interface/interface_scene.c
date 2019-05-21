@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 10:55:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:29:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,49 +71,19 @@ static inline void
 	}
 }
 
-static inline void
-	menu_bar(t_data *app)
-{
-	if (igBeginMenu("Menu", 1))
-	{
-		igMenuItemBoolPtr("Load Scene", NULL, &app->gui.load_open, 1);
-		igMenuItemBoolPtr("Export Scene", NULL, &app->gui.export_open, 1);
-		igMenuItemBoolPtr("Stats", NULL, &app->gui.stats_open, 1);
-		if (igMenuItemBoolPtr("Fullscreen", NULL, &app->sdl.fullscreen, 1))
-		{
-			fullscreen(&app->sdl, &app->gui);
-			app->sdl.needs_render = 1;
-		}
-		igEndMenu();
-	}
-	if (igBeginMenu("Scene", 1))
-	{
-		igMenuItemBoolPtr("New Object", NULL, &app->gui.new_obj_open, 1);
-		if (igMenuItemBool("New Light", NULL, 0, 1))
-			new_light(app);
-		igMenuItemBoolPtr("Delete Selected Object", NULL,
-							&app->gui.delete_obj_open, 1);
-		igEndMenu();
-	}
-	igEndMenuBar();
-}
-
 void
-	window_scene(t_data *app)
+	scene_win(t_ui_func *ui)
 {
-	igSetNextWindowPos((ImVec2){app->sdl.img.width, 0},
+	igSetNextWindowPos((ImVec2){ui->app->sdl.img.width, 18},
 						ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
-	igBegin("Scene", NULL, ImGuiWindowFlags_MenuBar
-		| ImGuiWindowFlags_AlwaysAutoResize);
-	if (igBeginMenuBar())
-		menu_bar(app);
+	igBegin("Scene", NULL, ImGuiWindowFlags_AlwaysAutoResize);
 	if (igCollapsingHeader("Render Settings", ImGuiTreeNodeFlags_DefaultOpen))
-		render_settings(app);
+		render_settings(ui->app);
 	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))
-		object_settings(app);
+		object_settings(ui->app);
 	if (igButton("Render new frame", (ImVec2){130, 20}))
-		app->sdl.needs_render = true;
+		ui->app->sdl.needs_render = true;
 	igEnd();
 }

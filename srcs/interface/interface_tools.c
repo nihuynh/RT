@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/09 17:52:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:15:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,12 @@ void	ui_cone(void *res)
 		cone->theta = tmp.theta;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
 		cone->size = tmp.size;
+}
+
+void			ui_csg(void *shape)
+{
+	t_btree *root;
+
+	root = shape;
+	// built interface with imgui
 }

@@ -6,141 +6,123 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 22:01:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:18:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "config.h"
 #include "libft.h"
 #include "parse.h"
 
-/*
-** @brief		Setting config for the type of object we want to parse
-**
-** @param type		The type of object we want to parse
-** @param config 	The struct that is gonna hold the config
-*/
-
-static inline void
-	init_parse(int type, t_parse *config)
+static inline t_texture
+	*parse_texture(t_parse_txt *scene_file)
 {
-	const t_parse index_config[] = {
-		{"plane", sizeof(t_plane), &plane_set, &plane_export, 6},
-		{"sphere", sizeof(t_sphere), &sphere_set, &sphere_export, 5},
-		{"cone", sizeof(t_cone), &cone_set, &cone_export, 7},
-		{"cylinder", sizeof(t_cylinder), &cylinder_set, &cylinder_export, 7}
-	};
+	t_texture	*tex;
+	char		*line;
 
-	config = ft_memcpy(config, &index_config[type], sizeof(t_parse));
+	line = get_args_key_require(scene_file, "texture(");
+	tex = ft_lstgetelt(scene_file->app->lst_tex, &texcmp, line);
+	if (tex == NULL)
+		return (ft_lstgetelt(scene_file->app->lst_tex, &texcmp, "none"));
+	if (!(tex->pixels))
+		tex->pixels = load_texture(tex);
+	return (tex);
 }
 
-/*
-** @brief	Setting the obj struct for the shape
+static inline t_material
+	parse_material(t_parse_txt *scene_file)
+{
+	char		*str;
+	t_material	mat;
+	t_material	*mat_from_lst;
+
+	if ((str = ft_strstr(get_curr_line(scene_file), "mat(")))
+	{
+		str += 4;
+		if (!(mat_from_lst = ft_lstgetelt(scene_file->app->lst_mat, &matcmp, str)))
+		{
+			err_set(scene_file, __func__, __LINE__, __FILE__);
+			err_exit(ERR_UNKNWD_MAT, scene_file);
+		}
+		scene_file->line_idx++;
+		return (*mat_from_lst);
+	}
+	ft_bzero(&mat, sizeof(t_material));
+	mat.name = "";
+	mat.tex = parse_texture(scene_file);
+	mat.color_diffuse = parse_color("color_diffuse(", scene_file);
+	mat.color_specular = parse_color("color_specular(", scene_file);
+	mat.color_tex = parse_color("color_tex(", scene_file);
+	mat.spec_idx = parse_fval("spec_idx(", scene_file);
+	mat.spec_power = parse_fval("spec_power(", scene_file);
+	mat.refraction_color = parse_color("refraction_color(", scene_file);
+	mat.reflection_color = parse_color("reflection_color(", scene_file);
+	mat.refraction_idx = parse_fval("refraction_idx(", scene_file);
+	mat.uv_mapping = (t_uv_mapping){0, 0, 1, 1, true};
+	return (mat);
+}
+
+/**
+** @brief	General parser for all of the shapes
 **
-** @param obj	Struct that we want to set
-** @param type	Type of shape
-** @param shape	The shape
+** @param obj_dst		: Dst of the data
+** @param scene_file	: Parsing struct
+** @param type			: Type of the shape to parse
 */
 
 void
-	obj_set(t_obj *obj, int type, void *shape)
+	create_obj_from_txt(t_obj *obj_dst, t_parse_txt *scene_file, int type)
 {
-	const t_objset obj_func[] = {
-		{&inter_plane, &ui_plane, &normal_plane, &get_plane_uv},
-		{&inter_sphere, &ui_sphere, &normal_sphere, &get_sphere_uv},
-		{&inter_cone, &ui_cone, &normal_cone, &get_cone_uv},
-		{&inter_cylinder, &ui_cylinder, &normal_cylinder, &get_cylinder_uv}
-	};
-
-	ft_bzero(obj, sizeof(t_obj));
-	obj->type = type;
-	obj->shape = shape;
-	obj->f_inter = obj_func[type].f_inter;
-	obj->f_gui = obj_func[type].f_gui;
-	obj->find_normal = obj_func[type].find_normal;
-	obj->get_uv = obj_func[type].get_uv;
-}
-
-static inline int
-	parse_material(t_data *data, t_material *dst, char **tab, int idx)
-{
-	char		*str;
-	t_material	*mat;
-
-	if ((str = ft_strstr(tab[idx], "mat(")))
-	{
-		str += 4;
-		if (!(mat = ft_lstgetelt(data->lst_mat, &matcmp, str)))
-			ft_error(__func__, __LINE__);
-		ft_memcpy(dst, mat, sizeof(t_material));
-		return (idx + 2);
-	}
-	ft_bzero(dst, sizeof(t_material));
-	dst->name = "";
-	dst->tex = parse_texture(&data->lst_tex, tab, idx++);
-	parse_color(&dst->color_diffuse, tab, idx++, "color_diffuse(");
-	parse_color(&dst->color_specular, tab, idx++, "color_specular(");
-	parse_color(&dst->color_tex, tab, idx++, "color_tex(");
-	parse_fval(&dst->spec_idx, tab, idx++, "spec_idx(");
-	parse_fval(&dst->spec_power, tab, idx++, "spec_power(");
-	parse_color(&dst->refraction_color, tab, idx++, "refraction_color(");
-	parse_color(&dst->reflection_color, tab, idx++, "reflection_color(");
-	parse_fval(&dst->refraction_idx, tab, idx++, "refraction_idx(");
-	dst->uv_mapping = (t_uv_mapping){0, 0, 1, 1, true};
-	return (idx + 1);
-}
-
-/*
-** @brief	General parser for all of the shapes
-**
-** @param greed	Contains the whole input file
-** @param data	General struct for holding data
-** @param l_idx	Line index to navigate in greed
-** @param type	Type of shape to parse
-** @return int	Returns the line on which it finished parsing the shape
-*/
-
-int
-	parse_shape(char **greed, t_data *d, int l_idx, int type)
-{
-	t_obj		obj;
 	t_parse		cfg;
 	void		*shape;
-	int			idx;
 
-	init_parse(type, &cfg);
+	check_opening_bracket(scene_file);
+	init_parse_cfg(type, &cfg);
 	if (DEBUG)
 		ft_putendl(cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	cfg.setter(shape, greed, ++l_idx);
-	obj_set(&obj, type, shape);
-	obj.export = cfg.export;
-	idx = parse_material(d, &obj.material, greed, l_idx + cfg.line_offset - 2);
-	ft_lstpushnew(&d->scene.lst_obj, &obj, sizeof(t_obj));
-	return (idx);
+	cfg.setter(shape, scene_file);
+	obj_set(obj_dst, type, shape);
+	obj_dst->export = cfg.export;
+	obj_dst->material = parse_material(scene_file);
+	check_closing_bracket(scene_file);
 }
 
-/*
-** @brief	Parser for light objects
+/**
+** @brief Built a shape obj and add it to the scene.lst_obj
 **
-** @param greed		Contains the whole input file
-** @param data		General struct for holding data
-** @param line_idx	Line index to navigate in greed
-** @return int		Returns the line on which it finished parsing the light
+** @param scene_file	: Parsing struct
+** @param type			: Type of the shape to parse
 */
 
-int
-	parse_light(char **greed, t_data *data, int line_idx)
+void
+	parse_shape(t_parse_txt *scene_file, int type)
+{
+	t_obj		obj;
+
+	if (DEBUG)
+		ft_putendl("Shape node :");
+	create_obj_from_txt(&obj, scene_file, type);
+	ft_lstpushnew(&scene_file->app->scene.lst_obj, &obj, sizeof(t_obj));
+
+}
+
+/**
+** @brief Built a light obj and add it to the scene.lst_light
+**
+** @param scene_file	: Parsing struct
+*/
+
+void
+	parse_light(t_parse_txt *scene_file)
 {
 	t_light		light;
 
-	line_idx++;
+	check_opening_bracket(scene_file);
 	if (DEBUG)
-		ft_putendl("Light :");
-	light_set(&light, greed, line_idx);
-	ft_lstpushnew(&data->scene.lst_light, &light, sizeof(t_light));
-	line_idx += 5;
-	return (line_idx);
+		ft_putendl("Light node :");
+	light_set(&light, scene_file);
+	ft_lstpushnew(&scene_file->app->scene.lst_light, &light, sizeof(t_light));
+	check_closing_bracket(scene_file);
 }

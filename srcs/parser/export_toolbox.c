@@ -6,13 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:57:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/12 06:07:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 02:36:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
 #include <stdio.h>
-#include <locale.h>
 
 static inline void
 	export_color(int fd, char *name, t_color color)

@@ -6,14 +6,14 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 03:26:10 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 15:42:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 #include "ftmath.h"
 
-/*
+/**
 ** @brief	Add color
 **
 ** @param color

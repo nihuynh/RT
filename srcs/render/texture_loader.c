@@ -6,15 +6,18 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/14 20:30:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 03:34:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rt.h"
+#include "config.h"
 #include "ftio.h"
 #include "ftstring.h"
 #include "ftconvert.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <dirent.h>
 
 int		parse_header(int fd, int *width, int *height)
 {
@@ -28,18 +31,20 @@ int		parse_header(int fd, int *width, int *height)
 		ft_printf("Bad header [%s]\n", line);
 		ft_error(__func__, __LINE__);
 	}
-	free(line);
+	ft_strdel(&line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
-	free(line);
 	*width = ft_atoi(line);
+	ft_strdel(&line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
-	free(line);
 	*height = ft_atoi(line);
+	ft_strdel(&line);
 	ft_gnl(fd, &line, "\t\n\r\v ");
 	header_bytes += ft_strlen(line) + 1;
-	free(line);
+	ft_strdel(&line);
+	while (ft_gnl(fd, &line, "\t\n\r\v"))
+		ft_strdel(&line);
 	return (header_bytes);
 }
 
@@ -65,20 +70,56 @@ char	*read_pixel_data(char *filename, int cursor, int pixel_count)
 	read(fd, pixels, cursor);
 	read(fd, pixels, pixel_count * 3);
 	ft_gnl(fd, &line, "\n");
-	free(line);
+	ft_strdel(&line);
 	close(fd);
 	return (pixels);
 }
 
-char	*load_texture(char *filename, int *width, int *height)
+char	*load_texture(t_texture *tex)
 {
 	int	fd;
 	int	header_bytes;
 
-	ft_printf("Loading [%s] ... ", filename);
-	fd = ft_fopen_read(filename);
-	header_bytes = parse_header(fd, width, height);
+	if (tex->dir == NULL)
+		return (NULL);
+	if (DEBUG)
+		ft_printf("Loading [%s] ... ", tex->dir);
+	fd = ft_fopen_read(tex->dir);
+	header_bytes = parse_header(fd, &tex->width, &tex->height);
 	close(fd);
-	ft_printf("%d x %d\n", *width, *height);
-	return (read_pixel_data(filename, header_bytes, *width * *height));
+	if (DEBUG)
+		ft_printf("%d x %d\n", tex->width, tex->height);
+	return (read_pixel_data(tex->dir, header_bytes, tex->width * tex->height));
+}
+
+void	add_texture(char *name, t_data *app)
+{
+	t_texture	tex;
+
+	if (!(tex.dir = ft_strjoin(TEX_DIR, name)))
+		ft_error(__func__, __LINE__);
+	tex.pixels = NULL;
+	tex.f_texture = &sample;
+	if (!(tex.name = ft_strdup(name)))
+		ft_error(__func__, __LINE__);
+	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
+	if (DEBUG)
+		ft_printf("Texture added : %s\n", name);
+}
+
+void	open_textures(t_data *app)
+{
+	DIR				*d;
+	struct dirent	*dir;
+
+	d = opendir(TEX_DIR);
+	if (d)
+	{
+		while ((dir = readdir(d)) != NULL)
+		{
+			if (ft_strstr(dir->d_name, ".ppm"))
+				add_texture(dir->d_name, app);
+		}
+		closedir(d);
+	}
 }
