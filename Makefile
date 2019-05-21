@@ -172,7 +172,7 @@ doc: ## Generate a documentation using doxygen.
 	doxygen Doxyfile
 	open docs/html/index.html
 .PHONY: doc
-test: ## This check the parsing on all the map in the scenes directory.
+test: all ## This check the parsing on all the map in the scenes directory.
 	@for file in `LS scenes | grep .rt | sort -u`; \
 		do echo $$file && ./RT scenes/$$file -t; done
 .PHONY: test

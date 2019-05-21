@@ -24,7 +24,8 @@ COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
 				color_linear_inter.c
 MATRIX		:=	mat3_rot.c mat3.c
 NORMAL		:=	normal_cone.c normal_sphere.c normal_cylinder.c normal_plane.c
-SRC			:=	$(VEC) $(INTER) $(COLOR) $(NORMAL) $(MATRIX)
+OTHER		:=	uv_mapping.c
+SRC			:=	$(VEC) $(INTER) $(COLOR) $(NORMAL) $(MATRIX) $(OTHER)
 # directories :
 SRCDIR  	:=	srcs
 OBJDIR 		:=	objs
