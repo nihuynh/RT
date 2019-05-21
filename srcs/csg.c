@@ -6,34 +6,37 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 18:55:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 01:24:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include "rtstruct.h"
 #include "libft.h"
+#include <math.h>
+
+float					ft_btwf(float value, float limit1, float limit2)
+{
+	return (value >= fminf(limit1, limit2) && value <= fmaxf(limit1, limit2));
+}
 
 t_inter
 	not_compare(t_inter left, t_inter right)
 {
 	t_inter no_inter;
 
-	if (left.dist <= right.dist)
+	inter_set(&no_inter, right.ray);
+	if (left.dist == HUGEVAL || right.dist == HUGEVAL)
 		return (left);
-	if (left.dist_max <= right.dist_max)
-	{
-		inter_set(&no_inter, left.ray);
+	if (left.dist < right.hit_pts.x && left.dist < right.hit_pts.y)
+		return (left);
+	if (left.dist > right.hit_pts.y && left.dist > right.hit_pts.x)
+		return (left);
+	if (ft_btwf(left.hit_pts.x, right.hit_pts.y, right.hit_pts.x)
+		&& ft_btwf(left.hit_pts.y, right.hit_pts.y, right.hit_pts.x))
 		return (no_inter);
-	}
-	else if (left.dist <= right.dist_max)
-	{
-		right.dist = right.dist_max;
-		return (right);
-
-	}
-	return (left);
-
+	right.dist = right.hit_pts.y;
+	return (right);
 }
 
 t_inter
@@ -49,9 +52,11 @@ t_inter
 {
 	t_inter no_inter;
 
-	if (ft_maxf(left.dist, right.dist) < ft_minf(left.dist_max, right.dist_max))
-		return (union_compare(left, right));
 	inter_set(&no_inter, left.ray);
+	if (left.dist == HUGEVAL || right.dist == HUGEVAL)
+		return (no_inter);
+	if (fmaxf(left.hit_pts.x, right.hit_pts.x) <= fminf(left.hit_pts.y, right.hit_pts.y))
+		return (union_compare(left, right));
 	return (no_inter);
 }
 

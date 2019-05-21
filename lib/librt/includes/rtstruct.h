@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 18:52:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 22:00:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ typedef struct s_inter	t_inter;
 struct			s_inter
 {
 	float		dist;
-	float		dist_max;
+	t_vec2		hit_pts;
 	t_obj		*obj;
 	t_ray		ray;
 	t_pt3		point;
