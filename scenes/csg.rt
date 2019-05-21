@@ -16,7 +16,7 @@ content
 	{
 		origin(0 0 -50)
 		normal(0 1 0)
-		NOT
+		UNION
 		object(sphere)
 		{
 			origin(-10 0 -50)

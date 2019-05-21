@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 04:06:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/21 15:46:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,6 @@ typedef struct	s_csg
 	t_vec3		z;
 	t_btree		*root;
 }				t_csg;
-
-
-# define INTER		1
-# define INTER_STR	"INTER"
-# define NOT		2
-# define NOT_STR	"NOT"
-# define UNION		3
-# define UNION_STR	"UNION"
-
-typedef struct	s_csg_op
-{
-	int			type;
-}				t_csg_op;
 
 typedef struct	s_light
 {
@@ -182,6 +169,22 @@ struct			s_inter
 	t_vec3		n;
 	t_ray		deflected;
 };
+
+# define INTER		1
+# define INTER_STR	"INTER"
+# define NOT		2
+# define NOT_STR	"NOT"
+# define UNION		3
+# define UNION_STR	"UNION"
+
+typedef struct	s_csg_op
+{
+	int			type;
+	t_inter		left;
+	t_inter		right;
+	t_ray		*incoming;
+
+}				t_csg_op;
 
 /*
 ** @brief Struct that hold any shape and is in a t_list
