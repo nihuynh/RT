@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mthr_sdl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/13 15:41:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 04:41:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,58 @@ static inline void
 	}
 }
 
+static void	under_sample(int *img_str, int idx, int inc_offset)
+{
+	int idx_local;
+	int color;
+
+	color = 0; // img_str[idx];
+	idx_local = UNDER_SAMPLE - inc_offset - 1;
+	while (++idx_local < UNDER_SAMPLE - (UNDER_SAMPLE - inc_offset))
+		img_str[++idx] = color;
+}
+
 static inline void
 	*process_data(void *arg)
 {
 	t_data_thr	*slice;
 	t_img		img;
-	int			i;
+	int			idx_in_slice;
+	int			inc;
 	int			ofs;
 
 	slice = arg;
 	img = slice->sdl->img;
 	ofs = slice->idx * (img.height / THR_C);
-	i = -1;
-	while (++i < slice->sdl->thr_len)
+	idx_in_slice = slice->sdl->inc_offset;
+	inc = slice->sdl->inc_offset;
+	while (idx_in_slice < slice->sdl->thr_len)
 	{
-		slice->data[i] = slice->do_pxl(i % img.width,
-		ofs + i / img.width,
-		slice->prg_data);
+		slice->data[idx_in_slice] = slice->do_pxl(idx_in_slice % img.width,
+		ofs + idx_in_slice / img.width, slice->prg_data);
+		if (inc > 1)
+			under_sample(slice->data, idx_in_slice, inc);
+		idx_in_slice += inc;
 	}
 	pthread_exit(NULL);
 }
 
+
 void
 	render_mthr_sdl(t_sdl *sdl)
 {
-	long		elapsed_time;
+	long		start_time;
 	int			cthr;
 	int			sats;
 	void		*ptr;
 	pthread_t	threads[THR_C];
 
-	elapsed_time = ft_curr_usec();
+	start_time = ft_curr_usec();
+	if (!sdl->partial_render && sdl->inc_offset <= 1)
+	{
+		sdl->partial_render = true;
+		sdl->inc_offset = UNDER_SAMPLE;
+	}
 	cthr = -1;
 	sats = 0;
 	while (++cthr < THR_C && !sats)
@@ -79,11 +100,17 @@ void
 		ptr = &(sdl->data_thr[cthr]);
 		sats = pthread_create(&threads[cthr], NULL, process_data, ptr);
 	}
-	sdl->needs_render = false;
 	cthr = -1;
 	while (++cthr < THR_C)
 		pthread_join(threads[cthr], NULL);
 	apply_color(sdl);
-	elapsed_time = ft_curr_usec() - elapsed_time;
-	push_render_time(sdl, elapsed_time);
+	if (sdl->partial_render && sdl->inc_offset <= 1)
+	{
+		sdl->needs_render = false;
+		sdl->partial_render = false;
+	}
+	if (sdl->inc_offset > 1)
+		sdl->inc_offset--;
+	push_render_time(sdl, ft_curr_usec() - start_time);
+	// SDL_Delay(5000 / UNDER_SAMPLE);
 }

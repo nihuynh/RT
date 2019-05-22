@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/13 15:58:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 05:24:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # include <SDL.h>
 # include <stdbool.h>
 
-# define THR_C		20
-# define BATCH_SIZE	16
-# define C_MASK		0xFF000000
+# define THR_C			8
+# define UNDER_SAMPLE	32
+# define BATCH_SIZE		16
+# define C_MASK			0xFF000000
+# define P_TIME_LEN 50
 
 typedef struct		s_pxl
 {
@@ -42,7 +44,9 @@ struct				s_sdl
 {
 	bool			fullscreen;
 	t_img			img;
+	int				inc_offset;
 	bool			needs_render;
+	bool			partial_render;
 	int				width_vp;
 	int				height_vp;
 	int				thr_len;
@@ -57,7 +61,7 @@ struct				s_sdl
 	void			(*render_gui)(void *arg);
 	bool			sepia;
 	bool			grayscale;
-	float			render_time[25];
+	float			render_time[P_TIME_LEN];
 };
 
 struct				s_data_thr

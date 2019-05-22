@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_file_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 18:16:33 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 05:24:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ void	stats_win(t_ui_func *ui)
 {
 	if (ui->stats_open == false)
 		return ;
-	igSetNextWindowPos((ImVec2){0, ui->app->sdl.img.height + 18}, (ImGuiCond_Once),
-		(ImVec2){0, 0});
+	igSetNextWindowPos((ImVec2){0, ui->app->sdl.img.height + 18},
+		(ImGuiCond_Once), (ImVec2){0, 0});
 	igBegin("Stats", &ui->stats_open, ImGuiWindowFlags_AlwaysAutoResize);
-	igText("Last frame took : %fms", ui->app->sdl.render_time[24]);
-	igPlotLines("Render Time (ms)", &(ui->app->sdl.render_time[0]), 25, 0, NULL,
-		0, 3.402823466e+38F, (ImVec2){400, 80}, 4);
+	igText("Last frame took : %fms", ui->app->sdl.render_time[P_TIME_LEN - 1]);
+	igPlotLines("Render Time (ms)", &(ui->app->sdl.render_time[0]),
+		P_TIME_LEN, 0, NULL, 0, 3.402823466e+38F, (ImVec2){400, 80}, 4);
 	igEnd();
 }

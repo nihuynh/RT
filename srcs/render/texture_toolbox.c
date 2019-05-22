@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 02:30:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 03:16:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ static inline void
 {
 	t_texture	node;
 
-	node.pixels = NULL;
+	ft_bzero(&node, sizeof(t_texture));
 	node.name = ft_strdup("none");
-	node.f_texture = NULL;
 	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
 	node.name = ft_strdup("checkers");
 	node.f_texture = &texture_checkers;
