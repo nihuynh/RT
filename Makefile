@@ -6,17 +6,18 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/22 19:53:39 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/22 22:20:59 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 APP_NAME	:=	RT
+DEBUG_NAME	:=	RT_debug
 RUNMODE		?=	release
 # RUNMODE		?=	dev
 ifeq ($(RUNMODE),dev)
-    NAME		:=	RT_debug
+    NAME		:=	$(DEBUG_NAME)
 else
-	NAME		:=	RT
+	NAME		:=	$(APP_NAME)
 endif
 #VERBOSE	:= TRUE
 SCENE		:=	playground
@@ -98,7 +99,7 @@ LIBFLAGS 	:=	-j32 RUNMODE=$(RUNMODE)
 ifeq ($(RUNMODE),dev)
     CFLAGS	+=	-g3 -O0
     # CFLAGS	+=	-fsanitize=thread
-	# CFLAGS	+=	-fsanitize=address -fsanitize-recover=address
+	CFLAGS	+=	-fsanitize=address -fsanitize-recover=address
 else
 	CFLAGS	+= -O2 -march=native -flto
 endif
@@ -154,8 +155,8 @@ dclean: ## Clean of the documentation.
 	$(RM) -r docs/html 2> /dev/null || true
 	$(RM) -r docs/latex 2> /dev/null || true
 .PHONY: dclean
-fclean: clean lclean dclean ## Full clean of the directory & the libs.
-	$(RM) $(NAME)
+fclean: clean lclean dclean aclean ## Full clean of the directory & the libs.
+	$(RM) $(APP_NAME) $(DEBUG_NAME)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME) $(OKLOGO)"
 .PHONY: fclean
 re: ## Rebuild the project.
@@ -184,7 +185,7 @@ test: all ## This check the parsing on all the map in the scenes directory.
 .PHONY: test
 
 aclean:
-	rm -rf "./built/$(APP_NAME).app/"
+	$(RM) -r "./built/$(APP_NAME).app/"
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(APP_NAME).app $(OKLOGO)"
 .PHONY: aclean
 built: $(NAME) aclean

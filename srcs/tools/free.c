@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 19:56:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 22:16:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,25 +116,21 @@ void
 void
 	free_app(t_data *app)
 {
+	int		debug_leak;
+
 	free_lst(app);
 	SDL_GL_DeleteContext(app->gui.gl_context);
 	exit_sdl(app->sdl);
-	free(app);
+	debug_leak = app->option.key_found_bitrpz & (1 << ('l' - 'a'));
+	// free(app);
+	while (debug_leak)
+		;
 	get_app(app);
 }
 
 void
 	exit_safe(int err_code)
 {
-	t_data	*app;
-	int		debug_leak;
-
-	app = get_app(NULL);
-	if (app == NULL)
-		return ;
-	debug_leak = app->option.key_found_bitrpz & (1 << ('l' - 'a'));
-	free_app(app);
-	while (debug_leak)
-		;
+	free(get_app(NULL));
 	exit(err_code);
 }
