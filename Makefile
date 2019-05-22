@@ -6,16 +6,21 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/22 03:04:08 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/22 19:53:39 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	RT
+APP_NAME	:=	RT
 RUNMODE		?=	release
 # RUNMODE		?=	dev
+ifeq ($(RUNMODE),dev)
+    NAME		:=	RT_debug
+else
+	NAME		:=	RT
+endif
 #VERBOSE	:= TRUE
 SCENE		:=	playground
-SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
+SRC			:=	free_node.c main.c parser.c read.c render.c parse_toolbox.c	\
 				setter.c light.c key_mapping.c camera.c update.c	\
 				cast.c utils.c interface.c interface_scene.c	\
 				interface_objects.c interface_tools.c	\
@@ -92,7 +97,7 @@ CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 LIBFLAGS 	:=	-j32 RUNMODE=$(RUNMODE)
 ifeq ($(RUNMODE),dev)
     CFLAGS	+=	-g3 -O0
-    CFLAGS	+=	-fsanitize=thread
+    # CFLAGS	+=	-fsanitize=thread
 	# CFLAGS	+=	-fsanitize=address -fsanitize-recover=address
 else
 	CFLAGS	+= -O2 -march=native -flto
@@ -177,6 +182,25 @@ test: all ## This check the parsing on all the map in the scenes directory.
 	@for file in `LS scenes | grep .rt | sort -u`; \
 		do echo $$file && ./RT scenes/$$file -t; done
 .PHONY: test
+
+aclean:
+	rm -rf "./built/$(APP_NAME).app/"
+	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(APP_NAME).app $(OKLOGO)"
+.PHONY: aclean
+built: $(NAME) aclean
+	mkdir -p "./built/$(APP_NAME).app"/Contents/{MacOS,Resources} 2> /dev/null || true
+	mkdir "./built/$(APP_NAME).app"/Contents/MacOS/resources 2> /dev/null || true
+	cp ./resources/built/Info.plist "./built/$(APP_NAME).app/Contents/"
+	cp ./resources/built/fe_icon.icns "./built/$(APP_NAME).app/Contents/Resources"
+
+	cp ./resources/materialList.csv "./built/$(APP_NAME).app/Contents/MacOS/resources"
+	cp -r ./resources/textures "./built/$(APP_NAME).app/Contents/MacOS/resources"
+	cp -r ./scenes "./built/$(APP_NAME).app/Contents/MacOS"
+	cp ./cimgui.dylib "./built/$(APP_NAME).app/Contents/MacOS"
+	cp ./$(NAME) "./built/$(APP_NAME).app/Contents/MacOS/binary"
+	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $(APP_NAME).app $(OKLOGO)"
+.PHONY: built
+
 norme: ## Check the norme of the project and the libraries.
 	$(MAKE) -C $(LFT_PATH) norme
 	$(MAKE) -C $(LRT_PATH) norme

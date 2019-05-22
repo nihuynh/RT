@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 09:07:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 17:37:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
+#include "config.h"
 #include "libft.h"
 #include "imgui_impl_sdl.h"
 
@@ -42,6 +43,8 @@ void
 	int			quit;
 
 	start_time = ft_curr_usec();
+	if (DEBUG)
+		ft_printf("RT is starting\n");
 	quit = 0;
 	while (!quit)
 	{

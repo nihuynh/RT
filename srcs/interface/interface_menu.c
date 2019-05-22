@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 09:31:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 21:08:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void
 		igMenuItemBoolPtr("Export Scene", NULL, &ui->export_open, 1);
 		igMenuItemBool("Reload Current Scene", NULL, 0, 1);
 		if(igMenuItemBool("Quit", NULL, 0, 1))
-			exit_safe(get_app(NULL));
+			exit_safe(EXIT_SUCCESS);
 		igEndMenu();
 	}
 	if (igBeginMenu("Edit", 1))

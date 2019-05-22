@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 09:44:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 18:48:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,13 @@ static inline void
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void
-	hook_sdl(t_data *app)
+static inline void
+	hook_cam_to_gui(t_data *app)
 {
-	app->sdl->key_map = &key_event;
-	app->sdl->mouse_map = &mouse_motion;
-	app->sdl->update = &update;
-	app->sdl->render_gui = &render_gui;
-	app->sdl->click_map = &click_event;
-	hook_render_to_gui(&app->gui, app->sdl->win);
-	app->gui.ui.app = app;
+	set_direction(&app->cam, app->cam.dir);
+	if (DEBUG)
+		print_matrix(&app->cam.rotation);
+	app->gui.cam_cpy = app->cam;
 }
 
 static inline void
@@ -82,12 +79,36 @@ static inline void
 }
 
 static inline void
-	hook_cam_to_gui(t_data *app)
+	set_win_title(SDL_Window *win, t_data *app)
 {
-	set_direction(&app->cam, app->cam.dir);
-	if (DEBUG)
-		print_matrix(&app->cam.rotation);
-	app->gui.cam_cpy = app->cam;
+	char	*title;
+
+	if (app->gui.scene_name == NULL)
+		return ;
+	if (!(app->gui.scene_name = ft_strrchr(app->arg, '/')))
+		app->gui.scene_name = app->arg;
+	else
+		app->gui.scene_name++;
+	if (!(title = ft_strjoin("RT - ", app->gui.scene_name)))
+		ft_error(__func__, __LINE__);
+	SDL_SetWindowTitle(win, title);
+	ft_strdel(&title);
+}
+
+void
+	hook_sdl(t_data *app)
+{
+	app->sdl->key_map = &key_event;
+	app->sdl->mouse_map = &mouse_motion;
+	app->sdl->update = &update;
+	app->sdl->render_gui = &render_gui;
+	app->sdl->click_map = &click_event;
+	hook_render_to_gui(&app->gui, app->sdl->win);
+	app->gui.ui.app = app;
+	default_settings(&app->settings);
+	default_gui_settings(&app->gui, app);
+	app->sdl->needs_render = true;
+	app->sdl->partial_render = false;
 }
 
 bool
@@ -101,20 +122,6 @@ bool
 	return (true);
 }
 
-static inline void
-	set_win_title(SDL_Window *win, t_data *app)
-{
-	char	*title;
-
-	if (!(app->gui.scene_name = ft_strrchr(app->arg, '/')))
-		app->gui.scene_name = app->arg;
-	else
-		app->gui.scene_name++;
-	if (!(title = ft_strjoin("RT - ", app->gui.scene_name)))
-		ft_error(__func__, __LINE__);
-	SDL_SetWindowTitle(win, title);
-	ft_strdel(&title);
-}
 
 void
 	load_scene(t_data *app, char *filename)

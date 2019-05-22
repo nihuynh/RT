@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:24:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 19:56:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,30 @@ void
 		ft_lstdel(&app->lst_tex, &del_tex);
 	if (DEBUG)
 		ft_printf("Texture and material deallocated.\n");
+}
+
+void
+	free_app(t_data *app)
+{
+	free_lst(app);
+	SDL_GL_DeleteContext(app->gui.gl_context);
+	exit_sdl(app->sdl);
+	free(app);
+	get_app(app);
+}
+
+void
+	exit_safe(int err_code)
+{
+	t_data	*app;
+	int		debug_leak;
+
+	app = get_app(NULL);
+	if (app == NULL)
+		return ;
+	debug_leak = app->option.key_found_bitrpz & (1 << ('l' - 'a'));
+	free_app(app);
+	while (debug_leak)
+		;
+	exit(err_code);
 }

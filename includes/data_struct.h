@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 09:29:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 19:22:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <SDL.h>
 # include "libui.h"
 # include "color.h"
+# include "option.h"
 # include "rtstruct.h"
 
 /*
@@ -88,6 +89,7 @@ typedef struct		s_scene
 struct				s_data
 {
 	t_sdl			*sdl;
+	t_option		option;
 	t_settings		settings;
 	t_gui			gui;
 	t_scene			scene;
@@ -97,7 +99,7 @@ struct				s_data
 	char			*arg;
 };
 
-void				exit_safe(t_data *app);
+t_data				*get_app(t_data *app);
 char				*get_obj_str(int type);
 int					get_obj_type(char *obj_type);
 void				obj_set(t_obj *obj, int type, void *shape);

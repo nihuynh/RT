@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 02:59:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 21:12:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "rt.h"
 #include "parse.h"
 #include <unistd.h>
 #include <stdlib.h>
@@ -79,8 +80,7 @@ void
 		"Error in the function", scene_file->err_func, scene_file->err_file,
 		scene_file->err_at_line);
 	ft_tabdel(scene_file->greed);
-	exit_safe(scene_file->app);
-	exit(errno);
+	exit_safe(errno);
 }
 
 /**
