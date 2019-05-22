@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:00:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 09:29:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ typedef struct		s_scene
 
 struct				s_data
 {
+	t_sdl			*sdl;
 	t_settings		settings;
-	t_sdl			sdl;
 	t_gui			gui;
 	t_scene			scene;
 	t_list			*lst_mat;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:29:58 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 09:31:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ static inline void
 		light_settings(app);
 	if (igTreeNodeStr("Filters"))
 	{
-		if (igCheckbox("Sepia", &app->sdl.sepia))
-			app->sdl.grayscale = false;
+		if (igCheckbox("Sepia", &app->sdl->sepia))
+			app->sdl->grayscale = false;
 		igSameLine(160, 0);
-		if (igCheckbox("GrayScale", &app->sdl.grayscale))
-			app->sdl.sepia = false;
+		if (igCheckbox("GrayScale", &app->sdl->grayscale))
+			app->sdl->sepia = false;
 		igTreePop();
 	}
 }
@@ -74,7 +74,7 @@ static inline void
 void
 	scene_win(t_ui_func *ui)
 {
-	igSetNextWindowPos((ImVec2){ui->app->sdl.img.width, 18},
+	igSetNextWindowPos((ImVec2){ui->app->sdl->img.width, 18},
 						ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
@@ -84,6 +84,6 @@ void
 	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))
 		object_settings(ui->app);
 	if (igButton("Render new frame", (ImVec2){130, 20}))
-		ui->app->sdl.needs_render = true;
+		ui->app->sdl->needs_render = true;
 	igEnd();
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 05:24:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 09:45:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 void	err_win(t_ui_func *ui)
 {
-	if (ui->err_open == false)
-		return ;
 	igBegin("Error", &ui->err_open, ImGuiWindowFlags_AlwaysAutoResize);
 	igText(ui->err_msg);
 	if (igButton("Close", (ImVec2){0, 0}))
@@ -29,8 +27,6 @@ void	export_win(t_ui_func *ui)
 {
 	char buff[50];
 
-	if (ui->export_open == false)
-		return ;
 	ft_strcpy(buff, "scenes/");
 	ft_strlcat(buff, ui->app->gui.scene_name, 50 - ft_strlen(buff));
 	igBegin("Export Scene", &ui->export_open,
@@ -48,8 +44,6 @@ void	load_win(t_ui_func *ui)
 {
 	char		buff[50];
 
-	if (ui->load_open == false)
-		return ;
 	ft_strlcpy(buff, ui->app->arg, sizeof(buff));
 	igBegin("Load Scene", &ui->load_open,
 				ImGuiWindowFlags_AlwaysAutoResize);
@@ -70,13 +64,16 @@ void	load_win(t_ui_func *ui)
 
 void	stats_win(t_ui_func *ui)
 {
-	if (ui->stats_open == false)
-		return ;
-	igSetNextWindowPos((ImVec2){0, ui->app->sdl.img.height + 18},
+	igSetNextWindowPos((ImVec2){0, ui->app->sdl->img.height + 18},
 		(ImGuiCond_Once), (ImVec2){0, 0});
 	igBegin("Stats", &ui->stats_open, ImGuiWindowFlags_AlwaysAutoResize);
-	igText("Last frame took : %fms", ui->app->sdl.render_time[P_TIME_LEN - 1]);
-	igPlotLines("Render Time (ms)", &(ui->app->sdl.render_time[0]),
+	igProgressBar(ui->app->sdl->progress_sub_sample, (ImVec2){150, 0}, "Render");
+	igSameLine(220, 0);
+	igText("Render time : %fms", ui->app->sdl->render_time[P_TIME_LEN - 1]);
+	igText("Gui FPS (%i)", (int)ui->app->sdl->gui_time[GUI_FPS - 1]);
+	igPlotLines("Render Time (ms)", &(ui->app->sdl->render_time[0]),
 		P_TIME_LEN, 0, NULL, 0, 3.402823466e+38F, (ImVec2){400, 80}, 4);
+	igPlotHistogramFloatPtr("Gui FPS", &(ui->app->sdl->gui_time[0]),
+		GUI_FPS, 0, NULL, 0, 60, (ImVec2){400, 80}, 4);
 	igEnd();
 }

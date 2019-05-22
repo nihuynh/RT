@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 21:59:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 09:32:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 #include "libui.h"
 #include "config.h"
 
-int		init_sdl(t_sdl *sdl, int width, int height)
+t_sdl *init_sdl(int width, int height)
 {
-	ft_bzero(sdl, sizeof(t_sdl));
+	t_sdl	*sdl;
+
+	if (!(sdl = ft_memalloc(sizeof(t_sdl))))
+		error_sdl(sdl);
 	sdl->height_vp = height;
 	sdl->width_vp = width;
 	sdl->img.height = height * RENDER_SCALE;
@@ -37,5 +40,5 @@ int		init_sdl(t_sdl *sdl, int width, int height)
 	if (!(sdl->renderer = SDL_CreateRenderer(sdl->win, -1, 0x00000001)))
 		error_sdl(sdl);
 	SDL_SetHint(SDL_HINT_BMP_SAVE_LEGACY_FORMAT, "1");
-	return (0);
+	return (sdl);
 }

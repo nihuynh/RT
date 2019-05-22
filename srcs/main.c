@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 18:00:38 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 09:29:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	interactive(char *filename, int runmode)
 	parse_material_csv(&app, "resources/materialList.csv");
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
-	init_sdl(&app.sdl, WIDTH, HEIGHT);
-	init_mthr_sdl(&app.sdl, &process_pixel, &app);
+	app.sdl = init_sdl(WIDTH, HEIGHT);
+	init_mthr_sdl(app.sdl, &process_pixel, &app);
 	hook_sdl(&app);
 	load_scene(&app, filename);
 	if (runmode == RM_UNIT_TEST)
 		return ;
 	if (DEBUG)
 		ft_printf("RT is starting\n");
-	loop_sdl(&app.sdl, &app);
+	loop_sdl(app.sdl, &app);
 	free_app(&app);
 }
 

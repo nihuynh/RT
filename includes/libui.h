@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 05:24:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 09:27:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <stdbool.h>
 
 # define THR_C			8
-# define UNDER_SAMPLE	32
+# define SUB_SAMPLE		16
 # define BATCH_SIZE		16
 # define C_MASK			0xFF000000
-# define P_TIME_LEN 50
+# define P_TIME_LEN		50
+# define GUI_FPS		50
 
 typedef struct		s_pxl
 {
@@ -44,7 +45,8 @@ struct				s_sdl
 {
 	bool			fullscreen;
 	t_img			img;
-	int				inc_offset;
+	float			progress_sub_sample;
+	int				sub_sample;
 	bool			needs_render;
 	bool			partial_render;
 	int				width_vp;
@@ -62,11 +64,12 @@ struct				s_sdl
 	bool			sepia;
 	bool			grayscale;
 	float			render_time[P_TIME_LEN];
+	float			gui_time[GUI_FPS];
 };
 
 struct				s_data_thr
 {
-	int				*data;
+	uint32_t		*pixels;
 	int				idx;
 	t_sdl			*sdl;
 	int				(*do_pxl) (int, int, void*);
@@ -96,7 +99,8 @@ struct				s_thr_pool
 */
 
 void				error_sdl(t_sdl *sdl);
-int					init_sdl(t_sdl *sdl, int width, int height);
+// int					init_sdl(t_sdl *sdl, int width, int height);
+t_sdl				*init_sdl(int width, int height);
 void				exit_sdl(t_sdl *sdl);
 void				render_sdl(t_sdl *sdl, int (*f) (int, int, void*), void *d);
 void				loop_sdl(t_sdl *sdl, void *arg);
@@ -106,6 +110,7 @@ void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 void				render_mthr_sdl(t_sdl *sdl);
 void				apply_simple_filter(t_sdl *sdl, uint32_t (*fun) (uint32_t));
 void				push_render_time(t_sdl *sdl, long new_frame);
+void				push_gui_time(t_sdl *sdl, long new_frame);
 
 /*
 ** Pool Render :

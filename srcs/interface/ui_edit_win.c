@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:07:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 09:46:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	add_obj_win(t_ui_func *ui)
 	{
 		new_obj(ui->app, ui->add_obj_type);
 		ui->add_obj_open = false;
-		ui->app->sdl.needs_render = true;
+		ui->app->sdl->needs_render = true;
+		ui->app->sdl->partial_render = false;
 	}
 	igEnd();
 }
@@ -43,7 +44,8 @@ void	del_obj_win(t_ui_func *ui)
 		{
 			delete_obj(ui->app);
 			ui->del_obj_open = false;
-			ui->app->sdl.needs_render = true;
+			ui->app->sdl->needs_render = true;
+			ui->app->sdl->partial_render = false;
 		}
 		igSameLine(0, 0);
 		if (igButton("No", (ImVec2){0, 0}))

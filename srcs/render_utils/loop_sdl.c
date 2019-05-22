@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   loop_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 09:07:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
-#include "ftio.h"
+#include "libft.h"
 #include "imgui_impl_sdl.h"
 
 static inline void
@@ -37,9 +37,11 @@ static inline void
 void
 	loop_sdl(t_sdl *sdl, void *arg)
 {
+	long		start_time;
 	SDL_Event	event;
 	int			quit;
 
+	start_time = ft_curr_usec();
 	quit = 0;
 	while (!quit)
 	{
@@ -59,5 +61,7 @@ void
 			pool_render(sdl->pool);
 		if (sdl->render_gui)
 			sdl->render_gui(arg);
+		push_gui_time(sdl, ft_curr_usec() - start_time);
+		start_time = ft_curr_usec();
 	}
 }

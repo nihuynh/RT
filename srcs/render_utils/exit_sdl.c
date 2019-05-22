@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 12:52:36 by sklepper          #+#    #+#             */
-/*   Updated: 2019/04/24 16:39:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 06:38:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ void	exit_sdl(t_sdl *sdl)
 		SDL_DestroyWindow(sdl->win);
 	if (sdl->data_thr != NULL)
 	{
-		while (++idx < THR_C)
-			free((void*)sdl->data_thr[idx].data);
 		free((void*)sdl->data_thr);
+		sdl->data_thr = NULL;
 	}
 	if (sdl->pool != NULL)
 		destroy_pool(sdl->pool);

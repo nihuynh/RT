@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 02:25:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 09:44:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ static inline void
 void
 	hook_sdl(t_data *app)
 {
-	app->sdl.key_map = &key_event;
-	app->sdl.mouse_map = &mouse_motion;
-	app->sdl.update = &update;
-	app->sdl.render_gui = &render_gui;
-	app->sdl.click_map = &click_event;
-	hook_render_to_gui(&app->gui, app->sdl.win);
+	app->sdl->key_map = &key_event;
+	app->sdl->mouse_map = &mouse_motion;
+	app->sdl->update = &update;
+	app->sdl->render_gui = &render_gui;
+	app->sdl->click_map = &click_event;
+	hook_render_to_gui(&app->gui, app->sdl->win);
 	app->gui.ui.app = app;
 }
 
@@ -127,8 +127,9 @@ void
 	default_settings(&app->settings);
 	default_gui_settings(&app->gui, app);
 	hook_cam_to_gui(app);
-	set_win_title(app->sdl.win, app);
-	app->sdl.needs_render = true;
+	set_win_title(app->sdl->win, app);
+	app->sdl->needs_render = true;
+	app->sdl->partial_render = false;
 	if (DEBUG)
 		ft_printf("Loading of the scene is completed\n");
 }

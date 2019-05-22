@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 18:20:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 09:31:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,16 @@ void
 	else if (app->gui.render_focused)
 		return ;
 	else if (key == SDLK_p && state == SDL_RELEASED)
-		save_screenshot(&app->sdl, app->arg);
+		save_screenshot(app->sdl, app->arg);
 	else if (key == SDLK_SPACE && state == SDL_RELEASED)
 	{
 		mouse_captured ^= 1;
 		SDL_SetRelativeMouseMode(mouse_captured);
 	}
 	else if (key == SDLK_f && state == SDL_RELEASED)
-		app->sdl.fullscreen = (app->sdl.fullscreen == true) ? false : true;
+		app->sdl->fullscreen = (app->sdl->fullscreen == true) ? false : true;
 	else if (key == SDLK_r && state == SDL_RELEASED
-			&& (app->sdl.needs_render = 1))
+			&& (app->sdl->needs_render = 1))
 		app->cam = app->gui.cam_cpy;
 	camera(&app->cam, key, state);
 }
@@ -77,7 +77,7 @@ void
 	app = arg;
 	x = ev->button.x - app->gui.pos_render.x;
 	y = ev->button.y - app->gui.pos_render.y;
-	if (ft_btw(x, 0, app->sdl.img.width) && ft_btw(y, 0, app->sdl.img.height))
+	if (ft_btw(x, 0, app->sdl->img.width) && ft_btw(y, 0, app->sdl->img.height))
 	{
 		if (ev->button.button == SDL_BUTTON_LEFT && ev->button.clicks == 2)
 			app->gui.obj_set = find_obj_at_pixel(app, x, y);
@@ -96,6 +96,8 @@ void
 	{
 		app->cam.y_angle += event->motion.xrel * MOUSE_SCALING;
 		app->cam.x_angle += event->motion.yrel * MOUSE_SCALING;
-		app->sdl.needs_render = true;
+		if (app->sdl->partial_render)
+			app->sdl->sub_sample = SUB_SAMPLE;
+		app->sdl->needs_render = true;
 	}
 }

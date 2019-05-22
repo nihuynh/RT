@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 17:30:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 09:31:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	render_win(t_ui_func *ui)
 	ImVec2	pos;
 
 	igSetNextWindowPos((ImVec2){0, 18}, ui->flags_render, (ImVec2){0, 0});
-	igSetNextWindowSize((ImVec2){ui->app->sdl.img.width,
-								ui->app->sdl.img.height}, 0);
+	igSetNextWindowSize((ImVec2){ui->app->sdl->img.width,
+								ui->app->sdl->img.height}, 0);
 	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
 	igBegin("render", NULL, RENDER_FLAGS);
 	igImage((void*)(intptr_t)ui->app->gui.texture_id,
-		(ImVec2){ui->app->sdl.img.width, ui->app->sdl.img.height},
+		(ImVec2){ui->app->sdl->img.width, ui->app->sdl->img.height},
 		(ImVec2){0, 0}, (ImVec2){1, 1}, (ImVec4){1, 1, 1, 1},
 		(ImVec4){0, 0, 0, 0});
 	pos = igGetWindowPos();
