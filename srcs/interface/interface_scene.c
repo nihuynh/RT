@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 09:31:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 00:28:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ static inline void
 }
 
 void
-	scene_win(t_ui_func *ui)
+	scene_win(t_gui *gui)
 {
-	igSetNextWindowPos((ImVec2){ui->app->sdl->img.width, 18},
+	igSetNextWindowPos((ImVec2){gui->sdl->img.width, 18},
 						ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
 	igBegin("Scene", NULL, ImGuiWindowFlags_AlwaysAutoResize);
 	if (igCollapsingHeader("Render Settings", ImGuiTreeNodeFlags_DefaultOpen))
-		render_settings(ui->app);
+		render_settings(gui->app);
 	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))
-		object_settings(ui->app);
+		object_settings(gui->app);
 	if (igButton("Render new frame", (ImVec2){130, 20}))
-		ui->app->sdl->needs_render = true;
+		gui->sdl->needs_render = true;
 	igEnd();
 }

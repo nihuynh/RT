@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 19:22:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 00:47:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@
 ** Structures :
 */
 
-typedef struct s_ui_func	t_ui_func;
+typedef struct s_scene		t_scene;
 typedef struct s_data		t_data;
+typedef struct s_gui		t_gui;
+typedef struct s_settings	t_settings;
 
-struct				s_ui_func
+struct				s_gui
 {
 	t_data			*app;
+	t_sdl			*sdl;
+	uint32_t		texture_id;
+	SDL_GLContext	gl_context;
+
 	int				flags_render;
 	char			err_msg[50];
 	bool			err_open;
@@ -41,29 +47,18 @@ struct				s_ui_func
 	int				add_obj_type;
 	bool			render_open;
 	bool			scene_open;
-};
-
-typedef struct		s_win
-{
-	bool			is_open;
-	void			(*func_win)	(t_ui_func*);
-}					t_win;
-
-typedef struct		s_gui
-{
-	t_ui_func		ui;
+	// t_gui_data		ui;
 	t_cam			cam_cpy;
 	char			*scene_name;
 	bool			fullscreen;
-	uint32_t		texture_id;
 	bool			render_focused;
 	t_list			*light_set;
 	t_obj			*obj_set;
 	t_pt3			pos_render;
-	SDL_GLContext	gl_context;
-}					t_gui;
 
-typedef struct		s_settings
+};
+
+struct				s_settings
 {
 	t_color			back_color;
 	t_color			amb_light;
@@ -78,25 +73,25 @@ typedef struct		s_settings
 	bool			anti_a;
 	int				depth_max;
 	float			fov;
-}					t_settings;
+};
 
-typedef struct		s_scene
+struct				s_scene
 {
 	t_list			*lst_obj;
 	t_list			*lst_light;
-}					t_scene;
+};
 
 struct				s_data
 {
-	t_sdl			*sdl;
+	char			*arg;
 	t_option		option;
-	t_settings		settings;
-	t_gui			gui;
+	t_cam			cam;
 	t_scene			scene;
 	t_list			*lst_mat;
 	t_list			*lst_tex;
-	t_cam			cam;
-	char			*arg;
+	t_sdl			*sdl;
+	t_gui			gui;
+	t_settings		settings;
 };
 
 t_data				*get_app(t_data *app);

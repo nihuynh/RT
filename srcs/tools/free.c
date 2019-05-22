@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 22:16:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 00:51:39 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,6 @@ void
 void
 	exit_safe(int err_code)
 {
-	free(get_app(NULL));
+	free_app(get_app(NULL));
 	exit(err_code);
 }

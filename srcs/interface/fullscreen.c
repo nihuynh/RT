@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 07:18:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 00:39:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	fullscreen(t_sdl *sdl, t_gui *gui)
 		ofs = idx * sdl->thr_len;
 		sdl->data_thr[idx].pixels = &sdl->img.pixels[ofs];
 	}
-	gui->ui.flags_render = (sdl->img.height == sdl->height_vp)
-								? ImGuiCond_Always : ImGuiCond_Once;
+	gui->flags_render = (sdl->img.height == sdl->height_vp) ? ImGuiCond_Always
+		: ImGuiCond_Once;
 }

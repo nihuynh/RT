@@ -6,30 +6,30 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 09:31:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 00:41:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 
-void	render_win(t_ui_func *ui)
+void	render_win(t_gui *gui)
 {
 	ImVec2	pos;
 
-	igSetNextWindowPos((ImVec2){0, 18}, ui->flags_render, (ImVec2){0, 0});
-	igSetNextWindowSize((ImVec2){ui->app->sdl->img.width,
-								ui->app->sdl->img.height}, 0);
+	igSetNextWindowPos((ImVec2){0, 18}, gui->flags_render, (ImVec2){0, 0});
+	igSetNextWindowSize((ImVec2){gui->sdl->img.width,
+								gui->sdl->img.height}, 0);
 	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
 	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
 	igBegin("render", NULL, RENDER_FLAGS);
-	igImage((void*)(intptr_t)ui->app->gui.texture_id,
-		(ImVec2){ui->app->sdl->img.width, ui->app->sdl->img.height},
+	igImage((void*)(intptr_t)gui->texture_id,
+		(ImVec2){gui->sdl->img.width, gui->sdl->img.height},
 		(ImVec2){0, 0}, (ImVec2){1, 1}, (ImVec4){1, 1, 1, 1},
 		(ImVec4){0, 0, 0, 0});
 	pos = igGetWindowPos();
-	ui->app->gui.pos_render.x = pos.x;
-	ui->app->gui.pos_render.y = pos.y;
-	ui->app->gui.render_focused = !igIsWindowFocused(0);
+	gui->pos_render.x = pos.x;
+	gui->pos_render.y = pos.y;
+	gui->render_focused = !igIsWindowFocused(0);
 	igEnd();
 	igPopStyleVar(2);
 }

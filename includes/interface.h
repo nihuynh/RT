@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 03:15:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 00:20:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@
 */
 
 void	fullscreen(t_sdl *sdl, t_gui *gui);
-void	err_win(t_ui_func *ui);
-void	export_win(t_ui_func *ui);
-void	load_win(t_ui_func *ui);
-void	stats_win(t_ui_func *ui);
+void	err_win(t_gui *gui);
+void	export_win(t_gui *gui);
+void	load_win(t_gui *gui);
+void	stats_win(t_gui *gui);
 
-void	add_obj_win(t_ui_func *ui);
-void	del_obj_win(t_ui_func *ui);
+void	add_obj_win(t_gui *gui);
+void	del_obj_win(t_gui *gui);
 
-void	render_win(t_ui_func *ui);
-void	scene_win(t_ui_func *ui);
-void	interface_mainmenu(t_ui_func *ui);
+void	render_win(t_gui *gui);
+void	scene_win(t_gui *gui);
+void	interface_mainmenu(t_gui *gui);
 
 int		export_scene(t_data *app, char *filename);
 void	export_material(int fd, t_material *mat);

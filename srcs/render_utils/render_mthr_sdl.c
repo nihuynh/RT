@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 09:22:42 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 23:19:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static inline void
 void
 	render_mthr_sdl(t_sdl *sdl)
 {
-	long		start_time;
 	int			cthr;
 	int			sats;
 	void		*ptr;
 	pthread_t	threads[THR_C];
+	long		elapsed_time;
 
-	start_time = ft_curr_usec();
+	elapsed_time = ft_curr_usec();
 	if (!sdl->partial_render && sdl->sub_sample <= 1)
 	{
 		sdl->partial_render = true;
@@ -73,6 +73,8 @@ void
 	}
 	if (sdl->sub_sample > 1)
 		sdl->sub_sample--;
-	push_render_time(sdl, ft_curr_usec() - start_time);
+	elapsed_time = ft_curr_usec() - elapsed_time;
+	push_render_time(sdl, (float)elapsed_time / 1000);
+	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 	sdl->progress_sub_sample = fabsf((float)(sdl->sub_sample  - SUB_SAMPLE) / (SUB_SAMPLE - 1));
 }

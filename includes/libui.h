@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 09:27:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 23:31:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define SUB_SAMPLE		16
 # define BATCH_SIZE		16
 # define C_MASK			0xFF000000
-# define P_TIME_LEN		50
+# define P_TIME_LEN		30
 # define GUI_FPS		50
 
 typedef struct		s_pxl
@@ -99,7 +99,6 @@ struct				s_thr_pool
 */
 
 void				error_sdl(t_sdl *sdl);
-// int					init_sdl(t_sdl *sdl, int width, int height);
 t_sdl				*init_sdl(int width, int height);
 void				exit_sdl(t_sdl *sdl);
 void				render_sdl(t_sdl *sdl, int (*f) (int, int, void*), void *d);
@@ -109,7 +108,8 @@ void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 									void *data);
 void				render_mthr_sdl(t_sdl *sdl);
 void				apply_simple_filter(t_sdl *sdl, uint32_t (*fun) (uint32_t));
-void				push_render_time(t_sdl *sdl, long new_frame);
+
+void				push_render_time(t_sdl *sdl, float time_frame_ms);
 void				push_gui_time(t_sdl *sdl, long new_frame);
 
 /*
