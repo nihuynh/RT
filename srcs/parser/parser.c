@@ -25,7 +25,7 @@ static inline t_texture
 	if (tex == NULL)
 		return (ft_lstgetelt(scene_file->app->lst_tex, &texcmp, "none"));
 	if (!(tex->pixels))
-		tex->pixels = load_texture(tex);
+		load_texture(tex);
 	return (tex);
 }
 

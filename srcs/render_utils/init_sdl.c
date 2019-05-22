@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include "libft.h"
 #include "libui.h"
 #include "config.h"
@@ -37,5 +38,7 @@ int		init_sdl(t_sdl *sdl, int width, int height)
 	if (!(sdl->renderer = SDL_CreateRenderer(sdl->win, -1, 0x00000001)))
 		error_sdl(sdl);
 	SDL_SetHint(SDL_HINT_BMP_SAVE_LEGACY_FORMAT, "1");
+	if (IMG_Init(0) != 0)
+		error_sdl(sdl);
 	return (0);
 }

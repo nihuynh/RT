@@ -134,6 +134,7 @@ struct			s_texture
 	char		*pixels;
 	int			width;
 	int			height;
+	char		bpp;
 };
 
 typedef struct	s_uv_mapping {

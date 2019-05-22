@@ -11,8 +11,8 @@ set(PROFILE_FLAGS -g3 -O2 -march=native)
 
 add_compile_options(-Wall -Wextra -pedantic)
 
-#add_compile_options(-fsanitize=address -fsanitize-recover=address -g3)
-#add_link_options(-fsanitize=address -fsanitize-recover=address)
+add_compile_options(-fsanitize=address -fsanitize-recover=address -g3)
+add_link_options(-fsanitize=address -fsanitize-recover=address)
 
 add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>")

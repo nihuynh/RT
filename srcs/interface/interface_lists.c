@@ -60,7 +60,7 @@ void	texture_list(t_list *lst_tex, t_obj *obj)
 			{
 				obj->material.tex = tmp;
 				if (tmp->pixels == NULL)
-					tmp->pixels = load_texture(tmp);
+					load_texture(tmp);
 			}
 			if (is_selected)
 				igSetItemDefaultFocus();

@@ -16,19 +16,21 @@ target_link_libraries(imgui_impl -lstdc++)
 find_package(OpenGL REQUIRED)
 target_link_libraries(imgui_impl ${OPENGL_gl_LIBRARY})
 
-#################     SDL
+#################     SDL2 + SDL2_image
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+list(APPEND SDL2_PATH "/Users/tdarchiv/.brew")
+list(APPEND SDL2_IMAGE_PATH "/Users/tdarchiv/.brew")
+
+message("${CMAKE_MODULE_PATH}")
+message("${CMAKE_PREFIX_PATH}")
 
 find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
 
-# Stay compatible with old style find_package results
-if (NOT TARGET SDL2::SDL2)
-    message("SDL2 found with old style cmake config")
-    target_link_libraries(imgui_impl ${SDL2_LIBRARIES})
-    target_include_directories(imgui_impl PUBLIC ${SDL2_INCLUDE_DIRS})
-else()
-    message("SDL2 found with modern style cmake config")
-    target_link_libraries(imgui_impl SDL2::SDL2)
-endif()
+target_link_libraries(imgui_impl SDL2::Main)
+target_link_libraries(imgui_impl SDL2::Image)
 
 ##########################
 

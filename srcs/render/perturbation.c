@@ -86,7 +86,7 @@ t_color
 	x = uv.x * texture->width;
 	y = uv.y * texture->height;
 	pixel_ptr = (unsigned char*)texture->pixels;
-	pixel_ptr += (y * texture->width * 3) + (x * 3);
+	pixel_ptr += (y * texture->width * texture->bpp) + (x * texture->bpp);
 	pixel.r = pixel_ptr[0] / 255.f;
 	pixel.g = pixel_ptr[1] / 255.f;
 	pixel.b = pixel_ptr[2] / 255.f;

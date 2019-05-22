@@ -122,7 +122,7 @@ void			cone_new(void *res);
 
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
-char			*load_texture(t_texture *tex);
+void			load_texture(t_texture *tex);
 void			open_textures(t_data *app);
 
 /*
