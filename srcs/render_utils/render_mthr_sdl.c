@@ -3,75 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   render_mthr_sdl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/13 15:41:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 23:19:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
+#include <math.h>
 #include "libui.h"
 #include "libft.h"
-
-static inline void
-	apply_color(t_sdl *sdl)
-{
-	t_pxl		idx;
-	int			ofs;
-	uint32_t	*pc;
-	int			pxl_idx;
-
-	idx.y = -1;
-	while (++idx.y < THR_C)
-	{
-		idx.x = 0;
-		ofs = idx.y * (sdl->img.height / THR_C);
-		while (idx.x < sdl->thr_len)
-		{
-			pc = (uint32_t *)&sdl->data_thr[idx.y].data[idx.x];
-			pxl_idx = (ofs + idx.x / sdl->img.width) * sdl->img.width
-				+ idx.x % sdl->img.width;
-			sdl->img.pixels[pxl_idx] = pc[0] | C_MASK;
-			sdl->img.pixels[pxl_idx + 1] = pc[1] | C_MASK;
-			sdl->img.pixels[pxl_idx + 2] = pc[2] | C_MASK;
-			sdl->img.pixels[pxl_idx + 3] = pc[3] | C_MASK;
-			idx.x += 4;
-		}
-	}
-}
 
 static inline void
 	*process_data(void *arg)
 {
 	t_data_thr	*slice;
 	t_img		img;
-	int			i;
+	int			idx_in_slice;
+	int			inc;
 	int			ofs;
 
 	slice = arg;
 	img = slice->sdl->img;
 	ofs = slice->idx * (img.height / THR_C);
-	i = -1;
-	while (++i < slice->sdl->thr_len)
+	idx_in_slice = 0;
+	inc = slice->sdl->sub_sample;
+	if (inc == SUB_SAMPLE)
+		ft_bzero(slice->pixels, sizeof(int) * slice->sdl->thr_len);
+	while (idx_in_slice < slice->sdl->thr_len)
 	{
-		slice->data[i] = slice->do_pxl(i % img.width,
-		ofs + i / img.width,
-		slice->prg_data);
+		slice->pixels[idx_in_slice] = slice->do_pxl(idx_in_slice % img.width,
+		ofs + idx_in_slice / img.width, slice->prg_data) | C_MASK;
+		idx_in_slice += inc;
 	}
 	pthread_exit(NULL);
 }
 
+
 void
 	render_mthr_sdl(t_sdl *sdl)
 {
-	long		elapsed_time;
 	int			cthr;
 	int			sats;
 	void		*ptr;
 	pthread_t	threads[THR_C];
+	long		elapsed_time;
 
 	elapsed_time = ft_curr_usec();
+	if (!sdl->partial_render && sdl->sub_sample <= 1)
+	{
+		sdl->partial_render = true;
+		sdl->sub_sample = SUB_SAMPLE;
+	}
 	cthr = -1;
 	sats = 0;
 	while (++cthr < THR_C && !sats)
@@ -79,11 +63,18 @@ void
 		ptr = &(sdl->data_thr[cthr]);
 		sats = pthread_create(&threads[cthr], NULL, process_data, ptr);
 	}
-	sdl->needs_render = false;
 	cthr = -1;
 	while (++cthr < THR_C)
 		pthread_join(threads[cthr], NULL);
-	apply_color(sdl);
+	if (sdl->partial_render && sdl->sub_sample <= 1)
+	{
+		sdl->needs_render = false;
+		sdl->partial_render = false;
+	}
+	if (sdl->sub_sample > 1)
+		sdl->sub_sample--;
 	elapsed_time = ft_curr_usec() - elapsed_time;
-	push_render_time(sdl, elapsed_time);
+	push_render_time(sdl, (float)elapsed_time / 1000);
+	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
+	sdl->progress_sub_sample = fabsf((float)(sdl->sub_sample  - SUB_SAMPLE) / (SUB_SAMPLE - 1));
 }

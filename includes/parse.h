@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:15:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 03:55:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ struct			s_parse_txt
 	int			line_max;
 	t_data		*app;
 	bool		is_pop;
+	bool		exit_on_err;
 	const char	*err_func;
 	const char	*err_file;
 	int			err_at_line;

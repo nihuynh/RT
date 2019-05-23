@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/24 16:12:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 18:00:38 by sklepper         ###   ########.fr       */
+/*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
+/*   Updated: 2019/05/23 03:02:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,18 @@ void	interactive(char *filename, int runmode)
 	get_app(&app);
 	init_textures(&app);
 	parse_material_csv(&app, "resources/materialList.csv");
+	get_scenes(&app);
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
-	init_sdl(&app.sdl, WIDTH, HEIGHT);
-	init_mthr_sdl(&app.sdl, &process_pixel, &app);
+	app.sdl = init_sdl(WIDTH, HEIGHT);
+	init_mthr_sdl(app.sdl, &process_pixel, &app);
 	hook_sdl(&app);
 	load_scene(&app, filename);
 	if (runmode == RM_UNIT_TEST)
 		return ;
 	if (DEBUG)
 		ft_printf("RT is starting\n");
-	loop_sdl(&app.sdl, &app);
+	loop_sdl(app.sdl, &app);
 	free_app(&app);
 }
 
@@ -56,7 +57,7 @@ int		main(int ac, char **av)
 		ft_putendl(USAGE);
 		return (-1);
 	}
-	if ((options = ft_options(ac, av, USAGE)) == -1)
+	if ((options = ft_options(ac, av, USAGE).key_found_bitrpz) == -1)
 		return (-1);
 	if (ac == 2 || (ac > 2 && options != 0))
 	{

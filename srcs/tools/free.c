@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:24:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 05:54:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,18 @@ static inline void
 	free(mat);
 }
 
+static inline void
+	del_scene_lst(void *content, size_t content_size)
+{
+	t_scene_name *scene;
+
+	(void)content_size;
+	scene = content;
+	free(scene->dir);
+	free(scene->name);
+	free(scene);
+}
+
 void
 	free_scene(t_data *app)
 {
@@ -109,6 +121,37 @@ void
 		ft_lstdel(&app->lst_mat, &del_mat);
 	if (app->lst_tex)
 		ft_lstdel(&app->lst_tex, &del_tex);
+	if (app->lst_scenes)
+		ft_lstdel(&app->lst_scenes, &del_scene_lst);
 	if (DEBUG)
 		ft_printf("Texture and material deallocated.\n");
+}
+
+void
+	free_app(t_data *app)
+{
+	int		debug_leak;
+
+	free_lst(app);
+	SDL_GL_DeleteContext(app->gui.gl_context);
+	exit_sdl(app->sdl);
+	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
+	while (debug_leak)
+		;
+	get_app(app);
+}
+
+void
+	exit_safe(int err_code)
+{
+	int		debug_leak;
+	t_data	*app;
+
+	app = get_app(NULL);
+	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
+	(app->option.key_found_bitrpz &= ~(1UL << ('l' - 'a')));
+	free_app(app);
+	while (debug_leak)
+		;
+	exit(err_code);
 }

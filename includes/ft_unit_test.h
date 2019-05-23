@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_unit_test.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 03:23:35 by nihuynh          ###   ########.fr       */
+/*   Created: 2019/05/23 04:20:38 by nihuynh           #+#    #+#             */
+/*   Updated: 2019/05/23 04:36:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#ifndef FT_UNIT_TEST_H
+# define FT_UNIT_TEST_H
 
-void
-	free_app(t_data *app)
-{
-	free_lst(app);
-	SDL_GL_DeleteContext(app->gui.gl_context);
-	exit_sdl(&app->sdl);
-}
+/**
+** @brief 	:
+** # include "ft_unit_test.h"
+*/
 
-void
-	exit_safe(t_data *app)
-{
-	free_lst(app);
-	SDL_GL_DeleteContext(app->gui.gl_context);
-	exit_sdl(&app->sdl);
-	exit(0);
-}
+# include "rt.h"
+# include "export.h"
+# include "libft.h"
+
+int		export_test_suite(t_data *const_data);
+
+#endif

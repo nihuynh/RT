@@ -6,34 +6,37 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 18:04:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 01:24:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include "rtstruct.h"
 #include "libft.h"
+#include <math.h>
+
+float					ft_btwf(float value, float limit1, float limit2)
+{
+	return (value >= fminf(limit1, limit2) && value <= fmaxf(limit1, limit2));
+}
 
 t_inter
 	not_compare(t_inter left, t_inter right)
 {
 	t_inter no_inter;
 
-	if (left.dist <= right.dist)
+	inter_set(&no_inter, right.ray);
+	if (left.dist == HUGEVAL || right.dist == HUGEVAL)
 		return (left);
-	if (left.dist_max <= right.dist_max)
-	{
-		inter_set(&no_inter, left.ray);
+	if (left.dist < right.hit_pts.x && left.dist < right.hit_pts.y)
+		return (left);
+	if (left.dist > right.hit_pts.y && left.dist > right.hit_pts.x)
+		return (left);
+	if (ft_btwf(left.hit_pts.x, right.hit_pts.y, right.hit_pts.x)
+		&& ft_btwf(left.hit_pts.y, right.hit_pts.y, right.hit_pts.x))
 		return (no_inter);
-	}
-	else if (left.dist <= right.dist_max)
-	{
-		right.dist = right.dist_max;
-		return (right);
-
-	}
-	return (left);
-
+	right.dist = right.hit_pts.y;
+	return (right);
 }
 
 t_inter
@@ -49,23 +52,25 @@ t_inter
 {
 	t_inter no_inter;
 
-	if (ft_maxf(left.dist, right.dist) < ft_minf(left.dist_max, right.dist_max))
-		return (union_compare(left, right));
 	inter_set(&no_inter, left.ray);
+	if (left.dist == HUGEVAL || right.dist == HUGEVAL)
+		return (no_inter);
+	if (fmaxf(left.hit_pts.x, right.hit_pts.x) <= fminf(left.hit_pts.y, right.hit_pts.y))
+		return (union_compare(left, right));
 	return (no_inter);
 }
 
 t_inter
-	inter_from_csg_op(t_csg_op *csg_op, t_ray incoming)
+	inter_from_csg_op(int type, t_inter left, t_inter right, t_ray incoming)
 {
 	t_inter no_inter;
 
-	if (csg_op->type == INTER)
-		return (inter_compare(csg_op->left, csg_op->right));
-	if (csg_op->type == NOT)
-		return (not_compare(csg_op->left, csg_op->right));
-	if (csg_op->type == UNION)
-		return (union_compare(csg_op->left, csg_op->right));
+	if (type == INTER)
+		return (inter_compare(left, right));
+	if (type == NOT)
+		return (not_compare(left, right));
+	if (type == UNION)
+		return (union_compare(left, right));
 	ft_error(__func__, __LINE__);
 	inter_set(&no_inter, incoming);
 	return (no_inter);
@@ -84,14 +89,16 @@ t_inter
 t_inter
 	inter_from_btree(t_btree *node, t_ray incoming)
 {
-	t_csg_op *csg_op;
+	t_csg_op	*csg_op;
+	t_inter		left;
+	t_inter		right;
 
 	if (node->content_size == sizeof(t_obj))
 		return (inter_from_csg_obj(node->content, incoming));
 	csg_op = node->content;
-	csg_op->left = inter_from_btree(node->left, incoming);
-	csg_op->right = inter_from_btree(node->right, incoming);
-	return (inter_from_csg_op(csg_op, incoming));
+	left = inter_from_btree(node->left, incoming);
+	right = inter_from_btree(node->right, incoming);
+	return (inter_from_csg_op(csg_op->type, left, right, incoming));
 }
 
 static inline t_inter

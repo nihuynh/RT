@@ -31,9 +31,9 @@
                 "${workspaceFolder}/lib/cimgui",
                 "${workspaceFolder}/includes",
                 "${workspaceFolder}/lib/librt/includes",
-                "/Users/nihuynh/.brew/include/SDL2",
                 "${workspaceFolder}/lib/libft/includes",
-                "/usr/local/Cellar/sdl2/2.0.9/include/SDL2"
+                "/usr/local/include/SDL2",
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
             ],
             "defines": [],
             "macFrameworkPath": [

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 17:29:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 14:57:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,24 @@
 # include <GL/gl.h>
 #endif
 
-void	ui_render(t_ui_func *ui)
+void	ui_render(t_gui *gui)
 {
-	render_win(ui);
-	scene_win(ui);
-	interface_mainmenu(ui);
-	if (ui->err_open)
-		err_win(ui);
-	if (ui->stats_open)
-		stats_win(ui);
-	if (ui->load_open)
-		load_win(ui);
-	if (ui->export_open)
-		export_win(ui);
-	if (ui->del_obj_open)
-		del_obj_win(ui);
-	if (ui->add_obj_open)
-		add_obj_win(ui);
+	render_win(gui);
+	if (gui->edit_open)
+		scene_win(gui);
+	interface_mainmenu(gui);
+	if (gui->err_open)
+		err_win(gui);
+	if (gui->stats_open)
+		stats_win(gui);
+	if (gui->load_open)
+		load_win(gui);
+	if (gui->export_open)
+		export_win(gui);
+	if (gui->del_obj_open)
+		del_obj_win(gui);
+	if (gui->add_obj_open)
+		add_obj_win(gui);
 }
 
 void	interface(t_data *app)
@@ -46,9 +47,9 @@ void	interface(t_data *app)
 
 	io = igGetIO();
 	ImGui_ImplOpenGL2_NewFrame();
-	ImGui_ImplSDL2_NewFrame(app->sdl.win);
+	ImGui_ImplSDL2_NewFrame(app->sdl->win);
 	igNewFrame();
-	ui_render(&app->gui.ui);
+	ui_render(&app->gui);
 	if (SHOW_DEMO)
 		igShowDemoWindow(NULL);
 	igRender();
@@ -56,5 +57,5 @@ void	interface(t_data *app)
 	glClearColor(0.107f, 0.277f, 0.348f, 1.000f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL2_RenderDrawData(igGetDrawData());
-	SDL_GL_SwapWindow(app->sdl.win);
+	SDL_GL_SwapWindow(app->sdl->win);
 }

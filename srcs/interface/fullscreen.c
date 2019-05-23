@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fullscreen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:27:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 00:39:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 void	fullscreen(t_sdl *sdl, t_gui *gui)
 {
-	int	idx;
+	int		idx;
+	int		ofs;
 
 	sdl->img.height = (sdl->img.height == sdl->height_vp) ? sdl->height_vp
 		* RENDER_SCALE : sdl->height_vp;
@@ -27,14 +28,13 @@ void	fullscreen(t_sdl *sdl, t_gui *gui)
 	if (!(sdl->img.pixels = malloc(sizeof(uint32_t)
 		* sdl->img.height * sdl->img.width)))
 		error_sdl(sdl);
-	sdl->thr_len = sdl->img.width * sdl->img.height / THR_C;
+	sdl->thr_len = sdl->img.width * (sdl->img.height / THR_C);
 	idx = -1;
 	while (++idx < THR_C)
 	{
-		free(sdl->data_thr[idx].data);
-		if (!(sdl->data_thr[idx].data = malloc(sizeof(int) * sdl->thr_len)))
-			ft_error(__func__, __LINE__);
+		ofs = idx * sdl->thr_len;
+		sdl->data_thr[idx].pixels = &sdl->img.pixels[ofs];
 	}
-	gui->ui.flags_render = (sdl->img.height == sdl->height_vp)
-								? ImGuiCond_Always : ImGuiCond_Once;
+	gui->flags_render = (sdl->img.height == sdl->height_vp) ? ImGuiCond_Always
+		: ImGuiCond_Once;
 }

@@ -9,7 +9,7 @@ addons:
     - sdl2
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
-    sudo sh install_sdl.sh;
+    sudo sh resources/script/install_sdl.sh;
     fi
 script: make test
 

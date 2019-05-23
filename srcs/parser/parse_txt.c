@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 02:59:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 03:39:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "rt.h"
 #include "parse.h"
 #include <unistd.h>
 #include <stdlib.h>
@@ -74,13 +75,22 @@ void
 	err_exit(char *err_msg, t_parse_txt *scene_file)
 {
 	scene_file->line_idx -= scene_file->is_pop;
-	ft_printf("%s\nPARSE_TXT : [line :%d]%s\n%s : %s (%s:%d)\n",
-		err_msg, scene_file->line_idx, get_curr_line(scene_file),
-		"Error in the function", scene_file->err_func, scene_file->err_file,
-		scene_file->err_at_line);
+	if (scene_file->line_idx < scene_file->line_max && !scene_file->greed)
+	{
+		ft_printf("%s\nPARSE_TXT : [line :%d]\n%s%s (%s:%d)\n",
+			err_msg, scene_file->line_idx + 1, scene_file->line_max,
+			"Error in the function : ", scene_file->err_func,
+			scene_file->err_file, scene_file->err_at_line);
+	}
+	else
+		ft_printf("%s\nPARSE_TXT : [line :%d]%s\n%s : %s (%s:%d)\n",
+			err_msg, scene_file->line_idx + 1,
+			scene_file->greed[scene_file->line_idx],
+			"Error in the function", scene_file->err_func,
+			scene_file->err_file, scene_file->err_at_line);
 	ft_tabdel(scene_file->greed);
-	exit_safe(scene_file->app);
-	exit(errno);
+	if (scene_file->exit_on_err)
+		exit_safe(errno);
 }
 
 /**
@@ -118,6 +128,7 @@ int
 
 	ft_bzero(scene_file, sizeof(t_parse_txt));
 	scene_file->app = app;
+	scene_file->exit_on_err = true;
 	if ((scene_file->line_max = ft_line_count(filename)) < 9)
 		return (EXIT_FAILURE);
 	size_greed = sizeof(char *) * (scene_file->line_max + 1);

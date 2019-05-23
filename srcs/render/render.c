@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:17:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 09:31:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void
 	float	r;
 	t_pt3	direction;
 
-	r = app->sdl.img.width / (float)app->sdl.img.height;
+	r = app->sdl->img.width / (float)app->sdl->img.height;
 	fovt = tanf((app->settings.fov * DEG_TO_RAD) / 2);
-	direction.x = (2 * x / app->sdl.img.width - 1) * fovt * r;
-	direction.y = (1 - 2 * y / app->sdl.img.height) * fovt;
+	direction.x = (2 * x / app->sdl->img.width - 1) * fovt * r;
+	direction.y = (1 - 2 * y / app->sdl->img.height) * fovt;
 	direction.z = -1;
 	vec3_normalize(&direction);
 	apply_matrix(&direction, &app->cam.rotation);
@@ -113,9 +113,9 @@ int __attribute__((hot))
 		color = anti_aliasing(color, app, x, y);
 	color_clamp(&color, 0, 1);
 	color_mult(&color, &app->settings.filter);
-	if (app->sdl.sepia)
+	if (app->sdl->sepia)
 		color = sepia(color);
-	if (app->sdl.grayscale)
+	if (app->sdl->grayscale)
 		color = grayscale(color);
 	return (colortoi(color));
 }

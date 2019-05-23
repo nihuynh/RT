@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 03:22:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 04:32:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 /*
 ** Prototypes :
 */
-
-t_data		*get_app(t_data *app);
-
+int				reader_no_exit(char *filename, t_data *app);
 /*
 ** Render :
 */
@@ -56,16 +54,16 @@ void		update_camera(t_cam *cam, bool *needs_render);
 void		key_event(int *quit, SDL_Keycode key, void *arg, bool state);
 void		mouse_motion(SDL_Event *event, void *arg);
 void		click_event(SDL_Event *event, void *arg);
+void		get_scenes(t_data *app);
 
 /*
 ** Exit :
 */
 
-void		free_app(t_data *app);
 void		del_obj(void *content, size_t content_size);
 void		free_scene(t_data *app);
-void		free_lst(t_data *app);
-
+void		free_app(t_data *app);
+void		exit_safe(int err_code);
 /*
 ** Textures :
 */

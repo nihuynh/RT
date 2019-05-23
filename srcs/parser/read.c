@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/21 03:18:58 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 03:46:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,29 @@ int
 	}
 	if (DEBUG)
 		ft_puttab(scene_file.greed);
+	parser(&scene_file);
+	ft_tabdel(scene_file.greed);
+	if (DEBUG)
+		ft_printf("parse_txt deallocated. line_idx = %d / %d\n",
+			scene_file.line_idx, scene_file.line_max);
+	ft_lstrev(&app->scene.lst_light);
+	ft_lstrev(&app->scene.lst_obj);
+	return (EXIT_SUCCESS);
+}
+
+int
+	reader_no_exit(char *filename, t_data *app)
+{
+	t_parse_txt	scene_file;
+
+	if (load_parse_txt(&scene_file, app, filename))
+	{
+		err_set(&scene_file, __func__, __LINE__, __FILE__);
+		return (EXIT_FAILURE);
+	}
+	if (DEBUG)
+		ft_puttab(scene_file.greed);
+	scene_file.exit_on_err = false;
 	parser(&scene_file);
 	ft_tabdel(scene_file.greed);
 	if (DEBUG)

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 00:14:04 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/12 23:18:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/22 07:13:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 void	init_mthr_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
 {
-	int	idx;
-	int	vp_len;
+	int		idx;
+	int		ofs;
 
 	idx = -1;
-	vp_len = sdl->img.width * sdl->img.height;
-	sdl->thr_len = vp_len / THR_C;
+	sdl->thr_len = sdl->img.width * (sdl->img.height / THR_C);
 	if (!(sdl->data_thr = ft_memalloc(sizeof(t_data_thr) * THR_C)))
 		ft_error(__func__, __LINE__);
 	while (++idx < THR_C)
@@ -29,8 +28,7 @@ void	init_mthr_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
 		sdl->data_thr[idx].sdl = sdl;
 		sdl->data_thr[idx].do_pxl = do_pxl;
 		sdl->data_thr[idx].prg_data = data;
-		sdl->data_thr[idx].data = ft_memalloc(sizeof(int) * sdl->thr_len);
-		if (sdl->data_thr[idx].data == NULL)
-			ft_error(__func__, __LINE__);
+		ofs = idx * sdl->thr_len;
+		sdl->data_thr[idx].pixels = &sdl->img.pixels[ofs];
 	}
 }

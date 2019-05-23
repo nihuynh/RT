@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/21 17:34:19 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/23 06:51:45 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ RUNMODE		?=	release
 # RUNMODE		?=	dev
 #VERBOSE	:= TRUE
 SCENE		:=	playground
-SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
+SRC			:=	free_node.c main.c parser.c read.c render.c parse_toolbox.c	\
 				setter.c light.c key_mapping.c camera.c update.c	\
 				cast.c utils.c interface.c interface_scene.c	\
 				interface_objects.c interface_tools.c	\
@@ -25,7 +25,7 @@ SRC			:=	error.c main.c parser.c read.c render.c parse_toolbox.c	\
 				reload.c perturbation.c texture_loader.c free.c csg.c  \
 				obj_data.c parse_txt.c parse_utils.c interface_menu.c \
 				ui_file_win.c ui_edit_win.c ui_render.c parse_csg.c \
-				export_csg.c
+				export_csg.c get_scenes.c test.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c render_time.c
@@ -92,7 +92,8 @@ CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 LIBFLAGS 	:=	-j32 RUNMODE=$(RUNMODE)
 ifeq ($(RUNMODE),dev)
     CFLAGS	+=	-g3 -O0
-	# CFLAGS	+=	-fsanitize=address -fsanitize-recover=address
+    # CFLAGS	+=	-fsanitize=thread
+	CFLAGS	+=	-fsanitize=address -fsanitize-recover=address
 else
 	CFLAGS	+= -O2 -march=native -flto
 endif
@@ -113,6 +114,7 @@ all: lib $(NAME) ## Built the project (Default goal).
 $(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(CIMGUI_RULE) $(IMGUI_IMPL_RULE)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB)
 	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
+	cat resources/script/banner.txt
 -include $(DEP)
 $(LFT_RULE):
 	$(MAKE) -sC $(LFT_PATH) $(LIBFLAGS)
@@ -148,8 +150,8 @@ dclean: ## Clean of the documentation.
 	$(RM) -r docs/html 2> /dev/null || true
 	$(RM) -r docs/latex 2> /dev/null || true
 .PHONY: dclean
-fclean: clean lclean dclean ## Full clean of the directory & the libs.
-	$(RM) $(NAME)
+fclean: clean lclean dclean aclean ## Full clean of the directory & the libs.
+	$(RM) $(APP_NAME)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME) $(OKLOGO)"
 .PHONY: fclean
 re: ## Rebuild the project.
@@ -176,6 +178,25 @@ test: all ## This check the parsing on all the map in the scenes directory.
 	@for file in `LS scenes | grep .rt | sort -u`; \
 		do echo $$file && ./RT scenes/$$file -t; done
 .PHONY: test
+
+aclean:
+	$(RM) -r "./built/$(APP_NAME).app/"
+	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(APP_NAME).app $(OKLOGO)"
+.PHONY: aclean
+built: $(NAME) aclean
+	mkdir -p "./built/$(APP_NAME).app"/Contents/{MacOS,Resources} 2> /dev/null || true
+	mkdir "./built/$(APP_NAME).app"/Contents/MacOS/resources 2> /dev/null || true
+	cp ./resources/built/Info.plist "./built/$(APP_NAME).app/Contents/"
+	cp ./resources/built/fe_icon.icns "./built/$(APP_NAME).app/Contents/Resources"
+
+	cp ./resources/materialList.csv "./built/$(APP_NAME).app/Contents/MacOS/resources"
+	cp -r ./resources/textures "./built/$(APP_NAME).app/Contents/MacOS/resources"
+	cp -r ./scenes "./built/$(APP_NAME).app/Contents/MacOS"
+	cp ./cimgui.dylib "./built/$(APP_NAME).app/Contents/MacOS"
+	cp ./$(NAME) "./built/$(APP_NAME).app/Contents/MacOS/binary"
+	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $(APP_NAME).app $(OKLOGO)"
+.PHONY: built
+
 norme: ## Check the norme of the project and the libraries.
 	$(MAKE) -C $(LFT_PATH) norme
 	$(MAKE) -C $(LRT_PATH) norme
