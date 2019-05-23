@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 02:35:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 14:56:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ struct				s_gui
 	bool			load_open;
 	bool			export_open;
 	bool			stats_open;
+	bool			edit_open;
 	bool			del_obj_open;
 	bool			add_obj_open;
 	int				add_obj_type;

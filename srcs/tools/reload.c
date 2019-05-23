@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 14:48:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 14:57:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static inline void
 	gui->flags_render = 2;
 	gui->add_obj_type = 0;
 	gui->stats_open = true;
+	gui->edit_open = true;
 }
 
 static inline void

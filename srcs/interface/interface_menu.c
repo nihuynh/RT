@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 14:46:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 14:56:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static inline void
 static inline void
 	window_menu(t_gui *gui)
 {
+	igMenuItemBoolPtr("Edit Scene", NULL, &gui->edit_open, 1);
 	igMenuItemBoolPtr("Stats", NULL, &gui->stats_open, 1);
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
 	{

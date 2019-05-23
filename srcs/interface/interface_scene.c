@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 00:28:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 14:59:18 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void
 						ImGuiCond_Once, (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
 		NULL, NULL);
-	igBegin("Scene", NULL, ImGuiWindowFlags_AlwaysAutoResize);
+	igBegin("Scene", &gui->edit_open, ImGuiWindowFlags_AlwaysAutoResize);
 	if (igCollapsingHeader("Render Settings", ImGuiTreeNodeFlags_DefaultOpen))
 		render_settings(gui->app);
 	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))
