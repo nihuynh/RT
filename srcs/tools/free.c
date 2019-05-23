@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 00:51:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 03:31:47 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,18 @@ static inline void
 	free(mat);
 }
 
+static inline void
+	del_scene_lst(void *content, size_t content_size)
+{
+	t_scene_name *scene;
+
+	(void)content_size;
+	scene = content;
+	free(scene->dir);
+	free(scene->name);
+	free(scene);
+}
+
 void
 	free_scene(t_data *app)
 {
@@ -109,6 +121,8 @@ void
 		ft_lstdel(&app->lst_mat, &del_mat);
 	if (app->lst_tex)
 		ft_lstdel(&app->lst_tex, &del_tex);
+	if (app->lst_scenes)
+		ft_lstdel(&app->lst_scenes, &del_scene_lst);
 	if (DEBUG)
 		ft_printf("Texture and material deallocated.\n");
 }

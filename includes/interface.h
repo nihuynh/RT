@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 00:20:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 03:21:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		export_scene(t_data *app, char *filename);
 void	export_material(int fd, t_material *mat);
 
 void	load_scene(t_data *app, char *filename);
+void	reload_scene(t_data *app, char *filename);
 
 /*
 ** Prototypes :

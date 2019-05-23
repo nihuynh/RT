@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 19:58:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 02:36:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void		update_camera(t_cam *cam, bool *needs_render);
 void		key_event(int *quit, SDL_Keycode key, void *arg, bool state);
 void		mouse_motion(SDL_Event *event, void *arg);
 void		click_event(SDL_Event *event, void *arg);
+void		get_scenes(t_data *app);
 
 /*
 ** Exit :

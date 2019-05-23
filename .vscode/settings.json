@@ -25,6 +25,8 @@
 		"cimgui.h": "c",
 		"ftbtree.h": "c",
 		"imgui_impl_opengl2.h": "c",
-		"imgui_impl_sdl.h": "c"
+		"imgui_impl_sdl.h": "c",
+		"option.h": "c",
+		"ft_printf.h": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 22:15:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 03:02:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	interactive(char *filename, int runmode)
 	get_app(&app);
 	init_textures(&app);
 	parse_material_csv(&app, "resources/materialList.csv");
+	get_scenes(&app);
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
 	app.sdl = init_sdl(WIDTH, HEIGHT);
