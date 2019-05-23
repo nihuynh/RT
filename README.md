@@ -11,7 +11,13 @@ _Built and tested on mac OSX 10, (Untested on linux)_
 
 ## How to install
 
-On mac, this command will built an binary:
+On mac, to install the library required :
+```
+brew install sdl2
+brew install sdl2_image
+```
+
+On mac, this command will built an binary :
 ```
 git clone --recurse-submodules https://github.com/nihuynh/RT && cd RT && make
 ```

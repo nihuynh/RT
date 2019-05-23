@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/24 05:02:30 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/24 01:29:28 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ LIMGUI_INC  :=	-I ../cimgui/imgui
 CC			:=	clang
 CFLAGS		:=	-Werror -Wall -Wextra
 CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
-VERBOSE		:= TRUE
 ifeq ($(RUNMODE),dev)
 	CFLAGS	+=	-g3 -O0
 	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
