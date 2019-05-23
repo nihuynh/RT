@@ -47,7 +47,7 @@ LRT_LIB		:=	-L $(LRT_PATH) -lrt
 LRT_INC		:=	-I $(LRT_PATH)/includes
 LRT_RULE	:=	$(LRT_PATH)/$(LRT_NAME)
 # SDL
-LSDL_LIB	:=	$(shell sdl2-config --libs)
+LSDL_LIB	:=	$(shell sdl2-config --libs)  -lSDL2_Image
 LSDL_INC	:=	$(shell sdl2-config --cflags)
 # CIMGUI
 UNAME_S		:=	$(shell uname -s)

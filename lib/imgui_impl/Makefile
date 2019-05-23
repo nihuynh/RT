@@ -19,7 +19,7 @@ SRCDIR  	:=	.
 OBJDIR 		:=	objs
 INCDIR  	:=	includes
 # SDL
-LSDL_LIB	:=	$(shell sdl2-config --libs)
+LSDL_LIB	:=	$(shell sdl2-config --libs) -lSDL2_Image
 LSDL_INC	:=	$(shell sdl2-config --cflags)
 # IMGUI
 LIMGUI_INC  :=	-I ../cimgui/imgui
