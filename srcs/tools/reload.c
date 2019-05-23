@@ -77,6 +77,7 @@ static inline void
 	settings->light = 1;
 	settings->shadow = 1;
 	settings->shine = 1;
+	settings->debug_normal = 0;
 }
 
 static inline void

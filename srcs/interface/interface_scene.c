@@ -44,6 +44,7 @@ static inline void
 	igCheckbox("Refraction", &app->settings.absorb);
 	igSameLine(160, 0);
 	igCheckbox("Anti Aliasing", &app->settings.anti_a);
+	igCheckbox("Show normals", &app->settings.debug_normal);
 	color_lights(app);
 	igTreePop();
 	igNewLine();

@@ -74,6 +74,7 @@ struct				s_settings
 	bool			deflect;
 	bool			absorb;
 	bool			anti_a;
+	bool			debug_normal;
 	int				depth_max;
 	float			fov;
 };
