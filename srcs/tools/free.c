@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 03:31:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 05:54:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ void
 	free_lst(app);
 	SDL_GL_DeleteContext(app->gui.gl_context);
 	exit_sdl(app->sdl);
-	debug_leak = app->option.key_found_bitrpz & (1 << ('l' - 'a'));
-	// free(app);
+	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
 	while (debug_leak)
 		;
 	get_app(app);
@@ -145,6 +144,14 @@ void
 void
 	exit_safe(int err_code)
 {
-	free_app(get_app(NULL));
+	int		debug_leak;
+	t_data	*app;
+
+	app = get_app(NULL);
+	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
+	(app->option.key_found_bitrpz &= ~(1UL << ('l' - 'a')));
+	free_app(app);
+	while (debug_leak)
+		;
 	exit(err_code);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_menu.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 03:38:33 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 06:07:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static inline void
 	{
 		scene = lst->content;
 		if(igMenuItemBool(scene->name, NULL, 0, 1))
-			reload_scene(gui->app, scene->dir);
+			load_scene(gui->app, scene->dir);
 		lst = lst->next;
 	}
 	igEndMenu();
@@ -39,7 +39,7 @@ static inline void
 		list_scenes(gui);
 	igMenuItemBoolPtr("Export Scene", NULL, &gui->export_open, 1);
 	if (igMenuItemBool("Reload Current Scene", NULL, 0, 1))
-		reload_scene(gui->app, gui->app->arg);
+		load_scene(gui->app, gui->app->arg);
 	if (igMenuItemBool("Quit", NULL, 0, 1))
 		exit_safe(EXIT_SUCCESS);
 	igEndMenu();

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 00:41:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 06:02:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ void	export_win(t_gui *gui)
 {
 	char buff[50];
 
-	ft_strcpy(buff, "scenes/");
-	ft_strlcat(buff, gui->scene_name, 50 - ft_strlen(buff));
+	ft_strlcpy(buff, gui->app->arg, sizeof(buff));
 	igBegin("Export Scene", &gui->export_open,
 				ImGuiWindowFlags_AlwaysAutoResize);
-	if (igInputText("Filename", buff, 50, ImGuiInputTextFlags_EnterReturnsTrue,
-			NULL, NULL))
+	if (igInputText("Filename", buff, sizeof(buff),
+		ImGuiInputTextFlags_EnterReturnsTrue, NULL, NULL))
 	{
 		export_scene(gui->app, buff);
 		gui->export_open = false;

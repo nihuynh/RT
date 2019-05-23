@@ -6,19 +6,13 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/23 04:32:01 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/23 06:48:59 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 APP_NAME	:=	RT
-DEBUG_NAME	:=	RT_debug
 RUNMODE		?=	release
 # RUNMODE		?=	dev
-ifeq ($(RUNMODE),dev)
-    NAME		:=	$(DEBUG_NAME)
-else
-	NAME		:=	$(APP_NAME)
-endif
 #VERBOSE	:= TRUE
 SCENE		:=	playground
 SRC			:=	free_node.c main.c parser.c read.c render.c parse_toolbox.c	\
@@ -120,7 +114,7 @@ all: lib $(NAME) ## Built the project (Default goal).
 $(NAME): $(OBJ) $(LFT_RULE) $(LRT_RULE) $(CIMGUI_RULE) $(IMGUI_IMPL_RULE)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB)
 	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
-	cat banner.txt
+	cat resources/script/banner.txt
 -include $(DEP)
 $(LFT_RULE):
 	$(MAKE) -sC $(LFT_PATH) $(LIBFLAGS)
@@ -157,7 +151,7 @@ dclean: ## Clean of the documentation.
 	$(RM) -r docs/latex 2> /dev/null || true
 .PHONY: dclean
 fclean: clean lclean dclean aclean ## Full clean of the directory & the libs.
-	$(RM) $(APP_NAME) $(DEBUG_NAME)
+	$(RM) $(APP_NAME)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME) $(OKLOGO)"
 .PHONY: fclean
 re: ## Rebuild the project.

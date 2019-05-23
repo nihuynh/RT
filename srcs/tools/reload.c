@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 03:37:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/23 06:07:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,4 @@ void
 	app->sdl->partial_render = false;
 	if (DEBUG)
 		ft_printf("Loading of the scene is completed\n");
-}
-
-void
-	reload_scene(t_data *app, char *filename)
-{
-	char *tmp;
-
-	if (!(tmp = ft_strdup(filename)))
-		ft_error(__func__, __LINE__);
-	load_scene(app, tmp);
-	free(tmp);
 }
