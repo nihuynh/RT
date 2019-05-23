@@ -22,7 +22,7 @@
 # define FOV			40.0f
 # define DEPTH_MAX		2
 
-# define DEBUG			1
+# define DEBUG			0
 # define MAC			MACB
 # define TEX_DIR		"./resources/textures/"
 # define SCENE_DIR		"./scenes/"

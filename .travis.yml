@@ -7,6 +7,7 @@ addons:
   homebrew:
     packages:
     - sdl2
+    - sdl2_image
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
     sudo sh resources/script/install_sdl.sh;
