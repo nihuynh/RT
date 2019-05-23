@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_struct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 00:47:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 02:35:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_scene		t_scene;
 typedef struct s_data		t_data;
 typedef struct s_gui		t_gui;
 typedef struct s_settings	t_settings;
+typedef struct s_scene_name	t_scene_name;
+
 
 struct				s_gui
 {
@@ -81,6 +83,12 @@ struct				s_scene
 	t_list			*lst_light;
 };
 
+struct				s_scene_name
+{
+	char			*name;
+	char			*dir;
+};
+
 struct				s_data
 {
 	char			*arg;
@@ -89,6 +97,7 @@ struct				s_data
 	t_scene			scene;
 	t_list			*lst_mat;
 	t_list			*lst_tex;
+	t_list			*lst_scenes;
 	t_sdl			*sdl;
 	t_gui			gui;
 	t_settings		settings;

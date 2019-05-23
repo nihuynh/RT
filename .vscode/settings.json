@@ -26,7 +26,7 @@
 		"ftbtree.h": "c",
 		"imgui_impl_opengl2.h": "c",
 		"imgui_impl_sdl.h": "c",
-		"sdl_main.h": "c",
-		"sdl_stdinc.h": "c"
+		"option.h": "c",
+		"ft_printf.h": "c"
 	}
 }
