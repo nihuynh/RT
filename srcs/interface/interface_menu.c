@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   interface_menu.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 06:07:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 14:46:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "rt.h"
+#include "config.h"
+#include "libft.h"
 
 static inline void
 	list_scenes(t_gui *gui)
@@ -33,13 +35,14 @@ static inline void
 static inline void
 	file_menu(t_gui *gui)
 {
-	igMenuItemBool("New Scene", NULL, 0, 1);
+	if (igMenuItemBool("New Scene", NULL, 0, 1))
+		load_scene(gui->app, NEW_SCENE);
 	igMenuItemBoolPtr("Open ...", NULL, &gui->load_open, 1);
 	if (igBeginMenu("Open Scene", 1))
 		list_scenes(gui);
 	igMenuItemBoolPtr("Export Scene", NULL, &gui->export_open, 1);
 	if (igMenuItemBool("Reload Current Scene", NULL, 0, 1))
-		load_scene(gui->app, gui->app->arg);
+		reload_scene(gui->app, gui->app->arg);
 	if (igMenuItemBool("Quit", NULL, 0, 1))
 		exit_safe(EXIT_SUCCESS);
 	igEndMenu();
