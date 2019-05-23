@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 19:58:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/23 03:57:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /*
 ** Prototypes :
 */
-
+int				reader_no_exit(char *filename, t_data *app);
 /*
 ** Render :
 */

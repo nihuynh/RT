@@ -32,7 +32,8 @@
                 "${workspaceFolder}/includes",
                 "${workspaceFolder}/lib/librt/includes",
                 "${workspaceFolder}/lib/libft/includes",
-                "/usr/local/include/SDL2"
+                "/usr/local/include/SDL2",
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
             ],
             "defines": [],
             "macFrameworkPath": [
