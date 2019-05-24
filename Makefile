@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 01:28:37 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/24 02:13:43 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME		:=	RT
 RUNMODE		?=	release
 # RUNMODE		?=	dev
 #VERBOSE	:= TRUE
-SCENE		:=	playground
 SRC			:=	free_node.c main.c parser.c read.c render.c parse_toolbox.c	\
 				setter.c light.c key_mapping.c camera.c update.c	\
 				cast.c utils.c interface.c interface_scene.c	\
@@ -36,6 +35,7 @@ VPATH       :=	./srcs ./srcs/parser ./srcs/render ./srcs/tools	\
 LIB_DEP		=	lib/libft/libft.a	\
 				lib/librt/librt.a		\
 				lib/imgui_impl/libimgui_impl.a
+
 # **************************************************************************** #
 # Makefile dependency :
 include basic.mk
