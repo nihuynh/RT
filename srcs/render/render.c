@@ -15,6 +15,8 @@
 #include "librt.h"
 #include "libft.h"
 
+t_vec3 compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
+
 void
 	cam_ray(t_data *app, t_ray *res, float x, float y)
 {
@@ -75,8 +77,10 @@ t_color
 	if (inter.obj == NULL)
 		return (settings.back_color);
 	shading = get_shading_data(&inter);
+	if (settings.normal_mapping == false)
+		shading.shading_normal = shading.normal;
 	if (settings.debug_normal)
-		return (*(t_color*)&shading.normal);
+		return (*(t_color*)&shading.shading_normal);
 	lighting = get_lighting(shading, scene, &settings);
 	if (depth < settings.depth_max)
 		color_add(&lighting, cast_bounce(scene, settings, &inter, depth));
@@ -86,19 +90,44 @@ t_color
 t_shading
 	get_shading_data(t_inter *inter)
 {
-	t_shading shading;
+	t_shading s;
 
-	ft_bzero(&shading, sizeof(t_shading));
+	ft_bzero(&s, sizeof(t_shading));
 	inter_find(inter, &inter->point);
 	inter->obj->find_normal(inter);
-	inter_setdeflect(inter, &inter->deflected);
-	shading.uv = inter->obj->get_uv(inter);
-	shading.hit_pos = inter->point;
-	shading.normal = inter->n;
-	shading.mat = inter->obj->material;
-	shading.specular_dir = inter->deflected.dir;
-	apply_uv_mapping(&shading.uv, inter->obj->material.uv_mapping);
-	return (shading);
+	s.uv = inter->obj->get_uv(inter);
+	s.uv.z = 0;
+	apply_uv_mapping(&s.uv, inter->obj->material.uv_mapping);
+	s.hit_pos = inter->point;
+	s.normal = inter->n;
+	s.mat = inter->obj->material;
+	s.shading_normal = compute_shading_normal(s.mat, s.uv, s.normal);
+	inter_setdeflect(inter, s.shading_normal);
+	s.specular_dir = inter->deflected.dir;
+	return (s);
+}
+
+t_vec3
+	compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n)
+{
+	t_vec3	tex_n;
+	t_vec3	n;
+	t_vec3	t;
+	t_vec3	b;
+
+	if (mat.normal_map == NULL || ft_strequ(mat.normal_map->name, "none"))
+		return (geo_n);
+	*((t_color*)&tex_n) = sample(&mat, mat.normal_map, uv);
+	tex_n.x = tex_n.x * 2 - 1;
+	tex_n.y = tex_n.y * 2 - 1;
+	tex_n.z = tex_n.z * 2 - 1;
+	vec3_normalize(&tex_n);
+	create_orthobasis_qnd(geo_n, &t, &b);
+	n.x = tex_n.x * t.x + tex_n.y * b.x + tex_n.z * geo_n.x;
+	n.y = tex_n.x * t.y + tex_n.y * b.y + tex_n.z * geo_n.y;
+	n.z = tex_n.x * t.z + tex_n.y * b.z + tex_n.z * geo_n.z;
+	vec3_normalize(&n);
+	return (n);
 }
 
 int __attribute__((hot))

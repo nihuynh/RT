@@ -12,9 +12,9 @@
 
 #include "librt.h"
 
-void	inter_setdeflect(t_inter *inter, t_ray *res)
+void	inter_setdeflect(t_inter *inter, t_vec3 shading_normal)
 {
-	res->origin = inter->point;
-	res->dir = vec3_deflect(inter->ray.dir, inter->n);
-	ray_offset_origin(res, inter->n);
+	inter->deflected.origin = inter->point;
+	inter->deflected.dir = vec3_deflect(inter->ray.dir, shading_normal);
+	ray_offset_origin(&inter->deflected, inter->n);
 }

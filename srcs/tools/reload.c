@@ -77,7 +77,8 @@ static inline void
 	settings->light = 1;
 	settings->shadow = 1;
 	settings->shine = 1;
-	settings->debug_normal = 0;
+	settings->debug_normal = 1;
+	settings->normal_mapping = 1;
 }
 
 static inline void
@@ -96,7 +97,6 @@ static inline void
 	SDL_SetWindowTitle(win, title);
 	ft_strdel(&title);
 }
-
 void
 	hook_sdl(t_data *app)
 {
