@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 02:13:43 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/24 04:00:08 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,32 +63,41 @@ BANNER		:=	$(shell cat resources/script/banner.txt)
 # **************************************************************************** #
 # Target rules :
 .DEFAULT_GOAL := all
-all: $(CIMGUI_NAME) $(LIB_DEP) $(NAME)## Built the project (Default goal).
+all: $(CIMGUI_NAME) $(LIB_DEP) $(NAME)  ## Built the project.
 .PHONY: all
+
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB_LINK)
 	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 	@printf "$(BANNER)"
 -include $(DEP)
-$(CIMGUI_NAME):
-	$(MAKE) -sC $(CIMGUI_PATH)
-	cp $(CIMGUI_PATH)/$(CIMGUI_NAME) .
-dclean: ## Clean of the documentation.
-	$(RM) -r docs/html 2> /dev/null || true
-	$(RM) -r docs/latex 2> /dev/null || true
-.PHONY: dclean
-fclean: $(LIB_DEP_CLEAN) clean dclean aclean ## Full clean of the directory & the libs.
+
+fclean: $(LIB_DEP_CLEAN) clean dclean aclean ## Full clean of the project & the libs.
 	$(RM) $(NAME)
+	# $(MAKE) -sC $(CIMGUI_PATH) clean
+	# $(RM) $(CIMGUI_NAME)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME) $(OKLOGO)"
 .PHONY: fclean
-doc: ## Generate a documentation using doxygen.
-	doxygen Doxyfile
-	open docs/html/index.html
-.PHONY: doc
-test: all ## This check the parsing on all the map in the scenes directory.
+
+test: all ## This check the parsing on maps in the scenes dir.
 	@for file in `LS scenes | grep .rt | sort -u`; \
 		do echo $$file && ./RT scenes/$$file -t; done
 .PHONY: test
+
+$(CIMGUI_NAME):
+	$(MAKE) -sC $(CIMGUI_PATH)
+	cp $(CIMGUI_PATH)/$(CIMGUI_NAME) .
+
+doc: ## Generate documentation using doxygen.
+	doxygen Doxyfile
+	open docs/html/index.html
+.PHONY: doc
+
+dclean: ## Clean the documentation.
+	$(RM) -r docs/html 2> /dev/null || true
+	$(RM) -r docs/latex 2> /dev/null || true
+.PHONY: dclean
+
 norme: ## Check the norme of the project and the libraries.
 	$(MAKE) -C $(LFT_PATH) norme
 	$(MAKE) -C $(LRT_PATH) norme

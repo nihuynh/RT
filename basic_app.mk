@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/24 01:23:21 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 01:25:48 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/24 03:55:38 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,10 @@ WITH_THE_BIN	:=  ./scenes 						\
 					./cimgui.dylib
 
 aclean: ## Clean the app bundle.
-	$(RM) -r "./built/$(NAME).app/"
+	$(RM) -r built
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME).app $(OKLOGO)"
 .PHONY: aclean
+
 built: $(NAME)  aclean ## Built the app bundle (Only on mac).
 	mkdir -p "./built/$(NAME).app"/Contents/{MacOS,Resources} 2> /dev/null || true
 	mkdir "./built/$(NAME).app"/Contents/MacOS/resources 2> /dev/null || true

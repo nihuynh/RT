@@ -21,6 +21,10 @@ On mac, this command will built an binary :
 ```
 git clone --recurse-submodules https://github.com/nihuynh/RT && cd RT && make
 ```
+How to use the makefile of the project :
+```
+make usage
+```
 
 ## How to use
 
@@ -38,7 +42,7 @@ git clone --recurse-submodules https://github.com/nihuynh/RT && cd RT && make
 * Screenshot
 * Edit or create scenes
 * Load/Reload/Export scenes
-  Under and over-sampling
+* Under and over-sampling
 * UI pane to edit or create scenes
 * Fullscreen
 * Texture on all basic shapes

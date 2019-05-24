@@ -6,9 +6,11 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/24 01:00:59 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 02:13:26 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/24 03:35:37 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# How the make run is handle
 
 # If the first argument is "run"...
 ifeq (run,$(firstword $(MAKECMDGOALS)))

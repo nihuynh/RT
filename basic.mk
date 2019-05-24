@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/23 23:30:21 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 01:26:48 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/24 08:03:49 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ usage: ## Print out on how to use this Makefile.
 clean:  ## Clean of the project directory (.o & .d).
 	$(RM) $(OBJ)
 	$(RM) $(DEP)
-	$(RM) -r $(OBJDIR) 2> /dev/null || true
+	$(RM) -r $(OBJDIR)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning objs $(OKLOGO)"
 .PHONY: clean
 

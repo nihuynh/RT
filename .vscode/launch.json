@@ -10,7 +10,7 @@
 			"request": "launch",
 			"preLaunchTask": "build_debug",
 			"program": "${workspaceFolder}/RT",
-			"args": ["scenes/error_scenes/fig1.rt"],
+			"args": ["scenes/fig1.rt"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
