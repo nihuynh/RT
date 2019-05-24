@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 14:57:03 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:16:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static inline void
 	gui->edit_open = true;
 }
 
-static inline void
+void
 	hook_render_to_gui(t_gui *gui, SDL_Window *window)
 {
 	if (!(gui->gl_context = SDL_GL_CreateContext(window)))
@@ -108,7 +108,6 @@ void
 	app->gui.app = app;
 	app->gui.sdl = app->sdl;
 	hook_render_to_gui(&app->gui, app->sdl->win);
-
 	default_settings(&app->settings);
 	default_gui_settings(&app->gui, app);
 	app->sdl->needs_render = true;

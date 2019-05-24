@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 11:54:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 13:50:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void
 		inc_x = inc;
 		while (--inc_x >= 0)
 			slice->pixels[idx_in_slice++] = color;
-		idx_in_slice += img_w - inc - 1;
-		if (idx_in_slice >= slice->sdl->thr_len)
+		idx_in_slice += img_w - (inc -1);
+		if (idx_in_slice  + inc > slice->sdl->thr_len)
 			break ;
 	}
 }

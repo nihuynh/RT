@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 11:58:42 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 13:48:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define SUB_SAMPLE		16
 
 # define DEBUG			0
-# define MAC			DEV
+# define MAC			MACB
 # define TEX_DIR		"./resources/textures/"
 # define SCENE_DIR		"./scenes/"
 # define NEW_SCENE		"./scenes/new_scene.rt"
