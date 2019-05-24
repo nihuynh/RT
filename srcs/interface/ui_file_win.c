@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 06:02:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 11:58:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,33 @@ void	load_win(t_gui *gui)
 
 void	stats_win(t_gui *gui)
 {
-	igSetNextWindowPos((ImVec2){0, gui->sdl->img.height + 18},
-		(ImGuiCond_Once), (ImVec2){0, 0});
-	igBegin("Stats", &gui->stats_open, ImGuiWindowFlags_AlwaysAutoResize);
-	igProgressBar(gui->sdl->progress_sub_sample, (ImVec2){150, 0}, "Render");
-	igSameLine(220, 0);
-	igText("Render time : %fms", (float)gui->sdl->render_time[P_TIME_LEN - 1]);
+
+	ImVec2 pos;
+	ImVec2 size;
+	float plot_border;
+
+	plot_border = 10;
+	if (gui->demo_open)
+		igShowDemoWindow(NULL);
+	pos.x = gui->sdl->width_vp - (gui->sdl->width_vp / 2);
+	pos.y = gui->sdl->img.height + 18;
+	size.x = gui->sdl->width_vp / 2 - 17;
+	size.y = gui->sdl->height_vp - pos.y + 1;
+	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
+	igSetNextWindowSizeConstraints(size, (ImVec2){2500, 2500},
+		NULL, NULL);
+	igBegin("Stats", &gui->stats_open, ImGuiWindowFlags_NoResize);
+	igText("Resolution :	[render w:%i h:%i]", gui->sdl->img.width, gui->sdl->img.height);
+	igSameLine(size.x / 2, plot_border);
+	igText("[app w:%i h:%i]", gui->sdl->width_vp, gui->sdl->height_vp);
+	igPlotLines("", &(gui->sdl->render_time[0]), P_TIME_LEN, 0,
+		NULL, 0, FLT_MAX, (ImVec2){size.x / 2, size.y / 3}, 4);
+	igSameLine(size.x / 2, plot_border);
+	igPlotLines("", &(gui->sdl->gui_time[0]), GUI_FPS, 0,
+		NULL, 0, 60, (ImVec2){size.x / 2, size.y / 3}, 4);
+	igText("Render time : %.3fms", (float)gui->sdl->render_time[P_TIME_LEN - 1]);
+	igSameLine(size.x / 2, plot_border);
 	igText("Gui FPS (%i)", (int)gui->sdl->gui_time[GUI_FPS - 1]);
-	igPlotLines("Render Time (ms)", &(gui->sdl->render_time[0]),
-		P_TIME_LEN, 0, NULL, 0, FLT_MAX, (ImVec2){400, 80}, 4);
-	// igPlotHistogramFloatPtr("Gui FPS", &(gui->sdl->gui_time[0]),
-	// 	GUI_FPS, 0, NULL, 0, 60, (ImVec2){400, 80}, 4);
-	igPlotLines("Gui FPS", &(gui->sdl->gui_time[0]),
-		GUI_FPS, 0, NULL, 0, 60, (ImVec2){400, 80}, 4);
+	igProgressBar(gui->sdl->progress_sub_sample, (ImVec2){size.x / 4, 0}, "Render progress");
 	igEnd();
 }

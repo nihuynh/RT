@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 14:57:33 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/24 10:44:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	interface(t_data *app)
 	ImGui_ImplSDL2_NewFrame(app->sdl->win);
 	igNewFrame();
 	ui_render(&app->gui);
-	if (SHOW_DEMO)
-		igShowDemoWindow(NULL);
 	igRender();
 	glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
 	glClearColor(0.107f, 0.277f, 0.348f, 1.000f);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 10:04:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 11:54:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void
 {
 	int inc_x;
 	int inc_y;
+	(void)img_w;
 
 	inc_y = inc;
-	while (--inc_y >= 0)
+	while (--inc_y > 0)
 	{
 		inc_x = inc;
 		while (--inc_x >= 0)
 			slice->pixels[idx_in_slice++] = color;
-		idx_in_slice += img_w - inc;
+		idx_in_slice += img_w - inc - 1;
 		if (idx_in_slice >= slice->sdl->thr_len)
 			break ;
 	}
@@ -43,8 +44,8 @@ int is_out_of_slice(int idx_in_slice, int thr_len, int inc, int img_w)
 
 	if (idx_in_slice >= thr_len)
 		return (EXIT_FAILURE);
-	if (idx_in_slice + last_line > thr_len)
-		return (EXIT_FAILURE);
+	// if (idx_in_slice + last_line > thr_len)
+	// 	return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -64,7 +65,6 @@ static inline void
 	ofs = slice->idx * (img.height / THR_C);
 	inc = slice->sdl->sub_sample;
 	idx_in_slice = 0;
-	// idx_in_slice = 1 - (inc % 2);
 	if (inc == SUB_SAMPLE)
 		ft_bzero(slice->pixels, sizeof(int) * slice->sdl->thr_len);
 	while (!is_out_of_slice(idx_in_slice, slice->sdl->thr_len, inc, img.width))
@@ -90,6 +90,7 @@ void
 	elapsed_time = ft_curr_usec();
 	if (!sdl->partial_render && sdl->sub_sample <= 1)
 	{
+		sdl->progress_sub_sample = 0;
 		sdl->partial_render = true;
 		sdl->sub_sample = SUB_SAMPLE;
 	}
@@ -113,8 +114,7 @@ void
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	push_render_time(sdl, (float)elapsed_time / 1000);
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
-	sdl->progress_sub_sample = fabsf((float)(sdl->sub_sample  - SUB_SAMPLE) / (SUB_SAMPLE - 1));
-	// SDL_Delay(300);
+	sdl->progress_sub_sample += 0.25;
 }
 
 t_data_thr

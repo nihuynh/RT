@@ -1,7 +1,7 @@
 camera
 {
-	origin(-166.158 37.407 173.407)
-	direction(0.885 -0.006 0.465)
+	origin(-125.898 85.241 135.528)
+	direction(0.376 0.230 0.898)
 	amb_light(0.100 0.100 0.100)
 }
 content

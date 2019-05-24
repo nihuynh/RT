@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 08:33:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 11:58:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # define BACK_COLOR		0x000000
 # define FOV			40.0f
 # define DEPTH_MAX		2
-# define SUB_SAMPLE		8
+# define SUB_SAMPLE		16
 
 # define DEBUG			0
-# define MAC			MACB
+# define MAC			DEV
 # define TEX_DIR		"./resources/textures/"
 # define SCENE_DIR		"./scenes/"
 # define NEW_SCENE		"./scenes/new_scene.rt"
@@ -43,7 +43,6 @@
 */
 
 # define RENDER_STATIC	1
-# define SHOW_DEMO		0
 # define RENDER_SCALE	0.7
 
 /*

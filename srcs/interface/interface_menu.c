@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_menu.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 14:56:37 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/24 11:23:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ static inline void
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
 	{
 		fullscreen(gui->sdl, gui);
+		gui->stats_open = 0;
 		gui->sdl->needs_render = 1;
 	}
+	igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
 	igEndMenu();
 }
 

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 08:13:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 11:56:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define THR_C			10
 # define BATCH_SIZE		16
 # define C_MASK			0xFF000000
-# define P_TIME_LEN		50
-# define GUI_FPS		50
+# define P_TIME_LEN		80
+# define GUI_FPS		60
 
 typedef struct		s_pxl
 {

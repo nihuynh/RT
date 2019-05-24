@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_struct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 14:56:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/24 10:42:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ struct				s_gui
 	int				add_obj_type;
 	bool			render_open;
 	bool			scene_open;
+	bool			demo_open;
 	// t_gui_data		ui;
 	t_cam			cam_cpy;
 	char			*scene_name;
