@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 11:56:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 15:16:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ struct				s_sdl
 	bool			partial_render;
 	int				width_vp;
 	int				height_vp;
+	int				new_width_vp;
+	int				new_height_vp;
+	bool			resize;
 	int				thr_len;
 	t_data_thr		*data_thr;
 	t_thr_pool		*pool;

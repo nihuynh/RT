@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 12:52:36 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 06:38:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 15:01:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	exit_sdl(t_sdl *sdl)
 	}
 	if (sdl->pool != NULL)
 		destroy_pool(sdl->pool);
+	if (sdl->img.pixels)
+		free(sdl->img.pixels);
 	SDL_Quit();
 }

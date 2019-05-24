@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:10:41 by sklepper          #+#    #+#             */
-/*   Updated: 2018/12/20 18:22:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 14:43:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 void	error_sdl(t_sdl *sdl)
 {
 	ft_printf("Erreur SDL_Init : %s", SDL_GetError());
-	if (sdl->renderer != NULL)
-		SDL_DestroyRenderer(sdl->renderer);
-	if (sdl->win != NULL)
-		SDL_DestroyWindow(sdl->win);
-	SDL_Quit();
+	exit_sdl(sdl);
 	exit(-1);
 }

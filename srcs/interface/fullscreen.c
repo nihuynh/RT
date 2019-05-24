@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 14:14:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 15:57:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,30 @@ void	fullscreen(t_sdl *sdl, t_gui *gui)
 		: ImGuiCond_Once;
 }
 
-void resize_app(int width, int height, t_data *app)
+void resize_app_register(int width, int height, t_data *app)
 {
-	app->sdl->height_vp = height;
+	app->sdl->resize = true;
+	app->sdl->new_width_vp = width;
+	app->sdl->new_height_vp = height;
+}
+void resize_app(void *arg)
+{
+	t_data		*app;
+	int			height;
+	int			width;
+
+	app = arg;
+	if (!app->sdl->resize)
+		return ;
+	width = app->sdl->new_width_vp;
+	height = app->sdl->new_height_vp;
 	app->sdl->width_vp = width;
+	app->sdl->height_vp = height;
 	realloc_pxl(app->sdl, width * RENDER_SCALE, height * RENDER_SCALE);
 	SDL_SetWindowSize(app->sdl->win, width, height);
 	SDL_GL_DeleteContext(app->gui.gl_context);
 	hook_render_to_gui(&app->gui, app->sdl->win);
 	app->sdl->needs_render = true;
-	app->sdl->partial_render = false;
-
-    // glViewport(0, 0, width, height);
-    // glClearColor(0, 0, 0, 0);
-    // glClear(GL_COLOR_BUFFER_BIT);
-    // SDL_GL_SwapWindow(app->sdl->win);
-    // igRender();
-	// igSetNextWindowPos((ImVec2){0, 0}, 0, (ImVec2){0, 0});
-	// igSetNextWindowSize((ImVec2){app->sdl->width_vp, app->sdl->height_vp}, 0);
-	// if (app->sdl->renderer != NULL)
-	// 	SDL_DestroyRenderer(app->sdl->renderer);
-	// if (!(app->sdl->renderer = SDL_CreateRenderer(app->sdl->win, -1, 0x00000001)))
-	// 	error_sdl(app->sdl);
-	// SDL_SetHint(SDL_HINT_BMP_SAVE_LEGACY_FORMAT, "1");
-	// if (IMG_Init(0) != 0)
-	// 	error_sdl(app->sdl);
+	app->sdl->resize = false;
+	printf("Resizing");
 }
