@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 13:50:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 21:39:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,34 +49,43 @@ int is_out_of_slice(int idx_in_slice, int thr_len, int inc, int img_w)
 	return (EXIT_SUCCESS);
 }
 
+static inline t_pxl
+	get_real_coordinate(t_data_thr *slice, int idx)
+{
+	t_pxl		res;
+	int			ofs;
+
+	ofs =  slice->idx * slice->sdl->thr_len;
+	res.x = idx % slice->sdl->img.width;
+	res.y = (ofs + idx) / slice->sdl->img.width;
+	return (res);
+}
 
 static inline void
 	*process_data(void *arg)
 {
 	t_data_thr	*slice;
-	t_img		img;
 	int			idx_in_slice;
+	int			img_w;
 	int			inc;
 	int			color;
-	int			ofs;
+	t_pxl		real_pos;
 
 	slice = arg;
-	img = slice->sdl->img;
-	ofs = slice->idx * (img.height / THR_C);
+	img_w = slice->sdl->img.width;
 	inc = slice->sdl->sub_sample;
 	idx_in_slice = 0;
 	if (inc == SUB_SAMPLE)
 		ft_bzero(slice->pixels, sizeof(int) * slice->sdl->thr_len);
-	while (!is_out_of_slice(idx_in_slice, slice->sdl->thr_len, inc, img.width))
+	while (idx_in_slice < slice->sdl->thr_len)
 	{
-		color = slice->do_pxl(idx_in_slice % img.width,
-			ofs + idx_in_slice / img.width, slice->prg_data) | C_MASK;
-		sub_sampler(slice, idx_in_slice, inc, color, img.width);
+		real_pos = get_real_coordinate(slice, idx_in_slice);
+		color = slice->do_pxl(real_pos.x, real_pos.y, slice->prg_data) | C_MASK;
+		sub_sampler(slice, idx_in_slice, inc, color, img_w);
 		idx_in_slice += inc;
 	}
 	pthread_exit(NULL);
 }
-
 
 void
 	render_mthr_sdl(t_sdl *sdl)
