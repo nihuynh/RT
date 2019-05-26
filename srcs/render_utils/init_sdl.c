@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:24 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 15:02:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/26 20:18:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ t_sdl *init_sdl(int width, int height)
 									height,
 									SDL_WINDOW_SHOWN)))
 		error_sdl(sdl);
-	if (!(sdl->renderer = SDL_CreateRenderer(sdl->win, -1, 0x00000001)))
-		error_sdl(sdl);
 	SDL_SetHint(SDL_HINT_BMP_SAVE_LEGACY_FORMAT, "1");
 	if (IMG_Init(0) != 0)
 		error_sdl(sdl);
@@ -62,13 +60,8 @@ void	reset_sdl(t_sdl *old_sdl, int width, int height)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		error_sdl(sdl);
 	if (!(sdl->win = SDL_CreateWindow("RT",
-									SDL_WINDOWPOS_CENTERED,
-									SDL_WINDOWPOS_CENTERED,
-									width,
-									height,
-									SDL_WINDOW_SHOWN)))
-		error_sdl(sdl);
-	if (!(sdl->renderer = SDL_CreateRenderer(sdl->win, -1, 0x00000001)))
+		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+		width, height, SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN)))
 		error_sdl(sdl);
 	SDL_SetHint(SDL_HINT_BMP_SAVE_LEGACY_FORMAT, "1");
 	if (IMG_Init(0) != 0)

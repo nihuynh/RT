@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 10:44:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/26 20:14:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,12 @@ void	interface(t_data *app)
 	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL2_RenderDrawData(igGetDrawData());
 	SDL_GL_SwapWindow(app->sdl->win);
+}
+
+void	exit_ui(SDL_GLContext *gl_context)
+{
+	ImGui_ImplOpenGL2_Shutdown();
+    ImGui_ImplSDL2_Shutdown();
+	igDestroyContext(NULL);
+	SDL_GL_DeleteContext(gl_context);
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 05:54:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/26 21:29:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,13 +127,15 @@ void
 		ft_printf("Texture and material deallocated.\n");
 }
 
+void	exit_ui(SDL_GLContext *gl_context);
+
 void
 	free_app(t_data *app)
 {
 	int		debug_leak;
 
 	free_lst(app);
-	SDL_GL_DeleteContext(app->gui.gl_context);
+	exit_ui(app->gui.gl_context);
 	exit_sdl(app->sdl);
 	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
 	while (debug_leak)

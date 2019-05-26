@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 12:52:36 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 15:01:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/26 20:16:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	exit_sdl(t_sdl *sdl)
 	int idx;
 
 	idx = -1;
-	if (sdl->renderer != NULL)
-		SDL_DestroyRenderer(sdl->renderer);
 	if (sdl->win != NULL)
 		SDL_DestroyWindow(sdl->win);
 	if (sdl->data_thr != NULL)

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 15:57:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/26 20:14:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,6 @@ void resize_app(void *arg)
 	app->sdl->height_vp = height;
 	realloc_pxl(app->sdl, width * RENDER_SCALE, height * RENDER_SCALE);
 	SDL_SetWindowSize(app->sdl->win, width, height);
-	SDL_GL_DeleteContext(app->gui.gl_context);
-	hook_render_to_gui(&app->gui, app->sdl->win);
 	app->sdl->needs_render = true;
 	app->sdl->resize = false;
-	printf("Resizing");
 }
