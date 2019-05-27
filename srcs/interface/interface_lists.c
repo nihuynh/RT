@@ -6,12 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 12:55:37 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:19:52 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
+#include "parse.h"
 
 void	list_scenes(t_gui *gui)
 {
@@ -65,19 +66,21 @@ void	texture_list(t_list *lst_tex, t_obj *obj)
 
 	current = lst_tex;
 	selected = obj->material.tex;
-	tmp = current->content;
 	if (igBeginCombo("Texture", selected->name, 0))
 	{
 		while (current)
 		{
+			tmp = current->content;
 			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
 			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
+			{
 				obj->material.tex = tmp;
+				if (tmp->pixels == NULL)
+					load_texture(tmp);
+			}
 			if (is_selected)
 				igSetItemDefaultFocus();
 			current = current->next;
-			if (current)
-				tmp = current->content;
 		}
 		igEndCombo();
 	}

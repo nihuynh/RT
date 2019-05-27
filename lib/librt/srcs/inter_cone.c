@@ -94,11 +94,11 @@ t_vec3
 	origin_to_hitpoint = vec3_sub_(inter->point, cone->origin);
 	uv.y = vec3_dot(&origin_to_hitpoint, &cone->n);
 	if (cone->size > 0)
-		uv.y = 1 - (uv.y / cone->size);
+		uv.y = uv.y / cone->size;
 	z_projection = vec3_dot(&origin_to_hitpoint, &cone->z);
 	z_projection /= sinf(cone->theta * DEG_TO_RAD) * vec3_mag(origin_to_hitpoint);
 	z_projection = ft_clampf(z_projection, -0.99999f, 0.99999f);
-	uv.x = acosf(z_projection) * M_INV_PI_F * 0.5f;
+	uv.x = -acosf(z_projection) * M_INV_PI_F * 0.5f;
 	x_projection = cone->x;
 	vec3_scalar(&x_projection, vec3_dot(&origin_to_hitpoint, &cone->x));
 	if (vec3_dot(&x_projection, &cone->x) < 0)

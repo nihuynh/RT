@@ -18,19 +18,18 @@ void	normal_cone(t_inter *inter)
 	t_cone	*cone;
 	t_pt3	pc;
 	float	var;
-	t_vec3	normal;
+	t_vec3	orig2point;
+	float	angle;
 
 	cone = inter->obj->shape;
-	vec3_sub(&normal, &inter->point, &cone->origin);
-	var = vec3_mag(normal);
-	var /= (vec3_dot(&normal, &cone->n) > 0) ? cosf(cone->theta * DEG_TO_RAD)
-		: cosf((180 - cone->theta) * DEG_TO_RAD);
+	vec3_sub(&orig2point, &inter->point, &cone->origin);
+	angle = ((vec3_dot(&orig2point, &cone->n) < 0) * 180) - cone->theta;
+	var = vec3_mag(orig2point) / cosf(angle * DEG_TO_RAD);
 	pc.x = cone->origin.x + var * cone->n.x;
 	pc.y = cone->origin.y + var * cone->n.y;
 	pc.z = cone->origin.z + var * cone->n.z;
-	vec3_sub(&normal, &inter->point, &pc);
-	vec3_normalize(&normal);
-	if (vec3_dot(&normal, &inter->ray.dir) > 0)
-		vec3_scalar(&normal, -1);
-	vec3_cpy(&inter->n, &normal);
+	vec3_sub(&inter->n, &inter->point, &pc);
+	vec3_normalize(&inter->n);
+	if (vec3_dot(&inter->n, &inter->ray.dir) > 0)
+		vec3_scalar(&inter->n, -1);
 }

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 13:03:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:13:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@
 # include "ftlist.h"
 # include <SDL.h>
 # include "libui.h"
+# include "color.h"
+# include "option.h"
+# include "rtstruct.h"
 
 /*
 ** Structures :
 */
 
-typedef struct s_data	t_data;
+typedef struct s_scene		t_scene;
+typedef struct s_data		t_data;
+typedef struct s_gui		t_gui;
+typedef struct s_settings	t_settings;
+typedef struct s_scene_name	t_scene_name;
 
-typedef struct		s_gui
+
+struct				s_gui
 {
 	t_data			*app;
 	t_sdl			*sdl;
@@ -37,12 +45,12 @@ typedef struct		s_gui
 	bool			export_open;
 	bool			stats_open;
 	bool			edit_open;
-	bool			tree_open;
 	bool			del_obj_open;
 	bool			add_obj_open;
 	int				add_obj_type;
 	bool			render_open;
 	bool			scene_open;
+	bool			demo_open;
 	// t_gui_data		ui;
 	t_cam			cam_cpy;
 	char			*scene_name;
@@ -54,7 +62,9 @@ typedef struct		s_gui
 	t_pt3			pos_render;
 }					t_gui;
 
-typedef struct		s_settings
+};
+
+struct				s_settings
 {
 	t_color			back_color;
 	t_color			amb_light;
@@ -67,26 +77,40 @@ typedef struct		s_settings
 	bool			deflect;
 	bool			absorb;
 	bool			anti_a;
+	bool			debug_normal;
 	int				depth_max;
 	float			fov;
-}					t_settings;
+};
 
-typedef struct		s_scene
+struct				s_scene
 {
 	t_list			*lst_obj;
 	t_list			*lst_light;
-}					t_scene;
+};
 
-typedef struct		s_data
+struct				s_scene_name
 {
-	t_settings		settings;
-	t_sdl			sdl;
-	t_gui			gui;
+	char			*name;
+	char			*dir;
+};
+
+struct				s_data
+{
+	char			*arg;
+	t_option		option;
+	t_cam			cam;
 	t_scene			scene;
 	t_list			*lst_mat;
 	t_list			*lst_tex;
-	t_cam			cam;
-	char			*arg;
-}					t_data;
+	t_list			*lst_scenes;
+	t_sdl			*sdl;
+	t_gui			gui;
+	t_settings		settings;
+};
+
+t_data				*get_app(t_data *app);
+char				*get_obj_str(int type);
+int					get_obj_type(char *obj_type);
+void				obj_set(t_obj *obj, int type, void *shape);
 
 #endif

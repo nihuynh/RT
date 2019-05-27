@@ -25,6 +25,8 @@ content
 		refraction_color(0.98 0.98 0.98)
 		reflection_color(0.05 0.05 0.05)
 		refraction_idx(0)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 	object(sphere) //milieu
 	{
@@ -39,6 +41,8 @@ content
 		refraction_color(0.98 0.98 0.98)
 		reflection_color(0.05 0.05 0.05)
 		refraction_idx(0)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 	object(sphere) //droite
 	{
@@ -53,6 +57,8 @@ content
 		refraction_color(0.98 0.98 0.98)
 		reflection_color(0.05 0.05 0.05)
 		refraction_idx(0)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
     object(plane) //droite
     {
@@ -68,5 +74,7 @@ content
 		refraction_color(0.98 0.98 0.98)
 		reflection_color(0.05 0.05 0.05)
 		refraction_idx(0)
-    }
+ 		uv_scale(1 1)
+ 		uv_offset(0 0)
+   }
 }

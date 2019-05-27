@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 12:54:18 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:17:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 
 # include <stdbool.h>
 # include <stdint.h>
+# include "ftbtree.h"
 # include "color.h"
+
+typedef struct	s_vec2
+{
+	float		x;
+	float		y;
+}				t_vec2;
 
 typedef struct	s_vec3
 {
@@ -43,8 +50,7 @@ typedef struct	s_plane
 	t_vec3		n;
 	t_vec3		x;
 	t_vec3		y;
-	float		size_x;
-	float		size_y;
+	t_vec2		size;
 	float		rotation;
 }				t_plane;
 
@@ -73,6 +79,15 @@ typedef struct	s_cylinder
 	float		radius;
 	float		size;
 }				t_cylinder;
+
+typedef struct	s_csg
+{
+	t_pt3		origin;
+	t_vec3		x;
+	t_vec3		n;
+	t_vec3		z;
+	t_btree		*root;
+}				t_csg;
 
 typedef struct	s_light
 {
@@ -113,25 +128,34 @@ typedef	struct s_material	t_material;
 struct			s_texture
 {
 	char		*name;
+	char		*dir;
 	t_color		(*f_texture)(t_material*, t_vec3);
 	void		(*export) (int, void*);
 	char		*pixels;
 	int			width;
 	int			height;
+	char		bpp;
 };
+
+typedef struct	s_uv_mapping {
+	t_vec2	offset;
+	t_vec2	scale;
+	bool	repeat;
+}				t_uv_mapping;
 
 struct			s_material
 {
-	char		*name;
-	t_color		color_diffuse;
-	t_color		color_specular;
-	t_color		color_tex;
-	float		spec_idx;
-	float		spec_power;
-	t_color		refraction_color;
-	t_color		reflection_color;
-	float		refraction_idx;
-	t_texture	*tex;
+	char			*name;
+	t_color			color_diffuse;
+	t_color			color_specular;
+	t_color			color_tex;
+	float			spec_idx;
+	float			spec_power;
+	t_color			refraction_color;
+	t_color			reflection_color;
+	float			refraction_idx;
+	t_texture		*tex;
+	t_uv_mapping	uv_mapping;
 };
 
 /*
@@ -151,12 +175,25 @@ typedef struct s_inter	t_inter;
 struct			s_inter
 {
 	float		dist;
+	t_vec2		hit_pts;
 	t_obj		*obj;
 	t_ray		ray;
 	t_pt3		point;
 	t_vec3		n;
 	t_ray		deflected;
 };
+
+# define INTER		1
+# define INTER_STR	"INTER"
+# define NOT		2
+# define NOT_STR	"NOT"
+# define UNION		3
+# define UNION_STR	"UNION"
+
+typedef struct	s_csg_op
+{
+	int			type;
+}				t_csg_op;
 
 /*
 ** @brief Struct that hold any shape and is in a t_list

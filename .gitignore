@@ -61,3 +61,4 @@ cmake-build-*/
 .idea/
 .vscode/ipch/*
 imgui.ini
+RT_debug

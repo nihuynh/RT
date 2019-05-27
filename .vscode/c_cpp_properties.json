@@ -7,9 +7,33 @@
                 "${workspaceFolder}/lib/cimgui",
                 "${workspaceFolder}/includes",
                 "${workspaceFolder}/lib/librt/includes",
-                "/Users/nihuynh/.brew/include/SDL2",
                 "${workspaceFolder}/lib/libft/includes",
-                "/usr/local/Cellar/sdl2/2.0.9/include/SDL2"
+                "/usr/local/Cellar/sdl2/2.0.9/include/SDL2",
+                "/Users/sklepper/.brew/Cellar/SDL2/2.0.9_1/include/sdl2",
+                "/Library/Frameworks/SDL.framework/Versions/A/Headers",
+                "/Library/Frameworks/SDL2.framework/Versions/A/Headers",
+                "/Users/nihuynh/.brew/Cellar/sdl2/2.0.9_1/include/SDL2"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        },
+        {
+            "name": "MacBook",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/lib/cimgui",
+                "${workspaceFolder}/includes",
+                "${workspaceFolder}/lib/librt/includes",
+                "${workspaceFolder}/lib/libft/includes",
+                "/usr/local/include/SDL2",
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
             ],
             "defines": [],
             "macFrameworkPath": [

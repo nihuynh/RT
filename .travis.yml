@@ -7,9 +7,10 @@ addons:
   homebrew:
     packages:
     - sdl2
+    - sdl2_image
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
-    sudo sh install_sdl.sh;
+    sudo sh resources/script/install_sdl.sh;
     fi
 script: make test
 
@@ -19,3 +20,8 @@ matrix:
     - os: linux
 notifications:
   slack: 42born2code:6JQ1d0KBj9Vggul0KNL9p0fW
+
+# blocklist
+branches:
+  except:
+  - Sam_wip

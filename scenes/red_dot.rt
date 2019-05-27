@@ -1,44 +1,31 @@
 camera
 {
-	origin(0 0 25)
-	direction(0 0 -1)
-	amb_light(0.1 0.1 0.1)
+	origin(-0.704 137.957 122.818)
+	direction(-0.212 -0.574 -0.791)
+	amb_light(0.328 0.328 0.328)
 }
 content
 {
 	object(light)
 	{
-		color(1 1 1)
-		origin(25 25 -15)
-		intensity(10000)
-	}
-	object(plane)
-	{
-		origin(0 -50 0)
-		normal(0 1 0)
-		limit(0 0)
-		texture(checkers)
-		color_diffuse(0.714 0.4284 0.18144)
-		color_specular(0.9 0.8 0.7)
-		color_tex(0 0 0)
-		spec_idx(0.5)
-		spec_power(0.9)
-		refraction_color(0 0 0)
-		reflection_color(0 0 0)
-		refraction_idx(0)
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 0.000)
+		intensity(2000.000)
 	}
 	object(sphere)
 	{
-		origin(0 0 -100)
-		radius(30)
-		texture(none)
-		color_diffuse(0.714 0.4284 0.18144)
-		color_specular(0.9 0.8 0.7)
-		color_tex(0 0 0)
-		spec_idx(0.5)
-		spec_power(0.9)
-		refraction_color(0 0 0)
-		reflection_color(0.75 0.75 0.75)
-		refraction_idx(0)
+		origin(0.000 0.000 -100.000)
+		radius(30.000)
+		texture(2k_mars.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1 1)
+		uv_offset(0 0)
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/13 15:58:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/26 20:16:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # include <SDL.h>
 # include <stdbool.h>
 
-# define THR_C		20
-# define BATCH_SIZE	16
-# define C_MASK		0xFF000000
+# define THR_C			10
+# define BATCH_SIZE		16
+# define C_MASK			0xFF000000
+# define P_TIME_LEN		80
+# define GUI_FPS		60
 
 typedef struct		s_pxl
 {
@@ -42,14 +44,19 @@ struct				s_sdl
 {
 	bool			fullscreen;
 	t_img			img;
+	float			progress_sub_sample;
+	int				sub_sample;
 	bool			needs_render;
+	bool			partial_render;
 	int				width_vp;
 	int				height_vp;
+	int				new_width_vp;
+	int				new_height_vp;
+	bool			resize;
 	int				thr_len;
 	t_data_thr		*data_thr;
 	t_thr_pool		*pool;
 	SDL_Window		*win;
-	SDL_Renderer	*renderer;
 	void			(*key_map)(int*, SDL_Keycode, void*, bool state);
 	void			(*mouse_map)(SDL_Event*, void *);
 	void			(*click_map)(SDL_Event *, void *);
@@ -57,12 +64,13 @@ struct				s_sdl
 	void			(*render_gui)(void *arg);
 	bool			sepia;
 	bool			grayscale;
-	float			render_time[25];
+	float			render_time[P_TIME_LEN];
+	float			gui_time[GUI_FPS];
 };
 
 struct				s_data_thr
 {
-	int				*data;
+	uint32_t		*pixels;
 	int				idx;
 	t_sdl			*sdl;
 	int				(*do_pxl) (int, int, void*);
@@ -92,7 +100,7 @@ struct				s_thr_pool
 */
 
 void				error_sdl(t_sdl *sdl);
-int					init_sdl(t_sdl *sdl, int width, int height);
+t_sdl				*init_sdl(int width, int height);
 void				exit_sdl(t_sdl *sdl);
 void				render_sdl(t_sdl *sdl, int (*f) (int, int, void*), void *d);
 void				loop_sdl(t_sdl *sdl, void *arg);
@@ -101,7 +109,9 @@ void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
 									void *data);
 void				render_mthr_sdl(t_sdl *sdl);
 void				apply_simple_filter(t_sdl *sdl, uint32_t (*fun) (uint32_t));
-void				push_render_time(t_sdl *sdl, long new_frame);
+
+void				push_render_time(t_sdl *sdl, float time_frame_ms);
+void				push_gui_time(t_sdl *sdl, long new_frame);
 
 /*
 ** Pool Render :

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/13 15:11:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/22 09:31:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 #include "libft.h"
 
 void
-	cam_ray(t_data *data, t_ray *res, float x, float y)
+	cam_ray(t_data *app, t_ray *res, float x, float y)
 {
 	float	fovt;
 	float	r;
 	t_pt3	direction;
 
-	r = data->sdl.img.width / (float)data->sdl.img.height;
-	fovt = tanf((data->settings.fov * DEG_TO_RAD) / 2);
-	direction.x = (2 * x / data->sdl.img.width - 1) * fovt * r;
-	direction.y = (1 - 2 * y / data->sdl.img.height) * fovt;
+	r = app->sdl->img.width / (float)app->sdl->img.height;
+	fovt = tanf((app->settings.fov * DEG_TO_RAD) / 2);
+	direction.x = (2 * x / app->sdl->img.width - 1) * fovt * r;
+	direction.y = (1 - 2 * y / app->sdl->img.height) * fovt;
 	direction.z = -1;
 	vec3_normalize(&direction);
-	apply_matrix(&direction, &data->cam.rotation);
+	apply_matrix(&direction, &app->cam.rotation);
 	vec3_normalize(&direction);
-	ray_new(res, &data->cam.pos, &direction);
+	ray_new(res, &app->cam.pos, &direction);
 }
 
 static inline t_color
@@ -75,6 +75,8 @@ t_color
 	if (inter.obj == NULL)
 		return (settings.back_color);
 	shading = get_shading_data(&inter);
+	if (settings.debug_normal)
+		return (*(t_color*)&shading.normal);
 	lighting = get_lighting(shading, scene, &settings);
 	if (depth < settings.depth_max)
 		color_add(&lighting, cast_bounce(scene, settings, &inter, depth));
@@ -95,27 +97,27 @@ t_shading
 	shading.normal = inter->n;
 	shading.mat = inter->obj->material;
 	shading.specular_dir = inter->deflected.dir;
+	apply_uv_mapping(&shading.uv, inter->obj->material.uv_mapping);
 	return (shading);
 }
 
 int __attribute__((hot))
 	process_pixel(int x, int y, void *arg)
 {
-	t_data	*data;
+	t_data	*app;
 	t_ray	rene;
 	t_color	color;
 
-	data = arg;
-	cam_ray(data, &rene, x + 0.5, y + 0.5);
-	color = recursive_cast(data->scene, data->settings, rene, 0);
-	if (data->settings.anti_a)
-		color = anti_aliasing(color, data, x, y);
+	app = arg;
+	cam_ray(app, &rene, x + 0.5, y + 0.5);
+	color = recursive_cast(app->scene, app->settings, rene, 0);
+	if (app->settings.anti_a)
+		color = anti_aliasing(color, app, x, y);
 	color_clamp(&color, 0, 1);
-//	color = sample(data->lst_tex->content, (float)x / data->sdl.img.width, (float)y / data->sdl.img.height);
-	color_mult(&color, &data->settings.filter);
-	if (data->sdl.sepia)
+	color_mult(&color, &app->settings.filter);
+	if (app->sdl->sepia)
 		color = sepia(color);
-	if (data->sdl.grayscale)
+	if (app->sdl->grayscale)
 		color = grayscale(color);
 	return (colortoi(color));
 }

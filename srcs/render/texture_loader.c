@@ -3,122 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/16 15:06:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/21 03:34:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
-#include "ftio.h"
-#include "ftstring.h"
-#include "ftconvert.h"
 #include <unistd.h>
 #include <stdlib.h>
-
-int		parse_header(int fd, int *width, int *height)
-{
-	char	*line;
-	int		header_bytes;
-
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	header_bytes = ft_strlen(line) + 1;
-	if (ft_strncasecmp(line, "P6", 2) != 0)
-	{
-		ft_printf("Bad header [%s]\n", line);
-		ft_error(__func__, __LINE__);
-	}
-	free(line);
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	header_bytes += ft_strlen(line) + 1;
-	free(line);
-	*width = ft_atoi(line);
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	header_bytes += ft_strlen(line) + 1;
-	free(line);
-	*height = ft_atoi(line);
-	ft_gnl(fd, &line, "\t\n\r\v ");
-	header_bytes += ft_strlen(line) + 1;
-	while (ft_gnl(fd, &line, "\t\n\r\v"))
-		;
-	free(line);
-	return (header_bytes);
-}
-
-/*
-** We want to use read() for the pixel data but ft_gnl will mess with the cursor
-** offset.
-** To reposition the cursor immediately after the metadata, we have to reopen
-** the file and read past the metadata to skip it.
-** ft_gnl will return incorrect data on a sucessive read if ft_gnl doesn't reach
-** the end of the file, so we do a dummy gnl call at the end
-*/
-
-char	*read_pixel_data(char *filename, int cursor, int pixel_count)
-{
-	char	*pixels;
-	int		fd;
-	char	*line;
-
-	if (!(pixels = malloc(pixel_count * 3)))
-		ft_error(__func__, __LINE__);
-	if (pixels == NULL)
-		ft_error(__func__, __LINE__);
-	fd = ft_fopen_read(filename);
-	read(fd, pixels, cursor);
-	read(fd, pixels, pixel_count * 3);
-	ft_gnl(fd, &line, "\n");
-	free(line);
-	close(fd);
-	return (pixels);
-}
-
-char	*load_texture(char *filename, int *width, int *height)
-{
-	int	fd;
-	int	header_bytes;
-
-	ft_printf("Loading [%s] ... ", filename);
-	fd = ft_fopen_read(filename);
-	header_bytes = parse_header(fd, width, height);
-	close(fd);
-	ft_printf("%d x %d\n", *width, *height);
-	return (read_pixel_data(filename, header_bytes, *width * *height));
-}
-
-#include "rt.h"
 #include <dirent.h>
-#include "libft.h"
+#include <SDL_image.h>
+#include "rtstruct.h"
+#include "config.h"
+#include "ftio.h"
+#include "data_struct.h"
+#include "ftstring.h"
+#include "rt.h"
+
+
+void	load_texture(t_texture *tex)
+{
+	SDL_Surface	*surface;
+	if (tex->dir == NULL)
+		return ;
+	if (DEBUG)
+		ft_printf("Loading [%s] ... ", tex->name);
+	surface = IMG_Load(tex->dir);
+	if (surface == NULL)
+	{
+		ft_printf("%s\n", SDL_GetError());
+		ft_error(__PRETTY_FUNCTION__, __LINE__);
+	}
+	tex->width = surface->w;
+	tex->height = surface->h;
+	tex->bpp = surface->format->BytesPerPixel;
+	tex->pixels = malloc(tex->width * tex->height * tex->bpp);
+	if (tex->pixels == NULL)
+		ft_error(__func__, __LINE__);
+	memcpy(tex->pixels, surface->pixels, tex->width * tex->height * tex->bpp);
+	SDL_FreeSurface(surface);
+	if (DEBUG)
+		ft_printf("%d x %d\n", tex->width, tex->height);
+}
 
 void	add_texture(char *name, t_data *app)
 {
-	char		*dir;
 	t_texture	tex;
 
-	if (!(dir = ft_strjoin("./resources/textures/", name)))
+	if (!(tex.dir = ft_strjoin(TEX_DIR, name)))
 		ft_error(__func__, __LINE__);
-	tex.pixels = load_texture(dir, &tex.width, &tex.height);
+	tex.pixels = NULL;
 	tex.f_texture = &sample;
-	if(!(tex.name = ft_strdup(name)))
+	if (!(tex.name = ft_strdup(name)))
 		ft_error(__func__, __LINE__);
 	ft_lstpushnew(&app->lst_tex, &tex, sizeof(t_texture));
-	ft_printf("Texture loaded : %s\n", name);
+	if (DEBUG)
+		ft_printf("Texture added : %s\n", name);
 }
 
 void	open_textures(t_data *app)
 {
-	DIR *d;
-	struct dirent *dir;
+	DIR				*d;
+	struct dirent	*dir;
 
-	(void)app;
-	d = opendir("./resources/textures");
+	d = opendir(TEX_DIR);
 	if (d)
 	{
 		while ((dir = readdir(d)) != NULL)
 		{
-			if (ft_strstr(dir->d_name, ".ppm"))
+			if (ft_strstr(dir->d_name, ".ppm") ||
+				ft_strstr(dir->d_name, ".png") ||
+				ft_strstr(dir->d_name, ".jpg") ||
+				ft_strstr(dir->d_name, ".jpeg")
+			)
 				add_texture(dir->d_name, app);
 		}
+		closedir(d);
 	}
 }

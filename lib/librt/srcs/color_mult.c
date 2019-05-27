@@ -6,13 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 03:24:03 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/24 15:42:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-/*
+/**
 ** @brief	Multiply colors
 **
 **

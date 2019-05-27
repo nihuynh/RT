@@ -3,81 +3,96 @@
 /*                                                        :::      ::::::::   */
 /*   setter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/19 15:59:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/20 22:20:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "librt.h"
 #include "parse.h"
 
 void
-	sphere_set(void *sphere, char **greed, int i)
+	sphere_set(void *sphere, t_parse_txt *scene_file)
 {
 	t_sphere	*psphere;
 
 	if (sphere == NULL)
-		ft_error_wmsg(ERR_PARSE_SET_SP, i, greed[i]);
+	{
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_SP, scene_file);
+	}
 	psphere = sphere;
-	parse_vector(&psphere->origin, greed, ++i, "origin(");
-	parse_fval(&psphere->radius, greed, ++i, "radius(");
+	psphere->origin  = parse_vector("origin(", scene_file);
+	psphere->radius  = parse_fval("radius(", scene_file);
 }
 
 void
-	plane_set(void *plane, char **greed, int i)
+	plane_set(void *plane, t_parse_txt *scene_file)
 {
 	t_plane		*pplane;
 
 	if (plane == NULL)
-		ft_error_wmsg(ERR_PARSE_SET_PL, i, greed[i]);
+	{
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_PL, scene_file);
+	}
 	pplane = plane;
-	parse_vector(&pplane->origin, greed, ++i, "origin(");
-	parse_vector(&pplane->n, greed, ++i, "normal(");
-	parse_limit(&pplane->size_x, &pplane->size_y, greed, ++i);
+	pplane->origin = parse_vector("origin(", scene_file);
+	pplane->n = parse_vector("normal(", scene_file);
+	pplane->size = parse_vec2("limit(", scene_file);
 	vec3_normalize(&pplane->n);
 	create_orthobasis_from_y_axis(pplane->n, &pplane->x, &pplane->y);
 }
 
 void
-	cylinder_set(void *cylinder, char **greed, int i)
+	cylinder_set(void *cylinder, t_parse_txt *scene_file)
 {
 	t_cylinder	*pcylinder;
 
 	if (cylinder == NULL)
-		ft_error_wmsg(ERR_PARSE_SET_CY, i, greed[i]);
+	{
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_CY, scene_file);
+	}
 	pcylinder = cylinder;
-	parse_vector(&pcylinder->origin, greed, ++i, "origin(");
-	parse_vector(&pcylinder->n, greed, ++i, "normal(");
+	pcylinder->origin = parse_vector("origin(", scene_file);
+	pcylinder->n = parse_vector("normal(", scene_file);
+	pcylinder->radius = parse_fval("radius(", scene_file);
+	pcylinder->size = parse_fval("size(", scene_file);
 	vec3_normalize(&pcylinder->n);
 	create_orthobasis_from_y_axis(pcylinder->n, &pcylinder->x, &pcylinder->z);
-	parse_fval(&pcylinder->radius, greed, ++i, "radius(");
-	parse_fval(&pcylinder->size, greed, ++i, "size(");
 }
 
 void
-	cone_set(void *cone, char **greed, int i)
+	cone_set(void *cone, t_parse_txt *scene_file)
 {
 	t_cone		*pcone;
 
 	if (cone == NULL)
-		ft_error_wmsg(ERR_PARSE_SET_CO, i, greed[i]);
+	{
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_CO, scene_file);
+	}
 	pcone = cone;
-	parse_vector(&pcone->origin, greed, ++i, "origin(");
-	parse_vector(&pcone->n, greed, ++i, "normal(");
+	pcone->origin = parse_vector("origin(", scene_file);
+	pcone->n = parse_vector("normal(", scene_file);
+	pcone->theta = parse_fval("theta(", scene_file);
+	pcone->size = parse_fval("size(", scene_file);
 	vec3_normalize(&pcone->n);
 	create_orthobasis_from_y_axis(pcone->n, &pcone->x, &pcone->z);
-	parse_fval(&pcone->theta, greed, ++i, "theta(");
-	parse_fval(&pcone->size, greed, ++i, "size(");
 }
 
 void
-	light_set(t_light *light, char **greed, int i)
+	light_set(t_light *light, t_parse_txt *scene_file)
 {
 	if (light == NULL)
-		ft_error_wmsg(ERR_PARSE_SET_LI, i, greed[i]);
-	parse_color(&light->color, greed, ++i, "color(");
-	parse_vector(&light->origin, greed, ++i, "origin(");
-	parse_fval(&light->intensity, greed, ++i, "intensity(");
+	{
+		err_set(scene_file, __func__, __LINE__, __FILE__);
+		err_exit(ERR_PARSE_SET_LI, scene_file);
+	}
+	light->color = parse_color("color(", scene_file);
+	light->origin = parse_vector("origin(", scene_file);
+	light->intensity = parse_fval("intensity(", scene_file);
 }
