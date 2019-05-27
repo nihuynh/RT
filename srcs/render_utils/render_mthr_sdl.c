@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 21:39:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 12:55:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ int is_out_of_slice(int idx_in_slice, int thr_len, int inc, int img_w)
 static inline t_pxl
 	get_real_coordinate(t_data_thr *slice, int idx)
 {
-	t_pxl		res;
-	int			ofs;
+	t_pxl	res;
+	int			idx_total;
 
-	ofs =  slice->idx * slice->sdl->thr_len;
-	res.x = idx % slice->sdl->img.width;
-	res.y = (ofs + idx) / slice->sdl->img.width;
+	idx_total = slice->idx * slice->sdl->thr_len + idx;
+	res.x = idx_total % slice->sdl->img.width;
+	res.y = idx_total / slice->sdl->img.width;
 	return (res);
 }
 

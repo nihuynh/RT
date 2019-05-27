@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/23 23:30:21 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 08:03:49 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/27 01:12:13 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ ifeq ($(RUNMODE),dev)
     # CFLAGS	+=	-fsanitize=thread
 	CFLAGS	+=	-fsanitize=address -fsanitize-recover=address
 else
-	CFLAGS	+= -O2 -march=native -flto
+	CFLAGS	+= -Os -march=native -flto -g0
 endif
 $(OBJDIR)/%.o: %.c
 	mkdir $(OBJDIR) 2> /dev/null || true

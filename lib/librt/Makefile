@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/12 06:26:22 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/27 01:12:59 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ ifeq ($(RUNMODE),dev)
 	# VERBOSE =	1
 	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address -fsanitize-recover=address
 else
-	CFLAGS	+= -O2 -march=native -flto
+	CFLAGS	+= -Os -march=native -flto -g0
 endif
 ifndef VERBOSE
 .SILENT:

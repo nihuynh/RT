@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 22:00:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 12:46:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,6 @@ struct			s_inter
 typedef struct	s_csg_op
 {
 	int			type;
-
 }				t_csg_op;
 
 /*

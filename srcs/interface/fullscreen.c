@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/26 20:14:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 12:46:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	realloc_pxl(t_sdl *sdl, int width, int height)
 		ofs = idx * sdl->thr_len;
 		sdl->data_thr[idx].pixels = &sdl->img.pixels[ofs];
 	}
-
 }
 
 void	fullscreen(t_sdl *sdl, t_gui *gui)
