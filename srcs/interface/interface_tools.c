@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:53:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:35:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,27 +100,22 @@ void	ui_cone(void *app_v, void *res)
 		cone->size = tmp.size;
 }
 
-void			ui_csg_btree(void *app_v, void *shape)
+void			ui_csg_btree(t_data	*app, t_btree *node)
 {
-	t_btree	*tree;
-	t_data	*app;
-
-	app = app_v;
-	tree = shape;
-	if (tree->content_size == sizeof(t_obj))
+	if (node->content_size == sizeof(t_obj))
 	{
-		object(app, tree->content);
+		object(app, node->content);
 		return ;
 	}
-	node_type_list((t_csg_op*)tree->content);
+	node_type_list((t_csg_op*)node->content);
 	if (igTreeNodeStr("Left"))
 	{
-		ui_csg_btree(app, tree->left);
+		ui_csg_btree(app, node->left);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Right"))
 	{
-		ui_csg_btree((void*)app, (void*)tree->right);
+		ui_csg_btree(app, node->right);
 		igTreePop();
 	}
 }
