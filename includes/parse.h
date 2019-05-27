@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/16 14:32:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 12:54:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@
 # define ERR_PARSE_COLOR	"ERROR :	parsing of the Color 	at line : "
 # define ERR_PARSE_STRN		"ERROR :		NULL string		 	at line : "
 
-# define ERR_P_CLOSE_PAR	"ERROR :	Missing parenthese		at line : "
-# define ERR_P_BRACKET		"ERROR :	Missing bracket 		at line : "
-# define ERR_P_KEY			"ERROR :	Missing key				at line : "
+typedef struct	s_objset
+{
+	void		(*f_inter) (t_inter*, t_obj*);
+	void		(*f_gui) (void*, void*);
+	void		(*find_normal) (t_inter*);
+	t_vec3		(*get_uv) (t_inter*);
+}				t_objset;
 
 # define ERR_PARSE_SET_SP	"ERROR :	Set-up of the sphere	at line : "
 # define ERR_PARSE_SET_CY	"ERROR :	Set-up of the cylinder	at line : "

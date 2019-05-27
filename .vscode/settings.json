@@ -14,6 +14,21 @@
 		"interface.h": "c",
 		"ftmath.h": "c",
 		"math.h": "c",
-		"rtstruct.h": "c"
+		"rtstruct.h": "c",
+		"zconf.h": "c",
+		"limits": "c",
+		"type_traits": "c",
+		"parser.h": "c",
+		"unistd.h": "c",
+		"lifetime.h": "c",
+		"config.h": "c",
+		"cimgui.h": "c",
+		"ftbtree.h": "c",
+		"imgui_impl_opengl2.h": "c",
+		"imgui_impl_sdl.h": "c",
+		"option.h": "c",
+		"ft_printf.h": "c",
+		"ft_unit_test.h": "c",
+		"ftstring.h": "c"
 	}
 }

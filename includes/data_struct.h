@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 14:01:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 12:53:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,25 @@
 
 typedef struct		s_gui
 {
+	t_data			*app;
+	t_sdl			*sdl;
+	uint32_t		texture_id;
+	SDL_GLContext	gl_context;
+
+	int				flags_render;
+	char			err_msg[50];
+	bool			err_open;
+	bool			load_open;
+	bool			export_open;
+	bool			stats_open;
+	bool			edit_open;
+	bool			tree_open;
+	bool			del_obj_open;
+	bool			add_obj_open;
+	int				add_obj_type;
+	bool			render_open;
+	bool			scene_open;
+	// t_gui_data		ui;
 	t_cam			cam_cpy;
 	char			*scene_name;
 	bool			fullscreen;

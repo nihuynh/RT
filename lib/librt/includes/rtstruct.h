@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/12 07:18:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 12:54:18 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ struct			s_obj
 	void		(*f_inter) (t_inter*, t_obj*);
 	void		(*find_normal) (t_inter*);
 	t_vec3		(*get_uv) (t_inter*);
-	void		(*f_gui) (void*);
+	void		(*f_gui) (void*, void*);
 	void		(*export) (int, void*);
 };
 

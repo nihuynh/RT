@@ -6,12 +6,28 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/07 20:14:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 12:55:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
+
+void	list_scenes(t_gui *gui)
+{
+	t_list			*lst;
+	t_scene_name	*scene;
+
+	lst = gui->app->lst_scenes;
+	while (lst)
+	{
+		scene = lst->content;
+		if(igMenuItemBool(scene->name, NULL, 0, 1))
+			load_scene(gui->app, scene->dir);
+		lst = lst->next;
+	}
+	igEndMenu();
+}
 
 void	material_list(t_list *lst_mat, t_obj *obj)
 {
@@ -86,6 +102,33 @@ void	new_obj_list(int *type)
 			{
 				item_current = item[i];
 				*type = i;
+			}
+			if (is_selected)
+				igSetItemDefaultFocus();
+		}
+		igEndCombo();
+	}
+}
+
+void	node_type_list(t_csg_op *csg_op)
+{
+	const char			**item;
+	static const char	*item_current;
+	int					i;
+	bool				is_selected;
+
+	item = (const char*[]){"Inter", "Not", "Union"};
+	item_current = item[csg_op->type - 1];
+	if (igBeginCombo("Node Type", item_current, 0))
+	{
+		i = -1;
+		while (++i < 3)
+		{
+			is_selected = (item_current == item[i]);
+			if (igSelectable(item[i], is_selected, 0, (ImVec2){0, 0}))
+			{
+				item_current = item[i];
+				csg_op->type = i + 1;
 			}
 			if (is_selected)
 				igSetItemDefaultFocus();

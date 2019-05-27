@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 22:02:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 12:55:21 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,18 @@
 
 void	window_renderer(t_gui *gui, t_img img)
 {
-	ImVec2	pos;
-
-	igSetNextWindowPos((ImVec2){0, 0}, gui->flags_render, (ImVec2){0, 0});
-	igSetNextWindowSize((ImVec2){img.width, img.height}, 0);
-	igPushStyleVarVec2(ImGuiStyleVar_WindowPadding, (ImVec2){0, 0});
-	igPushStyleVarFloat(ImGuiStyleVar_WindowRounding, 0);
-	igBegin("render", NULL, RENDER_FLAGS);
-	igImage((void*)(intptr_t)gui->texture_id, (ImVec2){img.width, img.height},
-								(ImVec2){0, 0}, (ImVec2){1, 1},
-								(ImVec4){1, 1, 1, 1}, (ImVec4){0, 0, 0, 0});
-	pos = igGetWindowPos();
-	gui->pos_render.x = pos.x;
-	gui->pos_render.y = pos.y;
-	gui->render_focused = !igIsWindowFocused(0);
-	igEnd();
-	igPopStyleVar(2);
-}
-
-void	window_stats(t_data *app, bool *p_open)
-{
-	igSetNextWindowPos((ImVec2){0, app->sdl.img.height}, (ImGuiCond_Once),
-		(ImVec2){0, 0});
-	igBegin("Stats", p_open, ImGuiWindowFlags_AlwaysAutoResize);
-	igText("Last frame took : %fms", app->sdl.render_time[24]);
-	igPlotLines("Render Time (ms)", &(app->sdl.render_time[0]), 25, 0, NULL, 0,
-		3.402823466e+38F, (ImVec2){400, 80}, 4);
-	igEnd();
-}
-
-void	gui_setup(t_gui *gui, t_img img, t_data *app)
-{
-	window_renderer(gui, img);
-	window_scene(app);
+	render_win(gui);
+	interface_mainmenu(gui);
+	if (gui->edit_open)
+		scene_win(gui);
+	if (gui->err_open)
+		err_win(gui);
 	if (gui->stats_open)
-		window_stats(app, &gui->stats_open);
+		stats_win(gui);
+	if (gui->tree_open)
+		tree_obj_win(gui);
+	if (gui->load_open)
+		load_win(gui);
 	if (gui->export_open)
 		export_window(app);
 	if (gui->new_obj_open)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_objects.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/13 17:42:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/24 15:56:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static inline void
 		material_details(&obj->material);
 }
 
-static inline void
+void
 	object(t_data *app, t_obj *obj)
 {
 	igValueInt("Type", obj->type);
@@ -87,7 +87,7 @@ static inline void
 	}
 	if (igTreeNodeStr("Object"))
 	{
-		obj->f_gui(obj->shape);
+		obj->f_gui(app, obj->shape);
 		igTreePop();
 	}
 }
