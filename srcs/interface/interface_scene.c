@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 14:59:18 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:53:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,16 @@ static inline void
 	igNewLine();
 }
 
-static inline void
+void
 	render_settings(t_data *app)
 {
+	igSetNextWindowPos((ImVec2){app->gui.sdl->img.width,
+	app->gui.sdl->img.height + 18}, ImGuiCond_Once, (ImVec2){0, 0});
+	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
+	NULL, NULL);
+	if (!(igBegin("Render Settings", &app->gui.render_set_open,
+	ImGuiWindowFlags_AlwaysAutoResize)))
+		return ;
 	if (igTreeNodeStr("Camera Settings"))
 	{
 		igSliderInt("Depth Max", &app->settings.depth_max, 0, 10, NULL);
@@ -70,6 +77,7 @@ static inline void
 			app->sdl->sepia = false;
 		igTreePop();
 	}
+	igEnd();
 }
 
 void
@@ -77,13 +85,11 @@ void
 {
 	igSetNextWindowPos((ImVec2){gui->sdl->img.width, 18},
 						ImGuiCond_Once, (ImVec2){0, 0});
-	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){2500, 2500},
-		NULL, NULL);
+	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){500,
+	gui->sdl->img.height}, NULL, NULL);
 	igBegin("Scene", &gui->edit_open, ImGuiWindowFlags_AlwaysAutoResize);
-	if (igCollapsingHeader("Render Settings", ImGuiTreeNodeFlags_DefaultOpen))
-		render_settings(gui->app);
-	if (igCollapsingHeader("Scene settings", ImGuiTreeNodeFlags_DefaultOpen))
-		object_settings(gui->app);
+	obj_selector(gui);
+	object_settings(gui->app);
 	if (igButton("Render new frame", (ImVec2){130, 20}))
 		gui->sdl->needs_render = true;
 	igEnd();

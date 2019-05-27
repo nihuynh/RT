@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/26 21:29:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 18:09:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void
 	}
 	free(obj->shape);
 	obj->shape = NULL;
+	free(obj->name);
 	free(obj);
 }
 
@@ -108,6 +109,7 @@ void
 		ft_lstdel(&app->scene.lst_obj, &del_obj);
 	if (app->scene.lst_light)
 		ft_lstdel(&app->scene.lst_light, &del_light);
+	ft_bzero(app->scene.nb_objs, sizeof(int) * 5);
 	if (DEBUG)
 		ft_printf("Scene [%s] deallocated.\n", app->arg);
 	ft_strdel(&app->arg);

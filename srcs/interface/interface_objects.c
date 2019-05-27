@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 15:56:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:56:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ static inline void
 void
 	object(t_data *app, t_obj *obj)
 {
-	igValueInt("Type", obj->type);
 	if (igTreeNodeStr("Material"))
 	{
 		material(app, obj);

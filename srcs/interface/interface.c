@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:31:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:31:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	ui_render(t_gui *gui)
 	interface_mainmenu(gui);
 	if (gui->edit_open)
 		scene_win(gui);
+	if (gui->render_set_open)
+		render_settings(gui->app);
 	if (gui->err_open)
 		err_win(gui);
 	if (gui->stats_open)
 		stats_win(gui);
-	if (gui->tree_open)
-		tree_obj_win(gui);
 	if (gui->load_open)
 		load_win(gui);
 	if (gui->load_open)

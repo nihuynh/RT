@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 17:35:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:49:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,5 @@ void			ui_csg(void *app_v, void *shape)
 
 	app = app_v;
 	csg = shape;
-	object(app, shape);
 	ui_csg_btree(app, csg->root);
 }

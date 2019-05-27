@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 03:18:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 18:12:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,11 @@ void
 {
 	t_parse		cfg;
 	void		*shape;
+	const char	**name_objs;
+	int			*nb_obj;
 
+	nb_obj = &scene_file->app->scene.nb_objs[type];
+	name_objs = (const char*[]){"Plane ", "Sphere ", "Cone ", "Cylinder ", "Csg "};
 	check_opening_bracket(scene_file);
 	init_parse_cfg(type, &cfg);
 	if (DEBUG)
@@ -86,6 +90,8 @@ void
 		ft_error(__func__, __LINE__);
 	cfg.setter(shape, scene_file);
 	obj_set(obj_dst, type, shape);
+	obj_dst->name = ft_strjoin(name_objs[type], ft_itoa(*nb_obj));
+	*nb_obj += 1;
 	obj_dst->export = cfg.export;
 	obj_dst->material = parse_material(scene_file);
 	check_closing_bracket(scene_file);

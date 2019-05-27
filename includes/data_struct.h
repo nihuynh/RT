@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 13:25:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:29:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ struct				s_gui
 	bool			render_open;
 	bool			scene_open;
 	bool			demo_open;
-	bool			tree_open;
+	bool			render_set_open;
 	// t_gui_data		ui;
 	t_cam			cam_cpy;
 	char			*scene_name;
@@ -85,6 +85,7 @@ struct				s_scene
 {
 	t_list			*lst_obj;
 	t_list			*lst_light;
+	int				nb_objs[5];
 };
 
 struct				s_scene_name

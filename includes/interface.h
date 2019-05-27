@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:27:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:43:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	err_win(t_gui *gui);
 void	export_win(t_gui *gui);
 void	load_win(t_gui *gui);
 void	stats_win(t_gui *gui);
-void	tree_obj_win(t_gui *gui);
+void	obj_selector(t_gui *gui);
 
 void	add_obj_win(t_gui *gui);
 void	del_obj_win(t_gui *gui);
@@ -42,6 +42,8 @@ void	del_obj_win(t_gui *gui);
 void	render_win(t_gui *gui);
 void	scene_win(t_gui *gui);
 void	interface_mainmenu(t_gui *gui);
+void	render_settings(t_data *app);
+
 
 int		export_scene(t_data *app, char *filename);
 void	export_material(int fd, t_material *mat);

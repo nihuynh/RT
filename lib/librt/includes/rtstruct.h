@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 13:17:58 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:57:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ struct			s_obj
 {
 	int			type;
 	void		*shape;
+	char		*name;
 	t_material	material;
 	void		(*f_inter) (t_inter*, t_obj*);
 	void		(*find_normal) (t_inter*);

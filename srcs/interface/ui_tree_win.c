@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 01:44:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 15:37:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:51:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 #include "interface.h"
 #include "libft.h"
 
-void	tree_obj_win(t_gui *gui)
+void	obj_selector(t_gui *gui)
 {
 	t_list		*lst;
 	t_obj		*obj;
-	int			i[5];
-	const char	**item;
+	bool		selected;
 
-	igBegin("Objects Tree", &gui->tree_open, ImGuiWindowFlags_AlwaysAutoResize);
-	ft_bzero(i, sizeof(int) * 5);
+	igText("Object Selector");
+	igBeginChild("Objects Selector", (ImVec2){0, 100}, true, 0);
 	lst = gui->app->scene.lst_obj;
-	item = (const char*[]){"Plane", "Sphere", "Cone", "Cylinder", "Csg"};
 	while (lst)
 	{
 		obj = lst->content;
-		if (igTreeNodeStr(item[obj->type]))
-		{
-			object(gui->app, obj);
-			igTreePop();
-		}
+		selected = (obj == gui->obj_set);
+		if (igSelectable(obj->name, selected, 0, (ImVec2){0, 0}))
+			gui->obj_set = obj;
 		lst = lst->next;
 	}
-	igEnd();
+	igEndChild();
 }

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:31:25 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:52:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ void resize_app_register(int width, int height, t_data *app);
 static inline void
 	window_menu(t_gui *gui)
 {
-	igMenuItemBoolPtr("Edit Scene", NULL, &gui->edit_open, 1);
+	igMenuItemBoolPtr("Scene Editor", NULL, &gui->edit_open, 1);
+	igMenuItemBoolPtr("Render Settings", NULL, &gui->render_set_open, 1);
 	igMenuItemBoolPtr("Stats", NULL, &gui->stats_open, 1);
-	igMenuItemBoolPtr("Tree Object", NULL, &gui->tree_open, 1);
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
 	{
-		igMenuItemBoolPtr("Tree Object", NULL, &gui->tree_open, 1);
 		fullscreen(gui->sdl, gui);
 		gui->stats_open = 0;
 		gui->sdl->needs_render = 1;
