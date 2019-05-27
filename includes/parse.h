@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 13:16:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:25:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,15 +146,6 @@ void			csg_set(void *root, t_parse_txt *scene_file);
 /*
 ** CSG :
 */
-
-typedef struct	s_parse
-{
-	char		*printout;
-	size_t		content_size;
-	void		(*setter) (void*, char **, int);
-	void		(*export) (int, void*);
-	size_t		line_offset;
-}				t_parse;
 
 int				csg_is_op(t_parse_txt *scene_file);
 void			inter_csg(t_inter *data, t_obj *node);

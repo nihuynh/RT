@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:22:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:28:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 #include "rt.h"
 #include "config.h"
 #include "libft.h"
-
-static inline void
-	list_scenes(t_gui *gui)
-{
-	t_list			*lst;
-	t_scene_name	*scene;
-
-	lst = gui->app->lst_scenes;
-	while (lst)
-	{
-		scene = lst->content;
-		if(igMenuItemBool(scene->name, NULL, 0, 1))
-			load_scene(gui->app, scene->dir);
-		lst = lst->next;
-	}
-	igEndMenu();
-}
 
 static inline void
 	file_menu(t_gui *gui)
