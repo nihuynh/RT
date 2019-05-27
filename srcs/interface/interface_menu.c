@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:28:36 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:31:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static inline void
 {
 	igMenuItemBoolPtr("Edit Scene", NULL, &gui->edit_open, 1);
 	igMenuItemBoolPtr("Stats", NULL, &gui->stats_open, 1);
+	igMenuItemBoolPtr("Tree Object", NULL, &gui->tree_open, 1);
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
 	{
 		igMenuItemBoolPtr("Tree Object", NULL, &gui->tree_open, 1);
