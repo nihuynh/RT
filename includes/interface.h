@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 12:53:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:05:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,5 @@ void	delete_obj(t_data *app);
 void	load_window(t_data *app);
 bool	check_file(char *filename);
 void	object(t_data *app, t_obj *obj);
-
-/*
-** UI shape :
-*/
-
-void	ui_sphere(void *app, void *res);
-void	ui_plane(void *app, void *res);
-void	ui_cylinder(void *app, void *res);
-void	ui_cone(void *app,void *res);
-void	ui_csg(void *app, void *shape);
 
 #endif

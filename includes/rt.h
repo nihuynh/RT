@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/14 22:04:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 13:08:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ void		init_settings(t_settings *settings);
 void		interface(t_data *app);
 void		update_texture(t_img img, t_gui gui);
 void		render_gui(void *arg);
-void		ui_sphere(void *res);
-void		ui_plane(void *res);
-void		ui_cylinder(void *res);
-void		ui_cone(void *res);
+void		ui_sphere(void *data_v, void *res);
+void		ui_plane(void *data_v, void *res);
+void		ui_cylinder(void *data_v, void *res);
+void		ui_cone(void *data_v, void *res);
 void		change_window_title(SDL_Window *win, t_data *app);
 void		fullscreen(t_sdl *sdl, t_gui *gui);
 int			export_scene(t_data *data, char *filename);

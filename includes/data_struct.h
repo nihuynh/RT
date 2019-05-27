@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 12:53:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:03:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 /*
 ** Structures :
 */
+
+typedef struct s_data	t_data;
 
 typedef struct		s_gui
 {
@@ -45,20 +47,11 @@ typedef struct		s_gui
 	t_cam			cam_cpy;
 	char			*scene_name;
 	bool			fullscreen;
-	uint32_t		texture_id;
 	bool			render_focused;
-	bool			stats_open;
-	bool			export_open;
-	bool			new_obj_open;
-	bool			delete_obj_open;
-	bool			load_open;
-	bool			error_open;
 	int				new_obj_type;
 	t_list			*light_set;
 	t_obj			*obj_set;
 	t_pt3			pos_render;
-	int				flags_render;
-	SDL_GLContext	gl_context;
 }					t_gui;
 
 typedef struct		s_settings

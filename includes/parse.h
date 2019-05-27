@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 12:54:07 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:08:51 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,5 @@ typedef struct	s_parse
 	size_t		line_offset;
 }				t_parse;
 
-typedef struct	s_objset
-{
-	void		(*f_inter) (t_inter*, t_obj*);
-	void		(*f_gui) (void*);
-	void		(*find_normal) (t_inter*);
-	t_vec3		(*get_uv) (t_inter*);
-}				t_objset;
 
 #endif
