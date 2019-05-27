@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:22:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:49:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,27 +100,39 @@ void	ui_cone(void *app_v, void *res)
 		cone->size = tmp.size;
 }
 
-void			ui_csg(void *app_v, void *shape)
+void			ui_csg_btree(void *app_v, void *shape);
+void			ui_csg_btree(void *app_v, void *shape)
 {
-	t_btree *root;
+	t_btree	*tree;
 	t_data	*app;
 
 	app = app_v;
-	root = shape;
-	if (root->content_size == sizeof(t_obj))
+	tree = shape;
+	if (tree->content_size == sizeof(t_obj))
 	{
-		object(app, root->content);
+		object(app, tree->content);
 		return ;
 	}
-	node_type_list((t_csg_op*)root->content);
+	node_type_list((t_csg_op*)tree->content);
 	if (igTreeNodeStr("Left"))
 	{
-		ui_csg(app, root->left);
+		ui_csg_btree(app, tree->left);
 		igTreePop();
 	}
 	if (igTreeNodeStr("Right"))
 	{
-		ui_csg((void*)app, (void*)root->right);
+		ui_csg_btree((void*)app, (void*)tree->right);
 		igTreePop();
 	}
+}
+
+void			ui_csg(void *app_v, void *shape)
+{
+	t_csg	*csg;
+	t_data	*app;
+
+	app = app_v;
+	csg = shape;
+	object(app, shape);
+	ui_csg_btree(app, csg->root);
 }
