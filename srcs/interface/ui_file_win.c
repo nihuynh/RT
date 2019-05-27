@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_file_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 11:58:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 13:37:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	load_win(t_gui *gui)
 
 void	stats_win(t_gui *gui)
 {
-
 	ImVec2 pos;
 	ImVec2 size;
 	float plot_border;
@@ -71,7 +70,7 @@ void	stats_win(t_gui *gui)
 	plot_border = 10;
 	if (gui->demo_open)
 		igShowDemoWindow(NULL);
-	pos.x = gui->sdl->width_vp - (gui->sdl->width_vp / 2);
+	pos.x = 0;
 	pos.y = gui->sdl->img.height + 18;
 	size.x = gui->sdl->width_vp / 2 - 17;
 	size.y = gui->sdl->height_vp - pos.y + 1;
