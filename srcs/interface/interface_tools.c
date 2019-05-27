@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:49:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/27 13:53:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	ui_cone(void *app_v, void *res)
 		cone->size = tmp.size;
 }
 
-void			ui_csg_btree(void *app_v, void *shape);
 void			ui_csg_btree(void *app_v, void *shape)
 {
 	t_btree	*tree;
