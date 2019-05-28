@@ -1,0 +1,47 @@
+camera
+{
+	origin(-138.019 159.272 974.013)
+	direction(0.565 -0.174 -0.807)
+	amb_light(0.100 0.100 0.100)
+}
+content
+{
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 -30.000 1000.000)
+		intensity(500000.000)
+	}
+	object(sphere)
+	{
+		origin(1622.000 -30.000 0.000)
+		radius(17.370)
+		texture(none)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		origin(0.000 -30.000 0.000)
+		radius(63.710)
+		texture(2k_earth_daymap.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(-0.800 0.000)
+	}
+}

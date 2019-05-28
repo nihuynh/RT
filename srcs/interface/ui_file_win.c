@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_file_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:37:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:11:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,34 +61,42 @@ void	load_win(t_gui *gui)
 	igEnd();
 }
 
-void	stats_win(t_gui *gui)
+void	stats_win_content(t_sdl *sdl, ImVec2 size)
 {
-	ImVec2 pos;
-	ImVec2 size;
 	float plot_border;
 
 	plot_border = 10;
-	if (gui->demo_open)
-		igShowDemoWindow(NULL);
-	pos.x = 0;
-	pos.y = gui->sdl->img.height + 18;
-	size.x = gui->sdl->width_vp / 2 - 17;
-	size.y = gui->sdl->height_vp - pos.y + 1;
-	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
-	igSetNextWindowSizeConstraints(size, (ImVec2){2500, 2500},
-		NULL, NULL);
-	igBegin("Stats", &gui->stats_open, ImGuiWindowFlags_NoResize);
-	igText("Resolution :	[render w:%i h:%i]", gui->sdl->img.width, gui->sdl->img.height);
-	igSameLine(size.x / 2, plot_border);
-	igText("[app w:%i h:%i]", gui->sdl->width_vp, gui->sdl->height_vp);
-	igPlotLines("", &(gui->sdl->render_time[0]), P_TIME_LEN, 0,
+	igText("Resolution : [img w:%i h:%i]", sdl->img.width, sdl->img.height);
+	igSameLine(size.x / 2 + 10, plot_border);
+	igText("[app w:%i h:%i]", sdl->width_vp, sdl->height_vp);
+	igPlotLines("", &(sdl->render_time[0]), P_TIME_LEN, 0,
 		NULL, 0, FLT_MAX, (ImVec2){size.x / 2, size.y / 3}, 4);
 	igSameLine(size.x / 2, plot_border);
-	igPlotLines("", &(gui->sdl->gui_time[0]), GUI_FPS, 0,
+	igPlotLines("", &(sdl->gui_time[0]), GUI_FPS, 0,
 		NULL, 0, 60, (ImVec2){size.x / 2, size.y / 3}, 4);
-	igText("Render time : %.3fms", (float)gui->sdl->render_time[P_TIME_LEN - 1]);
+	igText("Render time : %.3fms", (float)sdl->render_time[P_TIME_LEN - 1]);
 	igSameLine(size.x / 2, plot_border);
-	igText("Gui FPS (%i)", (int)gui->sdl->gui_time[GUI_FPS - 1]);
-	igProgressBar(gui->sdl->progress_sub_sample, (ImVec2){size.x / 4, 0}, "Render progress");
+	igText("Gui FPS (%i)", (int)sdl->gui_time[GUI_FPS - 1]);
+	igProgressBar(sdl->progress_sub_sample, (ImVec2){size.x / 4, 0}, "Render progress");
+}
+
+void	stats_win(t_gui *gui)
+{
+
+	ImVec2 pos;
+	ImVec2 size;
+
+	if (gui->demo_open)
+		igShowDemoWindow(NULL);
+	// pos.x = gui->sdl->width_vp - (gui->sdl->width_vp / 2);
+	pos.x = 0;
+	pos.y = gui->sdl->img.height + 18;
+	size.x = gui->sdl->width_vp / 2;
+	size.y = gui->sdl->height_vp - pos.y + 1;
+	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});
+	igSetNextWindowSizeConstraints(size, size, NULL, NULL);
+	igBegin("Stats", &gui->stats_open, ImGuiWindowFlags_NoResize);
+	stats_win_content(gui->sdl, size);
 	igEnd();
 }
+
