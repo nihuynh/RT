@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 18:53:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:01:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,7 @@ void
 	igSetNextWindowSizeConstraints((ImVec2){500, 120}, (ImVec2){500,
 	gui->sdl->img.height}, NULL, NULL);
 	igBegin("Scene", &gui->edit_open, ImGuiWindowFlags_AlwaysAutoResize);
-	obj_selector(gui);
-	object_settings(gui->app);
+	selector(gui);
 	if (igButton("Render new frame", (ImVec2){130, 20}))
 		gui->sdl->needs_render = true;
 	igEnd();

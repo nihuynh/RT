@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 13:25:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 14:41:17 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void			sphere_new(void *res);
 void			plane_new(void *res);
 void			cylinder_new(void *res);
 void			cone_new(void *res);
+char			*name_obj(const char *type, int *nb);
 
 /*
 ** list of material & textures :

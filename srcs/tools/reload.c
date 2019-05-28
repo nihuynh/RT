@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 18:38:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 14:58:34 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 #endif
 
 static inline void
-	default_gui_settings(t_gui *gui, t_data *app)
+	default_gui_settings(t_gui *gui)
 {
 	gui->export_open = false;
-	gui->light_set = app->scene.lst_light;
+	gui->light_set = NULL;
 	gui->obj_set = NULL;
 	gui->flags_render = 2;
 	gui->add_obj_type = 0;
@@ -110,7 +110,7 @@ void
 	app->gui.sdl = app->sdl;
 	hook_render_to_gui(&app->gui, app->sdl->win);
 	default_settings(&app->settings);
-	default_gui_settings(&app->gui, app);
+	default_gui_settings(&app->gui);
 	app->sdl->needs_render = true;
 	app->sdl->partial_render = false;
 }
@@ -135,7 +135,7 @@ void
 	if (reader(filename, app) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
 	default_settings(&app->settings);
-	default_gui_settings(&app->gui, app);
+	default_gui_settings(&app->gui);
 	hook_cam_to_gui(app);
 	set_win_title(app->sdl->win, app);
 	app->sdl->needs_render = true;

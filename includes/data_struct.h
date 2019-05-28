@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:55:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 18:29:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 14:50:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ struct				s_gui
 	bool			fullscreen;
 	bool			render_focused;
 	int				new_obj_type;
-	t_list			*light_set;
+	t_light			*light_set;
 	t_obj			*obj_set;
 	t_pt3			pos_render;
 };
@@ -86,6 +86,7 @@ struct				s_scene
 	t_list			*lst_obj;
 	t_list			*lst_light;
 	int				nb_objs[5];
+	int				nb_light;
 };
 
 struct				s_scene_name

@@ -6,39 +6,26 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 18:56:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:00:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
 
-static inline void
-	light_settings(t_list *node, int i)
+void
+	ui_light(t_light *light)
 {
-	t_light			*light;
 	t_pt3			origin_tmp;
 	t_color			color_tmp;
-	char			*light_id;
-	char			tree_name[20];
 
-	if (!(light_id = ft_itoa(i)))
-		ft_error(__func__, __LINE__);
-	ft_strcpy(tree_name, "Light ");
-	ft_strcat(tree_name, light_id);
-	ft_strdel(&light_id);
-	light = node->content;
-	if (igTreeNodeStr(tree_name))
-	{
-		origin_tmp = light->origin;
-		if (igInputFloat3("Position (X Y Z)", &origin_tmp.x, "%g", 0))
-			light->origin = origin_tmp;
-		igInputFloat("Intensity", &light->intensity, 0, 0, "%g", 0);
-		color_tmp = light->color;
-		if (igColorEdit3("Color", &color_tmp.r, 0))
-			light->color = color_tmp;
-		igTreePop();
-	}
+	origin_tmp = light->origin;
+	if (igInputFloat3("Position (X Y Z)", &origin_tmp.x, "%g", 0))
+		light->origin = origin_tmp;
+	igInputFloat("Intensity", &light->intensity, 0, 0, "%g", 0);
+	color_tmp = light->color;
+	if (igColorEdit3("Color", &color_tmp.r, 0))
+		light->color = color_tmp;
 }
 
 static inline void
@@ -97,37 +84,7 @@ static inline void
 void
 	object(t_data *app, t_obj *obj)
 {
-	if (igTreeNodeStr("Material"))
-	{
-		material(app, obj);
-		igTreePop();
-	}
-	if (igTreeNodeStr("Object"))
-	{
-		obj->f_gui(app, obj->shape);
-		igTreePop();
-	}
+	obj->f_gui(app, obj->shape);
+	material(app, obj);
 }
 
-void
-	object_settings(t_data *app)
-{
-	t_list	*lst;
-	int		i;
-
-	if (igTreeNodeStr("Lights"))
-	{
-		i = 0;
-		lst = app->scene.lst_light;
-		ft_lstiteri(app->scene.lst_light, &light_settings);
-		igTreePop();
-	}
-	if (igTreeNodeStr("Objects"))
-	{
-		if (app->gui.obj_set)
-			object(app, app->gui.obj_set);
-		else
-			igText("Click on an object to access its data.");
-		igTreePop();
-	}
-}

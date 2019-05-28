@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 18:43:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 14:55:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	err_win(t_gui *gui);
 void	export_win(t_gui *gui);
 void	load_win(t_gui *gui);
 void	stats_win(t_gui *gui);
-void	obj_selector(t_gui *gui);
+void	selector(t_gui *gui);
 
 void	add_obj_win(t_gui *gui);
 void	del_obj_win(t_gui *gui);
@@ -81,7 +81,6 @@ void	ui_sphere(void *app_v, void *shape);
 void	ui_plane(void *app_v, void *shape);
 void	ui_cone(void *app_v, void *shape);
 void	ui_cylinder(void *app_v, void *shape);
-
-
+void	ui_light(t_light *light);
 
 #endif

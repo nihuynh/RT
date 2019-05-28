@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 18:09:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 14:44:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static inline void
 
 	(void)content_size;
 	light = content;
+	free(light->name);
 	free(light);
 	light = NULL;
 }
@@ -110,6 +111,7 @@ void
 	if (app->scene.lst_light)
 		ft_lstdel(&app->scene.lst_light, &del_light);
 	ft_bzero(app->scene.nb_objs, sizeof(int) * 5);
+	app->scene.nb_light = 0;
 	if (DEBUG)
 		ft_printf("Scene [%s] deallocated.\n", app->arg);
 	ft_strdel(&app->arg);

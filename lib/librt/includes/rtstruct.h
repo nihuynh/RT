@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 17:57:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 14:23:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ typedef struct	s_light
 	t_pt3		origin;
 	t_color		color;
 	float		intensity;
+	char		*name;
 }				t_light;
 
 typedef struct	s_cam

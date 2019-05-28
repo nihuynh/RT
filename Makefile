@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/27 13:11:28 by sklepper         ###   ########.fr        #
+#    Updated: 2019/05/28 14:37:43 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC			:=	free_node.c main.c parser.c read.c render.c parse_toolbox.c	\
 				reload.c perturbation.c texture_loader.c free.c csg.c  \
 				obj_data.c parse_txt.c parse_utils.c interface_menu.c \
 				ui_file_win.c ui_edit_win.c ui_render.c parse_csg.c \
-				export_csg.c get_scenes.c test.c ui_tree_win.c
+				export_csg.c get_scenes.c test.c ui_selector.c obj_name.c
 SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
 				save_screenshot.c render_pool.c post_process.c render_time.c
