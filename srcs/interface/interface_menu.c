@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 18:52:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:23:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static inline void
 	if (igMenuItemBool("New Light", NULL, 0, 1))
 		new_light(gui->app);
 	igMenuItemBoolPtr("Delete Object", NULL, &gui->del_obj_open, 1);
+	igMenuItemBoolPtr("Delete Light", NULL, &gui->del_light_open, 1);
 	igEndMenu();
 }
 

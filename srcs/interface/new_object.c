@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 13:30:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:36:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void
 	new.export = cfg.export;
 	tmp = ft_lstgetelt(app->lst_mat, &matcmp, "white plastic");
 	new.material = *tmp;
+	new.name = name_obj(type, &app->scene.nb_objs[type]);
 	ft_lstpushnew(&app->scene.lst_obj, &new, sizeof(t_obj));
 	app->gui.obj_set = app->scene.lst_obj->content;
 }
@@ -55,37 +56,8 @@ void
 	light.color = (t_color){1, 1, 1};
 	light.origin = (t_pt3){0, 0, 0};
 	light.intensity = 100;
+	light.name = name_obj(5, &app->scene.nb_light);
 	ft_lstpushnew(&app->scene.lst_light, &light, sizeof(t_light));
 }
 
-int
-	obj_cmp(void *content, void *key)
-{
-	return (content == key);
-}
 
-void
-	delete_obj(t_data *app)
-{
-	t_list	*ptr;
-	t_list	*to_del;
-
-	ptr = app->scene.lst_obj;
-	if (!(to_del = ft_lstgetnode(ptr, &obj_cmp, app->gui.obj_set)))
-		ft_error(__func__, __LINE__);
-	if (ptr == to_del)
-	{
-		app->scene.lst_obj = to_del->next;
-		ft_lstdelone(&to_del, &del_obj);
-	}
-	else
-	{
-		while (ptr->next != to_del && ptr->next != NULL)
-			ptr = ptr->next;
-		if (ptr->next != to_del)
-			ft_error(__func__, __LINE__);
-		ptr->next = to_del->next;
-		ft_lstdelone(&to_del, &del_obj);
-	}
-	app->gui.obj_set = NULL;
-}

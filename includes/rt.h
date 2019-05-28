@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:17:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:30:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void		get_scenes(t_data *app);
 */
 
 void		del_obj(void *content, size_t content_size);
+void		del_light(void *content, size_t content_size);
 void		free_scene(t_data *app);
 void		free_app(t_data *app);
 void		exit_safe(int err_code);
