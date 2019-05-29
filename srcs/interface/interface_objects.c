@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 15:00:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:16:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ static inline void
 	if (igColorEdit3("Refraction Color", &color_tmp.r, 0))
 		mat->refraction_color = color_tmp;
 	uv_mapping_details(&mat->uv_mapping);
-	igTreePop();
 }
 
 static inline void
@@ -77,8 +76,8 @@ static inline void
 {
 	material_list(app->lst_mat, obj);
 	texture_list(app->lst_tex, obj);
-	if (igTreeNodeStr("Material Details"))
-		material_details(&obj->material);
+	igText("Material Details");
+	material_details(&obj->material);
 }
 
 void
