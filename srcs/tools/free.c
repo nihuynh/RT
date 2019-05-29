@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/28 14:44:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:29:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void
 	free(obj);
 }
 
-static inline void
+void
 	del_light(void *content, size_t content_size)
 {
 	t_light *light;

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 14:44:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:15:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ void
 {
 	t_parse		cfg;
 	void		*shape;
-	const char	**name_objs;
 
-	name_objs = (const char*[]){"Plane ", "Sphere ", "Cone ", "Cylinder ", "Csg "};
 	check_opening_bracket(scene_file);
 	init_parse_cfg(type, &cfg);
 	if (DEBUG)
@@ -88,8 +86,7 @@ void
 		ft_error(__func__, __LINE__);
 	cfg.setter(shape, scene_file);
 	obj_set(obj_dst, type, shape);
-	obj_dst->name = name_obj(name_objs[type],
-		&scene_file->app->scene.nb_objs[type]);
+	obj_dst->name = name_obj(type, &scene_file->app->scene.nb_objs[type]);
 	obj_dst->export = cfg.export;
 	obj_dst->material = parse_material(scene_file);
 	check_closing_bracket(scene_file);
@@ -129,7 +126,7 @@ void
 	if (DEBUG)
 		ft_putendl("Light node :");
 	light_set(&light, scene_file);
-	light.name = name_obj("Light ", &scene_file->app->scene.nb_light);
+	light.name = name_obj(5, &scene_file->app->scene.nb_light);
 	ft_lstpushnew(&scene_file->app->scene.lst_light, &light, sizeof(t_light));
 	check_closing_bracket(scene_file);
 }

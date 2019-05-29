@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 18:31:58 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:25:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	ui_render(t_gui *gui)
 		del_obj_win(gui);
 	if (gui->add_obj_open)
 		add_obj_win(gui);
+	if (gui->del_light_open)
+		del_light_win(gui);
 }
 
 void	interface(t_data *app)

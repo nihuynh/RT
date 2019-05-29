@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 14:55:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:35:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	selector(t_gui *gui);
 
 void	add_obj_win(t_gui *gui);
 void	del_obj_win(t_gui *gui);
+void	del_light_win(t_gui *gui);
 
 void	render_win(t_gui *gui);
 void	scene_win(t_gui *gui);
@@ -69,6 +70,7 @@ t_obj	*find_obj_at_pixel(t_data *app, int x, int y);
 void	new_light(t_data *app);
 void	new_obj(t_data *app, int type);
 void	delete_obj(t_data *app);
+void	delete_light(t_data *app);
 bool	check_file(char *filename);
 void	object(t_data *app, t_obj *obj);
 
