@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 03:02:03 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/28 16:49:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ t_data	*get_app(t_data *app)
 {
 	static t_data *app_save;
 
-	if (app != NULL)
+	if (app == NULL)
+		return (app_save);
+	if (app_save == app)
+		app_save = NULL;
+	else
 		app_save = app;
 	return (app_save);
 }
@@ -61,10 +65,10 @@ int		main(int ac, char **av)
 		return (-1);
 	if (ac == 2 || (ac > 2 && options != 0))
 	{
-		mode = (options & (1 << 19)) ? RM_UNIT_TEST : RM_NORMAL;
+		mode = (options & (1 << ('t' - 'a'))) ? RM_UNIT_TEST : RM_NORMAL;
 		interactive(av[1], mode);
 	}
-	while (options & (1 << 11))
+	while (options & (1 << ('l' - 'a')))
 		;
 	return (0);
 }
