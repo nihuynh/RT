@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_selector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:16:21 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/29 19:31:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/30 18:52:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,16 @@ void
 static inline void
 	obj_ui(t_gui *gui)
 {
+	ImVec2 size;
+
+	size = igGetWindowSize();
 	obj_selector(gui);
 	igSpacing();
-	if (igButton("New Object", (ImVec2){100, 0}))
+	igSameLine(size.x / 12, 0);
+	if (igButton("Add Object", (ImVec2){size.x / 3, 0}))
 		gui->add_obj_open = true;
-	igSameLine(0, 50);
-	if (igButton("Delete Object", (ImVec2){0, 0}))
+	igSameLine(0, size.x / 6);
+	if (igButton("Delete Object", (ImVec2){size.x / 3, 0}))
 		gui->del_obj_open = true;
 	igSpacing();
 	igSeparator();
@@ -78,12 +82,16 @@ static inline void
 static inline void
 	light_ui(t_gui *gui)
 {
+	ImVec2 size;
+
+	size = igGetWindowSize();
 	light_selector(gui);
 	igSpacing();
-	if (igButton("New Light", (ImVec2){100, 0}))
+	igSameLine(size.x / 12, 0);
+	if (igButton("Add Light", (ImVec2){size.x / 3, 0}))
 		new_light(gui->app);
-	igSameLine(0, 50);
-	if (igButton("Delete Light", (ImVec2){0, 0}))
+	igSameLine(0, size.x / 6);
+	if (igButton("Delete Light", (ImVec2){size.x / 3, 0}))
 		gui->del_light_open = true;
 	igSpacing();
 	igSeparator();
