@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 15:35:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:55:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	ui_plane(void *app_v, void *shape);
 void	ui_cone(void *app_v, void *shape);
 void	ui_cylinder(void *app_v, void *shape);
 void	ui_light(t_light *light);
+void	ui_cam_win(t_gui *gui);
 
 #endif
