@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 14:58:34 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/30 15:18:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void
 	app->sdl->update = &update;
 	app->sdl->render_gui = &render_gui;
 	app->sdl->click_map = &click_event;
+	app->sdl->sub_s = 1;
 	app->gui.app = app;
 	app->gui.sdl = app->sdl;
 	hook_render_to_gui(&app->gui, app->sdl->win);

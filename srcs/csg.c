@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 01:24:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/30 15:51:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_inter
 t_inter
 	union_compare(t_inter left, t_inter right)
 {
-	if (left.dist < right.dist)
+	if (left.dist <= right.dist)
 		return (left);
 	return (right);
 }
@@ -55,8 +55,10 @@ t_inter
 	inter_set(&no_inter, left.ray);
 	if (left.dist == HUGEVAL || right.dist == HUGEVAL)
 		return (no_inter);
-	if (fmaxf(left.hit_pts.x, right.hit_pts.x) <= fminf(left.hit_pts.y, right.hit_pts.y))
-		return (union_compare(left, right));
+	if (ft_btwf(left.dist, right.hit_pts.x, right.hit_pts.y))
+		return (left);
+	if (ft_btwf(right.dist, left.hit_pts.x, left.hit_pts.y))
+		return (right);
 	return (no_inter);
 }
 

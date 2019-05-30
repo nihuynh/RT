@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/27 12:55:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/30 15:36:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void
 	(void)img_w;
 
 	inc_y = inc;
-	while (--inc_y > 0)
+	while (--inc_y >= 0)
 	{
 		inc_x = inc;
 		while (--inc_x >= 0)
@@ -101,7 +101,10 @@ void
 	{
 		sdl->progress_sub_sample = 0;
 		sdl->partial_render = true;
-		sdl->sub_sample = SUB_SAMPLE;
+		if (sdl->sub_s)
+			sdl->sub_sample = SUB_SAMPLE;
+		else
+			sdl->sub_sample = 1;
 	}
 	cthr = -1;
 	sats = 0;
@@ -113,13 +116,13 @@ void
 	cthr = -1;
 	while (++cthr < THR_C)
 		pthread_join(threads[cthr], NULL);
-	if (sdl->partial_render && sdl->sub_sample <= 1)
+	if (sdl->sub_sample > 1)
+		sdl->sub_sample >>= 1;
+	else
 	{
 		sdl->needs_render = false;
 		sdl->partial_render = false;
 	}
-	if (sdl->sub_sample > 1)
-		sdl->sub_sample >>= 1;
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	push_render_time(sdl, (float)elapsed_time / 1000);
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);

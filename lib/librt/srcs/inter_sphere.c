@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:06 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 01:36:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/30 15:48:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,21 @@ static inline float	inter_local(t_inter *inter, t_ray *ray, t_sphere *sphere)
 	t_vec2	res;
 
 	res = inter_vec2(ray, sphere);
-	inter->hit_pts.x = HUGEVAL;
-	inter->hit_pts.y = HUGEVAL;
 	if (res.x > 0 && res.y > 0)
 	{
 		inter->hit_pts.x = fminf(res.x, res.y);
 		inter->hit_pts.y = fmaxf(res.x, res.y);
 	}
 	else if (res.y > 0 || res.x > 0)
+	{
 		inter->hit_pts.x = fmaxf(res.x, res.y);
+		inter->hit_pts.y = fminf(res.x, res.y);
+	}
+	else
+	{
+		inter->hit_pts.x = HUGEVAL;
+		inter->hit_pts.y = HUGEVAL;
+	}
 	return (inter->hit_pts.x);
 }
 
