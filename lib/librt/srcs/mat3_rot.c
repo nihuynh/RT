@@ -80,17 +80,3 @@ void
 	apply_matrix(x_axis, &rotation);
 	apply_matrix(z_axis, &rotation);
 }
-
-void
-	create_orthobasis_qnd(t_vec3 vec, t_vec3 *t, t_vec3 *b)
-{
-	t_vec3 orthogonal;
-	if (fabsf(vec.y) > 0.9999f)
-		orthogonal = (t_vec3) {0, 0, 1};
-	else
-		orthogonal = (t_vec3) {0, -1, 0};
-	*t = vec3_cross(vec, orthogonal);
-	vec3_normalize(t);
-	*b = vec3_cross(vec, *t);
-	vec3_normalize(b);
-}
