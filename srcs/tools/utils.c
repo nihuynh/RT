@@ -25,6 +25,7 @@ static inline t_material
 		ft_error(__func__, __LINE__);
 	if (!(mat.tex = ft_lstgetelt(app->lst_tex, &texcmp, split[0])))
 		mat.tex = ft_lstgetelt(app->lst_tex, &texcmp, "none");
+	mat.normal_map = ft_lstgetelt(app->lst_tex, &texcmp, "none");
 	mat.color_diffuse = itocolor(ft_atoi_base(split[1], 16));
 	mat.color_specular = itocolor(ft_atoi_base(split[2], 16));
 	mat.color_tex = itocolor(ft_atoi_base(split[3], 16));
