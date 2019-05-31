@@ -44,47 +44,38 @@ float
 }
 
 t_color
-	texture_strips(t_material *mat, t_vec3 uv)
+	texture_strips(t_material *mat, t_texture *texture, t_vec3 uv)
 {
 	t_color res;
 
 	res = color_linear_inter(mat->color_diffuse, mat->color_tex,
 		pattern_strips(uv.x, uv.y));
+	(void)texture;
 	return (res);
 }
 
 t_color
-	texture_checkers(t_material *mat, t_vec3 uv)
+	texture_checkers(t_material *mat, t_texture *texture, t_vec3 uv)
 {
 	t_color res;
 
 	res = color_linear_inter(mat->color_diffuse, mat->color_tex,
 		pattern_checkers(uv.x, uv.y));
+	(void)texture;
 	return (res);
 }
 
 t_color
-	sample(t_material *mat, t_vec3 uv)
+	sample(t_material *mat, t_texture *texture, t_vec3 uv)
 {
 	unsigned char	*pixel_ptr;
-	t_texture		*texture;
 	t_color			pixel;
 	int				x;
 	int				y;
 
-	texture = mat->tex;
-	if (mat->uv_mapping.repeat)
-	{
-		uv.x = fmodf(uv.x, 1) + (uv.x < 0);
-		uv.y = fmodf(uv.y, 1) + (uv.y < 0);
-	}
-	else
-	{
-		uv.x = ft_clampf(uv.x, 0, 0.99999f);
-		uv.y = ft_clampf(uv.y, 0, 0.99999f);
-	}
-	x = uv.x * texture->width;
-	y = uv.y * texture->height;
+	(void)mat;
+	x = uv.x * (texture->width - 1);
+	y = uv.y * (texture->height - 1);
 	pixel_ptr = (unsigned char*)texture->pixels;
 	pixel_ptr += (y * texture->width * texture->bpp) + (x * texture->bpp);
 	pixel.r = pixel_ptr[0] / 255.f;

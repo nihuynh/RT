@@ -7,7 +7,7 @@ project(imgui_impl CXX)
 
 add_library(imgui_impl "")
 
-target_include_directories(imgui_impl INTERFACE .)
+target_include_directories(imgui_impl PUBLIC includes)
 target_include_directories(imgui_impl PRIVATE ../cimgui/imgui)
 target_link_libraries(imgui_impl -lstdc++)
 

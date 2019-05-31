@@ -82,7 +82,7 @@ void
 
 	if (no_diffuse)
 		return ;
-	diffuse_factor = facing_ratio(shading.light_dir, shading.normal);
+	diffuse_factor = facing_ratio(shading.light_dir, shading.shading_normal);
 	color_scalar(&shading.light.color, diffuse_factor);
 	color_add(diffuse, shading.light.color);
 }
@@ -129,7 +129,7 @@ t_color
 		current_light = current_light->next;
 	}
 	if (s.mat.tex->f_texture)
-		diffuse_color = s.mat.tex->f_texture(&s.mat, s.uv);
+		diffuse_color = s.mat.tex->f_texture(&s.mat, s.mat.tex, s.uv);
 	else
 		diffuse_color = s.mat.color_diffuse;
 	final_color = color_mult_(settings->amb_light, diffuse_color);

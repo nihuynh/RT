@@ -79,6 +79,7 @@ struct				s_settings
 	bool			absorb;
 	bool			anti_a;
 	bool			debug_normal;
+	bool			normal_mapping;
 	int				depth_max;
 	float			fov;
 };
