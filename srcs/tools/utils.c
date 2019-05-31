@@ -34,6 +34,11 @@ static inline t_material
 	mat.refraction_color = itocolor(ft_atoi_base(split[6], 16));
 	mat.reflection_color = itocolor(ft_atoi_base(split[7], 16));
 	mat.refraction_idx = ft_atof(split[8]);
+	mat.uv_mapping.scale.x = ft_atof(split[9]);
+	mat.uv_mapping.scale.y = ft_atof(split[10]);
+	mat.uv_mapping.offset.x = ft_atof(split[11]);
+	mat.uv_mapping.offset.y = ft_atof(split[12]);
+	mat.uv_mapping.repeat = ft_atoi(split[12]);
 	return (mat);
 }
 
@@ -52,7 +57,7 @@ void
 	{
 		if (!(split = ft_strsplit(line, ',')))
 			ft_error(__func__, __LINE__);
-		if (ft_tablen(split) != 9)
+		if (ft_tablen(split) != CSV_MATERIAL_COLUMN_COUNT)
 			ft_error(__func__, __LINE__);
 		node = split_to_mat(app, split);
 		ft_lstpushnew(&app->lst_mat, &node, sizeof(t_material));

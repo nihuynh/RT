@@ -44,6 +44,8 @@
 # define ERR_PARSE_SET_CSG	"Err : *csg			is null"
 # define ERR_FILE			"Err : File is too small to be valid"
 
+# define CSV_MATERIAL_COLUMN_COUNT 14
+
 /*
 ** Parsing structs :
 */
