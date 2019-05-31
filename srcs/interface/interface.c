@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 15:25:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:55:56 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ui_render(t_gui *gui)
 		add_obj_win(gui);
 	if (gui->del_light_open)
 		del_light_win(gui);
+	if (gui->cam_open)
+		ui_cam_win(gui);
 }
 
 void	interface(t_data *app)
