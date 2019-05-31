@@ -53,16 +53,20 @@ target_sources(RT PRIVATE
         srcs/interface/interface_scene.c
         srcs/interface/interface_tools.c
         srcs/interface/new_object.c
+        srcs/interface/delete_obj.c
         srcs/interface/new_object_tools.c
         srcs/interface/object_tools.c
         srcs/interface/ui_edit_win.c
         srcs/interface/ui_file_win.c
         srcs/interface/ui_render.c
+        srcs/interface/ui_cam_win.c
+        srcs/interface/ui_selector.c
         srcs/parser/export.c
         srcs/parser/export_csg.c
         srcs/parser/export_shape.c
         srcs/parser/export_toolbox.c
         srcs/parser/obj_data.c
+        srcs/parser/obj_name.c
         srcs/parser/parse_csg.c
         srcs/parser/parse_toolbox.c
         srcs/parser/parse_txt.c
