@@ -19,7 +19,7 @@ content
 		theta(30.000)
 		size(20.000)
 		texture(checkers)
-        normal_map(normal_test.png)
+		normal_map(normal_test.png)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)

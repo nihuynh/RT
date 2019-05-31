@@ -17,6 +17,7 @@ content
 		origin(0.000 0.000 -100.000)
 		radius(30.000)
 		texture(1k_mars.ppm)
+		normal_map(none)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)

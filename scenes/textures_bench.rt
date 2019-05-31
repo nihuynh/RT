@@ -18,6 +18,7 @@ content
 		normal(0.000 0.000 1.000)
 		limit(0.000 0.000)
 		texture(checkers)
+		normal_map(none)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
