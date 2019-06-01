@@ -47,6 +47,8 @@ static inline void
 	igSameLine(320, 0);
 	igCheckbox("Sub-Sampling", &app->sdl->sub_s);
 	igCheckbox("Show normals", &app->settings.debug_normal);
+	igSameLine(160, 0);
+	igCheckbox("Normal mapping", &app->settings.normal_mapping);
 	color_lights(app);
 	igTreePop();
 	igNewLine();

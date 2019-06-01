@@ -51,7 +51,7 @@ void		inter_plane(t_inter *data, t_obj *node);
 void		inter_sphere(t_inter *data, t_obj *node);
 void		inter_cone(t_inter *data, t_obj *node);
 void		inter_set(t_inter *inter, t_ray ray);
-void		inter_setdeflect(t_inter *inter, t_ray *res);
+void		inter_setdeflect(t_inter *inter, t_vec3 shading_normal);
 void		inter_setrefract(t_inter *inter, t_ray *res);
 void		inter_find(t_inter *primary, t_pt3 *value);
 
@@ -70,7 +70,8 @@ void		vec3_cpy(t_vec3 *dst, t_vec3 *src);
 void		vec3_new(t_vec3 *res, float x, float y, float z);
 void		vec3_add(t_vec3 *res, t_vec3 *v1, t_vec3 *v2);
 float		vec3_cos(t_vec3 *v1, t_vec3 *v2);
-void		vec3_cross(t_vec3 *v1, t_vec3 *v2, t_vec3 *res);
+t_vec3		vec3_cross(t_vec3 v1, t_vec3 v2);
+void		create_orthobasis_qnd(t_vec3 vec, t_vec3 *t, t_vec3 *b);
 float		vec3_dot(t_vec3 *v1, t_vec3 *v2);
 float		vec3_mag(t_vec3 v1);
 void		vec3_normalize(t_vec3 *v1);

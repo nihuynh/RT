@@ -130,7 +130,7 @@ struct			s_texture
 {
 	char		*name;
 	char		*dir;
-	t_color		(*f_texture)(t_material*, t_vec3);
+	t_color		(*f_texture)(t_material *, t_texture *, t_vec3);
 	void		(*export) (int, void*);
 	char		*pixels;
 	int			width;
@@ -156,6 +156,7 @@ struct			s_material
 	t_color			reflection_color;
 	float			refraction_idx;
 	t_texture		*tex;
+	t_texture		*normal_map;
 	t_uv_mapping	uv_mapping;
 };
 
@@ -225,6 +226,7 @@ typedef struct	s_shading {
 	float		light_dist;
 	t_vec3		hit_pos;
 	t_vec3		normal;
+	t_vec3		shading_normal;
 	t_vec3		specular_dir;
 	t_vec3		uv;
 }				t_shading;

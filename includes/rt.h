@@ -69,9 +69,9 @@ void		exit_safe(int err_code);
 ** Textures :
 */
 
-t_color		texture_checkers(t_material *mat, t_vec3 uv);
-t_color		texture_strips(t_material *mat, t_vec3 uv);
-t_color		sample(t_material *texture, t_vec3 uv);
+t_color		texture_checkers(t_material *mat, t_texture *texture, t_vec3 uv);
+t_color		texture_strips(t_material *mat, t_texture *texture, t_vec3 uv);
+t_color		sample(t_material *material, t_texture *texture, t_vec3 uv);
 
 void		init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void		init(t_data	*data);

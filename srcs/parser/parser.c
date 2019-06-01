@@ -15,12 +15,12 @@
 #include "parse.h"
 
 static inline t_texture
-	*parse_texture(t_parse_txt *scene_file)
+	*parse_texture(char *key_name, t_parse_txt *scene_file)
 {
 	t_texture	*tex;
 	char		*line;
 
-	line = get_args_key_require(scene_file, "texture(");
+	line = get_args_key_require(scene_file, key_name);
 	tex = ft_lstgetelt(scene_file->app->lst_tex, &texcmp, line);
 	if (tex == NULL)
 		return (ft_lstgetelt(scene_file->app->lst_tex, &texcmp, "none"));
@@ -49,7 +49,8 @@ static inline t_material
 	}
 	ft_bzero(&mat, sizeof(t_material));
 	mat.name = "";
-	mat.tex = parse_texture(scene_file);
+	mat.tex = parse_texture("texture(", scene_file);
+	mat.normal_map = parse_texture("normal_map(", scene_file);
 	mat.color_diffuse = parse_color("color_diffuse(", scene_file);
 	mat.color_specular = parse_color("color_specular(", scene_file);
 	mat.color_tex = parse_color("color_tex(", scene_file);

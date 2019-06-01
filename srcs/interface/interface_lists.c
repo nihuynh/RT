@@ -84,6 +84,25 @@ void	texture_list(t_list *lst_tex, t_obj *obj)
 		}
 		igEndCombo();
 	}
+	selected = obj->material.normal_map;
+	if (igBeginCombo("Normal map", selected->name, 0))
+	{
+		while (current)
+		{
+			tmp = current->content;
+			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
+			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
+			{
+				obj->material.normal_map = tmp;
+				if (tmp->pixels == NULL)
+					load_texture(tmp);
+			}
+			if (is_selected)
+				igSetItemDefaultFocus();
+			current = current->next;
+		}
+		igEndCombo();
+	}
 }
 
 void	new_obj_list(int *type)
