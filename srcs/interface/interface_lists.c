@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   interface_lists.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 13:19:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/03 00:20:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
 #include "parse.h"
+#include "t_scene.h"
 
 void	list_scenes(t_gui *gui)
 {

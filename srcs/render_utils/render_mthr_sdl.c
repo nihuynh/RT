@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/30 15:36:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:46:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,6 @@ void
 		if (idx_in_slice  + inc > slice->sdl->thr_len)
 			break ;
 	}
-}
-
-int is_out_of_slice(int idx_in_slice, int thr_len, int inc, int img_w)
-{
-	int last_line;
-
-	last_line = img_w * (inc - 1);
-
-	if (idx_in_slice >= thr_len)
-		return (EXIT_FAILURE);
-	// if (idx_in_slice + last_line > thr_len)
-	// 	return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
 }
 
 static inline t_pxl
@@ -127,44 +114,4 @@ void
 	push_render_time(sdl, (float)elapsed_time / 1000);
 	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 	sdl->progress_sub_sample += 0.25;
-}
-
-t_data_thr
-	init_data_thr(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
-{
-	t_data_thr	slice;
-
-	slice.idx = 0;
-	slice.sdl = sdl;
-	slice.do_pxl = do_pxl;
-	slice.prg_data = data;
-	slice.pixels = sdl->img.pixels;
-	return (slice);
-}
-
-void
-	render_sdl_(t_sdl *sdl)
-{
-	t_data_thr	slice;
-	long		elapsed_time;
-
-	elapsed_time = ft_curr_usec();
-	init_data_thr(sdl, sdl->data_thr[0].do_pxl, get_app(NULL));
-	if (!sdl->partial_render && sdl->sub_sample <= 1)
-	{
-		sdl->partial_render = true;
-		sdl->sub_sample = SUB_SAMPLE;
-	}
-	process_data(&slice);
-	if (sdl->partial_render && sdl->sub_sample <= 1)
-	{
-		sdl->needs_render = false;
-		sdl->partial_render = false;
-	}
-	if (sdl->sub_sample > 1)
-		sdl->sub_sample >>= 1;
-	elapsed_time = ft_curr_usec() - elapsed_time;
-	push_render_time(sdl, (float)elapsed_time / 1000);
-	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
-	sdl->progress_sub_sample = fabsf((float)(sdl->sub_sample  - SUB_SAMPLE) / (SUB_SAMPLE - 1));
 }

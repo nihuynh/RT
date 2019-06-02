@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/02 16:48:16 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/03 00:49:32 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:=	RT
 RUNMODE		?=	release
 # RUNMODE		?=	dev
 #VERBOSE	:= TRUE
-SRC			:=	free_node.c main.c parser.c read.c render.c parse_toolbox.c	\
+SRC			:=	free_scene.c main.c parser.c read.c render.c parse_toolbox.c	\
 				setter.c light.c key_mapping.c camera.c update.c	\
 				cast.c utils.c interface.c interface_scene.c	\
 				interface_objects.c interface_tools.c	\

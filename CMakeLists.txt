@@ -95,7 +95,7 @@ target_sources(RT PRIVATE
         srcs/render_utils/render_sdl.c
         srcs/render_utils/render_time.c
         srcs/render_utils/save_screenshot.c
-        srcs/tools/free_node.c
+        srcs/tools/free_scene.c
         srcs/tools/free.c
         srcs/tools/reload.c
         srcs/tools/update.c

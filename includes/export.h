@@ -6,14 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:41:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:08:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:23:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPORT_H
 # define EXPORT_H
 
-#include "data_struct.h"
+#include "t_data.h"
 
 /*
 ** Functions Expose :

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_menu.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/30 20:11:18 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/02 23:58:39 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static inline void
 	igEndMenu();
 }
 
-void resize_app_register(int width, int height, t_data *app);
 
 static inline void
 	window_menu(t_gui *gui)
@@ -61,13 +60,13 @@ static inline void
 	if (igBeginMenu("Resolutions", 1))
 	{
 		if (igMenuItemBool("840x500", NULL, (gui->sdl->height_vp == 500), 1))
-			resize_app_register(800, 500, gui->app);
+			resize_app(800, 500, gui->app);
 		if (igMenuItemBool("1680x1000", NULL, (gui->sdl->height_vp == 1000), 1))
-			resize_app_register(1680, 1000, gui->app);
+			resize_app(1680, 1000, gui->app);
 		if (igMenuItemBool("2560x1400", NULL, (gui->sdl->height_vp == 1400), 1))
-			resize_app_register(2560, 1400, gui->app);
+			resize_app(2560, 1400, gui->app);
 		if (igMenuItemBool("3200x1800", NULL, (gui->sdl->height_vp == 1800), 1))
-			resize_app_register(3200, 1800, gui->app);
+			resize_app(3200, 1800, gui->app);
 		igEndMenu();
 	}
 	igEndMenu();

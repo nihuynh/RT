@@ -1,15 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_node.c                                        :+:      :+:    :+:   */
+/*   t_scene.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 19:21:03 by nihuynh          ###   ########.fr       */
+/*   Created: 2019/06/03 00:10:23 by nihuynh           #+#    #+#             */
+/*   Updated: 2019/06/03 00:21:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#ifndef T_SCENE_H
+# define T_SCENE_H
 
+# include "ftlist.h"
 
+typedef struct	s_scene
+{
+	t_list		*lst_obj;
+	t_list		*lst_light;
+	int			nb_objs[5];
+	int			nb_light;
+}				t_scene;
+
+typedef struct	s_scene_name
+{
+	char		*name;
+	char		*dir;
+}				t_scene_name;
+
+#endif

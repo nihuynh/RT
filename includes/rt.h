@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 15:30:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/03 00:27:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RT_H
 
 # include "rtstruct.h"
-# include "data_struct.h"
+# include "t_data.h"
 
 /*
 ** Usage :
@@ -25,7 +25,10 @@
 /*
 ** Prototypes :
 */
-int				reader_no_exit(char *filename, t_data *app);
+
+int			reader_no_exit(char *filename, t_data *app);
+t_data		*get_app(t_data *app);
+
 /*
 ** Render :
 */
@@ -60,7 +63,6 @@ void		get_scenes(t_data *app);
 ** Exit :
 */
 
-void		del_obj(void *content, size_t content_size);
 void		del_light(void *content, size_t content_size);
 void		free_scene(t_data *app);
 void		free_app(t_data *app);
@@ -86,9 +88,9 @@ void		ui_cylinder(void *data_v, void *res);
 void		ui_cone(void *data_v, void *res);
 void		change_window_title(SDL_Window *win, t_data *app);
 void		fullscreen(t_sdl *sdl, t_gui *gui);
+void		resize_app(int width, int height, t_data *app);
 int			export_scene(t_data *data, char *filename);
 void		export_material(int fd, t_material *mat);
-void		del_obj(void *content, size_t content_size);
 void		free_lst(t_data *data);
 int			texcmp(void *content, void *key);
 void		reload(t_data *app, char *filename);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 09:31:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/02 23:44:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int __attribute__((hot))
 	app = arg;
 	cam_ray(app, &rene, x + 0.5, y + 0.5);
 	color = recursive_cast(app->scene, app->settings, rene, 0);
-	if (app->settings.anti_a)
+	if (app->settings.anti_a && app->sdl->sub_sample == 1)
 		color = anti_aliasing(color, app, x, y);
 	color_clamp(&color, 0, 1);
 	color_mult(&color, &app->settings.filter);

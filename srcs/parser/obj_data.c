@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:13:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:38:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void
 		{&inter_sphere, &ui_sphere, &normal_sphere, &get_sphere_uv},
 		{&inter_cone, &ui_cone, &normal_cone, &get_cone_uv},
 		{&inter_cylinder, &ui_cylinder, &normal_cylinder, &get_cylinder_uv},
-		{&inter_csg, &ui_csg, &normal_csg, &get_csg_uv}
+		{&inter_csg, &ui_csg, NULL, NULL}
 	};
 
 	config = ft_memcpy(config, &obj_func[type], sizeof(t_objset));

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/30 15:51:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:38:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,22 +128,3 @@ void
 	top_inter->obj = csg_inter.obj;
 }
 
-/*
-** Useless for csg because it's not the primitives :
-*/
-
-void
-	normal_csg(t_inter *inter)
-{
-	// Do stuff
-	(void)inter;
-}
-
-t_vec3
-	get_csg_uv(t_inter *inter)
-{
-	t_vec3 tmp;
-
-	tmp = inter->obj->get_uv(inter);
-	return (tmp);
-}

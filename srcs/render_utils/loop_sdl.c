@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 15:22:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:44:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ static inline void
 ** @param sdl
 ** @param arg
 */
-
-void resize_app(void *arg);
 
 void
 	loop_sdl(t_sdl *sdl, void *arg)
@@ -68,6 +66,5 @@ void
 			sdl->render_gui(arg);
 		push_gui_time(sdl, ft_curr_usec() - start_time);
 		start_time = ft_curr_usec();
-		resize_app(arg);
 	}
 }

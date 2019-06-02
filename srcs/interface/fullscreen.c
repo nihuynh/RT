@@ -6,25 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 12:46:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:28:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL.h>
-#include <SDL_image.h>
-#include "rt.h"
-#include "libft.h"
-#include "interface.h"
 #include "config.h"
-
-#if defined(__APPLE__)
-# define GL_SILENCE_DEPRECATION
-# include <OpenGL/gl.h>
-#else
-# include <GL/gl.h>
-#endif
-
-void	hook_render_to_gui(t_gui *gui, SDL_Window *window);
+#include "libui.h"
+#include "interface.h"
 
 void	realloc_pxl(t_sdl *sdl, int width, int height)
 {
@@ -57,27 +46,12 @@ void	fullscreen(t_sdl *sdl, t_gui *gui)
 		: ImGuiCond_Once;
 }
 
-void resize_app_register(int width, int height, t_data *app)
-{
-	app->sdl->resize = true;
-	app->sdl->new_width_vp = width;
-	app->sdl->new_height_vp = height;
-}
-void resize_app(void *arg)
-{
-	t_data		*app;
-	int			height;
-	int			width;
 
-	app = arg;
-	if (!app->sdl->resize)
-		return ;
-	width = app->sdl->new_width_vp;
-	height = app->sdl->new_height_vp;
+void resize_app(int width, int height, t_data *app)
+{
 	app->sdl->width_vp = width;
 	app->sdl->height_vp = height;
 	realloc_pxl(app->sdl, width * RENDER_SCALE, height * RENDER_SCALE);
 	SDL_SetWindowSize(app->sdl->win, width, height);
 	app->sdl->needs_render = true;
-	app->sdl->resize = false;
 }

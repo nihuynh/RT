@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/30 15:17:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:55:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ struct				s_sdl
 	bool			partial_render;
 	int				width_vp;
 	int				height_vp;
-	int				new_width_vp;
-	int				new_height_vp;
-	bool			resize;
 	int				thr_len;
 	t_data_thr		*data_thr;
 	t_thr_pool		*pool;
@@ -122,5 +119,7 @@ int					init_pool(t_sdl *sdl, int (*do_pxl) (int, int, void*),
 	void *prg_d, uint16_t thr_count);
 int					pool_render(t_thr_pool *pool);
 int					destroy_pool(t_thr_pool *pool);
+
+void				exit_ui(SDL_GLContext *gl_context);
 
 #endif

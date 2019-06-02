@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/21 03:34:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:28:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "rtstruct.h"
 #include "config.h"
 #include "ftio.h"
-#include "data_struct.h"
 #include "ftstring.h"
 #include "rt.h"
 

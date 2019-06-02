@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:10:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 00:28:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "ftstring.h"
 #include "rtstruct.h"
 #include "parse.h"
-#include "data_struct.h"
 
 int
 	csg_is_obj(t_parse_txt *scene_file)

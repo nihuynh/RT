@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/28 15:14:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/03 00:38:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 # include "rtstruct.h"
-# include "data_struct.h"
+# include "t_data.h"
 
 # define ERR_P_CAMERA		"Err : camera is missing"
 # define ERR_P_CONTENT		"Err : content is missing"
@@ -132,13 +132,14 @@ void			open_textures(t_data *app);
 /*
 ** Getters :
 */
-
+int				get_obj_type(char *obj_type);
 char			*get_args_key_require(t_parse_txt *scene_file, const char *key);
 
 /*
 ** Setters :
 */
 
+void			obj_set(t_obj *obj, int type, void *shape);
 void			light_set(t_light *light, t_parse_txt *scene_file);
 void			cone_set(void *cone, t_parse_txt *scene_file);
 void			cylinder_set(void *cylinder, t_parse_txt *scene_file);
@@ -152,7 +153,8 @@ void			csg_set(void *root, t_parse_txt *scene_file);
 
 int				csg_is_op(t_parse_txt *scene_file);
 void			inter_csg(t_inter *data, t_obj *node);
-void			normal_csg(t_inter *inter);
-t_vec3			get_csg_uv(t_inter *inter);
+
+
+void		del_obj(void *content, size_t content_size);
 
 #endif
