@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/24 00:52:58 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 03:55:46 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/02 16:36:47 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ endif
 # **************************************************************************** #
 # Libs links :
 $(LIB_DEP):
-	$(MAKE) -C $(dir $@) $(LIBFLAGS)
+	$(MAKE) -C $(dir $@) $(notdir $@) $(LIBFLAGS)
 .PHONY: $(LIB_DEP)
 
 $(LIB_DEP_CLEAN):

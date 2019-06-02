@@ -4,4 +4,4 @@
 	branch = master
 [submodule "lib/cimgui"]
 	path = lib/cimgui
-	url = https://github.com/cimgui/cimgui.git
+	url = https://github.com/nihuynh/cimgui.git

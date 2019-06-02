@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/29 19:56:22 by sklepper         ###   ########.fr        #
+#    Updated: 2019/06/02 16:48:16 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,9 @@ SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
 VPATH       :=	./srcs ./srcs/parser ./srcs/render ./srcs/tools	\
 				./srcs/interface ./srcs/render_utils
 
-LIB_DEP		=	lib/libft/libft.a	\
-				lib/librt/librt.a		\
+LIB_DEP		=	lib/libft/libft.a				\
+				lib/librt/librt.a				\
+				lib/cimgui/libcimgui.a			\
 				lib/imgui_impl/libimgui_impl.a
 
 # **************************************************************************** #
@@ -45,21 +46,11 @@ include basic_runner.mk
 include basic_app.mk
 # **************************************************************************** #
 # Additionnal linkers :
-ifeq ($(shell uname -s), Linux)
-	CIMGUI_NAME = cimgui.so
-endif
-ifeq ($(shell uname -s), Darwin)
-	CIMGUI_NAME = cimgui.dylib
-endif
-CIMGUI_PATH :=	lib/cimgui
-
-# **************************************************************************** #
-# Additionnal linkers :
-# SDL
+# SDL2
 LIB_LINK	+=	$(shell sdl2-config --libs)  -lSDL2_Image
 INC			+=	$(shell sdl2-config --cflags)
-INC			+=	-I $(CIMGUI_PATH)
-LIB_LINK	+=	$(CIMGUI_NAME) -lstdc++ -framework OpenGl
+# Imgui
+LIB_LINK	+=	-lstdc++ -framework OpenGl
 BANNER		:=	$(shell cat resources/script/banner.txt)
 # **************************************************************************** #
 # Target rules :
@@ -75,8 +66,6 @@ $(NAME): $(OBJ)
 
 fclean: $(LIB_DEP_CLEAN) clean dclean aclean ## Full clean of the project & the libs.
 	$(RM) $(NAME)
-	# $(MAKE) -sC $(CIMGUI_PATH) clean
-	# $(RM) $(CIMGUI_NAME)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME) $(OKLOGO)"
 .PHONY: fclean
 
