@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/28 16:49:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 01:45:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,47 +28,51 @@ t_data	*get_app(t_data *app)
 	return (app_save);
 }
 
-void	interactive(char *filename, int runmode)
+t_data
+	*boot_rt(int ac, char **av)
 {
-	t_data		app;
+	t_data		*app;
 
-	ft_bzero(&app, sizeof(t_data));
-	get_app(&app);
-	init_textures(&app);
-	parse_material_csv(&app, "resources/materialList.csv");
-	get_scenes(&app);
+	if (DEBUG)
+		ft_putendl("RT is booting ...");
+	if (!(app = ft_memalloc(sizeof(t_data))))
+		ft_error(__func__, __LINE__);
+	app->option = ft_options(ac, av, USAGE);
+	get_app(app);
+	init_textures(app);
+	parse_material_csv(app, "resources/materialList.csv");
+	get_scenes(app);
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
-	app.sdl = init_sdl(WIDTH, HEIGHT);
-	init_mthr_sdl(app.sdl, &process_pixel, &app);
-	hook_sdl(&app);
-	load_scene(&app, filename);
-	if (runmode == RM_UNIT_TEST)
-		return ;
-	if (DEBUG)
-		ft_printf("RT is starting\n");
-	loop_sdl(app.sdl, &app);
-	free_app(&app);
+	app->sdl = init_sdl(WIDTH, HEIGHT);
+	init_mthr_sdl(app->sdl, &process_pixel, app);
+	hook_sdl(app);
+	return (app);
+}
+
+void	interactive(int ac, char **av)
+{
+	t_data	*app;
+
+	app = boot_rt(ac, av);
+	load_scene(app, av[1]);
+	if (!(app->option.key_found_bitrpz & (1 << ('t' - 'a'))))
+	{
+		if (DEBUG)
+			ft_printf("RT is starting\n");
+		loop_sdl(app->sdl, app);
+	}
+	free_app(app);
 }
 
 int		main(int ac, char **av)
 {
-	int		options;
-	int		mode;
 
 	if (ac == 1)
 	{
 		ft_putendl(USAGE);
-		return (-1);
+		return (EXIT_SUCCESS);
 	}
-	if ((options = ft_options(ac, av, USAGE).key_found_bitrpz) == -1)
-		return (-1);
-	if (ac == 2 || (ac > 2 && options != 0))
-	{
-		mode = (options & (1 << ('t' - 'a'))) ? RM_UNIT_TEST : RM_NORMAL;
-		interactive(av[1], mode);
-	}
-	while (options & (1 << ('l' - 'a')))
-		;
-	return (0);
+	interactive(ac, av);
+	return (EXIT_SUCCESS);
 }

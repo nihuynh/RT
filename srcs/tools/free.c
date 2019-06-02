@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:56:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 01:46:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ void
 	exit_ui(app->gui.gl_context);
 	exit_sdl(app->sdl);
 	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
+	free(app);
+	get_app(app);
+	app = NULL;
 	while (debug_leak)
 		;
-	get_app(app);
 }
 
 void
