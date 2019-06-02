@@ -1,7 +1,7 @@
 camera
 {
 	origin(-138.019 159.272 974.013)
-	direction(0.565 -0.174 -0.807)
+	direction(0.901 -0.312 -0.302)
 	amb_light(0.100 0.100 0.100)
 }
 content
@@ -16,8 +16,7 @@ content
 	{
 		origin(1622.000 -30.000 0.000)
 		radius(17.370)
-		texture(none)
-		normal_map(none)
+		texture(2k_moon.jpg)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
@@ -34,7 +33,6 @@ content
 		origin(0.000 -30.000 0.000)
 		radius(63.710)
 		texture(2k_earth_daymap.jpg)
-		normal_map(none)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
@@ -44,6 +42,6 @@ content
 		reflection_color(0.000 0.000 0.000)
 		refraction_idx(0.000)
 		uv_scale(1.000 1.000)
-		uv_offset(-0.800 0.000)
+		uv_offset(0.000 0.000)
 	}
 }
