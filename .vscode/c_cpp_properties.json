@@ -28,12 +28,7 @@
             "name": "MacBook",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/lib/cimgui",
-                "${workspaceFolder}/includes",
-                "${workspaceFolder}/lib/librt/includes",
-                "${workspaceFolder}/lib/libft/includes",
-                "/usr/local/include/SDL2",
-                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
+                "/usr/local/include/SDL2"
             ],
             "defines": [],
             "macFrameworkPath": [

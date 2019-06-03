@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/03 00:27:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 01:52:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,5 @@ void		parse_material_csv(t_data *app, char *csv_file);
 
 # define EXIT_FAILURE	1
 # define EXIT_SUCCESS	0
-
-# define RM_UNIT_TEST	0
-# define RM_NORMAL		1
 
 #endif

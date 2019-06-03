@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/24 11:49:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/03 01:59:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static inline bool
 	bool res;
 
 	res = false;
-
 	if (key == SDLK_w)
 	{
 		res = true;
