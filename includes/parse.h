@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:38:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:29:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,11 @@ int				load_parse_txt(t_parse_txt *s_f, t_data *app, char *filename);
 void			check_opening_bracket(t_parse_txt *scene_file);
 void			check_closing_bracket(t_parse_txt *scene_file);
 
-void			create_obj_from_txt(t_obj *obj, t_parse_txt *scene_file, int type);
+void			create_obj_from_txt(t_obj *obj, t_parse_txt *scene_f, int type);
 void			parse_light(t_parse_txt *scene_file);
 void			parse_shape(t_parse_txt *scene_file, int type);
 
-t_color 		parse_color(char *key, t_parse_txt *scene_file);
+t_color			parse_color(char *key, t_parse_txt *scene_file);
 float			parse_fval(char *key, t_parse_txt *scene_file);
 t_vec3			parse_vector(char *key, t_parse_txt *scene_file);
 t_vec2			parse_vec2(char *key, t_parse_txt *scene_file);
@@ -154,7 +154,10 @@ void			csg_set(void *root, t_parse_txt *scene_file);
 int				csg_is_op(t_parse_txt *scene_file);
 void			inter_csg(t_inter *data, t_obj *node);
 
+/*
+** Others :
+*/
 
-void		del_obj(void *content, size_t content_size);
+void			del_obj(void *content, size_t content_size);
 
 #endif

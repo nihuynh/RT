@@ -6,13 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:06:56 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:17:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:28:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_DATA_H
 # define T_DATA_H
-
 
 # include "option.h"
 # include "rtstruct.h"

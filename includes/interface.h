@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/03 00:23:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:01:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,15 @@ void	export_win(t_gui *gui);
 void	load_win(t_gui *gui);
 void	stats_win(t_gui *gui);
 void	selector(t_gui *gui);
-
 void	add_obj_win(t_gui *gui);
 void	del_obj_win(t_gui *gui);
 void	del_light_win(t_gui *gui);
-
 void	render_win(t_gui *gui);
 void	scene_win(t_gui *gui);
 void	interface_mainmenu(t_gui *gui);
 void	render_settings(t_data *app);
-
-
 int		export_scene(t_data *app, char *filename);
 void	export_material(int fd, t_material *mat);
-
 void	load_scene(t_data *app, char *filename);
 void	reload_scene(t_data *app, char *filename);
 

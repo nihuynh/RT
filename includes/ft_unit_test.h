@@ -6,15 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 04:20:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 04:36:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:00:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_UNIT_TEST_H
 # define FT_UNIT_TEST_H
 
-/**
-** @brief 	:
+/*
 ** # include "ft_unit_test.h"
 */
 
