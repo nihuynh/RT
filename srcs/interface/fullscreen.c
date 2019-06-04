@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/03 00:28:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:34:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "libui.h"
 #include "interface.h"
 
-void	realloc_pxl(t_sdl *sdl, int width, int height)
+void
+	realloc_pxl(t_sdl *sdl, int width, int height)
 {
 	int		idx;
 	int		ofs;
@@ -35,7 +36,8 @@ void	realloc_pxl(t_sdl *sdl, int width, int height)
 	}
 }
 
-void	fullscreen(t_sdl *sdl, t_gui *gui)
+void
+	fullscreen(t_sdl *sdl, t_gui *gui)
 {
 	sdl->img.height = (sdl->img.height == sdl->height_vp) ? sdl->height_vp
 		* RENDER_SCALE : sdl->height_vp;
@@ -46,8 +48,8 @@ void	fullscreen(t_sdl *sdl, t_gui *gui)
 		: ImGuiCond_Once;
 }
 
-
-void resize_app(int width, int height, t_data *app)
+void
+	resize_app(int width, int height, t_data *app)
 {
 	app->sdl->width_vp = width;
 	app->sdl->height_vp = height;

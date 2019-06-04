@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 15:47:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/05 00:46:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,3 @@ void
 	app->sdl->needs_render = true;
 	app->sdl->partial_render = false;
 }
-
-

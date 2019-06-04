@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/30 15:18:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:44:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static inline void
 	settings->light = 1;
 	settings->shadow = 1;
 	settings->shine = 1;
-	settings->debug_normal = 1;
+	settings->debug_normal = 0;
 	settings->normal_mapping = 1;
 }
 

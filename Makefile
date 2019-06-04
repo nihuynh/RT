@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/03 00:49:32 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/05 01:28:05 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,21 +14,24 @@ NAME		:=	RT
 RUNMODE		?=	release
 # RUNMODE		?=	dev
 #VERBOSE	:= TRUE
-SRC			:=	free_scene.c main.c parser.c read.c render.c parse_toolbox.c	\
-				setter.c light.c key_mapping.c camera.c update.c	\
-				cast.c utils.c interface.c interface_scene.c	\
-				interface_objects.c interface_tools.c	\
-				object_tools.c texture_toolbox.c new_object_tools.c	\
-				interface_lists.c filters.c export.c export_shape.c	\
-				fullscreen.c export_toolbox.c new_object.c \
-				reload.c perturbation.c texture_loader.c free.c csg.c  \
-				obj_data.c parse_txt.c parse_utils.c interface_menu.c \
-				ui_file_win.c ui_edit_win.c ui_render.c parse_csg.c \
-				export_csg.c get_scenes.c test.c ui_selector.c obj_name.c \
-				delete_obj.c ui_cam_win.c normal_mapping.c
-SRC			+=	init_sdl.c error_sdl.c exit_sdl.c \
-				render_sdl.c loop_sdl.c init_mthr_sdl.c render_mthr_sdl.c \
-				save_screenshot.c render_pool.c post_process.c render_time.c
+
+INTERFACE	:=	delete_obj.c fullscreen.c interface_lists.c interface_menu.c	\
+				interface_objects.c interface_scene.c interface_tools.c			\
+				interface.c new_object_tools.c new_object.c object_tools.c		\
+				ui_cam_win.c ui_edit_win.c ui_file_win.c ui_render.c			\
+				ui_selector.c
+PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c			\
+				obj_data.c  obj_name.c parse_csg.c parse_shape.c parse_toolbox.c\
+				parse_txt.c parse_utils.c parser.c read.c setter.c
+RENDER		:=	camera.c cast.c filters.c light.c normal_mapping.c				\
+				perturbation.c post_process.c render.c texture_loader.c			\
+				texture_toolbox.c
+RENDER_U	:=	init_sdl.c error_sdl.c exit_sdl.c render_sdl.c loop_sdl.c 		\
+				init_mthr_sdl.c render_mthr_sdl.c save_screenshot.c				\
+				render_pool.c  render_time.c
+TOOLS		:=	free_scene.c  free.c utils.c get_scenes.c update.c reload.c
+SRC			:=	 $(INTERFACE) $(PARSER) $(RENDER) $(RENDER_U) $(TOOLS)
+SRC			+=	 main.c  key_mapping.c test.c
 # directories :
 VPATH       :=	./srcs ./srcs/parser ./srcs/render ./srcs/tools	\
 				./srcs/interface ./srcs/render_utils
@@ -89,8 +92,8 @@ dclean: ## Clean the documentation.
 .PHONY: dclean
 
 norme: ## Check the norme of the project and the libraries.
-	$(MAKE) -C $(LFT_PATH) norme
-	$(MAKE) -C $(LRT_PATH) norme
+	$(MAKE) -C lib/libft norme
+	$(MAKE) -C lib/librt norme
 	norminette srcs includes | $(GREP_ERR)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mNorminette $(OKLOGO)"
 .PHONY: norme

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:32:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:42:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void		inter_cylinder(t_inter *data, t_obj *node);
 void		inter_plane(t_inter *data, t_obj *node);
 void		inter_sphere(t_inter *data, t_obj *node);
 void		inter_cone(t_inter *data, t_obj *node);
+t_inter		inter_from_csg_op(int type, t_inter left, t_inter right,
+			t_ray incoming);
+void		inter_csg(t_inter *data, t_obj *node);
 void		inter_set(t_inter *inter, t_ray ray);
 void		inter_setdeflect(t_inter *inter, t_vec3 shading_normal);
 void		inter_setrefract(t_inter *inter, t_ray *res);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:29:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:41:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ void			csg_set(void *root, t_parse_txt *scene_file);
 */
 
 int				csg_is_op(t_parse_txt *scene_file);
-void			inter_csg(t_inter *data, t_obj *node);
 
 /*
 ** Others :

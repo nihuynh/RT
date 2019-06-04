@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/02 23:58:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:45:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static inline void
 	igMenuItemBoolPtr("Delete Light", NULL, &gui->del_light_open, 1);
 	igEndMenu();
 }
-
 
 static inline void
 	window_menu(t_gui *gui)

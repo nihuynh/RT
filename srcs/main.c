@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 01:45:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:54:16 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "config.h"
 #include "interface.h"
 
-t_data	*get_app(t_data *app)
+t_data
+	*get_app(t_data *app)
 {
 	static t_data *app_save;
 
@@ -31,7 +32,7 @@ t_data	*get_app(t_data *app)
 t_data
 	*boot_rt(int ac, char **av)
 {
-	t_data		*app;
+	t_data	*app;
 
 	if (DEBUG)
 		ft_putendl("RT is booting ...");
@@ -50,7 +51,8 @@ t_data
 	return (app);
 }
 
-void	interactive(int ac, char **av)
+void
+	interactive(int ac, char **av)
 {
 	t_data	*app;
 
@@ -65,9 +67,9 @@ void	interactive(int ac, char **av)
 	free_app(app);
 }
 
-int		main(int ac, char **av)
+int
+	main(int ac, char **av)
 {
-
 	if (ac == 1)
 	{
 		ft_putendl(USAGE);

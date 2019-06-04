@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_objects.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/29 19:16:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/05 00:46:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,3 @@ void
 	obj->f_gui(app, obj->shape);
 	material(app, obj);
 }
-

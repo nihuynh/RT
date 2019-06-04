@@ -6,13 +6,19 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:58:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 01:00:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdio.h>
+#include <stdio.h>
 #include "rtstruct.h"
 #include "export.h"
+
+static inline void
+	export_vector(int fd, char *name, t_vec3 vector)
+{
+	dprintf(fd, "%s(%.3f %.3f %.3f)\n", name, vector.x, vector.y, vector.z);
+}
 
 static inline void
 	export_obj_from_btree(int fd, t_obj *node_content)
@@ -52,8 +58,7 @@ void
 	t_csg *pcsg;
 
 	pcsg = shape;
-	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", pcsg->origin.x, pcsg->origin.y,
-		pcsg->origin.z);
-	dprintf(fd, "\n\t\tnormal(%.3f %.3f %.3f)\n", pcsg->n.x, pcsg->n.y, pcsg->n.z);
+	export_vector(fd, "\t\torigin", pcsg->origin);
+	export_vector(fd, "\t\tnormal", pcsg->n);
 	ft_b3apply_prefix_wtarg(fd, pcsg->root, &export_btree);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/27 17:49:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/05 00:51:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "rtstruct.h"
 #include "librt.h"
 
-void	ui_sphere(void *app_v, void *res)
+void
+	ui_sphere(void *app_v, void *res)
 {
 	t_sphere	*sphere;
 	t_sphere	tmp;
@@ -28,7 +29,8 @@ void	ui_sphere(void *app_v, void *res)
 		sphere->radius = tmp.radius;
 }
 
-void	ui_plane(void *app_v, void *res)
+void
+	ui_plane(void *app_v, void *res)
 {
 	t_plane		*plane;
 	t_plane		tmp;
@@ -52,7 +54,8 @@ void	ui_plane(void *app_v, void *res)
 		plane->size.y = tmp.size.y;
 }
 
-void	ui_cylinder(void *app_v, void *res)
+void
+	ui_cylinder(void *app_v, void *res)
 {
 	t_cylinder	*cylinder;
 	t_cylinder	tmp;
@@ -76,7 +79,8 @@ void	ui_cylinder(void *app_v, void *res)
 		cylinder->size = tmp.size;
 }
 
-void	ui_cone(void *app_v, void *res)
+void
+	ui_cone(void *app_v, void *res)
 {
 	t_cone	*cone;
 	t_cone	tmp;
@@ -100,7 +104,8 @@ void	ui_cone(void *app_v, void *res)
 		cone->size = tmp.size;
 }
 
-void			ui_csg_btree(t_data	*app, t_btree *node)
+void
+	ui_csg_btree(t_data *app, t_btree *node)
 {
 	if (node->content_size == sizeof(t_obj))
 	{
@@ -120,7 +125,8 @@ void			ui_csg_btree(t_data	*app, t_btree *node)
 	}
 }
 
-void			ui_csg(void *app_v, void *shape)
+void
+	ui_csg(void *app_v, void *shape)
 {
 	t_csg	*csg;
 	t_data	*app;

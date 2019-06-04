@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 15:11:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:53:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	load_win(t_gui *gui)
 			load_scene(gui->app, buff);
 		else
 		{
-			ft_strlcpy(gui->err_msg, "File does not exist", sizeof(gui->err_msg));
+			ft_strlcpy(gui->err_msg, "File don't exist", sizeof(gui->err_msg));
 			gui->err_open = true;
 		}
 		gui->load_open = false;
@@ -77,18 +77,17 @@ void	stats_win_content(t_sdl *sdl, ImVec2 size)
 	igText("Render time : %.3fms", (float)sdl->render_time[P_TIME_LEN - 1]);
 	igSameLine(size.x / 2, plot_border);
 	igText("Gui FPS (%i)", (int)sdl->gui_time[GUI_FPS - 1]);
-	igProgressBar(sdl->progress_sub_sample, (ImVec2){size.x / 4, 0}, "Render progress");
+	igProgressBar(sdl->progress_sub_sample, (ImVec2){size.x / 4, 0},
+		"Render progress");
 }
 
 void	stats_win(t_gui *gui)
 {
-
 	ImVec2 pos;
 	ImVec2 size;
 
 	if (gui->demo_open)
 		igShowDemoWindow(NULL);
-	// pos.x = gui->sdl->width_vp - (gui->sdl->width_vp / 2);
 	pos.x = 0;
 	pos.y = gui->sdl->img.height + 18;
 	size.x = gui->sdl->width_vp / 2;
@@ -99,4 +98,3 @@ void	stats_win(t_gui *gui)
 	stats_win_content(gui->sdl, size);
 	igEnd();
 }
-

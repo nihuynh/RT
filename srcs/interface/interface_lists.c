@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/03 00:20:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 00:46:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	list_scenes(t_gui *gui)
 	while (lst)
 	{
 		scene = lst->content;
-		if(igMenuItemBool(scene->name, NULL, 0, 1))
+		if (igMenuItemBool(scene->name, NULL, 0, 1))
 			load_scene(gui->app, scene->dir);
 		lst = lst->next;
 	}
