@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/02 23:44:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 01:35:39 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <math.h>
 #include "librt.h"
 #include "libft.h"
-
-t_vec3 compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
 
 void
 	cam_ray(t_data *app, t_ray *res, float x, float y)

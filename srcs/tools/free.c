@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 01:46:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 01:36:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void
 	t_obj	*obj;
 	t_csg	*csg;
 	t_btree *root;
-
 
 	(void)content_size;
 	obj = (t_obj*)content;

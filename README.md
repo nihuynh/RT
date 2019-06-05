@@ -71,4 +71,3 @@ cloc lib/lib* srcs includes Makefile
 12 april => 5363	LOC
 22 mai => 7620		LOC
 pmc to mesure the cache misses
-

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:46:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 01:41:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,23 @@
 #include "config.h"
 
 void
-	sub_sampler(t_data_thr *slice, int idx_in_slice, int inc, int color, int img_w)
+	sub_sampler(t_data_thr *slice, int idx, int color)
 {
 	int inc_x;
 	int inc_y;
-	(void)img_w;
+	int img_w;
+	int inc;
 
+	img_w = slice->sdl->img.width;
+	inc = slice->sdl->sub_sample;
 	inc_y = inc;
 	while (--inc_y >= 0)
 	{
 		inc_x = inc;
 		while (--inc_x >= 0)
-			slice->pixels[idx_in_slice++] = color;
-		idx_in_slice += img_w - (inc -1);
-		if (idx_in_slice  + inc > slice->sdl->thr_len)
+			slice->pixels[idx++] = color;
+		idx += img_w - (inc - 1);
+		if (idx + inc > slice->sdl->thr_len)
 			break ;
 	}
 }
@@ -40,7 +43,7 @@ static inline t_pxl
 	get_real_coordinate(t_data_thr *slice, int idx)
 {
 	t_pxl	res;
-	int			idx_total;
+	int		idx_total;
 
 	idx_total = slice->idx * slice->sdl->thr_len + idx;
 	res.x = idx_total % slice->sdl->img.width;
@@ -53,13 +56,11 @@ static inline void
 {
 	t_data_thr	*slice;
 	int			idx_in_slice;
-	int			img_w;
 	int			inc;
 	int			color;
 	t_pxl		real_pos;
 
 	slice = arg;
-	img_w = slice->sdl->img.width;
 	inc = slice->sdl->sub_sample;
 	idx_in_slice = 0;
 	if (inc == SUB_SAMPLE)
@@ -68,7 +69,7 @@ static inline void
 	{
 		real_pos = get_real_coordinate(slice, idx_in_slice);
 		color = slice->do_pxl(real_pos.x, real_pos.y, slice->prg_data) | C_MASK;
-		sub_sampler(slice, idx_in_slice, inc, color, img_w);
+		sub_sampler(slice, idx_in_slice, color);
 		idx_in_slice += inc;
 	}
 	pthread_exit(NULL);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/03 00:28:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 01:42:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #include "ftstring.h"
 #include "rt.h"
 
-
 void	load_texture(t_texture *tex)
 {
 	SDL_Surface	*surface;
+
 	if (tex->dir == NULL)
 		return ;
 	if (DEBUG)
@@ -74,8 +74,7 @@ void	open_textures(t_data *app)
 			if (ft_strstr(dir->d_name, ".ppm") ||
 				ft_strstr(dir->d_name, ".png") ||
 				ft_strstr(dir->d_name, ".jpg") ||
-				ft_strstr(dir->d_name, ".jpeg")
-			)
+				ft_strstr(dir->d_name, ".jpeg"))
 				add_texture(dir->d_name, app);
 		}
 		closedir(d);

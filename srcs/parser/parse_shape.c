@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 01:08:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 01:29:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,18 @@ static inline t_material
 	parse_material(t_parse_txt *scene_file)
 {
 	char		*str;
-	t_material	*mat_from_lst;
+	t_material	*mat;
 
 	if ((str = ft_strstr(get_curr_line(scene_file), "mat(")))
 	{
 		str += 4;
-		if (!(mat_from_lst = ft_lstgetelt(scene_file->app->lst_mat, &matcmp, str)))
+		if (!(mat = ft_lstgetelt(scene_file->app->lst_mat, &matcmp, str)))
 		{
 			err_set(scene_file, __func__, __LINE__, __FILE__);
 			err_exit(ERR_UNKNWD_MAT, scene_file);
 		}
 		scene_file->line_idx++;
-		return (*mat_from_lst);
+		return (*mat);
 	}
 	return (expand_parse(scene_file));
 }
@@ -116,5 +116,4 @@ void
 		ft_putendl("Shape node :");
 	create_obj_from_txt(&obj, scene_file, type);
 	ft_lstpushnew(&scene_file->app->scene.lst_obj, &obj, sizeof(t_obj));
-
 }

@@ -6,13 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 03:30:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:59:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 01:36:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_unit_test.h"
+#include "ft_unit_test.h"
 
-int		ut_export_load_scene(char *scene_path, t_data *const_app)
+int	ut_export_load_scene(char *scene_path, t_data *const_app)
 {
 	t_data	local_app;
 	char	*export_path;
@@ -36,10 +36,8 @@ int		ut_export_load_scene(char *scene_path, t_data *const_app)
 	return (EXIT_SUCCESS);
 }
 
-int export_test_suite(t_data *const_data)
+int	export_test_suite(t_data *const_data)
 {
 	ut_export_load_scene("scenes/fig1.rt", const_data);
 	return (EXIT_SUCCESS);
 }
-
-

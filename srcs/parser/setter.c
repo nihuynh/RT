@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/28 14:26:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/05 01:29:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void
 		err_exit(ERR_PARSE_SET_SP, scene_file);
 	}
 	psphere = sphere;
-	psphere->origin  = parse_vector("origin(", scene_file);
-	psphere->radius  = parse_fval("radius(", scene_file);
+	psphere->origin = parse_vector("origin(", scene_file);
+	psphere->radius = parse_fval("radius(", scene_file);
 }
 
 void

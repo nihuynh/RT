@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 03:39:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:05:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,9 @@ void
 			scene_file->err_file, scene_file->err_at_line);
 	}
 	else
-		ft_printf("%s\nPARSE_TXT : [line :%d]%s\n%s : %s (%s:%d)\n",
-			err_msg, scene_file->line_idx + 1,
-			scene_file->greed[scene_file->line_idx],
-			"Error in the function", scene_file->err_func,
-			scene_file->err_file, scene_file->err_at_line);
+		ft_printf("%s\nError in the function : %s (%s:%d)\n",
+			err_msg, scene_file->err_func, scene_file->err_file,
+			scene_file->err_at_line);
 	ft_tabdel(scene_file->greed);
 	if (scene_file->exit_on_err)
 		exit_safe(errno);
@@ -129,8 +127,7 @@ int
 	ft_bzero(scene_file, sizeof(t_parse_txt));
 	scene_file->app = app;
 	scene_file->exit_on_err = true;
-	if ((scene_file->line_max = ft_line_count(filename)) < 9)
-		return (EXIT_FAILURE);
+	scene_file->line_max = ft_line_count(filename);
 	size_greed = sizeof(char *) * (scene_file->line_max + 1);
 	if (!(scene_file->greed = ft_memalloc(size_greed)))
 		return (EXIT_FAILURE);
