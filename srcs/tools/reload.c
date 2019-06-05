@@ -6,26 +6,16 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:44:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:40:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-#include "librt.h"
+#include "t_gui.h"
+#include "t_data.h"
 #include "config.h"
+#include "librt.h"
 #include "libft.h"
-#include "interface.h"
-#include <fcntl.h>
-#include <unistd.h>
-
-#include "imgui_impl_sdl.h"
-#include "imgui_impl_opengl2.h"
-#if defined(__APPLE__)
-# define GL_SILENCE_DEPRECATION
-# include <OpenGL/gl.h>
-#else
-# include <GL/gl.h>
-#endif
 
 static inline void
 	default_gui_settings(t_gui *gui)
@@ -38,21 +28,6 @@ static inline void
 	gui->stats_open = true;
 	gui->edit_open = true;
 	gui->render_set_open = true;
-}
-
-void
-	hook_render_to_gui(t_gui *gui, SDL_Window *window)
-{
-	if (!(gui->gl_context = SDL_GL_CreateContext(window)))
-		ft_error(__func__, __LINE__);
-	igCreateContext(NULL);
-	ImGui_ImplSDL2_InitForOpenGL(window, &gui->gl_context);
-	ImGui_ImplOpenGL2_Init();
-	glGenTextures(1, &gui->texture_id);
-	glBindTexture(GL_TEXTURE_2D, gui->texture_id);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 static inline void
@@ -98,34 +73,6 @@ static inline void
 	SDL_SetWindowTitle(win, title);
 	ft_strdel(&title);
 }
-void
-	hook_sdl(t_data *app)
-{
-	app->sdl->key_map = &key_event;
-	app->sdl->mouse_map = &mouse_motion;
-	app->sdl->update = &update;
-	app->sdl->render_gui = &render_gui;
-	app->sdl->click_map = &click_event;
-	app->sdl->sub_s = 1;
-	app->gui.app = app;
-	app->gui.sdl = app->sdl;
-	hook_render_to_gui(&app->gui, app->sdl->win);
-	default_settings(&app->settings);
-	default_gui_settings(&app->gui);
-	app->sdl->needs_render = true;
-	app->sdl->partial_render = false;
-}
-
-bool
-	check_file(char *filename)
-{
-	int fd;
-
-	if ((fd = open(filename, O_RDONLY)) == -1)
-		return (false);
-	close(fd);
-	return (true);
-}
 
 void
 	load_scene(t_data *app, char *filename)
@@ -143,15 +90,4 @@ void
 	app->sdl->partial_render = false;
 	if (DEBUG)
 		ft_printf("Loading of the scene is completed\n");
-}
-
-void
-	reload_scene(t_data *app, char *filename)
-{
-	char *tmp;
-
-	if (!(tmp = ft_strdup(filename)))
-		ft_error(__func__, __LINE__);
-	load_scene(app, tmp);
-	free(tmp);
 }

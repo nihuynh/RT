@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 01:41:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:23:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,7 @@ void
 	{
 		sdl->progress_sub_sample = 0;
 		sdl->partial_render = true;
-		if (sdl->sub_s)
-			sdl->sub_sample = SUB_SAMPLE;
-		else
-			sdl->sub_sample = 1;
+		sdl->sub_sample = (sdl->sub_s) ? SUB_SAMPLE : 1;
 	}
 	cthr = -1;
 	sats = 0;

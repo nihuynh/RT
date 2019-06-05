@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 01:35:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:26:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void		set_direction(t_cam *cam, t_vec3 direction);
 void		cam_ray(t_data *app, t_ray *res, float x, float y);
 t_color		cast_light_primary(t_list *obj_list, t_inter *inter);
 t_vec3		compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
-
 
 /*
 ** Init :

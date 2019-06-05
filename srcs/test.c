@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 03:30:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 01:36:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:22:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ut_export_load_scene(char *scene_path, t_data *const_app)
 		return (EXIT_FAILURE);
 	if (!(export_path = ft_strjoinfree(export_path, "_export.rt")))
 		return (EXIT_FAILURE);
-
 	ft_bzero(&local_app, sizeof(t_data));
 	local_app.lst_mat = const_app->lst_mat;
 	local_app.lst_tex = const_app->lst_tex;
