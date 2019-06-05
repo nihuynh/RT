@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/12 07:19:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 07:04:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include "ftmem.h"
 #include <math.h>
 
-#define DIFFUSE 0
-#define SPECULAR 1
+#define DIFFUSE		0
+#define SPECULAR	1
 
 static inline float
 	facing_ratio(t_vec3 ray_dir, t_vec3 normal)

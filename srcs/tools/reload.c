@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 06:00:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 07:00:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static inline void
 	set_win_title(SDL_Window *win, char *filename)
 {
 	char	*title;
-
 
 	if (filename == NULL)
 		return ;
