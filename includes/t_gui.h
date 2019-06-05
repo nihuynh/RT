@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:30:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 05:59:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct		s_gui
 	bool			render_set_open;
 	bool			cam_open;
 	t_cam			cam_cpy;
-	char			*scene_name;
 	bool			fullscreen;
 	bool			render_focused;
 	int				new_obj_type;

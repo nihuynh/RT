@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:46:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 04:44:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,50 +58,37 @@ void	material_list(t_list *lst_mat, t_obj *obj)
 	}
 }
 
-void	texture_list(t_list *lst_tex, t_obj *obj)
+void	load_selected_tex(t_list *current, t_texture **selected)
 {
-	t_list		*current;
-	t_texture	*selected;
 	t_texture	*tmp;
 	bool		is_selected;
 
-	current = lst_tex;
-	selected = obj->material.tex;
-	if (igBeginCombo("Texture", selected->name, 0))
+	while (current)
 	{
-		while (current)
+		tmp = current->content;
+		is_selected = (ft_strcmp((*selected)->name, tmp->name) == 0);
+		if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
 		{
-			tmp = current->content;
-			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
-			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
-			{
-				obj->material.tex = tmp;
-				if (tmp->pixels == NULL)
-					load_texture(tmp);
-			}
-			if (is_selected)
-				igSetItemDefaultFocus();
-			current = current->next;
+			*selected = tmp;
+			if (tmp->pixels == NULL)
+				load_texture(tmp);
 		}
+		if (is_selected)
+			igSetItemDefaultFocus();
+		current = current->next;
+	}
+}
+
+void	texture_list(t_list *lst_tex, t_obj *obj)
+{
+	if (igBeginCombo("Texture", obj->material.tex->name, 0))
+	{
+		load_selected_tex(lst_tex, &obj->material.tex);
 		igEndCombo();
 	}
-	selected = obj->material.normal_map;
-	if (igBeginCombo("Normal map", selected->name, 0))
+	if (igBeginCombo("Normal map", obj->material.normal_map->name, 0))
 	{
-		while (current)
-		{
-			tmp = current->content;
-			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
-			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
-			{
-				obj->material.normal_map = tmp;
-				if (tmp->pixels == NULL)
-					load_texture(tmp);
-			}
-			if (is_selected)
-				igSetItemDefaultFocus();
-			current = current->next;
-		}
+		load_selected_tex(lst_tex, &obj->material.tex);
 		igEndCombo();
 	}
 }

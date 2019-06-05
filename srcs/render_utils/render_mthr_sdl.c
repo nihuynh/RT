@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:23:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 04:24:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,27 +76,33 @@ static inline void
 }
 
 void
+	init_subsampler(t_sdl *sdl, long *time)
+{
+	*time = ft_curr_usec();
+	if (!sdl->partial_render && sdl->sub_sample <= 1)
+	{
+		sdl->progress_sub_sample = 0.0f;
+		sdl->partial_render = true;
+		sdl->sub_sample = (sdl->sub_s) ? SUB_SAMPLE : 1;
+	}
+	if (sdl->sub_sample == 1)
+		sdl->progress_sub_sample = 0.75f;
+}
+
+void
 	render_mthr_sdl(t_sdl *sdl)
 {
 	int			cthr;
-	int			sats;
 	void		*ptr;
 	pthread_t	threads[THR_C];
 	long		elapsed_time;
 
-	elapsed_time = ft_curr_usec();
-	if (!sdl->partial_render && sdl->sub_sample <= 1)
-	{
-		sdl->progress_sub_sample = 0;
-		sdl->partial_render = true;
-		sdl->sub_sample = (sdl->sub_s) ? SUB_SAMPLE : 1;
-	}
+	init_subsampler(sdl, &elapsed_time);
 	cthr = -1;
-	sats = 0;
-	while (++cthr < THR_C && !sats)
+	while (++cthr < THR_C)
 	{
 		ptr = &(sdl->data_thr[cthr]);
-		sats = pthread_create(&threads[cthr], NULL, process_data, ptr);
+		pthread_create(&threads[cthr], NULL, process_data, ptr);
 	}
 	cthr = -1;
 	while (++cthr < THR_C)
@@ -110,6 +116,5 @@ void
 	}
 	elapsed_time = ft_curr_usec() - elapsed_time;
 	push_render_time(sdl, (float)elapsed_time / 1000);
-	ft_printf("Frame took %f ms to render\n", (float)elapsed_time / 1000);
 	sdl->progress_sub_sample += 0.25;
 }

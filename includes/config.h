@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/24 13:48:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 04:26:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define BACK_COLOR		0x000000
 # define FOV			40.0f
 # define DEPTH_MAX		2
-# define SUB_SAMPLE		16
+# define SUB_SAMPLE		8
 
 # define DEBUG			0
 # define MAC			MACB

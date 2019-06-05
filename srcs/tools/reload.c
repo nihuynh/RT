@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 03:40:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 06:00:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,18 @@ static inline void
 }
 
 static inline void
-	set_win_title(SDL_Window *win, t_data *app)
+	set_win_title(SDL_Window *win, char *filename)
 {
 	char	*title;
 
-	if (app->gui.scene_name == NULL)
+
+	if (filename == NULL)
 		return ;
-	if (!(app->gui.scene_name = ft_strrchr(app->arg, '/')))
-		app->gui.scene_name = app->arg;
+	if ((title = ft_strrchr(filename, '/')))
+		title++;
 	else
-		app->gui.scene_name++;
-	if (!(title = ft_strjoin("RT - ", app->gui.scene_name)))
+		title = filename;
+	if (!(title = ft_strjoin("RT - ", title)))
 		ft_error(__func__, __LINE__);
 	SDL_SetWindowTitle(win, title);
 	ft_strdel(&title);
@@ -85,7 +86,7 @@ void
 	default_settings(&app->settings);
 	default_gui_settings(&app->gui);
 	hook_cam_to_gui(app);
-	set_win_title(app->sdl->win, app);
+	set_win_title(app->sdl->win, filename);
 	app->sdl->needs_render = true;
 	app->sdl->partial_render = false;
 	if (DEBUG)

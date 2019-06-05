@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/03 01:59:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 05:25:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,65 +24,35 @@
 ** @param key	Keycode of the pressed key
 ** @param arg	Data
 ** @param state	True if key is pressed, False if released
+** credit : norme - groussel
 */
 
 static inline bool
 	camera(t_cam *cam, SDL_Keycode key, bool state)
 {
-	bool res;
-
-	res = false;
 	if (key == SDLK_w)
-	{
-		res = true;
 		cam->move_forward = state;
-	}
-	if (key == SDLK_s)
-	{
-		res = true;
+	else if (key == SDLK_s)
 		cam->move_backward = state;
-	}
-	if (key == SDLK_e)
-	{
-		res = true;
+	else if (key == SDLK_e)
 		cam->move_upward = state;
-	}
-	if (key == SDLK_q)
-	{
-		res = true;
+	else if (key == SDLK_q)
 		cam->move_downward = state;
-	}
-	if (key == SDLK_a)
-	{
-		res = true;
+	else if (key == SDLK_a)
 		cam->strafe_left = state;
-	}
-	if (key == SDLK_d)
-	{
-		res = true;
+	else if (key == SDLK_d)
 		cam->strafe_right = state;
-	}
-	if (key == SDLK_UP)
-	{
-		res = true;
+	else if (key == SDLK_UP)
 		cam->rotate_up = state;
-	}
-	if (key == SDLK_DOWN)
-	{
-		res = true;
+	else if (key == SDLK_DOWN)
 		cam->rotate_down = state;
-	}
-	if (key == SDLK_LEFT)
-	{
-		res = true;
+	else if (key == SDLK_LEFT)
 		cam->rotate_left = state;
-	}
-	if (key == SDLK_RIGHT)
-	{
-		res = true;
+	else if (key == SDLK_RIGHT)
 		cam->rotate_right = state;
-	}
-	return (res);
+	else
+		return (false);
+	return (true);
 }
 
 void
