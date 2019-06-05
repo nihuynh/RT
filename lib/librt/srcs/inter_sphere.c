@@ -6,14 +6,15 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:06 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/30 15:48:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:47:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include <math.h>
 
-static inline t_vec2	inter_vec2(t_ray *ray, t_sphere *sphere)
+static inline t_vec2
+	inter_vec2(t_ray *ray, t_sphere *sphere)
 {
 	float	quad[3];
 	t_vec2	res;
@@ -36,7 +37,8 @@ static inline t_vec2	inter_vec2(t_ray *ray, t_sphere *sphere)
 	return (res);
 }
 
-static inline float	inter_local(t_inter *inter, t_ray *ray, t_sphere *sphere)
+static inline float
+	inter_local(t_inter *inter, t_ray *ray, t_sphere *sphere)
 {
 	t_vec2	res;
 
@@ -59,7 +61,8 @@ static inline float	inter_local(t_inter *inter, t_ray *ray, t_sphere *sphere)
 	return (inter->hit_pts.x);
 }
 
-void				inter_sphere(t_inter *inter, t_obj *node)
+void
+	inter_sphere(t_inter *inter, t_obj *node)
 {
 	t_sphere	*sphere;
 	float		dist;
@@ -72,7 +75,8 @@ void				inter_sphere(t_inter *inter, t_obj *node)
 	inter->obj = node;
 }
 
-t_vec3				get_sphere_uv(t_inter *inter)
+t_vec3
+	get_sphere_uv(t_inter *inter)
 {
 	t_vec3			uv;
 

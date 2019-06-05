@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:39:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:47:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ void
 
 	csg_shape = node->shape;
 	csg_inter = inter_from_btree(csg_shape->root, top_inter->ray);
-	if (csg_inter.dist <=  EPSILON || csg_inter.dist >= HUGEVAL)
+	if (csg_inter.dist <= EPSILON || csg_inter.dist >= HUGEVAL)
 		return ;
 	if (csg_inter.dist >= top_inter->dist)
 		return ;
 	top_inter->dist = csg_inter.dist;
 	top_inter->obj = csg_inter.obj;
 }
-

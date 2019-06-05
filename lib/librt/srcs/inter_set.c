@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 21:31:55 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 22:07:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:47:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	inter_set(t_inter *inter, t_ray ray)
 	inter->dist = HUGEVAL;
 	inter->hit_pts.x = HUGEVAL;
 	inter->hit_pts.y = HUGEVAL;
-
 	inter->obj = NULL;
 	inter->ray = ray;
 }

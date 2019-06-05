@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:20:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 22:07:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/05 03:53:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_vec3
 	z_projection = vec3_dot(&origin_to_hitpoint, &cylinder->z);
 	z_projection /= cylinder->radius;
 	z_projection = ft_clampf(z_projection, -0.99999f, 0.99999f);
-	uv.x = acosf(z_projection) * M_INV_PI_F * 0.5f;
+	uv.x = acosf(z_projection) * (1.0f / M_PI_F) * 0.5f;
 	x_projection = cylinder->x;
 	vec3_scalar(&x_projection, vec3_dot(&origin_to_hitpoint, &cylinder->x));
 	if (vec3_dot(&x_projection, &cylinder->x) < 0)

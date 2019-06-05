@@ -3,22 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   color_scalar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 03:28:16 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 14:38:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/05 03:54:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 #include "ftmath.h"
-
-/**
-** @brief Scale color by k then clamp it
-**
-** @param color
-** @param k
-*/
 
 void	color_scalar(t_color *color, float k)
 {
