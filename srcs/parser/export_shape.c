@@ -6,58 +6,55 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:21:36 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:01:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 15:51:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
+#include "export.h"
 #include <stdio.h>
 
 void
 	plane_export(int fd, void *shape)
 {
-	t_plane		*p;
+	t_plane		*plane;
 
-	p = shape;
-	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", p->origin.x, p->origin.y,
-		p->origin.z);
-	dprintf(fd, "\n\t\tnormal(%.3f %.3f %.3f)\n", p->n.x, p->n.y, p->n.z);
-	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", p->size.x, p->size.y);
+	plane = shape;
+	export_tvec3(fd, "origin", plane->origin);
+	export_tvec3(fd, "normal", plane->n);
+	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", plane->size.x, plane->size.y);
 }
 
 void
 	sphere_export(int fd, void *shape)
 {
-	t_sphere	*s;
+	t_sphere	*sphere;
 
-	s = shape;
-	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", s->origin.x, s->origin.y,
-		s->origin.z);
-	dprintf(fd, "\n\t\tradius(%.3f)\n", s->radius);
+	sphere = shape;
+	export_tvec3(fd, "origin", sphere->origin);
+	dprintf(fd, "\n\t\tradius(%.3f)\n", sphere->radius);
 }
 
 void
 	cone_export(int fd, void *shape)
 {
-	t_cone	*c;
+	t_cone	*cone;
 
-	c = shape;
-	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", c->origin.x, c->origin.y,
-		c->origin.z);
-	dprintf(fd, "\n\t\tnormal(%.3f %.3f %.3f)\n", c->n.x, c->n.y, c->n.z);
-	dprintf(fd, "\t\ttheta(%.3f)\n", c->theta);
-	dprintf(fd, "\t\tsize(%.3f)\n", c->size);
+	cone = shape;
+	export_tvec3(fd, "origin", cone->origin);
+	export_tvec3(fd, "normal", cone->n);
+	dprintf(fd, "\t\ttheta(%.3f)\n", cone->theta);
+	dprintf(fd, "\t\tsize(%.3f)\n", cone->size);
 }
 
 void
 	cylinder_export(int fd, void *shape)
 {
-	t_cylinder	*c;
+	t_cylinder	*cylinder;
 
-	c = shape;
-	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", c->origin.x, c->origin.y,
-		c->origin.z);
-	dprintf(fd, "\n\t\tnormal(%.3f %.3f %.3f)\n", c->n.x, c->n.y, c->n.z);
-	dprintf(fd, "\t\tradius(%.3f)\n", c->radius);
-	dprintf(fd, "\t\tsize(%.3f)\n", c->size);
+	cylinder = shape;
+	export_tvec3(fd, "origin", cylinder->origin);
+	export_tvec3(fd, "normal", cylinder->n);
+	dprintf(fd, "\t\tradius(%.3f)\n", cylinder->radius);
+	dprintf(fd, "\t\tsize(%.3f)\n", cylinder->size);
 }

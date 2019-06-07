@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:01:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 14:18:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define FLAGS1	ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar
 # define FLAGS2	ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoTitleBar
 # define FLAGS3	ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoCollapse
-# define FLAGS4	ImGuiWindowFlags_NoBringToFrontOnFocus
+# define FLAGS4	ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove
 # define RENDER_FLAGS FLAGS1 | FLAGS2 | FLAGS3 | FLAGS4
 
 /*

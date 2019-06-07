@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:11:47 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 14:51:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 static inline void
 	export_camera(int fd, t_cam *cam, t_color amb_light)
 {
-	t_pt3	direction;
+	t_vec3	direction;
 
 	direction = cam->dir;
 	apply_matrix(&direction, &cam->rotation);

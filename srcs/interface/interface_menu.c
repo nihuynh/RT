@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:45:58 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 14:19:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static inline void
 	igMenuItemBoolPtr("Open ...", NULL, &gui->load_open, 1);
 	if (igBeginMenu("Open Scene", 1))
 		list_scenes(gui);
-	igMenuItemBoolPtr("Export Scene", NULL, &gui->export_open, 1);
+	igMenuItemBoolPtr("Save Scene", NULL, &gui->export_open, 1);
 	if (igMenuItemBool("Reload Current Scene", NULL, 0, 1))
 		reload_scene(gui->app, gui->app->arg);
-	if (igMenuItemBool("Quit", NULL, 0, 1))
+	if (igMenuItemBool("Quit", "Esc or Cmd + Q", 0, 1))
 		exit_safe(EXIT_SUCCESS);
 	igEndMenu();
 }

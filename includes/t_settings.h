@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:13:33 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:18:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 14:58:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct	s_settings
 	t_color		filter;
 	bool		light;
 	bool		facing;
-	bool		i_light;
 	bool		shine;
 	bool		shadow;
 	bool		deflect;

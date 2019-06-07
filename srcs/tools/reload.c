@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 07:00:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 14:58:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static inline void
 	settings->absorb = 1;
 	settings->deflect = 1;
 	settings->facing = 1;
-	settings->i_light = 1;
 	settings->light = 1;
 	settings->shadow = 1;
 	settings->shine = 1;

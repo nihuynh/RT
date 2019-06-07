@@ -6,12 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:53:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 15:05:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
+#include "config.h"
 #include "rt.h"
 
 void	err_win(t_gui *gui)
@@ -89,7 +90,7 @@ void	stats_win(t_gui *gui)
 	if (gui->demo_open)
 		igShowDemoWindow(NULL);
 	pos.x = 0;
-	pos.y = gui->sdl->img.height + 18;
+	pos.y = gui->sdl->height_vp * RENDER_SCALE + 18;
 	size.x = gui->sdl->width_vp / 2;
 	size.y = gui->sdl->height_vp - pos.y + 1;
 	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});
