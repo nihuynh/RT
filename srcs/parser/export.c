@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 14:51:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 18:30:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@ static inline void
 	apply_matrix(&direction, &cam->rotation);
 	vec3_normalize(&direction);
 	write(fd, "camera\n{\n", 9);
-	dprintf(fd, "\torigin(%.3f %.3f %.3f)\n", cam->pos.x, cam->pos.y,
-		cam->pos.z);
-	dprintf(fd, "\tdirection(%.3f %.3f %.3f)\n", direction.x, direction.y,
-		direction.z);
-	dprintf(fd, "\tamb_light(%.3f %.3f %.3f)", amb_light.r, amb_light.g,
-		amb_light.b);
-	write(fd, "\n}\n", 3);
+	export_tvec3(fd, "origin", cam->pos);
+	export_tvec3(fd, "direction", direction);
+	export_color(fd, "amb_light", amb_light);
+	write(fd, "}\n", 2);
 }
 
 static inline void
@@ -44,11 +41,9 @@ static inline void
 
 	light = node->content;
 	write(fd, "\tobject(light)\n\t{\n", 18);
-	dprintf(fd, "\t\tcolor(%.3f %.3f %.3f)\n", light->color.r, light->color.g,
-		light->color.b);
-	dprintf(fd, "\t\torigin(%.3f %.3f %.3f)", light->origin.x, light->origin.y,
-		light->origin.z);
-	dprintf(fd, "\n\t\tintensity(%.3f)\n", light->intensity);
+	export_color(fd, "\tcolor", light->color);
+	export_tvec3(fd, "\torigin", light->origin);
+	dprintf(fd, "\t\tintensity(%.3f)\n", light->intensity);
 	write(fd, "\t}\n", 3);
 }
 

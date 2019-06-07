@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:21:36 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 15:51:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 18:24:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void
 	t_plane		*plane;
 
 	plane = shape;
-	export_tvec3(fd, "origin", plane->origin);
-	export_tvec3(fd, "normal", plane->n);
+	export_tvec3(fd, "\torigin", plane->origin);
+	export_tvec3(fd, "\tnormal", plane->n);
 	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", plane->size.x, plane->size.y);
 }
 
@@ -31,8 +31,8 @@ void
 	t_sphere	*sphere;
 
 	sphere = shape;
-	export_tvec3(fd, "origin", sphere->origin);
-	dprintf(fd, "\n\t\tradius(%.3f)\n", sphere->radius);
+	export_tvec3(fd, "\torigin", sphere->origin);
+	dprintf(fd, "\t\tradius(%.3f)\n", sphere->radius);
 }
 
 void
@@ -41,8 +41,8 @@ void
 	t_cone	*cone;
 
 	cone = shape;
-	export_tvec3(fd, "origin", cone->origin);
-	export_tvec3(fd, "normal", cone->n);
+	export_tvec3(fd, "\torigin", cone->origin);
+	export_tvec3(fd, "\tnormal", cone->n);
 	dprintf(fd, "\t\ttheta(%.3f)\n", cone->theta);
 	dprintf(fd, "\t\tsize(%.3f)\n", cone->size);
 }
@@ -53,8 +53,8 @@ void
 	t_cylinder	*cylinder;
 
 	cylinder = shape;
-	export_tvec3(fd, "origin", cylinder->origin);
-	export_tvec3(fd, "normal", cylinder->n);
+	export_tvec3(fd, "\torigin", cylinder->origin);
+	export_tvec3(fd, "\tnormal", cylinder->n);
 	dprintf(fd, "\t\tradius(%.3f)\n", cylinder->radius);
 	dprintf(fd, "\t\tsize(%.3f)\n", cylinder->size);
 }

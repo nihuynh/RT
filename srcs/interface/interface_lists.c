@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 04:44:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 18:19:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	texture_list(t_list *lst_tex, t_obj *obj)
 	}
 	if (igBeginCombo("Normal map", obj->material.normal_map->name, 0))
 	{
-		load_selected_tex(lst_tex, &obj->material.tex);
+		load_selected_tex(lst_tex, &obj->material.normal_map);
 		igEndCombo();
 	}
 }

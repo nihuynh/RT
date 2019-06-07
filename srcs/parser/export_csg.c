@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 15:48:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 18:25:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void
 	t_csg *pcsg;
 
 	pcsg = shape;
-	export_tvec3(fd, "origin", pcsg->origin);
-	export_tvec3(fd, "normal", pcsg->n);
+	export_tvec3(fd, "\torigin", pcsg->origin);
+	export_tvec3(fd, "\tnormal", pcsg->n);
 	ft_b3apply_prefix_wtarg(fd, pcsg->root, &export_btree);
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:41:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 15:47:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 18:25:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	export_material(int fd, t_material *mat);
 */
 
 void	export_tvec3(int fd, char *name, t_vec3 vector);
+void	export_color(int fd, char *name, t_color color);
 char	*get_obj_str(int type);
 
 #endif
