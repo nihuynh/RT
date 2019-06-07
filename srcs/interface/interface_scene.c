@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/07 15:42:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 17:32:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ void
 	ImVec2 pos;
 	ImVec2 size;
 
-	pos.x = app->sdl->width_vp / 2;
+	pos.x = app->sdl->width_vp / 2.5;
 	pos.y = app->sdl->height_vp * RENDER_SCALE + 18;
-	size.x = app->sdl->width_vp * RENDER_SCALE - app->sdl->width_vp / 2;
+	size.x = app->sdl->width_vp * RENDER_SCALE - pos.x;
 	size.y = app->sdl->height_vp - pos.y + 1;
 	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints(size, size, NULL, NULL);
