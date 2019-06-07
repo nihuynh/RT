@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/07 14:19:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 15:59:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline void
 	igMenuItemBoolPtr("Save Scene", NULL, &gui->export_open, 1);
 	if (igMenuItemBool("Reload Current Scene", NULL, 0, 1))
 		reload_scene(gui->app, gui->app->arg);
-	if (igMenuItemBool("Quit", "Esc or Cmd + Q", 0, 1))
+	if (igMenuItemBool("Quit", "Esc", 0, 1))
 		exit_safe(EXIT_SUCCESS);
 	igEndMenu();
 }
@@ -52,14 +52,14 @@ static inline void
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
 	{
 		fullscreen(gui->sdl, gui);
-		gui->stats_open = 0;
+		gui->stats_open = !gui->sdl->fullscreen;
+		gui->edit_open = !gui->sdl->fullscreen;
+		gui->render_set_open = !gui->sdl->fullscreen;
 		gui->sdl->needs_render = 1;
 	}
 	igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
 	if (igBeginMenu("Resolutions", 1))
 	{
-		if (igMenuItemBool("840x500", NULL, (gui->sdl->height_vp == 500), 1))
-			resize_app(800, 500, gui->app);
 		if (igMenuItemBool("1680x1000", NULL, (gui->sdl->height_vp == 1000), 1))
 			resize_app(1680, 1000, gui->app);
 		if (igMenuItemBool("2560x1400", NULL, (gui->sdl->height_vp == 1400), 1))
