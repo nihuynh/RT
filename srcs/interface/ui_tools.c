@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:51:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/08 13:31:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,36 +102,4 @@ void
 		cone->theta = tmp.theta;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
 		cone->size = tmp.size;
-}
-
-void
-	ui_csg_btree(t_data *app, t_btree *node)
-{
-	if (node->content_size == sizeof(t_obj))
-	{
-		object(app, node->content);
-		return ;
-	}
-	node_type_list((t_csg_op*)node->content);
-	if (igTreeNodeStr("Left"))
-	{
-		ui_csg_btree(app, node->left);
-		igTreePop();
-	}
-	if (igTreeNodeStr("Right"))
-	{
-		ui_csg_btree(app, node->right);
-		igTreePop();
-	}
-}
-
-void
-	ui_csg(void *app_v, void *shape)
-{
-	t_csg	*csg;
-	t_data	*app;
-
-	app = app_v;
-	csg = shape;
-	ui_csg_btree(app, csg->root);
 }

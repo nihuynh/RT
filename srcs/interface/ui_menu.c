@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_menu.c                                   :+:      :+:    :+:   */
+/*   ui_menu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/07 15:59:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/08 13:15:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static inline void
 }
 
 void
-	interface_mainmenu(t_gui *gui)
+	ui_mainmenu(t_gui *gui)
 {
 	if (!igBeginMainMenuBar())
 		return ;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_objects.c                                :+:      :+:    :+:   */
+/*   ui_objects.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:46:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/08 14:08:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,23 @@ static inline void
 	color_tmp = mat->refraction_color;
 	if (igColorEdit3("Refraction Color", &color_tmp.r, 0))
 		mat->refraction_color = color_tmp;
-	uv_mapping_details(&mat->uv_mapping);
 }
 
 static inline void
 	material(t_data *app, t_obj *obj)
 {
 	material_list(app->lst_mat, obj);
-	texture_list(app->lst_tex, obj);
+	load_selected_tex("Texture", obj->material.tex->name, app->lst_tex,
+						&obj->material.tex);
+	load_selected_tex("Normal Map", obj->material.normal_map->name,
+						app->lst_tex, &obj->material.normal_map);
 	igText("Material Details");
 	material_details(&obj->material);
+	uv_mapping_details(&obj->material.uv_mapping);
 }
 
 void
-	object(t_data *app, t_obj *obj)
+	ui_object(t_data *app, t_obj *obj)
 {
 	obj->f_gui(app, obj->shape);
 	material(app, obj);

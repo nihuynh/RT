@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_scene.c                                  :+:      :+:    :+:   */
+/*   ui_render_settings.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/07 17:32:43 by nihuynh          ###   ########.fr       */
+/*   Created: 2019/06/08 13:18:18 by sklepper          #+#    #+#             */
+/*   Updated: 2019/06/08 13:26:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static inline void
 }
 
 static inline void
-	filter_tab(t_data *app)
+	filter_debug_tab(t_data *app)
 {
 	if (igBeginTabItem("Filters", NULL, 0))
 	{
@@ -90,11 +90,6 @@ static inline void
 			app->sdl->sepia = false;
 		igEndTabItem();
 	}
-}
-
-static inline void
-	debug_tab(t_data *app)
-{
 	if (igBeginTabItem("Debug", NULL, 0))
 	{
 		igCheckbox("Show normals", &app->settings.debug_normal);
@@ -103,7 +98,7 @@ static inline void
 }
 
 void
-	render_settings(t_data *app)
+	ui_render_settings(t_data *app)
 {
 	ImVec2 pos;
 	ImVec2 size;
@@ -121,30 +116,10 @@ void
 		camera_tab(app);
 		render_tab(app);
 		scene_tab(app);
-		filter_tab(app);
-		debug_tab(app);
+		filter_debug_tab(app);
 		igEndTabBar();
 	}
 	if (igButton("Render new frame", (ImVec2){130, 20}))
 		app->sdl->needs_render = true;
-	igEnd();
-}
-
-void
-	scene_win(t_gui *gui)
-{
-	ImVec2 pos;
-	ImVec2 size;
-
-	pos.x = gui->sdl->width_vp * RENDER_SCALE;
-	pos.y = 18;
-	size.x = gui->sdl->width_vp * (1 - RENDER_SCALE);
-	size.y = gui->sdl->height_vp;
-	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});
-	igSetNextWindowSizeConstraints(size, size, NULL, NULL);
-	igBegin("Scene", &gui->edit_open, ImGuiWindowFlags_AlwaysAutoResize);
-	selector(gui);
-	if (igButton("Render new frame", (ImVec2){130, 20}))
-		gui->sdl->needs_render = true;
 	igEnd();
 }

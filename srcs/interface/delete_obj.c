@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/28 15:37:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/08 14:07:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,7 @@ void
 	ptr = app->scene.lst_obj;
 	if (!(to_del = ft_lstgetnode(ptr, &obj_cmp, app->gui.obj_set)))
 		ft_error(__func__, __LINE__);
-	if (ptr == to_del)
-	{
-		app->scene.lst_obj = to_del->next;
-		ft_lstdelone(&to_del, &del_obj);
-	}
-	else
-	{
-		while (ptr->next != to_del && ptr->next != NULL)
-			ptr = ptr->next;
-		if (ptr->next != to_del)
-			ft_error(__func__, __LINE__);
-		ptr->next = to_del->next;
-		ft_lstdelone(&to_del, &del_obj);
-	}
+	app->scene.lst_obj = ft_lstpop(app->scene.lst_obj, to_del, &del_obj);
 	app->gui.obj_set = NULL;
 }
 
@@ -55,19 +42,6 @@ void
 	ptr = app->scene.lst_light;
 	if (!(to_del = ft_lstgetnode(ptr, &obj_cmp, app->gui.light_set)))
 		ft_error(__func__, __LINE__);
-	if (ptr == to_del)
-	{
-		app->scene.lst_light = to_del->next;
-		ft_lstdelone(&to_del, &del_light);
-	}
-	else
-	{
-		while (ptr->next != to_del && ptr->next != NULL)
-			ptr = ptr->next;
-		if (ptr->next != to_del)
-			ft_error(__func__, __LINE__);
-		ptr->next = to_del->next;
-		ft_lstdelone(&to_del, &del_light);
-	}
+	app->scene.lst_light = ft_lstpop(app->scene.lst_light, to_del, &del_light);
 	app->gui.light_set = NULL;
 }
