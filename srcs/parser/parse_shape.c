@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 01:29:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 19:51:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static inline t_material
 	mat.name = "";
 	mat.tex = parse_texture("texture(", scene_file);
 	mat.normal_map = parse_texture("normal_map(", scene_file);
+	mat.spec_map = parse_texture("spec_map(", scene_file);
 	mat.color_diffuse = parse_color("color_diffuse(", scene_file);
 	mat.color_specular = parse_color("color_specular(", scene_file);
 	mat.color_tex = parse_color("color_tex(", scene_file);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:57:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 18:26:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 19:51:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void
 {
 	dprintf(fd, "\t\ttexture(%s)\n", mat->tex->name);
 	dprintf(fd, "\t\tnormal_map(%s)\n", mat->normal_map->name);
+	dprintf(fd, "\t\tspec_map(%s)\n", mat->spec_map->name);
 	export_color(fd, "\tcolor_diffuse", mat->color_diffuse);
 	export_color(fd, "\tcolor_specular", mat->color_specular);
 	export_color(fd, "\tcolor_tex", mat->color_tex);

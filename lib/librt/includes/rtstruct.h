@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/28 14:23:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/07 19:47:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,10 @@ struct			s_material
 	float			refraction_idx;
 	t_texture		*tex;
 	t_texture		*normal_map;
+	t_texture		*spec_map;
+	// t_texture		*occlusion_map;
+	// t_texture		*rough_map;
+	// t_texture		*disp_map;
 	t_uv_mapping	uv_mapping;
 };
 

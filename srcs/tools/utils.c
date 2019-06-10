@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/19 16:59:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/07 19:52:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static inline t_material
 	if (!(mat.tex = ft_lstgetelt(app->lst_tex, &texcmp, split[0])))
 		mat.tex = ft_lstgetelt(app->lst_tex, &texcmp, "none");
 	mat.normal_map = ft_lstgetelt(app->lst_tex, &texcmp, "none");
+	mat.spec_map = ft_lstgetelt(app->lst_tex, &texcmp, "none");
 	mat.color_diffuse = itocolor(ft_atoi_base(split[1], 16));
 	mat.color_specular = itocolor(ft_atoi_base(split[2], 16));
 	mat.color_tex = itocolor(ft_atoi_base(split[3], 16));

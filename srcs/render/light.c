@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 07:04:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/10 04:06:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,14 @@ void
 
 	if (no_specular)
 		return ;
-	spec_factor = specular_factor(shading);
+	if (shading.mat.spec_map->f_texture)
+	{
+		spec_factor = shading.mat.spec_map->f_texture(&shading.mat,
+													shading.mat.tex,
+													shading.uv).r;
+	}
+	else
+		spec_factor = specular_factor(shading);
 	color_scalar(&shading.light.color, spec_factor);
 	color_add(specular, shading.light.color);
 }
