@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:54:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 00:43:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,19 @@ t_data
 void
 	interactive(int ac, char **av)
 {
-	t_data	*app;
+	t_data			*app;
+	t_scene_name	*default_scene;
 
 	app = boot_rt(ac, av);
-	load_scene(app, av[1]);
+	if (ac == 1)
+	{
+		if (app->lst_scenes == NULL)
+			ft_error(__func__, __LINE__);
+		default_scene = app->lst_scenes->content;
+		load_scene(app, default_scene->dir);
+	}
+	else
+		load_scene(app, av[1]);
 	if (!(app->option.key_found_bitrpz & (1 << ('t' - 'a'))))
 	{
 		if (DEBUG)
@@ -70,11 +79,6 @@ void
 int
 	main(int ac, char **av)
 {
-	if (ac == 1)
-	{
-		ft_putendl(USAGE);
-		return (EXIT_SUCCESS);
-	}
 	interactive(ac, av);
 	return (EXIT_SUCCESS);
 }

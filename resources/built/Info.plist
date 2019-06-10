@@ -4,8 +4,6 @@
 <dict>
     <key>CFBundleExecutable</key>
     <string>binary</string>
-	<!-- <key>ProgramArguments</key>
-	<array><string>scenes/pillars.rt</string></array> -->
     <key>CFBundleIconFile</key>
 	<string>fe_icon</string>
     <key>CFBundleIdentifier</key>

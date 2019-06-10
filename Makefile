@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/10 17:39:32 by sklepper         ###   ########.fr        #
+#    Updated: 2019/06/11 00:31:46 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ BANNER		:=	$(shell cat resources/script/banner.txt)
 # **************************************************************************** #
 # Target rules :
 .DEFAULT_GOAL := all
-all: $(CIMGUI_NAME) $(LIB_DEP) $(NAME)  ## Built the project.
+all: $(LIB_DEP) $(NAME)  ## Built the project.
 .PHONY: all
 
 $(NAME): $(OBJ)
@@ -70,6 +70,7 @@ $(NAME): $(OBJ)
 -include $(DEP)
 
 fclean: $(LIB_DEP_CLEAN) clean dclean aclean ## Full clean of the project & the libs.
+	$(RM) imgui.ini
 	$(RM) $(NAME)
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME) $(OKLOGO)"
 .PHONY: fclean
@@ -78,10 +79,6 @@ test: all ## This check the parsing on maps in the scenes dir.
 	@for file in `LS scenes | grep .rt | sort -u`; \
 		do echo $$file && ./RT scenes/$$file -t; done
 .PHONY: test
-
-$(CIMGUI_NAME):
-	$(MAKE) -sC $(CIMGUI_PATH)
-	cp $(CIMGUI_PATH)/$(CIMGUI_NAME) .
 
 doc: ## Generate documentation using doxygen.
 	doxygen Doxyfile
