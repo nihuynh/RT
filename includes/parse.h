@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:41:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/10 04:54:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,16 @@ typedef struct	s_parse
 
 struct			s_parse_txt
 {
-	char		**greed;
 	int			line_idx;
 	int			line_max;
+	char		**greed;
+	char		*filename;
 	t_data		*app;
-	bool		is_pop;
-	bool		exit_on_err;
 	const char	*err_func;
 	const char	*err_file;
 	int			err_at_line;
+	bool		is_pop;
+	bool		exit_on_err;
 };
 
 void			err_set(t_parse_txt *scene_file, const char err_func[],
@@ -134,7 +135,7 @@ void			open_textures(t_data *app);
 */
 int				get_obj_type(char *obj_type);
 char			*get_args_key_require(t_parse_txt *scene_file, const char *key);
-
+char			*get_args_after_key(t_parse_txt *scene_file, const char *key);
 /*
 ** Setters :
 */

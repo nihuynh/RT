@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_objects.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 14:08:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 04:11:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ static inline void
 						&obj->material.tex);
 	load_selected_tex("Normal Map", obj->material.normal_map->name,
 						app->lst_tex, &obj->material.normal_map);
+	load_selected_tex("Specular Map", obj->material.spec_map->name,
+						app->lst_tex, &obj->material.spec_map);
 	igText("Material Details");
 	material_details(&obj->material);
 	uv_mapping_details(&obj->material.uv_mapping);
