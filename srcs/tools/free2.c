@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_scene.h                                          :+:      :+:    :+:   */
+/*   free2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/03 00:10:23 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/08 16:33:11 by sklepper         ###   ########.fr       */
+/*   Created: 2019/06/08 16:40:23 by sklepper          #+#    #+#             */
+/*   Updated: 2019/06/08 16:45:33 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_SCENE_H
-# define T_SCENE_H
+#include "animate.h"
+#include "stdlib.h"
 
-# include "ftlist.h"
-
-typedef struct	s_scene
+void
+	del_anim(void *content, size_t content_size)
 {
-	t_list		*lst_obj;
-	t_list		*lst_light;
-	t_list		*lst_anim;
-	int			nb_objs[5];
-	int			nb_light;
-}				t_scene;
+	t_anim *anim;
 
-typedef struct	s_scene_name
-{
-	char		*name;
-	char		*dir;
-}				t_scene_name;
-
-#endif
+	(void)content_size;
+	anim = content;
+	free(anim);
+	anim = NULL;
+}

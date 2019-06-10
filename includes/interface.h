@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 14:08:28 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:14:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	load_scene(t_data *app, char *filename);
 void	reload_scene(t_data *app, char *filename);
 void	load_selected_tex(const char *label, char *name, t_list *current,
 	t_texture **selected);
+void	anim_ui(t_gui *gui);
+void	anim_add(t_data *app, t_obj *obj);
+void	anim_delete(t_data *app);
+void	animate(t_data *app);
 
 /*
 ** Prototypes :

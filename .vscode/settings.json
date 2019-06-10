@@ -28,6 +28,8 @@
 		"option.h": "c",
 		"ft_printf.h": "c",
 		"ft_unit_test.h": "c",
-		"ftstring.h": "c"
+		"ftstring.h": "c",
+		"t_data.h": "c",
+		"fterror.h": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/03 00:52:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/08 16:42:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void
 		ft_lstdel(&app->scene.lst_obj, &del_obj);
 	if (app->scene.lst_light)
 		ft_lstdel(&app->scene.lst_light, &del_light);
+	if (app->scene.lst_anim)
+		ft_lstdel(&app->scene.lst_anim, &del_anim);
 	ft_bzero(app->scene.nb_objs, sizeof(app->scene.nb_objs));
 	app->scene.nb_light = 0;
 	if (DEBUG)

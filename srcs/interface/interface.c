@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 13:23:56 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:14:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	interface(t_data *app)
 	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL2_RenderDrawData(igGetDrawData());
 	SDL_GL_SwapWindow(app->sdl->win);
+	if (app->gui.animate)
+		animate(app);
 }
 
 void	exit_ui(SDL_GLContext *gl_context)

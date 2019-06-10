@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/08 14:11:12 by sklepper         ###   ########.fr        #
+#    Updated: 2019/06/10 17:39:32 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ INTERFACE	:=	delete_obj.c screen_manager.c ui_lists.c ui_menu.c				\
 				ui_objects.c ui_scene_editor.c ui_tools.c ui_csg.c				\
 				interface.c new_object_tools.c new_object.c object_tools.c		\
 				ui_cam_win.c ui_edit_win.c ui_file_win.c ui_render.c			\
-				ui_selector.c ui_render_settings.c 
+				ui_selector.c ui_render_settings.c ui_anim_toolbox.c			\
+				anim_toolbox.c ui_anim.c animate.c anim_set.c
 PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c			\
 				obj_data.c  obj_name.c parse_csg.c parse_shape.c parse_toolbox.c\
 				parse_txt.c parse_utils.c parser.c read.c setter.c
@@ -28,9 +29,9 @@ RENDER		:=	camera.c cast.c filters.c light.c normal_mapping.c				\
 				texture_toolbox.c
 RENDER_U	:=	init_sdl.c error_sdl.c exit_sdl.c render_sdl.c loop_sdl.c 		\
 				init_mthr_sdl.c render_mthr_sdl.c save_screenshot.c				\
-				render_pool.c  render_time.c
-TOOLS		:=	free_scene.c  free.c utils.c get_scenes.c update.c reload.c		\
-				load_tools.c hook.c
+				render_pool.c render_time.c
+TOOLS		:=	free_scene.c free.c utils.c get_scenes.c update.c reload.c		\
+				load_tools.c hook.c free2.c
 SRC			:=	 $(INTERFACE) $(PARSER) $(RENDER) $(RENDER_U) $(TOOLS)
 SRC			+=	 main.c  key_mapping.c test.c
 # directories :
