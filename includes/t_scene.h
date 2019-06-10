@@ -23,6 +23,7 @@ typedef struct	s_scene
 	t_list		*lst_anim_light;
 	int			nb_objs[7];
 	int			nb_light;
+	t_texture	*skybox;
 }				t_scene;
 
 typedef struct	s_scene_name

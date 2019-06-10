@@ -116,6 +116,7 @@ float			parse_fval(char *key, t_parse_txt *scene_file);
 t_vec3			parse_vector(char *key, t_parse_txt *scene_file);
 t_vec2			parse_vec2(char *key, t_parse_txt *scene_file);
 char			*parse_str(t_parse_txt *scene_file, char *key);
+t_texture		*parse_texture(char *key_name, t_parse_txt *scene_file);
 
 /*
 ** New object

@@ -12,9 +12,9 @@
 
 #include "t_data.h"
 #include "render.h"
-#include <math.h>
 #include "librt.h"
-#include "libft.h"
+#include "ftmem.h"
+#include <math.h>
 
 void
 	cam_ray(t_data *app, t_ray *res, float x, float y)
@@ -75,7 +75,7 @@ t_color
 	inter_set(&inter, ray);
 	cast_primary(scene.lst_obj, &inter);
 	if (inter.obj == NULL)
-		return (settings.back_color);
+		return (get_sky_color(scene, settings, ray));
 	shading = get_shading_data(&inter);
 	if (settings.normal_mapping == false)
 		shading.shading_normal = shading.normal;

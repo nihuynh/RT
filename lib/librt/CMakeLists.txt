@@ -28,19 +28,24 @@ target_sources(rt PRIVATE
         srcs/inter_setlight.c
         srcs/inter_setrefract.c
         srcs/inter_sphere.c
+        srcs/inter_cube.c
+        srcs/inter_tore.c
         srcs/itocolor.c
         srcs/mat3.c
         srcs/mat3_rot.c
         srcs/mat_orbit.c
         srcs/normal_cone.c
+        srcs/normal_cube.c
         srcs/normal_cylinder.c
         srcs/normal_plane.c
         srcs/normal_sphere.c
+        srcs/normal_tore.c
         srcs/print_matrix.c
         srcs/ray_new.c
         srcs/ray_offset_origin.c
         srcs/uv_mapping.c
         srcs/vec3_add.c
+        srcs/vec3_mul.c
         srcs/vec3_cos.c
         srcs/vec3_cpy.c
         srcs/vec3_cross.c

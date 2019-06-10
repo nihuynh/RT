@@ -3,6 +3,7 @@ camera
 	origin(0 100 175)
 	direction(0.000 -0.9 -0.7)
 	amb_light(0.100 0.100 0.100)
+	skybox(Ocean_from_horn.jpg)
 }
 content
 {

@@ -96,6 +96,9 @@ target_sources(RT PRIVATE
         srcs/render/render.c
         srcs/render/texture_loader.c
         srcs/render/texture_toolbox.c
+        srcs/render/skybox.c
+        srcs/render/perlin.c
+        srcs/render/perlin_texture.c
         srcs/render_utils
         srcs/render_utils/error_sdl.c
         srcs/render_utils/exit_sdl.c

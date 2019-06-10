@@ -29,7 +29,7 @@ PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c		   \
 				parse_anim.c
 RENDER		:=	camera.c cast.c filters.c light.c normal_mapping.c			   \
 				perturbation.c post_process.c render.c texture_loader.c		   \
-				texture_toolbox.c perlin.c perlin_texture.c
+				texture_toolbox.c perlin.c perlin_texture.c skybox.c
 RENDER_U	:=	init_sdl.c error_sdl.c exit_sdl.c render_sdl.c loop_sdl.c 	   \
 				init_mthr_sdl.c render_mthr_sdl.c save_screenshot.c			   \
 				render_pool.c render_time.c

@@ -35,6 +35,7 @@ void			set_direction(t_cam *cam, t_vec3 direction);
 void			cam_ray(t_data *app, t_ray *res, float x, float y);
 t_color			cast_light_primary(t_list *obj_list, t_inter *inter);
 t_vec3			compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
+t_color			get_sky_color(t_scene scene, t_settings settings, t_ray ray);
 
 void			update_camera(t_cam *cam, bool *needs_render);
 

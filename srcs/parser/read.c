@@ -26,6 +26,7 @@ static inline void
 	scene_file->app->cam.dir = parse_vector("direction(", scene_file);
 	scene_file->app->settings.amb_light = parse_color("amb_light(", scene_file);
 	scene_file->app->cam.anim = NULL;
+	scene_file->app->scene.skybox = parse_texture("skybox(", scene_file);
 	vec3_normalize(&scene_file->app->cam.dir);
 	check_closing_bracket(scene_file);
 }

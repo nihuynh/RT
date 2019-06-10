@@ -64,6 +64,7 @@ static inline void
 	settings->shine = 1;
 	settings->debug_normal = 0;
 	settings->normal_mapping = 1;
+	settings->skybox = 1;
 }
 
 static inline void
