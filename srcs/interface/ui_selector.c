@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_selector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:16:21 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/30 18:52:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/08 14:09:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static inline void
 	igSpacing();
 	igSeparator();
 	if (gui->obj_set)
-		object(gui->app, gui->obj_set);
+		ui_object(gui->app, gui->obj_set);
 	else
 		igText("Click on an object to access its data.");
 	igEndTabItem();

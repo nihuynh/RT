@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/29 19:55:56 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/08 13:23:56 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 void	ui_render(t_gui *gui)
 {
 	render_win(gui);
-	interface_mainmenu(gui);
+	ui_mainmenu(gui);
 	if (gui->edit_open)
-		scene_win(gui);
+		ui_scene_editor(gui);
 	if (gui->render_set_open)
-		render_settings(gui->app);
+		ui_render_settings(gui->app);
 	if (gui->err_open)
 		err_win(gui);
 	if (gui->stats_open)
@@ -45,8 +45,6 @@ void	ui_render(t_gui *gui)
 		add_obj_win(gui);
 	if (gui->del_light_open)
 		del_light_win(gui);
-	if (gui->cam_open)
-		ui_cam_win(gui);
 }
 
 void	interface(t_data *app)
