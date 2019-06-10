@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 18:30:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/10 05:29:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static inline void
 {
 	t_vec3	direction;
 
-	direction = cam->dir;
+	vec3_new(&direction, 0.0f, 0.0f, -1.0f);
 	apply_matrix(&direction, &cam->rotation);
 	vec3_normalize(&direction);
 	write(fd, "camera\n{\n", 9);

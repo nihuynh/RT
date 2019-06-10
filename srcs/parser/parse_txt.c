@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:05:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/10 04:56:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,11 @@ void
 	err_exit(char *err_msg, t_parse_txt *scene_file)
 {
 	scene_file->line_idx -= scene_file->is_pop;
-	if (scene_file->line_idx < scene_file->line_max && !scene_file->greed)
+	if (scene_file->line_idx < scene_file->line_max && scene_file->greed)
 	{
-		ft_printf("%s\nPARSE_TXT : [line :%d]\n%s%s (%s:%d)\n",
-			err_msg, scene_file->line_idx + 1, scene_file->line_max,
+		ft_printf("%s\nPARSE_TXT : \"%s\" (%s:%d)\n%s%s (%s:%d)\n",
+			err_msg, get_curr_line(scene_file),
+			scene_file->filename, scene_file->line_idx + 1,
 			"Error in the function : ", scene_file->err_func,
 			scene_file->err_file, scene_file->err_at_line);
 	}
@@ -126,6 +127,7 @@ int
 
 	ft_bzero(scene_file, sizeof(t_parse_txt));
 	scene_file->app = app;
+	scene_file->filename = filename;
 	scene_file->exit_on_err = true;
 	scene_file->line_max = ft_line_count(filename);
 	size_greed = sizeof(char *) * (scene_file->line_max + 1);

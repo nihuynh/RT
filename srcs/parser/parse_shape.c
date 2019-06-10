@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 01:29:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/10 06:14:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static inline t_texture
 	t_texture	*tex;
 	char		*line;
 
-	line = get_args_key_require(scene_file, key_name);
+	line = get_args_after_key(scene_file, key_name);
+	if (line == NULL)
+		return (ft_lstgetelt(scene_file->app->lst_tex, &texcmp, "none"));
 	tex = ft_lstgetelt(scene_file->app->lst_tex, &texcmp, line);
 	if (tex == NULL)
 		return (ft_lstgetelt(scene_file->app->lst_tex, &texcmp, "none"));
@@ -30,14 +32,10 @@ static inline t_texture
 }
 
 static inline t_material
-	expand_parse(t_parse_txt *scene_file)
+	expand_parse(t_parse_txt *scene_file, t_material mat)
 {
-	t_material	mat;
+	mat.name = "custom";
 
-	ft_bzero(&mat, sizeof(t_material));
-	mat.name = "";
-	mat.tex = parse_texture("texture(", scene_file);
-	mat.normal_map = parse_texture("normal_map(", scene_file);
 	mat.color_diffuse = parse_color("color_diffuse(", scene_file);
 	mat.color_specular = parse_color("color_specular(", scene_file);
 	mat.color_tex = parse_color("color_tex(", scene_file);
@@ -55,9 +53,14 @@ static inline t_material
 static inline t_material
 	parse_material(t_parse_txt *scene_file)
 {
+	t_material	res;
 	char		*str;
 	t_material	*mat;
 
+	ft_bzero(&res, sizeof(t_material));
+	res.tex = parse_texture("texture(", scene_file);
+	res.normal_map = parse_texture("normal_map(", scene_file);
+	res.spec_map = parse_texture("spec_map(", scene_file);
 	if ((str = ft_strstr(get_curr_line(scene_file), "mat(")))
 	{
 		str += 4;
@@ -67,9 +70,12 @@ static inline t_material
 			err_exit(ERR_UNKNWD_MAT, scene_file);
 		}
 		scene_file->line_idx++;
+		mat->tex = res.tex;
+		mat->normal_map = res.normal_map;
+		mat->spec_map = res.spec_map;
 		return (*mat);
 	}
-	return (expand_parse(scene_file));
+	return (expand_parse(scene_file, res));
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 21:14:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:37:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	new_obj(t_data *app, int type);
 void	delete_obj(t_data *app);
 void	delete_light(t_data *app);
 bool	check_file(char *filename);
+void	edit_color_mat(t_color *target, char *label, t_material *mat);
+
 
 /*
 ** UI SHAPES

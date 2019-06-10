@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 07:04:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/10 07:25:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,14 @@ static inline float
 {
 	float factor;
 
-	factor = fmaxf(0.f, vec3_dot(&shading.specular_dir, &shading.light_dir));
+	factor = fmaxf(0.0f, vec3_dot(&shading.specular_dir, &shading.light_dir));
 	factor = powf(factor, shading.mat.spec_power);
+	if (shading.mat.spec_map->f_texture)
+	{
+		factor *= (1 - shading.mat.spec_map->f_texture(&shading.mat,
+													shading.mat.tex,
+													shading.uv).r);
+	}
 	factor *= shading.mat.spec_idx;
 	return (factor);
 }

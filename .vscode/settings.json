@@ -30,6 +30,7 @@
 		"ft_unit_test.h": "c",
 		"ftstring.h": "c",
 		"t_data.h": "c",
-		"fterror.h": "c"
+		"fterror.h": "c",
+		"ftmem.h": "c"
 	}
 }
