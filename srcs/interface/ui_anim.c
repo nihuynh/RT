@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 23:33:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 01:02:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,12 @@ void	anim_ui(t_gui *gui)
 	igSameLine(0, size.x / 6);
 	if (igButton("Delete Animation", (ImVec2){size.x / 3, 0}))
 		anim_delete(gui->app);
+	igSpacing();
+	igSameLine(size.x / 12, 0);
+	if (igButton("Reset Objects Position", (ImVec2){size.x / 3, 0}))
+		anim_reset(gui->app);
 	igSeparator();
+	igText("Animated frames rendered : %d", gui->animated_frames);
 	if (gui->anim_set)
 	{
 		anim_list(gui->anim_set);

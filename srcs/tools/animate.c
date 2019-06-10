@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 21:48:07 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:15:17 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	animate(t_data *app)
 		animate_branch(lst->content);
 		lst = lst->next;
 	}
+	app->gui.animated_frames += 1;
 	app->sdl->needs_render = true;
 }
 

@@ -6,13 +6,14 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 22:02:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 01:14:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "animate.h"
 #include "stdlib.h"
 #include "libft.h"
+#include "t_data.h"
 
 static inline void
 	anim_set_translate(t_anim *anim)
@@ -28,7 +29,7 @@ static inline void
 }
 
 void
-	anim_reset(t_anim *anim)
+	anim_free(t_anim *anim)
 {
 	t_translate	*translate;
 	t_rotate	*rotate;
@@ -62,7 +63,7 @@ void
 {
 	if (anim->type == type)
 		return ;
-	anim_reset(anim);
+	anim_free(anim);
 	anim->type = type;
 	if (type == 0)
 	{
@@ -71,4 +72,21 @@ void
 	}
 	else if (type == 1)
 		anim_set_translate(anim);
+}
+
+void
+	anim_reset(t_data *app)
+{
+	t_list	*lst;
+	t_anim	*anim;
+
+	lst = app->scene.lst_anim;
+	while (lst)
+	{
+		anim = lst->content;
+		*anim->pos = anim->origin;
+		lst = lst->next;
+	}
+	app->gui.animated_frames = 0;
+	app->sdl->needs_render = true;
 }

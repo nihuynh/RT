@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/09 17:41:56 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 00:35:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_gui
 	bool			fullscreen;
 	bool			render_focused;
 	bool			animate;
+	int				animated_frames;
 	int				new_obj_type;
 	t_light			*light_set;
 	t_obj			*obj_set;

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 21:37:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 00:59:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	anim_ui(t_gui *gui);
 void	anim_add(t_data *app, t_obj *obj);
 void	anim_delete(t_data *app);
 void	animate(t_data *app);
+void	anim_reset(t_data *app);
 
 /*
 ** Prototypes :

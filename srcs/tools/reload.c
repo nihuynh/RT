@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 19:55:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 00:35:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static inline void
 	gui->edit_open = true;
 	gui->render_set_open = true;
 	gui->animate = false;
+	gui->animated_frames = 0;
 }
 
 static inline void

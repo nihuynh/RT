@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_toolbox.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 23:25:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 01:08:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	anim_add(t_data *app, t_obj *obj)
 	new.res = NULL;
 	new.ui_anim = NULL;
 	new.pos = get_pos(obj);
+	new.origin = *new.pos;
 	ft_lstpushnew(&app->scene.lst_anim, &new, sizeof(new));
 }
