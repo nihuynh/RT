@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:40:23 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 16:45:33 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:04:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void
 
 	(void)content_size;
 	anim = content;
+	anim_reset(anim);
 	free(anim);
 	anim = NULL;
 }

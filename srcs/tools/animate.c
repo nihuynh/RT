@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 21:16:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:48:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ void	animate(t_data *app)
 
 void	anim_translate(t_anim *anim)
 {
-	t_pt3		*pos;
 	t_translate	*translate;
 	t_vec3		result;
 
-	pos = get_pos(anim->obj);
 	translate = anim->res;
 	result = translate->dir;
 	vec3_scalar(&result, translate->speed);
-	vec3_add(pos, pos, &result);
+	vec3_add(anim->pos, anim->pos, &result);
 }

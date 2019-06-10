@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 17:45:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:02:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void
 		if (orbit)
 			free(orbit);
 	}
+	anim->res = NULL;
 }
 
 void

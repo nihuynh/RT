@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 21:19:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:01:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	anim_list(t_anim *anim)
 	if (igBeginCombo("Movement Type", item_current, 0))
 	{
 		i = -1;
-		while (++i < 4)
+		while (++i < 2)
 		{
 			is_selected = (item_current == item[i]);
 			if (igSelectable(item[i], is_selected, 0, (ImVec2){0, 0}))
