@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 03:26:07 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/10 23:32:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void		resize_app(int width, int height, t_data *app);
 int			export_scene(t_data *data, char *filename);
 void		export_material(int fd, t_material *mat);
 void		free_lst(t_data *data);
-int			texcmp(void *content, void *key);
 void		reload(t_data *app, char *filename);
 
 /*

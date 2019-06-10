@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_toolbox.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 22:00:36 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 23:25:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,13 @@
 #include "libft.h"
 #include "parse.h"
 
-int
-	anim_cmp(void *content, void *key)
-{
-	return (content == key);
-}
-
 void	anim_delete(t_data *app)
 {
 	t_list	*ptr;
 	t_list	*to_del;
 
 	ptr = app->scene.lst_anim;
-	if (!(to_del = ft_lstgetnode(ptr, &anim_cmp, app->gui.anim_set)))
+	if (!(to_del = ft_lstgetnode_by_content_ptr(ptr, app->gui.anim_set)))
 		ft_error(__func__, __LINE__);
 	app->scene.lst_anim = ft_lstpop(app->scene.lst_anim, to_del, &del_anim);
 	app->gui.anim_set = NULL;

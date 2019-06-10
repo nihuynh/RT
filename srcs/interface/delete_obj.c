@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 14:07:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 23:34:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,13 @@
 #include "parse.h"
 #include "libft.h"
 
-int
-	obj_cmp(void *content, void *key)
-{
-	return (content == key);
-}
-
 void
 	delete_obj(t_data *app)
 {
-	t_list	*ptr;
 	t_list	*to_del;
 
-	ptr = app->scene.lst_obj;
-	if (!(to_del = ft_lstgetnode(ptr, &obj_cmp, app->gui.obj_set)))
+	to_del = ft_lstgetnode_by_content_ptr(app->scene.lst_obj, app->gui.obj_set);
+	if (to_del == NULL)
 		ft_error(__func__, __LINE__);
 	app->scene.lst_obj = ft_lstpop(app->scene.lst_obj, to_del, &del_obj);
 	app->gui.obj_set = NULL;
@@ -36,11 +29,12 @@ void
 void
 	delete_light(t_data *app)
 {
-	t_list	*ptr;
+	void	*ptr;
 	t_list	*to_del;
 
-	ptr = app->scene.lst_light;
-	if (!(to_del = ft_lstgetnode(ptr, &obj_cmp, app->gui.light_set)))
+	ptr = app->gui.light_set;
+	to_del = ft_lstgetnode_by_content_ptr(app->scene.lst_light, ptr);
+	if (to_del == NULL)
 		ft_error(__func__, __LINE__);
 	app->scene.lst_light = ft_lstpop(app->scene.lst_light, to_del, &del_light);
 	app->gui.light_set = NULL;

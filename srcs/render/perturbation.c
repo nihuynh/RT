@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perturbation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/20 13:46:36 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 09:53:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ float
 	int yi;
 	int xi;
 
-	xi = abs((int)x) + (x < 0);
-	yi = abs((int)y) + (y < 0);
+	xi = abs((int)x) + (x < 0.5);
+	yi = abs((int)y) + (y < 0.5);
 	return ((xi + yi) & 0x1);
 }
 

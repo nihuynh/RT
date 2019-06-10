@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 22:01:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/10 23:33:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,11 @@ void	anim_ui(t_gui *gui)
 	anim_selector(gui);
 	igSpacing();
 	igSameLine(size.x / 12, 0);
-	if (igButton("Play Animation", (ImVec2){size.x / 3, 0}))
-		gui->animate = (gui->animate == true) ? false : true;
+	if (igButton("Play/Pause Animation", (ImVec2){size.x / 3, 0}))
+	{
+		gui->animate = 1 - gui->animate;
+		gui->sdl->sub_s = 1 - gui->animate;
+	}
 	igSameLine(0, size.x / 6);
 	if (igButton("Delete Animation", (ImVec2){size.x / 3, 0}))
 		anim_delete(gui->app);
