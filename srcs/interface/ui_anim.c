@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 01:02:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 15:03:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,9 @@ void	anim_list(t_anim *anim)
 	}
 }
 
-void	anim_ui(t_gui *gui)
+static inline void
+	anim_buttons(t_gui *gui, ImVec2 size)
 {
-	ImVec2 size;
-
-	size = igGetWindowSize();
-	anim_selector(gui);
 	igSpacing();
 	igSameLine(size.x / 12, 0);
 	if (igButton("Play/Pause Animation", (ImVec2){size.x / 3, 0}))
@@ -79,9 +76,21 @@ void	anim_ui(t_gui *gui)
 		anim_delete(gui->app);
 	igSpacing();
 	igSameLine(size.x / 12, 0);
+	if (igButton("Play One Frame", (ImVec2){size.x / 3, 0}))
+		animate(gui->app);
+	igSameLine(0, size.x / 6);
 	if (igButton("Reset Objects Position", (ImVec2){size.x / 3, 0}))
 		anim_reset(gui->app);
 	igSeparator();
+}
+
+void	anim_ui(t_gui *gui)
+{
+	ImVec2 size;
+
+	size = igGetWindowSize();
+	anim_selector(gui);
+	anim_buttons(gui, size);
 	igText("Animated frames rendered : %d", gui->animated_frames);
 	if (gui->anim_set)
 	{

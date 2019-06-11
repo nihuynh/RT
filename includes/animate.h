@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 00:59:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 15:00:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct s_anim
 	void	*res;
 	void	(*anim_obj)(t_anim*);
 	void	(*ui_anim)(t_anim*);
+	t_anim	*next;
 };
 
 typedef struct s_rotate

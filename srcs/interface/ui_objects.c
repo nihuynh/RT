@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 21:37:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 14:54:09 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,9 @@ static inline void
 void
 	ui_object(t_data *app, t_obj *obj)
 {
-	if (igButton("Add To Animation List", (ImVec2){0, 0}))
-		anim_add(app, obj);
+	if (obj->animated == false)
+		if (igButton("Add To Animation List", (ImVec2){0, 0}))
+			anim_add(app, obj);
 	obj->f_gui(app, obj->shape);
 	material(app, obj);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:38:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 14:53:17 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,5 @@ void
 	obj->f_gui = obj_cfg.f_gui;
 	obj->find_normal = obj_cfg.find_normal;
 	obj->get_uv = obj_cfg.get_uv;
+	obj->animated = false;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 19:47:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 14:52:21 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ struct			s_obj
 	void		*shape;
 	char		*name;
 	t_material	material;
+	bool		animated;
 	void		(*f_inter) (t_inter*, t_obj*);
 	void		(*find_normal) (t_inter*);
 	t_vec3		(*get_uv) (t_inter*);
