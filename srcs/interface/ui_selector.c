@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:16:21 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/09 18:50:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 15:35:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static inline void
 		ui_object(gui->app, gui->obj_set);
 	else
 		igText("Click on an object to access its data.");
+	igSeparator();
 	igEndTabItem();
 }
 
@@ -99,6 +100,7 @@ static inline void
 		ui_light(gui->light_set);
 	else
 		igText("Click on a light to access its data.");
+	igSeparator();
 	igEndTabItem();
 }
 

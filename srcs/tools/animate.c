@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 15:04:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 15:16:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	animate_branch(void *res)
 	anim = res;
 	if (anim->anim_obj)
 		anim->anim_obj(anim);
+	if (anim->next)
+		animate_branch(anim->next);
 }
 
 void	animate(t_data *app)
