@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/11 18:52:46 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/11 21:20:35 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ BANNER		:=	$(shell cat resources/script/banner.txt)
 all: $(LIB_DEP) $(NAME)  ## Built the project.
 .PHONY: all
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIB_DEP)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB_LINK)
 	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 	@printf "$(BANNER)"

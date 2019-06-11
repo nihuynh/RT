@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:47:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/12 00:47:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,5 @@ void
 		return ;
 	if (csg_inter.dist >= top_inter->dist)
 		return ;
-	top_inter->dist = csg_inter.dist;
-	top_inter->obj = csg_inter.obj;
+	ft_memcpy(top_inter, &csg_inter, sizeof(t_inter));
 }
