@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 15:28:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:31:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		export_scene(t_data *app, char *filename);
 void	export_material(int fd, t_material *mat);
 void	load_scene(t_data *app, char *filename);
 void	reload_scene(t_data *app, char *filename);
-void	load_selected_tex(const char *label, char *name, t_list *current,
+bool	load_selected_tex(const char *label, char *name, t_list *current,
 	t_texture **selected);
 void	anim_ui(t_gui *gui);
 void	anim_add(t_data *app, t_obj *obj);

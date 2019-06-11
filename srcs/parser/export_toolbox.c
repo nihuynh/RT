@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:57:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 06:06:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 19:20:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ void
 void
 	export_material(int fd, t_material *mat)
 {
-	if (ft_strcmp(mat->tex->name, "none"))
-		dprintf(fd, "\t\ttexture(%s)\n", mat->tex->name);
-	if (ft_strcmp(mat->normal_map->name, "none"))
-		dprintf(fd, "\t\tnormal_map(%s)\n", mat->normal_map->name);
-	if (ft_strcmp(mat->spec_map->name, "none"))
-		dprintf(fd, "\t\tspec_map(%s)\n", mat->spec_map->name);
 	if (ft_strcmp(mat->name, "custom"))
 	{
 		dprintf(fd, "\t\tmat(%s)\n", mat->name);
 	}
 	else
 	{
+		if (ft_strcmp(mat->tex->name, "none"))
+			dprintf(fd, "\t\ttexture(%s)\n", mat->tex->name);
+		if (ft_strcmp(mat->normal_map->name, "none"))
+			dprintf(fd, "\t\tnormal_map(%s)\n", mat->normal_map->name);
+		if (ft_strcmp(mat->spec_map->name, "none"))
+			dprintf(fd, "\t\tspec_map(%s)\n", mat->spec_map->name);
 		export_color(fd, "\tcolor_diffuse", mat->color_diffuse);
 		export_color(fd, "\tcolor_specular", mat->color_specular);
 		export_color(fd, "\tcolor_tex", mat->color_tex);

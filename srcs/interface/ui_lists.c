@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 04:08:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 19:31:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ void	material_list(t_list *lst_mat, t_obj *obj)
 	}
 }
 
-void	load_selected_tex(const char *label, char *name,
+bool	load_selected_tex(const char *label, char *name,
 							t_list *current, t_texture **selected)
 {
 	t_texture	*tmp;
 	bool		is_selected;
 
 	if (!(igBeginCombo(label, name, 0)))
-		return ;
+		return (false);
 	while (current)
 	{
 		tmp = current->content;
@@ -81,6 +81,7 @@ void	load_selected_tex(const char *label, char *name,
 		current = current->next;
 	}
 	igEndCombo();
+	return (true);
 }
 
 void	new_obj_list(int *type)
