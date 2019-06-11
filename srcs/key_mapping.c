@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 18:45:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 19:38:49 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ static inline bool
 		cam->rotate_left = state;
 	else if (key == SDLK_RIGHT)
 		cam->rotate_right = state;
+	else if (key == SDLK_LSHIFT)
+		cam->sprint = state;
+	else if (key == SDLK_LCTRL)
+		cam->walk = state;
 	else
 		return (false);
 	return (true);
