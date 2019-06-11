@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 14:52:21 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:49:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ typedef struct	s_cam
 	bool		rotate_down;
 	bool		rotate_left;
 	bool		rotate_right;
+	bool		sprint;
+	bool		walk;
 }				t_cam;
 
 /*
