@@ -6,12 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 15:03:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 15:58:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "animate.h"
+#include "libft.h"
 
 static inline void
 	anim_selector(t_gui *gui)
@@ -34,7 +35,7 @@ static inline void
 	igEndChild();
 }
 
-void	anim_list(t_anim *anim)
+void	anim_list(t_anim *anim, char *str)
 {
 	const char			**item;
 	static const char	*item_current;
@@ -43,7 +44,7 @@ void	anim_list(t_anim *anim)
 
 	item = (const char*[]){"None", "Translation", "Rotation", "Orbit"};
 	item_current = item[anim->type];
-	if (igBeginCombo("Movement Type", item_current, 0))
+	if (igBeginCombo(str, item_current, 0))
 	{
 		i = -1;
 		while (++i < 2)
@@ -76,7 +77,7 @@ static inline void
 		anim_delete(gui->app);
 	igSpacing();
 	igSameLine(size.x / 12, 0);
-	if (igButton("Play One Frame", (ImVec2){size.x / 3, 0}))
+	if (igButton("Animate One Frame", (ImVec2){size.x / 3, 0}))
 		animate(gui->app);
 	igSameLine(0, size.x / 6);
 	if (igButton("Reset Objects Position", (ImVec2){size.x / 3, 0}))
@@ -86,19 +87,32 @@ static inline void
 
 void	anim_ui(t_gui *gui)
 {
-	ImVec2 size;
+	ImVec2	size;
+	t_anim	*anim;
+	int		i;
+	char	*str_list;
 
 	size = igGetWindowSize();
 	anim_selector(gui);
 	anim_buttons(gui, size);
 	igText("Animated frames rendered : %d", gui->animated_frames);
-	if (gui->anim_set)
+	igSeparator();
+	anim = gui->anim_set;
+	i = 0;
+	while (anim)
 	{
-		anim_list(gui->anim_set);
-		if (gui->anim_set->ui_anim)
-			gui->anim_set->ui_anim(gui->anim_set);
+		if (!(str_list = ft_strjoini("Movement ", i)))
+			ft_error(__func__, __LINE__);
+		anim_list(anim, str_list);
+		free(str_list);
+		if (anim->ui_anim)
+			anim->ui_anim(anim);
+		igSeparator();
+		if (!anim->next)
+			if (igButton("Add Animation to Object", (ImVec2){size.x / 3, 0}))
+				anim_add_another(anim);
+		anim = anim->next;
+		i++;
 	}
-	if (igButton("render", (ImVec2){size.x / 3, 0}))
-		gui->sdl->partial_render = true;
 	igEndTabItem();
 }
