@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 04:24:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 19:11:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ static inline void
 	slice = arg;
 	inc = slice->sdl->sub_sample;
 	idx_in_slice = 0;
-	if (inc == SUB_SAMPLE)
-		ft_bzero(slice->pixels, sizeof(int) * slice->sdl->thr_len);
 	while (idx_in_slice < slice->sdl->thr_len)
 	{
 		real_pos = get_real_coordinate(slice, idx_in_slice);
