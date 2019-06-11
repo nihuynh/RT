@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 16:05:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:52:20 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,7 @@ static inline void
 	igSpacing();
 	igSameLine(size.x / 12, 0);
 	if (igButton("Play/Pause Animation", (ImVec2){size.x / 3, 0}))
-	{
 		gui->animate = 1 - gui->animate;
-		gui->sdl->sub_s = 1 - gui->animate;
-	}
 	igSameLine(0, size.x / 6);
 	if (igButton("Delete Animation", (ImVec2){size.x / 3, 0}))
 		anim_delete(gui->app);
@@ -106,7 +103,7 @@ void	anim_ui(t_gui *gui)
 			ft_error(__func__, __LINE__);
 		anim_list(anim, str_list);
 		if (anim->ui_anim)
-			anim->ui_anim(anim);
+			anim->ui_anim(anim, i);
 		igSeparator();
 		if (!anim->next)
 			if (igButton("Add Animation to Object", (ImVec2){size.x / 3, 0}))

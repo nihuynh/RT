@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 15:00:07 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:26:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ struct s_anim
 	t_pt3	origin;
 	void	*res;
 	void	(*anim_obj)(t_anim*);
-	void	(*ui_anim)(t_anim*);
+	void	(*ui_anim)(t_anim*, int);
 	t_anim	*next;
 };
 
@@ -50,7 +50,7 @@ typedef struct s_orbit
 void	anim_translate(t_anim *anim);
 void	anim_set(t_anim *anim, int type);
 t_pt3	*get_pos(t_obj *obj);
-void	ui_translate(t_anim *anim);
+void	ui_translate(t_anim *anim, int n);
 void	anim_free(t_anim *anim);
 
 #endif
