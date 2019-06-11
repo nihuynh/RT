@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 15:58:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 16:05:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	anim_list(t_anim *anim, char *str)
 		}
 		igEndCombo();
 	}
+	free(str);
 }
 
 static inline void
@@ -104,7 +105,6 @@ void	anim_ui(t_gui *gui)
 		if (!(str_list = ft_strjoini("Movement ", i)))
 			ft_error(__func__, __LINE__);
 		anim_list(anim, str_list);
-		free(str_list);
 		if (anim->ui_anim)
 			anim->ui_anim(anim);
 		igSeparator();
