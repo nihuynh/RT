@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/14 22:02:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 19:42:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void
 	upward = get_column(cam->rotation, 1);
 	forward = get_column(cam->rotation, 2);
 	delta = get_delta_vector(cam, forward, upward, strafe);
-	vec3_scalar(&delta, T_STEP);
+	vec3_scalar(&delta, T_STEP * (1 + cam->sprint * 2));
 	if (delta.x != 0 || delta.y != 0 || delta.z != 0)
 		*needs_render = true;
 	vec3_add(&cam->pos, &cam->pos, &delta);
