@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 23:31:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 15:11:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define ERR_PARSE_SET_CSG	"Err : *csg			is null"
 # define ERR_FILE			"Err : File is too small to be valid"
 
-# define CSV_MATERIAL_COLUMN_COUNT 14
+# define CSV_MATERIAL_COLUMN_COUNT 17
 
 /*
 ** Parsing structs :

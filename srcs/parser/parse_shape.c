@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 06:14:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 15:16:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ static inline t_material
 			err_exit(ERR_UNKNWD_MAT, scene_file);
 		}
 		scene_file->line_idx++;
-		mat->tex = res.tex;
-		mat->normal_map = res.normal_map;
-		mat->spec_map = res.spec_map;
 		return (*mat);
 	}
 	return (expand_parse(scene_file, res));

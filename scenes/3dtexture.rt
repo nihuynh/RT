@@ -1,0 +1,86 @@
+camera
+{
+	origin(66.662 34.388 -33.431)
+	direction(-0.821 -0.423 0.383)
+	amb_light(0.100 0.100 0.100)
+}
+content
+{
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(95.000 100.000 0.000)
+		intensity(5000.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(105.000 100.000 0.000)
+		intensity(5000.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(100.000 100.000 0.000)
+		intensity(5000.000)
+	}
+	object(sphere)
+	{
+		origin(0.000 0.000 0.000)
+		radius(10.000)
+		texture(Water_001_COLOR.jpg)
+		normal_map(Water_001_NORM.jpg)
+		spec_map(Water_001_SPEC.jpg)
+		color_diffuse(0.000 0.000 0.000)
+		color_specular(0.980 0.980 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.000)
+		spec_power(500.000)
+		refraction_color(0.980 0.980 0.980)
+		reflection_color(0.031 0.031 0.031)
+		refraction_idx(1.100)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		origin(0.000 0.000 -20.000)
+		radius(10.000)
+		texture(White_Marble_004_COLOR.jpg)
+		normal_map(White_Marble_004_NORM.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.000)
+		spec_power(0.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(plane)
+	{
+		origin(0.000 -10.000 0.000)
+		normal(0.000 1.000 0.000)
+		limit(50.000 50.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		origin(0.000 0.000 20.000)
+		radius(10.000)
+		texture(Brick_Wall_014_COLOR.jpg)
+		normal_map(Brick_Wall_014_NORM.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+}

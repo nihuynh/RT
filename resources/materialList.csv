@@ -1,11 +1,15 @@
-NAME,				C_DIFFUSE,	C_SPECULAR,	COLOR_TEX,	SPEC_IDX,	SPEC_POWER,	C_REFRACT,	C_REFLECT,	I_REFRACT,	UV_SCALE_X,Y,	UV_OFFSET_X,Y,	UV_REPEAT
-white plastic,		FFFFFF,		FFFFFF,		000000,		0.3,		100,		000000,		000000,		0,			1,1,			0,0,			0
-red plastic,		FF0000,		FFFFFF,		000000,		0.3,		100,		000000,		000000,		0,			1,1,			0,0,			0
-blue plastic,		0000FF,		FFFFFF,		000000,		0.3,		100,		000000,		000000,		0,			1,1,			0,0,			0
-green plastic,		00FF00,		FFFFFF,		000000,		0.3,		100,		000000,		000000,		0,			1,1,			0,0,			0
-transparent glass,	000000,		FAFAFF,		000000,		0.1,		80,			FAFAFA,		080808,		1.5,		1,1,			0,0,			0
-mirror glass,		000000,		FAFAFF,		000000,		0.1,		80,			000000,		FFFFFF,		0,			1,1,			0,0,			0
-bronze,				8C7853,		74654D,		000000,		1,			25,			000000,		79571A,		0,			1,1,			0,0,			0
-gold,				FFE03F,		FFFFFF,		000000,		2,			75,			000000,		FFE03F,		0,			1,1,			0,0,			0
-iron,				999980,		FFFFFF,		000000,		1,			100,		000000,		FFFFFF,		0,			1,1,			0,0,			0
-alloy,				CCCCCC,		FFFFFF,		000000,		0.5,		50,			000000,		FFFFFF,		0,			1,1,			0,0,			0
+NAME,C_DIFFUSE,C_SPECULAR,COLOR_TEX,SPEC_IDX,SPEC_POWER,C_REFRACT,C_REFLECT,I_REFRACT,UV_SCALE_X,Y,UV_OFFSET_X,Y,UV_REPEAT, TEX_(COLOR, NORM, SPEC)
+white plastic,FFFFFF,FFFFFF,000000,0.3,100,000000,000000,0,1,1,0,0,0, none, none, none
+red plastic,FF0000,FFFFFF,000000,0.3,100,000000,000000,0,1,1,0,0,0, none, none, none
+blue plastic,0000FF,FFFFFF,000000,0.3,100,000000,000000,0,1,1,0,0,0, none, none, none
+green plastic,00FF00,FFFFFF,000000,0.3,100,000000,000000,0,1,1,0,0,0, none, none, none
+transparent glass,000000,FAFAFF,000000,0.1,80,FAFAFA,080808,1.5,1,1,0,0,0, none, none, none
+mirror glass,000000,FAFAFF,000000,0.1,80,000000,FFFFFF,0,1,1,0,0,0, none, none, none
+bronze,8C7853,74654D,000000,1,25,000000,79571A,0,1,1,0,0,0, none, none, none
+gold,FFE03F,FFFFFF,000000,2,75,000000,FFE03F,0,1,1,0,0,0, none, none, none
+iron,999980,FFFFFF,000000,1,100,000000,FFFFFF,0,1,1,0,0,0, none, none, none
+alloy,CCCCCC,FFFFFF,000000,0.5,50,000000,FFFFFF,0,1,1,0,0,0, none, none, none
+brick,FFFFFF,FFFFFF,000000,0.3,100,000000,000000,0,1,1,0,0,0,Brick_Wall_014_COLOR.jpg,Brick_Wall_014_NORM.jpg,none
+water,000000,FAFAFF,000000,0.1,80,FAFAFA,080808,1.5,1,1,0,0,0,Water_001_COLOR.jpg,Water_001_NORM.jpg,Water_001_SPEC.jpg
+White marble,FFFFFF,FFFFFF,000000,0.3,100,000000,000000,0,1,1,0,0,0,White_marble_004_COLOR.jpg,White_marble_004_NORM.jpg,none
+earth,FFFFFF,FFFFFF,000000,0.3,100,000000,000000,0,1,1,0,0,0,2k_earth_COLOR.jpg,2k_earth_NORM.jpg,2k_earth_SPEC.jpg

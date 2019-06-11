@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 21:37:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:20:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 #include "parse.h"
 #include "libft.h"
 #include <unistd.h>
+
+static inline t_texture
+	*load_texture_csv(t_data *app, char *tex_name)
+{
+	t_texture *dst;
+
+	if (!(dst = ft_lstgetelt(app->lst_tex, &texcmp, tex_name)))
+		dst = ft_lstgetelt(app->lst_tex, &texcmp, "none");
+	load_texture(dst);
+	return (dst);
+}
+
 
 static inline t_material
 	split_to_mat(t_data *app, char **split)
@@ -23,10 +35,6 @@ static inline t_material
 	ft_bzero(&mat, sizeof(t_material));
 	if (!(mat.name = ft_strdup(split[0])))
 		ft_error(__func__, __LINE__);
-	if (!(mat.tex = ft_lstgetelt(app->lst_tex, &texcmp, split[0])))
-		mat.tex = ft_lstgetelt(app->lst_tex, &texcmp, "none");
-	mat.normal_map = ft_lstgetelt(app->lst_tex, &texcmp, "none");
-	mat.spec_map = ft_lstgetelt(app->lst_tex, &texcmp, "none");
 	mat.color_diffuse = itocolor(ft_atoi_base(split[1], 16));
 	mat.color_specular = itocolor(ft_atoi_base(split[2], 16));
 	mat.color_tex = itocolor(ft_atoi_base(split[3], 16));
@@ -39,7 +47,10 @@ static inline t_material
 	mat.uv_mapping.scale.y = ft_atof(split[10]);
 	mat.uv_mapping.offset.x = ft_atof(split[11]);
 	mat.uv_mapping.offset.y = ft_atof(split[12]);
-	mat.uv_mapping.repeat = ft_atoi(split[12]);
+	mat.uv_mapping.repeat = ft_atoi(split[13]);
+	mat.tex = load_texture_csv(app, split[14]);
+	mat.normal_map = load_texture_csv(app, split[15]);
+	mat.spec_map = load_texture_csv(app, split[16]);
 	return (mat);
 }
 

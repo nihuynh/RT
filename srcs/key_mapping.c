@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 05:25:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 18:45:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void
 			&& (app->sdl->needs_render = 1))
 		app->cam = app->gui.cam_cpy;
 	if (camera(&app->cam, key, state))
-		app->sdl->partial_render = false;
+		app->sdl->sub_sample = SUB_SAMPLE * app->sdl->sub_s + (1 - app->sdl->sub_s);
 }
 
 void
@@ -112,6 +112,7 @@ void
 		app->cam.y_angle += event->motion.xrel * MOUSE_SCALING;
 		app->cam.x_angle += event->motion.yrel * MOUSE_SCALING;
 		app->sdl->partial_render = false;
+		app->sdl->sub_sample = SUB_SAMPLE * app->sdl->sub_s + (1 - app->sdl->sub_s);
 		app->sdl->needs_render = true;
 	}
 }

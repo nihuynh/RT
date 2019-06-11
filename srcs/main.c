@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:54:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 18:22:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,33 @@ t_data
 		ft_error(__func__, __LINE__);
 	app->option = ft_options(ac, av, USAGE);
 	get_app(app);
-	init_textures(app);
-	parse_material_csv(app, "resources/materialList.csv");
-	get_scenes(app);
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
 	app->sdl = init_sdl(WIDTH, HEIGHT);
 	init_mthr_sdl(app->sdl, &process_pixel, app);
 	hook_sdl(app);
+	init_textures(app);
+	parse_material_csv(app, "resources/materialList.csv");
+	get_scenes(app);
 	return (app);
 }
 
 void
 	interactive(int ac, char **av)
 {
-	t_data	*app;
+	t_data			*app;
+	t_scene_name	*default_scene;
 
 	app = boot_rt(ac, av);
-	load_scene(app, av[1]);
+	if (ac == 1)
+	{
+		if (app->lst_scenes == NULL)
+			ft_error(__func__, __LINE__);
+		default_scene = app->lst_scenes->content;
+		load_scene(app, default_scene->dir);
+	}
+	else
+		load_scene(app, av[1]);
 	if (!(app->option.key_found_bitrpz & (1 << ('t' - 'a'))))
 	{
 		if (DEBUG)
@@ -70,11 +79,6 @@ void
 int
 	main(int ac, char **av)
 {
-	if (ac == 1)
-	{
-		ft_putendl(USAGE);
-		return (EXIT_SUCCESS);
-	}
 	interactive(ac, av);
 	return (EXIT_SUCCESS);
 }
