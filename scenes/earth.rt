@@ -1,7 +1,7 @@
 camera
 {
-	origin(-486.880 0.000 747.354)
-	direction(0.767 0.000 -0.642)
+	origin(-257.890 45.409 219.417)
+	direction(0.853 -0.174 -0.491)
 	amb_light(0.100 0.100 0.100)
 }
 content
@@ -32,9 +32,6 @@ content
 	{
 		origin(0.000 -30.000 0.000)
 		radius(63.710)
-		texture(2k_earth_COLOR.jpg)
-		normal_map(2k_earth_NORM.jpg)
-		spec_map(2k_earth_SPEC.jpg)
-		mat(white plastic)
+		mat(earth)
 	}
 }

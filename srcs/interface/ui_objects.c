@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_objects.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 14:54:09 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:32:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ static inline void
 	material(t_data *app, t_obj *obj)
 {
 	material_list(app->lst_mat, obj);
-	load_selected_tex("Texture", obj->material.tex->name, app->lst_tex,
-						&obj->material.tex);
-	load_selected_tex("Normal Map", obj->material.normal_map->name,
-						app->lst_tex, &obj->material.normal_map);
-	load_selected_tex("Specular Map", obj->material.spec_map->name,
-						app->lst_tex, &obj->material.spec_map);
+	if (load_selected_tex("Texture", obj->material.tex->name, app->lst_tex, &obj->material.tex))
+		obj->material.name = "custom";
+	if (load_selected_tex("Normal Map", obj->material.normal_map->name, app->lst_tex, &obj->material.normal_map))
+		obj->material.name = "custom";
+	if (load_selected_tex("Specular Map", obj->material.spec_map->name, app->lst_tex, &obj->material.spec_map))
+		obj->material.name = "custom";
 	igText("Material Details");
 	material_details(&obj->material);
 	uv_mapping_details(&obj->material.uv_mapping);
