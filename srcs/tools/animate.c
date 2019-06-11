@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 15:16:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:36:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "rt.h"
 #include "animate.h"
 #include "librt.h"
+#include "config.h"
 
 void	animate_branch(void *res)
 {
@@ -37,6 +38,7 @@ void	animate(t_data *app)
 		lst = lst->next;
 	}
 	app->gui.animated_frames += 1;
+	app->sdl->sub_sample = SUB_SAMPLE;
 	app->sdl->needs_render = true;
 }
 

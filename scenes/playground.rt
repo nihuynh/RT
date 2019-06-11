@@ -1,7 +1,7 @@
 camera
 {
 	origin(-68.903 42.156 -71.823)
-	direction(0.825 -0.460 0.328)
+	direction(0.613 -0.442 0.655)
 	amb_light(0.100 0.100 0.100)
 }
 content
@@ -22,9 +22,6 @@ content
 	{
 		origin(-40.000 0.000 0.000)
 		radius(10.000)
-		texture(none)
-		normal_map(none)
-		spec_map(none)
 		color_diffuse(0.900 0.000 0.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
@@ -40,9 +37,6 @@ content
 	{
 		origin(40.000 0.000 0.000)
 		radius(10.000)
-		texture(none)
-		normal_map(none)
-		spec_map(none)
 		color_diffuse(0.000 0.000 0.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
@@ -58,9 +52,6 @@ content
 	{
 		origin(0.000 0.000 0.000)
 		radius(150.000)
-		texture(none)
-		normal_map(none)
-		spec_map(none)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
@@ -77,9 +68,6 @@ content
 		origin(0.000 -30.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(0.000 0.000)
-		texture(none)
-		normal_map(none)
-		spec_map(none)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
