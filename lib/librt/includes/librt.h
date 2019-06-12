@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   librt.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:42:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/11 22:00:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void		vec3_cartesian_to_spherical(t_vec3 v, float *azimuth, float *polar);
 void		vec3_matrix_camera(t_matrix *matrix, t_cam *cam);
 void		vec3_matrix_mult(t_matrix *matrix, t_matrix *add);
 t_matrix	matrix_mult(const t_matrix *lhs, const t_matrix *rhs);
+t_matrix	mat_orbit(t_vec3 axis, float deg);
 t_vec3		get_column(t_matrix m, int column);
 void		apply_matrix(t_vec3 *v, t_matrix *mat);
 void		ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n);

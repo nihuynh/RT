@@ -31,6 +31,8 @@
 		"ftstring.h": "c",
 		"t_data.h": "c",
 		"fterror.h": "c",
-		"ftmem.h": "c"
+		"ftmem.h": "c",
+		"t_gui.h": "c",
+		"animate.h": "c"
 	}
 }

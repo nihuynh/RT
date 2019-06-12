@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 01:14:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/12 02:03:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ static inline void
 	anim->res = translate;
 	anim->anim_obj = &anim_translate;
 	anim->ui_anim = &ui_translate;
+}
+
+static inline void
+	anim_set_orbit(t_anim *anim)
+{
+	t_orbit	*orbit;
+
+	if (!(orbit = malloc(sizeof(t_orbit))))
+		ft_error(__func__, __LINE__);
+	ft_bzero(orbit, sizeof(t_orbit));
+	anim->res = orbit;
+	anim->anim_obj = &anim_orbit;
+	anim->ui_anim = &ui_orbit;
 }
 
 void
@@ -72,6 +85,8 @@ void
 	}
 	else if (type == 1)
 		anim_set_translate(anim);
+	else if (type == 2)
+		anim_set_orbit(anim);
 }
 
 void

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 18:52:20 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/11 22:13:58 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	anim_list(t_anim *anim, char *str)
 	int					i;
 	bool				is_selected;
 
-	item = (const char*[]){"None", "Translation", "Rotation", "Orbit"};
+	item = (const char*[]){"None", "Translation", "Orbit", "Rotation"};
 	item_current = item[anim->type];
 	if (igBeginCombo(str, item_current, 0))
 	{
 		i = -1;
-		while (++i < 2)
+		while (++i < 3)
 		{
 			is_selected = (item_current == item[i]);
 			if (igSelectable(item[i], is_selected, 0, (ImVec2){0, 0}))
