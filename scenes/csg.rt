@@ -1,11 +1,17 @@
 camera
 {
-	origin(0.000 0.000 -100.000)
-	direction(0.000 0.000 1.000)
+	origin(29.535 0.000 -71.071)
+	direction(-0.342 0.000 0.940)
 	amb_light(0.100 0.100 0.100)
 }
 content
 {
+	object(light)
+	{
+		color(0.037 0.094 0.681)
+		origin(0.000 0.000 -5.000)
+		intensity(100.000)
+	}
 	object(light)
 	{
 		color(1.000 1.000 1.000)
@@ -18,11 +24,18 @@ content
 		origin(50.000 0.000 -50.000)
 		intensity(2000.000)
 	}
+	object(plane)
+	{
+		origin(0.000 0.000 0.000)
+		normal(0.000 0.000 1.000)
+		limit(50.000 50.000)
+		mat(white plastic)
+	}
 	object(csg)
 	{
 		origin(0.000 0.000 0.000)
 		normal(0.000 1.000 0.000)
-		INTER
+		NOT
 		object(sphere)
 		{
 		origin(-15.000 0.000 0.000)

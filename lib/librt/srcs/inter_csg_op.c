@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:39:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/12 00:52:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,34 @@ static inline float
 }
 
 static inline t_inter
-	not_compare(t_inter left, t_inter right)
+	not_op(t_inter core, t_inter sub)
 {
 	t_inter no_inter;
 
-	inter_set(&no_inter, right.ray);
-	if (left.dist == HUGEVAL || right.dist == HUGEVAL)
-		return (left);
-	if (left.dist < right.hit_pts.x && left.dist < right.hit_pts.y)
-		return (left);
-	if (left.dist > right.hit_pts.y && left.dist > right.hit_pts.x)
-		return (left);
-	if (ft_btwf(left.hit_pts.x, right.hit_pts.y, right.hit_pts.x)
-		&& ft_btwf(left.hit_pts.y, right.hit_pts.y, right.hit_pts.x))
-		return (no_inter);
-	right.dist = right.hit_pts.y;
-	return (right);
+	inter_set(&no_inter, sub.ray);
+	if (core.dist == HUGEVAL || sub.dist == HUGEVAL)
+		return (core);
+	if ((core.dist < sub.hit_pts.x && core.dist < sub.hit_pts.y)
+		|| (core.dist > sub.hit_pts.y && core.dist > sub.hit_pts.x))
+		return (core);
+	if (sub.dist < core.dist)
+	{
+		if (ft_btwf(sub.hit_pts.y, core.hit_pts.x, core.hit_pts.y))
+		{
+			sub.dist = sub.hit_pts.y;
+			return (sub);
+		}
+		if (core.hit_pts.y < 0 && core.hit_pts.x > 0)
+			return (sub);
+	}
+	if (core.dist < sub.dist && sub.hit_pts.y < 0
+		&& ft_btw(sub.hit_pts.x, core.hit_pts.x, core.hit_pts.y))
+		return (sub);
+	return (no_inter);
 }
 
 static inline t_inter
-	union_compare(t_inter left, t_inter right)
+	union_op(t_inter left, t_inter right)
 {
 	if (left.dist <= right.dist)
 		return (left);
@@ -49,13 +57,15 @@ static inline t_inter
 }
 
 static inline t_inter
-	inter_compare(t_inter left, t_inter right)
+	inter_op(t_inter left, t_inter right)
 {
 	t_inter no_inter;
 
 	inter_set(&no_inter, left.ray);
 	if (left.dist == HUGEVAL || right.dist == HUGEVAL)
 		return (no_inter);
+	if (right.hit_pts.y > 0 && ft_btwf(right.dist, left.hit_pts.x, left.hit_pts.y))
+		return (right);
 	if (ft_btwf(left.dist, right.hit_pts.x, right.hit_pts.y))
 		return (left);
 	if (ft_btwf(right.dist, left.hit_pts.x, left.hit_pts.y))
@@ -69,11 +79,11 @@ t_inter
 	t_inter no_inter;
 
 	if (type == INTER)
-		return (inter_compare(left, right));
+		return (inter_op(left, right));
 	if (type == NOT)
-		return (not_compare(left, right));
+		return (not_op(left, right));
 	if (type == UNION)
-		return (union_compare(left, right));
+		return (union_op(left, right));
 	ft_error(__func__, __LINE__);
 	inter_set(&no_inter, incoming);
 	return (no_inter);
