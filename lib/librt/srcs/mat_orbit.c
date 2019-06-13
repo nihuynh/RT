@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 21:08:03 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/12 00:57:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 01:30:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,23 @@
 #include "ftmath.h"
 #include "ftmem.h"
 
-// q0 = cos(r/2),  q1 = sin(r/2) a,  q2 = sin(r/2) b,  q3 = sin(r/2) c
+/*
+Given angle r in radians and unit vector u = ai + bj + ck or [a,b,c]', define:
 
-// and construct from these values the rotation matrix:
+q0 = cos(r/2),  q1 = sin(r/2) a,  q2 = sin(r/2) b,  q3 = sin(r/2) c
 
-//      (q0² + q1² - q2² - q3²)      2(q1q2 - q0q3)          2(q1q3 + q0q2)
+and construct from these values the rotation matrix:
 
-// Q  =      2(q2q1 + q0q3)     (q0² - q1² + q2² - q3²)      2(q2q3 - q0q1)
+     (q0² + q1² - q2² - q3²)      2(q1q2 - q0q3)          2(q1q3 + q0q2)
 
-//           2(q3q1 - q0q2)          2(q3q2 + q0q1)     (q0² - q1² - q2² + q3²)
+Q  =      2(q2q1 + q0q3)     (q0² - q1² + q2² - q3²)      2(q2q3 - q0q1)
 
+          2(q3q1 - q0q2)          2(q3q2 + q0q1)     (q0² - q1² - q2² + q3²)
+
+Multiplication by Q then effects the desired rotation, and in particular:
+
+Q u = u
+*/
 
 t_matrix	mat_orbit(t_vec3 axis, float deg)
 {
@@ -50,17 +57,3 @@ t_matrix	mat_orbit(t_vec3 axis, float deg)
 	return (mat);
 }
 
-
-	// t_matrix mat;
-
-	// deg *= M_PI / 180;
-	// mat.m[0][0] = cosf(deg) + axis.x * axis.x *(1 - cosf(deg));
-	// mat.m[0][1] = axis.x * axis.y * (1 - cosf(deg)) - axis.z * sinf(deg);
-	// mat.m[0][2] = axis.x * axis.z * (1 - cosf(deg)) - axis.y * sinf(deg);
-	// mat.m[1][0] = axis.y * axis.x * (1 - cosf(deg)) + axis.z * sinf(deg);
-	// mat.m[1][1] = cosf(deg) + axis.y * axis.y * (1 - cosf(deg));
-	// mat.m[1][2] = axis.y * axis.z * (1 - cosf(deg)) - axis.x * sinf(deg);
-	// mat.m[2][0] = axis.z * axis.x * (1 - cosf(deg)) - axis.y * sinf(deg);
-	// mat.m[2][1] = axis.z * axis.y * (1 - cosf(deg)) + axis.x * sinf(deg);
-	// mat.m[2][2] = cosf(deg) + axis.z * axis.z * (1 - cosf(deg));
-	// return (mat);
