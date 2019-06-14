@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 02:12:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 02:44:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void
 	psphere->origin = parse_vector("origin(", scene_file);
 	psphere->radius = parse_fval("radius(", scene_file);
 	obj->pos = &psphere->origin;
+	obj->x = NULL;
+	obj->n = NULL;
+	obj->z = NULL;
 }
 
 void

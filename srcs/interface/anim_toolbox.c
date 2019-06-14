@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 02:16:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 03:12:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	anim_add(t_data *app, t_obj *obj)
 	new.anim_obj = NULL;
 	new.res = NULL;
 	new.ui_anim = NULL;
-	new.pos = obj->pos;
-	new.origin = *new.pos;
+	new.origin = *obj->pos;
 	new.next = NULL;
 	ft_lstpushnew(&app->scene.lst_anim, &new, sizeof(new));
 	obj->animated = true;
@@ -54,8 +53,7 @@ void	anim_add_another(t_anim *anim)
 	new->anim_obj = NULL;
 	new->res = NULL;
 	new->ui_anim = NULL;
-	new->pos = anim->pos;
-	new->origin = anim->origin;
+	new->origin = *anim->obj->pos;
 	new->next = NULL;
 	anim->next = new;
 }

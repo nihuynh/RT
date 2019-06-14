@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 01:55:56 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 03:14:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@ static inline void
 	anim->res = orbit;
 	anim->anim_obj = &anim_orbit;
 	anim->ui_anim = &ui_orbit;
+}
+
+static inline void
+	anim_set_rotate(t_anim *anim)
+{
+	t_rotate	*rotate;
+
+	if (!(rotate = malloc(sizeof(t_rotate))))
+		ft_error(__func__, __LINE__);
+	ft_bzero(rotate, sizeof(t_rotate));
+	anim->res = rotate;
+	anim->anim_obj = &anim_rotate;
+	anim->ui_anim = &ui_rotate;
 }
 
 void
@@ -87,6 +100,8 @@ void
 		anim_set_translate(anim);
 	else if (type == 2)
 		anim_set_orbit(anim);
+	else if (type == 3)
+		anim_set_rotate(anim);
 }
 
 void
@@ -99,7 +114,7 @@ void
 	while (lst)
 	{
 		anim = lst->content;
-		*anim->pos = anim->origin;
+		*anim->obj->pos = anim->origin;
 		lst = lst->next;
 	}
 	app->gui.animated_frames = 0;
