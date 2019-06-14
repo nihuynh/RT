@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:06 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:47:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 05:35:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,29 @@ static inline t_vec2
 static inline float
 	inter_local(t_inter *inter, t_ray *ray, t_sphere *sphere)
 {
-	t_vec2	res;
+	t_vec2	res_local;
+	t_vec2	dist;
 
-	res = inter_vec2(ray, sphere);
-	if (res.x > 0 && res.y > 0)
+	res_local = inter_vec2(ray, sphere);
+	if (res_local.x > 0 && res_local.y > 0)
 	{
-		inter->hit_pts.x = fminf(res.x, res.y);
-		inter->hit_pts.y = fmaxf(res.x, res.y);
+		dist.x = fminf(res_local.x, res_local.y);
+		dist.y = fmaxf(res_local.x, res_local.y);
 	}
-	else if (res.y > 0 || res.x > 0)
+	else if (res_local.y > 0 || res_local.x > 0)
 	{
-		inter->hit_pts.x = fmaxf(res.x, res.y);
-		inter->hit_pts.y = fminf(res.x, res.y);
+		dist.x = fmaxf(res_local.x, res_local.y);
+		dist.y = fminf(res_local.x, res_local.y);
 	}
 	else
 	{
-		inter->hit_pts.x = HUGEVAL;
-		inter->hit_pts.y = HUGEVAL;
+		dist.x = HUGEVAL;
+		dist.y = HUGEVAL;
 	}
-	return (inter->hit_pts.x);
+	if (dist.x >= inter->dist || dist.x < 0)
+		return (HUGEVAL);
+	inter->hit_pts = dist;
+	return (dist.x);
 }
 
 void

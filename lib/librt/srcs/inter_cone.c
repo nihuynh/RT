@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:53:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 05:46:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <math.h>
 
 static inline float
-	inter_finite(t_inter *data, t_cone *cone, float dist[2])
+	inter_finite(t_inter *inter, t_cone *cone, float dist[2])
 {
 	t_pt3	inter_pt;
 	t_vec3	ori_2_inter;
@@ -24,27 +24,27 @@ static inline float
 	float	dst_final;
 
 	if (cone->size == 0)
-		return ((dist[0] < dist[1]) ? dist[0] : dist[1]);
+		return (inter->hit_pts.x);
 	i = -1;
 	dst_final = HUGEVAL;
 	while (++i < 2)
 	{
-		inter_pt.x = data->ray.origin.x + dist[i] * data->ray.dir.x;
-		inter_pt.y = data->ray.origin.y + dist[i] * data->ray.dir.y;
-		inter_pt.z = data->ray.origin.z + dist[i] * data->ray.dir.z;
+		inter_pt.x = inter->ray.origin.x + dist[i] * inter->ray.dir.x;
+		inter_pt.y = inter->ray.origin.y + dist[i] * inter->ray.dir.y;
+		inter_pt.z = inter->ray.origin.z + dist[i] * inter->ray.dir.z;
 		vec3_sub(&ori_2_inter, &inter_pt, &cone->origin);
 		scale = vec3_dot(&ori_2_inter, &cone->n) / vec3_dot(&cone->n, &cone->n);
 		if (scale < cone->size && scale >= 0)
-			dst_final = (dst_final < dist[i]) ? dst_final : dist[i];
+			return (inter->hit_pts.x);
 	}
-	return (dst_final);
+	return (HUGEVAL);
 }
 
-static inline float
-	inter(t_inter *data, t_ray *ray, t_cone *cone)
+static inline t_vec2
+	inter_vec2(t_ray *ray, t_cone *cone)
 {
 	float	quad[3];
-	float	res[2];
+	t_vec2	res;
 	double	cos_theta2;
 	float	det;
 	t_vec3	rene;
@@ -59,26 +59,59 @@ static inline float
 	CCCC = CCCC * CCCC - vec3_dot(&rene, &rene) * cos_theta2;
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
 	if (det < 0)
+	{
+		res.x = HUGEVAL;
+		res.y = HUGEVAL;
+		return (res);
+	}
+	res.x = (-BBBB + sqrt(det)) / (2 * AAAA);
+	res.y = (-BBBB - sqrt(det)) / (2 * AAAA);
+	return (res);
+}
+
+static inline float
+	inter_local(t_inter *inter, t_ray *ray, t_cone *cone)
+{
+	t_vec2	res_local;
+	t_vec2	dist;
+	float	limit[2];
+
+	res_local = inter_vec2(ray, cone);
+	limit[0] = res_local.x;
+	limit[1] = res_local.y;
+	if (res_local.x > 0 && res_local.y > 0)
+	{
+		dist.x = fminf(res_local.x, res_local.y);
+		dist.y = fmaxf(res_local.x, res_local.y);
+	}
+	else if (res_local.y > 0 || res_local.x > 0)
+	{
+		dist.x = fmaxf(res_local.x, res_local.y);
+		dist.y = fminf(res_local.x, res_local.y);
+	}
+	else
+	{
+		dist.x = HUGEVAL;
+		dist.y = HUGEVAL;
+	}
+	if (dist.x >= inter->dist || dist.x < 0)
 		return (HUGEVAL);
-	res[0] = (-BBBB + sqrt(det)) / (2 * AAAA);
-	res[0] = (res[0] > 0) ? res[0] : HUGEVAL;
-	res[1] = (-BBBB - sqrt(det)) / (2 * AAAA);
-	res[1] = (res[1] > 0) ? res[1] : HUGEVAL;
-	return (inter_finite(data, cone, res));
+	inter->hit_pts = dist;
+	return (inter_finite(inter, cone, limit));
 }
 
 void
-	inter_cone(t_inter *data, t_obj *node)
+	inter_cone(t_inter *inter, t_obj *node)
 {
 	t_cone	*cone;
 	float	dist;
 
 	cone = node->shape;
-	dist = inter(data, &data->ray, cone);
-	if (dist >= data->dist || dist < 0)
+	dist = inter_local(inter, &inter->ray, cone);
+	if (dist >= inter->dist || dist < 0)
 		return ;
-	data->dist = dist;
-	data->obj = node;
+	inter->dist = dist;
+	inter->obj = node;
 }
 
 t_vec3

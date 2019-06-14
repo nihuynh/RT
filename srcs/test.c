@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 03:30:09 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:22:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 06:03:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ut_export_load_scene(char *scene_path, t_data *const_app)
 
 int	export_test_suite(t_data *const_data)
 {
-	ut_export_load_scene("scenes/fig1.rt", const_data);
-	return (EXIT_SUCCESS);
+	bool res;
+
+	res = ut_export_load_scene("scenes/fig1.rt", const_data);
+	return (res);
 }
