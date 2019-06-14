@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 02:25:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/23 03:36:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 05:59:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void
 		}
 		closedir(d);
 	}
+	ft_lstsort(&app->lst_scenes, &scene_cmp);
 }

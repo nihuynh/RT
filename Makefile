@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/14 02:23:42 by sklepper         ###   ########.fr        #
+#    Updated: 2019/06/14 05:51:41 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ RENDER_U	:=	init_sdl.c error_sdl.c exit_sdl.c render_sdl.c loop_sdl.c 		\
 				init_mthr_sdl.c render_mthr_sdl.c save_screenshot.c				\
 				render_pool.c render_time.c
 TOOLS		:=	free_scene.c free.c utils.c get_scenes.c update.c reload.c		\
-				load_tools.c hook.c free2.c
+				load_tools.c hook.c free2.c list_toolbox.c
 SRC			:=	 $(INTERFACE) $(PARSER) $(RENDER) $(RENDER_U) $(TOOLS)
 SRC			+=	 main.c  key_mapping.c test.c
 # directories :

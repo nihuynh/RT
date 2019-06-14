@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 02:24:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 04:27:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ void
 		ft_strdel(&line);
 	}
 	close(fd);
+	ft_lstsort(&app->lst_mat, &mat_cmp);
 }

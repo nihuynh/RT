@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/12 01:48:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 05:59:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ int			export_scene(t_data *data, char *filename);
 void		export_material(int fd, t_material *mat);
 void		free_lst(t_data *data);
 void		reload(t_data *app, char *filename);
+int			texture_cmp(void *res_1, void *res_2);
+int			obj_cmp(void *res1, void *res2);
+int			mat_cmp(void *res_1, void *res_2);
+int			light_cmp(void *res_1, void *res_2);
+int			scene_cmp(void *res_1, void *res_2);
 
 /*
 ** Post-process :

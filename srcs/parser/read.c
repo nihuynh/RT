@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/05 01:29:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 06:04:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rt.h"
 #include "librt.h"
 #include "config.h"
 #include "parse.h"
@@ -103,8 +104,8 @@ int
 	if (DEBUG)
 		ft_printf("parse_txt deallocated. line_idx = %d / %d\n",
 			scene_file.line_idx, scene_file.line_max);
-	ft_lstrev(&app->scene.lst_light);
-	ft_lstrev(&app->scene.lst_obj);
+	ft_lstsort(&app->scene.lst_obj, &obj_cmp);
+	ft_lstsort(&app->scene.lst_light, &light_cmp);
 	return (EXIT_SUCCESS);
 }
 

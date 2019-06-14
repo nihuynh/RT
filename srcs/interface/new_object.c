@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 02:21:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 06:02:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void
 	new.name = name_obj(type, &app->scene.nb_objs[type]);
 	ft_lstpushnew(&app->scene.lst_obj, &new, sizeof(t_obj));
 	app->gui.obj_set = app->scene.lst_obj->content;
+	ft_lstsort(&app->scene.lst_obj, &obj_cmp);
 }
 
 void
@@ -61,4 +62,5 @@ void
 	ft_lstpushnew(&app->scene.lst_light, &light, sizeof(t_light));
 	app->sdl->needs_render = true;
 	app->sdl->partial_render = false;
+	ft_lstsort(&app->scene.lst_light, &light_cmp);
 }

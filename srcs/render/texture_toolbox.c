@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_toolbox.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/22 03:16:07 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 05:56:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void
 {
 	textures_procedural(app);
 	open_textures(app);
+	ft_lstsort(&app->lst_tex, &texture_cmp);
 }
