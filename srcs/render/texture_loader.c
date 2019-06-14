@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/05 01:42:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 18:28:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	load_texture(t_texture *tex)
 		ft_printf("%d x %d\n", tex->width, tex->height);
 }
 
-void	add_texture(char *name, t_data *app)
+void	add_texture(char *name, t_data *app, char *abs_path)
 {
 	t_texture	tex;
 
-	if (!(tex.dir = ft_strjoin(TEX_DIR, name)))
+	if (!(tex.dir = ft_strjoin(abs_path, name)))
 		ft_error(__func__, __LINE__);
 	tex.pixels = NULL;
 	tex.f_texture = &sample;
@@ -65,8 +65,10 @@ void	open_textures(t_data *app)
 {
 	DIR				*d;
 	struct dirent	*dir;
+	char			*abs_path;
 
-	d = opendir(TEX_DIR);
+	abs_path = ft_strjoin(app->option.path, TEX_DIR);
+	d = opendir(abs_path);
 	if (d)
 	{
 		while ((dir = readdir(d)) != NULL)
@@ -75,8 +77,9 @@ void	open_textures(t_data *app)
 				ft_strstr(dir->d_name, ".png") ||
 				ft_strstr(dir->d_name, ".jpg") ||
 				ft_strstr(dir->d_name, ".jpeg"))
-				add_texture(dir->d_name, app);
+				add_texture(dir->d_name, app, abs_path);
 		}
 		closedir(d);
 	}
+	ft_strdel(&abs_path);
 }
