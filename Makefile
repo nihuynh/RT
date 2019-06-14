@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/11 21:20:35 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/14 02:23:42 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ TOOLS		:=	free_scene.c free.c utils.c get_scenes.c update.c reload.c		\
 SRC			:=	 $(INTERFACE) $(PARSER) $(RENDER) $(RENDER_U) $(TOOLS)
 SRC			+=	 main.c  key_mapping.c test.c
 # directories :
-VPATH       :=	./srcs ./srcs/parser ./srcs/render ./srcs/tools	\
+VPATH		:=	./srcs ./srcs/parser ./srcs/render ./srcs/tools	\
 				./srcs/interface ./srcs/render_utils
 
 LIB_DEP		=	lib/libft/libft.a				\

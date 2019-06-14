@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/12 01:34:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 02:25:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,16 @@ void	anim_orbit(t_anim *anim)
 	t_pt3		*center;
 
 	orbit = anim->res;
-	center = get_pos(orbit->obj_center);
+	center = orbit->obj_center->pos;
 	vec3_sub(&vec, anim->pos, center);
 	mat = mat_orbit(orbit->axis, orbit->deg);
 	apply_matrix(&vec, &mat);
 	vec3_add(anim->pos, center, &vec);
 }
+
+// void	anim_rotate(t_anim *anim)
+// {
+// 	t_rotate	*rotate;
+
+
+// }

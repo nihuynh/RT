@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/12 02:03:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 01:55:56 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ void
 	}
 	else if (anim->type == 2)
 	{
-		rotate = anim->res;
-		if (rotate)
-			free(rotate);
-	}
-	else if (anim->type == 3)
-	{
 		orbit = anim->res;
 		if (orbit)
 			free(orbit);
+	}
+	else if (anim->type == 3)
+	{
+		rotate = anim->res;
+		if (rotate)
+			free(rotate);
 	}
 	anim->res = NULL;
 }

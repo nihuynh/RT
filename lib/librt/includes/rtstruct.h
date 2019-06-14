@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 19:49:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 02:09:52 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,10 @@ struct			s_obj
 	void		*shape;
 	char		*name;
 	t_material	material;
+	t_pt3		*pos;
+	t_vec3		*x;
+	t_vec3		*n;
+	t_vec3		*z;
 	bool		animated;
 	void		(*f_inter) (t_inter*, t_obj*);
 	void		(*find_normal) (t_inter*);

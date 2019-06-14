@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 15:16:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 02:20:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ void
 		ft_putendl(cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	cfg.setter(shape, scene_file);
-	obj_set(obj_dst, type, shape);
+	obj_set(obj_dst, type);
+	cfg.setter(obj_dst, shape, scene_file);
+	obj_dst->shape = shape;
 	obj_dst->name = name_obj(type, &scene_file->app->scene.nb_objs[type]);
 	obj_dst->export = cfg.export;
 	obj_dst->material = parse_material(scene_file);

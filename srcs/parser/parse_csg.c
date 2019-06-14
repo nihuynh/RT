@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_csg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:28:45 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 02:14:09 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_btree
 }
 
 void
-	csg_set(void *csg, t_parse_txt *scene_file)
+	csg_set(t_obj *obj, void *csg, t_parse_txt *scene_file)
 {
 	t_csg		*pcsg;
 
@@ -81,4 +81,8 @@ void
 	pcsg->origin = parse_vector("origin(", scene_file);
 	pcsg->n = parse_vector("normal(", scene_file);
 	pcsg->root = csg_tree_parse(scene_file);
+	obj->pos = &pcsg->origin;
+	obj->x = &pcsg->x;
+	obj->n = &pcsg->n;
+	obj->z = &pcsg->z;
 }

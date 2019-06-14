@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 01:29:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 02:12:47 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "parse.h"
 
 void
-	sphere_set(void *sphere, t_parse_txt *scene_file)
+	sphere_set(t_obj *obj, void *sphere, t_parse_txt *scene_file)
 {
 	t_sphere	*psphere;
 
@@ -26,10 +26,11 @@ void
 	psphere = sphere;
 	psphere->origin = parse_vector("origin(", scene_file);
 	psphere->radius = parse_fval("radius(", scene_file);
+	obj->pos = &psphere->origin;
 }
 
 void
-	plane_set(void *plane, t_parse_txt *scene_file)
+	plane_set(t_obj *obj, void *plane, t_parse_txt *scene_file)
 {
 	t_plane		*pplane;
 
@@ -44,10 +45,14 @@ void
 	pplane->size = parse_vec2("limit(", scene_file);
 	vec3_normalize(&pplane->n);
 	create_orthobasis_from_y_axis(pplane->n, &pplane->x, &pplane->y);
+	obj->pos = &pplane->origin;
+	obj->x = &pplane->x;
+	obj->n = &pplane->n;
+	obj->z = &pplane->y;
 }
 
 void
-	cylinder_set(void *cylinder, t_parse_txt *scene_file)
+	cylinder_set(t_obj *obj, void *cylinder, t_parse_txt *scene_file)
 {
 	t_cylinder	*pcylinder;
 
@@ -63,10 +68,14 @@ void
 	pcylinder->size = parse_fval("size(", scene_file);
 	vec3_normalize(&pcylinder->n);
 	create_orthobasis_from_y_axis(pcylinder->n, &pcylinder->x, &pcylinder->z);
+	obj->pos = &pcylinder->origin;
+	obj->x = &pcylinder->x;
+	obj->n = &pcylinder->n;
+	obj->z = &pcylinder->z;
 }
 
 void
-	cone_set(void *cone, t_parse_txt *scene_file)
+	cone_set(t_obj *obj, void *cone, t_parse_txt *scene_file)
 {
 	t_cone		*pcone;
 
@@ -82,6 +91,10 @@ void
 	pcone->size = parse_fval("size(", scene_file);
 	vec3_normalize(&pcone->n);
 	create_orthobasis_from_y_axis(pcone->n, &pcone->x, &pcone->z);
+	obj->pos = &pcone->origin;
+	obj->x = &pcone->x;
+	obj->n = &pcone->n;
+	obj->z = &pcone->z;
 }
 
 void

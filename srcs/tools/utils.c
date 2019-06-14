@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 19:19:20 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 02:24:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,40 +76,4 @@ void
 		ft_strdel(&line);
 	}
 	close(fd);
-}
-
-t_pt3	*get_pos(t_obj *obj)
-{
-	t_plane		*plane;
-	t_sphere	*sphere;
-	t_cone		*cone;
-	t_cylinder	*cyl;
-	t_csg		*csg;
-
-	if (obj->type == 0)
-	{
-		plane = obj->shape;
-		return (&plane->origin);
-	}
-	else if (obj->type == 1)
-	{
-		sphere = obj->shape;
-		return (&sphere->origin);
-	}
-	else if (obj->type == 2)
-	{
-		cone = obj->shape;
-		return (&cone->origin);
-	}
-	else if (obj->type == 3)
-	{
-		cyl = obj->shape;
-		return (&cyl->origin);
-	}
-	else if (obj->type == 4)
-	{
-		csg = obj->shape;
-		return (&csg->origin);
-	}
-	return (NULL);
 }

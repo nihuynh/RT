@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 14:53:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 02:20:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,13 @@ void
 */
 
 void
-	obj_set(t_obj *obj, int type, void *shape)
+	obj_set(t_obj *obj, int type)
 {
 	t_objset obj_cfg;
 
 	ft_bzero(obj, sizeof(t_obj));
 	init_obj_cfg(type, &obj_cfg);
 	obj->type = type;
-	obj->shape = shape;
 	obj->f_inter = obj_cfg.f_inter;
 	obj->f_gui = obj_cfg.f_gui;
 	obj->find_normal = obj_cfg.find_normal;

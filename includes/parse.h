@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 15:11:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 02:20:00 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct	s_parse
 {
 	char		*printout;
 	size_t		content_size;
-	void		(*setter) (void*, t_parse_txt*);
+	void		(*setter) (t_obj*, void*, t_parse_txt*);
 	void		(*export) (int, void*);
 }				t_parse;
 
@@ -140,13 +140,13 @@ char			*get_args_after_key(t_parse_txt *scene_file, const char *key);
 ** Setters :
 */
 
-void			obj_set(t_obj *obj, int type, void *shape);
+void			obj_set(t_obj *obj, int type);
 void			light_set(t_light *light, t_parse_txt *scene_file);
-void			cone_set(void *cone, t_parse_txt *scene_file);
-void			cylinder_set(void *cylinder, t_parse_txt *scene_file);
-void			plane_set(void *plane, t_parse_txt *scene_file);
-void			sphere_set(void *sphere, t_parse_txt *scene_file);
-void			csg_set(void *root, t_parse_txt *scene_file);
+void			cone_set(t_obj *obj, void *cone, t_parse_txt *scene_file);
+void			cylinder_set(t_obj *obj, void *cylinder, t_parse_txt *scene_file);
+void			plane_set(t_obj *obj, void *plane, t_parse_txt *scene_file);
+void			sphere_set(t_obj *obj, void *sphere, t_parse_txt *scene_file);
+void			csg_set(t_obj *obj, void *root, t_parse_txt *scene_file);
 
 /*
 ** CSG :

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 00:46:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 02:21:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void
 	init_parse_cfg(type, &cfg);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
+	obj_set(&new, type);
 	(get_built_func(type)).setter(shape);
-	obj_set(&new, type, shape);
+	new.shape = shape;
 	new.export = cfg.export;
 	tmp = ft_lstgetelt(app->lst_mat, &matcmp, "white plastic");
 	new.material = *tmp;
