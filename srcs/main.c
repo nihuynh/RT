@@ -6,10 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 18:22:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 07:58:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <time.h>
 #include "rt.h"
 #include "libft.h"
 #include "config.h"
@@ -51,6 +53,23 @@ t_data
 	return (app);
 }
 
+t_scene_name
+	*pick_rand(t_list *list_scenes)
+{
+	t_list			*node;
+	unsigned int	scene_idx;
+
+	srand(time(NULL));
+	scene_idx = rand() % ft_lstlen(list_scenes);
+	node = ft_lstat(list_scenes, scene_idx);
+	if (node == NULL)
+	{
+		ft_printf("fk = %d\nfk_len = %d\n", scene_idx, ft_lstlen(list_scenes));
+		ft_error(__func__, __LINE__);
+	}
+	return (node->content);
+}
+
 void
 	interactive(int ac, char **av)
 {
@@ -62,7 +81,7 @@ void
 	{
 		if (app->lst_scenes == NULL)
 			ft_error(__func__, __LINE__);
-		default_scene = app->lst_scenes->content;
+		default_scene = pick_rand(app->lst_scenes);
 		load_scene(app, default_scene->dir);
 	}
 	else

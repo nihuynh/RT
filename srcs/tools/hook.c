@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 03:33:18 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:39:45 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 07:28:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,9 @@
 #include "t_gui.h"
 #include "t_data.h"
 #include "interface.h"
+#include "SDL_opengl.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
-#if defined(__APPLE__)
-# define GL_SILENCE_DEPRECATION
-# include <OpenGL/gl.h>
-#else
-# include <GL/gl.h>
-#endif
 
 static inline void
 	hook_render_to_gui(t_gui *gui, SDL_Window *window)

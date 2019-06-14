@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 21:14:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 07:27:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
 #include "config.h"
-#if defined(__APPLE__)
-# define GL_SILENCE_DEPRECATION
-# include <OpenGL/gl.h>
-#else
-# include <GL/gl.h>
-#endif
+#include "SDL_opengl.h"
 
 void	ui_render(t_gui *gui)
 {

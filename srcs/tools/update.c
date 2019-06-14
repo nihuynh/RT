@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:16:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/11 19:42:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 07:28:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "librt.h"
-#if defined(__APPLE__)
-# define GL_SILENCE_DEPRECATION
-# include <OpenGL/gl.h>
-#else
-# include <GL/gl.h>
-#endif
+#include "SDL_opengl.h"
 
 void	update(void *arg)
 {

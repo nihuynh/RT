@@ -33,6 +33,7 @@
 		"fterror.h": "c",
 		"ftmem.h": "c",
 		"t_gui.h": "c",
-		"animate.h": "c"
+		"animate.h": "c",
+		"ftlist.h": "c"
 	}
 }
