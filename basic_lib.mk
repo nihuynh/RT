@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/24 00:52:58 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/02 16:36:47 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/14 18:01:22 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 # exemple : lib/libft/libft.a
 # LIB_DEP_CLEAN is the target to clean the libs.
 
-INC				+=	-I includes $(foreach word,$(LIB_DEP),-I $(dir $(word))includes)
+INC				+=	$(foreach word,$(LIB_DEP),-I $(dir $(word))includes)
 LIB_LINK		:=	$(foreach word,$(LIB_DEP),-L $(dir $(word)) -l$(patsubst lib%.a,%,$(notdir $(word))))
 LIB_DEP_CLEAN	:=  $(foreach word,$(LIB_DEP),$(patsubst %.a,%,$(word))_clean)
 ifndef VERBOSE

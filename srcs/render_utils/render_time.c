@@ -6,12 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 15:32:58 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 04:25:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 14:20:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
-#include "libft.h"
 
 void	push_render_time(t_sdl *sdl, float time_frame_ms)
 {
@@ -21,7 +20,6 @@ void	push_render_time(t_sdl *sdl, float time_frame_ms)
 	while (++idx < P_TIME_LEN - 1)
 		sdl->render_time[idx] = sdl->render_time[idx + 1];
 	sdl->render_time[idx] = time_frame_ms;
-	ft_printf("Frame took %f ms to render\n", time_frame_ms);
 }
 
 void	push_gui_time(t_sdl *sdl, long new_frame)

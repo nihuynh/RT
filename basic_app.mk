@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/24 01:23:21 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/11 00:34:05 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/14 18:32:51 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ aclean: ## Clean the app bundle.
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mCleaning $(NAME).app $(OKLOGO)"
 .PHONY: aclean
 
-built: $(NAME)  aclean ## Built the app bundle (Only on mac).
+app: $(NAME)  aclean ## Built the app bundle (Only on mac).
 	mkdir -p "./built/$(NAME).app"/Contents/{MacOS,Resources} 2> /dev/null || true
 	mkdir "./built/$(NAME).app"/Contents/MacOS/resources 2> /dev/null || true
 	cp $(CONTENT_FILES) "./built/$(NAME).app/Contents/"
@@ -31,4 +31,4 @@ built: $(NAME)  aclean ## Built the app bundle (Only on mac).
 	cp ./$(NAME) "./built/$(NAME).app/Contents/MacOS/binary"
 	open built/
 	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $(NAME).app $(OKLOGO)"
-.PHONY: built
+.PHONY: app

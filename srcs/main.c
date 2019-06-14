@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 07:58:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 15:00:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,8 @@ t_scene_name
 	srand(time(NULL));
 	scene_idx = rand() % ft_lstlen(list_scenes);
 	node = ft_lstat(list_scenes, scene_idx);
-	if (node == NULL)
-	{
-		ft_printf("fk = %d\nfk_len = %d\n", scene_idx, ft_lstlen(list_scenes));
+	if (!(node = ft_lstat(list_scenes, scene_idx)))
 		ft_error(__func__, __LINE__);
-	}
 	return (node->content);
 }
 
