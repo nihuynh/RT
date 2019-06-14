@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 03:14:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 19:15:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,12 @@ void
 	{
 		anim = lst->content;
 		*anim->obj->pos = anim->origin;
+		if (anim->obj->n)
+		{
+			*anim->obj->x = anim->x;
+			*anim->obj->n = anim->n;
+			*anim->obj->z = anim->z;
+		}
 		lst = lst->next;
 	}
 	app->gui.animated_frames = 0;

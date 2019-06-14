@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 06:02:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 18:43:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
 	obj_set(&new, type);
-	(get_built_func(type)).setter(shape);
+	(get_built_func(type)).setter(&new, shape);
 	new.shape = shape;
 	new.export = cfg.export;
 	tmp = ft_lstgetelt(app->lst_mat, &matcmp, "white plastic");

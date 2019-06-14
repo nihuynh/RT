@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 02:20:00 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 18:43:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct	s_objset
 
 typedef struct	s_built
 {
-	void		(*setter) (void*);
+	void		(*setter) (t_obj*, void*);
 }				t_built;
 
 /*
@@ -115,10 +115,10 @@ t_vec2			parse_vec2(char *key, t_parse_txt *scene_file);
 ** New object
 */
 
-void			sphere_new(void *res);
-void			plane_new(void *res);
-void			cylinder_new(void *res);
-void			cone_new(void *res);
+void			sphere_new(t_obj *obj, void *res);
+void			plane_new(t_obj *obj, void *res);
+void			cylinder_new(t_obj *obj, void *res);
+void			cone_new(t_obj *obj, void *res);
 char			*name_obj(int type, int *nb);
 
 /*

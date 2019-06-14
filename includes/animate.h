@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 03:10:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 18:53:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ struct s_anim
 	int		type;
 	t_obj	*obj;
 	t_pt3	origin;
+	t_vec3	x;
+	t_vec3	n;
+	t_vec3	z;
 	void	*res;
 	void	(*anim_obj)(t_anim*);
 	void	(*ui_anim)(t_anim*, int);

@@ -6,24 +6,28 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:36:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/20 14:54:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 18:43:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
 void
-	sphere_new(void *res)
+	sphere_new(t_obj *obj, void *res)
 {
 	t_sphere	*sphere;
 
 	sphere = res;
 	sphere->origin = (t_pt3){0, 0, 0};
 	sphere->radius = 10;
+	obj->pos = &sphere->origin;
+	obj->x = NULL;
+	obj->n = NULL;
+	obj->z = NULL;
 }
 
 void
-	plane_new(void *res)
+	plane_new(t_obj *obj, void *res)
 {
 	t_plane		*plane;
 
@@ -33,10 +37,14 @@ void
 	plane->size = (t_vec2){50, 50};
 	plane->x = (t_vec3){1, 0, 0};
 	plane->y = (t_vec3){0, 1, 0};
+	obj->pos = &plane->origin;
+	obj->x = &plane->x;
+	obj->n = &plane->n;
+	obj->z = &plane->y;
 }
 
 void
-	cylinder_new(void *res)
+	cylinder_new(t_obj *obj, void *res)
 {
 	t_cylinder	*cylinder;
 
@@ -45,10 +53,14 @@ void
 	cylinder->n = (t_vec3){0, 1, 0};
 	cylinder->radius = 10;
 	cylinder->size = 0;
+	obj->pos = &cylinder->origin;
+	obj->x = &cylinder->x;
+	obj->n = &cylinder->n;
+	obj->z = &cylinder->z;
 }
 
 void
-	cone_new(void *res)
+	cone_new(t_obj *obj, void *res)
 {
 	t_cone	*cone;
 
@@ -57,4 +69,8 @@ void
 	cone->n = (t_vec3){0, 1, 0};
 	cone->theta = 25;
 	cone->size = 0;
+	obj->pos = &cone->origin;
+	obj->x = &cone->x;
+	obj->n = &cone->n;
+	obj->z = &cone->z;
 }
