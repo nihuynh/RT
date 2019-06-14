@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 19:15:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 19:30:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,36 +52,6 @@ static inline void
 	anim->res = rotate;
 	anim->anim_obj = &anim_rotate;
 	anim->ui_anim = &ui_rotate;
-}
-
-void
-	anim_free(t_anim *anim)
-{
-	t_translate	*translate;
-	t_rotate	*rotate;
-	t_orbit		*orbit;
-
-	if (anim->type == 0)
-		return ;
-	else if (anim->type == 1)
-	{
-		translate = anim->res;
-		if (translate)
-			free(translate);
-	}
-	else if (anim->type == 2)
-	{
-		orbit = anim->res;
-		if (orbit)
-			free(orbit);
-	}
-	else if (anim->type == 3)
-	{
-		rotate = anim->res;
-		if (rotate)
-			free(rotate);
-	}
-	anim->res = NULL;
 }
 
 void

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 18:54:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/14 19:30:00 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,14 @@ void	anim_add_another(t_anim *anim)
 	new->origin = *anim->obj->pos;
 	new->next = NULL;
 	anim->next = new;
+}
+
+void
+	anim_free(t_anim *anim)
+{
+	if (anim->type == 0)
+		return ;
+	else
+		free(anim->res);
+	anim->res = NULL;
 }
