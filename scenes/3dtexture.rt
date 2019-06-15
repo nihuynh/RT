@@ -50,3 +50,6 @@ content
 		mat(brick)
 	}
 }
+animation
+{
+}

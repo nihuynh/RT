@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 02:20:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/15 14:32:38 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,17 @@ void
 	void		*shape;
 
 	check_opening_bracket(scene_file);
+	obj_set(obj_dst, type);
 	init_parse_cfg(type, &cfg);
 	if (DEBUG)
 		ft_putendl(cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
-	obj_set(obj_dst, type);
+	obj_dst->name = parse_str(scene_file, "name(");
 	cfg.setter(obj_dst, shape, scene_file);
 	obj_dst->shape = shape;
-	obj_dst->name = name_obj(type, &scene_file->app->scene.nb_objs[type]);
+	if (!obj_dst->name)
+		obj_dst->name = name_obj(type, &scene_file->app->scene.nb_objs[type]);
 	obj_dst->export = cfg.export;
 	obj_dst->material = parse_material(scene_file);
 	check_closing_bracket(scene_file);

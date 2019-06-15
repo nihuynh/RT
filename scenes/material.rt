@@ -68,3 +68,6 @@ content
 		mat(alloy)
 	}
 }
+animation
+{
+}

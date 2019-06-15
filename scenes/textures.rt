@@ -267,3 +267,6 @@ content
 		uv_offset(0 0)
 	}
 }
+animation
+{
+}

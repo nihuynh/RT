@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_objects.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 19:32:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 20:51:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,22 @@ static inline void
 void
 	ui_object(t_data *app, t_obj *obj)
 {
+	char buff[20];
+
 	if (obj->animated == false)
 		if (igButton("Add To Animation List", (ImVec2){0, 0}))
 			anim_add(app, obj);
+	ft_strlcpy(buff, obj->name, sizeof(buff));
+	if (igInputText("Name", buff, sizeof(buff),
+		ImGuiInputTextFlags_EnterReturnsTrue, NULL, NULL))
+	{
+		if (ft_strlen(buff) > 0)
+		{
+			free(obj->name);
+			if (!(obj->name = ft_strdup(buff)))
+				ft_error(__func__, __LINE__);
+		}
+	}
 	obj->f_gui(app, obj->shape);
 	material(app, obj);
 }

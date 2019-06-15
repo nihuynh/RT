@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 18:53:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/15 15:47:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ struct s_anim
 	void	*res;
 	void	(*anim_obj)(t_anim*);
 	void	(*ui_anim)(t_anim*, int);
+	void	(*export)(int, t_anim*);
+	void	(*parse)(void*, void*);
 	t_anim	*next;
 };
 
@@ -46,7 +48,6 @@ typedef struct s_translate
 typedef struct s_orbit
 {
 	t_obj	*obj_center;
-	t_pt3	center;
 	t_vec3	axis;
 	float	deg;
 }			t_orbit;
@@ -59,5 +60,11 @@ void	ui_orbit(t_anim *anim, int n);
 void	ui_translate(t_anim *anim, int n);
 void	ui_rotate(t_anim *anim, int n);
 void	anim_free(t_anim *anim);
+void	export_rotate(int fd, t_anim *anim);
+void	export_orbit(int fd, t_anim *anim);
+void	export_translate(int fd, t_anim *anim);
+void	parse_rotate(void *parse, void *res);
+void	parse_translate(void *parse, void *res);
+void	parse_orbit(void *parse, void *res);
 
 #endif

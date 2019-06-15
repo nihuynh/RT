@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/14 06:04:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/15 21:54:14 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ static inline void
 		err_set(scene_file, __func__, __LINE__, __FILE__);
 		err_exit(ERR_P_CONTENT, scene_file);
 	}
+	if (ft_strstr(get_curr_line(scene_file), "animation"))
+		parse_anim(scene_file);
 }
 
 /**

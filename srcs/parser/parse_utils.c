@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 04:18:50 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 04:31:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/15 14:27:51 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,15 @@ int
 	tex = content;
 	ckey = key;
 	return (!ft_strncasecmp(tex->name, ckey, ft_strlen(tex->name)));
+}
+
+int
+	obj_cmp_key(void *content, void *key)
+{
+	t_obj	*obj;
+	char	*ckey;
+
+	obj = content;
+	ckey = key;
+	return (!ft_strncmp(obj->name, ckey, ft_strlen(obj->name)));
 }

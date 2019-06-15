@@ -38,3 +38,6 @@ content
 		mat(Brick)
 	}
 }
+animation
+{
+}

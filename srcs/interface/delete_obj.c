@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   delete_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 23:34:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/15 21:32:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "parse.h"
 #include "libft.h"
+#include "interface.h"
 
 void
 	delete_obj(t_data *app)
@@ -22,6 +23,11 @@ void
 	to_del = ft_lstgetnode_by_content_ptr(app->scene.lst_obj, app->gui.obj_set);
 	if (to_del == NULL)
 		ft_error(__func__, __LINE__);
+	if (app->gui.obj_set->anim)
+	{
+		app->gui.anim_set = app->gui.obj_set->anim;
+		anim_delete(app);
+	}
 	app->scene.lst_obj = ft_lstpop(app->scene.lst_obj, to_del, &del_obj);
 	app->gui.obj_set = NULL;
 }

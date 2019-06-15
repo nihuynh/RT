@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 01:05:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/15 14:39:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,19 @@ void
 	light.name = name_obj(5, &scene_file->app->scene.nb_light);
 	ft_lstpushnew(&scene_file->app->scene.lst_light, &light, sizeof(t_light));
 	check_closing_bracket(scene_file);
+}
+
+char
+	*parse_str(t_parse_txt *scene_file, char *key)
+{
+	char	*line;
+	char	*name;
+	size_t	n;
+
+	if (!(	line = get_args_after_key(scene_file, key)))
+		return (NULL);
+	n = ft_strclen(line, ')');
+	if (!(name = ft_strndup(line, n)))
+		ft_error(__func__, __LINE__);
+	return (name);
 }

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 19:30:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/15 15:48:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static inline void
 	anim->res = translate;
 	anim->anim_obj = &anim_translate;
 	anim->ui_anim = &ui_translate;
+	anim->export = &export_translate;
+	anim->parse = &parse_translate;
 }
 
 static inline void
@@ -39,6 +41,9 @@ static inline void
 	anim->res = orbit;
 	anim->anim_obj = &anim_orbit;
 	anim->ui_anim = &ui_orbit;
+	anim->export = &export_orbit;
+	anim->parse = &parse_orbit;
+
 }
 
 static inline void
@@ -52,6 +57,8 @@ static inline void
 	anim->res = rotate;
 	anim->anim_obj = &anim_rotate;
 	anim->ui_anim = &ui_rotate;
+	anim->export = &export_rotate;
+	anim->parse = &parse_rotate;
 }
 
 void

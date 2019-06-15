@@ -77,3 +77,6 @@ content
 		uv_offset(0.000 0.000)
 	}
 }
+animation
+{
+}

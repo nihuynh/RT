@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 02:09:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/15 21:23:21 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ struct			s_obj
 	t_vec3		*n;
 	t_vec3		*z;
 	bool		animated;
+	void		*anim;
 	void		(*f_inter) (t_inter*, t_obj*);
 	void		(*find_normal) (t_inter*);
 	t_vec3		(*get_uv) (t_inter*);

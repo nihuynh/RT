@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 07:27:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 22:10:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	ui_render(t_gui *gui)
 		err_win(gui);
 	if (gui->stats_open)
 		stats_win(gui);
-	if (gui->load_open)
-		load_win(gui);
 	if (gui->load_open)
 		load_win(gui);
 	if (gui->export_open)

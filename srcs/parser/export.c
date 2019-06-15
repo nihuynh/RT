@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 05:29:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/14 22:29:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static inline void
 
 	obj = node->content;
 	dprintf(fd, "\tobject(%s)\n\t{\n", get_obj_str(obj->type));
+	dprintf(fd, "\t\tname(%s)\n", obj->name);
 	obj->export(fd, obj->shape);
 	export_material(fd, &obj->material);
 	write(fd, "\t}\n", 3);
@@ -82,6 +83,7 @@ int
 	}
 	export_camera(fd, &app->cam, app->settings.amb_light);
 	export_content(fd, &app->scene);
+	export_animation(fd, app->scene.lst_anim);
 	close(fd);
 	setlocale(LC_NUMERIC, NULL);
 	return (0);

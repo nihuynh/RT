@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/14 19:10:46 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/15 21:20:09 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,10 @@ INTERFACE	:=	delete_obj.c screen_manager.c ui_lists.c ui_menu.c				\
 				ui_selector.c ui_render_settings.c ui_anim_toolbox.c			\
 				anim_toolbox.c ui_anim.c animate.c anim_set.c
 PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c			\
-				obj_data.c  obj_name.c parse_csg.c parse_shape.c parse_toolbox.c\
-				parse_txt.c parse_utils.c parser.c read.c setter.c
+				obj_data.c  obj_name.c parse_csg.c parse_shape.c parser.c		\
+				parse_txt.c parse_utils.c parse_toolbox.c read.c setter.c		\
+				export_anim.c export_anim_tools.c parse_anim_tools.c			\
+				parse_anim.c
 RENDER		:=	camera.c cast.c filters.c light.c normal_mapping.c				\
 				perturbation.c post_process.c render.c texture_loader.c			\
 				texture_toolbox.c

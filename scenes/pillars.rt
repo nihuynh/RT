@@ -144,3 +144,6 @@ content
 		mat(alloy)
 	}
 }
+animation
+{
+}

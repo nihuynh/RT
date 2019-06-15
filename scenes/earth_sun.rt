@@ -51,3 +51,6 @@ content
 		mat(earth)
 	}
 }
+animation
+{
+}

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 18:43:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/15 14:39:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define ERR_P_CONTENT		"Err : content is missing"
 # define ERR_UNKNWD_OBJ		"Err : Unknown object"
 # define ERR_UNKNWD_MAT		"Err : Unknown material"
+# define ERR_UNKNWD_OBJ_A	"Err : Unknown object in animation list"
+# define ERR_UNKNWD_MOTION	"Err : Unknown motion in animation list"
+# define ERR_MISSING_MOTION	"Err : Missing motion in animation list"
 
 # define ERR_PARSE_VEC3		"Err : [Vec3]	Wrong number of args"
 # define ERR_PARSE_FLOAT	"Err : [Float]	Wrong number of args"
@@ -105,11 +108,13 @@ void			check_closing_bracket(t_parse_txt *scene_file);
 void			create_obj_from_txt(t_obj *obj, t_parse_txt *scene_f, int type);
 void			parse_light(t_parse_txt *scene_file);
 void			parse_shape(t_parse_txt *scene_file, int type);
+void			parse_anim(t_parse_txt *scene_file);
 
 t_color			parse_color(char *key, t_parse_txt *scene_file);
 float			parse_fval(char *key, t_parse_txt *scene_file);
 t_vec3			parse_vector(char *key, t_parse_txt *scene_file);
 t_vec2			parse_vec2(char *key, t_parse_txt *scene_file);
+char			*parse_str(t_parse_txt *scene_file, char *key);
 
 /*
 ** New object
@@ -127,6 +132,7 @@ char			*name_obj(int type, int *nb);
 
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
+int				obj_cmp_key(void *content, void *key);
 void			load_texture(t_texture *tex);
 void			open_textures(t_data *app);
 

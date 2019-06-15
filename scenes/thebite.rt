@@ -58,3 +58,6 @@ content
 		mat(bronze)
 	}
 }
+animation
+{
+}
