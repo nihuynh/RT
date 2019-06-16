@@ -27,18 +27,22 @@ content
 		size(30.000)
 		mat(white plastic)
 	}
-	object(sphere)
+	object(cylinder)
 	{
-		name(Moon Blue)
-		origin(60.000 0.000 0.000)
-		radius(2.000)
+		name(Lien Bleu)
+		origin(0.000 0.000 0.000)
+		normal(1.000 0.000 0.000)
+		radius(1.000)
+		size(40.000)
 		mat(white plastic)
 	}
-	object(sphere)
+	object(cylinder)
 	{
-		name(Moon Red)
-		origin(-60.000 0.000 0.000)
-		radius(2.000)
+		name(Lien Rouge)
+		origin(0.000 0.000 0.000)
+		normal(-1.000 0.000 0.000)
+		radius(1.000)
+		size(40.000)
 		mat(white plastic)
 	}
 	object(plane)
@@ -98,30 +102,6 @@ content
 }
 animation
 {
-	object(Sphere Blue)
-	{
-		motion(orbit)
-		{
-			center_obj(Sphere Center)
-			axis(0.000000 1.000000 0.000000)
-			deg(1.000000)
-		}
-	}
-	object(Moon Blue)
-	{
-		motion(orbit)
-		{
-			center_obj(Sphere Center)
-			axis(0.000000 1.000000 0.000000)
-			deg(1.000000)
-		}
-		motion(orbit)
-		{
-			center_obj(Sphere Blue)
-			axis(0.000000 1.000000 0.000000)
-			deg(5.000000)
-		}
-	}
 	object(Sphere Red)
 	{
 		motion(orbit)
@@ -131,7 +111,7 @@ animation
 			deg(1.000000)
 		}
 	}
-	object(Moon Red)
+	object(Sphere Blue)
 	{
 		motion(orbit)
 		{
@@ -139,11 +119,11 @@ animation
 			axis(0.000000 1.000000 0.000000)
 			deg(1.000000)
 		}
-		motion(orbit)
+	}
+	object(Lien Rouge)
+	{
+		motion(none)
 		{
-			center_obj(Sphere Red)
-			axis(0.000000 1.000000 0.000000)
-			deg(5.000000)
 		}
 	}
 }

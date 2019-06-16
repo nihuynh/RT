@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/15 15:48:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/16 03:41:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,15 @@ void
 	if (anim->type == type)
 		return ;
 	anim_free(anim);
-	anim->type = type;
 	if (type == 0)
-	{
-		anim->anim_obj = NULL;
-		anim->ui_anim = NULL;
-	}
+		ft_bzero(anim, sizeof(t_anim));
 	else if (type == 1)
 		anim_set_translate(anim);
 	else if (type == 2)
 		anim_set_orbit(anim);
 	else if (type == 3)
 		anim_set_rotate(anim);
+	anim->type = type;
 }
 
 void

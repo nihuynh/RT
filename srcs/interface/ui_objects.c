@@ -6,12 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 20:51:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/16 03:26:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
+#include "rt.h"
 
 void
 	ui_light(t_light *light)
@@ -93,6 +94,7 @@ void
 			free(obj->name);
 			if (!(obj->name = ft_strdup(buff)))
 				ft_error(__func__, __LINE__);
+			ft_lstsort(&app->scene.lst_obj, &obj_cmp);
 		}
 	}
 	obj->f_gui(app, obj->shape);

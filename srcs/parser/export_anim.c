@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:54:08 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/15 22:02:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/16 04:07:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static inline void
 	while (anim)
 	{
 		dprintf(fd, "\t\tmotion(%s)\n\t\t{\n", get_anim_str(anim->type));
-		anim->export(fd, anim);
+		if (anim->res)
+			anim->export(fd, anim);
 		write(fd, "\t\t}\n", 4);
 		anim = anim->next;
 	}
@@ -49,7 +50,6 @@ static inline void
 void
 	export_animation(int fd, t_list *lst_anim)
 {
-	ft_lstrev(&lst_anim);
 	write(fd, "animation\n{\n", 12);
 	if (lst_anim)
 		ft_lstiter_arg(fd, lst_anim, &export_anim);

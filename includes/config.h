@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 18:25:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/16 04:12:49 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define MAC			MACB
 # define TEX_DIR		"resources/textures/"
 # define SCENE_DIR		"scenes/"
-# define NEW_SCENE		"new_scene.rt"
+# define NEW_SCENE		"scenes/new_scene.rt"
 
 /*
 ** User def :

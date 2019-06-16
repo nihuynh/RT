@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/15 21:29:38 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/16 03:47:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	anim_add(t_data *app, t_obj *obj)
 	new.next = NULL;
 	ft_lstpushnew(&app->scene.lst_anim, &new, sizeof(new));
 	obj->animated = true;
-	obj->anim = app->scene.lst_anim->content;
 }
 
 void	anim_add_another(t_anim *anim)

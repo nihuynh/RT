@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 22:51:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/15 21:17:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/16 04:08:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	parse_motion(t_parse_txt *scene_file, void *res)
 			anim = anim->next;
 		}
 		anim_set(anim, type);
-		if (anim->res)
+		if (anim->parse)
 			anim->parse(scene_file, anim->res);
 		check_closing_bracket(scene_file);
 	}
@@ -93,4 +93,5 @@ void	parse_anim(t_parse_txt *scene_file)
 		}
 	}
 	check_closing_bracket(scene_file);
+	ft_lstrev(&scene_file->app->scene.lst_anim);
 }
