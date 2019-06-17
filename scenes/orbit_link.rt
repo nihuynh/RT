@@ -122,8 +122,18 @@ animation
 	}
 	object(Lien Rouge)
 	{
-		motion(none)
+		motion(rotate)
 		{
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+	}
+	object(Lien Bleu)
+	{
+		motion(rotate)
+		{
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
 		}
 	}
 }
