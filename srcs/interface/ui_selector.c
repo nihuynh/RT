@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:16:21 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 06:09:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 00:12:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void
 			light_ui(gui);
 		if (igBeginTabItem("Animations", NULL, 0))
 			anim_ui(gui);
-		camera_tab(gui->app);
 		igEndTabBar();
 	}
 }

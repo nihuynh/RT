@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 06:03:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 23:24:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	animate(t_data *app)
 	app->sdl->sub_sample = 1;
 	app->sdl->partial_render = false;
 	app->sdl->needs_render = true;
-	SDL_Delay(50);
 }
 
 void	anim_translate(t_anim *anim)
