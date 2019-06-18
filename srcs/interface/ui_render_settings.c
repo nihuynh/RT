@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:18:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 02:39:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 00:12:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void
 	if (igBeginTabBar("Selector", 0))
 	{
 		render_tab(app);
+		camera_tab(app);
 		scene_tab(app);
 		filter_debug_tab(app);
 		igEndTabBar();

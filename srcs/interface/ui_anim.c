@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 06:31:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 00:05:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static inline void
 	igText("Animated Object Selector");
 	igBeginChild("Objects Selector", (ImVec2){0, 100}, true, 0);
 	lst = gui->app->scene.lst_anim;
+	selected = (gui->app->cam.anim == gui->anim_set);
+	if (gui->app->cam.anim && igSelectable("Camera", selected, 0, (ImVec2){0, 0}))
+	{
+		gui->anim_set = gui->app->cam.anim;
+		gui->lst_anim_set = NULL;
+	}
 	while (lst)
 	{
 		anim = lst->content;

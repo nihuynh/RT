@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 06:08:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 00:09:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,18 @@ void	anim_delete(t_data *app)
 
 	if (!app->gui.anim_set)
 		return ;
-	ptr = app->scene.lst_anim;
-	if (!(to_del = ft_lstgetnode_by_content_ptr(ptr, app->gui.anim_set)))
-		ft_error(__func__, __LINE__);
-	app->scene.lst_anim = ft_lstpop(app->scene.lst_anim, to_del, &del_anim);
+	else if (app->gui.anim_set == app->cam.anim)
+	{
+		del_anim(app->gui.anim_set, 0);
+		app->cam.anim = NULL;
+	}
+	else
+	{
+		ptr = app->scene.lst_anim;
+		if (!(to_del = ft_lstgetnode_by_content_ptr(ptr, app->gui.anim_set)))
+			ft_error(__func__, __LINE__);
+		app->scene.lst_anim = ft_lstpop(app->scene.lst_anim, to_del, &del_anim);
+	}
 	app->gui.anim_set = NULL;
 }
 

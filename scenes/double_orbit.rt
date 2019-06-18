@@ -43,7 +43,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane 0)
+		name(Moon Red)
 		origin(0.000 -30.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(0.000 0.000)

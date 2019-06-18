@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 02:36:46 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 04:22:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 00:15:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@ void	camera_tab(t_data *app)
 		if (igSliderFloat3("Normal (X Y Z)", &tmp.dir.x, -1, 1, "%g", 1))
 			cam->dir = tmp.dir;
 		igSeparator();
-		if (app->cam.anim)
-			ui_camera_anim(app->cam.anim, size);
-		else if (igButton("Add Animation", (ImVec2){size.x / 3, 0}))
+		if (!app->cam.anim && igButton("Add Animation",
+			(ImVec2){size.x / 3, 0}))
 			anim_add_camera(&app->cam);
 		igEndTabItem();
 	}
