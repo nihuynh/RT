@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 02:54:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 02:22:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static inline void
 		anim = lst->content;
 		selected = (anim == gui->anim_set);
 		if (igSelectable(anim->obj->name, selected, 0, (ImVec2){0, 0}))
+		{
 			gui->anim_set = anim;
+			gui->lst_anim_set = lst;
+		}
 		lst = lst->next;
 	}
 	igEndChild();
@@ -80,7 +83,15 @@ static inline void
 	igSameLine(0, size.x / 6);
 	if (igButton("Reset Objects Position", (ImVec2){size.x / 3, 0}))
 		anim_reset(gui->app);
+	igSpacing();
+	igSameLine(size.x / 12, 0);
+	if (igButton("Move Animation Down", (ImVec2){size.x / 3, 0}))
+		ft_lstmovedown(&gui->app->scene.lst_anim, gui->lst_anim_set);
+	igSameLine(0, size.x / 6);
+	if (igButton("Move Animation Up", (ImVec2){size.x / 3, 0}))
+		ft_lstmoveup(&gui->app->scene.lst_anim, gui->lst_anim_set);
 	igSeparator();
+
 }
 
 void	anim_ui(t_gui *gui)
