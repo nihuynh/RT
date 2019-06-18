@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:06 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 05:35:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/18 23:48:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static inline t_vec2
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
 	if (det < 0)
 	{
-		res.x = HUGEVAL;
-		res.y = HUGEVAL;
+		res.x = INFINITY;
+		res.y = INFINITY;
 		return (res);
 	}
 	res.x = (-BBBB + sqrt(det)) / (2 * AAAA);
@@ -56,11 +56,11 @@ static inline float
 	}
 	else
 	{
-		dist.x = HUGEVAL;
-		dist.y = HUGEVAL;
+		dist.x = INFINITY;
+		dist.y = INFINITY;
 	}
 	if (dist.x >= inter->dist || dist.x < 0)
-		return (HUGEVAL);
+		return (INFINITY);
 	inter->hit_pts = dist;
 	return (dist.x);
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 09:53:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/19 01:13:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ float
 	pattern_strips(float x, float y)
 {
 	float	pattern;
-	float	angle;
+	float	pos_xy;
 
-	angle = 45 * DEG_TO_RAD;
-	pattern = x * cosf(angle) - y * sinf(angle);
-	if (pattern < 0)
-		pattern -= 0.5f;
-	pattern = fabsf(fmodf(pattern, 1)) < 0.5f;
+	pos_xy = x + y;
+	pattern = ft_btwf(pos_xy, 0.0f, 0.5f) || ft_btwf(pos_xy, 1.0f, 1.5f);
 	return (pattern);
+
 }
 
 t_color

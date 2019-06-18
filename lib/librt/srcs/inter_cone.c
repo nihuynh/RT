@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 05:46:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/18 23:48:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline float
 	if (cone->size == 0)
 		return (inter->hit_pts.x);
 	i = -1;
-	dst_final = HUGEVAL;
+	dst_final = INFINITY;
 	while (++i < 2)
 	{
 		inter_pt.x = inter->ray.origin.x + dist[i] * inter->ray.dir.x;
@@ -37,7 +37,7 @@ static inline float
 		if (scale < cone->size && scale >= 0)
 			return (inter->hit_pts.x);
 	}
-	return (HUGEVAL);
+	return (INFINITY);
 }
 
 static inline t_vec2
@@ -60,8 +60,8 @@ static inline t_vec2
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
 	if (det < 0)
 	{
-		res.x = HUGEVAL;
-		res.y = HUGEVAL;
+		res.x = INFINITY;
+		res.y = INFINITY;
 		return (res);
 	}
 	res.x = (-BBBB + sqrt(det)) / (2 * AAAA);
@@ -91,11 +91,11 @@ static inline float
 	}
 	else
 	{
-		dist.x = HUGEVAL;
-		dist.y = HUGEVAL;
+		dist.x = INFINITY;
+		dist.y = INFINITY;
 	}
 	if (dist.x >= inter->dist || dist.x < 0)
-		return (HUGEVAL);
+		return (INFINITY);
 	inter->hit_pts = dist;
 	return (inter_finite(inter, cone, limit));
 }

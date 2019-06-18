@@ -35,7 +35,7 @@ static inline float
 		if (scale < cyl->size && scale >= 0)
 			return (inter->hit_pts.x);
 	}
-	return (HUGEVAL);
+	return (INFINITY);
 }
 
 static inline t_vec2
@@ -57,8 +57,8 @@ static inline t_vec2
 	det = BBBB * BBBB - 4 * AAAA * CCCC;
 	if (det < 0)
 	{
-		res.x = HUGEVAL;
-		res.y = HUGEVAL;
+		res.x = INFINITY;
+		res.y = INFINITY;
 		return (res);
 	}
 	res.x = (-BBBB + sqrt(det)) / (2 * AAAA);
@@ -88,11 +88,11 @@ static inline float
 	}
 	else
 	{
-		dist.x = HUGEVAL;
-		dist.y = HUGEVAL;
+		dist.x = INFINITY;
+		dist.y = INFINITY;
 	}
 	if (dist.x >= inter->dist || dist.x < 0)
-		return (HUGEVAL);
+		return (INFINITY);
 	inter->hit_pts = dist;
 	return (inter_finite(inter, cyl, limit));
 }

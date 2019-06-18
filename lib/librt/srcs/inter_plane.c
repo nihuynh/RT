@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/07 16:55:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/18 23:48:37 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static inline float
 
 	dn = vec3_dot(&ray->dir, &plane->n);
 	if (dn > -EPSILON && dn < EPSILON)
-		return (HUGEVAL);
+		return (INFINITY);
 	vec3_sub(&sub, &ray->origin, &plane->origin);
 	nom = -vec3_dot(&sub, &plane->n);
 	if ((dn > 0 && nom < 0) || (dn < 0 && nom > 0))
-		return (HUGEVAL);
+		return (INFINITY);
 	return (nom / dn);
 }
 
