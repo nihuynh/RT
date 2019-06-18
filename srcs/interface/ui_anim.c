@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 02:22:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 02:25:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static inline void
 	if (igButton("Move Animation Up", (ImVec2){size.x / 3, 0}))
 		ft_lstmoveup(&gui->app->scene.lst_anim, gui->lst_anim_set);
 	igSeparator();
-
 }
 
 void	anim_ui(t_gui *gui)
