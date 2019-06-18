@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:16:21 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 02:35:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 06:09:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static inline void
 	if (igButton("Add Object", (ImVec2){size.x / 3, 0}))
 		gui->add_obj_open = true;
 	igSameLine(0, size.x / 6);
-	if (igButton("Delete Object", (ImVec2){size.x / 3, 0}))
+	if (igButton("Delete Object", (ImVec2){size.x / 3, 0}) && gui->obj_set)
 		gui->del_obj_open = true;
 	igSpacing();
 	igSeparator();
@@ -92,7 +92,7 @@ static inline void
 	if (igButton("Add Light", (ImVec2){size.x / 3, 0}))
 		new_light(gui->app);
 	igSameLine(0, size.x / 6);
-	if (igButton("Delete Light", (ImVec2){size.x / 3, 0}))
+	if (igButton("Delete Light", (ImVec2){size.x / 3, 0}) && gui->light_set)
 		gui->del_light_open = true;
 	igSpacing();
 	igSeparator();

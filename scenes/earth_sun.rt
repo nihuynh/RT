@@ -1,7 +1,7 @@
 camera
 {
-	origin(1510.463 -73.061 1659.442)
-	direction(-0.306 -0.065 -0.950)
+	origin(495.669 266.657 269.655)
+	direction(-0.566 -0.531 -0.630)
 	amb_light(0.100 0.100 0.100)
 }
 content
@@ -9,29 +9,21 @@ content
 	object(light)
 	{
 		color(1.000 1.000 1.000)
-		origin(149597.000 -30.000 0.000)
-		intensity(10000000000.000)
+		origin(0.000 0.000 0.000)
+		intensity(50000.000)
 	}
 	object(sphere)
 	{
-		origin(149597.000 -30.000 0.000)
-		radius(7000.000)
-		texture(sunmap.jpg)
-		color_diffuse(1.000 1.000 1.000)
-		color_specular(1.000 0.000 0.000)
-		color_tex(0.000 0.000 0.000)
-		spec_idx(0.300)
-		spec_power(100.000)
-		refraction_color(1.000 1.000 1.000)
-		reflection_color(0.000 0.000 0.000)
-		refraction_idx(1.000)
-		uv_scale(1.000 1.000)
-		uv_offset(0.000 0.000)
+		name(Earth)
+		origin(400.000 0.000 0.000)
+		radius(20.000)
+		mat(earth)
 	}
 	object(sphere)
 	{
-		origin(1622.000 -30.000 0.000)
-		radius(17.370)
+		name(Moon)
+		origin(300.000 0.000 0.000)
+		radius(1.000)
 		texture(2k_moon.jpg)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
@@ -46,11 +38,46 @@ content
 	}
 	object(sphere)
 	{
-		origin(0.000 -30.000 0.000)
-		radius(63.710)
-		mat(earth)
+		name(Sun)
+		origin(0.000 0.000 0.000)
+		radius(100.000)
+		texture(sunmap.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 0.000 0.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(1.000 1.000 1.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(1.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
 	}
 }
 animation
 {
+	object(Earth)
+	{
+		motion(orbit)
+		{
+			center_obj(Sun)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+	}
+	object(Moon)
+	{
+		motion(orbit)
+		{
+			center_obj(Sun)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+		motion(orbit)
+		{
+			center_obj(Earth)
+			axis(0.000000 1.000000 0.000000)
+			deg(5.000000)
+		}
+	}
 }

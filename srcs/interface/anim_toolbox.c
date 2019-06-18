@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 05:46:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 06:08:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	anim_delete(t_data *app)
 	t_list	*ptr;
 	t_list	*to_del;
 
+	if (!app->gui.anim_set)
+		return ;
 	ptr = app->scene.lst_anim;
 	if (!(to_del = ft_lstgetnode_by_content_ptr(ptr, app->gui.anim_set)))
 		ft_error(__func__, __LINE__);
