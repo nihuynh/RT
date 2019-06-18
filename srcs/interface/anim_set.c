@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/16 03:41:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 04:46:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,27 +76,4 @@ void
 	else if (type == 3)
 		anim_set_rotate(anim);
 	anim->type = type;
-}
-
-void
-	anim_reset(t_data *app)
-{
-	t_list	*lst;
-	t_anim	*anim;
-
-	lst = app->scene.lst_anim;
-	while (lst)
-	{
-		anim = lst->content;
-		*anim->obj->pos = anim->origin;
-		if (anim->obj->n)
-		{
-			*anim->obj->x = anim->x;
-			*anim->obj->n = anim->n;
-			*anim->obj->z = anim->z;
-		}
-		lst = lst->next;
-	}
-	app->gui.animated_frames = 0;
-	app->sdl->needs_render = true;
 }

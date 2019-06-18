@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 22:51:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/17 21:59:06 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 05:40:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ int		get_motion_type(char *key)
 	return (-1);
 }
 
-void	parse_motion(t_parse_txt *scene_file, t_list *lst)
+void	parse_motion(t_parse_txt *scene_file, t_anim *anim)
 {
 	char	*motion;
 	int		type;
-	t_anim	*anim;
 
-	anim = lst->content;
 	while ((motion = parse_str(scene_file, "motion(")))
 	{
 		if ((type = get_motion_type(motion)) == -1)
@@ -58,20 +56,37 @@ void	parse_motion(t_parse_txt *scene_file, t_list *lst)
 	}
 }
 
-void	parse_anim_extend(t_parse_txt *scene_file, char *line)
+void	parse_anim_specials(t_parse_txt *scene_file, char *line)
 {
-	t_obj	*obj;
-
-	check_opening_bracket(scene_file);
-	if (!(obj = ft_lstgetelt(scene_file->app->scene.lst_obj,
-		&obj_cmp_key, line)))
+	if (ft_strncmp(line, "camera", 5) == 0 && scene_file->app->cam.anim == NULL)
+	{
+		anim_add_camera(&scene_file->app->cam);
+		parse_motion(scene_file, scene_file->app->cam.anim);
+		check_closing_bracket(scene_file);
+	}
+	else
 	{
 		err_set(scene_file, __func__, __LINE__, __FILE__);
 		err_exit(ERR_UNKNWD_OBJ_A, scene_file);
 	}
-	anim_add(scene_file->app, obj);
-	parse_motion(scene_file, ft_lstlast(scene_file->app->scene.lst_anim));
-	check_closing_bracket(scene_file);
+}
+
+void	parse_anim_extend(t_parse_txt *scene_file, char *line)
+{
+	t_obj	*obj;
+	t_list	*lst;
+
+	check_opening_bracket(scene_file);
+	if (!(obj = ft_lstgetelt(scene_file->app->scene.lst_obj,
+		&obj_cmp_key, line)))
+		parse_anim_specials(scene_file, line);
+	else
+	{
+		anim_add(scene_file->app, obj);
+		lst = ft_lstlast(scene_file->app->scene.lst_anim);
+		parse_motion(scene_file, lst->content);
+		check_closing_bracket(scene_file);
+	}
 }
 
 void	parse_anim(t_parse_txt *scene_file)

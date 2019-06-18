@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/15 21:23:21 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 02:57:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct	s_cam
 	t_matrix	rotation;
 	float		y_angle;
 	float		x_angle;
+	void		*anim;
 	bool		move_forward;
 	bool		move_backward;
 	bool		strafe_left;

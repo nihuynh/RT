@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/15 14:39:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 05:44:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void			create_obj_from_txt(t_obj *obj, t_parse_txt *scene_f, int type);
 void			parse_light(t_parse_txt *scene_file);
 void			parse_shape(t_parse_txt *scene_file, int type);
 void			parse_anim(t_parse_txt *scene_file);
+void			parse_motion(t_parse_txt *scene_file, t_anim *anim);
 
 t_color			parse_color(char *key, t_parse_txt *scene_file);
 float			parse_fval(char *key, t_parse_txt *scene_file);

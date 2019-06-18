@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/16 03:48:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 04:13:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int
 	}
 	export_camera(fd, &app->cam, app->settings.amb_light);
 	export_content(fd, &app->scene);
-	export_animation(fd, app->scene.lst_anim);
+	export_animation(fd, app);
 	close(fd);
 	setlocale(LC_NUMERIC, NULL);
 	return (0);

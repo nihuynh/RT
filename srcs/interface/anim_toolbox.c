@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 02:54:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 05:46:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ void	anim_add(t_data *app, t_obj *obj)
 	t_anim	new;
 	t_list	*ptr;
 
-	new.type = 0;
+	ft_bzero(&new, sizeof(t_anim));
 	new.obj = obj;
-	new.anim_obj = NULL;
-	new.res = NULL;
-	new.ui_anim = NULL;
 	new.origin = *obj->pos;
+	new.pos = obj->pos;
 	if (obj->n)
 	{
-		new.x = *obj->x;
-		new.n = *obj->n;
-		new.z = *obj->z;
+		new.x = obj->x;
+		new.n = obj->n;
+		new.z = obj->z;
+		new.x_save = *obj->x;
+		new.n_save = *obj->n;
+		new.z_save = *obj->z;
 	}
-	new.next = NULL;
 	ft_lstaddendnew(&app->scene.lst_anim, &new, sizeof(new));
 	obj->animated = true;
 	ptr = ft_lstlast(app->scene.lst_anim);
@@ -57,13 +57,16 @@ void	anim_add_another(t_anim *anim)
 
 	if (!(new = malloc(sizeof(t_anim))))
 		ft_error(__func__, __LINE__);
-	new->type = 0;
+	ft_bzero(new, sizeof(t_anim));
 	new->obj = anim->obj;
-	new->anim_obj = NULL;
-	new->res = NULL;
-	new->ui_anim = NULL;
-	new->origin = *anim->obj->pos;
-	new->next = NULL;
+	new->origin = anim->origin;
+	new->pos = anim->pos;
+	new->x = anim->x;
+	new->n = anim->n;
+	new->z = anim->z;
+	new->x_save = anim->x_save;
+	new->n_save = anim->n_save;
+	new->z_save = anim->z_save;
 	anim->next = new;
 }
 
@@ -75,4 +78,19 @@ void
 	else
 		free(anim->res);
 	anim->res = NULL;
+}
+
+void
+	anim_add_camera(t_cam *cam)
+{
+	t_anim	*new;
+
+	if (!(new = malloc(sizeof(t_anim))))
+		ft_error(__func__, __LINE__);
+	ft_bzero(new, sizeof(t_anim));
+	new->pos = &cam->pos;
+	new->origin = cam->pos;
+	new->n = &cam->dir;
+	new->n_save = cam->dir;
+	cam->anim = new;
 }

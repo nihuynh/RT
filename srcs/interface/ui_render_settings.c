@@ -6,33 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:18:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 13:26:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 02:39:11 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "librt.h"
 #include "config.h"
-
-static inline void
-	camera_tab(t_data *app)
-{
-	t_cam	*cam;
-	t_cam	tmp;
-
-	cam = &app->cam;
-	tmp = *cam;
-	if (igBeginTabItem("Camera", NULL, 0))
-	{
-		igSliderInt("Depth Max", &app->settings.depth_max, 0, 10, NULL);
-		igSliderFloat("FOV", &app->settings.fov, 30, 110, "%g", 1);
-		if (igInputFloat3("Origin (X Y Z)", &tmp.pos.x, "%g", 0))
-			cam->pos = tmp.pos;
-		if (igSliderFloat3("Normal (X Y Z)", &tmp.dir.x, -1, 1, "%g", 1))
-			cam->dir = tmp.dir;
-		igEndTabItem();
-	}
-}
 
 static inline void
 	render_tab(t_data *app)
@@ -113,7 +93,6 @@ void
 		return ;
 	if (igBeginTabBar("Selector", 0))
 	{
-		camera_tab(app);
 		render_tab(app);
 		scene_tab(app);
 		filter_debug_tab(app);

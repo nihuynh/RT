@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/15 15:47:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 04:36:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ struct s_anim
 {
 	int		type;
 	t_obj	*obj;
+	t_pt3	*pos;
+	t_vec3	*x;
+	t_vec3	*n;
+	t_vec3	*z;
 	t_pt3	origin;
-	t_vec3	x;
-	t_vec3	n;
-	t_vec3	z;
+	t_vec3	x_save;
+	t_vec3	n_save;
+	t_vec3	z_save;
 	void	*res;
 	void	(*anim_obj)(t_anim*);
 	void	(*ui_anim)(t_anim*, int);
@@ -66,5 +70,7 @@ void	export_translate(int fd, t_anim *anim);
 void	parse_rotate(void *parse, void *res);
 void	parse_translate(void *parse, void *res);
 void	parse_orbit(void *parse, void *res);
+void	anim_list(t_anim *anim, char *str);
+void	anim_add_camera(t_cam *cam);
 
 #endif

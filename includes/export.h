@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:41:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 22:28:34 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 04:13:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 */
 
 int		export_scene(t_data *app, char *filename);
-void	export_animation(int fd, t_list *lst_anim);
+void	export_animation(int fd, t_data *app);
 void	plane_export(int fd, void *shape);
 void	sphere_export(int fd, void *shape);
 void	cone_export(int fd, void *shape);

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 03:17:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 04:25:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void
 		ft_lstdel(&app->scene.lst_obj, &del_obj);
 	if (app->scene.lst_light)
 		ft_lstdel(&app->scene.lst_light, &del_light);
+	if (app->cam.anim)
+		del_anim(app->cam.anim, 0);
 	ft_bzero(app->scene.nb_objs, sizeof(app->scene.nb_objs));
 	app->scene.nb_light = 0;
 	if (DEBUG)

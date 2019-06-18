@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 06:12:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/18 04:54:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	animate(t_data *app)
 		animate_branch(lst->content);
 		lst = lst->next;
 	}
+	if (app->cam.anim)
+		animate_branch(app->cam.anim);
 	app->gui.animated_frames += 1;
 	app->sdl->sub_sample = 1;
 	app->sdl->partial_render = false;
@@ -54,7 +56,7 @@ void	anim_translate(t_anim *anim)
 	translate = anim->res;
 	result = translate->dir;
 	vec3_scalar(&result, translate->speed);
-	vec3_add(anim->obj->pos, anim->obj->pos, &result);
+	vec3_add(anim->pos, anim->pos, &result);
 }
 
 void	anim_orbit(t_anim *anim)
@@ -66,10 +68,10 @@ void	anim_orbit(t_anim *anim)
 
 	orbit = anim->res;
 	center = orbit->obj_center->pos;
-	vec3_sub(&vec, anim->obj->pos, center);
+	vec3_sub(&vec, anim->pos, center);
 	mat = mat_orbit(orbit->axis, orbit->deg);
 	apply_matrix(&vec, &mat);
-	vec3_add(anim->obj->pos, center, &vec);
+	vec3_add(anim->pos, center, &vec);
 }
 
 void	anim_rotate(t_anim *anim)
@@ -79,19 +81,19 @@ void	anim_rotate(t_anim *anim)
 
 	rotate = anim->res;
 	mat = mat_orbit(rotate->axis, rotate->deg);
-	if (anim->obj->n)
+	if (anim->n)
 	{
-		apply_matrix(anim->obj->n, &mat);
-		vec3_normalize(anim->obj->n);
+		apply_matrix(anim->n, &mat);
+		vec3_normalize(anim->n);
 	}
-	if (anim->obj->x)
+	if (anim->x)
 	{
-		apply_matrix(anim->obj->x, &mat);
-		vec3_normalize(anim->obj->x);
+		apply_matrix(anim->x, &mat);
+		vec3_normalize(anim->x);
 	}
-	if (anim->obj->z)
+	if (anim->z)
 	{
-		apply_matrix(anim->obj->z, &mat);
-		vec3_normalize(anim->obj->z);
+		apply_matrix(anim->z, &mat);
+		vec3_normalize(anim->z);
 	}
 }
