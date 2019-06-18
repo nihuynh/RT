@@ -14,6 +14,14 @@ content
 	}
 	object(sphere)
 	{
+		name(Earth)
+		origin(0.000 -30.000 0.000)
+		radius(63.710)
+		mat(earth)
+	}
+	object(sphere)
+	{
+		name(Moon)
 		origin(1622.000 -30.000 0.000)
 		radius(17.370)
 		texture(2k_moon.jpg)
@@ -28,13 +36,16 @@ content
 		uv_scale(1.000 1.000)
 		uv_offset(0.000 0.000)
 	}
-	object(sphere)
-	{
-		origin(0.000 -30.000 0.000)
-		radius(63.710)
-		mat(earth)
-	}
 }
 animation
 {
+	object(Moon)
+	{
+		motion(orbit)
+		{
+			center_obj(Earth)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+	}
 }
