@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 07:20:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/19 01:30:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,25 @@ static inline void
 }
 
 static inline void
+	resolution_list(t_gui *gui)
+{
+	if (igBeginMenu("Resolutions", 1))
+	{
+		if (igMenuItemBool("800x800", NULL, (gui->sdl->width_vp == 800), 1))
+			resize_app(800, 800, gui->app);
+		if (igMenuItemBool("1680x1000", NULL, (gui->sdl->width_vp == 1680), 1))
+			resize_app(1680, 1000, gui->app);
+		if (igMenuItemBool("1920x1080", NULL, (gui->sdl->width_vp == 1080), 1))
+			resize_app(1920, 1080, gui->app);
+		if (igMenuItemBool("2560x1400", NULL, (gui->sdl->width_vp == 1400), 1))
+			resize_app(2560, 1400, gui->app);
+		if (igMenuItemBool("3200x1800", NULL, (gui->sdl->width_vp == 1800), 1))
+			resize_app(3200, 1800, gui->app);
+		igEndMenu();
+	}
+}
+
+static inline void
 	window_menu(t_gui *gui)
 {
 	igMenuItemBoolPtr("Scene Editor", NULL, &gui->edit_open, 1);
@@ -50,26 +69,9 @@ static inline void
 	igMenuItemBoolPtr("Render Settings", NULL, &gui->render_set_open, 1);
 	igMenuItemBoolPtr("Stats", NULL, &gui->stats_open, 1);
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
-	{
 		fullscreen(gui->sdl, gui);
-		gui->stats_open = !gui->sdl->fullscreen;
-		gui->edit_open = !gui->sdl->fullscreen;
-		gui->render_set_open = !gui->sdl->fullscreen;
-		gui->sdl->needs_render = 1;
-	}
 	igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
-	if (igBeginMenu("Resolutions", 1))
-	{
-		if (igMenuItemBool("800x800", NULL, (gui->sdl->width_vp == 800), 1))
-			resize_app(800, 800, gui->app);
-		if (igMenuItemBool("1680x1000", NULL, (gui->sdl->width_vp == 1680), 1))
-			resize_app(1680, 1000, gui->app);
-		if (igMenuItemBool("2560x1400", NULL, (gui->sdl->height_vp == 1400), 1))
-			resize_app(2560, 1400, gui->app);
-		if (igMenuItemBool("3200x1800", NULL, (gui->sdl->height_vp == 1800), 1))
-			resize_app(3200, 1800, gui->app);
-		igEndMenu();
-	}
+	resolution_list(gui);
 	igEndMenu();
 }
 

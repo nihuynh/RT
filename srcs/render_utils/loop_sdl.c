@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 02:39:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 09:11:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/19 01:34:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void
 			while (SDL_PollEvent(&event))
 				event_handle(sdl, arg, &event, &quit);
 		}
-		else if (SDL_WaitEvent(&event))
+		else if (SDL_WaitEventTimeout(&event, 100))
 		{
 			event_handle(sdl, arg, &event, &quit);
 			while (SDL_PollEvent(&event))

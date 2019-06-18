@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 13:28:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 01:29:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void
 	realloc_pxl(sdl, sdl->img.width, sdl->img.height);
 	gui->flags_render = (sdl->img.height == sdl->height_vp) ? ImGuiCond_Always
 		: ImGuiCond_Once;
+	gui->stats_open = !gui->sdl->fullscreen;
+	gui->edit_open = !gui->sdl->fullscreen;
+	gui->render_set_open = !gui->sdl->fullscreen;
+	gui->sdl->needs_render = 1;
 }
 
 void
