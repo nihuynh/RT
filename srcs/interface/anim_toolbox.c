@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/16 20:36:38 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/18 02:54:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	anim_delete(t_data *app)
 
 void	anim_add(t_data *app, t_obj *obj)
 {
-	t_anim new;
+	t_anim	new;
+	t_list	*ptr;
 
 	new.type = 0;
 	new.obj = obj;
@@ -46,6 +47,8 @@ void	anim_add(t_data *app, t_obj *obj)
 	new.next = NULL;
 	ft_lstaddendnew(&app->scene.lst_anim, &new, sizeof(new));
 	obj->animated = true;
+	ptr = ft_lstlast(app->scene.lst_anim);
+	obj->anim = ptr->content;
 }
 
 void	anim_add_another(t_anim *anim)
