@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 01:29:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/19 01:39:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void
 void
 	fullscreen(t_sdl *sdl, t_gui *gui)
 {
+	SDL_SetWindowFullscreen(sdl->win, SDL_WINDOW_FULLSCREEN);
 	sdl->img.height = (sdl->img.height == sdl->height_vp) ? sdl->height_vp
 		* RENDER_SCALE : sdl->height_vp;
 	sdl->img.width = (sdl->img.width == sdl->width_vp) ? sdl->width_vp
