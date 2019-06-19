@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 05:59:24 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 03:03:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		exit_safe(int err_code);
 
 t_color		texture_checkers(t_material *mat, t_texture *texture, t_vec3 uv);
 t_color		texture_strips(t_material *mat, t_texture *texture, t_vec3 uv);
+t_color		texture_wave(t_material *mat, t_texture *texture, t_vec3 uv);
 t_color		sample(t_material *material, t_texture *texture, t_vec3 uv);
 
 void		init_interface(t_gui *gui, SDL_Window *window, t_data *app);
