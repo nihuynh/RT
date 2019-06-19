@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 04:37:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 04:53:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:29:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static inline void
 		gui->anim_set = gui->app->cam.anim;
 		gui->lst_anim_set = NULL;
 	}
+	igSeparator();
 }
 
 static inline void
@@ -46,6 +47,7 @@ static inline void
 		}
 		lst = lst->next;
 	}
+	igSeparator();
 }
 
 static inline void
@@ -76,10 +78,8 @@ void
 	igBeginChild("Objects Selector", (ImVec2){0, 100}, true, 0);
 	if (gui->app->cam.anim)
 		anim_selector_camera(gui);
-	igSeparator();
 	if (gui->app->scene.lst_anim)
 		anim_selector_obj(gui);
-	igSeparator();
 	if (gui->app->scene.lst_anim_light)
 		anim_selector_light(gui);
 	igEndChild();
