@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 22:51:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 05:40:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 02:00:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,21 @@ void	parse_motion(t_parse_txt *scene_file, t_anim *anim)
 
 void	parse_anim_specials(t_parse_txt *scene_file, char *line)
 {
+	t_light	*light;
+	t_list	*lst;
+
 	if (ft_strncmp(line, "camera", 5) == 0 && scene_file->app->cam.anim == NULL)
 	{
 		anim_add_camera(&scene_file->app->cam);
 		parse_motion(scene_file, scene_file->app->cam.anim);
 		check_closing_bracket(scene_file);
+	}
+	else if ((light = ft_lstgetelt(scene_file->app->scene.lst_light,
+		&light_cmp_key, line)))
+	{
+		anim_add_light(scene_file->app, light);
+		lst = ft_lstlast(scene_file->app->scene.lst_anim_light);
+		parse_motion(scene_file, lst->content);
 	}
 	else
 	{

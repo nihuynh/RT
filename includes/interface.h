@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 05:44:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 04:48:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	animate(t_data *app);
 void	anim_reset(t_data *app);
 void	anim_add_another(t_anim *anim);
 void	camera_tab(t_data *app);
+void	anim_add_light(t_data *app, t_light *light);
+void	anim_selector(t_gui *gui);
 
 /*
 ** Prototypes :
@@ -88,7 +90,7 @@ void	ui_sphere(void *app_v, void *shape);
 void	ui_plane(void *app_v, void *shape);
 void	ui_cone(void *app_v, void *shape);
 void	ui_cylinder(void *app_v, void *shape);
-void	ui_light(t_light *light);
+void	ui_light(t_data *app, t_light *light);
 void	ui_cam_win(t_gui *gui);
 
 #endif

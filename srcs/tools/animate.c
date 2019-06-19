@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 23:24:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 04:56:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	animate(t_data *app)
 	t_list	*lst;
 
 	lst = app->scene.lst_anim;
+	while (lst)
+	{
+		animate_branch(lst->content);
+		lst = lst->next;
+	}
+	lst = app->scene.lst_anim_light;
 	while (lst)
 	{
 		animate_branch(lst->content);

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/16 03:26:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:12:54 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "rt.h"
 
 void
-	ui_light(t_light *light)
+	ui_light(t_data *app, t_light *light)
 {
 	t_pt3			origin_tmp;
 	t_color			color_tmp;
@@ -27,6 +27,8 @@ void
 	color_tmp = light->color;
 	if (igColorEdit3("Color", &color_tmp.r, 0))
 		light->color = color_tmp;
+	if (!light->anim && igButton("Add Animation", (ImVec2){0, 0}))
+		anim_add_light(app, light);
 }
 
 static inline void
@@ -82,8 +84,7 @@ void
 {
 	char buff[20];
 
-	if (obj->animated == false)
-		if (igButton("Add To Animation List", (ImVec2){0, 0}))
+	if (!obj->anim && igButton("Add To Animation List", (ImVec2){0, 0}))
 			anim_add(app, obj);
 	ft_strlcpy(buff, obj->name, sizeof(buff));
 	if (igInputText("Name", buff, sizeof(buff),

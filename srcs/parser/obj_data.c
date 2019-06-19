@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/15 21:23:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:13:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,4 @@ void
 	obj->f_gui = obj_cfg.f_gui;
 	obj->find_normal = obj_cfg.find_normal;
 	obj->get_uv = obj_cfg.get_uv;
-	obj->animated = false;
-	obj->anim = NULL;
 }

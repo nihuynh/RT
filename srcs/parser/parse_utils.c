@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 04:18:50 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/15 14:27:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 01:58:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,4 +135,15 @@ int
 	obj = content;
 	ckey = key;
 	return (!ft_strncmp(obj->name, ckey, ft_strlen(obj->name)));
+}
+
+int
+	light_cmp_key(void *content, void *key)
+{
+	t_light	*light;
+	char	*ckey;
+
+	light = content;
+	ckey = key;
+	return (!ft_strncmp(light->name, ckey, ft_strlen(light->name)));
 }

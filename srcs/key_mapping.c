@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 19:38:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 02:04:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void
 	app = arg;
 	if (key == SDLK_ESCAPE)
 		*quit = 1;
-	else if (app->gui.render_focused)
+	else if (app->gui.render_focused && state == true)
 		return ;
 	else if (key == SDLK_p && state == SDL_RELEASED)
 		save_screenshot(app->sdl, app->arg);

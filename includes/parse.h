@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/18 05:44:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 01:56:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,15 +134,18 @@ char			*name_obj(int type, int *nb);
 int				matcmp(void *content, void *key);
 int				texcmp(void *content, void *key);
 int				obj_cmp_key(void *content, void *key);
+int				light_cmp_key(void *content, void *key);
 void			load_texture(t_texture *tex);
 void			open_textures(t_data *app);
 
 /*
 ** Getters :
 */
+
 int				get_obj_type(char *obj_type);
 char			*get_args_key_require(t_parse_txt *scene_file, const char *key);
 char			*get_args_after_key(t_parse_txt *scene_file, const char *key);
+
 /*
 ** Setters :
 */

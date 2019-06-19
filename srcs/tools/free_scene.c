@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 04:25:22 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:02:46 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void
 {
 	if (app->scene.lst_anim)
 		ft_lstdel(&app->scene.lst_anim, &del_anim);
+	if (app->scene.lst_anim_light)
+		ft_lstdel(&app->scene.lst_anim_light, &del_anim);
 	if (app->scene.lst_obj)
 		ft_lstdel(&app->scene.lst_obj, &del_obj);
 	if (app->scene.lst_light)

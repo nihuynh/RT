@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/18 02:57:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 01:48:47 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct	s_light
 	t_color		color;
 	float		intensity;
 	char		*name;
+	void		*anim;
 }				t_light;
 
 typedef struct	s_cam
@@ -223,7 +224,6 @@ struct			s_obj
 	t_vec3		*x;
 	t_vec3		*n;
 	t_vec3		*z;
-	bool		animated;
 	void		*anim;
 	void		(*f_inter) (t_inter*, t_obj*);
 	void		(*find_normal) (t_inter*);

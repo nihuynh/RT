@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 00:09:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:13:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,16 @@ void	anim_delete(t_data *app)
 	else
 	{
 		ptr = app->scene.lst_anim;
-		if (!(to_del = ft_lstgetnode_by_content_ptr(ptr, app->gui.anim_set)))
+		if ((to_del = ft_lstgetnode_by_content_ptr(app->scene.lst_anim,
+			app->gui.anim_set)))
+			app->scene.lst_anim = ft_lstpop(app->scene.lst_anim,
+				to_del, &del_anim);
+		else if ((to_del = ft_lstgetnode_by_content_ptr(
+			app->scene.lst_anim_light, app->gui.anim_set)))
+			app->scene.lst_anim_light = ft_lstpop(app->scene.lst_anim_light,
+				to_del, &del_anim);
+		else
 			ft_error(__func__, __LINE__);
-		app->scene.lst_anim = ft_lstpop(app->scene.lst_anim, to_del, &del_anim);
 	}
 	app->gui.anim_set = NULL;
 }
@@ -56,7 +63,6 @@ void	anim_add(t_data *app, t_obj *obj)
 		new.z_save = *obj->z;
 	}
 	ft_lstaddendnew(&app->scene.lst_anim, &new, sizeof(new));
-	obj->animated = true;
 	ptr = ft_lstlast(app->scene.lst_anim);
 	obj->anim = ptr->content;
 }
@@ -103,4 +109,19 @@ void
 	new->n = &cam->dir;
 	new->n_save = cam->dir;
 	cam->anim = new;
+}
+
+void
+	anim_add_light(t_data *app, t_light *light)
+{
+	t_anim	new;
+	t_list	*ptr;
+
+	ft_bzero(&new, sizeof(t_anim));
+	new.light = light;
+	new.origin = light->origin;
+	new.pos = &light->origin;
+	ft_lstaddendnew(&app->scene.lst_anim_light, &new, sizeof(new));
+	ptr = ft_lstlast(app->scene.lst_anim_light);
+	light->anim = ptr->content;
 }

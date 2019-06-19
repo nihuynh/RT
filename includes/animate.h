@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 04:36:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 01:30:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ struct s_anim
 {
 	int		type;
 	t_obj	*obj;
+	t_light	*light;
 	t_pt3	*pos;
 	t_vec3	*x;
 	t_vec3	*n;
