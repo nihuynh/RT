@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_scene_editor.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:07:28 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 15:34:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:49:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ui_scene_editor(t_gui *gui)
 	ImVec2 size;
 
 	pos.x = gui->sdl->width_vp * RENDER_SCALE;
-	pos.y = 18;
+	pos.y = MENUBAR_HEIGHT;
 	size.x = gui->sdl->width_vp * (1 - RENDER_SCALE);
 	size.y = gui->sdl->height_vp;
 	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});

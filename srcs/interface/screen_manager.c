@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 02:38:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/19 05:50:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void
 	else
 	{
 		SDL_SetWindowFullscreen(sdl->win, SDL_WINDOW_FULLSCREEN_DESKTOP);
-		realloc_pxl(sdl, sdl->width_vp, sdl->height_vp + 32);
+		SDL_GetWindowSize(sdl->win, &sdl->width_vp, &sdl->height_vp);
+		realloc_pxl(sdl, sdl->width_vp, sdl->height_vp - MENUBAR_HEIGHT);
 		gui->flags_render = ImGuiCond_Once;
 	}
 	gui->stats_open = !sdl->fullscreen;

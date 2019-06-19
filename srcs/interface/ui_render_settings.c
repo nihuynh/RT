@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_render_settings.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:18:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 00:12:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:50:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void
 	ImVec2 size;
 
 	pos.x = app->sdl->width_vp / 2.5;
-	pos.y = app->sdl->height_vp * RENDER_SCALE + 18;
+	pos.y = app->sdl->height_vp * RENDER_SCALE + MENUBAR_HEIGHT;
 	size.x = app->sdl->width_vp * RENDER_SCALE - pos.x;
 	size.y = app->sdl->height_vp - pos.y + 1;
 	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});
