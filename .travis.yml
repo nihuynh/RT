@@ -8,7 +8,7 @@ addons:
     packages:
     - sdl2
     - sdl2_image
-	update: true
+    update: true
 install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
     sudo sh resources/script/install_sdl.sh;
