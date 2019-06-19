@@ -1,86 +1,38 @@
 camera
 {
-	origin(0 0 50)
-	direction(0 0 -1)
-	amb_light(0.1 0.1 0.1)
+	origin(108.705 0.000 247.925)
+	direction(-0.342 0.000 -0.940)
+	amb_light(0.100 0.100 0.100)
 }
 content
 {
 	object(light)
 	{
-		color(1 1 1)
-		origin(0 50 50)
-		intensity(10000)
+		color(1.000 1.000 1.000)
+		origin(0.000 50.000 50.000)
+		intensity(10000.000)
 	}
-	object(sphere) //gauche
+	object(sphere)
 	{
-		origin(-50 0 -80)
-		radius(25)
-		texture(none)
-		normal_map(none)
-		color_diffuse(1 0.05 0.05)
-		color_specular(1 1 1)
-		color_tex(0 0 0)
-		spec_idx(0.1)
-		spec_power(80)
-		refraction_color(0.98 0.98 0.98)
-		reflection_color(0.05 0.05 0.05)
-		refraction_idx(0)
-		uv_scale(1 1)
-		uv_offset(0 0)
+		name(Sphere 0)
+		origin(-50.000 0.000 -80.000)
+		radius(25.000)
+		mat(red plastic)
 	}
-	object(sphere) //milieu
+	object(sphere)
 	{
-		origin(0 0 -80)
-		radius(25)
-		texture(none)
-		normal_map(none)
-		color_diffuse(0.05 1 0.05)
-		color_specular(1 1 1)
-		color_tex(0 0 0)
-		spec_idx(0.1)
-		spec_power(80)
-		refraction_color(0.98 0.98 0.98)
-		reflection_color(0.05 0.05 0.05)
-		refraction_idx(0)
-		uv_scale(1 1)
-		uv_offset(0 0)
+		name(Sphere 1)
+		origin(0.000 0.000 -80.000)
+		radius(25.000)
+		mat(green plastic)
 	}
-	object(sphere) //droite
+	object(sphere)
 	{
-		origin(50 0 -80)
-		radius(25)
-		texture(none)
-		normal_map(none)
-		ccolor_diffuse(0.05 0.05 1)
-		color_specular(1 1 1)
-		color_tex(0 0 0)
-		spec_idx(0.1)
-		spec_power(80)
-		refraction_color(0.98 0.98 0.98)
-		reflection_color(0.05 0.05 0.05)
-		refraction_idx(0)
-		uv_scale(1 1)
-		uv_offset(0 0)
+		name(Sphere 2)
+		origin(50.000 0.000 -80.000)
+		radius(25.000)
+		mat(blue plastic)
 	}
-    object(plane) //droite
-    {
-        origin(0 -30 0)
-        normal(0 -1 0)
-		limit(0 0)
-		texture(none)
-		normal_map(none)
-		color_diffuse(0.95 0.95 0.95)
-		color_specular(1 1 1)
-		color_tex(0 0 0)
-		spec_idx(0.1)
-		spec_power(80)
-		refraction_color(0.98 0.98 0.98)
-		reflection_color(0.05 0.05 0.05)
-		refraction_idx(0)
- 		uv_scale(1 1)
- 		uv_offset(0 0)
-   }
 }
 animation
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 13:28:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 02:38:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,6 @@ void
 }
 
 void
-	fullscreen(t_sdl *sdl, t_gui *gui)
-{
-	sdl->img.height = (sdl->img.height == sdl->height_vp) ? sdl->height_vp
-		* RENDER_SCALE : sdl->height_vp;
-	sdl->img.width = (sdl->img.width == sdl->width_vp) ? sdl->width_vp
-		* RENDER_SCALE : sdl->width_vp;
-	realloc_pxl(sdl, sdl->img.width, sdl->img.height);
-	gui->flags_render = (sdl->img.height == sdl->height_vp) ? ImGuiCond_Always
-		: ImGuiCond_Once;
-}
-
-void
 	resize_app(int width, int height, t_data *app)
 {
 	app->sdl->width_vp = width;
@@ -57,3 +45,25 @@ void
 	SDL_SetWindowSize(app->sdl->win, width, height);
 	app->sdl->needs_render = true;
 }
+
+void
+	fullscreen(t_sdl *sdl, t_gui *gui)
+{
+	if (!(sdl->fullscreen))
+	{
+		SDL_SetWindowFullscreen(sdl->win, 0);
+		resize_app(sdl->width_vp, sdl->height_vp, gui->app);
+		gui->flags_render = ImGuiCond_Always;
+	}
+	else
+	{
+		SDL_SetWindowFullscreen(sdl->win, SDL_WINDOW_FULLSCREEN_DESKTOP);
+		realloc_pxl(sdl, sdl->width_vp, sdl->height_vp + 32);
+		gui->flags_render = ImGuiCond_Once;
+	}
+	gui->stats_open = !sdl->fullscreen;
+	gui->edit_open = !sdl->fullscreen;
+	gui->render_set_open = !sdl->fullscreen;
+	gui->sdl->needs_render = 1;
+}
+

@@ -6,61 +6,53 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 09:53:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/19 03:25:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ftmath.h"
-#include "ftio.h"
 #include "rtstruct.h"
 #include "librt.h"
 #include "color.h"
 #include <math.h>
-#include <stdlib.h>
-
-float
-	pattern_checkers(float x, float y)
-{
-	int yi;
-	int xi;
-
-	xi = abs((int)x) + (x < 0.5);
-	yi = abs((int)y) + (y < 0.5);
-	return ((xi + yi) & 0x1);
-}
-
-float
-	pattern_strips(float x, float y)
-{
-	float	pattern;
-	float	angle;
-
-	angle = 45 * DEG_TO_RAD;
-	pattern = x * cosf(angle) - y * sinf(angle);
-	if (pattern < 0)
-		pattern -= 0.5f;
-	pattern = fabsf(fmodf(pattern, 1)) < 0.5f;
-	return (pattern);
-}
 
 t_color
 	texture_strips(t_material *mat, t_texture *texture, t_vec3 uv)
 {
 	t_color res;
+	float	pattern;
+	float	pos_xy;
 
-	res = color_linear_inter(mat->color_diffuse, mat->color_tex,
-		pattern_strips(uv.x, uv.y));
 	(void)texture;
+	pos_xy = uv.x + uv.y;
+	pattern = ft_btwf(pos_xy, 0.0f, 0.5f) || ft_btwf(pos_xy, 1.0f, 1.5f);
+	res = color_linear_inter(mat->color_diffuse, mat->color_tex, pattern);
 	return (res);
 }
 
 t_color
 	texture_checkers(t_material *mat, t_texture *texture, t_vec3 uv)
 {
+	t_color	res;
+	float	pattern;
+	int		yi;
+	int		xi;
+
+	(void)texture;
+	xi = abs((int)uv.x) + (uv.x < 0.5);
+	yi = abs((int)uv.y) + (uv.y < 0.5);
+	pattern = (xi + yi) & 0x1;
+	res = color_linear_inter(mat->color_diffuse, mat->color_tex, pattern);
+	return (res);
+}
+
+t_color
+	texture_wave(t_material *mat, t_texture *texture, t_vec3 uv)
+{
 	t_color res;
 
-	res = color_linear_inter(mat->color_diffuse, mat->color_tex,
-		pattern_checkers(uv.x, uv.y));
+	res = color_linear_inter(mat->color_diffuse, mat->color_tex, sinf(uv.x));
 	(void)texture;
 	return (res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_mapping.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdarchiv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 18:22:48 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/05/31 18:22:50 by tdarchiv         ###   ########.fr       */
+/*   Updated: 2019/06/19 03:19:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,13 @@ t_vec3
 
 	if (mat.normal_map == NULL || ft_strequ(mat.normal_map->name, "none"))
 		return (geo_n);
-	*((t_color*)&tex_n) = sample(&mat, mat.normal_map, uv);
+	*((t_color*)&tex_n) = mat.normal_map->f_texture(&mat, mat.normal_map, uv);
+	if (mat.normal_map->pixels == NULL)
+	{
+		vec3_add(&n, &geo_n, &tex_n);
+		vec3_normalize(&n);
+		return (n);
+	}
 	tex_n.x = tex_n.x * 2 - 1;
 	tex_n.y = tex_n.y * 2 - 1;
 	tex_n.z = tex_n.z * 2 - 1;

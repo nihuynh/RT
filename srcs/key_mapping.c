@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
 /*   Updated: 2019/06/19 02:04:29 by sklepper         ###   ########.fr       */
@@ -77,8 +77,6 @@ void
 		mouse_captured ^= 1;
 		SDL_SetRelativeMouseMode(mouse_captured);
 	}
-	else if (key == SDLK_f && state == SDL_RELEASED)
-		app->sdl->fullscreen = (app->sdl->fullscreen == true) ? false : true;
 	else if (key == SDLK_r && state == SDL_RELEASED
 			&& (app->sdl->needs_render = 1))
 		app->cam = app->gui.cam_cpy;
