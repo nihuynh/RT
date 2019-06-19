@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/15 14:39:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 06:05:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char
 	char	*name;
 	size_t	n;
 
-	if (!(	line = get_args_after_key(scene_file, key)))
+	if (!(line = get_args_after_key(scene_file, key)))
 		return (NULL);
 	n = ft_strclen(line, ')');
 	if (!(name = ft_strndup(line, n)))
