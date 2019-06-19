@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 15:00:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/19 02:44:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_data
 }
 
 t_scene_name
-	*pick_rand(t_list *list_scenes)
+	*select_rand_scene(t_list *list_scenes)
 {
 	t_list			*node;
 	unsigned int	scene_idx;
@@ -78,7 +78,7 @@ void
 	{
 		if (app->lst_scenes == NULL)
 			ft_error(__func__, __LINE__);
-		default_scene = pick_rand(app->lst_scenes);
+		default_scene = select_rand_scene(app->lst_scenes);
 		load_scene(app, default_scene->dir);
 	}
 	else
