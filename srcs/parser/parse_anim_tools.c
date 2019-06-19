@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_anim_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 06:14:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/19 08:52:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	parse_orbit(void *parse, void *res)
 		err_set(scene_file, __func__, __LINE__, __FILE__);
 		err_exit(ERR_UNKNWD_OBJ_A, scene_file);
 	}
-	free(center_obj);
 	orbit->axis = parse_vector("axis(", scene_file);
 	orbit->deg = parse_fval("deg(", scene_file);
 }
