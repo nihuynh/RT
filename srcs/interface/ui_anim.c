@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 04:37:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 16:34:41 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,6 @@ static inline void
 	igSameLine(0, size.x / 6);
 	if (igButton("Reset Objects Position", (ImVec2){size.x / 3, 0}))
 		anim_reset(gui->app);
-	igSpacing();
-	igSameLine(size.x / 12, 0);
-	if (igButton("Move Down", (ImVec2){size.x / 3, 0}) && gui->anim_set)
-		ft_lstmovedown(&gui->app->scene.lst_anim, gui->lst_anim_set);
-	igSameLine(0, size.x / 6);
-	if (igButton("Move Up", (ImVec2){size.x / 3, 0}) && gui->anim_set)
-		ft_lstmoveup(&gui->app->scene.lst_anim, gui->lst_anim_set);
 	igSeparator();
 }
 
@@ -80,7 +73,7 @@ void	anim_ui(t_gui *gui)
 	char	*str_list;
 
 	size = igGetWindowSize();
-	anim_selector(gui);
+	anim_selector(gui, size);
 	anim_buttons(gui, size);
 	igText("Animated frames rendered : %d", gui->animated_frames);
 	igSeparator();

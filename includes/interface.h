@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 04:48:37 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 16:34:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	anim_reset(t_data *app);
 void	anim_add_another(t_anim *anim);
 void	camera_tab(t_data *app);
 void	anim_add_light(t_data *app, t_light *light);
-void	anim_selector(t_gui *gui);
+void	anim_selector(t_gui *gui, ImVec2 size);
 
 /*
 ** Prototypes :
