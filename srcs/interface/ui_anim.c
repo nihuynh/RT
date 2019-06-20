@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 17:28:36 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:30:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "animate.h"
 #include "libft.h"
 
-void	anim_list(t_anim *anim, char *str)
+void
+	anim_list(t_anim *anim, char *str)
 {
 	const char			**item;
 	static const char	*item_current;

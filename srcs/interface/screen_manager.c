@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:50:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:29:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ void
 	gui->render_set_open = !sdl->fullscreen;
 	gui->sdl->needs_render = 1;
 }
-

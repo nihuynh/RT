@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 01:56:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:47:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ char			*get_args_after_key(t_parse_txt *scene_file, const char *key);
 void			obj_set(t_obj *obj, int type);
 void			light_set(t_light *light, t_parse_txt *scene_file);
 void			cone_set(t_obj *obj, void *cone, t_parse_txt *scene_file);
-void			cylinder_set(t_obj *obj, void *cylinder, t_parse_txt *scene_file);
+void			cylinder_set(t_obj *obj, void *cylinder, t_parse_txt *scene_fi);
 void			plane_set(t_obj *obj, void *plane, t_parse_txt *scene_file);
 void			sphere_set(t_obj *obj, void *sphere, t_parse_txt *scene_file);
 void			csg_set(t_obj *obj, void *root, t_parse_txt *scene_file);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:18:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:50:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:32:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void
 	size.y = app->sdl->height_vp - pos.y + 1;
 	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints(size, size, NULL, NULL);
-	if (!(igBegin("Render Settings", &app->gui.render_set_open, ImGuiWindowFlags_NoResize)))
+	if (!(igBegin("Render Settings", &app->gui.render_set_open, 2)))
 		return ;
 	if (igBeginTabBar("Selector", 0))
 	{

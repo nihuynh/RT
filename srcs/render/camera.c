@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 19:42:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:36:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "rtstruct.h"
 #include "librt.h"
-#include "rt.h"
 #include "config.h"
+#include "rt.h"
+#include <math.h>
 
 static t_vec3
 	get_delta_vector(t_cam *cam, t_vec3 forward, t_vec3 upward, t_vec3 strafe)

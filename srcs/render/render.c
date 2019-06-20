@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/05 01:35:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:40:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,20 @@ static inline t_color
 	reflection = (t_color){0, 0, 0};
 	refraction = (t_color){0, 0, 0};
 	kr = 1;
+	depth++;
 	if (color_bool(inter->obj->material.reflection_color)
 		|| color_bool(inter->obj->material.refraction_color))
 		kr = fresnel(inter->ray.dir, inter->n, inter->obj->material.refraction_idx);
 	if (settings.deflect && color_bool(inter->obj->material.reflection_color))
 	{
-		reflection = recursive_cast(scene, settings, inter->deflected, depth + 1);
+		reflection = recursive_cast(scene, settings, inter->deflected, depth);
 		color_mult(&reflection, &inter->obj->material.reflection_color);
 		color_scalar(&reflection, kr);
 	}
 	if (settings.absorb && color_bool(inter->obj->material.refraction_color))
 	{
 		inter_setrefract(inter, &absorbed);
-		refraction = recursive_cast(scene, settings, absorbed, depth + 1);
+		refraction = recursive_cast(scene, settings, absorbed, depth);
 		color_mult(&refraction, &inter->obj->material.refraction_color);
 		color_scalar(&refraction, 1 - kr);
 	}

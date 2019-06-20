@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_data.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:06:56 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/12 01:48:40 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:47:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ typedef struct	s_data
 	t_settings	settings;
 }				t_data;
 
-t_data		*get_app(t_data *app);
+t_data			*get_app(t_data *app);
 
 #endif

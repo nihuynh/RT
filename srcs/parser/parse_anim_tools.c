@@ -6,14 +6,15 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 08:52:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:35:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "animate.h"
 
-void	parse_orbit(void *parse, void *res)
+void
+	parse_orbit(void *parse, void *res)
 {
 	t_orbit		*orbit;
 	char		*center_obj;
@@ -36,9 +37,10 @@ void	parse_orbit(void *parse, void *res)
 	orbit->deg = parse_fval("deg(", scene_file);
 }
 
-void	parse_translate(void *parse, void *res)
+void
+	parse_translate(void *parse, void *res)
 {
-	t_translate		*translate;
+	t_translate	*translate;
 	t_parse_txt	*scene_file;
 
 	translate = res;
@@ -47,9 +49,10 @@ void	parse_translate(void *parse, void *res)
 	translate->speed = parse_fval("speed(", scene_file);
 }
 
-void	parse_rotate(void *parse, void *res)
+void
+	parse_rotate(void *parse, void *res)
 {
-	t_rotate		*rotate;
+	t_rotate	*rotate;
 	t_parse_txt	*scene_file;
 
 	rotate = res;

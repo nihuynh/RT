@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/18 23:48:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:25:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ static inline float
 	float	limit[2];
 
 	res_local = inter_vec2(ray, cone);
-	limit[0] = res_local.x;
-	limit[1] = res_local.y;
+	ft_memcpy(&limit, res_local, sizeof(limit));
 	if (res_local.x > 0 && res_local.y > 0)
 	{
 		dist.x = fminf(res_local.x, res_local.y);

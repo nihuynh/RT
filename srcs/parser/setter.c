@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 01:48:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:36:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void
 		err_set(scene_file, __func__, __LINE__, __FILE__);
 		err_exit(ERR_PARSE_SET_LI, scene_file);
 	}
-	light ->anim = NULL;
+	light->anim = NULL;
 	light->color = parse_color("color(", scene_file);
 	light->origin = parse_vector("origin(", scene_file);
 	light->intensity = parse_fval("intensity(", scene_file);

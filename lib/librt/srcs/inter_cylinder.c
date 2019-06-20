@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   inter_cylinder.c                                   :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:20:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 03:53:58 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:27:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ static inline float
 	float	limit[2];
 
 	res_local = inter_vec2(ray, cyl);
-	limit[0] = res_local.x;
-	limit[1] = res_local.y;
+	ft_memcpy(&limit, res_local, sizeof(limit));
 	if (res_local.x > 0 && res_local.y > 0)
 	{
 		dist.x = fminf(res_local.x, res_local.y);
@@ -96,7 +95,6 @@ static inline float
 	inter->hit_pts = dist;
 	return (inter_finite(inter, cyl, limit));
 }
-
 
 void
 	inter_cylinder(t_inter *data, t_obj *node)

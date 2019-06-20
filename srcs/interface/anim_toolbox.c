@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_toolbox.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:13:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:29:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "libft.h"
 #include "parse.h"
 
-void	anim_delete(t_data *app)
+void
+	anim_delete(t_data *app)
 {
 	t_list	*ptr;
 	t_list	*to_del;
@@ -44,7 +45,8 @@ void	anim_delete(t_data *app)
 	app->gui.anim_set = NULL;
 }
 
-void	anim_add(t_data *app, t_obj *obj)
+void
+	anim_add(t_data *app, t_obj *obj)
 {
 	t_anim	new;
 	t_list	*ptr;

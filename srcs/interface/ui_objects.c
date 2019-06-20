@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_objects.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:12:54 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:32:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static inline void
 		mat->name = "custom";
 	edit_color_mat(&mat->reflection_color, "Reflection Color", mat);
 	edit_color_mat(&mat->color_specular, "Specular Color", mat);
-	if (igDragFloat("Refraction Index", &mat->refraction_idx, 0.01, 0, 2, "%g", 1))
+	if (igDragFloat("Refraction Index", &mat->refraction_idx, 0.01, 0, 2, "%g",
+		1))
 		mat->name = "custom";
 	edit_color_mat(&mat->refraction_color, "Refraction Color", mat);
 }
@@ -68,11 +69,14 @@ static inline void
 	material(t_data *app, t_obj *obj)
 {
 	material_list(app->lst_mat, obj);
-	if (load_selected_tex("Texture", obj->material.tex->name, app->lst_tex, &obj->material.tex))
+	if (load_selected_tex("Texture", obj->material.tex->name,
+		app->lst_tex, &obj->material.tex))
 		obj->material.name = "custom";
-	if (load_selected_tex("Normal Map", obj->material.normal_map->name, app->lst_tex, &obj->material.normal_map))
+	if (load_selected_tex("Normal Map", obj->material.normal_map->name,
+		app->lst_tex, &obj->material.normal_map))
 		obj->material.name = "custom";
-	if (load_selected_tex("Specular Map", obj->material.spec_map->name, app->lst_tex, &obj->material.spec_map))
+	if (load_selected_tex("Specular Map", obj->material.spec_map->name,
+		app->lst_tex, &obj->material.spec_map))
 		obj->material.name = "custom";
 	igText("Material Details");
 	material_details(&obj->material);
