@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 16:57:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 17:17:46 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct		s_gui
 	t_cam			cam_cpy;
 	bool			render_focused;
 	bool			animate;
+	bool			record;
+	int				frame_limit;
 	int				animated_frames;
 	int				new_obj_type;
 	t_light			*light_set;

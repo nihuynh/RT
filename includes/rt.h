@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 03:03:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 18:06:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int			obj_cmp(void *res1, void *res2);
 int			mat_cmp(void *res_1, void *res_2);
 int			light_cmp(void *res_1, void *res_2);
 int			scene_cmp(void *res_1, void *res_2);
+void		record_frame(t_data *app);
 
 /*
 ** Post-process :

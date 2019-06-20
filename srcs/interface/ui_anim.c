@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 16:34:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 17:28:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,16 @@ static inline void
 	igSeparator();
 }
 
-void	anim_ui(t_gui *gui)
+static inline void
+	anim_frames(t_gui *gui)
+{
+	igText("Animated frames rendered : %d", gui->animated_frames);
+	igDragInt("Frame Limit", &gui->frame_limit, 1, 0, 100000, "%d");
+	igCheckbox("Record Frames", &gui->record);
+}
+
+void
+	anim_ui(t_gui *gui)
 {
 	ImVec2	size;
 	t_anim	*anim;
@@ -75,7 +84,7 @@ void	anim_ui(t_gui *gui)
 	size = igGetWindowSize();
 	anim_selector(gui, size);
 	anim_buttons(gui, size);
-	igText("Animated frames rendered : %d", gui->animated_frames);
+	anim_frames(gui);
 	igSeparator();
 	anim = gui->anim_set;
 	i = 0;

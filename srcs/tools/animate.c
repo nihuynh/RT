@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 04:56:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 18:07:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ void	animate(t_data *app)
 	t_list	*lst;
 
 	lst = app->scene.lst_anim;
+	if (app->gui.record)
+		record_frame(app);
+	if (app->gui.frame_limit && app->gui.animated_frames >= app->gui.frame_limit)
+	{
+		app->gui.animate = false;
+		return ;
+	}
 	while (lst)
 	{
 		animate_branch(lst->content);
