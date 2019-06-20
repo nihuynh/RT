@@ -6,12 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:20:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 19:27:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:53:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include "ftmath.h"
+#include "ftmem.h"
 #include <math.h>
 
 static inline float
@@ -74,7 +75,7 @@ static inline float
 	float	limit[2];
 
 	res_local = inter_vec2(ray, cyl);
-	ft_memcpy(&limit, res_local, sizeof(limit));
+	ft_memcpy(&limit, &res_local, sizeof(limit));
 	if (res_local.x > 0 && res_local.y > 0)
 	{
 		dist.x = fminf(res_local.x, res_local.y);

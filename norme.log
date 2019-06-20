@@ -1,42 +1,28 @@
-Norme: ./includes/option.h
-Error: global scope bad aligned
-Norme: ./includes/ftstring.h
 [1;34mlibft.a[25G[31mNorminette [80G[32m[OK][0m
-Norme: ./srcs/inter_csg_op.c
-Error (line 61): line has 84 characters
-Norme: ./srcs/inter_plane.c
---
---
 Norme: ./includes/rtstruct.h
 Error (line 165): C++ comment
 Error (line 166): C++ comment
 Error (line 167): C++ comment
 [1;34mlibrt.a[25G[31mNorminette [80G[32m[OK][0m
 Norme: ./srcs/interface/anim_toolbox.c
-Error: global scope bad aligned
 Error: 6 functions in the file
-Norme: ./srcs/interface/new_object.c
+Norme: ./srcs/interface/ui_cam_win.c
 --
 --
 Norme: ./srcs/interface/ui_anim.c
-Error (line 77): function anim_ui has 27 lines
+Error (line 78): function anim_ui has 26 lines
 Norme: ./srcs/interface/ui_edit_win.c
 --
 --
 Norme: ./srcs/interface/ui_edit_win.c
 Error (line 40): function del_obj_win has 32 lines
-Norme: ./srcs/interface/ui_file_win.c
---
---
-Norme: ./srcs/interface/ui_objects.c
-Error (line 92): bad indentation
-Norme: ./srcs/interface/ui_selector.c
+Norme: ./srcs/interface/ui_anim_toolbox.c
 --
 --
 Norme: ./srcs/key_mapping.c
 Error (line 20): comment not well formatted
 Error (line 30): function camera has 27 lines
-Norme: ./srcs/parser/export_csg.c
+Norme: ./srcs/parser/export_anim.c
 --
 --
 Norme: ./srcs/parser/obj_data.c
@@ -48,24 +34,23 @@ Error (line 108): comment not well formatted
 Norme: ./srcs/parser/parse_csg.c
 --
 --
-Norme: ./srcs/parser/parse_shape.c
-Error (line 38): Empty line
-Error (line 78): comment not well formatted
-Error (line 109): comment not well formatted
-Norme: ./srcs/parser/parser.c
---
---
-Norme: ./srcs/parser/parser.c
-Error (line 17): comment not well formatted
-Norme: ./srcs/parser/parse_txt.c
---
---
 Norme: ./srcs/parser/parse_txt.c
 Error (line 20): comment not well formatted
 Error (line 49): comment not well formatted
 Error (line 67): comment not well formatted
 Error (line 95): comment not well formatted
 Error (line 113): comment not well formatted
+Norme: ./srcs/parser/parse_anim.c
+--
+--
+Norme: ./srcs/parser/parse_shape.c
+Error (line 77): comment not well formatted
+Error (line 108): comment not well formatted
+Norme: ./srcs/parser/parser.c
+--
+--
+Norme: ./srcs/parser/parser.c
+Error (line 17): comment not well formatted
 Norme: ./srcs/parser/parse_toolbox.c
 --
 --
@@ -77,15 +62,10 @@ Error (line 89): comment not well formatted
 Norme: ./srcs/render/camera.c
 --
 --
-Norme: ./srcs/render/camera.c
-Warning: /Users/nihuynh/Master/RT/srcs/render/camera.c may not compile or is invalid for some reasons.
-Norme: ./srcs/render/filters.c
---
---
 Norme: ./srcs/parser/read.c
 Error (line 58): comment not well formatted
 Error (line 85): comment not well formatted
-Norme: ./srcs/render/normal_mapping.c
+Norme: ./srcs/render/cast.c
 --
 --
 Norme: ./srcs/render/light.c
@@ -98,16 +78,16 @@ Norme: ./srcs/render_utils/error_sdl.c
 Norme: ./srcs/render/render.c
 Error (line 36): function cast_bounce has 26 lines
 Error (line 50): line has 85 characters
-Norme: ./srcs/render_utils/render_time.c
+Norme: ./srcs/render_utils/render_sdl.c
 --
 --
 Norme: ./srcs/render_utils/loop_sdl.c
 Error (line 53): comment not well formatted
-Norme: ./srcs/render_utils/render_pool.c
+Norme: ./srcs/render_utils/save_screenshot.c
 --
 --
 Norme: ./srcs/tools/animate.c
 Error (line 32): function animate has 27 lines
 Error (line 39): line has 82 characters
-Norme: ./srcs/tools/update.c
+Norme: ./srcs/tools/load_tools.c
 [1;34mRT[25G[31mNorminette [80G[32m[OK][0m

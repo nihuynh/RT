@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 05:51:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 20:13:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 ** User def :
 */
 
-# define T_STEP			5
+# define T_STEP			5.0f
 # define Z_STEP			1
 # define A_STEP			5 * DEG_TO_RAD
 # define MOUSE_SCALING	0.005f

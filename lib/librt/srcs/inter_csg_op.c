@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 01:16:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 19:52:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static inline t_inter
 	inter_set(&no_inter, left.ray);
 	if (left.dist == INFINITY || right.dist == INFINITY)
 		return (no_inter);
-	if (right.hit_pts.y > 0 && ft_btwf(right.dist, left.hit_pts.x, left.hit_pts.y))
+	if (right.hit_pts.y > 0 && ft_btwf(right.dist, left.dist, left.hit_pts.y))
 		return (right);
 	if (ft_btwf(left.dist, right.hit_pts.x, right.hit_pts.y))
 		return (left);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:32:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 20:04:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void
 	char buff[20];
 
 	if (!obj->anim && igButton("Add To Animation List", (ImVec2){0, 0}))
-			anim_add(app, obj);
+		anim_add(app, obj);
 	ft_strlcpy(buff, obj->name, sizeof(buff));
 	if (igInputText("Name", buff, sizeof(buff),
 		ImGuiInputTextFlags_EnterReturnsTrue, NULL, NULL))

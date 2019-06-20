@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:29:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 20:02:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void
 	obj->anim = ptr->content;
 }
 
-void	anim_add_another(t_anim *anim)
+void
+	anim_add_another(t_anim *anim)
 {
 	t_anim	*new;
 

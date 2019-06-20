@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/15 14:32:38 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/20 20:05:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static inline t_material
 	expand_parse(t_parse_txt *scene_file, t_material mat)
 {
 	mat.name = "custom";
-
 	mat.color_diffuse = parse_color("color_diffuse(", scene_file);
 	mat.color_specular = parse_color("color_specular(", scene_file);
 	mat.color_tex = parse_color("color_tex(", scene_file);

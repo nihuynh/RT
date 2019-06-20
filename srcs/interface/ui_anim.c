@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:30:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 20:04:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static inline void
 	igText("Animated frames rendered : %d", gui->animated_frames);
 	igDragInt("Frame Limit", &gui->frame_limit, 1, 0, 100000, "%d");
 	igCheckbox("Record Frames", &gui->record);
+	igSeparator();
 }
 
 void
@@ -86,7 +87,6 @@ void
 	anim_selector(gui, size);
 	anim_buttons(gui, size);
 	anim_frames(gui);
-	igSeparator();
 	anim = gui->anim_set;
 	i = 0;
 	while (anim)

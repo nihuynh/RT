@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 19:36:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/20 20:14:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void
 	upward = get_column(cam->rotation, 1);
 	forward = get_column(cam->rotation, 2);
 	delta = get_delta_vector(cam, forward, upward, strafe);
-	vec3_scalar(&delta, T_STEP * (1 + cam->sprint * 2));
+	vec3_scalar(&delta, T_STEP + cam->sprint * 2 * T_STEP);
 	if (delta.x != 0 || delta.y != 0 || delta.z != 0)
 		*needs_render = true;
 	vec3_add(&cam->pos, &cam->pos, &delta);
