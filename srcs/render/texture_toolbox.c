@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 03:38:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/22 18:40:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ static inline void
 	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
 	node.name = ft_strdup("wave");
 	node.f_texture = &texture_wave;
+	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
+	node.name = ft_strdup("perlin");
+	node.f_texture = &texture_perlin;
 	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
 }
 

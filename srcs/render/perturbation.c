@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 03:25:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/22 18:38:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ t_color
 {
 	t_color res;
 
-	res = color_linear_inter(mat->color_diffuse, mat->color_tex, sinf(uv.x));
 	(void)texture;
+	res = color_linear_inter(mat->color_diffuse, mat->color_tex, sinf(uv.x));
 	return (res);
 }
 
