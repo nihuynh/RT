@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/03 00:55:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/22 18:00:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ typedef struct s_sdl	t_sdl;
 
 struct				s_sdl
 {
-	bool			fullscreen;
 	t_img			img;
 	float			progress_sub_sample;
 	int				sub_sample;
 	bool			needs_render;
 	bool			partial_render;
+	bool			fullscreen;
+	bool			layout;
 	int				width_vp;
 	int				height_vp;
 	int				thr_len;

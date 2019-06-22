@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 16:34:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/22 18:08:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 ** Hooks :
 */
 
-void	fullscreen(t_sdl *sdl, t_gui *gui);
+void	toggle_fullscreen(t_sdl *sdl, t_gui *gui);
+void	toggle_layout(t_sdl *sdl, t_gui *gui);
 void	err_win(t_gui *gui);
 void	export_win(t_gui *gui);
 void	load_win(t_gui *gui);

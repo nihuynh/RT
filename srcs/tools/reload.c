@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 17:29:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/22 18:32:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static inline void
 	gui->light_set = NULL;
 	gui->obj_set = NULL;
 	gui->flags_render = 2;
+	gui->sdl->layout = true;
 	gui->add_obj_type = 0;
 	gui->stats_open = true;
 	gui->edit_open = true;

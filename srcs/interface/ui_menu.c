@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:58:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/22 18:26:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ static inline void
 {
 	if (igBeginMenu("Resolutions", 1))
 	{
-		if (igMenuItemBool("800x800", NULL, (gui->sdl->width_vp == 800), 1))
+		if (igMenuItemBool("800x800", NULL, (gui->sdl->height_vp == 800), 1))
 			resize_app(800, 800, gui->app);
-		if (igMenuItemBool("1680x1000", NULL, (gui->sdl->width_vp == 1680), 1))
+		if (igMenuItemBool("1680x1000", NULL, (gui->sdl->height_vp == 1000), 1))
 			resize_app(1680, 1000, gui->app);
-		if (igMenuItemBool("1920x1080", NULL, (gui->sdl->width_vp == 1080), 1))
+		if (igMenuItemBool("1920x1080", NULL, (gui->sdl->height_vp == 1080), 1))
 			resize_app(1920, 1080, gui->app);
-		if (igMenuItemBool("2560x1400", NULL, (gui->sdl->width_vp == 1400), 1))
+		if (igMenuItemBool("2560x1400", NULL, (gui->sdl->height_vp == 1400), 1))
 			resize_app(2560, 1400, gui->app);
-		if (igMenuItemBool("3200x1800", NULL, (gui->sdl->width_vp == 1800), 1))
+		if (igMenuItemBool("3200x1800", NULL, (gui->sdl->height_vp == 1800), 1))
 			resize_app(3200, 1800, gui->app);
 		igEndMenu();
 	}
@@ -68,8 +68,10 @@ static inline void
 	igMenuItemBoolPtr("Camera Editor", NULL, &gui->cam_open, 1);
 	igMenuItemBoolPtr("Render Settings", NULL, &gui->render_set_open, 1);
 	igMenuItemBoolPtr("Stats", NULL, &gui->stats_open, 1);
+	if (igMenuItemBoolPtr("Interface", NULL, &gui->sdl->layout, 1))
+		toggle_layout(gui->sdl, gui);
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
-		fullscreen(gui->sdl, gui);
+		toggle_fullscreen(gui->sdl, gui);
 	igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
 	resolution_list(gui);
 	igEndMenu();
