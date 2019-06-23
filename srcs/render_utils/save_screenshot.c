@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 10:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/21 02:26:07 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/23 22:44:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
 #include <time.h>
 #include "libft.h"
+#include <SDL_image.h>
 
 static inline char
 	*name_screenshot(char *arg)
@@ -22,7 +23,7 @@ static inline char
 	char	*scene_name;
 
 	t = time(&t);
-	strftime(time_stamp, sizeof(time_stamp), "(%F_%T).bmp", localtime(&t));
+	strftime(time_stamp, sizeof(time_stamp), "(%F_%T).png", localtime(&t));
 	if (!(scene_name = ft_strrchr(arg, '/')))
 		scene_name = arg;
 	else
@@ -42,10 +43,10 @@ void
 			SDL_PIXELFORMAT_ARGB8888)))
 		return ;
 	if (!(name = name_screenshot(arg)))
-		SDL_SaveBMP(surface, "placeholder.bmp");
+		IMG_SavePNG(surface, "placeholder.png");
 	else
 	{
-		SDL_SaveBMP(surface, name);
+		IMG_SavePNG(surface, name);
 		ft_strdel(&name);
 	}
 	ft_putendl("Screenshot taken ! enjoy !");

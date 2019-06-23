@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   record_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 17:58:45 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 18:12:20 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/23 22:56:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_data.h"
 #include "libui.h"
 #include "libft.h"
+#include <SDL_image.h>
 
 static inline char
 	*name_screenshot(char *arg, int frame_count)
@@ -25,7 +26,7 @@ static inline char
 	else
 		scene_name++;
 	tmp = ft_strjoini(scene_name, frame_count);
-	return (ft_strjoinfree(tmp, ".bmp"));
+	return (ft_strjoinfree(tmp, ".png"));
 }
 
 void
@@ -40,10 +41,10 @@ void
 			SDL_PIXELFORMAT_ARGB8888)))
 		return ;
 	if (!(name = name_screenshot(app->arg, app->gui.animated_frames)))
-		SDL_SaveBMP(surface, "placeholder.bmp");
+		IMG_SavePNG(surface, "placeholder.png");
 	else
 	{
-		SDL_SaveBMP(surface, name);
+		IMG_SavePNG(surface, name);
 		ft_strdel(&name);
 	}
 	ft_putendl("Screenshot taken ! enjoy !");

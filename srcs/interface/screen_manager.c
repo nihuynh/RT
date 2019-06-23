@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/22 18:20:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/23 22:53:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ void
 		sdl->data_thr[idx].pixels = &sdl->img.pixels[ofs];
 	}
 }
-
-// void
-// 	resize_app(int width, int height, t_data *app)
-// {
-// 	app->sdl->width_vp = width;
-// 	app->sdl->height_vp = height;
-// 	realloc_pxl(app->sdl, width * RENDER_SCALE, height * RENDER_SCALE);
-// 	SDL_SetWindowSize(app->sdl->win, width, height);
-// 	app->sdl->needs_render = true;
-// }
 
 void
 	toggle_layout(t_sdl *sdl, t_gui *gui)
