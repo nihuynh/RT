@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/22 18:34:51 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/23 15:41:06 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,10 @@ LIB_DEP		=	lib/libft/libft.a				\
 
 # **************************************************************************** #
 # Makefile dependency :
-include basic.mk
-include basic_lib.mk
-include basic_runner.mk
-include basic_app.mk
+include lib/libft/mk_c_project.mk
+include lib/libft/mk_lib_dep.mk
+include mk_run.mk
+include mk_app.mk
 # **************************************************************************** #
 # Additionnal linkers :
 # SDL2
@@ -63,7 +63,7 @@ BANNER		:=	$(shell cat resources/script/banner.txt)
 # **************************************************************************** #
 # Target rules :
 .DEFAULT_GOAL := all
-all: $(NAME) ## Built the project.
+all: $(LIB_BUILT) $(NAME) ## Built the project.
 .PHONY: all
 
 $(NAME): $(LIB_DEP) $(OBJ)

@@ -10,7 +10,7 @@
 			"request": "launch",
 			"preLaunchTask": "build_debug",
 			"program": "${workspaceFolder}/RT",
-			"args": ["scenes/brick.rt"],
+			"args": ["scenes/tore.rt"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

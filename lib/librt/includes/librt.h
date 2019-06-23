@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/18 23:47:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/23 13:53:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@
 
 void		normal_sphere(t_inter *inter);
 void		normal_cone(t_inter *inter);
+void		normal_cube(t_inter *inter);
+void		normal_tore(t_inter *inter);
 void		normal_cylinder(t_inter *inter);
 void		normal_plane(t_inter *inter);
 
 t_vec3		get_sphere_uv(t_inter *inter);
 t_vec3		get_plane_uv(t_inter *inter);
 t_vec3		get_cone_uv(t_inter *inter);
+t_vec3		get_cube_uv(t_inter *inter);
+t_vec3		get_tore_uv(t_inter *inter);
 t_vec3		get_cylinder_uv(t_inter *inter);
 /*
 ** Intersection :
@@ -49,6 +53,8 @@ void		inter_cylinder(t_inter *data, t_obj *node);
 void		inter_plane(t_inter *data, t_obj *node);
 void		inter_sphere(t_inter *data, t_obj *node);
 void		inter_cone(t_inter *data, t_obj *node);
+void		inter_cube(t_inter *data, t_obj *node);
+void		inter_tore(t_inter *data, t_obj *node);
 t_inter		inter_from_csg_op(int type, t_inter left, t_inter right,
 			t_ray incoming);
 void		inter_csg(t_inter *data, t_obj *node);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:12:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 06:05:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/23 14:57:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void
 	if (DEBUG)
 		ft_putendl("Light node :");
 	light_set(&light, scene_file);
-	light.name = name_obj(5, &scene_file->app->scene.nb_light);
+	light.name = name_obj(-1, &scene_file->app->scene.nb_light);
 	ft_lstpushnew(&scene_file->app->scene.lst_light, &light, sizeof(t_light));
 	check_closing_bracket(scene_file);
 }

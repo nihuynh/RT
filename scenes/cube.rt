@@ -12,55 +12,14 @@ content
 		origin(0 30 50)
 		intensity(20000)
 	}
-	object(sphere)
+	object(cube)
 	{
-		origin(0 0 -30)
-		radius(15)
-		color_diffuse(0.95 0.95 1)
-		color_specular(1 1 1)
-		color_tex(0 0 0)
-		spec_idx(0.1)
-		spec_power(80)
-		refraction_color(0.98 0.98 0.98)
-		reflection_color(0.05 0.05 0.05)
-		refraction_idx(0)
-		uv_scale(1 1)
-		uv_offset(0 0)
-	}
-	object(plane)
-	{
-		origin(0 0 -100)
-		normal(0 0 1)
-		limit(0 0)
-		mat(mirror glass)
-	}
-	object(plane)
-	{
-		origin(-60 0 0)
-		normal(1 0 0)
-		limit(0 0)
-		mat(white plastic)
-	}
-	object(plane)
-	{
-		origin(60 0 0)
-		normal(-1 0 0)
-		limit(0 0)
-		mat(green plastic)
-	}
-	object(plane)
-	{
-		origin(0 -60 0)
+		origin(0 0 0)
 		normal(0 1 0)
-		limit(0 0)
-		mat(red plastic)
-	}
-	object(plane)
-	{
-		origin(0 60 0)
-		normal(0 -1 0)
-		limit(0 0)
-		mat(blue plastic)
+		x(1 0 0)
+		z(0 0 1)
+		size(15)
+		mat(white plastic)
 	}
 }
 animation

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_tools.c                                  :+:      :+:    :+:   */
+/*   ui_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/08 13:31:03 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/23 13:59:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,60 @@ void
 		cone->theta = tmp.theta;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
 		cone->size = tmp.size;
+}
+
+void
+	ui_cube(void *app_v, void *res)
+{
+	t_cube	*cube;
+	t_cube	tmp;
+
+	(void)app_v;
+	cube = res;
+	tmp = *cube;
+	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
+		cube->origin = tmp.origin;
+	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
+		cube->n = tmp.n;
+	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
+		cube->x = tmp.x;
+	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
+		cube->z = tmp.z;
+	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
+		vec3_normalize(&cube->n);
+		vec3_normalize(&cube->x);
+		vec3_normalize(&cube->z);
+	}
+	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
+		cube->size = tmp.size;
+}
+
+void
+	ui_tore(void *app_v, void *res)
+{
+	t_tore	*tore;
+	t_tore	tmp;
+
+	(void)app_v;
+	tore = res;
+	tmp = *tore;
+	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
+		tore->origin = tmp.origin;
+	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
+		tore->n = tmp.n;
+	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
+		tore->x = tmp.x;
+	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
+		tore->z = tmp.z;
+	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
+		vec3_normalize(&tore->n);
+		vec3_normalize(&tore->x);
+		vec3_normalize(&tore->z);
+	}
+	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
+		tore->size = tmp.size;
+	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
+		tore->radius = tmp.radius;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 01:48:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/23 13:35:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,25 @@ typedef struct	s_csg
 	t_vec3		z;
 	t_btree		*root;
 }				t_csg;
+
+typedef struct	s_cube
+{
+	t_pt3		origin;
+	t_vec3		x;
+	t_vec3		n;
+	t_vec3		z;
+	float		size;
+}				t_cube;
+
+typedef struct	s_tore
+{
+	t_pt3		origin;
+	t_vec3		x;
+	t_vec3		n;
+	t_vec3		z;
+	float		radius;
+	float		size;
+}				t_tore;
 
 typedef struct	s_light
 {

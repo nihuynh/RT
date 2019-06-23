@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:21:36 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 18:24:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/23 13:44:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,31 @@ void
 	export_tvec3(fd, "\tnormal", cylinder->n);
 	dprintf(fd, "\t\tradius(%.3f)\n", cylinder->radius);
 	dprintf(fd, "\t\tsize(%.3f)\n", cylinder->size);
+}
+
+void
+	cube_export(int fd, void *shape)
+{
+	t_cube	*cube;
+
+	cube = shape;
+	export_tvec3(fd, "\torigin", cube->origin);
+	export_tvec3(fd, "\tnormal", cube->n);
+	export_tvec3(fd, "\tx", cube->x);
+	export_tvec3(fd, "\tz", cube->z);
+	dprintf(fd, "\t\tsize(%.3f)\n", cube->size);
+}
+
+void
+	tore_export(int fd, void *shape)
+{
+	t_tore	*tore;
+
+	tore = shape;
+	export_tvec3(fd, "\torigin", tore->origin);
+	export_tvec3(fd, "\tnormal", tore->n);
+	export_tvec3(fd, "\tx", tore->x);
+	export_tvec3(fd, "\tz", tore->z);
+	dprintf(fd, "\t\tsize(%.3f)\n", tore->size);
+	dprintf(fd, "\t\tradius(%.3f)\n", tore->radius);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 05:13:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/23 14:19:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void
 		{"sphere", sizeof(t_sphere), &sphere_set, &sphere_export},
 		{"cone", sizeof(t_cone), &cone_set, &cone_export},
 		{"cylinder", sizeof(t_cylinder), &cylinder_set, &cylinder_export},
-		{"csg", sizeof(t_csg), &csg_set, &csg_export}
+		{"csg", sizeof(t_csg), &csg_set, &csg_export},
+		{"cube", sizeof(t_cube), &cube_set, &cube_export},
+		{"tore", sizeof(t_tore), &tore_set, &tore_export}
 	};
 
 	if (ft_btw(type, 0, sizeof(index_config) / sizeof(t_parse)))
@@ -99,7 +101,9 @@ void
 		{&inter_sphere, &ui_sphere, &normal_sphere, &get_sphere_uv},
 		{&inter_cone, &ui_cone, &normal_cone, &get_cone_uv},
 		{&inter_cylinder, &ui_cylinder, &normal_cylinder, &get_cylinder_uv},
-		{&inter_csg, &ui_csg, NULL, NULL}
+		{&inter_csg, &ui_csg, NULL, NULL},
+		{&inter_cube, &ui_cube, &normal_cube, &get_cube_uv},
+		{&inter_tore, &ui_tore, &normal_tore, &get_tore_uv}
 	};
 
 	config = ft_memcpy(config, &obj_func[type], sizeof(t_objset));

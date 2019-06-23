@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/11 19:31:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/23 14:47:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,13 @@ bool	load_selected_tex(const char *label, char *name,
 
 void	new_obj_list(int *type)
 {
-	const char			**item;
 	static const char	*item_current;
 	int					i;
 	bool				is_selected;
+	const char*			item[] = {
+		"Plane", "Sphere", "Cone", "Cylinder", "Cube", "Tore"
+	};
 
-	item = (const char*[]){"Plane", "Sphere", "Cone", "Cylinder"};
 	item_current = item[*type];
 	if (igBeginCombo("Object Type", item_current, 0))
 	{

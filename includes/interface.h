@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/22 18:08:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/23 14:05:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	ui_csg(void *app_v, void *shape);
 void	ui_sphere(void *app_v, void *shape);
 void	ui_plane(void *app_v, void *shape);
 void	ui_cone(void *app_v, void *shape);
+void	ui_cube(void *app_v, void *shape);
+void	ui_tore(void *app_v, void *shape);
 void	ui_cylinder(void *app_v, void *shape);
 void	ui_light(t_data *app, t_light *light);
 void	ui_cam_win(t_gui *gui);
