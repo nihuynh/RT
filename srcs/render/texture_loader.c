@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/14 18:28:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 14:57:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "ftio.h"
 #include "ftstring.h"
 #include "rt.h"
+#include "render.h"
 
 void	load_texture(t_texture *tex)
 {

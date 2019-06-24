@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:16:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/22 18:39:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 14:55:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,6 @@ void		del_light(void *content, size_t content_size);
 void		free_scene(t_data *app);
 void		free_app(t_data *app);
 void		exit_safe(int err_code);
-/*
-** Textures :
-*/
-
-t_color		texture_checkers(t_material *mat, t_texture *texture, t_vec3 uv);
-t_color		texture_strips(t_material *mat, t_texture *texture, t_vec3 uv);
-t_color		texture_wave(t_material *mat, t_texture *texture, t_vec3 uv);
-t_color		texture_perlin(t_material *mat, t_texture *texture, t_vec3 uv);
-t_color		sample(t_material *material, t_texture *texture, t_vec3 uv);
 
 void		init_interface(t_gui *gui, SDL_Window *window, t_data *app);
 void		init(t_data	*data);
@@ -101,12 +92,7 @@ int			light_cmp(void *res_1, void *res_2);
 int			scene_cmp(void *res_1, void *res_2);
 void		record_frame(t_data *app);
 
-/*
-** Post-process :
-*/
 
-t_color		sepia(t_color in);
-t_color		grayscale(t_color in);
 t_color		anti_aliasing(t_color col_prim, t_data *app, int x, int y);
 
 /*

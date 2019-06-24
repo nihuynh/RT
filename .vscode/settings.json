@@ -34,6 +34,8 @@
 		"ftmem.h": "c",
 		"t_gui.h": "c",
 		"animate.h": "c",
-		"ftlist.h": "c"
+		"ftlist.h": "c",
+		"color.h": "c",
+		"render.h": "c"
 	}
 }

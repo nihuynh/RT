@@ -6,13 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 18:34:53 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/22 22:25:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 15:40:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftmath.h"
 #include "rtstruct.h"
-#include "color.h"
 #include "perlin.h"
 
 float
@@ -64,6 +62,7 @@ void
 	res[6] = g_perm[(g_perm[(g_perm[xi + 1] + yi) % 256] + zi + 1) % 256];
 	res[7] = g_perm[(g_perm[(g_perm[xi + 1] + yi + 1) % 256] + zi + 1) % 256];
 }
+
 float
 	noise(float x,  float y,  float z)
 {
@@ -86,51 +85,30 @@ float
 	env.x2 = lerp(grad(env.l_perm[3], env.xf, env.yf - 1, env.zf - 1),
 		grad(env.l_perm[7], env.xf - 1, env.yf - 1, env.zf - 1), env.u);
 	env.y2 = lerp (env.x1, env.x2, env.v);
-	return (lerp (env.y1, env.y2, env.w) + 1) / 2;
+	return (lerp (env.y1, env.y2, env.w));
 }
 
 float
-	perlin(float x, float y, float z, int octaves, float persistence)
+	perlin(t_vec3 uv, int octaves, float persistence)
 {
 	int		i;
     float	total;
-    float	frequency;
+    float	freq;
     float	amplitude;
     float	coef;
 
 	i = 0;
 	total = 0;
-	frequency = 1;
+	freq = 1;
 	amplitude = 1;
 	coef = 0;
 	while (i < octaves)
 	{
-        total += noise(x * frequency, y * frequency, z * frequency) * amplitude;
+        total += noise(uv.x * freq, uv.y * freq, uv.z * freq) * amplitude;
         coef += amplitude;
         amplitude *= persistence;
-        frequency *= 2;
+        freq *= 2;
 		i++;
 	}
     return (total / coef);
-}
-
-float
-	perlin_noise(t_vec3 uv)
-{
-	float pattern;
-
-	pattern = perlin(uv.x , uv.y , uv.z, 5, 3);
-	return (ft_clampf(pattern, 0, 1));
-}
-
-t_color
-	texture_perlin(t_material *mat, t_texture *texture, t_vec3 uv)
-{
-	t_color res;
-	float	pattern;
-
-	(void)texture;
-	pattern = perlin_noise(uv);
-	res = color_linear_inter(mat->color_diffuse, mat->color_tex, pattern);
-	return (res);
 }

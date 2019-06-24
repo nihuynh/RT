@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/23 15:41:06 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/24 15:42:31 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c		   \
 				parse_anim.c
 RENDER		:=	camera.c cast.c filters.c light.c normal_mapping.c			   \
 				perturbation.c post_process.c render.c texture_loader.c		   \
-				texture_toolbox.c perlin.c
+				texture_toolbox.c perlin.c perlin_texture.c
 RENDER_U	:=	init_sdl.c error_sdl.c exit_sdl.c render_sdl.c loop_sdl.c 	   \
 				init_mthr_sdl.c render_mthr_sdl.c save_screenshot.c			   \
 				render_pool.c render_time.c
@@ -86,11 +86,13 @@ test: all ## This check the parsing on maps in the scenes dir.
 doc: ## Generate documentation using doxygen.
 	doxygen Doxyfile
 	open docs/html/index.html
+	@printf "\033[1;34m$(NAME)\033[25G\033[31mDocumentation $(OKLOGO)"
 .PHONY: doc
 
 dclean: ## Clean the documentation.
-	$(RM) -r docs/html 2> /dev/null || true
-	$(RM) -r docs/latex 2> /dev/null || true
+	$(RM) -r docs/html
+	$(RM) -r docs/latex
+	@printf "\033[1;34m$(NAME)\033[25G\033[31mDocumentation removed $(OKLOGO)"
 .PHONY: dclean
 
 norme: ## Check the norme of the project and the libraries.

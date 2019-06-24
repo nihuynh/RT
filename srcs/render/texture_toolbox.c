@@ -6,12 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/22 18:40:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 15:52:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <zconf.h>
+#include "t_data.h"
 #include "rt.h"
+#include "render.h"
 #include "config.h"
 #include "libft.h"
 #include "parse.h"
@@ -19,23 +21,27 @@
 static inline void
 	textures_procedural(t_data *app)
 {
-	t_texture	node;
+	t_texture				node;
+	int						len;
+	const	t_tex_proced	proced_texture[] = {
+		{"none", NULL},
+		{"checkers", &texture_checkers},
+		{"strips", &texture_strips},
+		{"wave", &texture_wave},
+		{"perlin", &texture_perlin},
+		{"wood", &texture_wood},
+		{"marble", &texture_marble}
+	};
 
 	ft_bzero(&node, sizeof(t_texture));
-	node.name = ft_strdup("none");
-	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
-	node.name = ft_strdup("checkers");
-	node.f_texture = &texture_checkers;
-	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
-	node.name = ft_strdup("strips");
-	node.f_texture = &texture_strips;
-	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
-	node.name = ft_strdup("wave");
-	node.f_texture = &texture_wave;
-	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
-	node.name = ft_strdup("perlin");
-	node.f_texture = &texture_perlin;
-	ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
+	len = sizeof(proced_texture) / sizeof(t_tex_proced);
+	while (--len >= 0)
+	{
+		if (!(node.name = ft_strdup(proced_texture[len].name)))
+			ft_error(__func__, __LINE__);
+		node.f_texture = proced_texture[len].f_texture;
+		ft_lstpushnew(&app->lst_tex, &node, sizeof(t_texture));
+	}
 }
 
 void
