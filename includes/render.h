@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 14:50:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 15:51:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 16:23:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_color			texture_wave(t_material *mat, t_texture *tex, t_vec3 uv);
 t_color			texture_perlin(t_material *mat, t_texture *tex, t_vec3 uv);
 t_color			texture_wood(t_material *mat, t_texture *tex, t_vec3 uv);
 t_color			texture_marble(t_material *mat, t_texture *tex, t_vec3 uv);
+t_color			texture_cloud(t_material *mat, t_texture *tex, t_vec3 uv);
 t_color			sample(t_material *material, t_texture *tex, t_vec3 uv);
 
 /*

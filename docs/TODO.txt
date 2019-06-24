@@ -1,23 +1,23 @@
 RT :
 
-CSG inter
-Parser template tore & cube OBB
 Video youtube
-Perturbation normal & spéculaire
-
-UI
-Fix render time
 
 Optionnals :
 
 Fix pool render
-Cimgui en static & compile RT on linux
 STL files
 Adaptative AA
 Adaptative sous_sampling without recalcul
 Test unitaire
 git hooks
-
+compile RT on linux
+compile RT on Win
+compile RT on Mac wth SDL2 inside app
 
 DONE :
+Cimgui en static
+Fix render time
 CSG export & free
+CSG inter
+Parser template tore & cube OBB
+Perturbation normal & spéculaire

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/24 15:52:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 16:23:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static inline void
 		{"wave", &texture_wave},
 		{"perlin", &texture_perlin},
 		{"wood", &texture_wood},
-		{"marble", &texture_marble}
+		{"marble", &texture_marble},
+		{"cloud", &texture_cloud}
 	};
 
 	ft_bzero(&node, sizeof(t_texture));

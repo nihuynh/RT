@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 14:46:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 15:11:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 16:41:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,19 @@ t_color
 	float	pattern;
 
 	(void)texture;
-	pattern = cosf((uv.x + perlin(uv, 5, 3)) * 2 * M_PI);
+	pattern = cosf((uv.x + perlin(uv, 5, 3)));
+	res = color_linear_inter(mat->color_diffuse, mat->color_tex, pattern);
+	return (res);
+}
+
+t_color
+	texture_cloud(t_material *mat, t_texture *texture, t_vec3 uv)
+{
+	t_color res;
+	float	pattern;
+
+	(void)texture;
+	pattern = perlin(uv, 3, 2);
 	res = color_linear_inter(mat->color_diffuse, mat->color_tex, pattern);
 	return (res);
 }

@@ -56,9 +56,8 @@ docs/html/
 docs/latex/
 RT
 .DS_Store
-rtv1
 cmake-build-*/
 .idea/
 .vscode/ipch/*
 imgui.ini
-RT_debug
+docs/TODO.txt
