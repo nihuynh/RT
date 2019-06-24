@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 13:41:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 19:15:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ void			cylinder_set(t_obj *obj, void *cylinder, t_parse_txt *scene_fi);
 void			plane_set(t_obj *obj, void *plane, t_parse_txt *scene_file);
 void			sphere_set(t_obj *obj, void *sphere, t_parse_txt *scene_file);
 void			csg_set(t_obj *obj, void *root, t_parse_txt *scene_file);
+void			set_min_max_corner(t_cube *cube);
 void			cube_set(t_obj *obj, void *root, t_parse_txt *scene_file);
 void			tore_set(t_obj *obj, void *root, t_parse_txt *scene_file);
 

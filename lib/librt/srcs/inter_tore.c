@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 13:52:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 13:52:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 17:08:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,12 @@
 static inline t_vec2
 	inter_vec2(t_ray *ray, t_tore *tore)
 {
-	float	quad[3];
 	t_vec2	res;
-	float	det;
-	t_vec3	rene;
 
-	vec3_sub(&rene, &ray->origin, &tore->origin);
-	AAAA = vec3_mag(ray->dir);
-	BBBB = 2.0 * vec3_dot(&ray->dir, &rene);
-	CCCC = vec3_dot(&rene, &rene) - tore->size * tore->size;
-	det = BBBB * BBBB - 4 * AAAA * CCCC;
-	if (det < 0)
-	{
-		res.x = INFINITY;
-		res.y = INFINITY;
-		return (res);
-	}
-	res.x = (-BBBB + sqrt(det)) / (2 * AAAA);
-	res.y = (-BBBB - sqrt(det)) / (2 * AAAA);
+	(void) tore;
+	(void) ray;
+	res.x = INFINITY;
+	res.y = INFINITY;
 	return (res);
 }
 

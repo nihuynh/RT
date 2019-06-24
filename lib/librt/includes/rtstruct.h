@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 13:35:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 17:24:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ typedef struct	s_cube
 	t_vec3		x;
 	t_vec3		n;
 	t_vec3		z;
+	t_vec3		min_corner;
+	t_vec3		max_corner;
 	float		size;
 }				t_cube;
 

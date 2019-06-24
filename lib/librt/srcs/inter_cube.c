@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 13:52:10 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 13:52:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 19:12:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,28 @@
 static inline t_vec2
 	inter_vec2(t_ray *ray, t_cube *cube)
 {
-	float	quad[3];
+	t_vec3	dirfrac;
 	t_vec2	res;
-	float	det;
-	t_vec3	rene;
+	t_vec3	min_sub;
+	t_vec3	max_sub;
 
-	vec3_sub(&rene, &ray->origin, &cube->origin);
-	AAAA = vec3_mag(ray->dir);
-	BBBB = 2.0 * vec3_dot(&ray->dir, &rene);
-	CCCC = vec3_dot(&rene, &rene) - cube->size * cube->size;
-	det = BBBB * BBBB - 4 * AAAA * CCCC;
-	if (det < 0)
+	dirfrac.x = 1.0f / ray->dir.x;
+	dirfrac.y = 1.0f / ray->dir.y;
+	dirfrac.z = 1.0f / ray->dir.z;
+	min_sub = vec3_sub_(cube->min_corner, ray->origin);
+	max_sub = vec3_sub_(cube->max_corner, ray->origin);
+	min_sub = vec3_mul_(min_sub, dirfrac);
+	max_sub = vec3_mul_(max_sub, dirfrac);
+	res.x = fmaxf(fmaxf(fminf(min_sub.x, max_sub.x),
+		fminf(min_sub.y, max_sub.y)), fminf(min_sub.z, max_sub.z));
+	res.y = fminf(fminf(fmaxf(min_sub.x, max_sub.x),
+		fmaxf(min_sub.y, max_sub.y)), fmaxf(min_sub.z, max_sub.z));
+	if (res.y <= 0 || res.x >= res.y)
 	{
 		res.x = INFINITY;
 		res.y = INFINITY;
 		return (res);
 	}
-	res.x = (-BBBB + sqrt(det)) / (2 * AAAA);
-	res.y = (-BBBB - sqrt(det)) / (2 * AAAA);
 	return (res);
 }
 
@@ -69,7 +73,7 @@ void
 	inter_cube(t_inter *inter, t_obj *node)
 {
 	t_cube	*cube;
-	float		dist;
+	float	dist;
 
 	cube = node->shape;
 	dist = inter_local(inter, &inter->ray, cube);

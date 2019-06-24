@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 13:53:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 19:08:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void		vec3_print_(char *msg, t_vec3 *data);
 void		vec3_scalar(t_vec3 *v1, float k);
 void		vec3_sub(t_vec3 *res, t_vec3 *v1, t_vec3 *v2);
 t_vec3		vec3_sub_(t_vec3 a, t_vec3 b);
+void		vec3_mul(t_vec3 *res, t_vec3 *v1, t_vec3 *v2);
+t_vec3		vec3_mul_(t_vec3 a, t_vec3 b);
 t_vec3		vec3_deflect(t_vec3 vec, t_vec3 normal);
 t_vec3		vec3_refract(t_vec3 ray, t_vec3 normal, float ior);
 void		vec3_cartesian_to_spherical(t_vec3 v, float *azimuth, float *polar);
