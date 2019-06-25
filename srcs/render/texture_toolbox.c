@@ -6,13 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:39:57 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/24 16:23:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:34:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <zconf.h>
 #include "t_data.h"
-#include "rt.h"
+#include "tools.h"
 #include "render.h"
 #include "config.h"
 #include "libft.h"

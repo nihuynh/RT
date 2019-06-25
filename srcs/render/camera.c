@@ -6,15 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 20:14:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:16:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include "rtstruct.h"
 #include "librt.h"
 #include "config.h"
-#include "rt.h"
 #include <math.h>
 
 static t_vec3

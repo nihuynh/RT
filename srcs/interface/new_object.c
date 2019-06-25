@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 18:43:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 22:35:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "t_data.h"
+#include "tools.h"
 #include "parse.h"
 #include "libft.h"
 

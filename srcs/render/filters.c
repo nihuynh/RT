@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:38:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/05/06 15:53:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:24:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "render.h"
+#include "t_data.h"
 
 t_color	anti_aliasing(t_color col_prim, t_data *app, int x, int y)
 {

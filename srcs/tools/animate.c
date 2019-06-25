@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 18:07:01 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 21:36:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "animate.h"
 #include "librt.h"
 #include "config.h"
-#include "librt.h"
+#include "libft.h"
 #include <SDL.h>
 
 void	animate_branch(void *res)
@@ -36,10 +36,17 @@ void	animate(t_data *app)
 	lst = app->scene.lst_anim;
 	if (app->gui.record)
 		record_frame(app);
-	if (app->gui.frame_limit && app->gui.animated_frames >= app->gui.frame_limit)
+	if (app->gui.frame_limit)
 	{
-		app->gui.animate = false;
-		return ;
+		if (app->gui.animated_frames == 0)
+			app->gui.frames_render_time = ft_curr_usec();
+		if (app->gui.animated_frames >= app->gui.frame_limit)
+		{
+			app->gui.animate = false;
+			app->gui.frames_render_time = (ft_curr_usec()
+				- app->gui.frames_render_time) / 1000;
+			return ;
+		}
 	}
 	while (lst)
 	{

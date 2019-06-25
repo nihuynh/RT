@@ -6,16 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:34:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:12:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
-#include "ftio.h"
 #include "ftmath.h"
 #include <SDL.h>
+#include "t_data.h"
 #include "config.h"
-#include "interface.h"
 
 /**
 ** @brief Key mapping

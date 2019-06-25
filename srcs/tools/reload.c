@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/22 18:32:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:23:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+#include "render.h"
 #include "t_gui.h"
 #include "t_data.h"
 #include "config.h"
@@ -37,6 +38,7 @@ static inline void
 	gui->animated_frames = 0;
 	gui->record = false;
 	gui->frame_limit = 0;
+	gui->frames_render_time = 0;
 }
 
 static inline void

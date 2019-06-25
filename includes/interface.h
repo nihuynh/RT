@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/23 14:05:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:05:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,24 @@ void	render_win(t_gui *gui);
 void	ui_object(t_data *app, t_obj *obj);
 void	ui_scene_editor(t_gui *gui);
 void	ui_mainmenu(t_gui *gui);
+
 void	ui_render_settings(t_data *app);
 int		export_scene(t_data *app, char *filename);
-void	export_material(int fd, t_material *mat);
-void	load_scene(t_data *app, char *filename);
 void	reload_scene(t_data *app, char *filename);
-bool	load_selected_tex(const char *label, char *name, t_list *current,
-	t_texture **selected);
-void	anim_ui(t_gui *gui);
+void	camera_tab(t_data *app);
+
 void	anim_add(t_data *app, t_obj *obj);
 void	anim_delete(t_data *app);
 void	animate(t_data *app);
 void	anim_reset(t_data *app);
-void	anim_add_another(t_anim *anim);
-void	camera_tab(t_data *app);
 void	anim_add_light(t_data *app, t_light *light);
+void	object_settings(t_data *app);
+
+void	export_material(int fd, t_material *mat);
+bool	load_selected_tex(const char *label, char *name, t_list *current,
+	t_texture **selected);
+void	anim_ui(t_gui *gui);
+void	anim_add_another(t_anim *anim);
 void	anim_selector(t_gui *gui, ImVec2 size);
 
 /*
@@ -68,13 +71,11 @@ void	icolortogui(int src, float dest[3]);
 void	guicolortoi(float src[3], int *dest);
 void	colortogui(t_color src, float dest[3]);
 void	guitocolor(float src[3], t_color *dest);
-void	object_settings(t_data *app);
 void	material_list(t_list *lst_mat, t_obj *obj);
 void	texture_list(t_list *lst_tex, t_obj *obj);
 void	node_type_list(t_csg_op *csg_op);
 void	new_obj_list(int *type);
 void	list_scenes(t_gui *gui);
-t_obj	*find_obj_at_pixel(t_data *app, int x, int y);
 void	new_light(t_data *app);
 void	new_obj(t_data *app, int type);
 void	delete_obj(t_data *app);

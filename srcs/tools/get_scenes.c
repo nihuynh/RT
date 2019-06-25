@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 02:25:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 15:13:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:36:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "t_data.h"
+#include "tools.h"
 #include <dirent.h>
 #include "config.h"
 #include "libft.h"

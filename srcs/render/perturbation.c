@@ -6,14 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 06:48:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/22 18:38:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:27:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ftmath.h"
 #include "rtstruct.h"
-#include "librt.h"
 #include "color.h"
 #include <math.h>
 

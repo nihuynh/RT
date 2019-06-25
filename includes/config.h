@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/22 18:28:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:11:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,15 @@
 # define DEBUG			0
 # define MAC			MACB
 # define TEX_DIR		"resources/textures/"
+# define MAT_LST_DIR	"resources/materialList.csv"
 # define SCENE_DIR		"scenes/"
 # define NEW_SCENE		"scenes/new_scene.rt"
+
+/*
+** Usage :
+*/
+
+# define USAGE "Usage : ./RT <scene.rt> [options]\nOptions : hlt"
 
 /*
 ** User def :

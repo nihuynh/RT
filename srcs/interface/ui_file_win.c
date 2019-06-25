@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:50:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 21:29:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	load_win(t_gui *gui)
 	igEnd();
 }
 
-void	stats_win_content(t_sdl *sdl, ImVec2 size)
+void	stats_win_content(t_sdl *sdl, ImVec2 size, t_data *app)
 {
 	float plot_border;
 
@@ -80,6 +80,8 @@ void	stats_win_content(t_sdl *sdl, ImVec2 size)
 	igText("Gui FPS (%i)", (int)sdl->gui_time[GUI_FPS - 1]);
 	igProgressBar(sdl->progress_sub_sample, (ImVec2){size.x / 4, 0},
 		"Render progress");
+	igText("Path : [%s]", app->option.path);
+	igText("Time animation render : [%.3fs]", (float) app->gui.frames_render_time / 1000.0f);
 }
 
 void	stats_win(t_gui *gui)
@@ -96,6 +98,6 @@ void	stats_win(t_gui *gui)
 	igSetNextWindowPos(pos, (ImGuiCond_Always), (ImVec2){0, 0});
 	igSetNextWindowSizeConstraints(size, size, NULL, NULL);
 	igBegin("Stats", &gui->stats_open, ImGuiWindowFlags_NoResize);
-	stats_win_content(gui->sdl, size);
+	stats_win_content(gui->sdl, size, gui->app);
 	igEnd();
 }

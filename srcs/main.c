@@ -6,16 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 17:50:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:11:16 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <time.h>
-#include "rt.h"
-#include "libft.h"
+#include "t_data.h"
 #include "config.h"
-#include "interface.h"
+#include "libft.h"
 
 t_data
 	*get_app(t_data *app)
@@ -50,7 +48,7 @@ t_data
 	init_mthr_sdl(app->sdl, &process_pixel, app);
 	hook_sdl(app);
 	init_textures(app);
-	parse_material_csv(app, "resources/materialList.csv");
+	parse_material_csv(app, MAT_LST_DIR);
 	get_scenes(app);
 	return (app);
 }

@@ -6,11 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 14:53:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:30:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "t_data.h"
 #include "render.h"
 #include <math.h>
 #include "librt.h"

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cast.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:36:15 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/26 16:02:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 22:17:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "rtstruct.h"
+#include "ftlist.h"
 
 void
 	cast_primary(t_list *obj_list, t_inter *inter)

@@ -6,12 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 14:35:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 14:54:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:27:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
-#include "libft.h"
+#include "ftmath.h"
 #include <math.h>
 
 t_color	sepia(t_color in)

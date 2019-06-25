@@ -36,6 +36,7 @@
 		"animate.h": "c",
 		"ftlist.h": "c",
 		"color.h": "c",
-		"render.h": "c"
+		"render.h": "c",
+		"stdlib.h": "c"
 	}
 }

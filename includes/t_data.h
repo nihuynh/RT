@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:06:56 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 19:47:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 21:59:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,23 @@ typedef struct	s_data
 	t_settings	settings;
 }				t_data;
 
+/*
+** Core :
+*/
+
+int				process_pixel(int x, int y, void *arg);
+t_obj			*find_obj_at_pixel(t_data *app, int x, int y);
 t_data			*get_app(t_data *app);
+void			free_app(t_data *app);
+
+/*
+** Loading :
+*/
+
+void			hook_sdl(t_data *app);
+void			init_textures(t_data *app);
+void			parse_material_csv(t_data *app, char *csv_file);
+void			get_scenes(t_data *app);
+void			load_scene(t_data *app, char *filename);
 
 #endif

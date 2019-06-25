@@ -6,19 +6,16 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/24 14:57:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:32:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include <dirent.h>
 #include <SDL_image.h>
 #include "rtstruct.h"
 #include "config.h"
-#include "ftio.h"
-#include "ftstring.h"
-#include "rt.h"
+#include "libft.h"
+#include "t_data.h"
 #include "render.h"
 
 void	load_texture(t_texture *tex)

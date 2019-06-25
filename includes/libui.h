@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 14:56:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:40:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <SDL.h>
 # include <stdbool.h>
 
-# define THR_C			10
+# define THR_C			50
 # define BATCH_SIZE		16
 # define C_MASK			0xFF000000
 # define P_TIME_LEN		80

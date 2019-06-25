@@ -6,13 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 18:22:48 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/19 03:19:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:25:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include "ftstring.h"
-#include "rt.h"
+#include <math.h>
 
 /*
 ** Adapted from Quick'n'Dirty method from here

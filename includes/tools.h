@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_settings.h                                       :+:      :+:    :+:   */
+/*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/03 00:13:33 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 21:41:36 by nihuynh          ###   ########.fr       */
+/*   Created: 2019/06/25 22:33:42 by nihuynh           #+#    #+#             */
+/*   Updated: 2019/06/25 22:34:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_SETTINGS_H
-# define T_SETTINGS_H
+#ifndef TOOLS_H
+# define TOOLS_H
 
-# include "color.h"
-# include <stdbool.h>
-
-typedef struct	s_settings
-{
-	t_color		back_color;
-	t_color		amb_light;
-	t_color		filter;
-	bool		light;
-	bool		facing;
-	bool		shine;
-	bool		shadow;
-	bool		deflect;
-	bool		absorb;
-	bool		anti_a;
-	bool		debug_normal;
-	bool		normal_mapping;
-	int			depth_max;
-	float		fov;
-}				t_settings;
+int			texture_cmp(void *res_1, void *res_2);
+int			obj_cmp(void *res1, void *res2);
+int			mat_cmp(void *res_1, void *res_2);
+int			light_cmp(void *res_1, void *res_2);
+int			scene_cmp(void *res_1, void *res_2);
 
 #endif

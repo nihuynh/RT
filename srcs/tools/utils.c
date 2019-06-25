@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 14:58:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:36:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "t_data.h"
+#include "tools.h"
 #include "parse.h"
 #include "libft.h"
 #include <unistd.h>

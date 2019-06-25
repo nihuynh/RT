@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_gui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 17:17:46 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 21:22:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct		s_gui
 	t_sdl			*sdl;
 	uint32_t		texture_id;
 	SDL_GLContext	gl_context;
-
 	int				flags_render;
 	char			err_msg[50];
 	bool			err_open;
@@ -46,6 +45,7 @@ typedef struct		s_gui
 	bool			animate;
 	bool			record;
 	int				frame_limit;
+	long			frames_render_time;
 	int				animated_frames;
 	int				new_obj_type;
 	t_light			*light_set;

@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 20:04:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:34:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
-#include "rt.h"
+#include "t_data.h"
+#include "tools.h"
 
 void
 	ui_light(t_data *app, t_light *light)

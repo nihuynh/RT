@@ -6,19 +6,15 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/10 07:25:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:24:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
-#include "rtstruct.h"
+#include "render.h"
 #include "librt.h"
 #include "ftlist.h"
 #include "ftmem.h"
 #include <math.h>
-
-#define DIFFUSE		0
-#define SPECULAR	1
 
 static inline float
 	facing_ratio(t_vec3 ray_dir, t_vec3 normal)
