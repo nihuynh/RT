@@ -6,6 +6,7 @@ sudo: required
 addons:
   homebrew:
     packages:
+	- doxygen
     - sdl2
     - sdl2_image
     update: true
@@ -13,7 +14,17 @@ install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
     sudo sh resources/script/install_sdl.sh;
     fi
-script: make test
+script:
+  - make test
+  - doxygen Doxyfile
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/html
+  github_token: $GH_REPO_TOKEN
+  on:
+    branch: master
 
 # Notifications :
 matrix:
