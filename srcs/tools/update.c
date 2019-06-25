@@ -6,11 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:16:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/14 07:28:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:05:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "render.h"
 #include "librt.h"
 #include "SDL_opengl.h"
 

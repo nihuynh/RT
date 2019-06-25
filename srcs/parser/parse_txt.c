@@ -6,12 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:29:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/10 04:56:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:23:16 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "rt.h"
+#include "tools.h"
 #include "parse.h"
 #include <unistd.h>
 #include <stdlib.h>

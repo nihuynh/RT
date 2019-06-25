@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ui_camera_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 02:36:46 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 00:15:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:24:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "interface.h"
 #include "libft.h"
 #include "animate.h"

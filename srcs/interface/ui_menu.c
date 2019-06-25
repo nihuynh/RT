@@ -6,12 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/22 18:26:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:22:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
-#include "rt.h"
+#include "tools.h"
 #include "config.h"
 #include "libft.h"
 

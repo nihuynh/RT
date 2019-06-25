@@ -6,15 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 03:33:18 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:41:58 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:09:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "libft.h"
 #include "libui.h"
-#include "t_gui.h"
 #include "t_data.h"
+#include "t_gui.h"
 #include "interface.h"
 #include "SDL_opengl.h"
 #include "imgui_impl_sdl.h"

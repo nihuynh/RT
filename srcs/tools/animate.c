@@ -6,17 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 21:36:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:54:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtstruct.h"
-#include "rt.h"
+#include "t_data.h"
 #include "animate.h"
-#include "librt.h"
-#include "config.h"
 #include "libft.h"
-#include <SDL.h>
+#include "librt.h"
 
 void	animate_branch(void *res)
 {

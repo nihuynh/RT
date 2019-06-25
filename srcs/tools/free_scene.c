@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   free_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:02:46 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:34:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "parse.h"
 #include "t_data.h"
 #include "config.h"
-#include "rt.h"
+#include "tools.h"
 
 static inline void
 	del_tex(void *content, size_t content_size)

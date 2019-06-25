@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   delete_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 21:53:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 22:57:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "t_data.h"
+#include "tools.h"
 #include "parse.h"
 #include "libft.h"
 #include "interface.h"

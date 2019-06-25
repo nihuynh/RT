@@ -37,6 +37,8 @@
 		"ftlist.h": "c",
 		"color.h": "c",
 		"render.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"sdl_opengl.h": "c",
+		"tools.h": "c"
 	}
 }

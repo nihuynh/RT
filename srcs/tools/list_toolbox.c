@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   list_toolbox.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 04:14:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 20:19:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:26:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "ftstring.h"
+#include "rtstruct.h"
+#include "t_scene.h"
 
 int		obj_cmp(void *res_1, void *res_2)
 {

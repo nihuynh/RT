@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 22:05:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:22:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 
 void	toggle_fullscreen(t_sdl *sdl, t_gui *gui);
 void	toggle_layout(t_sdl *sdl, t_gui *gui);
+void	resize_app(int width, int height, t_data *app);
 void	err_win(t_gui *gui);
 void	export_win(t_gui *gui);
 void	load_win(t_gui *gui);
@@ -96,5 +97,15 @@ void	ui_tore(void *app_v, void *shape);
 void	ui_cylinder(void *app_v, void *shape);
 void	ui_light(t_data *app, t_light *light);
 void	ui_cam_win(t_gui *gui);
+
+/*
+** Hooks :
+*/
+
+void	render_gui(void *arg);
+void	update(void *data);
+void	key_event(int *quit, SDL_Keycode key, void *arg, bool state);
+void	mouse_motion(SDL_Event *event, void *arg);
+void	click_event(SDL_Event *event, void *arg);
 
 #endif

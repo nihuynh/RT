@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 19:11:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:24:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <math.h>
 #include "libui.h"
 #include "libft.h"
-#include "rt.h"
 #include "config.h"
 
 void

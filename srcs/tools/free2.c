@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   free2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:40:23 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 05:14:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:01:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "animate.h"
-#include "stdlib.h"
+#include <stdlib.h>
 
 void
 	del_anim(void *content, size_t content_size)

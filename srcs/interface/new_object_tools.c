@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   new_object_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:36:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 18:43:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:24:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "rtstruct.h"
 
 void
 	sphere_new(t_obj *obj, void *res)

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 04:20:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/05 00:00:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:14:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 ** # include "ft_unit_test.h"
 */
 
-# include "rt.h"
+# include "t_data.h"
 # include "export.h"
 # include "libft.h"
 
+int		reader_no_exit(char *filename, t_data *app);
 int		export_test_suite(t_data *const_data);
 
 #endif

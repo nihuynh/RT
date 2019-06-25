@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 14:50:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:28:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:15:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,19 @@
 #define DIFFUSE		0
 #define SPECULAR	1
 
-t_shading	get_shading_data(t_inter *inter);
-void		render_gui(void *arg);
-void		light_intensity(t_inter *inter, t_color *color, t_ray *ray);
-void		cast_shadow(t_data *app, t_inter *inter);
-t_color		get_lighting(t_shading s, t_scene scene, t_settings *setng);
-void		cast_primary(t_list *obj_list, t_inter *inter);
-t_color		recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
-void		set_direction(t_cam *cam, t_vec3 direction);
-void		cam_ray(t_data *app, t_ray *res, float x, float y);
-t_color		cast_light_primary(t_list *obj_list, t_inter *inter);
-t_vec3		compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
+t_shading		get_shading_data(t_inter *inter);
+void			render_gui(void *arg);
+void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
+void			cast_shadow(t_data *app, t_inter *inter);
+t_color			get_lighting(t_shading s, t_scene scene, t_settings *setng);
+void			cast_primary(t_list *obj_list, t_inter *inter);
+t_color			recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
+void			set_direction(t_cam *cam, t_vec3 direction);
+void			cam_ray(t_data *app, t_ray *res, float x, float y);
+t_color			cast_light_primary(t_list *obj_list, t_inter *inter);
+t_vec3			compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
+
+void			update_camera(t_cam *cam, bool *needs_render);
 
 /*
 ** Textures :

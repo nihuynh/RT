@@ -6,14 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 17:54:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:59:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parse.h"
 #include "libui.h"
-#include "rt.h"
+#include "tools.h"
 #include "config.h"
 
 static inline void

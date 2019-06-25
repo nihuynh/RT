@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 19:15:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:18:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,12 +166,5 @@ void			tore_set(t_obj *obj, void *root, t_parse_txt *scene_file);
 */
 
 int				csg_is_op(t_parse_txt *scene_file);
-
-/*
-** Others :
-*/
-
-void			del_obj(void *content, size_t content_size);
-void			del_anim(void *content, size_t content_size);
 
 #endif

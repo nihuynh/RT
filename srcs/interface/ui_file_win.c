@@ -6,14 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 21:29:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 23:32:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "libft.h"
 #include "config.h"
-#include "rt.h"
 
 void	err_win(t_gui *gui)
 {

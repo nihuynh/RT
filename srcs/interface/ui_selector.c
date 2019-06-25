@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ui_selector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:16:21 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 01:46:03 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:24:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
 #include "interface.h"
 #include "libft.h"
 

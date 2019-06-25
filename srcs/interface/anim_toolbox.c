@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 20:02:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 22:58:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "animate.h"
 #include "libft.h"
 #include "parse.h"
+#include "tools.h"
 
 void
 	anim_delete(t_data *app)
