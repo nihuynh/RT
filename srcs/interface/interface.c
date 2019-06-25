@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/18 06:53:25 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/25 16:57:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	exit_ui(SDL_GLContext *gl_context)
 {
 	ImGui_ImplOpenGL2_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
-	igDestroyContext(NULL);
-	SDL_GL_DeleteContext(gl_context);
+	if (gl_context)
+	{
+		igDestroyContext(NULL);
+		SDL_GL_DeleteContext(gl_context);
+	}
 }

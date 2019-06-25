@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/19 02:44:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 17:50:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_data
 		ft_error(__func__, __LINE__);
 	app->option = ft_options(ac, av, USAGE);
 	get_app(app);
+	if (app->option.test_(app->option, 'h'))
+		return (app);
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
 	app->sdl = init_sdl(WIDTH, HEIGHT);
@@ -74,7 +76,12 @@ void
 	t_scene_name	*default_scene;
 
 	app = boot_rt(ac, av);
-	if (ac == 1)
+	if (app->option.test_(app->option, 'h'))
+	{
+		free_app(app);
+		return ;
+	}
+	if (ac == 1 || ac == (1 + app->option.count_opt))
 	{
 		if (app->lst_scenes == NULL)
 			ft_error(__func__, __LINE__);
@@ -83,7 +90,7 @@ void
 	}
 	else
 		load_scene(app, av[1]);
-	if (!(app->option.key_found_bitrpz & (1 << ('t' - 'a'))))
+	if (!(app->option.test_(app->option, 't')))
 	{
 		if (DEBUG)
 			ft_printf("RT is starting\n");

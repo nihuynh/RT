@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 15:44:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 17:54:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ void
 void
 	free_app(t_data *app)
 {
-	int		debug_leak;
+	bool	debug_leak;
 
 	free_lst(app);
 	exit_ui(app->gui.gl_context);
 	exit_sdl(app->sdl);
 	ft_strdel(&app->option.path);
-	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
+	debug_leak = app->option.test_(app->option, 'l');
 	free(app);
 	get_app(app);
 	app = NULL;
@@ -83,12 +83,12 @@ void
 void
 	exit_safe(int err_code)
 {
-	int		debug_leak;
+	bool	debug_leak;
 	t_data	*app;
 
 	app = get_app(NULL);
-	debug_leak = app->option.key_found_bitrpz & (1UL << ('l' - 'a'));
-	(app->option.key_found_bitrpz &= ~(1UL << ('l' - 'a')));
+	debug_leak = app->option.test_(app->option, 'l');
+	app->option.reset_(&app->option, 'l');
 	free_app(app);
 	while (debug_leak)
 		;
