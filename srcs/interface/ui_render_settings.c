@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:18:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:32:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 14:56:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ static inline void
 {
 	if (igBeginTabItem("Filters", NULL, 0))
 	{
-		if (igCheckbox("Sepia", &app->sdl->sepia))
-			app->sdl->grayscale = false;
+		igCheckbox("Sepia", &app->sdl->sepia);
 		igSameLine(160, 0);
-		if (igCheckbox("GrayScale", &app->sdl->grayscale))
-			app->sdl->sepia = false;
+		igCheckbox("Grayscale", &app->sdl->grayscale);
+		igCheckbox("Cartoon", &app->sdl->cartoon);
+		igSameLine(160, 0);
+		igCheckbox("Negative", &app->sdl->negative);
 		igEndTabItem();
 	}
 	if (igBeginTabItem("Debug", NULL, 0))

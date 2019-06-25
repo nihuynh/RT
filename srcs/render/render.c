@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/24 14:57:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 14:53:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,9 @@ int __attribute__((hot))
 		color = sepia(color);
 	if (app->sdl->grayscale)
 		color = grayscale(color);
+	if (app->sdl->cartoon)
+		color = cartoon(color);
+	if (app->sdl->negative)
+		color = negative(color);
 	return (colortoi(color));
 }

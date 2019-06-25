@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/22 18:00:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 14:56:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ struct				s_sdl
 	void			(*render_gui)(void *arg);
 	bool			sepia;
 	bool			grayscale;
+	bool			cartoon;
+	bool			negative;
 	bool			sub_s;
 	float			render_time[P_TIME_LEN];
 	float			gui_time[GUI_FPS];

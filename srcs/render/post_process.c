@@ -6,12 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 14:35:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/06 19:12:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 14:54:16 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 #include "libft.h"
+#include <math.h>
 
 t_color	sepia(t_color in)
 {
@@ -30,5 +31,25 @@ t_color	grayscale(t_color in)
 	out.r = (in.r + in.g + in.b) / 3;
 	out.g = out.r;
 	out.b = out.r;
+	return (out);
+}
+
+t_color	cartoon(t_color in)
+{
+	t_color out;
+
+	out.r = floorf(in.r * 10) / 10;
+	out.g = floorf(in.g * 10) / 10;
+	out.b = floorf(in.b * 10) / 10;
+	return (out);
+}
+
+t_color	negative(t_color in)
+{
+	t_color out;
+
+	out.r = 1 - in.r;
+	out.g = 1 - in.g;
+	out.b = 1 - in.b;
 	return (out);
 }

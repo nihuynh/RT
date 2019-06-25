@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 14:50:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 16:23:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/25 14:56:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ float			perlin(t_vec3 uv, int octaves, float persistence);
 
 t_color			sepia(t_color in);
 t_color			grayscale(t_color in);
+t_color			cartoon(t_color in);
+t_color			negative(t_color in);
 
 #endif
