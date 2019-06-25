@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:22:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 00:16:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ bool	load_selected_tex(const char *label, char *name, t_list *current,
 void	anim_ui(t_gui *gui);
 void	anim_add_another(t_anim *anim);
 void	anim_selector(t_gui *gui, ImVec2 size);
+void	anim_del_one(t_data *app, t_anim *anim, t_anim *to_del);
 
 /*
 ** Prototypes :

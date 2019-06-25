@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 20:04:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 00:08:39 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,15 @@ void
 		if (!(str_list = ft_strjoini("Movement ", i)))
 			ft_error(__func__, __LINE__);
 		anim_list(anim, str_list);
+		igSameLine(0, 10);
+		if (!(str_list = ft_strjoini("Delete ", i)))
+			ft_error(__func__, __LINE__);
+		if (igButton(str_list, (ImVec2){0, 0}))
+		{
+			anim_del_one(gui->app, gui->anim_set, anim);
+			break ;
+		}
+		free(str_list);
 		if (anim->ui_anim)
 			anim->ui_anim(anim, i);
 		igSeparator();
