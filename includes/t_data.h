@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:06:56 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 23:22:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 01:20:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void			free_lst(t_data *data);
 ** Others :
 */
 
+int				export_scene(t_data *app, char *filename);
+void			export_animation(int fd, t_data *app);
 void			record_frame(t_data *app);
 
 #endif

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/18 04:13:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:28:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "t_data.h"
 #include "librt.h"
-#include "libft.h"
+#include "ftio.h"
 #include "export.h"
 
 #include <stdio.h>

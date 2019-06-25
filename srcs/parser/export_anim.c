@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export_anim.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:54:08 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 02:09:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:25:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "librt.h"
-#include "libft.h"
-#include "export.h"
-
+#include "animate.h"
 #include <stdio.h>
-#include <locale.h>
-#include <fcntl.h>
 #include <unistd.h>
+#include "t_data.h"
 
 static inline const char
 	*get_anim_str(int type)

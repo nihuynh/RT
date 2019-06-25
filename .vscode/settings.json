@@ -39,6 +39,7 @@
 		"render.h": "c",
 		"stdlib.h": "c",
 		"sdl_opengl.h": "c",
-		"tools.h": "c"
+		"tools.h": "c",
+		"ftio.h": "c"
 	}
 }

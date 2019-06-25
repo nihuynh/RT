@@ -6,21 +6,17 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:41:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 13:41:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 01:21:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPORT_H
 # define EXPORT_H
 
-# include "t_data.h"
-
 /*
 ** Functions Expose :
 */
 
-int		export_scene(t_data *app, char *filename);
-void	export_animation(int fd, t_data *app);
 void	plane_export(int fd, void *shape);
 void	sphere_export(int fd, void *shape);
 void	cone_export(int fd, void *shape);

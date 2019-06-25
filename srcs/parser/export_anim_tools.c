@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   export_anim_tools.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 22:12:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/15 21:46:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:25:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "librt.h"
-#include "export.h"
-
+#include "animate.h"
 #include <stdio.h>
-#include <locale.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 void	export_translate(int fd, t_anim *anim)
 {
