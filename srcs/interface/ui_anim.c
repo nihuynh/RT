@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 00:08:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:35:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void
 		if (igButton(str_list, (ImVec2){0, 0}))
 		{
 			anim_del_one(gui->app, gui->anim_set, anim);
+			free(str_list);
 			break ;
 		}
 		free(str_list);
