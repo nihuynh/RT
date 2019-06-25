@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 22:35:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 00:52:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void
 	light.color = (t_color){1, 1, 1};
 	light.origin = (t_pt3){0, 0, 0};
 	light.intensity = 100;
-	light.name = name_obj(5, &app->scene.nb_light);
+	light.name = name_obj(-1, &app->scene.nb_light);
 	ft_lstpushnew(&app->scene.lst_light, &light, sizeof(t_light));
 	app->sdl->needs_render = true;
 	app->sdl->partial_render = false;

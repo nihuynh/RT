@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:32:47 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 00:54:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,11 @@ void	stats_win_content(t_sdl *sdl, ImVec2 size, t_data *app)
 	igText("Gui FPS (%i)", (int)sdl->gui_time[GUI_FPS - 1]);
 	igProgressBar(sdl->progress_sub_sample, (ImVec2){size.x / 4, 0},
 		"Render progress");
-	igText("Path : [%s]", app->option.path);
-	igText("Time animation render : [%.3fs]", (float) app->gui.frames_render_time / 1000.0f);
+	igText("Path : [%s]\targ : [%s]", app->option.path, app->arg);
+	igText("Time animation render : [%.3fs]",
+		(float)(app->gui.frames_render_time / 1000.0f));
+	igText("Count obj: [%d]\tCount light: [%d]", ft_lstlen(app->scene.lst_obj),
+		app->scene.nb_light);
 }
 
 void	stats_win(t_gui *gui)
