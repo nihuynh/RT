@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 00:17:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 01:06:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,12 @@ void
 	{
 		if (!(lst = ft_lstgetnode_by_content_ptr(app->scene.lst_anim, anim)))
 			ft_error(__func__, __LINE__);
-		if (anim->next == NULL)
+		if (to_del->next == NULL)
 			anim_delete(app);
 		else
 		{
-			lst->content = anim->next;
+			lst->content = to_del->next;
+			app->gui.anim_set = to_del->next;
 			anim_free(to_del);
 			free(to_del);
 		}

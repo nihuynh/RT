@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 22:12:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 01:06:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,15 @@ static inline bool
 }
 
 void
+	animation_keybind(t_data *app, SDL_Keycode key, bool state)
+{
+	if (key == SDLK_k && state == SDL_RELEASED)
+		app->gui.animate = true;
+	else if (key == SDLK_l && state == SDL_RELEASED)
+		app->gui.animate = false;
+}
+
+void
 	key_event(int *quit, SDL_Keycode key, void *arg, bool state)
 {
 	t_data		*app;
@@ -66,10 +75,10 @@ void
 	app = arg;
 	if (key == SDLK_ESCAPE)
 		*quit = 1;
-	else if (app->gui.render_focused && state == true)
-		return ;
 	else if (key == SDLK_p && state == SDL_RELEASED)
 		save_screenshot(app->sdl, app->arg);
+	else if (app->gui.render_focused && state == true)
+		return ;
 	else if (key == SDLK_SPACE && state == SDL_RELEASED)
 	{
 		mouse_captured ^= 1;
@@ -78,6 +87,7 @@ void
 	else if (key == SDLK_r && state == SDL_RELEASED
 			&& (app->sdl->needs_render = 1))
 		app->cam = app->gui.cam_cpy;
+	animation_keybind(app, key, state);
 	if (camera(&app->cam, key, state))
 	{
 		app->sdl->sub_sample = SUB_SAMPLE * app->sdl->sub_s
