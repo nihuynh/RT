@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/23 14:05:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/24 18:07:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	anim_add_another(t_anim *anim);
 void	camera_tab(t_data *app);
 void	anim_add_light(t_data *app, t_light *light);
 void	anim_selector(t_gui *gui, ImVec2 size);
+void	anim_del_one(t_data *app, t_anim *anim, t_anim *to_del);
 
 /*
 ** Prototypes :
