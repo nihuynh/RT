@@ -1,5 +1,3 @@
-
-
 # RT
 [![Build Status](https://travis-ci.com/nihuynh/RT.svg?token=PdGtpZGzFKLd1CBjD7Ym&branch=master)](https://travis-ci.com/nihuynh/RT)
 
@@ -8,6 +6,7 @@
 ## Summary
 _This is a ray tracing program using SDL2 and imgui._
 _Built and tested on mac OSX 10, (Untested on linux)_
+https://nihuynh.github.io/RT/
 
 ## How to install
 

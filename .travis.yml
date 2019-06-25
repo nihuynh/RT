@@ -14,9 +14,7 @@ install:
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
     sudo sh resources/script/install_sdl.sh;
     fi
-script:
-  - make test
-  - doxygen Doxyfile
+script: make travis
 
 deploy:
   provider: pages
