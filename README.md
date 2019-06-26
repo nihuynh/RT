@@ -7,6 +7,7 @@
 _This is a ray tracing program using SDL2 and imgui._
 _Built and tested on mac OSX 10, (Untested on linux)_
 https://nihuynh.github.io/RT/
+http://www.yamllint.com/ <= travis tools AWESOME
 
 ## How to install
 
