@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 22:29:04 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/27 00:50:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void
 	dist = inter(&data->ray, plane);
 	if (dist >= data->dist || dist < 0)
 		return ;
-	if (plane->size.x > 0 || plane->size.y > 0)
+	if (plane->size.x > 0 || plane->size.y > 0 || plane->type == 2)
 		if (!(inter_plane_finite(data, plane, dist)))
 			return ;
 	data->dist = dist;
