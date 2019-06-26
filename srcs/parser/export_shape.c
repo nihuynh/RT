@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:21:36 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 22:43:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/06/27 00:02:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void
 	export_tvec3(fd, "\tnormal", plane->n);
 	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", plane->size.x, plane->size.y);
 	dprintf(fd, "\t\ttype(%d)\n", plane->type);
+	if (plane->type == 2)
+	{
+		dprintf(fd, "\t\tp1(%.3f %.3f)\n", plane->p1.x, plane->p1.y);
+		dprintf(fd, "\t\tp2(%.3f %.3f)\n", plane->p2.x, plane->p2.y);
+	}
 }
 
 void
