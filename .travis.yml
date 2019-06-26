@@ -29,5 +29,5 @@ notifications:
   slack: "42born2code:6JQ1d0KBj9Vggul0KNL9p0fW"
 os:
   - osx
-script: "make test"
+script: "make travis"
 sudo: required
