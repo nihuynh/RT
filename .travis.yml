@@ -1,31 +1,37 @@
-os:
-# - linux
-- osx
-language: c
-sudo: required
 addons:
   homebrew:
     packages:
-	- doxygen
-	- graphviz
-    - sdl2
-    - sdl2_image
+      - doxygen
+      - graphviz
+      - sdl2
+      - sdl2_image
     update: true
-install:
-  - if [ $TRAVIS_OS_NAME == "linux" ]; then
-    sudo sh resources/script/install_sdl.sh;
-    fi
-script: make test
-
-# Notifications :
-matrix:
-  allow_failures:
-    - os: linux
-notifications:
-  slack: 42born2code:6JQ1d0KBj9Vggul0KNL9p0fW
-
-# blocklist
+after_success:
+  - "cd $TRAVIS_BUILD_DIR"
+  - "chmod +x generateDocumentationAndDeploy.sh"
+  - ./generateDocumentationAndDeploy.sh
 branches:
   except:
-  - Sam_wip
-  - gh-pages
+    - Sam_wip
+    - gh-pages
+env:
+  global:
+    -
+      GH_REPO_NAME: RT
+    -
+      DOXYFILE: $TRAVIS_BUILD_DIR/RT/Doxyfile
+    -
+      GH_REPO_REF: github.com/nihuynh/RT.git
+install:
+  - "if [ $TRAVIS_OS_NAME == \"linux\" ]; then sudo sh resources/script/install_sdl.sh; fi"
+language: c
+matrix:
+  allow_failures:
+    -
+      os: linux
+notifications:
+  slack: "42born2code:6JQ1d0KBj9Vggul0KNL9p0fW"
+os:
+  - osx
+script: "make test"
+sudo: required
