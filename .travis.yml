@@ -6,7 +6,7 @@ addons:
       - sdl2_image
       - doxygen
       - graphviz
-    update: true
+    # update: true
 branches:
   except:
     - Sam_wip
