@@ -29,5 +29,7 @@ notifications:
   slack: "42born2code:6JQ1d0KBj9Vggul0KNL9p0fW"
 os:
   - osx
-script: "make travis"
+script:
+  - make test
+  - if [ $TRAVIS_BRANCH == "master" ]; then doxygen Doxyfile; fi
 sudo: required

@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/26 01:53:51 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/26 04:00:32 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,10 +82,6 @@ test: all ## This check the parsing on maps in the scenes dir.
 	@for file in `LS scenes | grep .rt | sort -u`; \
 		do echo $$file && ./RT scenes/$$file -t; done
 .PHONY: test
-
-travis: test ## This check the parsing on maps in the scenes dir.
-	doxygen Doxyfile
-.PHONY: travis
 
 doc: ## Generate documentation using doxygen.
 	doxygen Doxyfile
