@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 19:15:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 18:06:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,20 +115,6 @@ void
 }
 
 void
-	set_min_max_corner(t_cube *cube)
-{
-	float size;
-
-	size = cube->size;
-	cube->min_corner.x = fminf(cube->origin.x - size, cube->origin.x + size);
-	cube->min_corner.y = fminf(cube->origin.y - size, cube->origin.y + size);
-	cube->min_corner.z = fminf(cube->origin.z - size, cube->origin.z + size);
-	cube->max_corner.x = fmaxf(cube->origin.x - size, cube->origin.x + size);
-	cube->max_corner.y = fmaxf(cube->origin.y - size, cube->origin.y + size);
-	cube->max_corner.z = fmaxf(cube->origin.z - size, cube->origin.z + size);
-}
-
-void
 	cube_set(t_obj *obj, void *cube, t_parse_txt *scene_file)
 {
 	t_cube		*pcube;
@@ -144,7 +130,6 @@ void
 	pcube->x = parse_vector("x(", scene_file);
 	pcube->z = parse_vector("z(", scene_file);
 	pcube->size = parse_fval("size(", scene_file);
-	set_min_max_corner(pcube);
 	vec3_normalize(&pcube->n);
 	vec3_normalize(&pcube->x);
 	vec3_normalize(&pcube->z);

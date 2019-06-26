@@ -6,14 +6,16 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 00:14:04 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/22 07:13:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 18:04:04 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
 #include "libft.h"
 
-void	init_mthr_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
+void
+	init_mthr_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*),
+		void *data, void (*prep_render)(t_sdl*))
 {
 	int		idx;
 	int		ofs;
@@ -31,4 +33,5 @@ void	init_mthr_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *data)
 		ofs = idx * sdl->thr_len;
 		sdl->data_thr[idx].pixels = &sdl->img.pixels[ofs];
 	}
+	sdl->prep_render = prep_render;
 }

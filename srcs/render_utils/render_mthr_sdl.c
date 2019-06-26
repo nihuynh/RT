@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 23:24:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 18:01:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,28 @@ void
 }
 
 void
-	render_mthr_sdl(t_sdl *sdl)
+	mthr_task(t_data_thr *data_thr, void *(*func)(void *))
 {
-	int			cthr;
-	void		*ptr;
+	ssize_t		cthr;
 	pthread_t	threads[THR_C];
-	long		elapsed_time;
 
-	init_subsampler(sdl, &elapsed_time);
 	cthr = -1;
 	while (++cthr < THR_C)
-	{
-		ptr = &(sdl->data_thr[cthr]);
-		pthread_create(&threads[cthr], NULL, process_data, ptr);
-	}
+		pthread_create(&threads[cthr], NULL, func, &(data_thr[cthr]));
 	cthr = -1;
 	while (++cthr < THR_C)
 		pthread_join(threads[cthr], NULL);
+}
+
+void
+	render_mthr_sdl(t_sdl *sdl)
+{
+	long		elapsed_time;
+
+	init_subsampler(sdl, &elapsed_time);
+	if (sdl->prep_render)
+		sdl->prep_render(sdl);
+	mthr_task(sdl->data_thr, process_data);
 	if (sdl->sub_sample > 1)
 		sdl->sub_sample >>= 1;
 	else
@@ -115,3 +120,4 @@ void
 	push_render_time(sdl, (float)elapsed_time / 1000);
 	sdl->progress_sub_sample += 0.25;
 }
+

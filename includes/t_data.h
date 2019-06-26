@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:06:56 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 01:20:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 17:46:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct	s_data
 */
 
 int				process_pixel(int x, int y, void *arg);
+void			prep_render(t_sdl *sdl);
 t_obj			*find_obj_at_pixel(t_data *app, int x, int y);
 void			interface(t_data *app);
 t_data			*get_app(t_data *app);

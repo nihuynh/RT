@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/26 04:00:32 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/06/26 18:00:00 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c		   \
 				parse_anim.c
 RENDER		:=	camera.c cast.c filters.c light.c normal_mapping.c			   \
 				perturbation.c post_process.c render.c texture_loader.c		   \
-				texture_toolbox.c perlin.c perlin_texture.c
+				texture_toolbox.c perlin.c perlin_texture.c pre_render.c
 RENDER_U	:=	init_sdl.c error_sdl.c exit_sdl.c render_sdl.c loop_sdl.c 	   \
 				init_mthr_sdl.c render_mthr_sdl.c save_screenshot.c			   \
 				render_pool.c render_time.c
