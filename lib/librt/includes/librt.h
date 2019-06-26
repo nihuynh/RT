@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   librt.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 00:15:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 19:08:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 22:29:36 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		inter_set(t_inter *inter, t_ray ray);
 void		inter_setdeflect(t_inter *inter, t_vec3 shading_normal);
 void		inter_setrefract(t_inter *inter, t_ray *res);
 void		inter_find(t_inter *primary, t_pt3 *value);
+bool		inter_plane_finite(t_inter *data, t_plane *plane, float dist);
 
 /*
 ** Light :

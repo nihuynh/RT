@@ -18,25 +18,67 @@ content
 		origin(-30.000 0.000 0.000)
 		intensity(500.000)
 	}
+	object(cylinder)
+	{
+		name(Cylinder0)
+		origin(-15.000 0.000 -20.000)
+		normal(0.000 1.000 0.000)
+		radius(2.400)
+		size(0.000)
+		mat(alloy)
+	}
+	object(cylinder)
+	{
+		name(Cylinder1)
+		origin(-15.000 0.000 -40.000)
+		normal(0.000 1.000 0.000)
+		radius(2.400)
+		size(0.000)
+		mat(alloy)
+	}
+	object(cylinder)
+	{
+		name(Cylinder2)
+		origin(15.000 0.000 -20.000)
+		normal(0.000 1.000 0.000)
+		radius(2.400)
+		size(0.000)
+		mat(alloy)
+	}
+	object(cylinder)
+	{
+		name(Cylinder3)
+		origin(15.000 0.000 -40.000)
+		normal(0.000 1.000 0.000)
+		radius(2.400)
+		size(0.000)
+		mat(alloy)
+	}
 	object(plane)
 	{
+		name(Plane0)
 		origin(0.000 -10.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(0.000 0.000)
+		type(0)
 		mat(bronze)
 	}
 	object(plane)
 	{
+		name(Plane1)
 		origin(0.000 10.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(0.000 0.000)
+		type(0)
 		mat(bronze)
 	}
 	object(plane)
 	{
+		name(Plane2)
 		origin(0.000 0.000 -50.000)
 		normal(0.000 0.000 1.000)
 		limit(0.000 0.000)
+		type(0)
 		color_diffuse(0.500 0.500 0.900)
 		color_specular(0.900 0.800 0.700)
 		color_tex(0.000 0.000 0.000)
@@ -50,54 +92,63 @@ content
 	}
 	object(sphere)
 	{
+		name(Sphere0)
 		origin(-15.000 -10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere1)
 		origin(-15.000 -10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere2)
 		origin(15.000 -10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere3)
 		origin(15.000 -10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere4)
 		origin(-15.000 10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere5)
 		origin(-15.000 10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere6)
 		origin(15.000 10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere7)
 		origin(15.000 10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
+		name(Sphere8)
 		origin(0.000 -8.000 -20.000)
 		radius(2.000)
 		color_diffuse(1.000 0.000 0.000)
@@ -110,38 +161,6 @@ content
 		refraction_idx(0.000)
 		uv_scale(1.000 1.000)
 		uv_offset(0.000 0.000)
-	}
-	object(cylinder)
-	{
-		origin(-15.000 0.000 -20.000)
-		normal(0.000 1.000 0.000)
-		radius(2.400)
-		size(0.000)
-		mat(alloy)
-	}
-	object(cylinder)
-	{
-		origin(-15.000 0.000 -40.000)
-		normal(0.000 1.000 0.000)
-		radius(2.400)
-		size(0.000)
-		mat(alloy)
-	}
-	object(cylinder)
-	{
-		origin(15.000 0.000 -20.000)
-		normal(0.000 1.000 0.000)
-		radius(2.400)
-		size(0.000)
-		mat(alloy)
-	}
-	object(cylinder)
-	{
-		origin(15.000 0.000 -40.000)
-		normal(0.000 1.000 0.000)
-		radius(2.400)
-		size(0.000)
-		mat(alloy)
 	}
 }
 animation

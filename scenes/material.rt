@@ -14,55 +14,65 @@ content
 	}
 	object(plane)
 	{
+		name(Plane0)
 		origin(0.000 0.000 100.000)
 		normal(0.000 0.000 -1.000)
 		limit(100.000 100.000)
+		type(0)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
+		name(Sphere0)
 		origin(20.000 0.000 0.000)
 		radius(5.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
+		name(Sphere1)
 		origin(10.000 0.000 0.000)
 		radius(5.000)
 		mat(red plastic)
 	}
 	object(sphere)
 	{
+		name(Sphere2)
 		origin(0.000 0.000 0.000)
 		radius(5.000)
 		mat(blue plastic)
 	}
 	object(sphere)
 	{
+		name(Sphere3)
 		origin(-10.000 0.000 0.000)
 		radius(5.000)
 		mat(green plastic)
 	}
 	object(sphere)
 	{
+		name(Sphere4)
 		origin(-20.000 0.000 0.000)
 		radius(5.000)
 		mat(bronze)
 	}
 	object(sphere)
 	{
+		name(Sphere5)
 		origin(-30.000 0.000 0.000)
 		radius(5.000)
 		mat(gold)
 	}
 	object(sphere)
 	{
+		name(Sphere6)
 		origin(-40.000 0.000 0.000)
 		radius(5.000)
 		mat(iron)
 	}
 	object(sphere)
 	{
+		name(Sphere7)
 		origin(-40.000 0.000 0.000)
 		radius(5.000)
 		mat(alloy)

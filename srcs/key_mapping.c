@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 01:06:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 23:02:21 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void
 		app->gui.animate = true;
 	else if (key == SDLK_l && state == SDL_RELEASED)
 		app->gui.animate = false;
+	else if (key == SDLK_f && state == SDL_RELEASED)
+		app->sdl->needs_render = true;
 }
 
 void

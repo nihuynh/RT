@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 02:44:31 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 19:15:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 22:50:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void
 	pplane->origin = parse_vector("origin(", scene_file);
 	pplane->n = parse_vector("normal(", scene_file);
 	pplane->size = parse_vec2("limit(", scene_file);
+	pplane->type = parse_int("type", scene_file);
 	vec3_normalize(&pplane->n);
 	create_orthobasis_from_y_axis(pplane->n, &pplane->x, &pplane->y);
 	obj->pos = &pplane->origin;

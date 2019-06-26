@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_shape.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:21:36 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 13:44:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 22:43:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void
 	export_tvec3(fd, "\torigin", plane->origin);
 	export_tvec3(fd, "\tnormal", plane->n);
 	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", plane->size.x, plane->size.y);
+	dprintf(fd, "\t\ttype(%d)\n", plane->type);
 }
 
 void
