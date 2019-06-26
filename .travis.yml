@@ -4,9 +4,9 @@ addons:
     packages:
       - sdl2
       - sdl2_image
-      - if [ $TRAVIS_BRANCH == "master" ]; then doxygen; fi
-      - if [ $TRAVIS_BRANCH == "master" ]; then graphviz; fi
-    update: true
+      - doxygen
+      - graphviz
+    # update: true
 branches:
   except:
     - Sam_wip
