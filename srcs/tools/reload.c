@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:24:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/28 21:04:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ void
 	load_scene(t_data *app, char *filename)
 {
 	free_scene(app);
+	default_settings(&app->settings);
+	default_gui_settings(&app->gui);
 	if (!(app->arg = ft_strdup(filename)))
 		ft_error(__func__, __LINE__);
 	if (reader(filename, app) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
-	default_settings(&app->settings);
-	default_gui_settings(&app->gui);
 	hook_cam_to_gui(app);
 	set_win_title(app->sdl->win, filename);
 	app->sdl->needs_render = true;
