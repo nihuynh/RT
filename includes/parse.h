@@ -116,6 +116,7 @@ float			parse_fval(char *key, t_parse_txt *scene_file);
 t_vec3			parse_vector(char *key, t_parse_txt *scene_file);
 t_vec2			parse_vec2(char *key, t_parse_txt *scene_file);
 char			*parse_str(t_parse_txt *scene_file, char *key);
+t_texture		*parse_texture(char *key_name, t_parse_txt *scene_file);
 int				parse_int(char *key, t_parse_txt *scene_file);
 
 /*
@@ -158,7 +159,6 @@ void			cylinder_set(t_obj *obj, void *cylinder, t_parse_txt *scene_fi);
 void			plane_set(t_obj *obj, void *plane, t_parse_txt *scene_file);
 void			sphere_set(t_obj *obj, void *sphere, t_parse_txt *scene_file);
 void			csg_set(t_obj *obj, void *root, t_parse_txt *scene_file);
-void			set_min_max_corner(t_cube *cube);
 void			cube_set(t_obj *obj, void *root, t_parse_txt *scene_file);
 void			tore_set(t_obj *obj, void *root, t_parse_txt *scene_file);
 

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:40:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 18:02:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ struct				s_sdl
 	void			(*click_map)(SDL_Event *, void *);
 	void			(*update)(void *arg);
 	void			(*render_gui)(void *arg);
+	void			(*prep_render)(t_sdl *sdl);
 	bool			sepia;
 	bool			grayscale;
 	bool			cartoon;
@@ -107,7 +108,7 @@ void				render_sdl(t_sdl *sdl, int (*f) (int, int, void*), void *d);
 void				loop_sdl(t_sdl *sdl, void *arg);
 void				save_screenshot(t_sdl *sdl, char *arg);
 void				init_mthr_sdl(t_sdl *sdl, int (*do_pxl)(int, int, void*),
-									void *data);
+									void *data, void (*prep_render)(t_sdl*));
 void				render_mthr_sdl(t_sdl *sdl);
 void				apply_simple_filter(t_sdl *sdl, uint32_t (*fun) (uint32_t));
 

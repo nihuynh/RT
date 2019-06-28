@@ -30,6 +30,7 @@ typedef struct	s_settings
 	bool		anti_a;
 	bool		debug_normal;
 	bool		normal_mapping;
+	bool		skybox;
 	int			depth_max;
 	float		fov;
 }				t_settings;

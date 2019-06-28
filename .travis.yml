@@ -2,10 +2,10 @@
 addons:
   homebrew:
     packages:
-      - doxygen
-      - graphviz
       - sdl2
       - sdl2_image
+      - doxygen
+      - graphviz
     update: true
 branches:
   except:
@@ -33,3 +33,8 @@ script:
   - make test
   - if [ $TRAVIS_BRANCH == "master" ]; then doxygen Doxyfile; fi
 sudo: required
+before_cache:
+  - brew cleanup
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew

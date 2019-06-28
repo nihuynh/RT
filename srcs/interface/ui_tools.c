@@ -129,10 +129,7 @@ void
 	cube = res;
 	tmp = *cube;
 	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
-	{
 		cube->origin = tmp.origin;
-		set_min_max_corner(cube);
-	}
 	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
 		cube->n = tmp.n;
 	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
@@ -144,13 +141,9 @@ void
 		vec3_normalize(&cube->n);
 		vec3_normalize(&cube->x);
 		vec3_normalize(&cube->z);
-		set_min_max_corner(cube);
 	}
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
-	{
 		cube->size = tmp.size;
-		set_min_max_corner(cube);
-	}
 }
 
 void

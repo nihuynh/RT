@@ -7,7 +7,19 @@ target_include_directories(rt PUBLIC includes)
 target_include_directories(rt PRIVATE ../libft/includes)
 
 target_sources(rt PRIVATE
+        srcs/color_add.c
+        srcs/color_bool.c
+        srcs/color_clamp.c
+        srcs/color_linear_inter.c
+        srcs/color_max.c
+        srcs/color_mult.c
+        srcs/color_scalar.c
+        srcs/color_sub.c
+        srcs/colortoi.c
+        srcs/fresnel.c
         srcs/inter_cone.c
+        srcs/inter_csg.c
+        srcs/inter_csg_op.c
         srcs/inter_cylinder.c
         srcs/inter_find.c
         srcs/inter_plane.c
@@ -16,17 +28,24 @@ target_sources(rt PRIVATE
         srcs/inter_setlight.c
         srcs/inter_setrefract.c
         srcs/inter_sphere.c
+        srcs/inter_cube.c
+        srcs/inter_tore.c
+        srcs/itocolor.c
         srcs/mat3.c
         srcs/mat3_rot.c
+        srcs/mat_orbit.c
         srcs/normal_cone.c
+        srcs/normal_cube.c
         srcs/normal_cylinder.c
         srcs/normal_plane.c
         srcs/normal_sphere.c
+        srcs/normal_tore.c
         srcs/print_matrix.c
         srcs/ray_new.c
         srcs/ray_offset_origin.c
-        srcs/fresnel.c
+        srcs/uv_mapping.c
         srcs/vec3_add.c
+        srcs/vec3_mul.c
         srcs/vec3_cos.c
         srcs/vec3_cpy.c
         srcs/vec3_cross.c
@@ -41,16 +60,5 @@ target_sources(rt PRIVATE
         srcs/vec3_print.c
         srcs/vec3_refract.c
         srcs/vec3_scalar.c
-        srcs/vec3_sub.c
         srcs/vec3_spherical_cartesian.c
-        srcs/color_add.c
-        srcs/color_max.c
-        srcs/color_mult.c
-        srcs/color_scalar.c
-        srcs/color_sub.c
-        srcs/color_clamp.c
-        srcs/color_bool.c
-        srcs/color_linear_inter.c
-        srcs/colortoi.c
-        srcs/itocolor.c
-        srcs/uv_mapping.c)
+        srcs/vec3_sub.c)

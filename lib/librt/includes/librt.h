@@ -53,6 +53,7 @@ void		inter_cylinder(t_inter *data, t_obj *node);
 void		inter_plane(t_inter *data, t_obj *node);
 void		inter_sphere(t_inter *data, t_obj *node);
 void		inter_cone(t_inter *data, t_obj *node);
+void		set_min_max_corner(t_cube *cube);
 void		inter_cube(t_inter *data, t_obj *node);
 void		inter_tore(t_inter *data, t_obj *node);
 t_inter		inter_from_csg_op(int type, t_inter left, t_inter right,

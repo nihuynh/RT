@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "parse.h"
 
-static inline t_texture
+t_texture
 	*parse_texture(char *key_name, t_parse_txt *scene_file)
 {
 	t_texture	*tex;

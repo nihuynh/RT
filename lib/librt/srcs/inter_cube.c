@@ -6,12 +6,26 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 13:52:10 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 19:12:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 18:05:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
 #include <math.h>
+
+void
+	set_min_max_corner(t_cube *cube)
+{
+	float size;
+
+	size = cube->size;
+	cube->min_corner.x = fminf(cube->origin.x - size, cube->origin.x + size);
+	cube->min_corner.y = fminf(cube->origin.y - size, cube->origin.y + size);
+	cube->min_corner.z = fminf(cube->origin.z - size, cube->origin.z + size);
+	cube->max_corner.x = fmaxf(cube->origin.x - size, cube->origin.x + size);
+	cube->max_corner.y = fmaxf(cube->origin.y - size, cube->origin.y + size);
+	cube->max_corner.z = fmaxf(cube->origin.z - size, cube->origin.z + size);
+}
 
 static inline t_vec2
 	inter_vec2(t_ray *ray, t_cube *cube)

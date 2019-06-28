@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 22:13:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:11:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 17:36:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_data
 	if (DEBUG)
 		ft_printf("Loading textures and material are completed\n");
 	app->sdl = init_sdl(WIDTH, HEIGHT);
-	init_mthr_sdl(app->sdl, &process_pixel, app);
+	init_mthr_sdl(app->sdl, &process_pixel, app, &prep_render);
 	hook_sdl(app);
 	init_textures(app);
 	parse_material_csv(app, MAT_LST_DIR);
