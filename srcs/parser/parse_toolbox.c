@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_toolbox.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/21 03:58:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 22:43:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,17 @@ int
 	if (ft_strstr(get_curr_line(scene_file), UNION_STR) != NULL)
 		return (UNION);
 	return (0);
+}
+
+int
+	parse_int(char *key, t_parse_txt *scene_file)
+{
+	char	*line;
+	int		res;
+
+	line = get_args_key_require(scene_file, key);
+	res = ft_atoi(line);
+	if (DEBUG)
+		ft_printf("Int value : %d\n", res);
+	return (res);
 }

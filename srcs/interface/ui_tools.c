@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 17:10:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/27 00:42:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,24 @@ void
 		vec3_normalize(&plane->n);
 		create_orthobasis_from_y_axis(plane->n, &plane->x, &plane->y);
 	}
-	if (igInputFloat("X Limit", &tmp.size.x, 0, 0, "%g", 0))
+	if (plane->type == 0 && igDragFloat2("Limit (X Y)",
+			&tmp.size.x, 1, 0, 1000000, "%g", 1))
+		plane->size = tmp.size;
+	if (plane->type == 1 && igDragFloat("Limit",
+			&tmp.size.x, 1, 0, 1000000, "%g", 1))
 		plane->size.x = tmp.size.x;
-	if (igInputFloat("Y Limit", &tmp.size.y, 0, 0, "%g", 0))
-		plane->size.y = tmp.size.y;
+	if (plane->type == 2 && igInputFloat2("P1", &tmp.p1.x, "%g", 0))
+		plane->p1 = tmp.p1;
+	if (plane->type == 2 && igInputFloat2("P2", &tmp.p2.x, "%g", 0))
+		plane->p2 = tmp.p2;
+	if (igRadioButtonBool("Rectangle", plane->type == 0))
+		plane->type = 0;
+	igSameLine(0, 10);
+	if (igRadioButtonBool("Disk", plane->type == 1))
+		plane->type = 1;
+	igSameLine(0, 10);
+	if (igRadioButtonBool("Triangle", plane->type == 2))
+		plane->type = 2;
 }
 
 void

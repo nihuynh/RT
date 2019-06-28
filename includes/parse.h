@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 17:09:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 22:41:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ t_vec3			parse_vector(char *key, t_parse_txt *scene_file);
 t_vec2			parse_vec2(char *key, t_parse_txt *scene_file);
 char			*parse_str(t_parse_txt *scene_file, char *key);
 t_texture		*parse_texture(char *key_name, t_parse_txt *scene_file);
+int				parse_int(char *key, t_parse_txt *scene_file);
 
 /*
 ** New object

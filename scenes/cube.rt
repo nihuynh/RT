@@ -28,6 +28,7 @@ content
 		origin(0.000 -15.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(50.000 50.000)
+		type(0)
 		mat(white plastic)
 	}
 	object(sphere)

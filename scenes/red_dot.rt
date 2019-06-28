@@ -14,10 +14,10 @@ content
 	}
 	object(sphere)
 	{
+		name(Sphere0)
 		origin(0.000 0.000 -100.000)
 		radius(30.000)
 		texture(2k_mars.jpg)
-		normal_map(none)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
@@ -26,8 +26,8 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(0.000 0.000 0.000)
 		refraction_idx(0.000)
-		uv_scale(1 1)
-		uv_offset(0 0)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
 	}
 }
 animation

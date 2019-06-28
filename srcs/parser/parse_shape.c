@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 20:05:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/26 23:53:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void
 		ft_putendl(cfg.printout);
 	if (!(shape = malloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
+	ft_bzero(shape, cfg.content_size);
 	obj_dst->name = parse_str(scene_file, "name(");
 	cfg.setter(obj_dst, shape, scene_file);
 	obj_dst->shape = shape;
