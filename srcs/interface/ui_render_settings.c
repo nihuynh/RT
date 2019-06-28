@@ -33,6 +33,8 @@ static inline void
 		igSameLine(160, 0);
 		igCheckbox("Sub-Sampling", &app->sdl->sub_s);
 		igCheckbox("Normal mapping", &app->settings.normal_mapping);
+		igSameLine(160, 0);
+		igCheckbox("Skybox", &app->settings.skybox);
 		igNewLine();
 		igEndTabItem();
 	}
@@ -45,6 +47,8 @@ static inline void
 
 	if (igBeginTabItem("Scene", NULL, 0))
 	{
+		load_selected_tex("Skybox", app->scene.skybox->name, app->lst_tex,
+				&app->scene.skybox);
 		color_tmp = app->settings.back_color;
 		if (igColorEdit3("Sky Color", &color_tmp.r, 0))
 			app->settings.back_color = color_tmp;
