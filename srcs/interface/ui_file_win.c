@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_file_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 00:54:21 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/30 21:18:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,25 @@ void	err_win(t_gui *gui)
 
 void	export_win(t_gui *gui)
 {
-	char buff[50];
+	char	buff[50];
+	char	*ptr;
+	char	*arg;
 
-	ft_strlcpy(buff, gui->app->arg, sizeof(buff));
+	if ((ptr = ft_strrchr(gui->app->arg, '/')))
+		ptr++;
+	else
+		ptr = gui->app->arg;
+	ft_bzero(buff, sizeof(buff));
+	ft_strlcpy(buff, ptr, sizeof(buff));
+	if (buff[0] == '\0')
+		ft_strcpy(buff, ".rt");
 	igBegin("Export Scene", &gui->export_open,
 				ImGuiWindowFlags_AlwaysAutoResize);
 	if (igInputText("Filename", buff, sizeof(buff),
 		ImGuiInputTextFlags_EnterReturnsTrue, NULL, NULL))
 	{
-		export_scene(gui->app, buff);
+		arg = ft_strjoin(SCENE_DIR, buff);
+		export_scene(gui->app, arg);
 		gui->export_open = false;
 	}
 	igEnd();

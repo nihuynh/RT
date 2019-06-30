@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:11:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/30 20:51:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define TEX_DIR		"resources/textures/"
 # define MAT_LST_DIR	"resources/materialList.csv"
 # define SCENE_DIR		"scenes/"
-# define NEW_SCENE		"scenes/new_scene.rt"
+# define NEW_SCENE		"resources/new_scene.rt"
 
 /*
 ** Usage :

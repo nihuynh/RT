@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_menu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:22:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/06/30 21:18:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@ static inline void
 	file_menu(t_gui *gui)
 {
 	if (igMenuItemBool("New Scene", NULL, 0, 1))
+	{
 		load_scene(gui->app, NEW_SCENE);
+		free(gui->app->arg);
+		gui->app->arg = ft_strdup(SCENE_DIR);
+	}
 	igMenuItemBoolPtr("Open ...", NULL, &gui->load_open, 1);
 	if (igBeginMenu("Open Scene", 1))
 		list_scenes(gui);
-	igMenuItemBoolPtr("Save Scene", NULL, &gui->export_open, 1);
+	if (igMenuItemBool("Save", NULL, 0, 1))
+		export_scene(gui->app, gui->app->arg);
+	igMenuItemBoolPtr("Save as ...", NULL, &gui->export_open, 1);
 	if (igMenuItemBool("Reload Current Scene", NULL, 0, 1))
 		reload_scene(gui->app, gui->app->arg);
 	if (igMenuItemBool("Quit", "Esc", 0, 1))
