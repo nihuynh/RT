@@ -3,7 +3,7 @@ camera
 	origin(0.000 100.000 175.000)
 	direction(0.000 -0.789 -0.614)
 	amb_light(0.100 0.100 0.100)
-	skybox(SKY_ocean.jpg)
+	skybox(ENV_ocean.jpg)
 }
 content
 {
