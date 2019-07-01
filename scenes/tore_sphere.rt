@@ -1,0 +1,438 @@
+camera
+{
+	origin(0.000 0.000 0.000)
+	direction(0.000 0.000 -1.000)
+	amb_light(0.100 0.100 0.100)
+}
+content
+{
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 50.000 0.000)
+		intensity(2000.000)
+	}
+	object(sphere)
+	{
+		name(Sphere0)
+		origin(50.000 0.000 -0.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere1)
+		origin(49.726 0.000 -5.226)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere10)
+		origin(25.000 0.000 -43.301)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere11)
+		origin(20.337 0.000 -45.677)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere12)
+		origin(15.451 0.000 -47.553)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere13)
+		origin(10.396 0.000 -48.907)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere14)
+		origin(5.226 0.000 -49.726)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere15)
+		origin(-0.000 0.000 -50.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere16)
+		origin(-5.226 0.000 -49.726)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere17)
+		origin(-10.396 0.000 -48.907)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere18)
+		origin(-15.451 0.000 -47.553)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere19)
+		origin(-20.337 0.000 -45.677)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere2)
+		origin(48.907 0.000 -10.396)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere20)
+		origin(-25.000 0.000 -43.301)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere21)
+		origin(-29.389 0.000 -40.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere22)
+		origin(-33.457 0.000 -37.157)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere23)
+		origin(-37.157 0.000 -33.456)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere24)
+		origin(-40.451 0.000 -29.389)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere25)
+		origin(-43.301 0.000 -25.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere26)
+		origin(-45.677 0.000 -20.337)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere27)
+		origin(-47.553 0.000 -15.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere28)
+		origin(-48.907 0.000 -10.396)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere29)
+		origin(-49.726 0.000 -5.226)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere3)
+		origin(47.553 0.000 -15.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere30)
+		origin(-50.000 0.000 0.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere31)
+		origin(-49.726 0.000 5.226)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere32)
+		origin(-48.907 0.000 10.396)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere33)
+		origin(-47.553 0.000 15.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere34)
+		origin(-45.677 0.000 20.337)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere35)
+		origin(-43.301 0.000 25.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere36)
+		origin(-40.451 0.000 29.389)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere37)
+		origin(-37.157 0.000 33.456)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere38)
+		origin(-33.456 0.000 37.157)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere39)
+		origin(-29.389 0.000 40.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere4)
+		origin(45.677 0.000 -20.337)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere40)
+		origin(-25.000 0.000 43.301)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere41)
+		origin(-20.337 0.000 45.677)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere42)
+		origin(-15.451 0.000 47.553)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere43)
+		origin(-10.396 0.000 48.907)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere44)
+		origin(-5.226 0.000 49.726)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere45)
+		origin(0.000 0.000 50.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere46)
+		origin(5.226 0.000 49.726)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere47)
+		origin(10.396 0.000 48.907)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere48)
+		origin(15.451 0.000 47.553)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere49)
+		origin(20.337 0.000 45.677)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere5)
+		origin(43.301 0.000 -25.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere50)
+		origin(25.000 0.000 43.301)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere51)
+		origin(29.389 0.000 40.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere52)
+		origin(33.456 0.000 37.157)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere53)
+		origin(37.157 0.000 33.456)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere54)
+		origin(40.451 0.000 29.389)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere55)
+		origin(43.301 0.000 25.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere56)
+		origin(45.677 0.000 20.337)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere57)
+		origin(47.553 0.000 15.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere58)
+		origin(48.907 0.000 10.396)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere59)
+		origin(49.726 0.000 5.226)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere6)
+		origin(40.451 0.000 -29.389)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere7)
+		origin(37.157 0.000 -33.457)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere8)
+		origin(33.457 0.000 -37.157)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere9)
+		origin(29.389 0.000 -40.451)
+		radius(10.000)
+		mat(white plastic)
+	}
+}
+animation
+{
+}

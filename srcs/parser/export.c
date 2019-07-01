@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/01 22:39:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/01 22:51:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_data.h"
 #include "librt.h"
 #include "ftio.h"
+#include "ftstring.h"
 #include "export.h"
 
 #include <stdio.h>
@@ -89,5 +90,8 @@ int
 	export_animation(fd, app);
 	close(fd);
 	setlocale(LC_NUMERIC, NULL);
+	free(app->arg);
+	app->arg = ft_strdup(filename);
+	set_win_title(app->sdl->win, app->arg);
 	return (0);
 }

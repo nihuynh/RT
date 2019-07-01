@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:41:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 01:21:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/01 22:22:16 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPORT_H
 # define EXPORT_H
+
+# include <SDL.h>
 
 /*
 ** Functions Expose :
@@ -25,6 +27,7 @@ void	csg_export(int fd, void *shape);
 void	cube_export(int fd, void *shape);
 void	tore_export(int fd, void *shape);
 void	export_material(int fd, t_material *mat);
+void	set_win_title(SDL_Window *win, char *filename);
 
 /*
 ** Functions Needed :

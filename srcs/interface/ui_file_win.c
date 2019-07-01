@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/30 21:18:25 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/01 22:19:55 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	export_win(t_gui *gui)
 		arg = ft_strjoin(SCENE_DIR, buff);
 		export_scene(gui->app, arg);
 		gui->export_open = false;
+		free(arg);
 	}
 	igEnd();
 }

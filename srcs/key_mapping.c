@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 23:02:21 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/01 22:02:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static inline bool
 	return (true);
 }
 
+#include <stdio.h>
+
 void
 	animation_keybind(t_data *app, SDL_Keycode key, bool state)
 {
@@ -66,6 +68,13 @@ void
 		app->gui.animate = false;
 	else if (key == SDLK_f && state == SDL_RELEASED)
 		app->sdl->needs_render = true;
+	else if (((key == 1073742051 && app->gui.s)
+		|| (key == SDLK_s && app->gui.cmd)) && state == SDL_RELEASED)
+		export_scene(app, app->arg);
+	else if (key == 1073742051)
+		app->gui.cmd = state;
+	else if (key == SDLK_s)
+		app->gui.s = state;
 }
 
 void
