@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/01 04:19:45 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/01 22:23:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static inline void
 	settings->skybox = 1;
 }
 
-static inline void
+void
 	set_win_title(SDL_Window *win, char *filename)
 {
 	char	*title;
@@ -96,7 +96,7 @@ void
 	if (reader(filename, app) == EXIT_FAILURE)
 		ft_error(__func__, __LINE__);
 	hook_cam_to_gui(app);
-	set_win_title(app->sdl->win, filename);
+	set_win_title(app->sdl->win, app->arg);
 	app->sdl->needs_render = true;
 	app->sdl->partial_render = false;
 	if (DEBUG)
