@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_gui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 21:22:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/01 04:02:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <SDL.h>
 # include "t_data.h"
 # include "animate.h"
+# include "t_cluster.h"
 
 typedef struct		s_gui
 {
@@ -40,6 +41,7 @@ typedef struct		s_gui
 	bool			render_set_open;
 	bool			cam_open;
 	bool			anim_win_open;
+	bool			add_cluster_open;
 	t_cam			cam_cpy;
 	bool			render_focused;
 	bool			animate;
@@ -47,7 +49,7 @@ typedef struct		s_gui
 	int				frame_limit;
 	long			frames_render_time;
 	int				animated_frames;
-	int				new_obj_type;
+	t_cluster		cluster;
 	t_light			*light_set;
 	t_obj			*obj_set;
 	t_anim			*anim_set;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 00:16:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/01 04:16:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	render_win(t_gui *gui);
 void	ui_object(t_data *app, t_obj *obj);
 void	ui_scene_editor(t_gui *gui);
 void	ui_mainmenu(t_gui *gui);
+void	add_cluster_win(t_gui *gui);
 
 void	ui_render_settings(t_data *app);
 int		export_scene(t_data *app, char *filename);
@@ -84,6 +85,7 @@ void	delete_obj(t_data *app);
 void	delete_light(t_data *app);
 bool	check_file(char *filename);
 void	edit_color_mat(t_color *target, char *label, t_material *mat);
+void	new_cluster(t_data *app, int type);
 
 /*
 ** UI SHAPES
@@ -98,6 +100,7 @@ void	ui_tore(void *app_v, void *shape);
 void	ui_cylinder(void *app_v, void *shape);
 void	ui_light(t_data *app, t_light *light);
 void	ui_cam_win(t_gui *gui);
+void	ui_cluster(t_cluster *cluster);
 
 /*
 ** Hooks :

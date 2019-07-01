@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/30 21:18:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/01 03:40:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static inline void
 	edit_menu(t_gui *gui)
 {
 	igMenuItemBoolPtr("New Object", NULL, &gui->add_obj_open, 1);
+	igMenuItemBoolPtr("New Cluster", NULL, &gui->add_cluster_open, 1);
 	if (igMenuItemBool("New Light", NULL, 0, 1))
 		new_light(gui->app);
 	igMenuItemBoolPtr("Delete Object", NULL, &gui->del_obj_open, 1);

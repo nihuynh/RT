@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/28 21:04:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/01 04:19:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static inline void
 	gui->record = false;
 	gui->frame_limit = 0;
 	gui->frames_render_time = 0;
+	ft_bzero(&gui->cluster, sizeof(t_cluster));
 }
 
 static inline void
