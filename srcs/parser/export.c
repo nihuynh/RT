@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/30 21:18:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/01 22:39:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <unistd.h>
 
 static inline void
-	export_camera(int fd, t_cam *cam, t_color amb_light)
+	export_camera(int fd, t_cam *cam, t_color amb_light, t_texture *skybox)
 {
 	t_vec3	direction;
 
@@ -32,6 +32,8 @@ static inline void
 	export_tvec3(fd, "origin", cam->pos);
 	export_tvec3(fd, "direction", direction);
 	export_color(fd, "amb_light", amb_light);
+	if (skybox->pixels)
+		dprintf(fd, "\tskybox(%s)\n", skybox->name);
 	write(fd, "}\n", 2);
 }
 
@@ -82,7 +84,7 @@ int
 		ft_printf("Error during export [%s]\n", filename);
 		return (-1);
 	}
-	export_camera(fd, &app->cam, app->settings.amb_light);
+	export_camera(fd, &app->cam, app->settings.amb_light, app->scene.skybox);
 	export_content(fd, &app->scene);
 	export_animation(fd, app);
 	close(fd);

@@ -1,17 +1,16 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    basic_runner.mk                                    :+:      :+:    :+:    #
+#    mk_run.mk                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/24 01:00:59 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 03:35:37 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/07/01 21:07:20 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# How the make run is handle
-
+# This handle the make run.
 # If the first argument is "run"...
 ifeq (run,$(firstword $(MAKECMDGOALS)))
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))

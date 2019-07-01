@@ -1,14 +1,17 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    basic_app.mk                                       :+:      :+:    :+:    #
+#    mk_app.mk                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/24 01:23:21 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/14 18:32:51 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/07/01 20:17:35 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# This handle the make app.
+# Generate a .app conpatible with OSX.
 
 CONTENT_FILES	:=	./resources/built/Info.plist
 RESRCS_FILES	:=	./resources/built/fe_icon.icns

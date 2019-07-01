@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:19:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/27 00:50:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/01 22:00:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <math.h>
 
 static inline float
-	inter(t_ray *ray, t_plane *plane)
+	inter_dist(t_ray *ray, t_plane *plane)
 {
 	float	dn;
 	float	nom;
@@ -30,21 +30,36 @@ static inline float
 	return (nom / dn);
 }
 
+static inline float
+	inter_local(t_inter *inter, t_ray *ray, t_plane *plane)
+{
+	t_vec2	dist;
+	float	angle;
+
+	angle = vec3_dot(&ray->dir, &plane->n);
+	dist.x = inter_dist(ray, plane);
+	dist.y = (angle > 0 || dist.x == INFINITY) ? INFINITY : -INFINITY;
+	if (dist.x >= inter->dist || dist.x < 0)
+		return (INFINITY);
+	if ((plane->size.x > 0 || plane->size.y > 0 || plane->type == 2)
+		&& !(inter_plane_finite(inter, plane, dist.x)))
+		return (INFINITY);
+	inter->hit_pts = dist;
+	return (dist.x);
+}
+
 void
-	inter_plane(t_inter *data, t_obj *node)
+	inter_plane(t_inter *inter, t_obj *node)
 {
 	t_plane	*plane;
 	float	dist;
 
 	plane = node->shape;
-	dist = inter(&data->ray, plane);
-	if (dist >= data->dist || dist < 0)
+	dist = inter_local(inter, &inter->ray, plane);
+	if (dist >= inter->dist || dist < 0)
 		return ;
-	if (plane->size.x > 0 || plane->size.y > 0 || plane->type == 2)
-		if (!(inter_plane_finite(data, plane, dist)))
-			return ;
-	data->dist = dist;
-	data->obj = node;
+	inter->dist = dist;
+	inter->obj = node;
 }
 
 t_vec3

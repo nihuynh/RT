@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/23 14:19:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/01 19:52:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void
 ** @return char*	: str of object type
 */
 
-char
+char __attribute__((const))
 	*get_obj_str(int type)
 {
 	t_parse cfg;
@@ -70,7 +70,7 @@ char
 ** @return int		: Object type
 */
 
-int
+int __attribute__((const))
 	get_obj_type(char *obj_type)
 {
 	char	*type_tested;
