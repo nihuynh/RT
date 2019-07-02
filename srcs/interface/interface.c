@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 03:45:16 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 17:33:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+#include "ftio.h"
 #include "ftstring.h"
 #include "interface.h"
 #include "imgui_impl_sdl.h"
@@ -80,31 +81,50 @@ void	exit_ui(t_gui *gui)
 	}
 }
 
+static inline void
+	load_nbind_texture(t_texture *tex, uint32_t *bind)
+{
+	load_texture(tex);
+	if (tex->pixels == NULL)
+		ft_error(__func__, __LINE__);
+	glGenTextures(1, bind);
+	glBindTexture(GL_TEXTURE_2D, *bind);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB,
+		tex->width, tex->height, 0, GL_RGB,
+		GL_UNSIGNED_BYTE, tex->pixels);
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
 void
 	keymap_win(t_gui *gui)
 {
 	char	*abs_path;
+	ImVec2	img_size;
 
-	igBegin("Keymap", &gui->keymap_open, ImGuiWindowFlags_AlwaysAutoResize);
 	if (gui->keymap.name == NULL)
 	{
 		abs_path = ft_strjoin(gui->app->option.path, KEYMAP_PATH);
 		gui->keymap.name = ft_strdup("keymap");
 		gui->keymap.dir = abs_path;
-
+		load_nbind_texture(&gui->keymap, &gui->keymap_id);
 	}
-	if (gui->keymap.pixels == NULL)
-		load_texture(&gui->keymap);
-	igSeparator();
-	igText("Template text");
+	igBegin("Keymap", &gui->keymap_open, ImGuiWindowFlags_AlwaysAutoResize);
+	img_size.x = gui->keymap.width;
+	img_size.y = gui->keymap.height;
+	igText("%.0fx%.0f", img_size.x, img_size.y);
+	igImage((void*)(intptr_t)gui->keymap_id,
+		img_size, (ImVec2){0.0f, 0.0f}, (ImVec2){1.0f, 1.0f},
+		(ImVec4){1.0f, 1.0f, 1.0f, 1.0f}, (ImVec4){1.0f, 1.0f, 1.0f, 0.5f});
 	igEnd();
 }
 
 void
 	about_win(t_gui *gui)
 {
-	igBegin("About us", &gui->about_open, ImGuiWindowFlags_AlwaysAutoResize);
-	igSeparator();
-	igText("Template text");
+	igBegin("About", &gui->about_open, ImGuiWindowFlags_AlwaysAutoResize);
+	igText("Created by : Nicolas Huynh, Samuel Klepper, Thibault D'archivio");
+	igText("Made in 2019 @42 Paris");
 	igEnd();
 }

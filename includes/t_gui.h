@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 03:40:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 16:10:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_gui
 	bool			keymap_open;
 	bool			about_open;
 	t_texture		keymap;
+	uint32_t		keymap_id;
 	t_cam			cam_cpy;
 	bool			render_focused;
 	bool			animate;
