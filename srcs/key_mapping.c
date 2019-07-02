@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/01 22:02:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 01:36:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,6 @@ void
 		app->gui.animate = false;
 	else if (key == SDLK_f && state == SDL_RELEASED)
 		app->sdl->needs_render = true;
-	else if (((key == 1073742051 && app->gui.s)
-		|| (key == SDLK_s && app->gui.cmd)) && state == SDL_RELEASED)
-		export_scene(app, app->arg);
-	else if (key == 1073742051)
-		app->gui.cmd = state;
-	else if (key == SDLK_s)
-		app->gui.s = state;
 }
 
 void
