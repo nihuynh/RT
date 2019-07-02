@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/27 00:42:16 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 23:50:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void
 	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
 		sphere->radius = tmp.radius;
 }
+
+/*
+** TODO : Reduce functions lengths from 34 to 25
+*/
 
 void
 	ui_plane(void *app_v, void *res)
@@ -144,33 +148,4 @@ void
 	}
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
 		cube->size = tmp.size;
-}
-
-void
-	ui_tore(void *app_v, void *res)
-{
-	t_tore	*tore;
-	t_tore	tmp;
-
-	(void)app_v;
-	tore = res;
-	tmp = *tore;
-	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
-		tore->origin = tmp.origin;
-	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
-		tore->n = tmp.n;
-	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
-		tore->x = tmp.x;
-	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
-		tore->z = tmp.z;
-	if (igButton("Normalize", (ImVec2){0, 0}))
-	{
-		vec3_normalize(&tore->n);
-		vec3_normalize(&tore->x);
-		vec3_normalize(&tore->z);
-	}
-	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
-		tore->size = tmp.size;
-	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
-		tore->radius = tmp.radius;
 }

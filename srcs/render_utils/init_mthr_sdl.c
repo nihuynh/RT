@@ -6,12 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 00:14:04 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 18:04:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:19:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
 #include "libft.h"
+#include <pthread.h>
 
 void
 	init_mthr_sdl(t_sdl *sdl, int (*do_pxl) (int, int, void*),
@@ -34,4 +35,18 @@ void
 		sdl->data_thr[idx].pixels = &sdl->img.pixels[ofs];
 	}
 	sdl->prep_render = prep_render;
+}
+
+void
+	mthr_task(t_data_thr *data_thr, void *(*func)(void *))
+{
+	ssize_t		cthr;
+	pthread_t	threads[THR_C];
+
+	cthr = -1;
+	while (++cthr < THR_C)
+		pthread_create(&threads[cthr], NULL, func, &(data_thr[cthr]));
+	cthr = -1;
+	while (++cthr < THR_C)
+		pthread_join(threads[cthr], NULL);
 }

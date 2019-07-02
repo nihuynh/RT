@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_cluster.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 04:01:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/01 20:16:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:10:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ void	ui_cluster_tore(t_cluster *cluster)
 		vec3_normalize(&cluster->n);
 	if (igDragFloat("Radius Tore", &tmp.radius_tore, 1, 0, 10000, "%g", 1))
 		cluster->radius_tore = tmp.radius_tore;
-	if (igDragFloat("Radius Spheres", &tmp.radius_spheres, 1, 0, 10000, "%g", 1))
+	if (igDragFloat("Radius Spheres", &tmp.radius_spheres,
+		1, 0, 10000, "%g", 1))
+	{
 		cluster->radius_spheres = tmp.radius_spheres;
+	}
 	if (igDragInt("Object Number", &tmp.nb_obj, 1, 0, 80, "%d"))
 		cluster->nb_obj = tmp.nb_obj;
 }

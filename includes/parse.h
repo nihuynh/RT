@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 22:41:25 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:24:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ int				texcmp(void *content, void *key);
 int				obj_cmp_key(void *content, void *key);
 int				light_cmp_key(void *content, void *key);
 void			load_texture(t_texture *tex);
+void			load_nbind_texture(t_texture *tex, uint32_t *bind);
 void			open_textures(t_data *app);
 
 /*

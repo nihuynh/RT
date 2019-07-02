@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 22:30:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 00:20:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,35 +34,38 @@ void
 	ray_new(res, &app->cam.pos, &direction);
 }
 
-static inline t_color
-	cast_bounce(t_scene scene, t_settings settings, t_inter *inter, int depth)
-{
-	t_ray	absorbed;
-	t_color	reflection;
-	t_color	refraction;
-	float	kr;
+/*
+** TODO : Reduce functions lengths from 26 to 25
+*/
 
-	reflection = (t_color){0, 0, 0};
-	refraction = (t_color){0, 0, 0};
+static inline t_color
+	cast_bounce(t_scene scene, t_settings settings, t_inter *inter, int d)
+{
+	t_ray		absorbed;
+	t_color		colors[2];
+	t_material	*mat;
+	float		kr;
+
+	ft_bzero(&colors, sizeof(colors));
 	kr = 1;
-	depth++;
-	if (color_bool(inter->obj->material.reflection_color)
-		|| color_bool(inter->obj->material.refraction_color))
-		kr = fresnel(inter->ray.dir, inter->n, inter->obj->material.refraction_idx);
-	if (settings.deflect && color_bool(inter->obj->material.reflection_color))
+	mat = &inter->obj->material;
+	d++;
+	if (color_bool(mat->reflection_color) || color_bool(mat->refraction_color))
+		kr = fresnel(inter->ray.dir, inter->n, mat->refraction_idx);
+	if (settings.deflect && color_bool(mat->reflection_color))
 	{
-		reflection = recursive_cast(scene, settings, inter->deflected, depth);
-		color_mult(&reflection, &inter->obj->material.reflection_color);
-		color_scalar(&reflection, kr);
+		colors[REFLECT] = recursive_cast(scene, settings, inter->deflected, d);
+		color_mult(&colors[REFLECT], &mat->reflection_color);
+		color_scalar(&colors[REFLECT], kr);
 	}
-	if (settings.absorb && color_bool(inter->obj->material.refraction_color))
+	if (settings.absorb && color_bool(mat->refraction_color))
 	{
 		inter_setrefract(inter, &absorbed);
-		refraction = recursive_cast(scene, settings, absorbed, depth);
-		color_mult(&refraction, &inter->obj->material.refraction_color);
-		color_scalar(&refraction, 1 - kr);
+		colors[REFRACT] = recursive_cast(scene, settings, absorbed, d);
+		color_mult(&colors[REFRACT], &mat->refraction_color);
+		color_scalar(&colors[REFRACT], 1 - kr);
 	}
-	return (color_add_(reflection, refraction));
+	return (color_add_(colors[REFLECT], colors[REFRACT]));
 }
 
 t_color

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 01:36:37 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 23:50:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 ** @param arg	Data
 ** @param state	True if key is pressed, False if released
 ** credit : norme - groussel
+*/
+
+/*
+** TODO : Reduce functions lengths from 27 to 25
 */
 
 static inline bool
@@ -56,8 +60,6 @@ static inline bool
 		return (false);
 	return (true);
 }
-
-#include <stdio.h>
 
 void
 	animation_keybind(t_data *app, SDL_Keycode key, bool state)

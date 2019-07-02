@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 03:24:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 22:00:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,12 @@ typedef struct	s_uv_mapping {
 	bool	repeat;
 }				t_uv_mapping;
 
+/*
+**	t_texture		*occlusion_map;
+**	t_texture		*rough_map;
+**	t_texture		*disp_map;
+*/
+
 struct			s_material
 {
 	char			*name;
@@ -184,9 +190,6 @@ struct			s_material
 	t_texture		*tex;
 	t_texture		*normal_map;
 	t_texture		*spec_map;
-	// t_texture		*occlusion_map;
-	// t_texture		*rough_map;
-	// t_texture		*disp_map;
 	t_uv_mapping	uv_mapping;
 };
 

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 10:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 00:39:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:19:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static inline void
 			SDL_PIXELFORMAT_ARGB8888)))
 		return ;
 	IMG_SavePNG(surface, name);
-	ft_printf("Screenshot taken [%s]\n" , name);
+	ft_printf("Screenshot taken [%s]\n", name);
 	SDL_FreeSurface(surface);
 }
 

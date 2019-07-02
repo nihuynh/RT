@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 22:54:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 22:38:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ void	animate_branch(void *res)
 
 void	animate(t_data *app)
 {
-	t_list	*lst;
-
-	lst = app->scene.lst_anim;
 	if (app->gui.record)
 		record_frame(app);
 	if (app->gui.frame_limit)
@@ -45,17 +42,8 @@ void	animate(t_data *app)
 			return ;
 		}
 	}
-	while (lst)
-	{
-		animate_branch(lst->content);
-		lst = lst->next;
-	}
-	lst = app->scene.lst_anim_light;
-	while (lst)
-	{
-		animate_branch(lst->content);
-		lst = lst->next;
-	}
+	ft_lstapply(app->scene.lst_anim, &animate_branch);
+	ft_lstapply(app->scene.lst_anim_light, &animate_branch);
 	if (app->cam.anim)
 		animate_branch(app->cam.anim);
 	app->gui.animated_frames += 1;

@@ -6,23 +6,26 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 14:50:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 23:15:04 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 00:08:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
 # define RENDER_H
 
-#include "rtstruct.h"
-#include "color.h"
+# include "rtstruct.h"
+# include "color.h"
 # include "t_data.h"
 
 /*
 ** Render :
 */
 
-#define DIFFUSE		0
-#define SPECULAR	1
+# define DIFFUSE	0
+# define SPECULAR	1
+
+# define REFLECT	0
+# define REFRACT	1
 
 t_shading		get_shading_data(t_inter *inter);
 void			render_gui(void *arg);
@@ -36,6 +39,11 @@ void			cam_ray(t_data *app, t_ray *res, float x, float y);
 t_color			cast_light_primary(t_list *obj_list, t_inter *inter);
 t_vec3			compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
 t_color			get_sky_color(t_scene scene, t_settings settings, t_ray ray);
+float			get_distance_attenuation(float distance);
+void			add_specular_light(t_color *specular, t_shading shading,
+	bool no_specular);
+void			add_diffuse_light(t_color *diffuse, t_shading shading,
+	bool no_diffuse);
 
 void			update_camera(t_cam *cam, bool *needs_render);
 
@@ -62,7 +70,7 @@ t_color			sample(t_material *material, t_texture *tex, t_vec3 uv);
 ** Perlin :
 */
 
-float			noise(float x,  float y,  float z);
+float			noise(float x, float y, float z);
 float			perlin(t_vec3 uv, int octaves, float persistence);
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 00:35:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:18:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,39 @@ static inline void
 	igSeparator();
 }
 
+static inline int
+	anim_detail(t_gui *gui, t_anim *anim, int i, ImVec2 size)
+{
+	char	*str_list;
+
+	if (!(str_list = ft_strjoini("Movement ", i)))
+		ft_error(__func__, __LINE__);
+	anim_list(anim, str_list);
+	igSameLine(0, 10);
+	if (!(str_list = ft_strjoini("Delete ", i)))
+		ft_error(__func__, __LINE__);
+	if (igButton(str_list, (ImVec2){0, 0}))
+	{
+		anim_del_one(gui->app, gui->anim_set, anim);
+		free(str_list);
+		return (EXIT_FAILURE);
+	}
+	free(str_list);
+	if (anim->ui_anim)
+		anim->ui_anim(anim, i);
+	igSeparator();
+	if (!anim->next)
+		if (igButton("Add Animation to Object", (ImVec2){size.x / 3, 0}))
+			anim_add_another(anim);
+	return (EXIT_SUCCESS);
+}
+
 void
 	anim_ui(t_gui *gui)
 {
-	ImVec2	size;
 	t_anim	*anim;
 	int		i;
-	char	*str_list;
+	ImVec2	size;
 
 	size = igGetWindowSize();
 	anim_selector(gui, size);
@@ -91,25 +117,8 @@ void
 	i = 0;
 	while (anim)
 	{
-		if (!(str_list = ft_strjoini("Movement ", i)))
-			ft_error(__func__, __LINE__);
-		anim_list(anim, str_list);
-		igSameLine(0, 10);
-		if (!(str_list = ft_strjoini("Delete ", i)))
-			ft_error(__func__, __LINE__);
-		if (igButton(str_list, (ImVec2){0, 0}))
-		{
-			anim_del_one(gui->app, gui->anim_set, anim);
-			free(str_list);
+		if (anim_detail(gui, anim, i, size))
 			break ;
-		}
-		free(str_list);
-		if (anim->ui_anim)
-			anim->ui_anim(anim, i);
-		igSeparator();
-		if (!anim->next)
-			if (igButton("Add Animation to Object", (ImVec2){size.x / 3, 0}))
-				anim_add_another(anim);
 		anim = anim->next;
 		i++;
 	}

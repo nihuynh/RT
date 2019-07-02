@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 18:34:53 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 15:40:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 00:06:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,25 @@ float
 }
 
 float
-	fade(float t)
-{
-    return (t * t * t * (t * (t * 6 - 15) + 10));
-}
-
-float
 	grad(int hash, float x, float y, float z)
 {
-    int		h;
-    float	u;
-    float	v;
+	int		h;
+	float	u;
+	float	v;
 
 	h = hash & 15;
 	u = (h < 8) ? x : y;
-    if (h < 4)
-        v = y;
-    else if (h == 12 || h == 14)
-        v = x;
-    else
-        v = z;
-    return (((h & 1) == 0) ? u : -u) + (((h & 2) == 0) ? v : -v);
+	if (h < 4)
+		v = y;
+	else if (h == 12 || h == 14)
+		v = x;
+	else
+		v = z;
+	return (((h & 1) == 0) ? u : -u) + (((h & 2) == 0) ? v : -v);
 }
 
 void
-	permutation_table(float x,  float y,  float z, int res[8])
+	permutation_table(float x, float y, float z, int res[8])
 {
 	int xi;
 	int	yi;
@@ -64,7 +58,7 @@ void
 }
 
 float
-	noise(float x,  float y,  float z)
+	noise(float x, float y, float z)
 {
 	t_perlin	env;
 
@@ -72,11 +66,11 @@ float
 	env.xf = x - (int)x;
 	env.yf = y - (int)y;
 	env.zf = z - (int)z;
-	env.u = fade(env.xf);
-	env.v = fade(env.yf);
-	env.w = fade(env.zf);
+	env.u = (env.xf * env.xf * env.xf * (env.xf * (env.xf * 6 - 15) + 10));
+	env.v = (env.yf * env.yf * env.yf * (env.yf * (env.yf * 6 - 15) + 10));
+	env.w = (env.zf * env.zf * env.zf * (env.zf * (env.zf * 6 - 15) + 10));
 	env.x1 = lerp(grad(env.l_perm[0], env.xf, env.yf, env.zf),
-		grad(env.l_perm[4], env.xf - 1, env.yf  , env.zf), env.u);
+		grad(env.l_perm[4], env.xf - 1, env.yf, env.zf), env.u);
 	env.x2 = lerp(grad(env.l_perm[1], env.xf, env.yf - 1, env.zf),
 		grad(env.l_perm[5], env.xf - 1, env.yf - 1, env.zf), env.u);
 	env.y1 = lerp(env.x1, env.x2, env.v);
@@ -84,18 +78,18 @@ float
 		grad(env.l_perm[6], env.xf - 1, env.yf, env.zf - 1), env.u);
 	env.x2 = lerp(grad(env.l_perm[3], env.xf, env.yf - 1, env.zf - 1),
 		grad(env.l_perm[7], env.xf - 1, env.yf - 1, env.zf - 1), env.u);
-	env.y2 = lerp (env.x1, env.x2, env.v);
-	return (lerp (env.y1, env.y2, env.w));
+	env.y2 = lerp(env.x1, env.x2, env.v);
+	return (lerp(env.y1, env.y2, env.w));
 }
 
 float
 	perlin(t_vec3 uv, int octaves, float persistence)
 {
 	int		i;
-    float	total;
-    float	freq;
-    float	amplitude;
-    float	coef;
+	float	total;
+	float	freq;
+	float	amplitude;
+	float	coef;
 
 	i = 0;
 	total = 0;
@@ -104,11 +98,11 @@ float
 	coef = 0;
 	while (i < octaves)
 	{
-        total += noise(uv.x * freq, uv.y * freq, uv.z * freq) * amplitude;
-        coef += amplitude;
-        amplitude *= persistence;
-        freq *= 2;
+		total += noise(uv.x * freq, uv.y * freq, uv.z * freq) * amplitude;
+		coef += amplitude;
+		amplitude *= persistence;
+		freq *= 2;
 		i++;
 	}
-    return (total / coef);
+	return (total / coef);
 }

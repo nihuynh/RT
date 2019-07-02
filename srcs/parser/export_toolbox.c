@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:57:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/11 19:20:24 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:13:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,18 @@ void
 		export_tvec2(fd, "uv_scale", mat->uv_mapping.scale);
 		export_tvec2(fd, "uv_offset", mat->uv_mapping.offset);
 	}
+}
+
+void
+	tore_export(int fd, void *shape)
+{
+	t_tore	*tore;
+
+	tore = shape;
+	export_tvec3(fd, "\torigin", tore->origin);
+	export_tvec3(fd, "\tnormal", tore->n);
+	export_tvec3(fd, "\tx", tore->x);
+	export_tvec3(fd, "\tz", tore->z);
+	dprintf(fd, "\t\tsize(%.3f)\n", tore->size);
+	dprintf(fd, "\t\tradius(%.3f)\n", tore->radius);
 }

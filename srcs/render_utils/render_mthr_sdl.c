@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 23:21:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 18:01:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:20:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "config.h"
 
-void
+static inline void
 	sub_sampler(t_data_thr *slice, int idx, int color)
 {
 	int inc_x;
@@ -87,20 +87,6 @@ void
 }
 
 void
-	mthr_task(t_data_thr *data_thr, void *(*func)(void *))
-{
-	ssize_t		cthr;
-	pthread_t	threads[THR_C];
-
-	cthr = -1;
-	while (++cthr < THR_C)
-		pthread_create(&threads[cthr], NULL, func, &(data_thr[cthr]));
-	cthr = -1;
-	while (++cthr < THR_C)
-		pthread_join(threads[cthr], NULL);
-}
-
-void
 	render_mthr_sdl(t_sdl *sdl)
 {
 	long		elapsed_time;
@@ -120,4 +106,3 @@ void
 	push_render_time(sdl, (float)elapsed_time / 1000);
 	sdl->progress_sub_sample += 0.25;
 }
-

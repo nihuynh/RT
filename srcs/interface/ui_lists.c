@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/23 14:47:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:11:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "parse.h"
 #include "t_scene.h"
 
-void	list_scenes(t_gui *gui)
+void
+	list_scenes(t_gui *gui)
 {
 	t_list			*lst;
 	t_scene_name	*scene;
@@ -31,7 +32,8 @@ void	list_scenes(t_gui *gui)
 	igEndMenu();
 }
 
-void	material_list(t_list *lst_mat, t_obj *obj)
+void
+	material_list(t_list *lst_mat, t_obj *obj)
 {
 	t_list		*current;
 	t_material	*selected;
@@ -58,8 +60,9 @@ void	material_list(t_list *lst_mat, t_obj *obj)
 	}
 }
 
-bool	load_selected_tex(const char *label, char *name,
-							t_list *current, t_texture **selected)
+bool
+	load_selected_tex(const char *label, char *name, t_list *current,
+	t_texture **selected)
 {
 	t_texture	*tmp;
 	bool		is_selected;
@@ -84,12 +87,13 @@ bool	load_selected_tex(const char *label, char *name,
 	return (true);
 }
 
-void	new_obj_list(int *type)
+void
+	new_obj_list(int *type)
 {
 	static const char	*item_current;
 	int					i;
 	bool				is_selected;
-	const char*			item[] = {
+	const char			*item[] = {
 		"Plane", "Sphere", "Cone", "Cylinder", "Cube", "Tore"
 	};
 
@@ -112,7 +116,8 @@ void	new_obj_list(int *type)
 	}
 }
 
-void	node_type_list(t_csg_op *csg_op)
+void
+	node_type_list(t_csg_op *csg_op)
 {
 	const char			**item;
 	static const char	*item_current;

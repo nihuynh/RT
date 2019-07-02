@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   skybox.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/02 22:31:02 by nihuynh           #+#    #+#             */
+/*   Updated: 2019/07/02 22:31:21 by nihuynh          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "render.h"
 #include "librt.h"
 
-t_color get_sky_color(t_scene scene, t_settings settings, t_ray ray)
+t_color	get_sky_color(t_scene scene, t_settings settings, t_ray ray)
 {
 	float azimuth;
 	float polar;
@@ -14,5 +26,5 @@ t_color get_sky_color(t_scene scene, t_settings settings, t_ray ray)
 		return (sample(NULL, scene.skybox, (t_vec3){1 - azimuth, polar, 0}));
 	}
 	else
-		return settings.back_color;
+		return (settings.back_color);
 }

@@ -6,13 +6,21 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/23 00:41:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:29:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parse.h"
+#include "ftstring.h"
 #include "interface.h"
+#include "imgui_impl_sdl.h"
+#include "imgui_impl_opengl2.h"
+#include "config.h"
+#include "SDL_opengl.h"
+#include "librt.h"
 
-void	render_win(t_gui *gui)
+void
+	render_win(t_gui *gui)
 {
 	ImVec2	pos;
 
@@ -32,4 +40,65 @@ void	render_win(t_gui *gui)
 	gui->render_focused = !igIsWindowFocused(0);
 	igEnd();
 	igPopStyleVar(2);
+}
+
+void
+	keymap_win(t_gui *gui)
+{
+	char	*abs_path;
+	ImVec2	img_size;
+
+	if (gui->keymap.name == NULL)
+	{
+		abs_path = ft_strjoin(gui->app->option.path, KEYMAP_PATH);
+		gui->keymap.name = ft_strdup("keymap");
+		gui->keymap.dir = abs_path;
+		load_nbind_texture(&gui->keymap, &gui->keymap_id);
+	}
+	igBegin("Keymap", &gui->keymap_open, ImGuiWindowFlags_AlwaysAutoResize);
+	img_size.x = gui->keymap.width;
+	img_size.y = gui->keymap.height;
+	igText("%.0fx%.0f", img_size.x, img_size.y);
+	igImage((void*)(intptr_t)gui->keymap_id,
+		img_size, (ImVec2){0.0f, 0.0f}, (ImVec2){1.0f, 1.0f},
+		(ImVec4){1.0f, 1.0f, 1.0f, 1.0f}, (ImVec4){1.0f, 1.0f, 1.0f, 0.5f});
+	igEnd();
+}
+
+void
+	about_win(t_gui *gui)
+{
+	igBegin("About", &gui->about_open, ImGuiWindowFlags_AlwaysAutoResize);
+	igText("Created by : Nicolas Huynh, Samuel Klepper, Thibault D'archivio");
+	igText("Made in 2019 @42 Paris");
+	igEnd();
+}
+
+void
+	ui_tore(void *app_v, void *res)
+{
+	t_tore	*tore;
+	t_tore	tmp;
+
+	(void)app_v;
+	tore = res;
+	tmp = *tore;
+	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
+		tore->origin = tmp.origin;
+	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
+		tore->n = tmp.n;
+	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
+		tore->x = tmp.x;
+	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
+		tore->z = tmp.z;
+	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
+		vec3_normalize(&tore->n);
+		vec3_normalize(&tore->x);
+		vec3_normalize(&tore->z);
+	}
+	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
+		tore->size = tmp.size;
+	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
+		tore->radius = tmp.radius;
 }

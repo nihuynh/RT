@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:47:38 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:24:56 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void			anim_set(t_anim *anim, int type);
 void			ui_orbit(t_anim *anim, int n);
 void			ui_translate(t_anim *anim, int n);
 void			ui_rotate(t_anim *anim, int n);
-void			anim_free(t_anim *anim);
+int				anim_free(t_anim *anim);
 void			export_rotate(int fd, t_anim *anim);
 void			export_orbit(int fd, t_anim *anim);
 void			export_translate(int fd, t_anim *anim);

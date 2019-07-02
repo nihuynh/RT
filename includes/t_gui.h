@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 16:10:43 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 22:32:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct		s_gui
 	t_list			**alst;
 	t_pt3			pos_render;
 }					t_gui;
-
 
 void				exit_ui(t_gui *gui);
 #endif

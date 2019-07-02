@@ -40,6 +40,9 @@
 		"stdlib.h": "c",
 		"sdl_opengl.h": "c",
 		"tools.h": "c",
-		"ftio.h": "c"
+		"ftio.h": "c",
+		"pthread.h": "c",
+		"perlin.h": "c",
+		"librt.h": "c"
 	}
 }

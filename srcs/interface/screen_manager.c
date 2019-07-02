@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/23 22:53:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 22:08:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void
 	SDL_GetWindowSize(sdl->win, &sdl->width_vp, &sdl->height_vp);
 	if (sdl->layout)
 	{
-		realloc_pxl(sdl, sdl->width_vp * RENDER_SCALE, sdl->height_vp * RENDER_SCALE);
+		realloc_pxl(sdl, sdl->width_vp * RENDER_SCALE,
+			sdl->height_vp * RENDER_SCALE);
 		gui->flags_render = ImGuiCond_Always;
 	}
 	else

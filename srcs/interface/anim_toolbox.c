@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 18:54:31 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 01:06:07 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 22:08:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 #include "libft.h"
 #include "parse.h"
 #include "tools.h"
-
-void
-	anim_free(t_anim *anim)
-{
-	if (anim->type == 0)
-		return ;
-	else
-		free(anim->res);
-	anim->res = NULL;
-}
 
 void
 	anim_delete(t_data *app)
@@ -78,37 +68,6 @@ void
 	ft_lstaddendnew(&app->scene.lst_anim, &new, sizeof(new));
 	ptr = ft_lstlast(app->scene.lst_anim);
 	obj->anim = ptr->content;
-}
-
-void
-	anim_del_one(t_data *app, t_anim *anim, t_anim *to_del)
-{
-	t_list *lst;
-
-	if (anim == to_del)
-	{
-		if (!(lst = ft_lstgetnode_by_content_ptr(app->scene.lst_anim, anim)))
-			ft_error(__func__, __LINE__);
-		if (to_del->next == NULL)
-			anim_delete(app);
-		else
-		{
-			lst->content = to_del->next;
-			app->gui.anim_set = to_del->next;
-			anim_free(to_del);
-			free(to_del);
-		}
-	}
-	else
-	{
-		while (anim->next != to_del && anim->next)
-			anim = anim->next;
-		if (anim->next != to_del)
-			ft_error(__func__, __LINE__);
-		anim->next = anim->next->next;
-		anim_free(to_del);
-		free(to_del);
-	}
 }
 
 void

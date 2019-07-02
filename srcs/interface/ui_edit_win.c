@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_edit_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 00:27:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 23:49:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "ftmem.h"
 #include "config.h"
 
-void	add_obj_win(t_gui *gui)
+void
+	add_obj_win(t_gui *gui)
 {
 	ImVec2 pos;
 
@@ -36,15 +37,17 @@ void	add_obj_win(t_gui *gui)
 	}
 }
 
+/*
+** TODO : Reduce functions lengths from 30 to 25
+*/
+
 void
 	del_obj_win(t_gui *gui)
 {
 	ImVec2	size;
-	ImVec2	pos;
 
-	pos.x = gui->sdl->width_vp * RENDER_SCALE;
-	pos.y = 150;
-	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
+	igSetNextWindowPos((ImVec2){gui->sdl->width_vp * RENDER_SCALE, 150},
+		(ImGuiCond_Once), (ImVec2){0, 0});
 	igBegin("Delete Object", &gui->del_obj_open,
 				ImGuiWindowFlags_AlwaysAutoResize);
 	size = igGetWindowSize();
@@ -107,7 +110,7 @@ static inline void
 	static const char	*item_current;
 	int					i;
 	bool				is_selected;
-	const char*			item[] = {"Tore"};
+	const char			*item[] = {"Tore"};
 
 	item_current = item[*type];
 	if (igBeginCombo("Cluster Type", item_current, 0))

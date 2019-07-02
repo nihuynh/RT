@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_toolbox.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 04:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 22:43:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:21:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,18 +112,6 @@ t_vec2
 	if (DEBUG)
 		ft_printf("Limit : %f %f\n", toby[0], toby[1]);
 	return ((t_vec2){toby[0], toby[1]});
-}
-
-int
-	csg_is_op(t_parse_txt *scene_file)
-{
-	if (ft_strstr(get_curr_line(scene_file), INTER_STR) != NULL)
-		return (INTER);
-	if (ft_strstr(get_curr_line(scene_file), NOT_STR) != NULL)
-		return (NOT);
-	if (ft_strstr(get_curr_line(scene_file), UNION_STR) != NULL)
-		return (UNION);
-	return (0);
 }
 
 int

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 13:52:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/24 17:08:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 21:59:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static inline t_vec2
 {
 	t_vec2	res;
 
-	(void) tore;
-	(void) ray;
+	(void)tore;
+	(void)ray;
 	res.x = INFINITY;
 	res.y = INFINITY;
 	return (res);
@@ -57,7 +57,7 @@ void
 	inter_tore(t_inter *inter, t_obj *node)
 {
 	t_tore	*tore;
-	float		dist;
+	float	dist;
 
 	tore = node->shape;
 	dist = inter_local(inter, &inter->ray, tore);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_menu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 21:01:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:52:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,6 @@ static inline void
 	igEndMenu();
 }
 
-static inline void
-	help_menu(t_gui *gui)
-{
-	igMenuItemBoolPtr("Keymap", NULL, &gui->keymap_open, 1);
-	igMenuItemBoolPtr("About", NULL, &gui->about_open, 1);
-	igEndMenu();
-}
-
 void
 	ui_mainmenu(t_gui *gui)
 {
@@ -104,6 +96,10 @@ void
 	if (igBeginMenu("Window", 1))
 		window_menu(gui);
 	if (igBeginMenu("?", 1))
-		help_menu(gui);
+	{
+		igMenuItemBoolPtr("Keymap", NULL, &gui->keymap_open, 1);
+		igMenuItemBoolPtr("About", NULL, &gui->about_open, 1);
+		igEndMenu();
+	}
 	igEndMainMenuBar();
 }

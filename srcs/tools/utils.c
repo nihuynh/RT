@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:36:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 22:22:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,16 @@ void
 	close(fd);
 	ft_strdel(&abs_path);
 	ft_lstsort(&app->lst_mat, &mat_cmp);
+}
+
+int
+	csg_is_op(t_parse_txt *scene_file)
+{
+	if (ft_strstr(get_curr_line(scene_file), INTER_STR) != NULL)
+		return (INTER);
+	if (ft_strstr(get_curr_line(scene_file), NOT_STR) != NULL)
+		return (NOT);
+	if (ft_strstr(get_curr_line(scene_file), UNION_STR) != NULL)
+		return (UNION);
+	return (0);
 }

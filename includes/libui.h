@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 03:40:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 23:18:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void				apply_simple_filter(t_sdl *sdl, uint32_t (*fun) (uint32_t));
 void				push_render_time(t_sdl *sdl, float time_frame_ms);
 void				push_gui_time(t_sdl *sdl, long new_frame);
 
+void				mthr_task(t_data_thr *data_thr, void *(*func)(void *));
 /*
 ** Pool Render :
 */
