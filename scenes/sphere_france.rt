@@ -1,0 +1,84 @@
+camera
+{
+	origin(-8.166 38.484 -43.361)
+	direction(0.181 -0.333 0.925)
+	amb_light(0.100 0.100 0.100)
+	skybox(SKY_ocean.jpg)
+}
+content
+{
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 50.000 -50.000)
+		intensity(3000.000)
+	}
+	object(plane)
+	{
+		name(Plane 0)
+		origin(0.000 -10.000 0.000)
+		normal(0.000 1.000 0.000)
+		limit(0.000 1.000)
+		type(0)
+		mat(mirror glass)
+	}
+	object(sphere)
+	{
+		name(Sphere 1)
+		origin(-10.000 0.000 0.000)
+		radius(10.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 2)
+		origin(-10.000 0.000 5.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 3)
+		origin(-10.000 0.000 10.000)
+		radius(10.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 4)
+		origin(-5.000 0.000 10.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 5)
+		origin(0.000 0.000 10.000)
+		radius(10.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 7)
+		origin(0.000 0.000 0.000)
+		radius(10.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 8)
+		origin(-5.000 0.000 0.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 9)
+		origin(0.000 0.000 5.000)
+		radius(10.000)
+		mat(white plastic)
+	}
+}
+animation
+{
+}

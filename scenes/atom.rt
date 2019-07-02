@@ -1,0 +1,412 @@
+camera
+{
+	origin(-34.876 13.244 -95.095)
+	direction(0.121 -0.045 0.992)
+	amb_light(0.100 0.100 0.100)
+	skybox(ENV_MilkyWay.jpg)
+}
+content
+{
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 50.000 0.000)
+		intensity(800.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 50.000)
+		intensity(800.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(-50.000 0.000 0.000)
+		intensity(800.000)
+	}
+	object(sphere)
+	{
+		name(Sphere 0)
+		origin(0.000 0.000 0.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 1)
+		origin(2.000 0.000 0.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 10)
+		origin(0.000 -2.000 2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 11)
+		origin(0.000 -2.000 -2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 12)
+		origin(0.000 2.000 2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 13)
+		origin(2.000 -2.000 2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 14)
+		origin(-2.000 -2.000 -2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 15)
+		origin(-2.000 -2.000 2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 16)
+		origin(-2.000 2.000 -2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 17)
+		origin(-2.000 2.000 0.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 18)
+		origin(-2.000 -2.000 0.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 19)
+		origin(-2.000 0.000 2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 2)
+		origin(-2.000 0.000 0.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 20)
+		origin(-2.000 0.000 -2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 21)
+		origin(-2.000 2.000 2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 22)
+		origin(0.000 2.000 -2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 23)
+		origin(2.000 2.000 -2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 24)
+		origin(2.000 -2.000 -2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 25)
+		origin(2.000 0.000 2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 26)
+		origin(2.000 2.000 2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 27)
+		origin(0.000 4.000 0.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 28)
+		origin(0.000 -4.000 0.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 29)
+		origin(4.000 0.000 0.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 3)
+		origin(0.000 2.000 0.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 30)
+		origin(-4.000 0.000 0.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 31)
+		origin(0.000 0.000 4.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 32)
+		origin(0.000 0.000 -4.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 33)
+		origin(2.605 0.000 -14.772)
+		radius(1.000)
+		color_diffuse(0.078 0.078 0.078)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Sphere 34)
+		origin(-8.125 -9.642 8.125)
+		radius(1.000)
+		color_diffuse(0.078 0.078 0.078)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Sphere 35)
+		origin(-1.842 14.772 -1.842)
+		radius(1.000)
+		color_diffuse(0.078 0.078 0.078)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Sphere 36)
+		origin(1.842 -14.772 1.842)
+		radius(1.000)
+		color_diffuse(0.118 0.118 0.118)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Sphere 37)
+		origin(-2.605 0.000 14.772)
+		radius(1.000)
+		color_diffuse(0.078 0.078 0.078)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Sphere 38)
+		origin(8.125 9.642 -8.125)
+		radius(1.000)
+		color_diffuse(0.078 0.078 0.078)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Sphere 4)
+		origin(0.000 -2.000 0.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 5)
+		origin(0.000 0.000 2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 6)
+		origin(0.000 0.000 -2.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 7)
+		origin(2.000 2.000 0.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 8)
+		origin(2.000 -2.000 0.000)
+		radius(1.000)
+		mat(red plastic)
+	}
+	object(sphere)
+	{
+		name(Sphere 9)
+		origin(2.000 0.000 -2.000)
+		radius(1.000)
+		mat(blue plastic)
+	}
+}
+animation
+{
+	object(Sphere 33)
+	{
+		motion(orbit)
+		{
+			center_obj(Sphere 0)
+			axis(0.000000 1.000000 0.000000)
+			deg(10.000000)
+		}
+	}
+	object(Sphere 34)
+	{
+		motion(orbit)
+		{
+			center_obj(Sphere 0)
+			axis(-0.707107 0.000000 -0.707107)
+			deg(10.000000)
+		}
+	}
+	object(Sphere 35)
+	{
+		motion(orbit)
+		{
+			center_obj(Sphere 0)
+			axis(0.707107 0.000000 -0.707107)
+			deg(10.000000)
+		}
+	}
+	object(Sphere 36)
+	{
+		motion(orbit)
+		{
+			center_obj(Sphere 0)
+			axis(0.707107 0.000000 -0.707107)
+			deg(10.000000)
+		}
+	}
+	object(Sphere 37)
+	{
+		motion(orbit)
+		{
+			center_obj(Sphere 0)
+			axis(0.000000 1.000000 0.000000)
+			deg(10.000000)
+		}
+	}
+	object(Sphere 38)
+	{
+		motion(orbit)
+		{
+			center_obj(Sphere 0)
+			axis(-0.707107 0.000000 -0.707107)
+			deg(10.000000)
+		}
+	}
+}
