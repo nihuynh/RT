@@ -1,73 +1,61 @@
 # RT
 [![Build Status](https://travis-ci.com/nihuynh/RT.svg?token=PdGtpZGzFKLd1CBjD7Ym&branch=master)](https://travis-ci.com/nihuynh/RT)
-
----
-
 ## Summary
-_This is a ray tracing program using SDL2 and imgui._
-_Built and tested on mac OSX 10, (Untested on linux)_
-https://nihuynh.github.io/RT/
-http://www.yamllint.com/ <= travis tools AWESOME
-
+_This is a ray tracing program in C using SDL2 and imgui._
+_This project is done during 42 graphic branch to learn about computer-generated images._
+_Built and tested on mac OSX 10, (Untested on linux & Windows)_
 ## How to install
-
-On mac, to install the library required :
+### On mac :
+Install the library required :
 ```
 brew install sdl2
 brew install sdl2_image
 ```
-
-On mac, this command will built an binary :
+This command will built an app bundle :
 ```
 git clone --recurse-submodules https://github.com/nihuynh/RT && cd RT && make
 ```
-How to use the makefile of the project :
+### On Linux :
+(Untested)
+### On Windows :
+(Untested)
+### Miscellaneous :
+For more info on how to use our makefile :
 ```
 make usage
 ```
-
+[Documentation](https://nihuynh.github.io/RT/t__data_8h.html)
 ## How to use
-
 ### Keymap :
-
-<kbd>ESC</kbd> | Quit the program
-
+![Keymaps](resources/layout.jpg)
 ---
 
 # Features:
 
+* sky-box
 * Refraction (Glass)
 * Reflection (Mirror)
 * Controllable camera
 * Screenshot
-* Edit or create scenes
 * Load/Reload/Export scenes
+* Live Edit of the scenes
 * Under and over-sampling
-* UI pane to edit or create scenes
+* UI
 * Fullscreen
-* Texture on all basic shapes
+* Texture on all shapes
 
-# In-progress Features:
-* sky-box
-* CSG
-
-# TODO Features:
-* Disk
-* Triangle
-* Tore
-* Better material list
-
-# Shape availables:
+## Shape availables:
 * Plane
 * Cube
 * Sphere
 * Cylinder
 * Cone
-
-# Dev_log:
-
-cloc lib/lib* srcs includes Makefile
-17 march => 6261	LOC
-12 april => 5363	LOC
-22 mai => 7620		LOC
-pmc to mesure the cache misses
+* CSG (Constructive Solid Geometry)
+### Limited Shape:
+* Triangle
+* Disk
+* Limited plane
+# Credit:
+http://www.yamllint.com/ : A Must have for travis.
+#### Licence:
+_This repository is under no license._
