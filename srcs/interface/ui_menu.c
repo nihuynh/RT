@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_menu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 17:32:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 21:01:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,12 @@ static inline void
 		toggle_fullscreen(gui->sdl, gui);
 	igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
 	resolution_list(gui);
-	igSeparator();
+	igEndMenu();
+}
+
+static inline void
+	help_menu(t_gui *gui)
+{
 	igMenuItemBoolPtr("Keymap", NULL, &gui->keymap_open, 1);
 	igMenuItemBoolPtr("About", NULL, &gui->about_open, 1);
 	igEndMenu();
@@ -98,5 +103,7 @@ void
 		edit_menu(gui);
 	if (igBeginMenu("Window", 1))
 		window_menu(gui);
+	if (igBeginMenu("?", 1))
+		help_menu(gui);
 	igEndMainMenuBar();
 }
