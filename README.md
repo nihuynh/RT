@@ -16,7 +16,7 @@ This command will built an app bundle :
 git clone --recurse-submodules https://github.com/nihuynh/RT && cd RT && make
 ```
 ### On Linux :
-(Untested)
+Does not compile
 ### On Windows :
 (Untested)
 ### Miscellaneous :
