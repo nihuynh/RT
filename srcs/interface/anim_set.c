@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_set.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:29:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 02:00:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,16 @@ static inline void
 	anim->parse = &parse_rotate;
 }
 
+static inline void
+	anim_reset(t_anim *anim)
+{
+	anim->type = 0;
+	anim->anim_obj = NULL;
+	anim->ui_anim = NULL;
+	anim->export = NULL;
+	anim->parse = NULL;
+}
+
 void
 	anim_set(t_anim *anim, int type)
 {
@@ -67,7 +77,7 @@ void
 		return ;
 	anim_free(anim);
 	if (type == 0)
-		ft_bzero(anim, sizeof(t_anim));
+		anim_reset(anim);
 	else if (type == 1)
 		anim_set_translate(anim);
 	else if (type == 2)
