@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/28 21:06:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 01:48:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static inline void
 	scene_file->app->settings.amb_light = parse_color("amb_light(", scene_file);
 	scene_file->app->cam.anim = NULL;
 	scene_file->app->scene.skybox = parse_texture("skybox(", scene_file);
-	scene_file->app->settings.skybox = !(scene_file->app->scene.skybox->pixels);
+	scene_file->app->settings.skybox = (scene_file->app->scene.skybox->pixels);
 	vec3_normalize(&scene_file->app->cam.dir);
 	check_closing_bracket(scene_file);
 }

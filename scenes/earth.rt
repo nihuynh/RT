@@ -1,15 +1,16 @@
 camera
 {
-	origin(-257.890 45.409 219.417)
-	direction(0.853 -0.174 -0.491)
+	origin(-175.950 33.706 -540.426)
+	direction(0.173 -0.000 0.985)
 	amb_light(0.100 0.100 0.100)
+	skybox(ENV_MilkyWay.jpg)
 }
 content
 {
 	object(light)
 	{
 		color(1.000 1.000 1.000)
-		origin(0.000 -30.000 1000.000)
+		origin(0.000 -30.000 -1000.000)
 		intensity(500000.000)
 	}
 	object(sphere)
@@ -17,12 +18,24 @@ content
 		name(Earth)
 		origin(0.000 -30.000 0.000)
 		radius(63.710)
-		mat(earth)
+		texture(2k_earth_COLOR.jpg)
+		normal_map(2k_earth_NORM.jpg)
+		spec_map(2k_earth_SPEC.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.400)
+		spec_power(5.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.480 0.000)
 	}
 	object(sphere)
 	{
 		name(Moon)
-		origin(1622.000 -30.000 0.000)
+		origin(0.000 -30.000 1622.000)
 		radius(17.370)
 		texture(2k_moon.jpg)
 		color_diffuse(1.000 1.000 1.000)

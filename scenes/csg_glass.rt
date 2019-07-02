@@ -1,9 +1,9 @@
 camera
 {
-	origin(55.137 25.985 62.240)
+	origin(62.536 28.575 68.449)
 	direction(-0.740 -0.259 -0.621)
 	amb_light(0.100 0.100 0.100)
-	skybox(SKY_ocean.jpg)
+	skybox(ENV_ocean.jpg)
 }
 content
 {
