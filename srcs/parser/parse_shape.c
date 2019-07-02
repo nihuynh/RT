@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 23:53:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 01:14:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void
 	obj_dst->shape = shape;
 	if (!obj_dst->name)
 		obj_dst->name = name_obj(type, &scene_file->app->scene.nb_objs[type]);
+	else
+		scene_file->app->scene.nb_objs[type] += 1;
 	obj_dst->export = cfg.export;
 	obj_dst->material = parse_material(scene_file);
 	check_closing_bracket(scene_file);
