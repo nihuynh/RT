@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:59:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/30 20:51:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 03:29:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 # define DEBUG			0
 # define MAC			MACB
+# define KEYMAP_PATH	"resources/layout.jpg"
 # define TEX_DIR		"resources/textures/"
 # define MAT_LST_DIR	"resources/materialList.csv"
 # define SCENE_DIR		"scenes/"

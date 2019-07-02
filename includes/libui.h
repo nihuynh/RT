@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 18:02:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 03:40:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,5 @@ int					init_pool(t_sdl *sdl, int (*do_pxl) (int, int, void*),
 	void *prg_d, uint16_t thr_count);
 int					pool_render(t_thr_pool *pool);
 int					destroy_pool(t_thr_pool *pool);
-
-void				exit_ui(SDL_GLContext *gl_context);
 
 #endif

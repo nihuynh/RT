@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 15:32:28 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/06/25 22:32:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 03:34:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	open_textures(t_data *app)
 	struct dirent	*dir;
 	char			*abs_path;
 
-	abs_path = ft_strjoin(app->option.path, TEX_DIR);
+	if (!(abs_path = ft_strjoin(app->option.path, TEX_DIR)))
+		ft_error(__func__, __LINE__);
 	d = opendir(abs_path);
 	if (d)
 	{

@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 00:25:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 03:45:16 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parse.h"
+#include "ftstring.h"
 #include "interface.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl2.h"
@@ -36,6 +38,10 @@ void	ui_render(t_gui *gui)
 		del_obj_win(gui);
 	if (gui->del_light_open)
 		del_light_win(gui);
+	if (gui->keymap_open)
+		keymap_win(gui);
+	if (gui->about_open)
+		about_win(gui);
 }
 
 void	interface(t_data *app)
@@ -57,13 +63,48 @@ void	interface(t_data *app)
 		animate(app);
 }
 
-void	exit_ui(SDL_GLContext *gl_context)
+void	exit_ui(t_gui *gui)
 {
 	ImGui_ImplOpenGL2_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
-	if (gl_context)
+	if (gui->gl_context)
 	{
 		igDestroyContext(NULL);
-		SDL_GL_DeleteContext(gl_context);
+		SDL_GL_DeleteContext(gui->gl_context);
 	}
+	if (gui->keymap.name)
+	{
+		ft_strdel(&gui->keymap.name);
+		ft_strdel(&gui->keymap.dir);
+		free(gui->keymap.pixels);
+	}
+}
+
+void
+	keymap_win(t_gui *gui)
+{
+	char	*abs_path;
+
+	igBegin("Keymap", &gui->keymap_open, ImGuiWindowFlags_AlwaysAutoResize);
+	if (gui->keymap.name == NULL)
+	{
+		abs_path = ft_strjoin(gui->app->option.path, KEYMAP_PATH);
+		gui->keymap.name = ft_strdup("keymap");
+		gui->keymap.dir = abs_path;
+
+	}
+	if (gui->keymap.pixels == NULL)
+		load_texture(&gui->keymap);
+	igSeparator();
+	igText("Template text");
+	igEnd();
+}
+
+void
+	about_win(t_gui *gui)
+{
+	igBegin("About us", &gui->about_open, ImGuiWindowFlags_AlwaysAutoResize);
+	igSeparator();
+	igText("Template text");
+	igEnd();
 }

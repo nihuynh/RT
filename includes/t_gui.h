@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_gui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/01 21:54:19 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 03:40:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ typedef struct		s_gui
 	bool			cam_open;
 	bool			anim_win_open;
 	bool			add_cluster_open;
-	bool			cmd;
-	bool			s;
+	bool			keymap_open;
+	bool			about_open;
+	t_texture		keymap;
 	t_cam			cam_cpy;
 	bool			render_focused;
 	bool			animate;
@@ -60,4 +61,6 @@ typedef struct		s_gui
 	t_pt3			pos_render;
 }					t_gui;
 
+
+void				exit_ui(t_gui *gui);
 #endif

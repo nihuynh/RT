@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/01 22:24:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 03:19:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	add_obj_win(t_gui *gui);
 void	del_obj_win(t_gui *gui);
 void	del_light_win(t_gui *gui);
 void	render_win(t_gui *gui);
+void	keymap_win(t_gui *gui);
+void	about_win(t_gui *gui);
 void	ui_object(t_data *app, t_obj *obj);
 void	ui_scene_editor(t_gui *gui);
 void	ui_mainmenu(t_gui *gui);

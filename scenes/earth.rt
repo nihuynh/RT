@@ -1,7 +1,7 @@
 camera
 {
 	origin(-175.950 33.706 -540.426)
-	direction(0.173 -0.000 0.985)
+	direction(0.173 0.000 0.985)
 	amb_light(0.100 0.100 0.100)
 	skybox(ENV_MilkyWay.jpg)
 }

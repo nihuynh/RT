@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:59:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 03:41:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void
 	bool	debug_leak;
 
 	free_lst(app);
-	exit_ui(app->gui.gl_context);
+	exit_ui(&app->gui);
 	exit_sdl(app->sdl);
 	ft_strdel(&app->option.path);
 	debug_leak = app->option.test_(app->option, 'l');
