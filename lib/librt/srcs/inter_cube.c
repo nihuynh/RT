@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 13:52:10 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 18:05:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 19:19:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,18 @@ void
 t_vec3
 	get_cube_uv(t_inter *inter)
 {
-	t_vec3			uv;
+	t_cube	*cube;
+	t_vec3	uv;
+	t_vec3	local_base[2];
+	t_vec3	orig_to_inter;
 
-	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
-	uv.x = remap_to_0_to_1(uv.x * M_INV_PI_F);
-	uv.y *= M_INV_PI_F;
+	cube = (t_cube *)inter->obj->shape;
+	orig_to_inter = vec3_sub_(inter->point, cube->origin);
+	create_orthobasis_from_y_axis(cube->n, &local_base[0], &local_base[1]);
+	uv.y = vec3_dot(&orig_to_inter, &cube->n);
+	uv.x = vec3_dot(&orig_to_inter, &local_base[1]);
+	uv.x = remap_to_0_to_1(uv.x / cube->size);
+	uv.y = remap_to_0_to_1(uv.y / cube->size);
 	return (uv);
 }
+
