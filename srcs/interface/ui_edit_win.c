@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/01 04:15:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 00:27:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	add_obj_win(t_gui *gui)
 
 	if (gui->add_obj_open == false)
 		return ;
+	gui->add_cluster_open = false;
 	pos.x = gui->sdl->width_vp * RENDER_SCALE;
 	pos.y = 150;
 	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
-	igBegin("New Object", &gui->add_obj_open,
-				ImGuiWindowFlags_AlwaysAutoResize);
+	igSeparator();
 	new_obj_list(&gui->add_obj_type);
 	igSameLine(0, 10);
 	if (igButton("Create", (ImVec2){0, 0}))
@@ -34,7 +34,6 @@ void	add_obj_win(t_gui *gui)
 		gui->sdl->needs_render = true;
 		gui->sdl->partial_render = false;
 	}
-	igEnd();
 }
 
 void
@@ -139,8 +138,7 @@ void
 	pos.x = gui->sdl->width_vp * RENDER_SCALE;
 	pos.y = 150;
 	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
-	igBegin("New Cluster", &gui->add_cluster_open,
-				ImGuiWindowFlags_AlwaysAutoResize);
+	igSeparator();
 	new_cluster_list(&gui->cluster.type);
 	ui_cluster(&gui->cluster);
 	igSameLine(0, 10);
@@ -152,5 +150,4 @@ void
 		gui->sdl->needs_render = true;
 		gui->sdl->partial_render = false;
 	}
-	igEnd();
 }

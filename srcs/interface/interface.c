@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/01 03:40:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/02 00:25:41 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	ui_render(t_gui *gui)
 {
 	render_win(gui);
 	ui_mainmenu(gui);
-	add_obj_win(gui);
-	add_cluster_win(gui);
 	if (gui->edit_open)
 		ui_scene_editor(gui);
 	if (gui->render_set_open)

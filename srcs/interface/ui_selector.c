@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_selector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:16:21 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:24:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 00:27:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static inline void
 	if (igButton("Delete Object", (ImVec2){size.x / 3, 0}) && gui->obj_set)
 		gui->del_obj_open = true;
 	igSpacing();
+	add_obj_win(gui);
+	add_cluster_win(gui);
 	igSeparator();
 	if (gui->obj_set)
 		ui_object(gui->app, gui->obj_set);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_name.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:34:56 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/24 21:12:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/02 00:30:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*name_obj(int type, int *nb)
 	char		*tmp;
 	char		*name;
 	const char*	name_objs[] = {
-		"Plane", "Sphere", "Cone", "Cylinder", "CSG", "Cube", "Tore"
+		"Plane ", "Sphere ", "Cone ", "Cylinder ", "CSG ", "Cube ", "Tore "
 	};
 
 	if (!(tmp = ft_itoa(*nb)))
