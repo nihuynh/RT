@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/01 22:51:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 17:38:00 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ int
 {
 	int fd;
 
+	if (ft_strcmp(filename, "scenes/") == 0)
+	{
+		app->gui.export_open = true;
+		return (0);
+	}
 	setlocale(LC_NUMERIC, "C");
 	fd = open(filename, O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR);
 	if (fd == -1)
