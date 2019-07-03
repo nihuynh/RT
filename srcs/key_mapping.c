@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 23:50:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 03:09:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@
 ** @param arg	Data
 ** @param state	True if key is pressed, False if released
 ** credit : norme - groussel
-*/
-
-/*
-** TODO : Reduce functions lengths from 27 to 25
 */
 
 static inline bool
@@ -52,10 +48,6 @@ static inline bool
 		cam->rotate_left = state;
 	else if (key == SDLK_RIGHT)
 		cam->rotate_right = state;
-	else if (key == SDLK_LSHIFT)
-		cam->sprint = state;
-	else if (key == SDLK_LCTRL)
-		cam->walk = state;
 	else
 		return (false);
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 23:29:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 03:14:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,31 @@ void
 		tore->size = tmp.size;
 	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
 		tore->radius = tmp.radius;
+}
+
+void
+	ui_cube(void *app_v, void *res)
+{
+	t_cube	*cube;
+	t_cube	tmp;
+
+	(void)app_v;
+	cube = res;
+	tmp = *cube;
+	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
+		cube->origin = tmp.origin;
+	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
+		cube->n = tmp.n;
+	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
+		cube->x = tmp.x;
+	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
+		cube->z = tmp.z;
+	if (igButton("Normalize", (ImVec2){0, 0}))
+	{
+		vec3_normalize(&cube->n);
+		vec3_normalize(&cube->x);
+		vec3_normalize(&cube->z);
+	}
+	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
+		cube->size = tmp.size;
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 10:55:25 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 23:50:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 03:54:35 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,31 @@ void
 		sphere->radius = tmp.radius;
 }
 
-/*
-** TODO : Reduce functions lengths from 34 to 25
-*/
+static inline void
+	ui_plane_limit(t_plane *plane)
+{
+	t_plane		tmp;
+
+	tmp = *plane;
+	if (plane->type == 0 && igDragFloat2("Limit (X Y)",
+			&tmp.size.x, 1, 0, 1000000, "%g", 1))
+		plane->size = tmp.size;
+	if (plane->type == 1 && igDragFloat("Limit",
+			&tmp.size.x, 1, 0, 1000000, "%g", 1))
+		plane->size.x = tmp.size.x;
+	if (plane->type == 2 && igInputFloat2("P1", &tmp.p1.x, "%g", 0))
+		plane->p1 = tmp.p1;
+	if (plane->type == 2 && igInputFloat2("P2", &tmp.p2.x, "%g", 0))
+		plane->p2 = tmp.p2;
+	if (igRadioButtonBool("Rectangle", plane->type == 0))
+		plane->type = 0;
+	igSameLine(0, 10);
+	if (igRadioButtonBool("Disk", plane->type == 1))
+		plane->type = 1;
+	igSameLine(0, 10);
+	if (igRadioButtonBool("Triangle", plane->type == 2))
+		plane->type = 2;
+}
 
 void
 	ui_plane(void *app_v, void *res)
@@ -53,24 +75,7 @@ void
 		vec3_normalize(&plane->n);
 		create_orthobasis_from_y_axis(plane->n, &plane->x, &plane->y);
 	}
-	if (plane->type == 0 && igDragFloat2("Limit (X Y)",
-			&tmp.size.x, 1, 0, 1000000, "%g", 1))
-		plane->size = tmp.size;
-	if (plane->type == 1 && igDragFloat("Limit",
-			&tmp.size.x, 1, 0, 1000000, "%g", 1))
-		plane->size.x = tmp.size.x;
-	if (plane->type == 2 && igInputFloat2("P1", &tmp.p1.x, "%g", 0))
-		plane->p1 = tmp.p1;
-	if (plane->type == 2 && igInputFloat2("P2", &tmp.p2.x, "%g", 0))
-		plane->p2 = tmp.p2;
-	if (igRadioButtonBool("Rectangle", plane->type == 0))
-		plane->type = 0;
-	igSameLine(0, 10);
-	if (igRadioButtonBool("Disk", plane->type == 1))
-		plane->type = 1;
-	igSameLine(0, 10);
-	if (igRadioButtonBool("Triangle", plane->type == 2))
-		plane->type = 2;
+	ui_plane_limit(plane);
 }
 
 void
@@ -121,31 +126,4 @@ void
 		cone->theta = tmp.theta;
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
 		cone->size = tmp.size;
-}
-
-void
-	ui_cube(void *app_v, void *res)
-{
-	t_cube	*cube;
-	t_cube	tmp;
-
-	(void)app_v;
-	cube = res;
-	tmp = *cube;
-	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
-		cube->origin = tmp.origin;
-	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
-		cube->n = tmp.n;
-	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
-		cube->x = tmp.x;
-	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
-		cube->z = tmp.z;
-	if (igButton("Normalize", (ImVec2){0, 0}))
-	{
-		vec3_normalize(&cube->n);
-		vec3_normalize(&cube->x);
-		vec3_normalize(&cube->z);
-	}
-	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
-		cube->size = tmp.size;
 }

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 23:49:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 03:52:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,23 @@ void
 	}
 }
 
-/*
-** TODO : Reduce functions lengths from 30 to 25
-*/
+static inline void
+	del_obj_confirmation(t_gui *gui, ImVec2 size)
+{
+	igText("Do you want to delete the currently selected object ?");
+	igSpacing();
+	igSameLine(size.x / 4, 0);
+	if (igButton("Yes", (ImVec2){size.x / 8, 0}))
+	{
+		delete_obj(gui->app);
+		gui->del_obj_open = false;
+		gui->sdl->needs_render = true;
+		gui->sdl->partial_render = false;
+	}
+	igSameLine(0, size.x / 4);
+	if (igButton("No", (ImVec2){size.x / 8, 0}))
+		gui->del_obj_open = false;
+}
 
 void
 	del_obj_win(t_gui *gui)
@@ -52,54 +66,12 @@ void
 				ImGuiWindowFlags_AlwaysAutoResize);
 	size = igGetWindowSize();
 	if (gui->obj_set)
-	{
-		igText("Do you want to delete the currently selected object ?");
-		igSpacing();
-		igSameLine(size.x / 4, 0);
-		if (igButton("Yes", (ImVec2){size.x / 8, 0}))
-		{
-			delete_obj(gui->app);
-			gui->del_obj_open = false;
-			gui->sdl->needs_render = true;
-			gui->sdl->partial_render = false;
-		}
-		igSameLine(0, size.x / 4);
-		if (igButton("No", (ImVec2){size.x / 8, 0}))
-			gui->del_obj_open = false;
-	}
+		del_obj_confirmation(gui, size);
 	else
 	{
 		igText("You need to select an object before you can remove it");
 		if (igButton("Close", (ImVec2){0, 0}))
 			gui->del_obj_open = false;
-	}
-	igEnd();
-}
-
-void
-	del_light_win(t_gui *gui)
-{
-	igBegin("Delete Object", &gui->del_light_open,
-				ImGuiWindowFlags_AlwaysAutoResize);
-	if (gui->light_set)
-	{
-		igText("Do you want to delete the currently selected light ?");
-		if (igButton("Yes", (ImVec2){0, 20}))
-		{
-			delete_light(gui->app);
-			gui->del_light_open = false;
-			gui->sdl->needs_render = true;
-			gui->sdl->partial_render = false;
-		}
-		igSameLine(0, 0);
-		if (igButton("No", (ImVec2){0, 0}))
-			gui->del_light_open = false;
-	}
-	else
-	{
-		igText("You need to select a light before you can remove it");
-		if (igButton("Close", (ImVec2){0, 0}))
-			gui->del_light_open = false;
 	}
 	igEnd();
 }

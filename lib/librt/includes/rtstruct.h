@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 22:00:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 01:41:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,6 @@ typedef struct	s_cam
 	bool		rotate_down;
 	bool		rotate_left;
 	bool		rotate_right;
-	bool		sprint;
-	bool		walk;
 }				t_cam;
 
 /*
