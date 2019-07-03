@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ui_edit_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 03:52:14 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 17:14:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "ftmem.h"
 #include "config.h"
+#include "parse.h"
 
 void
 	add_obj_win(t_gui *gui)
@@ -27,6 +28,7 @@ void
 	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
 	igSeparator();
 	new_obj_list(&gui->add_obj_type);
+	material_list(gui->app->lst_mat, &gui->mat_set);
 	igSameLine(0, 10);
 	if (igButton("Create", (ImVec2){0, 0}))
 	{
@@ -106,7 +108,7 @@ static inline void
 void
 	add_cluster_win(t_gui *gui)
 {
-	ImVec2 pos;
+	ImVec2		pos;
 
 	if (gui->add_cluster_open == false)
 		return ;
@@ -115,6 +117,7 @@ void
 	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
 	igSeparator();
 	new_cluster_list(&gui->cluster.type);
+	material_list(gui->app->lst_mat, &gui->mat_set);
 	ui_cluster(&gui->cluster);
 	igSameLine(0, 10);
 	if (igButton("Create", (ImVec2){0, 0}))

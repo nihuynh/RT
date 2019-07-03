@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_gui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 22:32:58 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 17:09:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_gui
 	t_cluster		cluster;
 	t_light			*light_set;
 	t_obj			*obj_set;
+	t_material		mat_set;
 	t_anim			*anim_set;
 	t_list			*lst_anim_set;
 	t_list			**alst;

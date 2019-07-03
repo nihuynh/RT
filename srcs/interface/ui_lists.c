@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_lists.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 23:11:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 17:17:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,21 @@ void
 }
 
 void
-	material_list(t_list *lst_mat, t_obj *obj)
+	material_list(t_list *lst_mat, t_material *mat)
 {
 	t_list		*current;
-	t_material	*selected;
 	t_material	*tmp;
 	bool		is_selected;
 
 	current = lst_mat;
-	selected = &obj->material;
 	tmp = current->content;
-	if (igBeginCombo("Material", selected->name, 0))
+	if (igBeginCombo("Material", mat->name, 0))
 	{
 		while (current)
 		{
-			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
+			is_selected = (ft_strcmp(mat->name, tmp->name) == 0);
 			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
-				obj->material = *tmp;
+				*mat = *tmp;
 			if (is_selected)
 				igSetItemDefaultFocus();
 			current = current->next;

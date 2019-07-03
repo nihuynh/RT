@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_objects.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 22:34:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 16:44:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static inline void
 static inline void
 	material(t_data *app, t_obj *obj)
 {
-	material_list(app->lst_mat, obj);
+	material_list(app->lst_mat, &obj->material);
 	if (load_selected_tex("Texture", obj->material.tex->name,
 		app->lst_tex, &obj->material.tex))
 		obj->material.name = "custom";

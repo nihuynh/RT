@@ -6,12 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/01 22:23:32 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/03 17:10:00 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include "t_gui.h"
+#include "parse.h"
 #include "t_data.h"
 #include "config.h"
 #include "librt.h"
@@ -20,6 +21,8 @@
 static inline void
 	default_gui_settings(t_gui *gui)
 {
+	t_material *tmp;
+
 	gui->export_open = false;
 	gui->light_set = NULL;
 	gui->obj_set = NULL;
@@ -39,6 +42,8 @@ static inline void
 	gui->frame_limit = 0;
 	gui->frames_render_time = 0;
 	ft_bzero(&gui->cluster, sizeof(t_cluster));
+	tmp = ft_lstgetelt(gui->app->lst_mat, &matcmp, "white plastic");
+	gui->mat_set = *tmp;
 }
 
 static inline void

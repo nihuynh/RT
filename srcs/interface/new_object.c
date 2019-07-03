@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 00:52:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 17:13:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void
 	t_obj		new;
 	t_parse		cfg;
 	void		*shape;
-	t_material	*tmp;
 
 	init_parse_cfg(type, &cfg);
 	if (!(shape = malloc(cfg.content_size)))
@@ -43,8 +42,7 @@ void
 	(get_built_func(type)).setter(&new, shape);
 	new.shape = shape;
 	new.export = cfg.export;
-	tmp = ft_lstgetelt(app->lst_mat, &matcmp, "white plastic");
-	new.material = *tmp;
+	new.material = app->gui.mat_set;
 	new.name = name_obj(type, &app->scene.nb_objs[type]);
 	ft_lstpushnew(&app->scene.lst_obj, &new, sizeof(t_obj));
 	app->gui.obj_set = app->scene.lst_obj->content;

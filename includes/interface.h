@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 03:19:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/03 17:12:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	icolortogui(int src, float dest[3]);
 void	guicolortoi(float src[3], int *dest);
 void	colortogui(t_color src, float dest[3]);
 void	guitocolor(float src[3], t_color *dest);
-void	material_list(t_list *lst_mat, t_obj *obj);
+void	material_list(t_list *lst_mat, t_material *mat);
 void	texture_list(t_list *lst_tex, t_obj *obj);
 void	node_type_list(t_csg_op *csg_op);
 void	new_obj_list(int *type);
