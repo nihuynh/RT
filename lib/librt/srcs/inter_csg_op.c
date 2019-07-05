@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_csg_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 19:52:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/05 18:56:17 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,21 @@ static inline t_inter
 	inter_set(&no_inter, sub.ray);
 	if (core.dist == INFINITY || sub.dist == INFINITY)
 		return (core);
-	if ((core.dist < sub.hit_pts.x && core.dist < sub.hit_pts.y)
-		|| (core.dist > sub.hit_pts.y && core.dist > sub.hit_pts.x))
+	if (core.dist < sub.hit_pts.x && core.dist < sub.hit_pts.y)
 		return (core);
 	if (sub.dist < core.dist)
 	{
+		if (core.hit_pts.y < 0 && core.hit_pts.x > 0)
+			return (sub);
 		if (ft_btwf(sub.hit_pts.y, core.hit_pts.x, core.hit_pts.y))
 		{
 			sub.dist = sub.hit_pts.y;
 			return (sub);
 		}
-		if (core.hit_pts.y < 0 && core.hit_pts.x > 0)
-			return (sub);
 	}
-	if (core.dist < sub.dist && sub.hit_pts.y < 0
+	if (core.dist > sub.hit_pts.y && core.dist > sub.hit_pts.x)
+		return (core);
+	if (sub.obj->type == 1 && core.dist <= sub.dist && sub.hit_pts.y <= 0
 		&& ft_btw(sub.hit_pts.x, core.hit_pts.x, core.hit_pts.y))
 		return (sub);
 	return (no_inter);
