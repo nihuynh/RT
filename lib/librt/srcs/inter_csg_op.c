@@ -6,12 +6,12 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/05 18:56:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/05 19:24:51 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
-#include "rtstruct.h"
+#include "csg.h"
 #include "libft.h"
 #include <math.h>
 
@@ -37,7 +37,7 @@ static inline t_inter
 	}
 	if (core.dist > sub.hit_pts.y && core.dist > sub.hit_pts.x)
 		return (core);
-	if (sub.obj->type == 1 && core.dist <= sub.dist && sub.hit_pts.y <= 0
+	if (sub.obj->type == 1 && core.dist < sub.dist && sub.hit_pts.y < 0
 		&& ft_btw(sub.hit_pts.x, core.hit_pts.x, core.hit_pts.y))
 		return (sub);
 	return (no_inter);

@@ -6,13 +6,13 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 02:14:09 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/05 19:07:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftbtree.h"
 #include "ftstring.h"
-#include "rtstruct.h"
+#include "csg.h"
 #include "parse.h"
 
 int

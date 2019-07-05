@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 01:41:45 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/05 19:06:21 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,11 +222,6 @@ struct			s_inter
 # define NOT_STR	"NOT"
 # define UNION		3
 # define UNION_STR	"UNION"
-
-typedef struct	s_csg_op
-{
-	int			type;
-}				t_csg_op;
 
 /*
 ** @brief Struct that hold any shape and is in a t_list
