@@ -61,3 +61,7 @@ cmake-build-*/
 .vscode/ipch/*
 imgui.ini
 docs/TODO.txt
+afl-in/*
+afl-out/*
+afl_in/*
+afl_out/*

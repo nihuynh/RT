@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_csg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/14 02:14:09 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/04 21:21:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ftstring.h"
 #include "rtstruct.h"
 #include "parse.h"
+#include "ftio.h"
 
 int
 	csg_is_obj(t_parse_txt *scene_file)
@@ -55,6 +56,8 @@ t_btree
 		root = csg_parse_op(scene_file, type_csg_node);
 	else if ((type_csg_node = csg_is_obj(scene_file)) != -1)
 		root = csg_parse_obj(scene_file, type_csg_node);
+	if (root == NULL)
+		ft_error(__func__, __LINE__);
 	if (root->content_size == sizeof(t_obj))
 		return (root);
 	root->left = csg_tree_parse(scene_file);
