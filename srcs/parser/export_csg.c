@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   export_csg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/07 18:25:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/05 19:07:45 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "rtstruct.h"
+#include "csg.h"
 #include "export.h"
 
 static inline void

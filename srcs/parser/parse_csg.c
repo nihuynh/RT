@@ -6,13 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:02:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/04 21:21:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/06 13:11:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftbtree.h"
 #include "ftstring.h"
-#include "rtstruct.h"
+#include "csg.h"
 #include "parse.h"
 #include "ftio.h"
 

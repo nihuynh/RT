@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   inter_csg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/18 23:48:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/05 19:05:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "librt.h"
-#include "rtstruct.h"
+#include "csg.h"
 #include "libft.h"
 #include <math.h>
 
