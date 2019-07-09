@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reload.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 17:10:00 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 11:43:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static inline void
 void
 	set_win_title(SDL_Window *win, char *filename)
 {
-	char	*title;
+	char	*title __attribute__((cleanup(ft_strdel)));
 
 	if (filename == NULL)
 		return ;
@@ -87,7 +87,6 @@ void
 	if (!(title = ft_strjoin("RT - ", title)))
 		ft_error(__func__, __LINE__);
 	SDL_SetWindowTitle(win, title);
-	ft_strdel(&title);
 }
 
 void

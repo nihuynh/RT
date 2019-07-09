@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 22:22:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 11:45:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ void
 	int			fd;
 	char		*line;
 	char		**split;
-	char		*abs_path;
+	char		*abs_path __attribute__((cleanup(ft_strdel)));
 	t_material	node;
 
-	abs_path = ft_strjoin(app->option.path, csv_file);
+	if (!(abs_path = ft_strjoin(app->option.path, csv_file)))
+		ft_error(__func__, __LINE__);
 	fd = ft_fopen_read(abs_path);
 	if (ft_gnl(fd, &line, "\n") > 0)
 		ft_strdel(&line);
@@ -79,7 +80,6 @@ void
 		ft_strdel(&line);
 	}
 	close(fd);
-	ft_strdel(&abs_path);
 	ft_lstsort(&app->lst_mat, &mat_cmp);
 }
 
