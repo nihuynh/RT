@@ -23,6 +23,7 @@ target_sources(rt PRIVATE
         srcs/inter_cylinder.c
         srcs/inter_find.c
         srcs/inter_plane.c
+        srcs/inter_plane_finite.c
         srcs/inter_set.c
         srcs/inter_setdeflect.c
         srcs/inter_setlight.c

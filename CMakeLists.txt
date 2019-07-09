@@ -46,8 +46,10 @@ target_sources(RT PRIVATE
         srcs/interface/anim_reset.c
         srcs/interface/anim_set.c
         srcs/interface/anim_toolbox.c
+        srcs/interface/anim_tools.c
         srcs/interface/delete_obj.c
         srcs/interface/interface.c
+        srcs/interface/new_cluster.c
         srcs/interface/new_object.c
         srcs/interface/new_object_tools.c
         srcs/interface/object_tools.c
@@ -55,8 +57,8 @@ target_sources(RT PRIVATE
         srcs/interface/ui_anim.c
         srcs/interface/ui_anim_selector.c
         srcs/interface/ui_anim_toolbox.c
-        srcs/interface/ui_cam_win.c
         srcs/interface/ui_camera_tab.c
+        srcs/interface/ui_cluster.c
         srcs/interface/ui_csg.c
         srcs/interface/ui_edit_win.c
         srcs/interface/ui_file_win.c
@@ -80,9 +82,11 @@ target_sources(RT PRIVATE
         srcs/parser/parse_anim_tools.c
         srcs/parser/parse_csg.c
         srcs/parser/parse_shape.c
+        srcs/parser/parse_cmp.c
         srcs/parser/parse_toolbox.c
         srcs/parser/parse_txt.c
         srcs/parser/parse_utils.c
+        srcs/parser/set_shape.c
         srcs/parser/parser.c
         srcs/parser/read.c
         srcs/parser/setter.c
@@ -90,6 +94,7 @@ target_sources(RT PRIVATE
         srcs/render/cast.c
         srcs/render/filters.c
         srcs/render/light.c
+        srcs/render/light_utils.c
         srcs/render/normal_mapping.c
         srcs/render/perturbation.c
         srcs/render/post_process.c
@@ -99,7 +104,7 @@ target_sources(RT PRIVATE
         srcs/render/skybox.c
         srcs/render/perlin.c
         srcs/render/perlin_texture.c
-        srcs/render_utils
+        srcs/render/pre_render.c
         srcs/render_utils/error_sdl.c
         srcs/render_utils/exit_sdl.c
         srcs/render_utils/init_mthr_sdl.c
