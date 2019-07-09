@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_camera_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 02:36:46 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 15:05:30 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 15:56:28 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,12 @@ static inline void
 	}
 }
 
+/*
+** TODO :
+**
+** Reduce this from 33 to 25.
+*/
+
 void
 	camera_tab(t_data *app)
 {
@@ -105,12 +111,11 @@ void
 			app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
 		}
 		if (app->scene.lst_obj
-			&&igRadioButtonBool("Camera lock on object", app->cam.lock_obj))
+			&& igRadioButtonBool("Camera lock on object", app->cam.lock_obj))
 		{
 			app->cam.lock_obj = 1 - app->cam.lock_obj;
 			app->cam.lock_pos = false;
 			app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
-
 		}
 		ui_camera_lock(app);
 		igSeparator();
