@@ -10,7 +10,7 @@
 			"request": "launch",
 			"preLaunchTask": "build_debug",
 			"program": "${workspaceFolder}/RT",
-			"args": ["scenes/csg_cube.rt"],
+			"args": ["scenes/auteurs.rt"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

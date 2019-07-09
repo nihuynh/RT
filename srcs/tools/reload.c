@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 13:18:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 15:23:46 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static inline void
 void
 	set_win_title(SDL_Window *win, char *filename)
 {
-	char	*title;
+	char	*title __attribute__((cleanup(ft_strdel)));
 
 	if (filename == NULL)
 		return ;
@@ -87,7 +87,6 @@ void
 	if (!(title = ft_strjoin("RT - ", title)))
 		ft_error(__func__, __LINE__);
 	SDL_SetWindowTitle(win, title);
-	ft_strdel(&title);
 }
 
 void

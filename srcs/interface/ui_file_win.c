@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_file_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 17:30:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 11:41:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	export_win(t_gui *gui)
 	if (igInputText("Filename", buff, sizeof(buff),
 		ImGuiInputTextFlags_EnterReturnsTrue, NULL, NULL))
 	{
-		arg = ft_strjoin(SCENE_DIR, buff);
+		if (!(arg = ft_strjoin(SCENE_DIR, buff)))
+			ft_error(__func__, __LINE__);
 		export_scene(gui->app, arg);
 		gui->export_open = false;
 		free(arg);

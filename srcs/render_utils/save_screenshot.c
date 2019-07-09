@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 10:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 23:19:45 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 11:43:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static inline char
 		scene_name = arg;
 	else
 		scene_name++;
-	tmp = ft_strjoini(scene_name, frame_count);
+	if (!(tmp = ft_strjoini(scene_name, frame_count)))
+		ft_error(__func__, __LINE__);
 	return (ft_strjoinfree(tmp, ".png"));
 }
 
