@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 13:52:10 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 21:59:19 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 15:37:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static inline t_vec2
 	t_vec3	min_sub;
 	t_vec3	max_sub;
 
-	dirfrac.x = 1.0f / ray->dir.x;
-	dirfrac.y = 1.0f / ray->dir.y;
-	dirfrac.z = 1.0f / ray->dir.z;
+	dirfrac.x = (ray->dir.x) ? 1.0f / ray->dir.x : 0.0f;
+	dirfrac.y = (ray->dir.y) ? 1.0f / ray->dir.y : 0.0f;
+	dirfrac.z = (ray->dir.z) ? 1.0f / ray->dir.z : 0.0f;
 	min_sub = vec3_sub_(cube->min_corner, ray->origin);
 	max_sub = vec3_sub_(cube->max_corner, ray->origin);
 	min_sub = vec3_mul_(min_sub, dirfrac);

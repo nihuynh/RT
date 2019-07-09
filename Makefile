@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/07/09 12:32:56 by sklepper         ###   ########.fr        #
+#    Updated: 2019/07/09 15:37:36 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	RT
-# RUNMODE		?=	release
-RUNMODE		?=	dev
+RUNMODE		?=	release
+# RUNMODE		?=	dev
 #VERBOSE	:= TRUE
 
 INTERFACE	:=	delete_obj.c screen_manager.c ui_lists.c ui_menu.c			   \

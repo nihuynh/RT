@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:39:30 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/26 18:01:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 15:30:24 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void
 
 	app = get_app(NULL);
 	(void)sdl;
+	if (app->scene.nb_objs[get_obj_type("cube")] == 0)
+		return ;
 	check_all_obj(app->scene.lst_obj, &update_obj);
 }
