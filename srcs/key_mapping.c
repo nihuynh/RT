@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 03:09:48 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 13:20:18 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static inline bool
 		cam->strafe_left = state;
 	else if (key == SDLK_d)
 		cam->strafe_right = state;
-	else if (key == SDLK_UP)
+	else if (key == SDLK_UP && !cam->lock)
 		cam->rotate_up = state;
-	else if (key == SDLK_DOWN)
+	else if (key == SDLK_DOWN && !cam->lock)
 		cam->rotate_down = state;
-	else if (key == SDLK_LEFT)
+	else if (key == SDLK_LEFT && !cam->lock)
 		cam->rotate_left = state;
-	else if (key == SDLK_RIGHT)
+	else if (key == SDLK_RIGHT && !cam->lock)
 		cam->rotate_right = state;
 	else
 		return (false);
@@ -77,7 +77,7 @@ void
 		save_screenshot(app->sdl, app->arg);
 	else if (app->gui.render_focused && state == true)
 		return ;
-	else if (key == SDLK_SPACE && state == SDL_RELEASED)
+	else if (key == SDLK_SPACE && state == SDL_RELEASED && !app->cam.lock)
 	{
 		mouse_captured ^= 1;
 		SDL_SetRelativeMouseMode(mouse_captured);

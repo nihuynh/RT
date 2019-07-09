@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/05 19:06:21 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 12:25:00 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdint.h>
 # include "ftbtree.h"
 # include "color.h"
+
+typedef struct s_obj	t_obj;
+typedef struct s_inter	t_inter;
 
 typedef struct	s_vec2
 {
@@ -139,6 +142,11 @@ typedef struct	s_cam
 	bool		rotate_down;
 	bool		rotate_left;
 	bool		rotate_right;
+	bool		lock;
+	bool		lock_pos;
+	t_pt3		pos_lock;
+	bool		lock_obj;
+	t_obj		*obj_lock;
 }				t_cam;
 
 /*
@@ -201,9 +209,6 @@ struct			s_material
 ** reflected	: Vector director of the ray after the inter
 ** find_normal	: Methode to find the normal of the object hit
 */
-
-typedef struct s_obj	t_obj;
-typedef struct s_inter	t_inter;
 
 struct			s_inter
 {

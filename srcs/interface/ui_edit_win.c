@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 17:14:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 11:39:41 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void
 	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
 	igSeparator();
 	new_obj_list(&gui->add_obj_type);
+	igSameLine(0, 10);
+	if (igButton("X", (ImVec2){0, 0}))
+		gui->add_obj_open = false;
 	material_list(gui->app->lst_mat, &gui->mat_set);
 	igSameLine(0, 10);
 	if (igButton("Create", (ImVec2){0, 0}))
@@ -117,6 +120,9 @@ void
 	igSetNextWindowPos(pos, (ImGuiCond_Once), (ImVec2){0, 0});
 	igSeparator();
 	new_cluster_list(&gui->cluster.type);
+	igSameLine(0, 10);
+	if (igButton("X", (ImVec2){0, 0}))
+		gui->add_cluster_open = false;
 	material_list(gui->app->lst_mat, &gui->mat_set);
 	ui_cluster(&gui->cluster);
 	igSameLine(0, 10);

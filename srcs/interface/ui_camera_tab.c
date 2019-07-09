@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_camera_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 02:36:46 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:24:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 15:05:30 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "libft.h"
 #include "animate.h"
 
-void	ui_camera_anim(t_anim *anim, ImVec2 size)
+void
+	ui_camera_anim(t_anim *anim, ImVec2 size)
 {
 	char	*str_list;
 	int		i;
@@ -36,7 +37,53 @@ void	ui_camera_anim(t_anim *anim, ImVec2 size)
 	}
 }
 
-void	camera_tab(t_data *app)
+static inline void
+	ui_lock_obj_list(t_data *app, char *str)
+{
+	t_list		*current;
+	t_obj		*selected;
+	t_obj		*tmp;
+	bool		is_selected;
+
+	current = app->scene.lst_obj;
+	selected = app->cam.obj_lock;
+	tmp = current->content;
+	if (igBeginCombo(str, selected->name, 0))
+	{
+		while (current)
+		{
+			is_selected = (ft_strcmp(selected->name, tmp->name) == 0);
+			if (igSelectable(tmp->name, is_selected, 0, (ImVec2){0, 0}))
+				app->cam.obj_lock = tmp;
+			if (is_selected)
+				igSetItemDefaultFocus();
+			current = current->next;
+			if (current)
+				tmp = current->content;
+		}
+		igEndCombo();
+	}
+}
+
+static inline void
+	ui_camera_lock(t_data *app)
+{
+	t_cam	cam;
+
+	cam = app->cam;
+	if (cam.lock_pos)
+	{
+		if (igInputFloat3("Lock Position", &cam.pos_lock.x, "%g", 0))
+			app->cam = cam;
+	}
+	else if (cam.lock_obj)
+	{
+		ui_lock_obj_list(app, "Lock on Object");
+	}
+}
+
+void
+	camera_tab(t_data *app)
 {
 	t_cam	*cam;
 	t_cam	tmp;
@@ -51,8 +98,21 @@ void	camera_tab(t_data *app)
 		igSliderFloat("FOV", &app->settings.fov, 30, 110, "%g", 1);
 		if (igInputFloat3("Origin (X Y Z)", &tmp.pos.x, "%g", 0))
 			cam->pos = tmp.pos;
-		if (igSliderFloat3("Normal (X Y Z)", &tmp.dir.x, -1, 1, "%g", 1))
-			cam->dir = tmp.dir;
+		if (igRadioButtonBool("Camera lock on position", app->cam.lock_pos))
+		{
+			app->cam.lock_pos = 1 - app->cam.lock_pos;
+			app->cam.lock_obj = false;
+			app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
+		}
+		if (app->scene.lst_obj
+			&&igRadioButtonBool("Camera lock on object", app->cam.lock_obj))
+		{
+			app->cam.lock_obj = 1 - app->cam.lock_obj;
+			app->cam.lock_pos = false;
+			app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
+
+		}
+		ui_camera_lock(app);
 		igSeparator();
 		if (!app->cam.anim && igButton("Add Animation",
 			(ImVec2){size.x / 3, 0}))

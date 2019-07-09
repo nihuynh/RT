@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:56:43 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/14 02:53:49 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 12:40:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static inline void
 
 	app = NULL;
 	app = get_app(app);
+	if (!app->scene.lst_obj)
+		return ;
 	if (orbit->obj_center == NULL)
 		orbit->obj_center = app->scene.lst_obj->content;
 	if (!(str = ft_strjoini("Center Object ", n)))

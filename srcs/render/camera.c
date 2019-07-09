@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 03:09:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 13:36:18 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
 #include "librt.h"
 #include "config.h"
+#include "render.h"
 #include <math.h>
 
 static t_vec3
@@ -53,6 +54,25 @@ static bool
 	return (has_changed);
 }
 
+static inline void
+	camera_lock(t_cam *cam)
+{
+	t_vec3	n;
+
+	if (cam->lock_obj)
+	{
+		vec3_sub(&n, cam->obj_lock->pos, &cam->pos);
+		vec3_normalize(&n);
+		set_direction(cam, n);
+	}
+	else if (cam->lock_pos)
+	{
+		vec3_sub(&n, &cam->pos_lock, &cam->pos);
+		vec3_normalize(&n);
+		set_direction(cam, n);
+	}
+}
+
 void
 	update_camera(t_cam *cam, bool *needs_render)
 {
@@ -61,9 +81,6 @@ void
 	t_vec3	strafe;
 	t_vec3	delta;
 
-	if (update_angles(cam))
-		*needs_render = true;
-	cam->rotation = set_rotation(cam->x_angle, cam->y_angle);
 	strafe = get_column(cam->rotation, 0);
 	upward = get_column(cam->rotation, 1);
 	forward = get_column(cam->rotation, 2);
@@ -72,6 +89,13 @@ void
 	if (delta.x != 0 || delta.y != 0 || delta.z != 0)
 		*needs_render = true;
 	vec3_add(&cam->pos, &cam->pos, &delta);
+	if (cam->lock && *needs_render)
+		camera_lock(cam);
+	else if (update_angles(cam))
+	{
+		cam->rotation = set_rotation(cam->x_angle, cam->y_angle);
+		*needs_render = true;
+	}
 }
 
 void

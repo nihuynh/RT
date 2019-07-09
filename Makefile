@@ -3,26 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/07/02 23:54:19 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/07/09 12:32:56 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	RT
-RUNMODE		?=	release
-# RUNMODE		?=	dev
+# RUNMODE		?=	release
+RUNMODE		?=	dev
 #VERBOSE	:= TRUE
 
 INTERFACE	:=	delete_obj.c screen_manager.c ui_lists.c ui_menu.c			   \
 				ui_objects.c ui_scene_editor.c ui_tools.c ui_csg.c			   \
 				interface.c new_object_tools.c new_object.c object_tools.c	   \
-				ui_cam_win.c ui_edit_win.c ui_file_win.c ui_render.c		   \
+				ui_edit_win.c ui_file_win.c ui_render.c anim_tools.c		   \
 				ui_selector.c ui_render_settings.c ui_anim_toolbox.c		   \
 				anim_toolbox.c ui_anim.c animate.c anim_set.c ui_camera_tab.c  \
-				anim_reset.c ui_anim_selector.c new_cluster.c ui_cluster.c	   \
-				anim_tools.c
+				anim_reset.c ui_anim_selector.c new_cluster.c ui_cluster.c
 PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c		   \
 				obj_data.c  obj_name.c parse_csg.c parse_shape.c parser.c	   \
 				parse_txt.c parse_utils.c parse_toolbox.c read.c setter.c	   \

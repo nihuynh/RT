@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:14:02 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 17:10:00 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/09 13:18:51 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void
 		ft_error(__func__, __LINE__);
 	hook_cam_to_gui(app);
 	set_win_title(app->sdl->win, app->arg);
+	if (app->scene.lst_obj)
+		app->cam.obj_lock = app->scene.lst_obj->content;
 	app->sdl->needs_render = true;
 	app->sdl->partial_render = false;
 	if (DEBUG)

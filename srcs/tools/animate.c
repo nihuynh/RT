@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 22:38:50 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/09 12:46:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	anim_orbit(t_anim *anim)
 	t_pt3		*center;
 
 	orbit = anim->res;
+	if (!orbit->obj_center)
+		return ;
 	center = orbit->obj_center->pos;
 	vec3_sub(&vec, anim->pos, center);
 	mat = mat_orbit(orbit->axis, orbit->deg);
