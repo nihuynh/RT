@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/09 13:36:18 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/10 21:03:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,12 @@ void
 	if (delta.x != 0 || delta.y != 0 || delta.z != 0)
 		*needs_render = true;
 	vec3_add(&cam->pos, &cam->pos, &delta);
+	if (update_angles(cam))
+		*needs_render = true;
 	if (cam->lock && *needs_render)
 		camera_lock(cam);
-	else if (update_angles(cam))
-	{
+	else
 		cam->rotation = set_rotation(cam->x_angle, cam->y_angle);
-		*needs_render = true;
-	}
 }
 
 void
