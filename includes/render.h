@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 14:50:27 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 00:08:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/11 12:45:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void			cast_primary(t_list *obj_list, t_inter *inter);
 t_color			recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);
 void			set_direction(t_cam *cam, t_vec3 direction);
 void			cam_ray(t_data *app, t_ray *res, float x, float y);
-t_color			cast_light_primary(t_list *obj_list, t_inter *inter);
+t_color			cast_light_primary(t_list *obj_list, t_inter *inter,
+	float dist_light);
 t_vec3			compute_shading_normal(t_material mat, t_vec3 uv, t_vec3 geo_n);
 t_color			get_sky_color(t_scene scene, t_settings settings, t_ray ray);
 float			get_distance_attenuation(float distance);

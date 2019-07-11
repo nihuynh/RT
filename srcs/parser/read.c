@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:28:57 by tdarchiv          #+#    #+#             */
-/*   Updated: 2019/07/10 20:49:58 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/11 12:51:06 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static inline void
 	scene_file->app->scene.skybox = parse_texture("skybox(", scene_file);
 	scene_file->app->settings.skybox = (scene_file->app->scene.skybox->pixels);
 	scene_file->app->cam.lock = false;
+	scene_file->app->cam.lock_obj = false;
+	scene_file->app->cam.lock_pos = false;
 	vec3_normalize(&scene_file->app->cam.dir);
 	check_closing_bracket(scene_file);
 }

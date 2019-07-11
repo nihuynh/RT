@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 00:02:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/11 12:46:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_color
 	ft_bzero(&inter_light, sizeof(t_inter));
 	inter_light.ray = ray;
 	inter_light.dist = s.light_dist;
-	return (cast_light_primary(obj_list, &inter_light));
+	return (cast_light_primary(obj_list, &inter_light, s.light_dist));
 }
 
 void

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cast.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:36:15 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 22:17:29 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/11 12:45:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
 #include "ftlist.h"
+#include <math.h>
 
 void
 	cast_primary(t_list *obj_list, t_inter *inter)
@@ -30,7 +31,7 @@ void
 }
 
 t_color
-	cast_light_primary(t_list *obj_list, t_inter *inter)
+	cast_light_primary(t_list *obj_list, t_inter *inter, float dist_light)
 {
 	t_list	*lst;
 	t_obj	*obj;
@@ -47,7 +48,10 @@ t_color
 		if (inter->obj != NULL)
 		{
 			if (color_bool(inter->obj->material.refraction_color))
+			{
 				color_mult(&scalar, &inter->obj->material.refraction_color);
+				inter->dist = dist_light;
+			}
 			else
 				return ((t_color){0, 0, 0});
 		}
