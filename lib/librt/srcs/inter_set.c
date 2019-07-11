@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 21:31:55 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/18 23:48:37 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/10 23:25:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ void	inter_set(t_inter *inter, t_ray ray)
 	inter->dist = INFINITY;
 	inter->hit_pts.x = INFINITY;
 	inter->hit_pts.y = INFINITY;
-	inter->obj = NULL;
 	inter->ray = ray;
 }

@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/05/24 01:29:28 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/07/11 02:24:43 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,8 @@ LIMGUI_INC  :=	-I ../cimgui/imgui
 # **************************************************************************** #
 # make specs :
 CC			:=	clang
-CFLAGS		:=	-Werror -Wall -Wextra
-CFLAGS		+=	-Wstrict-aliasing -pedantic -Wunreachable-code
-ifeq ($(RUNMODE),dev)
-	CFLAGS	+=	-g3 -O0
-	# CFLAGS	+=	-Wpedantic -ggdb -fsanitize=address
-else
-	CFLAGS	+= -O2 -march=native -flto
-endif
+CFLAGS		:=	-Werror -Wall -Wextra -Wstrict-aliasing -pedantic
+CFLAGS		+=	-Wunreachable-code -O2 -march=native -flto
 ifndef VERBOSE
 .SILENT:
 endif

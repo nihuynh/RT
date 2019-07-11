@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/06/26 22:29:24 by sklepper         ###   ########.fr        #
+#    Updated: 2019/07/11 02:11:08 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	librt.a
+RUNMODE		?=  release
 VEC			:=	vec3_add.c vec3_cross.c vec3_mag.c vec3_scalar.c vec3_cos.c \
 				vec3_dot.c vec3_normalize.c vec3_sub.c vec3_new.c vec3_print.c \
 				vec3_cpy.c vec3_find.c ray_new.c vec3_deflect.c print_matrix.c \

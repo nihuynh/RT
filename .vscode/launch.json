@@ -18,10 +18,10 @@
 			"MIMode": "lldb"
 		},
 		{
-			"name": "(lldb) Pool",
+			"name": "(lldb) Libft",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/lib/libui/a.out",
+			"program": "${workspaceFolder}/lib/libft/UT_bzero.out",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
