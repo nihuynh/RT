@@ -84,6 +84,7 @@ void	new_obj_list(int *type);
 void	list_scenes(t_gui *gui);
 void	new_light(t_data *app);
 void	new_obj(t_data *app, int type);
+void	new_axis_debug(t_data *app, t_pt3 origin, t_vec3 vec, t_color color);
 void	delete_obj(t_data *app);
 void	delete_light(t_data *app);
 bool	check_file(char *filename);

@@ -63,6 +63,9 @@ typedef struct	s_sphere
 {
 	t_pt3		origin;
 	float		radius;
+	t_vec3		x;
+	t_vec3		y;
+	t_vec3		z;
 }				t_sphere;
 
 typedef struct	s_cone

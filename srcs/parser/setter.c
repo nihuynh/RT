@@ -26,10 +26,13 @@ void
 	psphere = sphere;
 	psphere->origin = parse_vector("origin(", scene_file);
 	psphere->radius = parse_fval("radius(", scene_file);
+	psphere->x = (t_vec3){1, 0, 0};
+	psphere->y = (t_vec3){0, 1, 0};
+	psphere->z = (t_vec3){0, 0, 1};
 	obj->pos = &psphere->origin;
-	obj->x = NULL;
-	obj->n = NULL;
-	obj->z = NULL;
+	obj->x = &psphere->x;
+	obj->n = &psphere->y;
+	obj->z = &psphere->z;
 }
 
 void

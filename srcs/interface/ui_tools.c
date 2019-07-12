@@ -18,16 +18,31 @@
 void
 	ui_sphere(void *app_v, void *res)
 {
-	t_sphere	*sphere;
-	t_sphere	tmp;
+	t_sphere *sphere;
+	t_sphere tmp;
 
-	(void)app_v;
+	(void) app_v;
 	sphere = res;
 	tmp = *sphere;
 	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
 		sphere->origin = tmp.origin;
 	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
 		sphere->radius = tmp.radius;
+	if (igSliderFloat3("Y axis (X Y Z)", &tmp.y.x, -1, 1, "%g", 1))
+		sphere->y = tmp.y;
+	igSameLine(0, 0);
+	if (igButton("Normalize", (ImVec2) {0, 0})) {
+		vec3_normalize(&sphere->y);
+		create_orthobasis_from_y_axis(sphere->y, &sphere->x, &sphere->z);
+	}
+	if (igButton("Test", (ImVec2) {0, 0})) {
+		t_data *app = app_v;
+		new_axis_debug(app, sphere->origin, sphere->x, (t_color) {1, 0, 0});
+		new_axis_debug(app, sphere->origin, sphere->y, (t_color) {0, 1, 0});
+		new_axis_debug(app, sphere->origin, sphere->z, (t_color) {0, 0, 1});
+		app->sdl->needs_render = true;
+		app->sdl->partial_render = false;
+	}
 }
 
 static inline void

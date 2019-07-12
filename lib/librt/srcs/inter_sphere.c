@@ -12,6 +12,7 @@
 
 #include "librt.h"
 #include <math.h>
+#include <ftmath.h>
 
 static inline t_vec2
 	inter_vec2(t_ray *ray, t_sphere *sphere)
@@ -82,10 +83,18 @@ void
 t_vec3
 	get_sphere_uv(t_inter *inter)
 {
-	t_vec3			uv;
+	t_vec3		uv;
+	t_vec3		normal;
+	t_matrix	local;
 
-	vec3_cartesian_to_spherical(inter->n, &uv.x, &uv.y);
+	set_column(&local, 0, *inter->obj->x);
+	set_column(&local, 1, *inter->obj->n);
+	set_column(&local, 2, *inter->obj->z);
+	normal = inter->n;
+	apply_matrix(&normal, &local);
+	vec3_cartesian_to_spherical(normal, &uv.x, &uv.y);
 	uv.x = remap_to_0_to_1(uv.x * M_INV_PI_F);
 	uv.y *= M_INV_PI_F;
+	uv.y = 1 - uv.y;
 	return (uv);
 }

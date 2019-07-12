@@ -39,3 +39,10 @@ t_vec3		get_column(t_matrix m, int column)
 			m.m[1][column],
 			m.m[2][column]};
 }
+
+void		set_column(t_matrix *m, int column, t_vec3 vec)
+{
+	m->m[0][column] = vec.x;
+	m->m[1][column] = vec.y;
+	m->m[2][column] = vec.z;
+}

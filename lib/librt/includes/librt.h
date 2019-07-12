@@ -101,6 +101,7 @@ void		vec3_matrix_mult(t_matrix *matrix, t_matrix *add);
 t_matrix	matrix_mult(const t_matrix *lhs, const t_matrix *rhs);
 t_matrix	mat_orbit(t_vec3 axis, float deg);
 t_vec3		get_column(t_matrix m, int column);
+void		set_column(t_matrix *m, int column, t_vec3 vec);
 void		apply_matrix(t_vec3 *v, t_matrix *mat);
 void		ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n);
 void		print_matrix(t_matrix *mat);
