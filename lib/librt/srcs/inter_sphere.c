@@ -12,7 +12,6 @@
 
 #include "librt.h"
 #include <math.h>
-#include <ftmath.h>
 
 static inline t_vec2
 	inter_vec2(t_ray *ray, t_sphere *sphere)

@@ -96,7 +96,7 @@ void	new_cluster(t_data *app, int type);
 */
 
 void	ui_csg(void *app_v, void *shape);
-void	ui_sphere(void *app_v, void *shape);
+void	ui_sphere(void *ap, void *shape);
 void	ui_plane(void *app_v, void *shape);
 void	ui_cone(void *app_v, void *shape);
 void	ui_cube(void *app_v, void *shape);

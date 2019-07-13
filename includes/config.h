@@ -19,6 +19,9 @@
 */
 
 # define BACK_COLOR		0x000000
+# define RED			0xFF0000
+# define GREEN			0x00FF00
+# define BLUE			0x0000FF
 # define FOV			40.0f
 # define DEPTH_MAX		2
 # define SUB_SAMPLE		8
