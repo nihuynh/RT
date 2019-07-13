@@ -14,7 +14,7 @@
 #include <math.h>
 
 /*
-** acos() maps [-1, 1] to [0, PI]
+** acos() maps [-1, 1] to [PI, 0]
 ** atan() maps [-inf, +inf] to [-PI, PI]
 */
 

@@ -46,3 +46,10 @@ void		set_column(t_matrix *m, int column, t_vec3 vec)
 	m->m[1][column] = vec.y;
 	m->m[2][column] = vec.z;
 }
+
+void		set_row(t_matrix *m, int row, t_vec3 vec)
+{
+	m->m[row][0] = vec.x;
+	m->m[row][1] = vec.y;
+	m->m[row][2] = vec.z;
+}

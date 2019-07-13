@@ -13,12 +13,12 @@
 #include "rtstruct.h"
 #include "ftio.h"
 
-void	vec3_print(t_vec3 *data)
+void	vec3_print(t_vec3 data)
 {
-	ft_printf("x = %f y = %f z = %f\n", data->x, data->y, data->z);
+	ft_printf("x = %f y = %f z = %f\n", data.x, data.y, data.z);
 }
 
-void	vec3_print_(char *msg, t_vec3 *data)
+void	vec3_print_(char *msg, t_vec3 data)
 {
-	ft_printf("%s x = %f y = %f z = %f\n", msg, data->x, data->y, data->z);
+	ft_printf("%s x = %f y = %f z = %f\n", msg, data.x, data.y, data.z);
 }
