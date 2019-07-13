@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:18:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/28 21:00:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/13 21:23:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void
 	if (igBeginTabBar("Selector", 0))
 	{
 		render_tab(app);
-		camera_tab(app);
+		if (igBeginTabItem("Camera", NULL, 0))
+			camera_tab(app);
 		scene_tab(app);
 		filter_debug_tab(app);
 		igEndTabBar();

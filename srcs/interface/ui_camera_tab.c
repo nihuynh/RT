@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 02:36:46 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 15:56:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/13 21:29:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,48 +80,35 @@ static inline void
 	{
 		ui_lock_obj_list(app, "Lock on Object");
 	}
+	igSeparator();
 }
-
-/*
-** TODO :
-**
-** Reduce this from 33 to 25.
-*/
 
 void
 	camera_tab(t_data *app)
 {
-	t_cam	*cam;
 	t_cam	tmp;
-	ImVec2	size;
 
-	cam = &app->cam;
-	tmp = *cam;
-	size = igGetWindowSize();
-	if (igBeginTabItem("Camera", NULL, 0))
+	tmp = app->cam;
+	igSliderInt("Depth Max", &app->settings.depth_max, 0, 10, NULL);
+	igSliderFloat("FOV", &app->settings.fov, 30, 110, "%g", 1);
+	if (igInputFloat3("Origin (X Y Z)", &tmp.pos.x, "%g", 0))
+		app->cam.pos = tmp.pos;
+	if (igRadioButtonBool("Camera lock on position", app->cam.lock_pos))
 	{
-		igSliderInt("Depth Max", &app->settings.depth_max, 0, 10, NULL);
-		igSliderFloat("FOV", &app->settings.fov, 30, 110, "%g", 1);
-		if (igInputFloat3("Origin (X Y Z)", &tmp.pos.x, "%g", 0))
-			cam->pos = tmp.pos;
-		if (igRadioButtonBool("Camera lock on position", app->cam.lock_pos))
-		{
-			app->cam.lock_pos = 1 - app->cam.lock_pos;
-			app->cam.lock_obj = false;
-			app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
-		}
-		if (app->scene.lst_obj
-			&& igRadioButtonBool("Camera lock on object", app->cam.lock_obj))
-		{
-			app->cam.lock_obj = 1 - app->cam.lock_obj;
-			app->cam.lock_pos = false;
-			app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
-		}
-		ui_camera_lock(app);
-		igSeparator();
-		if (!app->cam.anim && igButton("Add Animation",
-			(ImVec2){size.x / 3, 0}))
-			anim_add_camera(&app->cam);
-		igEndTabItem();
+		app->cam.lock_pos = 1 - app->cam.lock_pos;
+		app->cam.lock_obj = false;
+		app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
 	}
+	if (app->scene.lst_obj
+		&& igRadioButtonBool("Camera lock on object", app->cam.lock_obj))
+	{
+		app->cam.lock_obj = 1 - app->cam.lock_obj;
+		app->cam.lock_pos = false;
+		app->cam.lock = ((app->cam.lock_obj) || (app->cam.lock_pos));
+	}
+	ui_camera_lock(app);
+	if (!app->cam.anim && igButton("Add Animation",
+		(ImVec2){igGetWindowSize().x / 3, 0}))
+		anim_add_camera(&app->cam);
+	igEndTabItem();
 }

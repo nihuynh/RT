@@ -21,7 +21,7 @@
 			"name": "(lldb) Libft",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/lib/libft/UT_bzero.out",
+			"program": "${workspaceFolder}/lib/libft/ut_bzero.out",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
