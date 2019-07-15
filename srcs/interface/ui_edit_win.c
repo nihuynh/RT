@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:43:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/09 11:39:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 19:24:49 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ static inline void
 	static const char	*item_current;
 	int					i;
 	bool				is_selected;
-	const char			*item[] = {"Tore"};
+	const char			*item[] = {"Tore", "Cube"};
 
 	item_current = item[*type];
 	if (igBeginCombo("Cluster Type", item_current, 0))
 	{
 		i = -1;
-		while (++i < 1)
+		while (++i < 2)
 		{
 			is_selected = (item_current == item[i]);
 			if (igSelectable(item[i], is_selected, 0, (ImVec2){0, 0}))

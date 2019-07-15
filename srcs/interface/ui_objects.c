@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 16:44:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 19:05:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void
 	origin_tmp = light->origin;
 	if (igInputFloat3("Position (X Y Z)", &origin_tmp.x, "%g", 0))
 		light->origin = origin_tmp;
-	igInputFloat("Intensity", &light->intensity, 0, 0, "%g", 0);
+	igSliderFloat("Intensity", &light->intensity, 0, 1000000, "%g", 1);
 	color_tmp = light->color;
 	if (igColorEdit3("Color", &color_tmp.r, 0))
 		light->color = color_tmp;
