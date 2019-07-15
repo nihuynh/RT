@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:36:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:24:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/15 14:30:39 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
+#include "librt.h"
 
 void
 	sphere_new(t_obj *obj, void *res)
@@ -20,10 +21,13 @@ void
 	sphere = res;
 	sphere->origin = (t_pt3){0, 0, 0};
 	sphere->radius = 10;
+	sphere->y = (t_vec3){0, 0, 1};
+	vec3_normalize(&sphere->y);
+	create_orthobasis_from_y_axis(sphere->y, &sphere->x, &sphere->z);
 	obj->pos = &sphere->origin;
-	obj->x = NULL;
-	obj->n = NULL;
-	obj->z = NULL;
+	obj->x = &sphere->x;
+	obj->n = &sphere->y;
+	obj->z = &sphere->z;
 }
 
 void
