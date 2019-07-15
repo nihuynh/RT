@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_file_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 11:41:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/15 20:19:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	export_win(t_gui *gui)
 			ft_error(__func__, __LINE__);
 		export_scene(gui->app, arg);
 		gui->export_open = false;
-		free(arg);
+		free(gui->app->arg);
+		gui->app->arg = arg;
 	}
 	igEnd();
 }

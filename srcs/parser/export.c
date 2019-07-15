@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:29:28 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 17:38:00 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 20:03:50 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ int
 	export_animation(fd, app);
 	close(fd);
 	setlocale(LC_NUMERIC, NULL);
-	free(app->arg);
-	app->arg = ft_strdup(filename);
 	set_win_title(app->sdl->win, app->arg);
 	return (0);
 }

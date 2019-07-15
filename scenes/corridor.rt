@@ -1,0 +1,173 @@
+camera
+{
+	origin(0.000 0.000 -200.000)
+	direction(0.000 0.000 1.000)
+	amb_light(0.100 0.100 0.100)
+}
+content
+{
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 100.000)
+		intensity(15463.900)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 -400.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 600.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 1100.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 1600.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 2100.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 2600.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 3100.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 3600.000)
+		intensity(15463.000)
+	}
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 0.000 4100.000)
+		intensity(15463.000)
+	}
+	object(plane)
+	{
+		name(Ceiling)
+		origin(0.000 100.000 0.000)
+		normal(0.000 1.000 0.000)
+		limit(200.000 0.000)
+		type(0)
+		texture(Metal_Grill_004_COLOR.jpg)
+		normal_map(Metal_Grill_004_NORM.jpg)
+		spec_map(Metal_Grill_004_SPEC.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 0.002)
+		uv_offset(0.480 0.000)
+	}
+	object(plane)
+	{
+		name(Floor)
+		origin(0.000 -100.000 0.000)
+		normal(0.000 1.000 0.000)
+		limit(200.000 0.000)
+		type(0)
+		texture(Metal_Grill_005a_COLOR.jpg)
+		normal_map(Metal_Grill_005a_NORM.jpg)
+		spec_map(Metal_Grill_005a_SPEC.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 0.002)
+		uv_offset(0.610 0.000)
+	}
+	object(plane)
+	{
+		name(Plane 4)
+		origin(0.000 0.000 4350.000)
+		normal(0.000 0.000 1.000)
+		limit(200.000 100.000)
+		type(0)
+		mat(mirror glass)
+	}
+	object(plane)
+	{
+		name(Wall 1)
+		origin(100.000 0.000 0.000)
+		normal(1.000 0.000 0.000)
+		limit(0.000 100.000)
+		type(0)
+		texture(Sci-fi_Walll_001_COLOR.png)
+		normal_map(Sci-fi_Walll_001_NORM.png)
+		spec_map(Sci-fi_Walll_001_SPEC.png)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(0.005 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(plane)
+	{
+		name(Wall 2)
+		origin(-100.000 0.000 0.000)
+		normal(1.000 0.000 0.000)
+		limit(0.000 100.000)
+		type(0)
+		texture(Sci-fi_Walll_001_COLOR.png)
+		normal_map(Sci-fi_Walll_001_NORM.png)
+		spec_map(Metal_Grill_005a_SPEC.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(0.005 1.000)
+		uv_offset(0.000 0.000)
+	}
+}
+animation
+{
+	object(camera)
+	{
+		motion(translate)
+		{
+			dir(0.000000 0.000000 1.000000)
+			speed(10.000000)
+		}
+	}
+}
