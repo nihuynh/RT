@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_csg_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/05 19:24:51 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 18:35:12 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,44 @@ static inline t_inter
 	return (no_inter);
 }
 
+int
+	is_inside_cone(t_inter *inter)
+{
+	t_cone	*cone;
+	t_pt3	pc;
+	float	var;
+	t_vec3	orig2point;
+	float	angle;
+
+	cone = inter->obj->shape;
+	inter_find(inter, &inter->point);
+	orig2point = vec3_sub_(inter->point, cone->origin);
+	angle = ((vec3_dot(&orig2point, &cone->n) < 0) * 180) - cone->theta;
+	var = vec3_mag(orig2point) / cosf(angle * DEG_TO_RAD);
+	pc.x = cone->origin.x + var * cone->n.x;
+	pc.y = cone->origin.y + var * cone->n.y;
+	pc.z = cone->origin.z + var * cone->n.z;
+	vec3_sub(&inter->n, &inter->point, &pc);
+	vec3_normalize(&inter->n);
+	return (vec3_dot(&inter->n, &inter->ray.dir) > 0);
+}
+
 t_inter
 	inter_from_csg_op(int type, t_inter left, t_inter right, t_ray incoming)
 {
 	t_inter no_inter;
 
+	if (right.obj != NULL && right.obj->type == 2
+		&& is_inside_cone(&right))
+	{
+		if (type == INTER)
+			return (not_op(left, right));
+		if (type == NOT)
+			return (inter_op(left, right));
+	}
+	if (left.obj != NULL && left.obj->type == 2
+		&& is_inside_cone(&left) && type == INTER)
+		return (not_op(right, left));
 	if (type == INTER)
 		return (inter_op(left, right));
 	if (type == NOT)

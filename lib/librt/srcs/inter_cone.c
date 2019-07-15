@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/20 19:53:58 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/15 18:36:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static inline float
 	else if (res_local.y > 0 || res_local.x > 0)
 	{
 		dist.x = fmaxf(res_local.x, res_local.y);
-		dist.y = fminf(res_local.x, res_local.y);
+		dist.y = INFINITY;
 	}
 	else
 	{
