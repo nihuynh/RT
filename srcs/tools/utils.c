@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/09 11:45:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/15 19:33:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void
 	if (!(abs_path = ft_strjoin(app->option.path, csv_file)))
 		ft_error(__func__, __LINE__);
 	fd = ft_fopen_read(abs_path);
-	if (ft_gnl(fd, &line, "\n") > 0)
-		ft_strdel(&line);
+	(ft_gnl(fd, &line, "\n") > 0) ? ft_strdel(&line) : exit_safe(EXIT_FAILURE);
 	while (ft_gnl(fd, &line, "\n") > 0)
 	{
 		if (!(split = ft_strsplit(line, ',')))
@@ -81,6 +80,8 @@ void
 	}
 	close(fd);
 	ft_lstsort(&app->lst_mat, &mat_cmp);
+	if (ft_lstlen(app->lst_mat) == 0)
+		exit_safe(EXIT_FAILURE);
 }
 
 int
