@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/09 12:25:00 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 18:05:12 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ typedef struct	s_cam
 	t_pt3		pos_lock;
 	bool		lock_obj;
 	t_obj		*obj_lock;
+	int			speed;
 }				t_cam;
 
 /*

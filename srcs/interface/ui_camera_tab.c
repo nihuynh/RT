@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 02:36:46 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/15 15:42:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 18:04:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,22 @@ static inline void
 }
 
 void
-	camera_tab(t_data *app)
+	camera_settings(t_data *app)
 {
 	t_cam	tmp;
 
 	tmp = app->cam;
 	igSliderInt("Depth Max", &app->settings.depth_max, 0, 10, NULL);
+	igSliderInt("Speed", &app->cam.speed, 0, 500, "%d");
 	igSliderFloat("FOV", &app->settings.fov, 30, 110, "%g", 1);
 	if (igInputFloat3("Origin (X Y Z)", &tmp.pos.x, "%g", 0))
 		app->cam.pos = tmp.pos;
+}
+
+void
+	camera_tab(t_data *app)
+{
+	camera_settings(app);
 	if (igRadioButtonBool("Camera lock on position", app->cam.lock_pos))
 	{
 		app->cam.lock_pos = 1 - app->cam.lock_pos;
