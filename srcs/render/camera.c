@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:35 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/10 21:03:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 15:50:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static inline void
 {
 	t_vec3	n;
 
-	if (cam->lock_obj)
+	if (cam->lock_obj && cam->obj_lock)
 	{
 		vec3_sub(&n, cam->obj_lock->pos, &cam->pos);
 		vec3_normalize(&n);

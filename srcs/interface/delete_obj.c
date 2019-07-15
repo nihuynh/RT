@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/01 20:06:28 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/15 15:53:35 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void
 	{
 		gui->anim_set = gui->obj_set->anim;
 		anim_delete(app);
+	}
+	if (app->cam.obj_lock == gui->obj_set)
+	{
+		app->cam.obj_lock = NULL;
+		app->cam.lock_obj = false;
 	}
 	app->scene.lst_obj = ft_lstpop(app->scene.lst_obj, to_del, &del_obj);
 	gui->obj_set = NULL;

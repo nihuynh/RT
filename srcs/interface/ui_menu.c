@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 17:36:44 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 15:35:07 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,13 @@ static inline void
 	window_menu(t_gui *gui)
 {
 	igMenuItemBoolPtr("Scene Editor", NULL, &gui->edit_open, 1);
-	igMenuItemBoolPtr("Camera Editor", NULL, &gui->cam_open, 1);
 	igMenuItemBoolPtr("Render Settings", NULL, &gui->render_set_open, 1);
 	igMenuItemBoolPtr("Stats", NULL, &gui->stats_open, 1);
 	if (igMenuItemBoolPtr("Interface", NULL, &gui->sdl->layout, 1))
 		toggle_layout(gui->sdl, gui);
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
 		toggle_fullscreen(gui->sdl, gui);
-	igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
+	// igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
 	resolution_list(gui);
 	igEndMenu();
 }

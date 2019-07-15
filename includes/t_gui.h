@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 17:09:02 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/15 15:33:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct		s_gui
 	bool			scene_open;
 	bool			demo_open;
 	bool			render_set_open;
-	bool			cam_open;
 	bool			anim_win_open;
 	bool			add_cluster_open;
 	bool			keymap_open;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_camera_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 02:36:46 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/13 21:29:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/15 15:42:11 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static inline void
 	bool		is_selected;
 
 	current = app->scene.lst_obj;
+	if (!app->cam.obj_lock)
+		app->cam.obj_lock = app->scene.lst_obj->content;
 	selected = app->cam.obj_lock;
 	tmp = current->content;
 	if (igBeginCombo(str, selected->name, 0))
