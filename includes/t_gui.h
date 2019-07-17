@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_gui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 00:05:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/15 15:33:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 16:36:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,8 @@ typedef struct		s_gui
 	bool			del_light_open;
 	bool			add_obj_open;
 	int				add_obj_type;
-	bool			render_open;
-	bool			scene_open;
 	bool			demo_open;
 	bool			render_set_open;
-	bool			anim_win_open;
 	bool			add_cluster_open;
 	bool			keymap_open;
 	bool			about_open;
