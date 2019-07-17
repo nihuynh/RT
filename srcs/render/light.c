@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:41:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/13 23:02:52 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 17:51:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ t_color
 	t_color		diffuse_color;
 	t_color		final_color;
 
-	ft_bzero(&accum_light[0], sizeof(accum_light[0]));
-	ft_bzero(&accum_light[1], sizeof(accum_light[1]));
+	ft_bzero(&accum_light, sizeof(accum_light));
 	current_light = scene.lst_light;
 	while (current_light != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/15 15:35:07 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 18:34:10 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ static inline void
 		reload_scene(gui->app, gui->app->arg);
 	if (igMenuItemBool("Quit", "Esc", 0, 1))
 		exit_safe(EXIT_SUCCESS);
-	igEndMenu();
-}
-
-static inline void
-	edit_menu(t_gui *gui)
-{
-	igMenuItemBoolPtr("New Object", NULL, &gui->add_obj_open, 1);
-	igMenuItemBoolPtr("New Cluster", NULL, &gui->add_cluster_open, 1);
-	if (igMenuItemBool("New Light", NULL, 0, 1))
-		new_light(gui->app);
-	igMenuItemBoolPtr("Delete Object", NULL, &gui->del_obj_open, 1);
-	igMenuItemBoolPtr("Delete Light", NULL, &gui->del_light_open, 1);
 	igEndMenu();
 }
 
@@ -78,7 +66,8 @@ static inline void
 		toggle_layout(gui->sdl, gui);
 	if (igMenuItemBoolPtr("Fullscreen", NULL, &gui->sdl->fullscreen, 1))
 		toggle_fullscreen(gui->sdl, gui);
-	// igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
+	if (DEBUG)
+		igMenuItemBoolPtr("Demo", NULL, &gui->demo_open, 1);
 	resolution_list(gui);
 	igEndMenu();
 }
@@ -90,8 +79,6 @@ void
 		return ;
 	if (igBeginMenu("File", 1))
 		file_menu(gui);
-	if (igBeginMenu("Edit", 1))
-		edit_menu(gui);
 	if (igBeginMenu("Window", 1))
 		window_menu(gui);
 	if (igBeginMenu("?", 1))

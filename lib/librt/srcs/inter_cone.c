@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 20:21:46 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/15 18:36:42 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/17 16:40:44 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,12 @@ static inline float
 	}
 	else
 	{
-		dist.x = INFINITY;
-		dist.y = INFINITY;
+		dist.x = fmaxf(res_local.x, res_local.y);
+		dist.y = fminf(res_local.x, res_local.y);
 	}
+	inter->hit_pts = dist;
 	if (dist.x >= inter->dist || dist.x < 0)
 		return (INFINITY);
-	inter->hit_pts = dist;
 	return (inter_finite(inter, cone, limit));
 }
 

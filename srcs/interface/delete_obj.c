@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/17 17:34:55 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 18:33:23 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "interface.h"
 
 bool
-	check_anims(t_data *app, t_anim	*anim)
+	check_anims(t_data *app, t_anim *anim)
 {
 	t_orbit	*orbit;
 

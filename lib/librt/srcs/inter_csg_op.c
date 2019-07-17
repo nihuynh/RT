@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_csg_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/15 18:35:12 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/17 19:46:14 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static inline t_inter
 	t_inter no_inter;
 
 	inter_set(&no_inter, sub.ray);
-	if (core.dist == INFINITY || sub.dist == INFINITY)
+	if (core.dist == INFINITY || sub.hit_pts.x == INFINITY)
 		return (core);
 	if (core.dist < sub.hit_pts.x && core.dist < sub.hit_pts.y)
 		return (core);
@@ -68,26 +68,38 @@ static inline t_inter
 	return (no_inter);
 }
 
+void	inter_find_spe(t_inter *primary, t_pt3 *value)
+{
+	float dist;
+
+	dist = primary->hit_pts.x;
+	value->x = primary->ray.origin.x + dist * primary->ray.dir.x;
+	value->y = primary->ray.origin.y + dist * primary->ray.dir.y;
+	value->z = primary->ray.origin.z + dist * primary->ray.dir.z;
+}
+
 int
 	is_inside_cone(t_inter *inter)
 {
 	t_cone	*cone;
 	t_pt3	pc;
-	float	var;
+	float	var[2];
 	t_vec3	orig2point;
-	float	angle;
+	t_vec3	vec;
 
+	vec3_sub(&vec, &inter->point, &inter->ray.origin);
+	vec3_normalize(&vec);
 	cone = inter->obj->shape;
-	inter_find(inter, &inter->point);
+	inter_find_spe(inter, &inter->point);
 	orig2point = vec3_sub_(inter->point, cone->origin);
-	angle = ((vec3_dot(&orig2point, &cone->n) < 0) * 180) - cone->theta;
-	var = vec3_mag(orig2point) / cosf(angle * DEG_TO_RAD);
-	pc.x = cone->origin.x + var * cone->n.x;
-	pc.y = cone->origin.y + var * cone->n.y;
-	pc.z = cone->origin.z + var * cone->n.z;
+	var[0] = ((vec3_dot(&orig2point, &cone->n) < 0) * 180) - cone->theta;
+	var[1] = vec3_mag(orig2point) / cosf(var[0] * DEG_TO_RAD);
+	pc.x = cone->origin.x + var[1] * cone->n.x;
+	pc.y = cone->origin.y + var[1] * cone->n.y;
+	pc.z = cone->origin.z + var[1] * cone->n.z;
 	vec3_sub(&inter->n, &inter->point, &pc);
 	vec3_normalize(&inter->n);
-	return (vec3_dot(&inter->n, &inter->ray.dir) > 0);
+	return (vec3_dot(&inter->n, &vec) > 0);
 }
 
 t_inter
