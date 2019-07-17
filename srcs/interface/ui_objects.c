@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_objects.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/15 19:05:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:21:03 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ static inline void
 		obj->material.name = "custom";
 	if (load_selected_tex("Specular Map", obj->material.spec_map->name,
 		app->lst_tex, &obj->material.spec_map))
+		obj->material.name = "custom";
+	if (load_selected_tex("Refract Map", obj->material.refract_map->name,
+		app->lst_tex, &obj->material.refract_map))
 		obj->material.name = "custom";
 	igText("Material Details");
 	material_details(&obj->material);

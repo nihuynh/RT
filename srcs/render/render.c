@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 22:26:16 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 00:20:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/17 18:56:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ void
 	vec3_normalize(&direction);
 	ray_new(res, &app->cam.pos, &direction);
 }
-
-/*
-** TODO : Reduce functions lengths from 26 to 25
-*/
 
 static inline t_color
 	cast_bounce(t_scene scene, t_settings settings, t_inter *inter, int d)

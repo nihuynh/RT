@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:57:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 23:13:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/17 19:45:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void
 			dprintf(fd, "\t\tnormal_map(%s)\n", mat->normal_map->name);
 		if (ft_strcmp(mat->spec_map->name, "none"))
 			dprintf(fd, "\t\tspec_map(%s)\n", mat->spec_map->name);
+		if (ft_strcmp(mat->refract_map->name, "none"))
+			dprintf(fd, "\t\trefract_map(%s)\n", mat->refract_map->name);
 		export_color(fd, "\tcolor_diffuse", mat->color_diffuse);
 		export_color(fd, "\tcolor_specular", mat->color_specular);
 		export_color(fd, "\tcolor_tex", mat->color_tex);

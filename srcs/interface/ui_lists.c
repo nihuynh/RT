@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_lists.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:56:49 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 17:17:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:19:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void
 	if (igBeginCombo("Object Type", item_current, 0))
 	{
 		i = -1;
-		while (++i < 4)
+		while (++i < 5)
 		{
 			is_selected = (item_current == item[i]);
 			if (igSelectable(item[i], is_selected, 0, (ImVec2){0, 0}))

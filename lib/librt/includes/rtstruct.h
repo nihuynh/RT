@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtstruct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 00:44:05 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/15 18:05:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:06:58 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,9 @@ typedef struct	s_uv_mapping {
 }				t_uv_mapping;
 
 /*
-**	t_texture		*occlusion_map;
 **	t_texture		*rough_map;
 **	t_texture		*disp_map;
+**	t_texture		*occlusion_map;
 */
 
 struct			s_material
@@ -200,6 +200,7 @@ struct			s_material
 	t_texture		*tex;
 	t_texture		*normal_map;
 	t_texture		*spec_map;
+	t_texture		*refract_map;
 	t_uv_mapping	uv_mapping;
 };
 

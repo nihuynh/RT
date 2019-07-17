@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 01:04:29 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 01:14:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:23:48 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static inline t_material
 	res.tex = parse_texture("texture(", scene_file);
 	res.normal_map = parse_texture("normal_map(", scene_file);
 	res.spec_map = parse_texture("spec_map(", scene_file);
+	res.refract_map = parse_texture("refract_map(", scene_file);
 	if ((str = ft_strstr(get_curr_line(scene_file), "mat(")))
 	{
 		str += 4;

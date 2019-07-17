@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 21:04:12 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/15 19:33:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/17 19:41:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static inline t_material
 	mat.tex = load_texture_csv(app, split[14]);
 	mat.normal_map = load_texture_csv(app, split[15]);
 	mat.spec_map = load_texture_csv(app, split[16]);
+	mat.refract_map = ft_lstgetelt(app->lst_tex, &texcmp, "none");
 	return (mat);
 }
 

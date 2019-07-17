@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cast.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:36:15 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/11 12:45:07 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:52:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtstruct.h"
 #include "ftlist.h"
+#include "librt.h"
 #include <math.h>
 
 void
@@ -28,6 +29,30 @@ void
 			obj->f_inter(inter, obj);
 		lst = lst->next;
 	}
+}
+
+static inline int
+	handle_refract(t_inter *inter, float dist_light, t_color *scalar)
+{
+	t_color rc;
+
+	if (color_bool(inter->obj->material.refraction_color))
+	{
+		if (inter->obj->material.refract_map->f_texture)
+		{
+			inter_find(inter, &inter->point);
+			rc = inter->obj->material.refract_map->f_texture(
+				&inter->obj->material, inter->obj->material.refract_map,
+				inter->obj->get_uv(inter));
+		}
+		else
+			rc = inter->obj->material.refraction_color;
+		color_mult(scalar, &rc);
+		inter->dist = dist_light;
+		return (0);
+	}
+	return (1);
+
 }
 
 t_color
@@ -47,12 +72,7 @@ t_color
 			obj->f_inter(inter, obj);
 		if (inter->obj != NULL)
 		{
-			if (color_bool(inter->obj->material.refraction_color))
-			{
-				color_mult(&scalar, &inter->obj->material.refraction_color);
-				inter->dist = dist_light;
-			}
-			else
+			if (handle_refract(inter, dist_light, &scalar))
 				return ((t_color){0, 0, 0});
 		}
 		lst = lst->next;
