@@ -1,8 +1,9 @@
 camera
 {
-	origin(-0.704 137.957 122.818)
-	direction(-0.212 -0.574 -0.791)
-	amb_light(0.328 0.328 0.328)
+	origin(675.940 0.027 5472.414)
+	direction(-0.571 -0.000 -0.821)
+	amb_light(0.191 0.191 0.191)
+	skybox(ENV_MilkyWay.jpg)
 }
 content
 {
@@ -10,14 +11,147 @@ content
 	{
 		color(1.000 1.000 1.000)
 		origin(0.000 0.000 0.000)
-		intensity(2000.000)
+		intensity(969072.000)
 	}
 	object(sphere)
 	{
-		name(Sphere0)
-		origin(0.000 0.000 -100.000)
-		radius(30.000)
+		name(Jupiter)
+		origin(0.000 0.000 24000.000)
+		radius(143.000)
+		texture(2k_jupiter.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Lune)
+		origin(0.000 0.000 4509.800)
+		radius(3.000)
+		texture(2k_moon.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Mars)
+		origin(0.000 0.000 6900.000)
+		radius(7.000)
 		texture(2k_mars.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Mercure)
+		origin(0.000 0.000 1800.000)
+		radius(5.000)
+		texture(2k_mercury.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Neptune)
+		origin(0.000 0.000 132000.000)
+		radius(50.000)
+		texture(2k_neptune.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Saturne)
+		origin(0.000 0.000 42000.000)
+		radius(121.000)
+		texture(2k_saturn.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Soleil)
+		origin(0.000 0.000 0.000)
+		radius(1390.000)
+		texture(sunmap.jpg)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 0.000 0.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(1.000 1.000 1.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(1.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+	}
+	object(sphere)
+	{
+		name(Terre)
+		origin(0.000 0.000 4500.000)
+		radius(13.000)
+		mat(earth)
+	}
+	object(sphere)
+	{
+		name(Uranus)
+		origin(0.000 0.000 90000.000)
+		radius(51.000)
+		mat(White marble)
+	}
+	object(sphere)
+	{
+		name(Venus)
+		origin(0.000 0.000 3300.000)
+		radius(12.000)
+		texture(2k_venus_surface.jpg)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
@@ -32,4 +166,100 @@ content
 }
 animation
 {
+	object(camera)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+	}
+	object(Mercure)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(4.2000000)
+		}
+	}
+	object(Venus)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.630000)
+		}
+	}
+	object(Terre)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+	}
+	object(Mars)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(0.530000)
+		}
+	}
+	object(Jupiter)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(0.090000)
+		}
+	}
+	object(Saturne)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(0.033000)
+		}
+	}
+	object(Uranus)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(0.011000)
+		}
+	}
+	object(Neptune)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(0.007)
+		}
+	}
+	object(Lune)
+	{
+		motion(orbit)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+		motion(orbit)
+		{
+			center_obj(Terre)
+			axis(0.000000 1.000000 0.000000)
+			deg(5.000000)
+		}
+	}
 }
