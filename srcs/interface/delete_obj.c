@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/15 15:53:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 16:53:59 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,32 @@
 #include "libft.h"
 #include "interface.h"
 
+bool
+	check_anims(t_data *app)
+{
+	t_anim	*anim;
+	t_list	*lst_anim;
+	t_orbit	*orbit;
+
+	lst_anim = app->scene.lst_anim;
+	while (lst_anim)
+	{
+		anim = lst_anim->content;
+		while (anim)
+		{
+			if (anim->type == 2)
+			{
+				orbit = anim->res;
+				if (app->gui.obj_set == orbit->obj_center)
+					return (true);
+			}
+			anim = anim->next;
+		}
+		lst_anim = lst_anim->next;
+	}
+	return (false);
+}
+
 void
 	delete_obj(t_data *app)
 {
@@ -24,7 +50,7 @@ void
 
 	gui = &(app->gui);
 	to_del = ft_lstgetnode_by_content_ptr(app->scene.lst_obj, gui->obj_set);
-	if (to_del == NULL)
+	if (to_del == NULL || check_anims(app))
 	{
 		ft_strlcpy(gui->err_msg, "Obj can't be deleted.", sizeof(gui->err_msg));
 		gui->err_open = true;
