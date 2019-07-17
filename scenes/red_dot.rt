@@ -1,7 +1,7 @@
 camera
 {
 	origin(675.940 0.027 5472.414)
-	direction(-0.571 -0.000 -0.821)
+	direction(-0.571 0.000 -0.821)
 	amb_light(0.191 0.191 0.191)
 	skybox(ENV_MilkyWay.jpg)
 }
@@ -11,7 +11,7 @@ content
 	{
 		color(1.000 1.000 1.000)
 		origin(0.000 0.000 0.000)
-		intensity(969072.000)
+		intensity(20000000.000)
 	}
 	object(sphere)
 	{
@@ -33,7 +33,7 @@ content
 	object(sphere)
 	{
 		name(Lune)
-		origin(0.000 0.000 4509.800)
+		origin(0.000 0.000 4550.000)
 		radius(3.000)
 		texture(2k_moon.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -181,7 +181,7 @@ animation
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
-			deg(4.2000000)
+			deg(4.200000)
 		}
 	}
 	object(Venus)
@@ -244,7 +244,7 @@ animation
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
-			deg(0.007)
+			deg(0.007000)
 		}
 	}
 	object(Lune)
