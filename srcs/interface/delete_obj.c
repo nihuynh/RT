@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:27:00 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/17 16:53:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 17:34:55 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,43 @@
 #include "interface.h"
 
 bool
-	check_anims(t_data *app)
+	check_anims(t_data *app, t_anim	*anim)
 {
-	t_anim	*anim;
-	t_list	*lst_anim;
 	t_orbit	*orbit;
+
+	while (anim)
+	{
+		if (anim->type == 2)
+		{
+			orbit = anim->res;
+			if (app->gui.obj_set == orbit->obj_center)
+				return (true);
+		}
+		anim = anim->next;
+	}
+	return (false);
+}
+
+bool
+	check_anims_list(t_data *app)
+{
+	t_list	*lst_anim;
 
 	lst_anim = app->scene.lst_anim;
 	while (lst_anim)
 	{
-		anim = lst_anim->content;
-		while (anim)
-		{
-			if (anim->type == 2)
-			{
-				orbit = anim->res;
-				if (app->gui.obj_set == orbit->obj_center)
-					return (true);
-			}
-			anim = anim->next;
-		}
+		if (check_anims(app, lst_anim->content))
+			return (true);
 		lst_anim = lst_anim->next;
 	}
-	return (false);
+	lst_anim = app->scene.lst_anim_light;
+	while (lst_anim)
+	{
+		if (check_anims(app, lst_anim->content))
+			return (true);
+		lst_anim = lst_anim->next;
+	}
+	return (check_anims(app, app->cam.anim));
 }
 
 void
@@ -50,7 +64,7 @@ void
 
 	gui = &(app->gui);
 	to_del = ft_lstgetnode_by_content_ptr(app->scene.lst_obj, gui->obj_set);
-	if (to_del == NULL || check_anims(app))
+	if (to_del == NULL || check_anims_list(app))
 	{
 		ft_strlcpy(gui->err_msg, "Obj can't be deleted.", sizeof(gui->err_msg));
 		gui->err_open = true;
