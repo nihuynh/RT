@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 19:52:48 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/17 20:51:39 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 20:53:13 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "libft.h"
 #include <math.h>
 
-void	inter_find_spe(t_inter *primary, t_pt3 *value)
+void
+	inter_find_spe(t_inter *primary, t_pt3 *value)
 {
 	float dist;
 
