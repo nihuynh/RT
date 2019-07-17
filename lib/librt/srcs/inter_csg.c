@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:22:42 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/05 19:05:31 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:03:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static inline t_inter
 
 	inter_set(&res, incoming);
 	obj->f_inter(&res, obj);
+	if (res.obj == NULL && obj->type == 2)
+		res.obj = obj;
 	return (res);
 }
 

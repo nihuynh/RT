@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/05 19:07:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/17 18:51:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ui_object(t_data *app, t_obj *obj);
 void	ui_scene_editor(t_gui *gui);
 void	ui_mainmenu(t_gui *gui);
 void	add_cluster_win(t_gui *gui);
+void	obj_ui(t_gui *gui);
 
 void	ui_render_settings(t_data *app);
 int		export_scene(t_data *app, char *filename);
