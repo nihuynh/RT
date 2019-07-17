@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   csg.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 19:02:52 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 13:23:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/17 20:52:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ struct			s_inter_csg
 	t_inter		inter;
 	t_inter_csg	*next;
 };
+
+bool	is_inside_cone(t_inter *inter);
 
 #endif
