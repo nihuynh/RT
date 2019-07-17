@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/07/17 19:51:31 by sklepper         ###   ########.fr        #
+#    Updated: 2019/07/17 20:59:04 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ LIB_DEP		=	lib/libft/libft.a				\
 				lib/cimgui/libcimgui.a			\
 				lib/imgui_impl/libimgui_impl.a
 
+RESDIR		=	./resources
 # **************************************************************************** #
 # Makefile dependency :
 include lib/libft/mk_c_project.mk
@@ -68,7 +69,10 @@ BANNER		:=	$(shell cat resources/script/banner.txt)
 all: $(LIB_BUILT) $(NAME) ## Built the project.
 .PHONY: all
 
-$(NAME): $(LIB_DEP) $(OBJ)
+$(RESDIR):
+	cp -r /sgoinfre/goinfre/Perso/nihuynh/resources $(RESDIR)
+
+$(NAME): $(LIB_DEP) $(OBJ) | $(RESDIR)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(INC) $(LIB_LINK)
 	@printf "\033[1;34m$(NAME)\033[25G\033[32mBuilt $@ $(OKLOGO)\n"
 	@printf "$(BANNER)"
