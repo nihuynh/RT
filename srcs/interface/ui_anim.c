@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 22:18:31 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/18 17:12:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ void
 	int					i;
 	bool				is_selected;
 
-	item = (const char*[]){"None", "Translation", "Orbit", "Rotation"};
+	item = (const char*[]){"None", "Translation", "Orbit around Object",
+		"Orbit aound Pos", "Rotation"};
 	item_current = item[anim->type];
 	if (igBeginCombo(str, item_current, 0))
 	{
 		i = -1;
-		while (++i < 4)
+		while (++i < 5)
 		{
 			is_selected = (item_current == item[i]);
 			if (igSelectable(item[i], is_selected, 0, (ImVec2){0, 0}))

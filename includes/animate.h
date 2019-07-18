@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animate.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 23:24:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/18 17:13:08 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct	s_translate
 typedef struct	s_orbit
 {
 	t_obj		*obj_center;
+	t_pt3		center;
 	t_vec3		axis;
 	float		deg;
 }				t_orbit;

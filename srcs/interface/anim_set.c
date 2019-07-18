@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 02:00:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 17:14:32 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void
 		anim_reset(anim);
 	else if (type == 1)
 		anim_set_translate(anim);
-	else if (type == 2)
+	else if (type == 2 || type == 3)
 		anim_set_orbit(anim);
-	else if (type == 3)
+	else if (type == 4)
 		anim_set_rotate(anim);
 	anim->type = type;
 }

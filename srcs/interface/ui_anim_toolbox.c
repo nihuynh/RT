@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:56:43 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 12:40:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 17:23:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,23 @@ static inline void
 	free(str);
 }
 
+static inline void
+	ui_orbit_pos(t_orbit *orbit, int n)
+{
+	char	*str;
+	t_data	*app;
+	t_pt3	tmp;
+
+	app = NULL;
+	app = get_app(app);
+	tmp = orbit->center;
+	if (!(str = ft_strjoini("Center (X Y Z) ", n)))
+		ft_error(__func__, __LINE__);
+	if (igInputFloat3(str, &tmp.x, "%g", 0))
+		orbit->center = tmp;
+	free(str);
+}
+
 void
 	ui_orbit(t_anim *anim, int n)
 {
@@ -98,7 +115,10 @@ void
 
 	orbit = anim->res;
 	tmp = *orbit;
-	ui_orbit_obj(orbit, n);
+	if (anim->type == 2)
+		ui_orbit_obj(orbit, n);
+	else if (anim->type == 3)
+		ui_orbit_pos(orbit, n);
 	if (!(str = ft_strjoini("Axis (X Y Z) ", n)))
 		ft_error(__func__, __LINE__);
 	if (igSliderFloat3(str, &tmp.axis.x, -1, 1, "%g", 1))

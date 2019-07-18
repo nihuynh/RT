@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 13:05:07 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 12:46:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 17:16:01 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ void	anim_orbit(t_anim *anim)
 
 	orbit = anim->res;
 	if (!orbit->obj_center)
-		return ;
-	center = orbit->obj_center->pos;
+		center = &orbit->center;
+	else
+		center = orbit->obj_center->pos;
 	vec3_sub(&vec, anim->pos, center);
 	mat = mat_orbit(orbit->axis, orbit->deg);
 	apply_matrix(&vec, &mat);
