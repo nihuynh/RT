@@ -21,9 +21,9 @@ void
 	sphere = res;
 	sphere->origin = (t_pt3){0, 0, 0};
 	sphere->radius = 10;
-	sphere->y = (t_vec3){0, 0, 1};
-	vec3_normalize(&sphere->y);
-	create_orthobasis_from_y_axis(sphere->y, &sphere->x, &sphere->z);
+	sphere->x = (t_vec3){1, 0, 0};
+	sphere->y = (t_vec3){0, 1, 0};
+	sphere->z = (t_vec3){0, 0, 1};
 	obj->pos = &sphere->origin;
 	obj->x = &sphere->x;
 	obj->n = &sphere->y;

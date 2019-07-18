@@ -28,7 +28,7 @@ content
 		reflection_color(0.040 0.040 0.040)
 		refraction_idx(0.000)
 		uv_scale(1.000 1.000)
-		uv_offset(0.500 0.000)
+		uv_offset(0.000 0.000)
 	}
 	object(sphere)
 	{
@@ -45,7 +45,7 @@ content
 		reflection_color(0.040 0.040 0.040)
 		refraction_idx(0.000)
 		uv_scale(1.000 1.000)
-		uv_offset(0.500 0.000)
+		uv_offset(0.000 0.000)
 	}
 	object(sphere)
 	{
@@ -62,7 +62,7 @@ content
 		reflection_color(0.040 0.040 0.040)
 		refraction_idx(0.000)
 		uv_scale(1.000 1.000)
-		uv_offset(0.500 0.000)
+		uv_offset(0.000 0.000)
 	}
 }
 animation

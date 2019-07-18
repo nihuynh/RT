@@ -69,6 +69,7 @@ target_sources(RT PRIVATE
         srcs/interface/ui_render_settings.c
         srcs/interface/ui_scene_editor.c
         srcs/interface/ui_selector.c
+        srcs/interface/ui_selector_obj.c
         srcs/interface/ui_tools.c
         srcs/parser/export.c
         srcs/parser/export_anim.c

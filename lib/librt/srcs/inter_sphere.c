@@ -94,7 +94,7 @@ t_vec3
 	normal = inter->n;
 	apply_matrix(&normal, &local);
 	vec3_cartesian_to_spherical(normal, &uv.x, &uv.y);
-	uv.x = uv.x * M_INV_PI_F * 0.5f;
+	uv.x = 0.5f + uv.x * M_INV_PI_F * 0.5f;
 	uv.y *= M_INV_PI_F;
 	return (uv);
 }

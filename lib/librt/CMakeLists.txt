@@ -20,6 +20,7 @@ target_sources(rt PRIVATE
         srcs/inter_cone.c
         srcs/inter_csg.c
         srcs/inter_csg_op.c
+        srcs/inter_csg_inside.c
         srcs/inter_cylinder.c
         srcs/inter_find.c
         srcs/inter_plane.c
