@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 05:12:37 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 22:24:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/18 15:50:40 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void			sphere_new(t_obj *obj, void *res);
 void			plane_new(t_obj *obj, void *res);
 void			cylinder_new(t_obj *obj, void *res);
 void			cone_new(t_obj *obj, void *res);
+void			cube_new(t_obj *obj, void *res);
 char			*name_obj(int type, int *nb);
 
 /*

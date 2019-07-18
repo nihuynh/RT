@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/01 19:52:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/18 16:08:43 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void
 		{"sphere", sizeof(t_sphere), &sphere_set, &sphere_export},
 		{"cone", sizeof(t_cone), &cone_set, &cone_export},
 		{"cylinder", sizeof(t_cylinder), &cylinder_set, &cylinder_export},
-		{"csg", sizeof(t_csg), &csg_set, &csg_export},
 		{"cube", sizeof(t_cube), &cube_set, &cube_export},
+		{"csg", sizeof(t_csg), &csg_set, &csg_export},
 		{"tore", sizeof(t_tore), &tore_set, &tore_export}
 	};
 
@@ -101,8 +101,8 @@ void
 		{&inter_sphere, &ui_sphere, &normal_sphere, &get_sphere_uv},
 		{&inter_cone, &ui_cone, &normal_cone, &get_cone_uv},
 		{&inter_cylinder, &ui_cylinder, &normal_cylinder, &get_cylinder_uv},
-		{&inter_csg, &ui_csg, NULL, NULL},
 		{&inter_cube, &ui_cube, &normal_cube, &get_cube_uv},
+		{&inter_csg, &ui_csg, NULL, NULL},
 		{&inter_tore, &ui_tore, &normal_tore, &get_tore_uv}
 	};
 

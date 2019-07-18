@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:36:42 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/15 14:30:39 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/18 16:17:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,21 @@ void
 	obj->x = &cone->x;
 	obj->n = &cone->n;
 	obj->z = &cone->z;
+}
+
+void
+	cube_new(t_obj *obj, void *res)
+{
+	t_cube	*cube;
+
+	cube = res;
+	cube->origin = (t_pt3){0, 0, 0};
+	cube->n = (t_vec3){0, 1, 0};
+	cube->x = (t_vec3){1, 0, 0};
+	cube->z = (t_vec3){0, 0, 1};
+	cube->size = 10;
+	obj->pos = &cube->origin;
+	obj->x = &cube->x;
+	obj->n = &cube->n;
+	obj->z = &cube->z;
 }

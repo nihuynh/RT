@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/03 17:13:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 16:00:37 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static inline t_built
 		{&plane_new},
 		{&sphere_new},
 		{&cone_new},
-		{&cylinder_new}
+		{&cylinder_new},
+		{&cube_new}
 	};
 
 	return (built_func[type]);
