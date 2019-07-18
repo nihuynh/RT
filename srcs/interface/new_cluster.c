@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_cluster.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 03:46:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/15 19:27:21 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 17:57:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 #include "librt.h"
 #include "interface.h"
 #include "parse.h"
+#include <stdlib.h>
+#include <time.h>
 
-void	new_cluster_tore(t_data *app, t_cluster cluster)
+static inline void
+	new_cluster_tore(t_data *app, t_cluster cluster)
 {
 	t_matrix	mat;
 	t_vec3		x;
@@ -37,16 +40,37 @@ void	new_cluster_tore(t_data *app, t_cluster cluster)
 	}
 }
 
-void	new_cluster_rand_cube(t_data *app, t_cluster cluster)
+
+static inline float
+	rand_float(float max, float offset, int scale)
 {
-	(void)app;
-	(void)cluster;
+	return (((float)(rand() % scale) / (float)scale) * max + offset);
 }
 
-void	new_cluster(t_data *app, int type)
+
+static inline void
+	new_cluster_rand_cube(t_data *app, t_cluster clstr)
+{
+	t_sphere	*sphere;
+
+	srand(time(NULL));
+	while (clstr.nb_obj > 0)
+	{
+		new_obj(app, get_obj_type("sphere"));
+		sphere = app->gui.obj_set->shape;
+		sphere->radius = rand_float(clstr.radius_spheres, 1, 10000);
+		sphere->origin.x = rand_float(clstr.size_cluster, clstr.pos.x, 10000);
+		sphere->origin.y = rand_float(clstr.size_cluster, clstr.pos.y, 10000);
+		sphere->origin.z = rand_float(clstr.size_cluster, clstr.pos.z, 10000);
+		clstr.nb_obj--;
+	}
+}
+
+void
+	new_cluster(t_data *app, int type)
 {
 	if (type == 0)
 		new_cluster_tore(app, app->gui.cluster);
-	if (type == 1)
+	else if (type == 1)
 		new_cluster_rand_cube(app, app->gui.cluster);
 }
