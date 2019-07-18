@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/17 20:52:14 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 18:27:15 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ t_inter
 	if (left.obj != NULL && left.obj->type == 2
 		&& is_inside_cone(&left) && type == INTER)
 		return (not_op(right, left));
+	if (right.obj != NULL && right.obj->type == 0 && type == NOT)
+		return (not_plane(left, right));
 	if (type == INTER)
 		return (inter_op(left, right));
 	if (type == NOT)

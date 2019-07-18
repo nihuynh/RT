@@ -6,7 +6,7 @@
 #    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/07/17 19:59:41 by sklepper         ###   ########.fr        #
+#    Updated: 2019/07/18 17:39:46 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ VEC			:=	vec3_add.c vec3_cross.c vec3_mag.c vec3_scalar.c vec3_cos.c \
 INTER		:=	inter_cylinder.c inter_plane.c inter_sphere.c inter_cone.c \
 				inter_set.c inter_find.c inter_setlight.c inter_setdeflect.c \
 				inter_setrefract.c inter_csg.c inter_csg_op.c inter_cube.c \
-				inter_tore.c inter_plane_finite.c inter_csg_inside.c
+				inter_tore.c inter_plane_finite.c inter_csg_spe.c
 COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
 				colortoi.c color_max.c itocolor.c color_clamp.c color_bool.c \
 				color_linear_inter.c

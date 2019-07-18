@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter_csg_inside.c                                 :+:      :+:    :+:   */
+/*   inter_csg_spe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 19:52:48 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/17 20:53:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 18:38:22 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,45 @@ bool
 	vec3_sub(&inter->n, &inter->point, &pc);
 	vec3_normalize(&inter->n);
 	return (vec3_dot(&inter->n, &vec) > 0);
+}
+
+static inline float
+	need_lines_for_norm(t_plane *plane, t_inter sub)
+{
+	t_vec3	postoplane;
+
+	vec3_sub(&postoplane, &sub.ray.origin, &plane->origin);
+	vec3_normalize(&postoplane);
+	return (vec3_dot(&postoplane, &plane->n));
+}
+
+t_inter
+	not_plane(t_inter core, t_inter sub)
+{
+	t_plane	*plane;
+	t_inter	no_inter;
+	float	var;
+
+	inter_set(&no_inter, sub.ray);
+	plane = sub.obj->shape;
+	var = need_lines_for_norm(plane, sub);
+	if (vec3_dot(&plane->n, &sub.ray.dir) > 0)
+	{
+		if (var > 0)
+			return (no_inter);
+		else if (core.dist < sub.dist || sub.dist < 0)
+			return (core);
+	}
+	if (var > 0)
+	{
+		if (ft_btwf(sub.dist, core.hit_pts.x, core.hit_pts.y))
+			return (sub);
+		if (core.dist < sub.dist)
+			return (no_inter);
+		else
+			return (core);
+	}
+	if (sub.dist == INFINITY && var < 0)
+		return (core);
+	return (no_inter);
 }

@@ -1,7 +1,7 @@
 camera
 {
-	origin(-67.079 50.064 -48.008)
-	direction(0.663 -0.500 0.557)
+	origin(14.808 4.410 63.969)
+	direction(-0.271 -0.108 -0.956)
 	amb_light(0.100 0.100 0.100)
 }
 content
@@ -30,33 +30,18 @@ content
 		origin(0.000 0.000 0.000)
 		normal(0.000 1.000 0.000)
 		NOT
-		UNION
 		object(sphere)
-		{
-		origin(15.000 0.000 0.000)
-		radius(10.000)
-		mat(blue plastic)
-		}
-		UNION
-		object(sphere)
-		{
-		origin(0.000 15.000 0.000)
-		radius(10.000)
-		mat(blue plastic)
-		}
-		object(sphere)
-		{
-		origin(0.000 0.000 15.000)
-		radius(10.000)
-		mat(blue plastic)
-		}
-		object(cube)
 		{
 		origin(0.000 0.000 0.000)
-		normal(0.000 1.000 0.000)
-		x(1.000 0.000 0.000)
-		z(0.000 0.000 1.000)
-		size(15.000)
+		radius(10.000)
+		mat(blue plastic)
+		}
+		object(plane)
+		{
+		origin(0.000 0.000 0.000)
+		normal(-0.868 0.351 0.351)
+		limit(0.000 0.000)
+		type(0)
 		mat(white plastic)
 		}
 		color_diffuse(1.000 1.000 1.000)

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 19:02:52 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/17 20:52:47 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/18 18:27:42 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ struct			s_inter_csg
 };
 
 bool			is_inside_cone(t_inter *inter);
+t_inter			not_plane(t_inter core, t_inter sub);
 
 #endif
