@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 22:51:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/19 15:05:05 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/19 15:08:02 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		get_motion_type(char *key)
 	};
 
 	type = 0;
-	while (type < 4)
+	while (type < 5)
 	{
 		if (ft_strncmp(key, motion_str[type], ft_strlen(motion_str[type])) == 0)
 			return (type);
