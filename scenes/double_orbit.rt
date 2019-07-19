@@ -1,7 +1,7 @@
 camera
 {
-	origin(-32.125 77.769 -106.384)
-	direction(0.241 -0.546 0.802)
+	origin(-36.693 76.186 -88.632)
+	direction(0.205 -0.627 0.751)
 	amb_light(0.100 0.100 0.100)
 }
 content
@@ -101,7 +101,7 @@ animation
 {
 	object(Sphere Blue)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Center)
 			axis(0.000000 1.000000 0.000000)
@@ -110,13 +110,13 @@ animation
 	}
 	object(Moon Blue)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Center)
 			axis(0.000000 1.000000 0.000000)
 			deg(1.000000)
 		}
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Blue)
 			axis(0.000000 1.000000 0.000000)
@@ -125,7 +125,7 @@ animation
 	}
 	object(Sphere Red)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Center)
 			axis(0.000000 1.000000 0.000000)
@@ -134,13 +134,13 @@ animation
 	}
 	object(Moon Red)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Center)
 			axis(0.000000 1.000000 0.000000)
 			deg(1.000000)
 		}
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Red)
 			axis(0.000000 1.000000 0.000000)

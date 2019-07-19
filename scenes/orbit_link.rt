@@ -105,7 +105,7 @@ animation
 {
 	object(Sphere Red)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Center)
 			axis(0.000000 1.000000 0.000000)
@@ -114,7 +114,7 @@ animation
 	}
 	object(Sphere Blue)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere Center)
 			axis(0.000000 1.000000 0.000000)

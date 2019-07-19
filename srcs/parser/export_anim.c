@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_anim.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:54:08 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/26 01:25:55 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:54:28 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline const char
 	*get_anim_str(int type)
 {
 	const char	*motion_strs[] = {
-		"none", "translate", "orbit", "rotate"
+		"none", "translate", "orbit_obj", "orbit_pos", "rotate"
 	};
 
 	return (motion_strs[type]);

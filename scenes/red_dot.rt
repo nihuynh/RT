@@ -168,7 +168,7 @@ animation
 {
 	object(camera)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -177,7 +177,7 @@ animation
 	}
 	object(Mercure)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -186,7 +186,7 @@ animation
 	}
 	object(Venus)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -195,7 +195,7 @@ animation
 	}
 	object(Terre)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -204,7 +204,7 @@ animation
 	}
 	object(Mars)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -213,7 +213,7 @@ animation
 	}
 	object(Jupiter)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -222,7 +222,7 @@ animation
 	}
 	object(Saturne)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -231,7 +231,7 @@ animation
 	}
 	object(Uranus)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -240,7 +240,7 @@ animation
 	}
 	object(Neptune)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
@@ -249,13 +249,13 @@ animation
 	}
 	object(Lune)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
 			deg(1.000000)
 		}
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Terre)
 			axis(0.000000 1.000000 0.000000)

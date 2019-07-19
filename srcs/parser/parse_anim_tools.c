@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_anim_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:09:20 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/20 19:35:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/19 15:04:04 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "animate.h"
 
 void
-	parse_orbit(void *parse, void *res)
+	parse_orbit_obj(void *parse, void *res)
 {
 	t_orbit		*orbit;
 	char		*center_obj;
@@ -33,6 +33,19 @@ void
 		err_set(scene_file, __func__, __LINE__, __FILE__);
 		err_exit(ERR_UNKNWD_OBJ_A, scene_file);
 	}
+	orbit->axis = parse_vector("axis(", scene_file);
+	orbit->deg = parse_fval("deg(", scene_file);
+}
+
+void
+	parse_orbit_pos(void *parse, void *res)
+{
+	t_orbit		*orbit;
+	t_parse_txt	*scene_file;
+
+	orbit = res;
+	scene_file = parse;
+	orbit->center = parse_vector("center(", scene_file);
 	orbit->axis = parse_vector("axis(", scene_file);
 	orbit->deg = parse_fval("deg(", scene_file);
 }

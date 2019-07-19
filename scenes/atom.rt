@@ -357,7 +357,7 @@ animation
 {
 	object(Sphere 33)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere 0)
 			axis(0.000000 1.000000 0.000000)
@@ -366,7 +366,7 @@ animation
 	}
 	object(Sphere 34)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere 0)
 			axis(-0.707107 0.000000 -0.707107)
@@ -375,7 +375,7 @@ animation
 	}
 	object(Sphere 35)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere 0)
 			axis(0.707107 0.000000 -0.707107)
@@ -384,7 +384,7 @@ animation
 	}
 	object(Sphere 36)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere 0)
 			axis(0.707107 0.000000 -0.707107)
@@ -393,7 +393,7 @@ animation
 	}
 	object(Sphere 37)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere 0)
 			axis(0.000000 1.000000 0.000000)
@@ -402,7 +402,7 @@ animation
 	}
 	object(Sphere 38)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Sphere 0)
 			axis(-0.707107 0.000000 -0.707107)

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:19:59 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/18 17:13:08 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/19 14:58:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,13 @@ void			ui_translate(t_anim *anim, int n);
 void			ui_rotate(t_anim *anim, int n);
 int				anim_free(t_anim *anim);
 void			export_rotate(int fd, t_anim *anim);
-void			export_orbit(int fd, t_anim *anim);
+void			export_orbit_obj(int fd, t_anim *anim);
+void			export_orbit_pos(int fd, t_anim *anim);
 void			export_translate(int fd, t_anim *anim);
 void			parse_rotate(void *parse, void *res);
 void			parse_translate(void *parse, void *res);
-void			parse_orbit(void *parse, void *res);
+void			parse_orbit_obj(void *parse, void *res);
+void			parse_orbit_pos(void *parse, void *res);
 void			anim_list(t_anim *anim, char *str);
 void			anim_add_camera(t_cam *cam);
 

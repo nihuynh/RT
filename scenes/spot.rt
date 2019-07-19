@@ -109,7 +109,7 @@ animation
 {
 	object(Light 0)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Center)
 			axis(0.000000 0.000000 1.000000)
@@ -118,7 +118,7 @@ animation
 	}
 	object(Light 1)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Center)
 			axis(0.000000 0.000000 1.000000)
@@ -127,7 +127,7 @@ animation
 	}
 	object(Light 2)
 	{
-		motion(orbit)
+		motion(orbit_obj)
 		{
 			center_obj(Center)
 			axis(0.000000 0.000000 1.000000)

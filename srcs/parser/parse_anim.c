@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 22:51:37 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/19 06:12:41 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/19 15:05:05 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		get_motion_type(char *key)
 {
 	int			type;
 	const char	*motion_str[] = {
-		"none", "translate", "orbit", "rotate"
+		"none", "translate", "orbit_obj", "orbit_pos", "rotate"
 	};
 
 	type = 0;
