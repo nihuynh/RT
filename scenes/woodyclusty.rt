@@ -1,7 +1,7 @@
 camera
 {
-	origin(9.170 69.219 261.697)
-	direction(0.173 -0.087 -0.981)
+	origin(15.621 58.869 68.668)
+	direction(0.795 -0.044 -0.604)
 	amb_light(0.100 0.100 0.100)
 	skybox(ENV_Indoor_woody.jpg)
 }
@@ -9,8 +9,15 @@ content
 {
 	object(sphere)
 	{
-		name(Sphere 0)
-		origin(88.630 87.890 63.100)
+		name(Center)
+		origin(39.270 57.550 50.700)
+		radius(10.232)
+		mat(mirror glass)
+	}
+	object(sphere)
+	{
+		name(first)
+		origin(0.000 0.000 0.000)
 		radius(10.413)
 		mat(mirror glass)
 	}
@@ -191,13 +198,6 @@ content
 	}
 	object(sphere)
 	{
-		name(Sphere 32)
-		origin(39.270 57.550 50.700)
-		radius(10.232)
-		mat(mirror glass)
-	}
-	object(sphere)
-	{
 		name(Sphere 33)
 		origin(52.190 18.600 38.600)
 		radius(4.657)
@@ -360,4 +360,18 @@ content
 }
 animation
 {
+	object(camera)
+	{
+		motion(orbit)
+		{
+			center_obj(Center)
+			axis(0.000000 1.000000 0.000000)
+			deg(1.000000)
+		}
+		motion(translate)
+		{
+			dir(0.000000 0.000000 1.000000)
+			speed(1.000000)
+		}
+	}
 }
