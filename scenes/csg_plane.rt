@@ -1,7 +1,7 @@
 camera
 {
-	origin(14.808 4.410 63.969)
-	direction(-0.271 -0.108 -0.956)
+	origin(-274.572 -6.594 -0.713)
+	direction(0.994 0.002 0.108)
 	amb_light(0.100 0.100 0.100)
 }
 content
@@ -26,19 +26,128 @@ content
 	}
 	object(csg)
 	{
-		name(CSG_plane)
+		name(CSG_plane_cone)
+		origin(0.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		NOT
+		object(cone)
+		{
+		origin(0.000 0.000 50.000)
+		normal(1.000 0.000 0.000)
+		theta(15.000)
+		size(0.000)
+		color_diffuse(1.000 1.000 0.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 1.000)
+		uv_offset(0.000 0.000)
+		}
+		object(plane)
+		{
+		origin(30.000 0.000 50.000)
+		normal(-0.868 0.351 0.351)
+		limit(0.000 0.000)
+		type(0)
+		mat(white plastic)
+		}
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(0.000 0.000)
+		uv_offset(0.000 0.000)
+	}
+	object(csg)
+	{
+		name(CSG_plane_cube)
+		origin(0.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		NOT
+		object(cube)
+		{
+		origin(0.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		x(1.000 0.000 0.000)
+		z(0.000 0.000 1.000)
+		size(15.000)
+		mat(white plastic)
+		}
+		object(plane)
+		{
+		origin(0.000 0.000 0.000)
+		normal(-0.868 0.351 0.351)
+		limit(0.000 0.000)
+		type(0)
+		mat(white plastic)
+		}
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(0.000 0.000)
+		uv_offset(0.000 0.000)
+	}
+	object(csg)
+	{
+		name(CSG_plane_cylinder)
+		origin(0.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		NOT
+		object(cylinder)
+		{
+		origin(0.000 0.000 -50.000)
+		normal(1.000 0.000 0.000)
+		radius(10.000)
+		size(200.000)
+		mat(green plastic)
+		}
+		object(plane)
+		{
+		origin(0.000 0.000 -50.000)
+		normal(-0.868 0.351 0.351)
+		limit(0.000 0.000)
+		type(0)
+		mat(white plastic)
+		}
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(0.000 0.000)
+		uv_offset(0.000 0.000)
+	}
+	object(csg)
+	{
+		name(CSG_plane_sphere)
 		origin(0.000 0.000 0.000)
 		normal(0.000 1.000 0.000)
 		NOT
 		object(sphere)
 		{
-		origin(0.000 0.000 0.000)
+		origin(0.000 0.000 100.000)
 		radius(10.000)
 		mat(blue plastic)
 		}
 		object(plane)
 		{
-		origin(0.000 0.000 0.000)
+		origin(0.000 0.000 100.000)
 		normal(-0.868 0.351 0.351)
 		limit(0.000 0.000)
 		type(0)
