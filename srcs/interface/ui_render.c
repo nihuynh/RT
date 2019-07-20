@@ -104,12 +104,11 @@ void
 }
 
 void
-	ui_cube(void *app_v, void *res)
+	ui_cube(void *ap, void *res)
 {
 	t_cube	*cube;
 	t_cube	tmp;
 
-	(void)app_v;
 	cube = res;
 	tmp = *cube;
 	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
@@ -128,4 +127,12 @@ void
 	}
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
 		cube->size = tmp.size;
+	if (igButton("Spawn axes", (ImVec2) {0, 0}))
+	{
+		new_axis_debug((t_data*)ap, cube->origin, cube->x, itocolor(RED));
+		new_axis_debug((t_data*)ap, cube->origin, cube->n, itocolor(GREEN));
+		new_axis_debug((t_data*)ap, cube->origin, cube->z, itocolor(BLUE));
+		((t_data*)ap)->sdl->needs_render = true;
+		((t_data*)ap)->sdl->partial_render = false;
+	}
 }

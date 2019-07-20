@@ -103,6 +103,8 @@ t_matrix	mat_orbit(t_vec3 axis, float deg);
 t_vec3		get_column(t_matrix m, int column);
 void		set_column(t_matrix *m, int column, t_vec3 vec);
 void		set_row(t_matrix *m, int row, t_vec3 vec);
+t_matrix	mat_set_axes(t_vec3 x, t_vec3 y, t_vec3 z);
+void		mat_transpose(t_matrix *m);
 void		apply_matrix(t_vec3 *v, t_matrix *mat);
 void		ray_new(t_ray *res, t_pt3 *origin, t_vec3 *n);
 void		print_matrix(t_matrix *mat);
@@ -111,7 +113,7 @@ void		create_orthobasis_from_y_axis(t_vec3 y, t_vec3 *x, t_vec3 *z);
 t_matrix	set_rotation(float yz_angle, float xz_angle);
 float		fresnel(t_vec3 ray_dir, t_vec3 normal, float ior);
 void		ray_offset_origin(t_ray *ray, t_vec3 normal);
-
+t_ray		ray_transform(t_ray ray, t_matrix m);
 void		apply_uv_mapping(t_vec3 *uv, t_uv_mapping mapping);
 float		remap_to_0_to_1(float x);
 

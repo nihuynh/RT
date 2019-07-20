@@ -53,3 +53,13 @@ void		set_row(t_matrix *m, int row, t_vec3 vec)
 	m->m[row][1] = vec.y;
 	m->m[row][2] = vec.z;
 }
+
+t_matrix	mat_set_axes(t_vec3 x, t_vec3 y, t_vec3 z)
+{
+	t_matrix mat;
+
+	set_row(&mat, 0, x);
+	set_row(&mat, 1, y);
+	set_row(&mat, 2, z);
+	return (mat);
+}

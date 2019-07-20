@@ -76,7 +76,6 @@ void
 	obj.material.color_diffuse = color;
 	obj.name = name_obj(cyl_type, &app->scene.nb_objs[cyl_type]);
 	ft_lstpushnew(&app->scene.lst_obj, &obj, sizeof(t_obj));
-	app->gui.obj_set = app->scene.lst_obj->content;
 	ft_lstsort(&app->scene.lst_obj, &obj_cmp);
 }
 

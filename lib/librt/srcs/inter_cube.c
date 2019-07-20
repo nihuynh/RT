@@ -86,11 +86,16 @@ static inline float
 void
 	inter_cube(t_inter *inter, t_obj *node)
 {
-	t_cube	*cube;
-	float	dist;
+	t_cube		*cube;
+	float		dist;
+	t_matrix	local_matrix;
+	t_ray		local_ray;
 
 	cube = node->shape;
-	dist = inter_local(inter, &inter->ray, cube);
+	local_matrix = mat_set_axes(cube->x, cube->n, cube->z);
+	local_ray = ray_transform(inter->ray, local_matrix);
+	vec3_normalize(&local_ray.dir);
+	dist = inter_local(inter, &local_ray, cube);
 	if (dist >= inter->dist || dist < 0)
 		return ;
 	inter->dist = dist;

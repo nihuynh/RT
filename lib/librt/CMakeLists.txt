@@ -35,6 +35,7 @@ target_sources(rt PRIVATE
         srcs/itocolor.c
         srcs/mat3.c
         srcs/mat3_rot.c
+        srcs/mat_transpose.c
         srcs/mat_orbit.c
         srcs/normal_cone.c
         srcs/normal_cube.c
@@ -45,6 +46,7 @@ target_sources(rt PRIVATE
         srcs/print_matrix.c
         srcs/ray_new.c
         srcs/ray_offset_origin.c
+        srcs/ray_transform.c
         srcs/uv_mapping.c
         srcs/vec3_add.c
         srcs/vec3_mul.c
