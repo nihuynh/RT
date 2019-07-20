@@ -17,7 +17,7 @@ VEC			:=	vec3_add.c vec3_cross.c vec3_mag.c vec3_scalar.c vec3_cos.c \
 				vec3_cpy.c vec3_find.c ray_new.c vec3_deflect.c print_matrix.c \
 				vec3_matrix_mult.c vec3_matrix_apply.c vec3_refract.c fresnel.c\
 				vec3_spherical_cartesian.c ray_offset_origin.c mat_orbit.c	   \
-				vec3_mul.c
+				vec3_mul.c ray_transform.c
 INTER		:=	inter_cylinder.c inter_plane.c inter_sphere.c inter_cone.c \
 				inter_set.c inter_find.c inter_setlight.c inter_setdeflect.c \
 				inter_setrefract.c inter_csg.c inter_csg_op.c inter_cube.c \
@@ -25,7 +25,7 @@ INTER		:=	inter_cylinder.c inter_plane.c inter_sphere.c inter_cone.c \
 COLOR		:=	color_add.c color_sub.c color_mult.c color_scalar.c \
 				colortoi.c color_max.c itocolor.c color_clamp.c color_bool.c \
 				color_linear_inter.c
-MATRIX		:=	mat3_rot.c mat3.c
+MATRIX		:=	mat3_rot.c mat3.c mat_transpose.c
 NORMAL		:=	normal_cone.c normal_sphere.c normal_cylinder.c normal_plane.c \
 				normal_cube.c normal_tore.c
 OTHER		:=	uv_mapping.c
