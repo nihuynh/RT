@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 03:46:41 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/18 17:57:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/20 19:08:00 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ static inline void
 	}
 }
 
-
 static inline float
 	rand_float(float max, float offset, int scale)
 {
 	return (((float)(rand() % scale) / (float)scale) * max + offset);
 }
-
 
 static inline void
 	new_cluster_rand_cube(t_data *app, t_cluster clstr)
