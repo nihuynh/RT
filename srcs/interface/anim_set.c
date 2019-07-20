@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/19 15:00:42 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/20 21:19:11 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static inline void
 }
 
 static inline void
-	anim_set_orbit_obj(t_anim *anim)
+	anim_set_orbit_obj(t_anim *anim, int type)
 {
 	t_orbit	*orbit;
 
@@ -41,23 +41,16 @@ static inline void
 	anim->res = orbit;
 	anim->anim_obj = &anim_orbit;
 	anim->ui_anim = &ui_orbit;
-	anim->export = &export_orbit_obj;
-	anim->parse = &parse_orbit_obj;
-}
-
-static inline void
-	anim_set_orbit_pos(t_anim *anim)
-{
-	t_orbit	*orbit;
-
-	if (!(orbit = malloc(sizeof(t_orbit))))
-		ft_error(__func__, __LINE__);
-	ft_bzero(orbit, sizeof(t_orbit));
-	anim->res = orbit;
-	anim->anim_obj = &anim_orbit;
-	anim->ui_anim = &ui_orbit;
-	anim->export = &export_orbit_pos;
-	anim->parse = &parse_orbit_pos;
+	if (type == 2)
+	{
+		anim->export = &export_orbit_obj;
+		anim->parse = &parse_orbit_obj;
+	}
+	else
+	{
+		anim->export = &export_orbit_pos;
+		anim->parse = &parse_orbit_pos;
+	}
 }
 
 static inline void
@@ -95,10 +88,8 @@ void
 		anim_reset(anim);
 	else if (type == 1)
 		anim_set_translate(anim);
-	else if (type == 2)
-		anim_set_orbit_obj(anim);
-	else if (type == 3)
-		anim_set_orbit_pos(anim);
+	else if (type == 2 || type == 3)
+		anim_set_orbit_obj(anim, type);
 	else if (type == 4)
 		anim_set_rotate(anim);
 	anim->type = type;

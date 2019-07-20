@@ -14,7 +14,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder0)
+		name(Cylinder 0)
 		origin(0.000 -30.000 -100.000)
 		normal(0.000 1.000 0.000)
 		radius(30.000)
@@ -23,7 +23,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder1)
+		name(Cylinder 1)
 		origin(70.000 -30.000 -100.000)
 		normal(0.000 1.000 0.000)
 		radius(30.000)
@@ -32,7 +32,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder2)
+		name(Cylinder 2)
 		origin(-70.000 -30.000 -100.000)
 		normal(0.000 1.000 0.000)
 		radius(30.000)
@@ -41,7 +41,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane0)
+		name(Plane 0)
 		origin(0.000 -30.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(200.000 200.000)
@@ -60,7 +60,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane1)
+		name(Plane 1)
 		origin(0.000 0.000 -150.000)
 		normal(0.000 0.000 -1.000)
 		limit(200.000 200.000)

@@ -14,420 +14,420 @@ content
 	}
 	object(sphere)
 	{
-		name(Sphere0)
+		name(Sphere 0)
 		origin(50.000 0.000 0.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere1)
+		name(Sphere 1)
 		origin(49.726 0.000 -5.226)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere10)
+		name(Sphere 10)
 		origin(25.000 0.000 -43.301)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere11)
+		name(Sphere 11)
 		origin(20.337 0.000 -45.677)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere12)
+		name(Sphere 12)
 		origin(15.451 0.000 -47.553)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere13)
+		name(Sphere 13)
 		origin(10.396 0.000 -48.907)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere14)
+		name(Sphere 14)
 		origin(5.226 0.000 -49.726)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere15)
+		name(Sphere 15)
 		origin(0.000 0.000 -50.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere16)
+		name(Sphere 16)
 		origin(-5.226 0.000 -49.726)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere17)
+		name(Sphere 17)
 		origin(-10.396 0.000 -48.907)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere18)
+		name(Sphere 18)
 		origin(-15.451 0.000 -47.553)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere19)
+		name(Sphere 19)
 		origin(-20.337 0.000 -45.677)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere2)
+		name(Sphere 2)
 		origin(48.907 0.000 -10.396)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere20)
+		name(Sphere 20)
 		origin(-25.000 0.000 -43.301)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere21)
+		name(Sphere 21)
 		origin(-29.389 0.000 -40.451)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere22)
+		name(Sphere 22)
 		origin(-33.457 0.000 -37.157)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere23)
+		name(Sphere 23)
 		origin(-37.157 0.000 -33.456)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere24)
+		name(Sphere 24)
 		origin(-40.451 0.000 -29.389)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere25)
+		name(Sphere 25)
 		origin(-43.301 0.000 -25.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere26)
+		name(Sphere 26)
 		origin(-45.677 0.000 -20.337)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere27)
+		name(Sphere 27)
 		origin(-47.553 0.000 -15.451)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere28)
+		name(Sphere 28)
 		origin(-48.907 0.000 -10.396)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere29)
+		name(Sphere 29)
 		origin(-49.726 0.000 -5.226)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere3)
+		name(Sphere 3)
 		origin(47.553 0.000 -15.451)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere30)
+		name(Sphere 30)
 		origin(-50.000 0.000 0.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere31)
+		name(Sphere 31)
 		origin(-49.726 0.000 5.226)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere32)
+		name(Sphere 32)
 		origin(-48.907 0.000 10.396)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere33)
+		name(Sphere 33)
 		origin(-47.553 0.000 15.451)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere34)
+		name(Sphere 34)
 		origin(-45.677 0.000 20.337)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere35)
+		name(Sphere 35)
 		origin(-43.301 0.000 25.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere36)
+		name(Sphere 36)
 		origin(-40.451 0.000 29.389)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere37)
+		name(Sphere 37)
 		origin(-37.157 0.000 33.456)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere38)
+		name(Sphere 38)
 		origin(-33.456 0.000 37.157)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere39)
+		name(Sphere 39)
 		origin(-29.389 0.000 40.451)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere4)
+		name(Sphere 4)
 		origin(45.677 0.000 -20.337)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere40)
+		name(Sphere 40)
 		origin(-25.000 0.000 43.301)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere41)
+		name(Sphere 41)
 		origin(-20.337 0.000 45.677)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere42)
+		name(Sphere 42)
 		origin(-15.451 0.000 47.553)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere43)
+		name(Sphere 43)
 		origin(-10.396 0.000 48.907)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere44)
+		name(Sphere 44)
 		origin(-5.226 0.000 49.726)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere45)
+		name(Sphere 45)
 		origin(0.000 0.000 50.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere46)
+		name(Sphere 46)
 		origin(5.226 0.000 49.726)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere47)
+		name(Sphere 47)
 		origin(10.396 0.000 48.907)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere48)
+		name(Sphere 48)
 		origin(15.451 0.000 47.553)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere49)
+		name(Sphere 49)
 		origin(20.337 0.000 45.677)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere5)
+		name(Sphere 5)
 		origin(43.301 0.000 -25.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere50)
+		name(Sphere 50)
 		origin(25.000 0.000 43.301)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere51)
+		name(Sphere 51)
 		origin(29.389 0.000 40.451)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere52)
+		name(Sphere 52)
 		origin(33.456 0.000 37.157)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere53)
+		name(Sphere 53)
 		origin(37.157 0.000 33.456)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere54)
+		name(Sphere 54)
 		origin(40.451 0.000 29.389)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere55)
+		name(Sphere 55)
 		origin(43.301 0.000 25.000)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere56)
+		name(Sphere 56)
 		origin(45.677 0.000 20.337)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere57)
+		name(Sphere 57)
 		origin(47.553 0.000 15.451)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere58)
+		name(Sphere 58)
 		origin(48.907 0.000 10.396)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere59)
+		name(Sphere 59)
 		origin(49.726 0.000 5.226)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere6)
+		name(Sphere 6)
 		origin(40.451 0.000 -29.389)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere7)
+		name(Sphere 7)
 		origin(37.157 0.000 -33.457)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere8)
+		name(Sphere 8)
 		origin(33.457 0.000 -37.157)
 		radius(10.000)
 		mat(white plastic)
 	}
 	object(sphere)
 	{
-		name(Sphere9)
+		name(Sphere 9)
 		origin(29.389 0.000 -40.451)
 		radius(10.000)
 		mat(white plastic)

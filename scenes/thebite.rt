@@ -20,7 +20,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder0)
+		name(Cylinder 0)
 		origin(0.000 -15.000 -55.000)
 		normal(0.000 1.000 0.000)
 		radius(12.000)
@@ -29,7 +29,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane0)
+		name(Plane 0)
 		origin(0.000 0.000 -100.000)
 		normal(0.000 0.000 1.000)
 		limit(100.000 100.000)
@@ -38,28 +38,28 @@ content
 	}
 	object(sphere)
 	{
-		name(Sphere0)
+		name(Sphere 0)
 		origin(-9.000 -15.000 -51.000)
 		radius(12.000)
 		mat(bronze)
 	}
 	object(sphere)
 	{
-		name(Sphere1)
+		name(Sphere 1)
 		origin(9.000 -15.000 -51.000)
 		radius(12.000)
 		mat(bronze)
 	}
 	object(sphere)
 	{
-		name(Sphere2)
+		name(Sphere 2)
 		origin(0.000 -10.000 -55.000)
 		radius(12.000)
 		mat(bronze)
 	}
 	object(sphere)
 	{
-		name(Sphere3)
+		name(Sphere 3)
 		origin(0.000 30.000 -55.000)
 		radius(13.000)
 		mat(bronze)

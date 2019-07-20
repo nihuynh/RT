@@ -26,7 +26,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane0)
+		name(Plane 0)
 		origin(0.000 -10.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(50.000 50.000)
@@ -35,21 +35,21 @@ content
 	}
 	object(sphere)
 	{
-		name(Sphere0)
+		name(Sphere 0)
 		origin(0.000 0.000 0.000)
 		radius(10.000)
 		mat(water)
 	}
 	object(sphere)
 	{
-		name(Sphere1)
+		name(Sphere 1)
 		origin(0.000 0.000 -20.000)
 		radius(10.000)
 		mat(White marble)
 	}
 	object(sphere)
 	{
-		name(Sphere2)
+		name(Sphere 2)
 		origin(0.000 0.000 20.000)
 		radius(10.000)
 		mat(brick)

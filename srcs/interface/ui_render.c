@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ui_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 03:14:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/20 21:15:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "ftstring.h"
 #include "interface.h"
-#include "imgui_impl_sdl.h"
-#include "imgui_impl_opengl2.h"
 #include "config.h"
-#include "SDL_opengl.h"
 #include "librt.h"
 
 void
@@ -72,67 +69,4 @@ void
 	igText("Created by : Nicolas Huynh, Samuel Klepper, Thibault D'archivio");
 	igText("Made in 2019 @42 Paris");
 	igEnd();
-}
-
-void
-	ui_tore(void *app_v, void *res)
-{
-	t_tore	*tore;
-	t_tore	tmp;
-
-	(void)app_v;
-	tore = res;
-	tmp = *tore;
-	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
-		tore->origin = tmp.origin;
-	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
-		tore->n = tmp.n;
-	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
-		tore->x = tmp.x;
-	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
-		tore->z = tmp.z;
-	if (igButton("Normalize", (ImVec2){0, 0}))
-	{
-		vec3_normalize(&tore->n);
-		vec3_normalize(&tore->x);
-		vec3_normalize(&tore->z);
-	}
-	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
-		tore->size = tmp.size;
-	if (igInputFloat("Radius", &tmp.radius, 0, 0, "%g", 0))
-		tore->radius = tmp.radius;
-}
-
-void
-	ui_cube(void *ap, void *res)
-{
-	t_cube	*cube;
-	t_cube	tmp;
-
-	cube = res;
-	tmp = *cube;
-	if (igInputFloat3("Origin (X Y Z)", &tmp.origin.x, "%g", 0))
-		cube->origin = tmp.origin;
-	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
-		cube->n = tmp.n;
-	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
-		cube->x = tmp.x;
-	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
-		cube->z = tmp.z;
-	if (igButton("Normalize", (ImVec2){0, 0}))
-	{
-		vec3_normalize(&cube->n);
-		vec3_normalize(&cube->x);
-		vec3_normalize(&cube->z);
-	}
-	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
-		cube->size = tmp.size;
-	if (igButton("Spawn axes", (ImVec2) {0, 0}))
-	{
-		new_axis_debug((t_data*)ap, cube->origin, cube->x, itocolor(RED));
-		new_axis_debug((t_data*)ap, cube->origin, cube->n, itocolor(GREEN));
-		new_axis_debug((t_data*)ap, cube->origin, cube->z, itocolor(BLUE));
-		((t_data*)ap)->sdl->needs_render = true;
-		((t_data*)ap)->sdl->partial_render = false;
-	}
 }

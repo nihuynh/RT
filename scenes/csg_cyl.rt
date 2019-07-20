@@ -26,7 +26,7 @@ content
 	}
 	object(csg)
 	{
-		name(CSG0)
+		name(CSG 0)
 		origin(0.000 0.000 0.000)
 		normal(0.000 1.000 0.000)
 		NOT
@@ -77,7 +77,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane0)
+		name(Plane 0)
 		origin(0.000 0.000 0.000)
 		normal(0.000 0.000 1.000)
 		limit(50.000 50.000)
@@ -86,7 +86,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane1)
+		name(Plane 1)
 		origin(0.000 -20.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(100.000 100.000)

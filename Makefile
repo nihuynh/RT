@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 19:33:22 by nihuynh           #+#    #+#              #
-#    Updated: 2019/07/17 20:59:04 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/07/20 21:13:55 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ INTERFACE	:=	delete_obj.c screen_manager.c ui_lists.c ui_menu.c			   \
 				ui_selector.c ui_render_settings.c ui_anim_toolbox.c		   \
 				anim_toolbox.c ui_anim.c animate.c anim_set.c ui_camera_tab.c  \
 				anim_reset.c ui_anim_selector.c new_cluster.c ui_cluster.c	   \
-				ui_selector_obj.c
+				ui_selector_obj.c ui_anim_toolbox2.c ui_cube.c ui_tore.c
 PARSER		:=	export_csg.c export_shape.c export_toolbox.c export.c		   \
 				obj_data.c  obj_name.c parse_csg.c parse_shape.c parser.c	   \
 				parse_txt.c parse_utils.c parse_toolbox.c read.c setter.c	   \

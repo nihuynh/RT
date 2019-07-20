@@ -15,7 +15,7 @@ content
 	}
 	object(cone)
 	{
-		name(Cone0)
+		name(Cone 0)
 		origin(20.000 5.000 25.000)
 		normal(0.000 -1.000 0.000)
 		theta(30.000)
@@ -35,7 +35,7 @@ content
 	}
 	object(cone)
 	{
-		name(Cone1)
+		name(Cone 1)
 		origin(20.000 5.000 50.000)
 		normal(0.000 -0.996 -0.086)
 		theta(30.000)
@@ -55,7 +55,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder0)
+		name(Cylinder 0)
 		origin(40.000 0.000 25.000)
 		normal(0.000 1.000 0.000)
 		radius(5.000)
@@ -75,7 +75,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder1)
+		name(Cylinder 1)
 		origin(40.000 0.000 50.000)
 		normal(0.000 1.000 0.000)
 		radius(5.000)
@@ -114,7 +114,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane0)
+		name(Plane 0)
 		origin(-10.000 0.000 25.000)
 		normal(0.000 1.000 0.000)
 		limit(10.000 10.000)
@@ -134,7 +134,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane1)
+		name(Plane 1)
 		origin(0.000 0.000 0.000)
 		normal(0.000 0.000 1.000)
 		limit(0.000 0.000)
@@ -154,7 +154,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane2)
+		name(Plane 2)
 		origin(-10.000 0.000 50.000)
 		normal(0.000 1.000 0.000)
 		limit(10.000 10.000)
@@ -174,7 +174,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane3)
+		name(Plane 3)
 		origin(0.000 0.000 100.000)
 		normal(0.000 1.000 0.000)
 		limit(10.000 10.000)
@@ -194,7 +194,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane4)
+		name(Plane 4)
 		origin(0.000 0.000 80.000)
 		normal(0.000 1.000 -0.010)
 		limit(10.000 10.000)
@@ -214,7 +214,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane5)
+		name(Plane 5)
 		origin(0.000 0.000 120.000)
 		normal(0.000 1.000 0.010)
 		limit(10.000 10.000)
@@ -234,7 +234,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane6)
+		name(Plane 6)
 		origin(-20.000 0.000 100.000)
 		normal(0.010 1.000 0.000)
 		limit(10.000 10.000)
@@ -254,7 +254,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane7)
+		name(Plane 7)
 		origin(20.000 0.000 100.000)
 		normal(-0.010 1.000 0.000)
 		limit(10.000 10.000)
@@ -274,7 +274,7 @@ content
 	}
 	object(sphere)
 	{
-		name(Sphere0)
+		name(Sphere 0)
 		origin(-40.000 0.000 25.000)
 		radius(10.000)
 		texture(checkers)
@@ -292,7 +292,7 @@ content
 	}
 	object(sphere)
 	{
-		name(Sphere1)
+		name(Sphere 1)
 		origin(-40.000 0.000 50.000)
 		radius(10.000)
 		normal_map(normal_test.png)

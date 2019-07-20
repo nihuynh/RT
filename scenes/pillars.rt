@@ -20,7 +20,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder0)
+		name(Cylinder 0)
 		origin(-15.000 0.000 -20.000)
 		normal(0.000 1.000 0.000)
 		radius(2.400)
@@ -29,7 +29,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder1)
+		name(Cylinder 1)
 		origin(-15.000 0.000 -40.000)
 		normal(0.000 1.000 0.000)
 		radius(2.400)
@@ -38,7 +38,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder2)
+		name(Cylinder 2)
 		origin(15.000 0.000 -20.000)
 		normal(0.000 1.000 0.000)
 		radius(2.400)
@@ -47,7 +47,7 @@ content
 	}
 	object(cylinder)
 	{
-		name(Cylinder3)
+		name(Cylinder 3)
 		origin(15.000 0.000 -40.000)
 		normal(0.000 1.000 0.000)
 		radius(2.400)
@@ -56,7 +56,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane0)
+		name(Plane 0)
 		origin(0.000 -10.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(0.000 0.000)
@@ -65,7 +65,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane1)
+		name(Plane 1)
 		origin(0.000 10.000 0.000)
 		normal(0.000 1.000 0.000)
 		limit(0.000 0.000)
@@ -74,7 +74,7 @@ content
 	}
 	object(plane)
 	{
-		name(Plane2)
+		name(Plane 2)
 		origin(0.000 0.000 -50.000)
 		normal(0.000 0.000 1.000)
 		limit(0.000 0.000)
@@ -92,63 +92,63 @@ content
 	}
 	object(sphere)
 	{
-		name(Sphere0)
+		name(Sphere 0)
 		origin(-15.000 -10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere1)
+		name(Sphere 1)
 		origin(-15.000 -10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere2)
+		name(Sphere 2)
 		origin(15.000 -10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere3)
+		name(Sphere 3)
 		origin(15.000 -10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere4)
+		name(Sphere 4)
 		origin(-15.000 10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere5)
+		name(Sphere 5)
 		origin(-15.000 10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere6)
+		name(Sphere 6)
 		origin(15.000 10.000 -20.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere7)
+		name(Sphere 7)
 		origin(15.000 10.000 -40.000)
 		radius(4.000)
 		mat(alloy)
 	}
 	object(sphere)
 	{
-		name(Sphere8)
+		name(Sphere 8)
 		origin(0.000 -8.000 -20.000)
 		radius(2.000)
 		color_diffuse(1.000 0.000 0.000)
