@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/02 03:41:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/20 18:47:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void
 	}
 	free(obj->shape);
 	obj->shape = NULL;
-	free(obj->name);
-	free(obj);
+	ft_strdel(&obj->name);
+	ft_memdel((void **)&obj);
 }
 
 void
