@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "librt.h"
 #include "ftbtree.h"
 #include "ftstring.h"
 #include "csg.h"
@@ -85,6 +86,8 @@ void
 	pcsg->n = parse_vector("normal(", scene_file);
 	pcsg->root = csg_tree_parse(scene_file);
 	obj->pos = &pcsg->origin;
+	vec3_normalize(&pcsg->n);
+	create_orthobasis_from_y_axis(pcsg->n, &pcsg->x, &pcsg->z);
 	obj->x = &pcsg->x;
 	obj->n = &pcsg->n;
 	obj->z = &pcsg->z;
