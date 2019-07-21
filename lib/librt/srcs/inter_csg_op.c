@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/18 18:27:15 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 17:57:57 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include "csg.h"
 #include "libft.h"
 #include <math.h>
+
+static inline t_inter
+	not_op_plane(t_inter core, t_inter sub)
+{
+	t_inter no_inter;
+
+	inter_set(&no_inter, sub.ray);
+	if (ft_btwf(core.dist, sub.hit_pts.x, sub.hit_pts.y))
+		return (no_inter);
+	return (core);
+}
 
 static inline t_inter
 	not_op(t_inter core, t_inter sub)
@@ -24,6 +35,8 @@ static inline t_inter
 	if ((core.dist < sub.hit_pts.x && core.dist < sub.hit_pts.y)
 		|| core.dist == INFINITY || sub.hit_pts.x == INFINITY)
 		return (core);
+	if (core.obj && core.obj->type == 0)
+		return (not_op_plane(core, sub));
 	if (sub.dist < core.dist)
 	{
 		if (core.hit_pts.y < 0 && core.hit_pts.x > 0)
@@ -36,11 +49,10 @@ static inline t_inter
 	}
 	if (core.dist > sub.hit_pts.y && core.dist > sub.hit_pts.x)
 		return (core);
-	if (sub.obj->type == 1 && core.dist < sub.dist && sub.hit_pts.y < 0
+	if ((sub.obj->type == 1 && core.dist < sub.dist && sub.hit_pts.y < 0
 		&& ft_btwf(sub.hit_pts.x, core.hit_pts.x, core.hit_pts.y))
-		return (sub);
-	if (sub.obj->type == 3 && sub.hit_pts.y < 0 && core.hit_pts.y > 0
-		&& ft_btwf(sub.hit_pts.x, core.hit_pts.x, core.hit_pts.y))
+		|| (sub.obj->type == 3 && sub.hit_pts.y < 0 && core.hit_pts.y > 0
+		&& ft_btwf(sub.hit_pts.x, core.hit_pts.x, core.hit_pts.y)))
 		return (sub);
 	return (no_inter);
 }
