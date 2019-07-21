@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 18:43:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/19 19:08:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 18:03:24 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void		vec3_normalize(t_vec3 *v1)
 
 	if (!v1)
 		return ;
-	k = 1.0f / vec3_mag(*v1);
+	k = vec3_mag(*v1);
+	if (k == 0)
+		return ;
+	k = 1.0f / k;
 	v1->x *= k;
 	v1->y *= k;
 	v1->z *= k;
@@ -28,8 +31,10 @@ t_vec3		vec3_normalize_(t_vec3 v1)
 {
 	float k;
 
-	k = 1.0f / vec3_mag(v1);
-	v1.x *= k;
+	k = vec3_mag(v1);
+	if (k == 0)
+		return (v1);
+	k = 1.0f / k;	v1.x *= k;
 	v1.y *= k;
 	v1.z *= k;
 	return (v1);
