@@ -1,7 +1,7 @@
 camera
 {
-	origin(51.851 20.894 161.758)
-	direction(-0.342 0.000 -0.940)
+	origin(104.916 0.212 -27.752)
+	direction(-0.967 -0.002 0.256)
 	amb_light(0.100 0.100 0.100)
 	skybox(ENV_River.jpg)
 }
@@ -67,4 +67,12 @@ content
 }
 animation
 {
+	object(camera)
+	{
+		motion(translate)
+		{
+			dir(0.000000 0.000000 1.000000)
+			speed(5.000000)
+		}
+	}
 }
