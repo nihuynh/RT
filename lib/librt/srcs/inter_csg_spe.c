@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 19:52:48 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/20 18:48:50 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 17:06:48 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ bool
 	t_vec3	orig2point;
 	t_vec3	vec;
 
-	vec3_sub(&vec, &inter->point, &inter->ray.origin);
-	vec3_normalize(&vec);
 	cone = inter->obj->shape;
 	inter_find_spe(inter, &inter->point);
+	vec3_sub(&vec, &inter->point, &inter->ray.origin);
+	vec3_normalize(&vec);
 	orig2point = vec3_sub_(inter->point, cone->origin);
 	var[0] = ((vec3_dot(&orig2point, &cone->n) < 0) * 180) - cone->theta;
 	var[1] = vec3_mag(orig2point) / cosf(var[0] * DEG_TO_RAD);
