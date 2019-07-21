@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 16:21:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/18 16:00:37 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 19:30:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void
 	void		*shape;
 
 	init_parse_cfg(type, &cfg);
-	if (!(shape = malloc(cfg.content_size)))
+	if (!(shape = ft_memalloc(cfg.content_size)))
 		ft_error(__func__, __LINE__);
 	obj_set(&new, type);
 	(get_built_func(type)).setter(&new, shape);
@@ -60,7 +60,7 @@ void
 	int			cyl_type;
 
 	cyl_type = get_obj_type("cylinder");
-	if (!(cylinder = malloc(sizeof(t_cylinder))))
+	if (!(cylinder = ft_memalloc(sizeof(t_cylinder))))
 		ft_error(__func__, __LINE__);
 	obj_set(&obj, cyl_type);
 	cylinder_new(&obj, cylinder);

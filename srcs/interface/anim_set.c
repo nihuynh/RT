@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   anim_set.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:36:18 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/20 21:19:11 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 19:21:19 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "animate.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include "libft.h"
 #include "t_data.h"
 

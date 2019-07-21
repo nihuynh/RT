@@ -2,11 +2,11 @@
 # **************************************************************************** #\n
 #                                                                              #\n
 #                                                         :::      ::::::::    #\n
-#    RT                                                 :+:      :+:    :+:    #\n
-#    By: tdarchiv <tdarchiv@student.42.fr>            +:+ +:+         +:+      #\n
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #\n
+#    Ray Tracer                                         :+:      :+:    :+:    #\n
+#                                                     +:+ +:+         +:+      #\n
+#    By: tdarchiv <tdarchiv@student.42.fr>          +#+  +:+       +#+         #\n
 #    By: sklepper <sklepper@student.42.fr>        +#+#+#+#+#+   +#+            #\n
-#                                                      #+#    #+#              #\n
+#    By: nihuynh <nihuynh@student.42.fr>               #+#    #+#              #\n
 #    Created in 2019 at 42@Paris                      ###   ########.fr        #\n
 #                                                                              #\n
 # **************************************************************************** #\n\033[0m

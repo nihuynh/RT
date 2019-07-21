@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/21 18:41:03 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 19:16:14 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void
 		app->gui.animate = false;
 	else if (key == SDLK_f && state == SDL_RELEASED)
 		app->sdl->needs_render = true;
-	else if (key == SDLK_r && state == SDL_RELEASED
-			&& (app->sdl->needs_render = 1))
+	else if (key == SDLK_r && state == SDL_RELEASED)
 	{
+		app->sdl->needs_render = true;
 		app->gui.cam_cpy.anim = app->cam.anim;
 		app->cam = app->gui.cam_cpy;
 	}

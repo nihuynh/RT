@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:03:13 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/20 19:21:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/21 19:39:38 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static inline void
 	{
 		load_scene(gui->app, NEW_SCENE);
 		free(gui->app->arg);
-		gui->app->arg = ft_strdup(SCENE_DIR);
+		if (!(gui->app->arg = ft_strdup(SCENE_DIR)))
+			ft_error(__func__, __LINE__);
 	}
 	igMenuItemBoolPtr("Open ...", NULL, &gui->load_open, 1);
 	if (igBeginMenu("Open Scene", 1))

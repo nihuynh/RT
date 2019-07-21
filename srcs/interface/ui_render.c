@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ui_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/20 21:15:48 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 19:42:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "ftstring.h"
+#include "ftio.h"
 #include "interface.h"
 #include "config.h"
 #include "librt.h"
@@ -42,14 +43,14 @@ void
 void
 	keymap_win(t_gui *gui)
 {
-	char	*abs_path;
 	ImVec2	img_size;
 
 	if (gui->keymap.name == NULL)
 	{
-		abs_path = ft_strjoin(gui->app->option.path, KEYMAP_PATH);
-		gui->keymap.name = ft_strdup("keymap");
-		gui->keymap.dir = abs_path;
+		if (!(gui->keymap.dir = ft_strjoin(gui->app->option.path, KEYMAP_PATH)))
+			ft_error(__func__, __LINE__);
+		if (!(gui->keymap.name = ft_strdup("keymap")))
+			ft_error(__func__, __LINE__);
 		load_nbind_texture(&gui->keymap, &gui->keymap_id);
 	}
 	igBegin("Keymap", &gui->keymap_open, ImGuiWindowFlags_AlwaysAutoResize);
