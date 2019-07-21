@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 23:51:14 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/09 13:20:18 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/21 18:41:03 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ void
 		app->gui.animate = false;
 	else if (key == SDLK_f && state == SDL_RELEASED)
 		app->sdl->needs_render = true;
+	else if (key == SDLK_r && state == SDL_RELEASED
+			&& (app->sdl->needs_render = 1))
+	{
+		app->gui.cam_cpy.anim = app->cam.anim;
+		app->cam = app->gui.cam_cpy;
+	}
 }
 
 void
@@ -82,9 +88,6 @@ void
 		mouse_captured ^= 1;
 		SDL_SetRelativeMouseMode(mouse_captured);
 	}
-	else if (key == SDLK_r && state == SDL_RELEASED
-			&& (app->sdl->needs_render = 1))
-		app->cam = app->gui.cam_cpy;
 	animation_keybind(app, key, state);
 	if (camera(&app->cam, key, state))
 	{
