@@ -1,0 +1,125 @@
+camera
+{
+	origin(-125.620 92.297 104.645)
+	direction(0.573 -0.585 -0.574)
+	amb_light(0.100 0.100 0.100)
+}
+content
+{
+	object(light)
+	{
+		color(1.000 1.000 1.000)
+		origin(0.000 1500.000 0.000)
+		intensity(1000000.000)
+	}
+	object(cylinder)
+	{
+		name(Cylinder 0)
+		origin(20.000 -40.000 0.000)
+		normal(-0.723 0.690 0.000)
+		radius(3.000)
+		size(100.000)
+		mat(white plastic)
+	}
+	object(csg)
+	{
+		name(Ground)
+		origin(0.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		NOT
+		NOT
+		object(plane)
+		{
+		origin(0.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		limit(0.000 0.000)
+		type(0)
+		mat(white plastic)
+		}
+		object(cube)
+		{
+		origin(50.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		x(1.000 0.000 0.000)
+		z(0.000 0.000 1.000)
+		size(50.000)
+		mat(white plastic)
+		}
+		object(cube)
+		{
+		origin(-50.000 0.000 0.000)
+		normal(0.000 1.000 0.000)
+		x(1.000 0.000 0.000)
+		z(0.000 0.000 1.000)
+		size(50.000)
+		mat(white plastic)
+		}
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(0.000 0.000)
+		uv_offset(0.000 0.000)
+	}
+	object(plane)
+	{
+		name(Plane 1)
+		origin(100.000 -50.000 0.000)
+		normal(1.000 0.000 0.000)
+		limit(50.000 50.000)
+		type(0)
+		mat(white plastic)
+	}
+	object(plane)
+	{
+		name(Plane 2)
+		origin(-100.000 -50.000 0.000)
+		normal(1.000 0.000 0.000)
+		limit(50.000 50.000)
+		type(0)
+		mat(white plastic)
+	}
+	object(plane)
+	{
+		name(Plane 3)
+		origin(0.000 -50.000 50.000)
+		normal(0.000 0.000 1.000)
+		limit(100.000 50.000)
+		type(0)
+		mat(white plastic)
+	}
+	object(plane)
+	{
+		name(Plane 4)
+		origin(0.000 -50.000 -50.000)
+		normal(0.000 0.000 1.000)
+		limit(100.000 50.000)
+		type(0)
+		mat(white plastic)
+	}
+	object(plane)
+	{
+		name(Plane 5)
+		origin(0.000 -100.000 0.000)
+		normal(0.000 1.000 0.000)
+		limit(100.000 50.000)
+		type(0)
+		mat(white plastic)
+	}
+	object(plane)
+	{
+		name(Water)
+		origin(0.000 -5.000 0.000)
+		normal(0.000 1.000 0.000)
+		limit(100.000 50.000)
+		type(0)
+		mat(water)
+	}
+}
+animation
+{
+}
