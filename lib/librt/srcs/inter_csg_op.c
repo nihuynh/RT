@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/21 17:57:57 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/22 17:47:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,13 @@ static inline t_inter
 	inter_set(&no_inter, left.ray);
 	if (left.dist == INFINITY || right.dist == INFINITY)
 		return (no_inter);
-	if (right.hit_pts.y > 0 && ft_btwf(right.dist, left.dist, left.hit_pts.y))
+	if (right.hit_pts.y > 0 && ft_btwf(right.dist, left.dist, left.hit_pts.y)
+		&& left.obj && left.obj->type != 0)
 		return (right);
 	if (ft_btwf(left.dist, right.hit_pts.x, right.hit_pts.y))
 		return (left);
+	if (left.obj && left.obj->type == 0)
+		return (no_inter);
 	if (ft_btwf(right.dist, left.hit_pts.x, left.hit_pts.y))
 		return (right);
 	return (no_inter);
