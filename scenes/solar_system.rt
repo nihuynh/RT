@@ -1,7 +1,7 @@
 camera
 {
-	origin(675.940 0.027 5472.414)
-	direction(-0.571 0.000 -0.821)
+	origin(15.124 1222.182 3715.246)
+	direction(-0.032 -0.482 -0.876)
 	amb_light(0.191 0.191 0.191)
 	skybox(ENV_MilkyWay.jpg)
 }
@@ -11,12 +11,12 @@ content
 	{
 		color(1.000 1.000 1.000)
 		origin(0.000 0.000 0.000)
-		intensity(20000000.000)
+		intensity(381443.000)
 	}
 	object(sphere)
 	{
 		name(Jupiter)
-		origin(0.000 0.000 24000.000)
+		origin(0.000 0.000 1300.000)
 		radius(143.000)
 		texture(2k_jupiter.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -33,7 +33,7 @@ content
 	object(sphere)
 	{
 		name(Lune)
-		origin(0.000 0.000 4550.000)
+		origin(0.000 0.000 1040.000)
 		radius(3.000)
 		texture(2k_moon.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -50,7 +50,7 @@ content
 	object(sphere)
 	{
 		name(Mars)
-		origin(0.000 0.000 6900.000)
+		origin(0.000 0.000 900.000)
 		radius(7.000)
 		texture(2k_mars.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -67,7 +67,7 @@ content
 	object(sphere)
 	{
 		name(Mercure)
-		origin(0.000 0.000 1800.000)
+		origin(0.000 0.000 700.000)
 		radius(5.000)
 		texture(2k_mercury.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -84,7 +84,7 @@ content
 	object(sphere)
 	{
 		name(Neptune)
-		origin(0.000 0.000 132000.000)
+		origin(0.000 0.000 2200.000)
 		radius(50.000)
 		texture(2k_neptune.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -101,7 +101,7 @@ content
 	object(sphere)
 	{
 		name(Saturne)
-		origin(0.000 0.000 42000.000)
+		origin(0.000 0.000 1800.000)
 		radius(121.000)
 		texture(2k_saturn.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -115,12 +115,31 @@ content
 		uv_scale(1.000 1.000)
 		uv_offset(0.000 0.000)
 	}
+	object(plane)
+	{
+		name(Saturne Ring)
+		origin(0.000 0.000 1800.000)
+		normal(-0.510 0.860 0.000)
+		limit(200.000 50.000)
+		type(1)
+		texture(Saturn_ring_COLOR.png)
+		color_diffuse(1.000 1.000 1.000)
+		color_specular(1.000 1.000 1.000)
+		color_tex(0.000 0.000 0.000)
+		spec_idx(0.300)
+		spec_power(100.000)
+		refraction_color(0.000 0.000 0.000)
+		reflection_color(0.000 0.000 0.000)
+		refraction_idx(0.000)
+		uv_scale(1.000 0.240)
+		uv_offset(0.000 0.370)
+	}
 	object(sphere)
 	{
 		name(Soleil)
 		origin(0.000 0.000 0.000)
-		radius(1390.000)
-		texture(sunmap.jpg)
+		radius(600.000)
+		texture(Sun_COLOR.jpg)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 0.000 0.000)
 		color_tex(0.000 0.000 0.000)
@@ -135,21 +154,21 @@ content
 	object(sphere)
 	{
 		name(Terre)
-		origin(0.000 0.000 4500.000)
+		origin(0.000 0.000 1000.000)
 		radius(13.000)
 		mat(earth)
 	}
 	object(sphere)
 	{
 		name(Uranus)
-		origin(0.000 0.000 90000.000)
+		origin(0.000 0.000 2500.000)
 		radius(51.000)
 		mat(White marble)
 	}
 	object(sphere)
 	{
 		name(Venus)
-		origin(0.000 0.000 3300.000)
+		origin(0.000 0.000 800.000)
 		radius(12.000)
 		texture(2k_venus_surface.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -172,7 +191,7 @@ animation
 		{
 			center_obj(Soleil)
 			axis(0.000000 1.000000 0.000000)
-			deg(1.000000)
+			deg(0.000000)
 		}
 	}
 	object(Mercure)
@@ -260,6 +279,15 @@ animation
 			center_obj(Terre)
 			axis(0.000000 1.000000 0.000000)
 			deg(5.000000)
+		}
+	}
+	object(Saturne Ring)
+	{
+		motion(orbit_obj)
+		{
+			center_obj(Soleil)
+			axis(0.000000 1.000000 0.000000)
+			deg(0.033000)
 		}
 	}
 }
