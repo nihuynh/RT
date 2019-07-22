@@ -29,7 +29,7 @@ make usage
 ### Keymap :
 ![Keymaps](resources/layout.jpg)
 
-ffmpeg -r 36 -f image2 -s 1680x1032 -i woodyclusty.rt%d.png -vcodec libx264 -crf 15  -pix_fmt yuv420p test36.mp4
+ffmpeg -r 30 -f image2 -s 1920x1080 -i auteurs.rt%d.png -vcodec libx264 -crf 15  -pix_fmt yuv420p author_1080_30FPS.mp4
 ---
 
 # Features:
