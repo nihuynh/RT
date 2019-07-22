@@ -29,7 +29,8 @@ make usage
 ### Keymap :
 ![Keymaps](resources/layout.jpg)
 
-ffmpeg -r 30 -f image2 -s 1920x1080 -i auteurs.rt%d.png -vcodec libx264 -crf 15  -pix_fmt yuv420p author_1080_30FPS.mp4
+### make video from screenshot :
+ffmpeg -r 30 -f image2 -i pool.rt%d.png -vcodec libx264 -crf 15 -pix_fmt yuv420p pool_30FPS.mp4
 ---
 
 # Features:
