@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 23:51:36 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 00:00:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/22 18:43:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ static inline float
 	if (shading.mat.spec_map->f_texture)
 	{
 		factor *= (1 - shading.mat.spec_map->f_texture(&shading.mat,
-													shading.mat.tex,
-													shading.uv).r);
+			shading.mat.spec_map, shading.uv).r);
 	}
 	factor *= shading.mat.spec_idx;
 	return (factor);

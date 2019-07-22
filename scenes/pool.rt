@@ -1,8 +1,8 @@
 camera
 {
-	origin(113.631 160.698 242.408)
-	direction(-0.352 -0.486 -0.800)
-	amb_light(0.100 0.100 0.100)
+	origin(-143.883 78.998 169.812)
+	direction(0.609 -0.334 -0.719)
+	amb_light(0.118 0.116 0.116)
 }
 content
 {
@@ -15,14 +15,13 @@ content
 	object(cylinder)
 	{
 		name(Cylinder 0)
-		origin(-50.000 -40.000 0.000)
+		origin(40.000 -40.000 0.000)
 		normal(-0.723 0.690 0.000)
 		radius(3.000)
 		size(100.000)
-		texture(Styrofoam_001_COLOR.jpg)
 		normal_map(Styrofoam_001_NORM.jpg)
 		spec_map(Styrofoam_001_SPEC.jpg)
-		color_diffuse(1.000 1.000 1.000)
+		color_diffuse(1.000 0.955 0.230)
 		color_specular(1.000 1.000 1.000)
 		color_tex(0.000 0.000 0.000)
 		spec_idx(0.300)
