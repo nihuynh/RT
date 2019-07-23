@@ -57,6 +57,7 @@ target_sources(RT PRIVATE
         srcs/interface/ui_anim.c
         srcs/interface/ui_anim_selector.c
         srcs/interface/ui_anim_toolbox.c
+        srcs/interface/ui_anim_toolbox2.c
         srcs/interface/ui_camera_tab.c
         srcs/interface/ui_cluster.c
         srcs/interface/ui_csg.c
@@ -71,6 +72,8 @@ target_sources(RT PRIVATE
         srcs/interface/ui_selector.c
         srcs/interface/ui_selector_obj.c
         srcs/interface/ui_tools.c
+        srcs/interface/ui_tore.c
+        srcs/interface/ui_cube.c
         srcs/parser/export.c
         srcs/parser/export_anim.c
         srcs/parser/export_anim_tools.c
