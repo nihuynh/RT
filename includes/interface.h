@@ -91,6 +91,7 @@ void	delete_light(t_data *app);
 bool	check_file(char *filename);
 void	edit_color_mat(t_color *target, char *label, t_material *mat);
 void	new_cluster(t_data *app, int type);
+void ui_apply_rotation(t_vec3 *x, t_vec3 *y, t_vec3 *z);
 
 /*
 ** UI SHAPES

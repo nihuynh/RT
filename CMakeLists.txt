@@ -74,6 +74,7 @@ target_sources(RT PRIVATE
         srcs/interface/ui_tools.c
         srcs/interface/ui_tore.c
         srcs/interface/ui_cube.c
+        srcs/interface/ui_apply_rotation.c
         srcs/parser/export.c
         srcs/parser/export_anim.c
         srcs/parser/export_anim_tools.c

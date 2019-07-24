@@ -31,8 +31,8 @@ static inline void
 void
 	ui_cube(void *ap, void *res)
 {
-	t_cube	*cube;
-	t_cube	tmp;
+	t_cube			*cube;
+	t_cube			tmp;
 
 	cube = res;
 	tmp = *cube;
@@ -40,16 +40,13 @@ void
 		cube->origin = tmp.origin;
 	if (igSliderFloat3("Normal (X Y Z)", &tmp.n.x, -1, 1, "%g", 1))
 		cube->n = tmp.n;
-	if (igSliderFloat3("X (X Y Z)", &tmp.x.x, -1, 1, "%g", 1))
-		cube->x = tmp.x;
-	if (igSliderFloat3("Z (X Y Z)", &tmp.z.x, -1, 1, "%g", 1))
-		cube->z = tmp.z;
+	igSameLine(0, 10);
 	if (igButton("Normalize", (ImVec2){0, 0}))
 	{
 		vec3_normalize(&cube->n);
-		vec3_normalize(&cube->x);
-		vec3_normalize(&cube->z);
+		create_orthobasis_from_y_axis(cube->n, &cube->x, &cube->z);
 	}
+	ui_apply_rotation(&cube->x, &cube->n, &cube->z);
 	if (igInputFloat("Size", &tmp.size, 0, 0, "%g", 0))
 		cube->size = tmp.size;
 	if (igButton("Spawn axes", (ImVec2) {0, 0}))
