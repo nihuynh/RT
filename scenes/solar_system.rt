@@ -17,6 +17,9 @@ content
 	{
 		name(Jupiter)
 		origin(0.000 0.000 1300.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(143.000)
 		texture(2k_jupiter.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -34,6 +37,9 @@ content
 	{
 		name(Lune)
 		origin(0.000 0.000 1040.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(3.000)
 		texture(2k_moon.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -51,6 +57,9 @@ content
 	{
 		name(Mars)
 		origin(0.000 0.000 900.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.000)
 		texture(2k_mars.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -68,6 +77,9 @@ content
 	{
 		name(Mercure)
 		origin(0.000 0.000 700.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(5.000)
 		texture(2k_mercury.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -85,6 +97,9 @@ content
 	{
 		name(Neptune)
 		origin(0.000 0.000 2200.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(50.000)
 		texture(2k_neptune.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -102,6 +117,9 @@ content
 	{
 		name(Saturne)
 		origin(0.000 0.000 1800.000)
+		x(0.000 0.000 1.000)
+		y(-0.510 0.860 0.000)
+		z(-0.860 -0.510 0.000)
 		radius(121.000)
 		texture(2k_saturn.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -120,6 +138,8 @@ content
 		name(Saturne Ring)
 		origin(0.000 0.000 1800.000)
 		normal(-0.510 0.860 0.000)
+		x(0.000 0.000 1.000)
+		y(-0.860 -0.510 0.000)
 		limit(200.000 50.000)
 		type(1)
 		texture(Saturn_ring_COLOR.png)
@@ -138,6 +158,9 @@ content
 	{
 		name(Soleil)
 		origin(0.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(600.000)
 		texture(Sun_COLOR.jpg)
 		color_diffuse(1.000 1.000 1.000)
@@ -155,6 +178,9 @@ content
 	{
 		name(Terre)
 		origin(0.000 0.000 1000.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(13.000)
 		mat(earth)
 	}
@@ -162,6 +188,9 @@ content
 	{
 		name(Uranus)
 		origin(0.000 0.000 2500.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(51.000)
 		mat(White marble)
 	}
@@ -169,6 +198,9 @@ content
 	{
 		name(Venus)
 		origin(0.000 0.000 800.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(12.000)
 		texture(2k_venus_surface.jpg)
 		color_diffuse(1.000 1.000 1.000)

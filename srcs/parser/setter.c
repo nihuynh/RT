@@ -25,10 +25,10 @@ void
 	}
 	psphere = sphere;
 	psphere->origin = parse_vector("origin(", scene_file);
-	psphere->radius = parse_fval("radius(", scene_file);
 	psphere->x = parse_vector("x(", scene_file);
-	psphere->z = parse_vector("y(", scene_file);
+	psphere->y = parse_vector("y(", scene_file);
 	psphere->z = parse_vector("z(", scene_file);
+	psphere->radius = parse_fval("radius(", scene_file);
 	obj->pos = &psphere->origin;
 	obj->x = &psphere->x;
 	obj->n = &psphere->y;
@@ -105,6 +105,8 @@ void
 	pcone = cone;
 	pcone->origin = parse_vector("origin(", scene_file);
 	pcone->n = parse_vector("normal(", scene_file);
+	pcone->x = parse_vector("x(", scene_file);
+	pcone->z = parse_vector("z(", scene_file);
 	pcone->theta = parse_fval("theta(", scene_file);
 	pcone->size = parse_fval("size(", scene_file);
 	vec3_normalize(&pcone->x);

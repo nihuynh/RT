@@ -16,6 +16,9 @@ content
 	{
 		name(Sphere 0)
 		origin(50.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -23,6 +26,9 @@ content
 	{
 		name(Sphere 1)
 		origin(49.726 0.000 -5.226)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -30,6 +36,9 @@ content
 	{
 		name(Sphere 10)
 		origin(25.000 0.000 -43.301)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -37,6 +46,9 @@ content
 	{
 		name(Sphere 11)
 		origin(20.337 0.000 -45.677)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -44,6 +56,9 @@ content
 	{
 		name(Sphere 12)
 		origin(15.451 0.000 -47.553)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -51,6 +66,9 @@ content
 	{
 		name(Sphere 13)
 		origin(10.396 0.000 -48.907)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -58,6 +76,9 @@ content
 	{
 		name(Sphere 14)
 		origin(5.226 0.000 -49.726)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -65,6 +86,9 @@ content
 	{
 		name(Sphere 15)
 		origin(0.000 0.000 -50.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -72,6 +96,9 @@ content
 	{
 		name(Sphere 16)
 		origin(-5.226 0.000 -49.726)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -79,6 +106,9 @@ content
 	{
 		name(Sphere 17)
 		origin(-10.396 0.000 -48.907)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -86,6 +116,9 @@ content
 	{
 		name(Sphere 18)
 		origin(-15.451 0.000 -47.553)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -93,6 +126,9 @@ content
 	{
 		name(Sphere 19)
 		origin(-20.337 0.000 -45.677)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -100,6 +136,9 @@ content
 	{
 		name(Sphere 2)
 		origin(48.907 0.000 -10.396)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -107,6 +146,9 @@ content
 	{
 		name(Sphere 20)
 		origin(-25.000 0.000 -43.301)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -114,6 +156,9 @@ content
 	{
 		name(Sphere 21)
 		origin(-29.389 0.000 -40.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -121,6 +166,9 @@ content
 	{
 		name(Sphere 22)
 		origin(-33.457 0.000 -37.157)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -128,6 +176,9 @@ content
 	{
 		name(Sphere 23)
 		origin(-37.157 0.000 -33.456)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -135,6 +186,9 @@ content
 	{
 		name(Sphere 24)
 		origin(-40.451 0.000 -29.389)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -142,6 +196,9 @@ content
 	{
 		name(Sphere 25)
 		origin(-43.301 0.000 -25.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -149,6 +206,9 @@ content
 	{
 		name(Sphere 26)
 		origin(-45.677 0.000 -20.337)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -156,6 +216,9 @@ content
 	{
 		name(Sphere 27)
 		origin(-47.553 0.000 -15.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -163,6 +226,9 @@ content
 	{
 		name(Sphere 28)
 		origin(-48.907 0.000 -10.396)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -170,6 +236,9 @@ content
 	{
 		name(Sphere 29)
 		origin(-49.726 0.000 -5.226)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -177,6 +246,9 @@ content
 	{
 		name(Sphere 3)
 		origin(47.553 0.000 -15.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -184,6 +256,9 @@ content
 	{
 		name(Sphere 30)
 		origin(-50.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -191,6 +266,9 @@ content
 	{
 		name(Sphere 31)
 		origin(-49.726 0.000 5.226)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -198,6 +276,9 @@ content
 	{
 		name(Sphere 32)
 		origin(-48.907 0.000 10.396)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -205,6 +286,9 @@ content
 	{
 		name(Sphere 33)
 		origin(-47.553 0.000 15.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -212,6 +296,9 @@ content
 	{
 		name(Sphere 34)
 		origin(-45.677 0.000 20.337)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -219,6 +306,9 @@ content
 	{
 		name(Sphere 35)
 		origin(-43.301 0.000 25.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -226,6 +316,9 @@ content
 	{
 		name(Sphere 36)
 		origin(-40.451 0.000 29.389)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -233,6 +326,9 @@ content
 	{
 		name(Sphere 37)
 		origin(-37.157 0.000 33.456)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -240,6 +336,9 @@ content
 	{
 		name(Sphere 38)
 		origin(-33.456 0.000 37.157)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -247,6 +346,9 @@ content
 	{
 		name(Sphere 39)
 		origin(-29.389 0.000 40.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -254,6 +356,9 @@ content
 	{
 		name(Sphere 4)
 		origin(45.677 0.000 -20.337)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -261,6 +366,9 @@ content
 	{
 		name(Sphere 40)
 		origin(-25.000 0.000 43.301)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -268,6 +376,9 @@ content
 	{
 		name(Sphere 41)
 		origin(-20.337 0.000 45.677)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -275,6 +386,9 @@ content
 	{
 		name(Sphere 42)
 		origin(-15.451 0.000 47.553)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -282,6 +396,9 @@ content
 	{
 		name(Sphere 43)
 		origin(-10.396 0.000 48.907)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -289,6 +406,9 @@ content
 	{
 		name(Sphere 44)
 		origin(-5.226 0.000 49.726)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -296,6 +416,9 @@ content
 	{
 		name(Sphere 45)
 		origin(0.000 0.000 50.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -303,6 +426,9 @@ content
 	{
 		name(Sphere 46)
 		origin(5.226 0.000 49.726)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -310,6 +436,9 @@ content
 	{
 		name(Sphere 47)
 		origin(10.396 0.000 48.907)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -317,6 +446,9 @@ content
 	{
 		name(Sphere 48)
 		origin(15.451 0.000 47.553)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -324,6 +456,9 @@ content
 	{
 		name(Sphere 49)
 		origin(20.337 0.000 45.677)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -331,6 +466,9 @@ content
 	{
 		name(Sphere 5)
 		origin(43.301 0.000 -25.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -338,6 +476,9 @@ content
 	{
 		name(Sphere 50)
 		origin(25.000 0.000 43.301)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -345,6 +486,9 @@ content
 	{
 		name(Sphere 51)
 		origin(29.389 0.000 40.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -352,6 +496,9 @@ content
 	{
 		name(Sphere 52)
 		origin(33.456 0.000 37.157)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -359,6 +506,9 @@ content
 	{
 		name(Sphere 53)
 		origin(37.157 0.000 33.456)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -366,6 +516,9 @@ content
 	{
 		name(Sphere 54)
 		origin(40.451 0.000 29.389)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -373,6 +526,9 @@ content
 	{
 		name(Sphere 55)
 		origin(43.301 0.000 25.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -380,6 +536,9 @@ content
 	{
 		name(Sphere 56)
 		origin(45.677 0.000 20.337)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -387,6 +546,9 @@ content
 	{
 		name(Sphere 57)
 		origin(47.553 0.000 15.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -394,6 +556,9 @@ content
 	{
 		name(Sphere 58)
 		origin(48.907 0.000 10.396)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -401,6 +566,9 @@ content
 	{
 		name(Sphere 59)
 		origin(49.726 0.000 5.226)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -408,6 +576,9 @@ content
 	{
 		name(Sphere 6)
 		origin(40.451 0.000 -29.389)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -415,6 +586,9 @@ content
 	{
 		name(Sphere 7)
 		origin(37.157 0.000 -33.457)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -422,6 +596,9 @@ content
 	{
 		name(Sphere 8)
 		origin(33.457 0.000 -37.157)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}
@@ -429,6 +606,9 @@ content
 	{
 		name(Sphere 9)
 		origin(29.389 0.000 -40.451)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(white plastic)
 	}

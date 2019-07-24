@@ -23,6 +23,8 @@ content
 		name(Cylinder 0)
 		origin(0.000 0.000 0.000)
 		normal(0.000 -1.000 0.000)
+		x(1.000 0.000 -0.000)
+		z(-0.000 -0.000 -1.000)
 		radius(1.000)
 		size(30.000)
 		mat(white plastic)
@@ -32,6 +34,8 @@ content
 		name(Ground)
 		origin(0.000 -30.000 0.000)
 		normal(0.000 1.000 0.000)
+		x(1.000 -0.000 -0.000)
+		y(0.000 0.000 1.000)
 		limit(0.000 0.000)
 		type(0)
 		color_diffuse(1.000 1.000 1.000)
@@ -49,6 +53,9 @@ content
 	{
 		name(Moon Blue)
 		origin(60.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(2.000)
 		mat(white plastic)
 	}
@@ -56,6 +63,9 @@ content
 	{
 		name(Moon Red)
 		origin(-60.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(2.000)
 		mat(white plastic)
 	}
@@ -63,6 +73,9 @@ content
 	{
 		name(Sphere 5)
 		origin(0.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(150.000)
 		color_diffuse(1.000 1.000 1.000)
 		color_specular(1.000 1.000 1.000)
@@ -79,6 +92,9 @@ content
 	{
 		name(Sphere Blue)
 		origin(40.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(blue plastic)
 	}
@@ -86,6 +102,9 @@ content
 	{
 		name(Sphere Center)
 		origin(0.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(2.000)
 		mat(white plastic)
 	}
@@ -93,6 +112,9 @@ content
 	{
 		name(Sphere Red)
 		origin(-40.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.000)
 		mat(red plastic)
 	}

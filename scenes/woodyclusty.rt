@@ -11,6 +11,9 @@ content
 	{
 		name(Center)
 		origin(39.270 57.550 50.700)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.232)
 		mat(mirror glass)
 	}
@@ -18,6 +21,9 @@ content
 	{
 		name(first)
 		origin(0.000 0.000 0.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.413)
 		mat(mirror glass)
 	}
@@ -25,6 +31,9 @@ content
 	{
 		name(Sphere 1)
 		origin(19.880 56.970 49.760)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(2.291)
 		mat(mirror glass)
 	}
@@ -32,6 +41,9 @@ content
 	{
 		name(Sphere 10)
 		origin(15.980 45.540 76.740)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(2.821)
 		mat(mirror glass)
 	}
@@ -39,6 +51,9 @@ content
 	{
 		name(Sphere 11)
 		origin(99.770 54.630 37.400)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.667)
 		mat(mirror glass)
 	}
@@ -46,6 +61,9 @@ content
 	{
 		name(Sphere 12)
 		origin(14.000 96.150 23.630)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(8.586)
 		mat(mirror glass)
 	}
@@ -53,6 +71,9 @@ content
 	{
 		name(Sphere 13)
 		origin(77.630 98.540 12.920)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(5.892)
 		mat(mirror glass)
 	}
@@ -60,6 +81,9 @@ content
 	{
 		name(Sphere 14)
 		origin(47.090 27.770 77.140)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(6.287)
 		mat(mirror glass)
 	}
@@ -67,6 +91,9 @@ content
 	{
 		name(Sphere 15)
 		origin(37.220 38.880 42.630)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(8.913)
 		mat(mirror glass)
 	}
@@ -74,6 +101,9 @@ content
 	{
 		name(Sphere 16)
 		origin(51.890 98.640 56.320)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(6.796)
 		mat(mirror glass)
 	}
@@ -81,6 +111,9 @@ content
 	{
 		name(Sphere 17)
 		origin(52.250 76.190 77.170)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(9.636)
 		mat(mirror glass)
 	}
@@ -88,6 +121,9 @@ content
 	{
 		name(Sphere 18)
 		origin(33.510 44.070 3.810)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(2.569)
 		mat(mirror glass)
 	}
@@ -95,6 +131,9 @@ content
 	{
 		name(Sphere 19)
 		origin(88.110 26.270 52.900)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.509)
 		mat(mirror glass)
 	}
@@ -102,6 +141,9 @@ content
 	{
 		name(Sphere 2)
 		origin(68.070 41.470 52.420)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(3.706)
 		mat(mirror glass)
 	}
@@ -109,6 +151,9 @@ content
 	{
 		name(Sphere 20)
 		origin(96.310 42.450 60.650)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.754)
 		mat(mirror glass)
 	}
@@ -116,6 +161,9 @@ content
 	{
 		name(Sphere 21)
 		origin(69.270 28.320 38.400)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(9.200)
 		mat(mirror glass)
 	}
@@ -123,6 +171,9 @@ content
 	{
 		name(Sphere 22)
 		origin(45.490 82.670 76.000)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.378)
 		mat(mirror glass)
 	}
@@ -130,6 +181,9 @@ content
 	{
 		name(Sphere 23)
 		origin(32.960 48.040 4.240)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(3.688)
 		mat(mirror glass)
 	}
@@ -137,6 +191,9 @@ content
 	{
 		name(Sphere 24)
 		origin(35.080 11.050 90.140)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(2.940)
 		mat(mirror glass)
 	}
@@ -144,6 +201,9 @@ content
 	{
 		name(Sphere 25)
 		origin(39.010 59.270 11.310)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.449)
 		mat(mirror glass)
 	}
@@ -151,6 +211,9 @@ content
 	{
 		name(Sphere 26)
 		origin(88.750 17.790 94.110)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(8.496)
 		mat(mirror glass)
 	}
@@ -158,6 +221,9 @@ content
 	{
 		name(Sphere 27)
 		origin(61.900 85.840 21.480)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.381)
 		mat(mirror glass)
 	}
@@ -165,6 +231,9 @@ content
 	{
 		name(Sphere 28)
 		origin(51.360 31.650 86.310)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(3.560)
 		mat(mirror glass)
 	}
@@ -172,6 +241,9 @@ content
 	{
 		name(Sphere 29)
 		origin(71.550 73.960 11.150)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(8.347)
 		mat(mirror glass)
 	}
@@ -179,6 +251,9 @@ content
 	{
 		name(Sphere 3)
 		origin(83.750 81.570 96.360)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.991)
 		mat(mirror glass)
 	}
@@ -186,6 +261,9 @@ content
 	{
 		name(Sphere 30)
 		origin(33.540 27.220 38.600)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(9.324)
 		mat(mirror glass)
 	}
@@ -193,6 +271,9 @@ content
 	{
 		name(Sphere 31)
 		origin(10.440 26.910 24.670)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(6.833)
 		mat(mirror glass)
 	}
@@ -200,6 +281,9 @@ content
 	{
 		name(Sphere 33)
 		origin(52.190 18.600 38.600)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(4.657)
 		mat(mirror glass)
 	}
@@ -207,6 +291,9 @@ content
 	{
 		name(Sphere 34)
 		origin(68.160 40.180 0.010)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(5.079)
 		mat(mirror glass)
 	}
@@ -214,6 +301,9 @@ content
 	{
 		name(Sphere 35)
 		origin(32.170 23.140 9.970)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.124)
 		mat(mirror glass)
 	}
@@ -221,6 +311,9 @@ content
 	{
 		name(Sphere 36)
 		origin(59.630 98.830 70.990)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(3.942)
 		mat(mirror glass)
 	}
@@ -228,6 +321,9 @@ content
 	{
 		name(Sphere 37)
 		origin(64.300 97.330 70.700)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(1.942)
 		mat(mirror glass)
 	}
@@ -235,6 +331,9 @@ content
 	{
 		name(Sphere 38)
 		origin(70.550 78.810 75.940)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.551)
 		mat(mirror glass)
 	}
@@ -242,6 +341,9 @@ content
 	{
 		name(Sphere 39)
 		origin(56.120 83.920 44.410)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(6.948)
 		mat(mirror glass)
 	}
@@ -249,6 +351,9 @@ content
 	{
 		name(Sphere 4)
 		origin(68.720 46.690 21.350)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.197)
 		mat(mirror glass)
 	}
@@ -256,6 +361,9 @@ content
 	{
 		name(Sphere 40)
 		origin(72.780 93.930 86.690)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(4.177)
 		mat(mirror glass)
 	}
@@ -263,6 +371,9 @@ content
 	{
 		name(Sphere 41)
 		origin(2.270 49.750 0.410)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(9.565)
 		mat(mirror glass)
 	}
@@ -270,6 +381,9 @@ content
 	{
 		name(Sphere 42)
 		origin(59.270 94.560 96.150)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.305)
 		mat(mirror glass)
 	}
@@ -277,6 +391,9 @@ content
 	{
 		name(Sphere 43)
 		origin(4.550 68.470 10.740)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.872)
 		mat(mirror glass)
 	}
@@ -284,6 +401,9 @@ content
 	{
 		name(Sphere 44)
 		origin(77.530 91.800 65.590)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(5.904)
 		mat(mirror glass)
 	}
@@ -291,6 +411,9 @@ content
 	{
 		name(Sphere 45)
 		origin(7.530 21.070 91.190)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(1.223)
 		mat(mirror glass)
 	}
@@ -298,6 +421,9 @@ content
 	{
 		name(Sphere 46)
 		origin(25.800 16.380 64.260)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(4.586)
 		mat(mirror glass)
 	}
@@ -305,6 +431,9 @@ content
 	{
 		name(Sphere 47)
 		origin(41.650 16.510 33.950)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(4.896)
 		mat(mirror glass)
 	}
@@ -312,6 +441,9 @@ content
 	{
 		name(Sphere 48)
 		origin(51.820 36.240 1.240)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(7.802)
 		mat(mirror glass)
 	}
@@ -319,6 +451,9 @@ content
 	{
 		name(Sphere 49)
 		origin(8.580 57.390 0.790)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.700)
 		mat(mirror glass)
 	}
@@ -326,6 +461,9 @@ content
 	{
 		name(Sphere 5)
 		origin(95.740 50.970 64.810)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.916)
 		mat(mirror glass)
 	}
@@ -333,6 +471,9 @@ content
 	{
 		name(Sphere 6)
 		origin(2.600 1.850 45.590)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(4.261)
 		mat(mirror glass)
 	}
@@ -340,6 +481,9 @@ content
 	{
 		name(Sphere 7)
 		origin(66.530 12.070 99.990)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(10.888)
 		mat(mirror glass)
 	}
@@ -347,6 +491,9 @@ content
 	{
 		name(Sphere 8)
 		origin(76.890 21.130 41.620)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(8.560)
 		mat(mirror glass)
 	}
@@ -354,6 +501,9 @@ content
 	{
 		name(Sphere 9)
 		origin(3.910 79.310 42.120)
+		x(1.000 0.000 0.000)
+		y(0.000 1.000 0.000)
+		z(0.000 0.000 1.000)
 		radius(6.816)
 		mat(mirror glass)
 	}
