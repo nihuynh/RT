@@ -22,6 +22,8 @@ void
 	plane = shape;
 	export_tvec3(fd, "\torigin", plane->origin);
 	export_tvec3(fd, "\tnormal", plane->n);
+	export_tvec3(fd, "\tx", plane->x);
+	export_tvec3(fd, "\ty", plane->y);
 	dprintf(fd, "\t\tlimit(%.3f %.3f)\n", plane->size.x, plane->size.y);
 	dprintf(fd, "\t\ttype(%d)\n", plane->type);
 	if (plane->type == 2)
@@ -38,6 +40,9 @@ void
 
 	sphere = shape;
 	export_tvec3(fd, "\torigin", sphere->origin);
+	export_tvec3(fd, "\tx", sphere->x);
+	export_tvec3(fd, "\ty", sphere->y);
+	export_tvec3(fd, "\tz", sphere->z);
 	dprintf(fd, "\t\tradius(%.3f)\n", sphere->radius);
 }
 
@@ -49,6 +54,8 @@ void
 	cone = shape;
 	export_tvec3(fd, "\torigin", cone->origin);
 	export_tvec3(fd, "\tnormal", cone->n);
+	export_tvec3(fd, "\tx", cone->x);
+	export_tvec3(fd, "\tz", cone->z);
 	dprintf(fd, "\t\ttheta(%.3f)\n", cone->theta);
 	dprintf(fd, "\t\tsize(%.3f)\n", cone->size);
 }
@@ -61,6 +68,8 @@ void
 	cylinder = shape;
 	export_tvec3(fd, "\torigin", cylinder->origin);
 	export_tvec3(fd, "\tnormal", cylinder->n);
+	export_tvec3(fd, "\tx", cylinder->x);
+	export_tvec3(fd, "\tz", cylinder->z);
 	dprintf(fd, "\t\tradius(%.3f)\n", cylinder->radius);
 	dprintf(fd, "\t\tsize(%.3f)\n", cylinder->size);
 }
