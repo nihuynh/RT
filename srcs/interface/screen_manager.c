@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/24 18:34:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:39:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL.h>
 #include "config.h"
 #include "libui.h"
+#include "ftmem.h"
 #include "interface.h"
 
 void

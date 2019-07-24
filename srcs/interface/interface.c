@@ -6,12 +6,13 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/24 18:34:26 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:39:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "ftio.h"
+#include "ftmem.h"
 #include "ftstring.h"
 #include "interface.h"
 #include "imgui_impl_sdl.h"
