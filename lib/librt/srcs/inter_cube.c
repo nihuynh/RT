@@ -90,10 +90,16 @@ void
 	float		dist;
 	t_matrix	local_matrix;
 	t_ray		local_ray;
+	t_vec3		ray2cube;
 
 	cube = node->shape;
 	local_matrix = mat_set_axes(cube->x, cube->n, cube->z);
-	local_ray = ray_transform(inter->ray, local_matrix);
+	local_ray = inter->ray;
+	ray2cube = vec3_sub_(local_ray.origin, cube->origin);
+	apply_matrix(&ray2cube, &local_matrix);
+	vec3_scalar(&local_ray.origin, -1);
+	vec3_add(&local_ray.origin, &ray2cube, &cube->origin);
+	apply_matrix(&local_ray.dir, &local_matrix);
 	vec3_normalize(&local_ray.dir);
 	dist = inter_local(inter, &local_ray, cube);
 	if (dist >= inter->dist || dist < 0)
