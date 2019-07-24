@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:30:19 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/24 18:30:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 22:32:15 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	load_win(t_gui *gui)
 			load_scene(gui->app, buff);
 		else
 		{
-			ft_strlcpy(gui->err_msg, "File don't exist", sizeof(gui->err_msg));
+			ft_strlcpy(gui->err_msg, "File not found.", sizeof(gui->err_msg));
 			gui->err_open = true;
 		}
 		gui->load_open = false;
