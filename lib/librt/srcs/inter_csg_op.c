@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_csg_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 00:38:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/22 17:47:26 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/24 17:50:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ static inline t_inter
 }
 
 static inline t_inter
-	not_op(t_inter core, t_inter sub)
+	not_op(t_inter core, t_inter sub, t_inter no_inter)
 {
-	t_inter no_inter;
-
-	inter_set(&no_inter, sub.ray);
 	if ((core.dist < sub.hit_pts.x && core.dist < sub.hit_pts.y)
 		|| core.dist == INFINITY || sub.hit_pts.x == INFINITY)
 		return (core);
@@ -90,26 +87,26 @@ t_inter
 {
 	t_inter no_inter;
 
+	inter_set(&no_inter, incoming);
 	if (right.obj != NULL && right.obj->type == 2
 		&& is_inside_cone(&right))
 	{
 		if (type == INTER)
-			return (not_op(left, right));
+			return (not_op(left, right, no_inter));
 		if (type == NOT)
 			return (inter_op(left, right));
 	}
 	if (left.obj != NULL && left.obj->type == 2
 		&& is_inside_cone(&left) && type == INTER)
-		return (not_op(right, left));
+		return (not_op(right, left, no_inter));
 	if (right.obj != NULL && right.obj->type == 0 && type == NOT)
 		return (not_plane(left, right));
 	if (type == INTER)
 		return (inter_op(left, right));
 	if (type == NOT)
-		return (not_op(left, right));
+		return (not_op(left, right, no_inter));
 	if (type == UNION)
 		return (union_op(left, right));
 	ft_error(__func__, __LINE__);
-	inter_set(&no_inter, incoming);
 	return (no_inter);
 }
