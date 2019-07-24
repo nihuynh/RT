@@ -34,7 +34,8 @@ t_vec3		vec3_normalize_(t_vec3 v1)
 	k = vec3_mag(v1);
 	if (k == 0)
 		return (v1);
-	k = 1.0f / k;	v1.x *= k;
+	k = 1.0f / k;
+	v1.x *= k;
 	v1.y *= k;
 	v1.z *= k;
 	return (v1);
