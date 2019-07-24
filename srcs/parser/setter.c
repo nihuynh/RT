@@ -53,10 +53,9 @@ void
 	pplane->size = parse_vec2("limit(", scene_file);
 	pplane->type = parse_int("type(", scene_file);
 	if (pplane->type == 2)
-	{
 		pplane->p1 = parse_vec2("p1(", scene_file);
+	if (pplane->type == 2)
 		pplane->p2 = parse_vec2("p2(", scene_file);
-	}
 	vec3_normalize(&pplane->x);
 	vec3_normalize(&pplane->n);
 	vec3_normalize(&pplane->y);

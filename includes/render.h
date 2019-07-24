@@ -29,8 +29,6 @@
 
 t_shading		get_shading_data(t_inter *inter);
 void			render_gui(void *arg);
-void			light_intensity(t_inter *inter, t_color *color, t_ray *ray);
-void			cast_shadow(t_data *app, t_inter *inter);
 t_color			get_lighting(t_shading s, t_scene scene, t_settings *setng);
 void			cast_primary(t_list *obj_list, t_inter *inter);
 t_color			recursive_cast(t_scene scene, t_settings s, t_ray r, int depth);

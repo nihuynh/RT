@@ -19,9 +19,6 @@
 */
 
 # define BACK_COLOR		0x000000
-# define RED			0xFF0000
-# define GREEN			0x00FF00
-# define BLUE			0x0000FF
 # define FOV			40.0f
 # define DEPTH_MAX		2
 # define SUB_SAMPLE		8
@@ -45,7 +42,6 @@
 */
 
 # define T_STEP			5.0f
-# define Z_STEP			1
 # define A_STEP			5 * DEG_TO_RAD
 # define MOUSE_SCALING	0.005f
 
@@ -53,7 +49,6 @@
 ** UI :
 */
 
-# define RENDER_STATIC	1
 # define RENDER_SCALE	0.75
 # define MENUBAR_HEIGHT 18
 
@@ -61,7 +56,6 @@
 ** Static def :
 */
 
-# define DEV			0
 # define MACB			1
 # define IMAC			2
 # define IMAC4K			3

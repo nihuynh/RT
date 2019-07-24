@@ -55,7 +55,6 @@ void			parse_material_csv(t_data *app, char *csv_file);
 void			get_scenes(t_data *app);
 int				reader(char *str, t_data *app);
 void			load_scene(t_data *app, char *filename);
-void			reload(t_data *app, char *filename);
 
 /*
 ** Unloading :
@@ -68,7 +67,6 @@ void			free_lst(t_data *data);
 ** Others :
 */
 
-int				export_scene(t_data *app, char *filename);
 void			export_animation(int fd, t_data *app);
 void			record_frame(t_data *app);
 

@@ -60,7 +60,6 @@ void	anim_delete(t_data *app);
 void	animate(t_data *app);
 void	anim_reset(t_data *app);
 void	anim_add_light(t_data *app, t_light *light);
-void	object_settings(t_data *app);
 
 void	export_material(int fd, t_material *mat);
 bool	load_selected_tex(const char *label, char *name, t_list *current,
@@ -74,24 +73,18 @@ void	anim_del_one(t_data *app, t_anim *anim, t_anim *to_del);
 ** Prototypes :
 */
 
-void	icolortogui(int src, float dest[3]);
-void	guicolortoi(float src[3], int *dest);
-void	colortogui(t_color src, float dest[3]);
-void	guitocolor(float src[3], t_color *dest);
 void	material_list(t_list *lst_mat, t_material *mat);
-void	texture_list(t_list *lst_tex, t_obj *obj);
 void	node_type_list(t_csg_op *csg_op);
 void	new_obj_list(int *type);
 void	list_scenes(t_gui *gui);
 void	new_light(t_data *app);
 void	new_obj(t_data *app, int type);
-void	new_axis_debug(t_data *app, t_pt3 origin, t_vec3 vec, t_color color);
 void	delete_obj(t_data *app);
 void	delete_light(t_data *app);
 bool	check_file(char *filename);
 void	edit_color_mat(t_color *target, char *label, t_material *mat);
 void	new_cluster(t_data *app, int type);
-void ui_apply_rotation(t_vec3 *x, t_vec3 *y, t_vec3 *z);
+void	ui_apply_rotation(t_vec3 *x, t_vec3 *y, t_vec3 *z);
 
 /*
 ** UI SHAPES
@@ -105,7 +98,6 @@ void	ui_cube(void *app_v, void *shape);
 void	ui_tore(void *app_v, void *shape);
 void	ui_cylinder(void *app_v, void *shape);
 void	ui_light(t_data *app, t_light *light);
-void	ui_cam_win(t_gui *gui);
 void	ui_cluster(t_cluster *cluster);
 
 /*

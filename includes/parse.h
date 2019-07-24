@@ -23,7 +23,6 @@
 # define ERR_UNKNWD_MAT		"Err : Unknown material"
 # define ERR_UNKNWD_OBJ_A	"Err : Unknown object in animation list"
 # define ERR_UNKNWD_MOTION	"Err : Unknown motion in animation list"
-# define ERR_MISSING_MOTION	"Err : Missing motion in animation list"
 
 # define ERR_PARSE_VEC3		"Err : [Vec3]	Wrong number of args"
 # define ERR_PARSE_FLOAT	"Err : [Float]	Wrong number of args"
