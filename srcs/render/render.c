@@ -35,7 +35,7 @@ void
 }
 
 static inline t_color
-	cast_bounce(t_scene scene, t_settings settings, t_inter *inter, int d)
+	cast_bounce(t_scene scene, t_settings sett, t_inter *inter, int d)
 {
 	t_ray		absorbed;
 	t_color		colors[2];
@@ -45,19 +45,19 @@ static inline t_color
 	ft_bzero(&colors, sizeof(colors));
 	kr = 1;
 	mat = &inter->obj->material;
-	d++;
 	if (color_bool(mat->reflection_color) || color_bool(mat->refraction_color))
 		kr = fresnel(inter->ray.dir, inter->n, mat->refraction_idx);
-	if (settings.deflect && color_bool(mat->reflection_color))
+	if (sett.deflect && color_bool(mat->reflection_color))
 	{
-		colors[REFLECT] = recursive_cast(scene, settings, inter->deflected, d);
+		colors[REFLECT] = recursive_cast(scene, sett, inter->deflected, d + 1);
 		color_mult(&colors[REFLECT], &mat->reflection_color);
 		color_scalar(&colors[REFLECT], kr);
 	}
-	if (settings.absorb && color_bool(mat->refraction_color))
+	if (sett.absorb && color_bool(mat->refraction_color)
+		&& mat->refraction_idx)
 	{
 		inter_setrefract(inter, &absorbed);
-		colors[REFRACT] = recursive_cast(scene, settings, absorbed, d);
+		colors[REFRACT] = recursive_cast(scene, sett, absorbed, d + 1);
 		color_mult(&colors[REFRACT], &mat->refraction_color);
 		color_scalar(&colors[REFRACT], 1 - kr);
 	}
