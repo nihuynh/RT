@@ -6,12 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:40:23 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:01:52 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:28:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "animate.h"
-#include <stdlib.h>
+#include "ftmem.h"
 
 void
 	del_anim(void *content, size_t content_size)
@@ -27,6 +27,6 @@ void
 	if (anim->next)
 		del_anim(anim->next, 0);
 	anim_free(anim);
-	free(anim);
+	ft_memdel((void **)&anim);
 	anim = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim_toolbox.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:56:43 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/20 21:05:13 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/24 18:33:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void
 {
 	t_translate	*trans;
 	t_translate	tmp;
-	char		*str;
+	char		*str __attribute__((cleanup(ft_strdel)));
 
 	trans = anim->res;
 	tmp = *trans;
@@ -29,18 +29,17 @@ void
 		ft_error(__func__, __LINE__);
 	if (igSliderFloat3(str, &tmp.dir.x, -1, 1, "%g", 1))
 		trans->dir = tmp.dir;
-	free(str);
+	ft_strdel(&str);
 	igSameLine(0, 0);
 	if (!(str = ft_strjoini("Normalize ", n)))
 		ft_error(__func__, __LINE__);
 	if (igButton(str, (ImVec2){0, 0}))
 		vec3_normalize(&trans->dir);
-	free(str);
+	ft_strdel(&str);
 	if (!(str = ft_strjoini("Speed ", n)))
 		ft_error(__func__, __LINE__);
 	if (igDragFloat(str, &tmp.speed, 1, 0, 1000, "%g", 1))
 		trans->speed = tmp.speed;
-	free(str);
 }
 
 void
@@ -48,7 +47,7 @@ void
 {
 	t_rotate	*rotate;
 	t_rotate	tmp;
-	char		*str;
+	char		*str __attribute__((cleanup(ft_strdel)));
 
 	rotate = anim->res;
 	tmp = *rotate;
@@ -56,16 +55,15 @@ void
 		ft_error(__func__, __LINE__);
 	if (igSliderFloat3(str, &tmp.axis.x, -1, 1, "%g", 1))
 		rotate->axis = tmp.axis;
-	free(str);
+	ft_strdel(&str);
 	igSameLine(0, 0);
 	if (!(str = ft_strjoini("Normalize ", n)))
 		ft_error(__func__, __LINE__);
 	if (igButton(str, (ImVec2){0, 0}))
 		vec3_normalize(&rotate->axis);
-	free(str);
+	ft_strdel(&str);
 	if (!(str = ft_strjoini("Speed ", n)))
 		ft_error(__func__, __LINE__);
 	if (igDragFloat(str, &tmp.deg, 1, -360, 360, "%g", 1))
 		rotate->deg = tmp.deg;
-	free(str);
 }

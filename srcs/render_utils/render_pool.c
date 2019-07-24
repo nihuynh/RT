@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:12:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/09 17:29:35 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:34:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,8 @@ int
 		if (pool)
 		{
 			if (pool->thrs)
-				free(pool->thrs);
-			free(pool);
+				ft_memdel((void**)&pool->thrs);
+			ft_memdel((void**)&pool);
 		}
 	}
 	return (EXIT_SUCCESS);

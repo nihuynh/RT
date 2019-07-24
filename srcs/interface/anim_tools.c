@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 22:05:53 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/09 13:14:20 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/24 18:37:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int
 	if (anim->type == 0)
 		return (1);
 	else
-		free(anim->res);
+		ft_memdel((void**)&anim->res);
 	anim->res = NULL;
 	return (1);
 }
@@ -42,7 +42,7 @@ static inline void
 	{
 		lst->content = to_del->next;
 		app->gui.anim_set = to_del->next;
-		(anim_free(to_del)) ? free(to_del) : (void)0;
+		(anim_free(to_del)) ? ft_memdel((void**)&to_del) : (void)0;
 	}
 }
 
@@ -58,6 +58,6 @@ void
 		if (anim->next != to_del)
 			ft_error(__func__, __LINE__);
 		anim->next = anim->next->next;
-		(anim_free(to_del)) ? free(to_del) : (void)0;
+		(anim_free(to_del)) ? ft_memdel((void**)&to_del) : (void)0;
 	}
 }

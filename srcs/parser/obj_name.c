@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_name.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 14:34:56 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/18 16:15:07 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/24 18:29:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*name_obj(int type, int *nb)
 		if (!(name = ft_strjoin("Light ", tmp)))
 			ft_error(__func__, __LINE__);
 	}
-	free(tmp);
+	ft_strdel(&tmp);
 	*nb += 1;
 	return (name);
 }

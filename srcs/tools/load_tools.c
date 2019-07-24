@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 03:28:01 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/03 17:34:23 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/24 18:26:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void
 	if (!(tmp = ft_strdup(filename)))
 		ft_error(__func__, __LINE__);
 	load_scene(app, tmp);
-	free(tmp);
+	ft_strdel(&tmp);
 }

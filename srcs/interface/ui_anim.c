@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 17:26:12 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/18 17:12:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/24 18:33:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void
 		}
 		igEndCombo();
 	}
-	free(str);
+	ft_strdel(&str);
 }
 
 static inline void
@@ -79,7 +79,7 @@ static inline void
 static inline int
 	anim_detail(t_gui *gui, t_anim *anim, int i, ImVec2 size)
 {
-	char	*str_list;
+	char	*str_list __attribute__((cleanup(ft_strdel)));
 
 	if (!(str_list = ft_strjoini("Movement ", i)))
 		ft_error(__func__, __LINE__);
@@ -90,10 +90,8 @@ static inline int
 	if (igButton(str_list, (ImVec2){0, 0}))
 	{
 		anim_del_one(gui->app, gui->anim_set, anim);
-		free(str_list);
 		return (EXIT_FAILURE);
 	}
-	free(str_list);
 	if (anim->ui_anim)
 		anim->ui_anim(anim, i);
 	igSeparator();

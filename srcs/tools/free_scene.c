@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:53:33 by sklepper          #+#    #+#             */
-/*   Updated: 2019/06/25 23:34:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:28:43 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static inline void
 	ft_strdel(&texture->pixels);
 	ft_strdel(&texture->name);
 	ft_strdel(&texture->dir);
-	free(texture);
+	ft_memdel((void **)&texture);
 }
 
 static inline void
@@ -36,7 +36,7 @@ static inline void
 	(void)content_size;
 	mat = content;
 	ft_strdel(&mat->name);
-	free(mat);
+	ft_memdel((void **)&mat);
 }
 
 static inline void
@@ -46,9 +46,9 @@ static inline void
 
 	(void)content_size;
 	scene = content;
-	free(scene->dir);
-	free(scene->name);
-	free(scene);
+	ft_strdel(&scene->dir);
+	ft_strdel(&scene->name);
+	ft_memdel((void **)&scene);
 }
 
 void

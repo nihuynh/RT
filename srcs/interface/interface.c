@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 17:22:04 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 22:42:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:34:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void
 	{
 		ft_strdel(&gui->keymap.name);
 		ft_strdel(&gui->keymap.dir);
-		free(gui->keymap.pixels);
+		ft_memdel((void**)&gui->keymap.pixels);
 	}
 }
 

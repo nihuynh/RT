@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 21:28:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/20 18:47:34 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:37:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ static inline void
 	if (node->content_size == sizeof(t_obj))
 		del_obj(node->content, node->content_size);
 	else
-	{
-		free(node->content);
-		node->content = NULL;
-	}
-	free(node);
-	node = NULL;
+		ft_memdel((void**)&node->content);
+	ft_memdel((void**)&node);
 }
 
 void
@@ -45,7 +41,7 @@ void
 		root = csg->root;
 		ft_b3del(&root, free_btree);
 	}
-	free(obj->shape);
+	ft_memdel((void**)&obj->shape);
 	obj->shape = NULL;
 	ft_strdel(&obj->name);
 	ft_memdel((void **)&obj);
@@ -58,9 +54,8 @@ void
 
 	(void)content_size;
 	light = content;
-	free(light->name);
-	free(light);
-	light = NULL;
+	ft_strdel(&light->name);
+	ft_memdel((void**)&light);
 }
 
 void

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 12:32:10 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/17 19:21:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:29:36 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void
 	{
 		if (ft_strlen(buff) > 0)
 		{
-			free(obj->name);
+			ft_strdel(&obj->name);
 			if (!(obj->name = ft_strdup(buff)))
 				ft_error(__func__, __LINE__);
 			ft_lstsort(&app->scene.lst_obj, &obj_cmp);

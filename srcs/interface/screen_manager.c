@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:24:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/02 22:08:36 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 18:34:53 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void
 	int		ofs;
 
 	if (sdl->img.pixels)
-		free(sdl->img.pixels);
+		ft_memdel((void**)&sdl->img.pixels);
 	sdl->img.height = height;
 	sdl->img.width = width;
 	sdl->thr_len = (width * height) / THR_C;

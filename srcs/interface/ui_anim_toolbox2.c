@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_anim_toolbox2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:01:22 by sklepper          #+#    #+#             */
-/*   Updated: 2019/07/20 21:30:12 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/24 18:32:31 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static inline void
 static inline void
 	ui_orbit_obj(t_orbit *orbit, int n)
 {
-	char	*str;
+	char	*str __attribute__((cleanup(ft_strdel)));
 	t_data	*app;
 
 	app = NULL;
@@ -59,13 +59,12 @@ static inline void
 	if (!(str = ft_strjoini("Center Object ", n)))
 		ft_error(__func__, __LINE__);
 	ui_orbit_obj_list(app, orbit, str);
-	free(str);
 }
 
 static inline void
 	ui_orbit_pos(t_orbit *orbit, int n)
 {
-	char	*str;
+	char	*str __attribute__((cleanup(ft_strdel)));
 	t_data	*app;
 	t_pt3	tmp;
 
@@ -76,7 +75,6 @@ static inline void
 		ft_error(__func__, __LINE__);
 	if (igInputFloat3(str, &tmp.x, "%g", 0))
 		orbit->center = tmp;
-	free(str);
 }
 
 void
