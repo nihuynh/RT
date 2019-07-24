@@ -55,7 +55,7 @@ content
 		refraction_color(0.000 0.000 0.000)
 		reflection_color(0.000 0.000 0.000)
 		refraction_idx(0.000)
-		uv_scale(1.000 1.000)
+		uv_scale(10.000 10.000)
 		uv_offset(0.000 0.000)
 	}
 	object(plane)
