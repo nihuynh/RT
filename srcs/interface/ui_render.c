@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 19:54:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/21 19:42:53 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/24 22:38:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void
 	about_win(t_gui *gui)
 {
 	igBegin("About", &gui->about_open, ImGuiWindowFlags_AlwaysAutoResize);
-	igText("Created by : Nicolas Huynh, Samuel Klepper, Thibault D'archivio");
+	igText("Created by : Nicolas Huynh, Samuel Klepper, Thibault D'Archivio");
 	igText("Made in 2019 @42 Paris");
 	igEnd();
 }
