@@ -43,6 +43,7 @@
 		"ftio.h": "c",
 		"pthread.h": "c",
 		"perlin.h": "c",
-		"librt.h": "c"
+		"librt.h": "c",
+		"export.h": "c"
 	}
 }

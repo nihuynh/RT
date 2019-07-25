@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 03:32:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/21 22:09:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/25 13:43:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ struct				s_sdl
 	int				height_vp;
 	int				thr_len;
 	t_data_thr		*data_thr;
-	t_thr_pool		*pool;
 	SDL_Window		*win;
 	void			(*key_map)(int*, SDL_Keycode, void*, bool state);
 	void			(*mouse_map)(SDL_Event*, void *);

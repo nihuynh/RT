@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 04:20:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/06/25 23:14:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/07/25 13:39:32 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include "t_data.h"
 # include "export.h"
+# include "interface.h"
 # include "libft.h"
 
 int		reader_no_exit(char *filename, t_data *app);
