@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:16:47 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/07/18 16:08:43 by sklepper         ###   ########.fr       */
+/*   Updated: 2019/07/26 22:36:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void
 **
 ** @param obj 	: Dst of the data
 ** @param type	: type of the object requested
-** @param shape	: Adress of the shape data
 */
 
 void
