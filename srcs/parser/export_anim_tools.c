@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "animate.h"
+#include "export.h"
 #include <stdio.h>
 
 void	export_translate(int fd, t_anim *anim)

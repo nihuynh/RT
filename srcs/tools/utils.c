@@ -96,3 +96,16 @@ int
 		return (UNION);
 	return (0);
 }
+
+int		my_dprintf(int fd, const char *str, ...)
+{
+	char 	buffer[4096];
+	va_list	list;
+	int		ret;
+
+	va_start(list, str);
+	ret = snprintf(buffer, 4096, str, list);
+	va_end(list);
+	write(fd, buffer, ret);
+	return (ret);
+}

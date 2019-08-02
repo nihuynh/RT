@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <time.h>
 #include "t_data.h"
 #include "config.h"
 #include "libft.h"

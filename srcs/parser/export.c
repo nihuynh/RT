@@ -19,6 +19,7 @@
 #include <locale.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 static inline void
 	export_camera(int fd, t_cam *cam, t_color amb_light, t_texture *skybox)

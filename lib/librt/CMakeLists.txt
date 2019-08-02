@@ -5,6 +5,7 @@ add_library(rt "")
 
 target_include_directories(rt PUBLIC includes)
 target_include_directories(rt PRIVATE ../libft/includes)
+target_link_libraries(rt ft)
 
 target_sources(rt PRIVATE
         srcs/color_add.c

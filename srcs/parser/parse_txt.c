@@ -15,7 +15,7 @@
 #include "parse.h"
 #include <unistd.h>
 #include <stdlib.h>
-#include <sys/errno.h>
+#include <errno.h>
 
 /**
 ** @brief Check if the line_idx is in range and return the curr_line.

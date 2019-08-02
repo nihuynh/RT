@@ -15,6 +15,10 @@
 
 # include <SDL.h>
 
+# ifndef dprintf
+#  define dprintf my_dprintf
+# endif
+
 /*
 ** Functions Expose :
 */
@@ -36,5 +40,6 @@ void	set_win_title(SDL_Window *win, char *filename);
 void	export_tvec3(int fd, char *name, t_vec3 vector);
 void	export_color(int fd, char *name, t_color color);
 char	*get_obj_str(int type);
+int		my_dprintf(int fd, const char *str, ...);
 
 #endif

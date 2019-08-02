@@ -47,7 +47,7 @@ void
 }
 
 void
-	interface(t_data *app)
+	ui_frame(t_data *app)
 {
 	ImGuiIO *io;
 

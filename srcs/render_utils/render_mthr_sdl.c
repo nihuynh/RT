@@ -70,6 +70,7 @@ static inline void
 		idx_in_slice += inc;
 	}
 	pthread_exit(NULL);
+	return (NULL);
 }
 
 void

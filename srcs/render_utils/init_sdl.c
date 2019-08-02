@@ -36,7 +36,7 @@ t_sdl	*init_sdl(int width, int height)
 									SDL_WINDOWPOS_CENTERED,
 									width,
 									height,
-									SDL_WINDOW_SHOWN)))
+									SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL)))
 		error_sdl(sdl);
 	SDL_SetHint(SDL_HINT_BMP_SAVE_LEGACY_FORMAT, "1");
 	if (IMG_Init(0) != 0)

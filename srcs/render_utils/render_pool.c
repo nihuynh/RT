@@ -67,37 +67,6 @@ static inline void
 }
 
 int
-	init_pool(t_sdl *sdl, int (*do_pxl) (int, int, void*), void *prg_d,
-		uint16_t thr_count)
-{
-	unsigned short	idx;
-	int				sats;
-
-	idx = -1;
-	sats = 0;
-	if (!(sdl->pool = ft_memalloc(sizeof(t_thr_pool))))
-		ft_error(__func__, __LINE__);
-	sdl->pool->wait_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
-	sdl->pool->wait_sig = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
-	sdl->pool->idx_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
-	sdl->pool->idle_lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
-	sdl->pool->render_done = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
-	if (!(sdl->pool->thrs = ft_memalloc(sizeof(pthread_t) * thr_count)))
-		ft_error(__func__, __LINE__);
-	sdl->pool->limit = sdl->img.width * sdl->img.height;
-	sdl->pool->thr_count = thr_count;
-	sdl->pool->sdl = sdl;
-	sdl->pool->do_pxl = do_pxl;
-	sdl->pool->prg_data = prg_d;
-	while (++idx < thr_count && !sats)
-	{
-		sats = pthread_create(&sdl->pool->thrs[idx], NULL, thr_fun, sdl->pool);
-		pthread_detach(sdl->pool->thrs[idx]);
-	}
-	return (EXIT_SUCCESS);
-}
-
-int
 	pool_render(t_thr_pool *pool)
 {
 	long	elapsed_time;

@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "t_data.h"
+#include "export.h"
 
 static inline const char
 	*get_anim_str(int type)

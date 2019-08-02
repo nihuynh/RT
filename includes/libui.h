@@ -15,6 +15,7 @@
 
 # include <SDL.h>
 # include <stdbool.h>
+# include <pthread.h>
 
 # define THR_C			10
 # define BATCH_SIZE		16

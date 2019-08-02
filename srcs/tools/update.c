@@ -36,5 +36,5 @@ void	render_gui(void *arg)
 
 	app = arg;
 	update_texture(app->sdl->img, app->gui);
-	interface(app);
+	ui_frame(app);
 }

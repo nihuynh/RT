@@ -12,6 +12,7 @@
 
 #include "rtstruct.h"
 #include "ftstring.h"
+#include "export.h"
 #include <stdio.h>
 
 void
