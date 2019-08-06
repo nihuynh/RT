@@ -254,7 +254,7 @@ endif()
 # MinGW needs an additional link flag, -mwindows
 # It's total link flags should look like -lmingw32 -lSDL2main -lSDL2 -mwindows
 if(MINGW)
-    set(MINGW32_LIBRARY mingw32 "-mwindows" CACHE STRING "link flags for MinGW")
+#    set(MINGW32_LIBRARY mingw32 "-mwindows" CACHE STRING "link flags for MinGW")
 endif()
 
 if(SDL2_LIBRARY)
@@ -377,7 +377,7 @@ if(SDL2_FOUND)
             if(MINGW)
                 # MinGW needs an additional link flag '-mwindows' and link to mingw32
                 set_property(TARGET SDL2::Main PROPERTY
-                        INTERFACE_LINK_LIBRARIES "mingw32" "-mwindows")
+                        INTERFACE_LINK_LIBRARIES "mingw32")
             endif()
 
             set_property(TARGET SDL2::Main APPEND PROPERTY
