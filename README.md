@@ -2,7 +2,6 @@
 
 ![Top](docs/screenshot/main.png)
 ![Build Status](https://travis-ci.com/nihuynh/RT.svg?token=PdGtpZGzFKLd1CBjD7Ym&branch=master)
-![GitHub repo size](https://img.shields.io/github/repo-size/nihuynh/RT)
 ![GitHub last commit](https://img.shields.io/github/last-commit/nihuynh/RT)
 
 ## Summary
