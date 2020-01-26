@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['scale_1594',['scale',['../structs__uv__mapping.html#a3e5164ffbc2a0e4c011c80a0671585b8',1,'s_uv_mapping']]],
+  ['scene_1595',['scene',['../structs__data.html#a808a6f04ed3d183c93cc0d54461b7125',1,'s_data']]],
+  ['sdl_1596',['sdl',['../structs__data__thr.html#aadbc877940da7dfb80e2f30d6a3f3854',1,'s_data_thr::sdl()'],['../structs__thr__pool.html#a764086524c78d331e2aaa5ce919ed127',1,'s_thr_pool::sdl()'],['../structs__data.html#a8fb1309b2e703b6d2878879660203411',1,'s_data::sdl()'],['../structs__gui.html#abbb56743a69cc3ca4fef55e543a80ca6',1,'s_gui::sdl()']]],
+  ['sepia_1597',['sepia',['../structs__sdl.html#a08cf0a832f65faf850ff8198ee088fc3',1,'s_sdl']]],
+  ['setter_1598',['setter',['../structs__parse.html#aabc625630d17bfb5af1f830ecde2c2f4',1,'s_parse::setter()'],['../structs__built.html#a914e6c97334367b40572cfac904fbc7b',1,'s_built::setter()']]],
+  ['settings_1599',['settings',['../structs__data.html#a7948cc8a5eec558c5ff882f5a239e42c',1,'s_data']]],
+  ['shading_5fnormal_1600',['shading_normal',['../structs__shading.html#a054492f4f78331fb40d64ecdaed0b2e4',1,'s_shading']]],
+  ['shadow_1601',['shadow',['../structs__settings.html#a9e05a83e6e3213374fa21eea269dd2c7',1,'s_settings']]],
+  ['shape_1602',['shape',['../structs__obj.html#ad010aab3f01fe78e18d594146e432eb0',1,'s_obj']]],
+  ['shine_1603',['shine',['../structs__settings.html#a1861b7fb7f82f8c46411225535c730bf',1,'s_settings']]],
+  ['size_1604',['size',['../structs__plane.html#a17c16dd9b6d1f4273eae90e5c695f485',1,'s_plane::size()'],['../structs__cone.html#a304e257d85ff84df86720546f3dfafa5',1,'s_cone::size()'],['../structs__cylinder.html#acb0f6ffb44183eb428eafee85ab0c48f',1,'s_cylinder::size()'],['../structs__cube.html#a4c9c79826a44bb593f675276f4b7157a',1,'s_cube::size()'],['../structs__tore.html#a3fb2f57821f1a2f76381466bcc6403a4',1,'s_tore::size()']]],
+  ['size_5fcluster_1605',['size_cluster',['../structs__cluster.html#a996bab66ce53d372beafa1d0f3dd1381',1,'s_cluster']]],
+  ['skybox_1606',['skybox',['../structs__scene.html#ae41bd55825282a4b807c80d15b06789b',1,'s_scene::skybox()'],['../structs__settings.html#a1f778b9629031ffb15951aafc6be4b43',1,'s_settings::skybox()']]],
+  ['spec_5fidx_1607',['spec_idx',['../structs__material.html#ad034c76aa77fd7d25b2edae1d6adcd2d',1,'s_material']]],
+  ['spec_5fmap_1608',['spec_map',['../structs__material.html#a172fb2ee830936ffa66c68f0fa3cbcbb',1,'s_material']]],
+  ['spec_5fpower_1609',['spec_power',['../structs__material.html#a24503ceb7a3638859d1952762f109991',1,'s_material']]],
+  ['specular_5fdir_1610',['specular_dir',['../structs__shading.html#a9e380bec60cc3981e41f08f46a618608',1,'s_shading']]],
+  ['speed_1611',['speed',['../structs__translate.html#adf3ed05723906f47010224091e6d49c1',1,'s_translate::speed()'],['../structs__cam.html#a31cd6df40dc0ebbcc52a4c1fc273bf78',1,'s_cam::speed()']]],
+  ['stats_5fopen_1612',['stats_open',['../structs__gui.html#a8c09dd688d3739fdda955484c6632192',1,'s_gui']]],
+  ['strafe_5fleft_1613',['strafe_left',['../structs__cam.html#afb0a4795737e30e99af3a7680e4027bf',1,'s_cam']]],
+  ['strafe_5fright_1614',['strafe_right',['../structs__cam.html#a3c28f194c3a166f4f88372415f285a02',1,'s_cam']]],
+  ['sub_5fs_1615',['sub_s',['../structs__sdl.html#a3eb567782e5c7bd7cb341790ba17bff9',1,'s_sdl']]],
+  ['sub_5fsample_1616',['sub_sample',['../structs__sdl.html#a8bad913cebd8a0b2e47a36e6151371d5',1,'s_sdl']]]
+];

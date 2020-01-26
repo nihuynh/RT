@@ -1,0 +1,21 @@
+<map id="s_gui" name="s_gui">
+<area shape="rect" id="node1" title=" " alt="" coords="424,693,477,719"/>
+<area shape="rect" id="node13" href="$structs__data.html" title=" " alt="" coords="418,780,480,805"/>
+<area shape="rect" id="node2" href="$structs__vec3.html" title=" " alt="" coords="664,287,727,312"/>
+<area shape="rect" id="node3" href="$structs__cluster.html" title=" " alt="" coords="455,557,530,583"/>
+<area shape="rect" id="node4" href="$structs__obj.html" title=" " alt="" coords="660,467,713,493"/>
+<area shape="rect" id="node16" href="$structs__cam.html" title=" " alt="" coords="853,607,914,632"/>
+<area shape="rect" id="node18" href="$structs__anim.html" title=" " alt="" coords="713,607,777,632"/>
+<area shape="rect" id="node19" href="$structs__light.html" title=" " alt="" coords="566,467,625,493"/>
+<area shape="rect" id="node5" href="$structs__material.html" title=" " alt="" coords="270,287,353,312"/>
+<area shape="rect" id="node6" href="$structs__uv__mapping.html" title=" " alt="" coords="244,139,352,165"/>
+<area shape="rect" id="node7" href="$structs__vec2.html" title=" " alt="" coords="233,5,297,31"/>
+<area shape="rect" id="node8" href="$structs__color.html" title=" " alt="" coords="442,5,506,31"/>
+<area shape="rect" id="node9" href="$structs__texture.html" title=" " alt="" coords="131,139,207,165"/>
+<area shape="rect" id="node15" href="$structs__settings.html" title=" " alt="" coords="912,223,994,249"/>
+<area shape="rect" id="node14" href="$structs__scene.html" title=" " alt="" coords="5,357,76,382"/>
+<area shape="rect" id="node10" href="$structs__sdl.html" title=" " alt="" coords="89,607,142,632"/>
+<area shape="rect" id="node12" href="$structs__data__thr.html" title=" " alt="" coords="45,693,130,719"/>
+<area shape="rect" id="node11" href="$structs__img.html" title=" " alt="" coords="87,467,144,493"/>
+<area shape="rect" id="node17" href="$structs__matrix.html" title=" " alt="" coords="960,467,1031,493"/>
+</map>

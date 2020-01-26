@@ -1,0 +1,10 @@
+<map id="s_shading" name="s_shading">
+<area shape="rect" id="node1" title=" " alt="" coords="116,415,199,440"/>
+<area shape="rect" id="node2" href="$structs__vec3.html" title=" " alt="" coords="23,126,87,151"/>
+<area shape="rect" id="node8" href="$structs__light.html" title=" " alt="" coords="128,301,187,326"/>
+<area shape="rect" id="node3" href="$structs__material.html" title=" " alt="" coords="257,301,340,326"/>
+<area shape="rect" id="node4" href="$structs__uv__mapping.html" title=" " alt="" coords="445,126,553,151"/>
+<area shape="rect" id="node5" href="$structs__vec2.html" title=" " alt="" coords="467,5,531,31"/>
+<area shape="rect" id="node6" href="$structs__color.html" title=" " alt="" coords="207,5,271,31"/>
+<area shape="rect" id="node7" href="$structs__texture.html" title=" " alt="" coords="201,126,277,151"/>
+</map>

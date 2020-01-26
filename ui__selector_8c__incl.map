@@ -1,0 +1,22 @@
+<map id="srcs/interface/ui_selector.c" name="srcs/interface/ui_selector.c">
+<area shape="rect" id="node1" title=" " alt="" coords="210,5,389,31"/>
+<area shape="rect" id="node2" href="$interface_8h.html" title=" " alt="" coords="212,79,296,104"/>
+<area shape="rect" id="node20" title=" " alt="" coords="319,79,373,104"/>
+<area shape="rect" id="node3" href="$t__data_8h.html" title=" " alt="" coords="219,152,289,177"/>
+<area shape="rect" id="node18" href="$csg_8h.html" title=" " alt="" coords="29,152,82,177"/>
+<area shape="rect" id="node19" title=" " alt="" coords="313,152,384,177"/>
+<area shape="rect" id="node4" title=" " alt="" coords="396,225,464,251"/>
+<area shape="rect" id="node5" href="$rtstruct_8h.html" title=" " alt="" coords="161,372,235,397"/>
+<area shape="rect" id="node10" href="$t__scene_8h.html" title=" " alt="" coords="54,225,134,251"/>
+<area shape="rect" id="node11" title=" " alt="" coords="49,299,105,324"/>
+<area shape="rect" id="node12" href="$libui_8h.html" title=" " alt="" coords="315,225,371,251"/>
+<area shape="rect" id="node14" href="$t__gui_8h.html" title=" " alt="" coords="223,225,285,251"/>
+<area shape="rect" id="node17" href="$t__settings_8h.html" title=" " alt="" coords="473,372,563,397"/>
+<area shape="rect" id="node6" title=" " alt="" coords="372,519,448,544"/>
+<area shape="rect" id="node7" title=" " alt="" coords="217,519,281,544"/>
+<area shape="rect" id="node8" title=" " alt="" coords="192,445,262,471"/>
+<area shape="rect" id="node9" href="$color_8h.html" title=" " alt="" coords="286,445,347,471"/>
+<area shape="rect" id="node13" title=" " alt="" coords="339,299,398,324"/>
+<area shape="rect" id="node15" href="$animate_8h.html" title=" " alt="" coords="129,299,209,324"/>
+<area shape="rect" id="node16" href="$t__cluster_8h.html" title=" " alt="" coords="233,299,315,324"/>
+</map>

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['r_1572',['r',['../structs__color.html#aec3b1324f2523ca391316741f8bb87ea',1,'s_color']]],
+  ['radius_1573',['radius',['../structs__sphere.html#a23930338dea5aa27d4764d737f952cc8',1,'s_sphere::radius()'],['../structs__cylinder.html#a2bd91d0ebbc067d88e890e0a7aeb63cc',1,'s_cylinder::radius()'],['../structs__tore.html#acf65d2775b297a022f914657a19dc644',1,'s_tore::radius()']]],
+  ['radius_5fspheres_1574',['radius_spheres',['../structs__cluster.html#afcc1e29ae5d21ae117e515b9f86f574e',1,'s_cluster']]],
+  ['ray_1575',['ray',['../structs__inter.html#a5af3a4b55a31f8b94bf39f7e5f7ffd40',1,'s_inter']]],
+  ['record_1576',['record',['../structs__gui.html#a0cca41261f78b7f5f2549032c615d34e',1,'s_gui']]],
+  ['reflection_5fcolor_1577',['reflection_color',['../structs__material.html#aebdaad3585706b4939b2486469318bd6',1,'s_material']]],
+  ['refract_5fmap_1578',['refract_map',['../structs__material.html#ade639c694f7ba01e93746e0cc4e38a03',1,'s_material']]],
+  ['refraction_5fcolor_1579',['refraction_color',['../structs__material.html#a96d94e3db78b65cfdbe74f386b6a3cfe',1,'s_material']]],
+  ['refraction_5fidx_1580',['refraction_idx',['../structs__material.html#aa02cc915f42154b5a8d75a19ab3f5102',1,'s_material']]],
+  ['render_5fdone_1581',['render_done',['../structs__thr__pool.html#a6bb36badde77edb625907142cea170c1',1,'s_thr_pool']]],
+  ['render_5ffocused_1582',['render_focused',['../structs__gui.html#ab574897060f57bf2b47a3bb84a2731be',1,'s_gui']]],
+  ['render_5fgui_1583',['render_gui',['../structs__sdl.html#acc27336d2e276df2a4f03863793fd806',1,'s_sdl']]],
+  ['render_5fset_5fopen_1584',['render_set_open',['../structs__gui.html#a16c55c278e3981e39fe690389892ce8f',1,'s_gui']]],
+  ['render_5ftime_1585',['render_time',['../structs__sdl.html#ac9af1acbe62d6eb9d7bb2ea44206c316',1,'s_sdl']]],
+  ['repeat_1586',['repeat',['../structs__uv__mapping.html#ace3ccb1e9acf1d7191091567f776100e',1,'s_uv_mapping']]],
+  ['res_1587',['res',['../structs__anim.html#a64a592fab40c39bf3ec85d2e98aabb02',1,'s_anim']]],
+  ['root_1588',['root',['../structs__csg.html#a0c7acb903847c438d6daf5ba80a3e538',1,'s_csg']]],
+  ['rotate_5fdown_1589',['rotate_down',['../structs__cam.html#ad5a662c55892bbccc7e1658c85e17dfd',1,'s_cam']]],
+  ['rotate_5fleft_1590',['rotate_left',['../structs__cam.html#af86d5fd2ebc71a130d37b4a070c79e8a',1,'s_cam']]],
+  ['rotate_5fright_1591',['rotate_right',['../structs__cam.html#a1fc1fa529be82f062f4c233cb9f92c11',1,'s_cam']]],
+  ['rotate_5fup_1592',['rotate_up',['../structs__cam.html#acaacdd688765904d97596f989878e6f9',1,'s_cam']]],
+  ['rotation_1593',['rotation',['../structs__cam.html#a656afb98b024fcae988140d3b7faef62',1,'s_cam']]]
+];

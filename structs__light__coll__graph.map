@@ -1,0 +1,5 @@
+<map id="s_light" name="s_light">
+<area shape="rect" id="node1" title=" " alt="" coords="51,92,111,117"/>
+<area shape="rect" id="node2" href="$structs__vec3.html" title=" " alt="" coords="5,5,69,31"/>
+<area shape="rect" id="node3" href="$structs__color.html" title=" " alt="" coords="93,5,157,31"/>
+</map>
